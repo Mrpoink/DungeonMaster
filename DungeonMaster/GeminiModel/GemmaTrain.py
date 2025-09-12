@@ -37,7 +37,7 @@ lora_config = LoraConfig(
     target_modules=["q_proj", "v_proj"],
     lora_dropout=0.05,
     bias="none",
-    task_type="SEQ_CLS"
+    task_type="CAUSAL_LM"
 )
 
 
@@ -52,7 +52,7 @@ def tokenize_function(examples):
     return tokenized
 
 tokenized_dataset = dataset.map(tokenize_function, batched=True)
-split_dataset = tokenized_dataset.train_test_split(test_size=0.5)
+split_dataset = tokenized_dataset.train_test_split(test_size=0.1)
 data_collator = DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm=False)
 
 
@@ -60,9 +60,9 @@ training_args = TrainingArguments(
     output_dir = "prompt_classifier",
     eval_strategy= 'epoch',
     push_to_hub=False,
-    per_device_train_batch_size=1,
-    num_train_epochs=1,
-    gradient_accumulation_steps=8,
+    per_device_train_batch_size=2,
+    num_train_epochs=16,
+    gradient_accumulation_steps=32,
     fp16=True,
     report_to=None
 )
@@ -72,9 +72,10 @@ trainer = Trainer(
     args = training_args,
     train_dataset=split_dataset['train'],
     eval_dataset=split_dataset['test'],
-    compute_metrics=compute_metrics,
     data_collator=data_collator
 )
+
+torch.cuda.empty_cache()
 
 trainer.train()
 
