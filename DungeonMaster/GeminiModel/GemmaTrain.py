@@ -1,20 +1,53 @@
 from transformers import AutoTokenizer, AutoModelForCausalLM, Trainer, TrainingArguments, BitsAndBytesConfig, DataCollatorForLanguageModeling
-from datasets import load_dataset, Dataset
+from datasets import load_dataset, Dataset, concatenate_datasets
 from peft import get_peft_model, LoraConfig, prepare_model_for_kbit_training
 import torch
 import json
 import evaluate
 import numpy as np
+torch.cuda.empty_cache()
 
-with open("Prompts.json", "r") as f:
-    data = json.load(f)
+dataset1 = load_dataset('csv', data_files='DungeonMaster/Datasets/Check_Outcome.csv')
+dataset2 = load_dataset('csv', data_files='DungeonMaster/Datasets/Action_Check_Outcome.csv')
+dataset3 = load_dataset('csv', data_files='DungeonMaster/Datasets/Scene_Action_Outcome.csv')
+dataset4 = load_dataset('csv', data_files='DungeonMaster/Datasets/Scene_Outcome.csv')
+dataset5 = load_dataset('csv', data_files='DungeonMaster/Datasets/Action_Check.csv')
+dataset6 = load_dataset('csv', data_files='DungeonMaster/Datasets/Scene_Action_Check.csv')
 
-# 2. Convert to Hugging Face Dataset
-dataset = Dataset.from_dict({"text": [
-    f"input: {d['input']}\noutput: {d['output']}" for d in data
-]})
+dataset1 = dataset1['train'].rename_columns({
+    'input: [CHECK]: check_required[PASS/FAIL]: outcome_type': 'input',
+    'output: [OUTCOME]: outcome_description': 'output'
+})
+dataset2 = dataset2['train'].rename_columns({
+    'input:  [ACTION]: player_input [CHECK]: check_required [PASS/FAIL]: outcome_type' : 'input',
+    'output: [OUTCOME]: outcome_description' : 'output'
+})
+dataset3 = dataset3['train'].rename_columns({
+    'input: [SCENE]: scene_context [ACTION]: player_input' : 'input',
+    'output: [OUTCOME]: outcome_description' : 'output'
+})
+dataset4 = dataset4['train'].rename_columns({
+    'input: [SCENE]: scene_context' : 'input',
+    'output: [OUTCOME]: outcome_description' : 'output'
+})
+dataset5 = dataset5['train'].rename_columns({
+    'input:  [ACTION]: player_input' : 'input',
+    'output: [CHECK]: check_required' : 'output'
+})
+dataset6 = dataset6['train'].rename_columns({
+    'input: [SCENE]: scene_context [ACTION]: player_input' : 'input',
+    'output: [CHECK]: check_required' : 'output'
+})
 
-print(dataset)
+dataset = concatenate_datasets([dataset1, dataset2, dataset3, dataset4, dataset5])
+
+
+def format_data(examples):
+    return {"text": [
+        f"input: {d_in}\noutput: {d_out}" for d_in, d_out in zip(examples['input'], examples['output'])
+    ]}
+
+formatted_dataset = dataset.map(format_data, batched=True)
 
 metric = evaluate.load('accuracy')
 
@@ -48,10 +81,12 @@ model.gradient_checkpointing_enable()
 model = get_peft_model(model, lora_config)
 
 def tokenize_function(examples):
+    print(examples)
     tokenized = tokenizer(examples["text"])
     return tokenized
 
-tokenized_dataset = dataset.map(tokenize_function, batched=True)
+formatted_dataset = dataset.map(format_data, batched=True)
+tokenized_dataset = formatted_dataset.map(tokenize_function, batched=True)
 split_dataset = tokenized_dataset.train_test_split(test_size=0.1)
 data_collator = DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm=False)
 
@@ -60,8 +95,8 @@ training_args = TrainingArguments(
     output_dir = "prompt_classifier",
     eval_strategy= 'epoch',
     push_to_hub=False,
-    per_device_train_batch_size=2,
-    num_train_epochs=16,
+    per_device_train_batch_size=3,
+    num_train_epochs=64, #<----------REPLACE WITH 32!!!!
     gradient_accumulation_steps=32,
     fp16=True,
     report_to=None
@@ -75,7 +110,7 @@ trainer = Trainer(
     data_collator=data_collator
 )
 
-torch.cuda.empty_cache()
+
 
 trainer.train()
 

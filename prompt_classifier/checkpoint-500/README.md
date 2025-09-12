@@ -5,6 +5,7 @@ tags:
 - base_model:adapter:google/gemma-3-270m
 - lora
 - transformers
+pipeline_tag: text-generation
 ---
 
 # Model Card for Model ID

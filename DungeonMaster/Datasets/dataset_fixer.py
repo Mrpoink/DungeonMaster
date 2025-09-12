@@ -7,10 +7,10 @@ def csv_to_dict(filename):
     with open(filename, 'r', newline='') as file:
         csv_reader = csv.reader(file)
         for row in csv_reader:
-            dict = {}
-            dict['input'] = row[:4]
-            dict['output'] = row[4:]
-            data_list.append(dict)
+            input_string = "input: " + "[SCENE]: " + row[2] +  " [ACTION]: " + row[3]
+            output_string = "output: " + "[CHECK]: " + str(row[4])
+            total_list = [input_string, output_string]
+            data_list.append(total_list)
 
     return data_list
 
@@ -23,6 +23,14 @@ def dict_to_csv(data, filename):
         writer = csv.DictWriter(file, fieldnames=fieldNames)
         writer.writeheader()
         writer.writerows(data)
+
+def list_to_csv(data, filename):
+
+    with open(filename, "w", newline='') as file:
+
+        csv_writer = csv.writer(file)
+
+        csv_writer.writerows(data)
 
 def to_json(data, output_file, w_or_r=None):
 
@@ -42,6 +50,6 @@ def to_json(data, output_file, w_or_r=None):
 input= csv_to_dict('DungeonMaster/Datasets/Prompts.csv')
 print(input)
 
-to_json(input, 'Prompts.json')
+list_to_csv(input, 'Scene_Action_Check.csv')
 
 #dict_to_csv(input, 'Prompts2.csv')

@@ -1,0 +1,1329 @@
+"input: player_input,check_required",output: outcome_type
+"input: [SCENE_START],None",output: N/A
+"input: I attempt to lift the coin purse from the merchant's belt.,Sleight of Hand",output: Pass
+"input: I attempt to lift the coin purse from the merchant's belt.,Sleight of Hand",output: Fail
+"input: I ask the bartender for rumors about the lost dagger, 'Heartspike'.,Persuasion",output: Pass
+"input: I ask the bartender for rumors about the lost dagger, 'Heartspike'.,Persuasion",output: Fail
+"input: I check the door for traps.,Investigation",output: Pass
+"input: I check the door for traps.,Investigation",output: Fail
+"input: I try to jump across the chasm.,Acrobatics",output: Pass
+"input: I try to jump across the chasm.,Acrobatics",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I attempt to climb the icy cliff.,Athletics",output: Pass
+"input: I attempt to climb the icy cliff.,Athletics",output: Fail
+"input: I let out a fearsome roar to try and scare it away.,Intimidation",output: Pass
+"input: I let out a fearsome roar to try and scare it away.,Intimidation",output: Fail
+"input: I offer the traveler my spare fur cloak.,None",output: N/A
+"input: I listen carefully to determine the source of the sound.,Perception",output: Pass
+"input: I listen carefully to determine the source of the sound.,Perception",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I try to decipher the arcane lock.,Arcana",output: Pass
+"input: I try to decipher the arcane lock.,Arcana",output: Fail
+"input: I try to reason with the spirit, explaining I'm here to preserve its knowledge.,Persuasion",output: Pass
+"input: I try to reason with the spirit, explaining I'm here to preserve its knowledge.,Persuasion",output: Fail
+"input: I examine the wall for secret passages.,Investigation",output: Pass
+"input: I examine the wall for secret passages.,Investigation",output: Fail
+"input: I attempt to memorize the spell written on the scroll.,Intelligence",output: Pass
+"input: I attempt to memorize the spell written on the scroll.,Intelligence",output: Fail
+"input: I try to win over the crowd with a lively song.,Performance",output: Pass
+"input: I try to win over the crowd with a lively song.,Performance",output: Fail
+"input: I try to talk my way out of the fine with a charming smile and a silver tongue.,Deception",output: Pass
+"input: I try to talk my way out of the fine with a charming smile and a silver tongue.,Deception",output: Fail
+"input: I flatter the Duke, complimenting his impeccable fashion sense.,Persuasion",output: Pass
+"input: I flatter the Duke, complimenting his impeccable fashion sense.,Persuasion",output: Fail
+"input: I listen in on the conversations around me.,Perception",output: Pass
+"input: I listen in on the conversations around me.,Perception",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I use my divine magic to try and heal the child.,Medicine",output: Pass
+"input: I use my divine magic to try and heal the child.,Medicine",output: Fail
+"input: I try to identify the symbol.,Religion",output: Pass
+"input: I try to identify the symbol.,Religion",output: Fail
+"input: I try to reassure him, promising the Sun God's protection.,Persuasion",output: Pass
+"input: I try to reassure him, promising the Sun God's protection.,Persuasion",output: Fail
+"input: I can feel the evil here. I want to know where it's strongest.,Divine Sense",output: Pass
+"input: I can feel the evil here. I want to know where it's strongest.,Divine Sense",output: Fail
+"input: I attempt to sneak past the guard.,Stealth",output: Pass
+"input: I attempt to sneak past the guard.,Stealth",output: Fail
+"input: I use my thieves' tools to pick the lock.,Thieves' Tools",output: Pass
+"input: I use my thieves' tools to pick the lock.,Thieves' Tools",output: Fail
+"input: I ignore his taunts and ready my axe.,Wisdom",output: Pass
+"input: I ignore his taunts and ready my axe.,Wisdom",output: Fail
+"input: I try to identify what kind of creature made these tracks.,Survival",output: Pass
+"input: I try to identify what kind of creature made these tracks.,Survival",output: Fail
+"input: I try to push the boulder out of the way.,Athletics",output: Pass
+"input: I try to push the boulder out of the way.,Athletics",output: Fail
+"input: I try to remember what my books said about the native creatures here.,Nature",output: Pass
+"input: I try to remember what my books said about the native creatures here.,Nature",output: Fail
+"input: I try to discern its function.,Arcana",output: Pass
+"input: I try to discern its function.,Arcana",output: Fail
+"input: I think hard about the riddle's meaning.,Intelligence",output: Pass
+"input: I think hard about the riddle's meaning.,Intelligence",output: Fail
+"input: I carefully make my way across the bridge.,Acrobatics",output: Pass
+"input: I carefully make my way across the bridge.,Acrobatics",output: Fail
+"input: I start a loud, obnoxious, and very public argument with a street vendor.,Performance",output: Pass
+"input: I start a loud, obnoxious, and very public argument with a street vendor.,Performance",output: Fail
+"input: I try to bluff my way through the conversation.,Deception",output: Pass
+"input: I try to bluff my way through the conversation.,Deception",output: Fail
+"input: I use my healer's kit to bandage their wounds.,Medicine",output: Pass
+"input: I use my healer's kit to bandage their wounds.,Medicine",output: Fail
+"input: I attempt to calm the animal using gentle words and gestures.,Animal Handling",output: Pass
+"input: I attempt to calm the animal using gentle words and gestures.,Animal Handling",output: Fail
+"input: I look for signs of which path is least affected by the blight.,Survival",output: Pass
+"input: I look for signs of which path is least affected by the blight.,Survival",output: Fail
+"input: I try to recall the symbol from my time on the streets.,History",output: Pass
+"input: I try to recall the symbol from my time on the streets.,History",output: Fail
+"input: I use my raw strength to try and beat him.,Athletics",output: Pass
+"input: I use my raw strength to try and beat him.,Athletics",output: Fail
+"input: I try to withstand the effects of the poison through sheer resilience.,Constitution",output: Pass
+"input: I try to withstand the effects of the poison through sheer resilience.,Constitution",output: Fail
+"input: I quickly put on the disguise.,Sleight of Hand",output: Pass
+"input: I quickly put on the disguise.,Sleight of Hand",output: Fail
+"input: I ask my deity to show me the way forward.,Religion",output: Pass
+"input: I ask my deity to show me the way forward.,Religion",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I look for a safe place to cross the river.,Survival",output: Pass
+"input: I look for a safe place to cross the river.,Survival",output: Fail
+"input: I inspect the tracks to identify the creature.,Nature",output: Pass
+"input: I inspect the tracks to identify the creature.,Nature",output: Fail
+"input: I ready my bow and try to move silently towards the sound.,Stealth",output: Pass
+"input: I ready my bow and try to move silently towards the sound.,Stealth",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I ask my otherworldly patron what this spirit is.,Pact Magic",output: Pass
+"input: I ask my otherworldly patron what this spirit is.,Pact Magic",output: Fail
+"input: I use my pact-given knowledge to translate the text.,History",output: Pass
+"input: I use my pact-given knowledge to translate the text.,History",output: Fail
+"input: I try to scare him off by showing him a glimpse of my patron's power.,Intimidation",output: Pass
+"input: I try to scare him off by showing him a glimpse of my patron's power.,Intimidation",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I try to determine if the Baron is being deceptive.,Insight",output: Pass
+"input: I try to determine if the Baron is being deceptive.,Insight",output: Fail
+"input: I stand and publicly admonish the jester for his lack of honor.,Persuasion",output: Pass
+"input: I stand and publicly admonish the jester for his lack of honor.,Persuasion",output: Fail
+"input: I try to subtly knock the goblet from the king's hand before he drinks.,Sleight of Hand",output: Pass
+"input: I try to subtly knock the goblet from the king's hand before he drinks.,Sleight of Hand",output: Fail
+"input: I check the water for any hidden dangers before entering.,Perception",output: Pass
+"input: I check the water for any hidden dangers before entering.,Perception",output: Fail
+"input: I throw the stone with all my might.,Athletics",output: Pass
+"input: I throw the stone with all my might.,Athletics",output: Fail
+"input: I try to identify the potion and its intended effects.,Arcana",output: Pass
+"input: I try to identify the potion and its intended effects.,Arcana",output: Fail
+"input: I compose a short, flattering song about the guard's heroic vigil.,Performance",output: Pass
+"input: I compose a short, flattering song about the guard's heroic vigil.,Performance",output: Fail
+"input: I brace myself to keep my footing.,Dexterity",output: Pass
+"input: I brace myself to keep my footing.,Dexterity",output: Fail
+"input: I try to calm the wolf and tend to its wounds.,Animal Handling",output: Pass
+"input: I try to calm the wolf and tend to its wounds.,Animal Handling",output: Fail
+"input: I try to sense if the imp is trying to magically swindle me.,Insight",output: Pass
+"input: I try to sense if the imp is trying to magically swindle me.,Insight",output: Fail
+"input: I resist their interrogation, holding true to my oath.,Constitution",output: Pass
+"input: I resist their interrogation, holding true to my oath.,Constitution",output: Fail
+"input: I continue to move carefully along the ledge.,Acrobatics",output: Pass
+"input: I continue to move carefully along the ledge.,Acrobatics",output: Fail
+"input: I attempt to hold the portcullis open long enough for my friends to escape.,Athletics",output: Pass
+"input: I attempt to hold the portcullis open long enough for my friends to escape.,Athletics",output: Fail
+"input: I study the tapestry to understand the historical context of the battle.,History",output: Pass
+"input: I study the tapestry to understand the historical context of the battle.,History",output: Fail
+"input: I try to recall the ancient song.,Performance",output: Pass
+"input: I try to recall the ancient song.,Performance",output: Fail
+"input: I step between them and call for peace in the name of the Sun God.,Persuasion",output: Pass
+"input: I step between them and call for peace in a God's name.,Persuasion",output: Fail
+"input: I watch their patrol patterns to determine the best time to sneak in.,Investigation",output: Pass
+"input: I watch their patrol patterns to determine the best time to sneak in.,Investigation",output: Fail
+"input: I try to convince the magistrate that I am innocent of any crime.,Deception",output: Pass
+"input: I try to convince the magistrate that I am innocent of any crime.,Deception",output: Fail
+"input: I urge my horse to jump over the log.,Animal Handling",output: Pass
+"input: I urge my horse to jump over the log.,Animal Handling",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I attempt to disarm him using swift, non-lethal strikes.,Sleight of Hand",output: Pass
+"input: I attempt to disarm him using swift, non-lethal strikes.,Sleight of Hand",output: Fail
+"input: I try to find a pressure point on the most aggressive brawler to incapacitate him peacefully.,Medicine",output: Pass
+"input: I try to find a pressure point on the most aggressive brawler to incapacitate him peacefully.,Medicine",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I call upon the power of the forest to create a path of damp earth for them to escape.,Nature",output: Pass
+"input: I call upon the power of the forest to create a path of damp earth for them to escape.,Nature",output: Fail
+"input: I shapeshift into a great eagle to fly above the fire and find its source.,Druidic Magic",output: Pass
+"input: I shapeshift into a great eagle to fly above the fire and find its source.,Druidic Magic",output: Fail
+"input: I look for the trigger mechanism for the magical traps.,Investigation",output: Pass
+"input: I look for the trigger mechanism for the magical traps.,Investigation",output: Fail
+"input: I try to give my testimony as clearly as possible.,Persuasion",output: Pass
+"input: I try to give my testimony as clearly as possible.,Persuasion",output: Fail
+"input: I search my memory for any lore regarding obsidian golem weaknesses.,History",output: Pass
+"input: I search my memory for any lore regarding obsidian golem weaknesses.,History",output: Fail
+"input: I attempt to solve the riddle.,Intelligence",output: Pass
+"input: I attempt to solve the riddle.,Intelligence",output: Fail
+"input: I try to use my knowledge to diagnose the specific type of magical plague.,Medicine",output: Pass
+"input: I try to use my knowledge to diagnose the specific type of magical plague.,Medicine",output: Fail
+"input: I scan the horizon for any signs of an oasis or water source.,Survival",output: Pass
+"input: I scan the horizon for any signs of an oasis or water source.,Survival",output: Fail
+"input: I look for someone who seems out of place or shows signs of a dark pact.,Insight",output: Pass
+"input: I look for someone who seems out of place or shows signs of a dark pact.,Insight",output: Fail
+"input: I leap from one rooftop to the next in pursuit.,Athletics",output: Pass
+"input: I leap from one rooftop to the next in pursuit.,Athletics",output: Fail
+"input: I try to maintain my balance as I cross.,Acrobatics",output: Pass
+"input: I try to maintain my balance as I cross.,Acrobatics",output: Fail
+"input: I try to sneak past the sleeping bear.,Stealth",output: Pass
+"input: I try to sneak past the sleeping bear.,Stealth",output: Fail
+"input: I use my forgery kit to replicate the seal.,Forgery Kit",output: Pass
+"input: I use my forgery kit to replicate the seal.,Forgery Kit",output: Fail
+"input: I try to intimidate the chieftain into accepting our terms.,Intimidation",output: Pass
+"input: I try to intimidate the chieftain into accepting our terms.,Intimidation",output: Fail
+"input: I attempt to disarm the magical trap.,Arcana",output: Pass
+"input: I attempt to disarm the magical trap.,Arcana",output: Fail
+"input: I tell him a heroic and inspiring story about the potential discoveries.,Performance",output: Pass
+"input: I tell him a heroic and inspiring story about the potential discoveries.,Performance",output: Fail
+"input: I meditate and search my memory for the passage.,Religion",output: Pass
+"input: I meditate and search my memory for the passage.,Religion",output: Fail
+"input: I dive into the water to rescue the child.,Athletics",output: Pass
+"input: I dive into the water to rescue the child.,Athletics",output: Fail
+"input: I try to discern if there is any residual divine magic left in the statue.,Religion",output: Pass
+"input: I try to discern if there is any residual divine magic left in the statue.,Religion",output: Fail
+"input: I speak in my own defense, appealing to the court's sense of justice.,Persuasion",output: Pass
+"input: I speak in my own defense, appealing to the court's sense of justice.,Persuasion",output: Fail
+"input: I try to deflect the arrows with my open hands.,Acrobatics",output: Pass
+"input: I try to deflect the arrows with my open hands.,Acrobatics",output: Fail
+"input: I use my knowledge of nature to see if it's poisonous.,Nature",output: Pass
+"input: I use my knowledge of nature to see if it's poisonous.,Nature",output: Fail
+"input: I try to find shelter from the oppressive heat.,Survival",output: Pass
+"input: I try to find shelter from the oppressive heat.,Survival",output: Fail
+"input: I try to brace the mast with my raw strength.,Athletics",output: Pass
+"input: I try to brace the mast with my raw strength.,Athletics",output: Fail
+"input: I explain the principles of elemental magic to the court.,Arcana",output: Pass
+"input: I explain the principles of elemental magic to the court.,Arcana",output: Fail
+"input: I try to flatter the dragon, complimenting the luster of its scales.,Persuasion",output: Pass
+"input: I try to flatter the dragon, complimenting the luster of its scales.,Persuasion",output: Fail
+"input: I approach the creature cautiously and attempt to mend its wing with healing magic.,Animal Handling",output: Pass
+"input: I approach the creature cautiously and attempt to mend its wing with healing magic.,Animal Handling",output: Fail
+"input: I ask the old sailors at the docks if they've seen the creature.,Investigation",output: Pass
+"input: I ask the old sailors at the docks if they've seen the creature.,Investigation",output: Fail
+"input: I allow the whispers of my patron to guide my path.,Pact Magic",output: Pass
+"input: I allow the whispers of my patron to guide my path.,Pact Magic",output: Fail
+"input: I watch the diplomat's interactions closely, looking for any sign of treachery.,Insight",output: Pass
+"input: I watch the diplomat's interactions closely, looking for any sign of treachery.,Insight",output: Fail
+"input: I attempt to kick the door open.,Athletics",output: Pass
+"input: I attempt to kick the door open.,Athletics",output: Fail
+"input: I attempt to use my magic to encourage new life to grow.,Nature",output: Pass
+"input: I attempt to use my magic to encourage new life to grow.,Nature",output: Fail
+"input: I try to swim across the moat under the cover of darkness.,Stealth",output: Pass
+"input: I try to swim across the moat under the cover of darkness.,Stealth",output: Fail
+"input: I push through the illness with sheer toughness.,Constitution",output: Pass
+"input: I push through the illness with sheer toughness.,Constitution",output: Fail
+"input: I try to deduce the purpose of the mechanism.,Investigation",output: Pass
+"input: I try to deduce the purpose of the mechanism.,Investigation",output: Fail
+"input: I tell the children a silly story to make them laugh and forget their fears.,Performance",output: Pass
+"input: I tell the children a silly story to make them laugh and forget their fears.,Performance",output: Fail
+"input: I look for subtle signs of their allegiance, like a hidden holy symbol or coded language.,Insight",output: Pass
+"input: I look for subtle signs of their allegiance, like a hidden holy symbol or coded language.,Insight",output: Fail
+"input: I try to navigate the darkness using my other senses.,Perception",output: Pass
+"input: I try to navigate the darkness using my other senses.,Perception",output: Fail
+"input: I try to overwhelm my rival with a blast of pure eldritch power.,Arcana",output: Pass
+"input: I try to overwhelm my rival with a blast of pure eldritch power.,Arcana",output: Fail
+"input: I chop down a large tree to create a makeshift bridge.,Athletics",output: Pass
+"input: I chop down a large tree to create a makeshift bridge.,Athletics",output: Fail
+"input: I attempt to enter a state of calm and block out the distractions.,Wisdom",output: Pass
+"input: I attempt to enter a state of calm and block out the distractions.,Wisdom",output: Fail
+"input: I use my magic to find the nearest underground water source.,Survival",output: Pass
+"input: I use my magic to find the nearest underground water source.,Survival",output: Fail
+"input: I try to show them respect by observing their customs from a distance before approaching.,Nature",output: Pass
+"input: I try to show them respect by observing their customs from a distance before approaching.,Nature",output: Fail
+"input: I try to keep my balance as the ship rocks violently.,Acrobatics",output: Pass
+"input: I try to keep my balance as the ship rocks violently.,Acrobatics",output: Fail
+"input: I try to keep their spirits up with a tale of a past victory.,Performance",output: Pass
+"input: I try to keep their spirits up with a tale of a past victory.,Performance",output: Fail
+"input: I try to determine the nature of the altar's magic.,Religion",output: Pass
+"input: I try to determine the nature of the altar's magic.,Religion",output: Fail
+"input: I try to take it down with a single, clean shot from my bow.,Stealth",output: Pass
+"input: I try to take it down with a single, clean shot from my bow.,Stealth",output: Fail
+"input: I try to tell from the noble's expression which goblet is safe.,Insight",output: Pass
+"input: I try to tell from the noble's expression which goblet is safe.,Insight",output: Fail
+"input: I offer to pay for my passage by working as a deckhand and entertainer.,Persuasion",output: Pass
+"input: I offer to pay for my passage by working as a deckhand and entertainer.,Persuasion",output: Fail
+"input: I translate the hieroglyphs to learn the tomb owner's story.,History",output: Pass
+"input: I translate the hieroglyphs to learn the tomb owner's story.,History",output: Fail
+"input: I use my strength to pull myself up the thick branches.,Athletics",output: Pass
+"input: I use my strength to pull myself up the thick branches.,Athletics",output: Fail
+"input: I attempt to slip the note into my contact's pocket as I 'accidentally' bump into them.,Sleight of Hand",output: Pass
+"input: I attempt to slip the note into my contact's pocket as I 'accidentally' bump into them.,Sleight of Hand",output: Fail
+"input: I try to identify the type of magic used.,Arcana",output: Pass
+"input: I try to identify the type of magic used.,Arcana",output: Fail
+"input: I clear my mind and focus only on the rope and my goal.,Acrobatics",output: Pass
+"input: I clear my mind and focus only on the rope and my goal.,Acrobatics",output: Fail
+"input: I stand my ground and attempt to stop its charge with my shield.,Athletics",output: Pass
+"input: I stand my ground and attempt to stop its charge with my shield.,Athletics",output: Fail
+"input: I search the occult section for the specific tome.,Investigation",output: Pass
+"input: I search the occult section for the specific tome.,Investigation",output: Fail
+"input: I use my knowledge of herbs to create an antidote.,Medicine",output: Pass
+"input: I use my knowledge of herbs to create an antidote.,Medicine",output: Fail
+"input: I present the evidence I've gathered in a logical manner.,Persuasion",output: Pass
+"input: I present the evidence I've gathered in a logical manner.,Persuasion",output: Fail
+"input: I try to bribe a guard to deliver the message for me.,Deception",output: Pass
+"input: I try to bribe a guard to deliver the message for me.,Deception",output: Fail
+"input: I try to overload the barrier by channeling too much energy into it.,Arcana",output: Pass
+"input: I try to overload the barrier by channeling too much energy into it.,Arcana",output: Fail
+"input: I search for signs of their passage.,Survival",output: Pass
+"input: I search for signs of their passage.,Survival",output: Fail
+"input: I hold my breath and try to remain perfectly still in the shadows.,Stealth",output: Pass
+"input: I hold my breath and try to remain perfectly still in the shadows.,Stealth",output: Fail
+"input: I try to identify the plant and its properties.,Nature",output: Pass
+"input: I try to identify the plant and its properties.,Nature",output: Fail
+"input: I try to react faster than my opponent.,Dexterity",output: Pass
+"input: I try to react faster than my opponent.,Dexterity",output: Fail
+"input: I search my memory for the details of the family tree.,History",output: Pass
+"input: I search my memory for the details of the family tree.,History",output: Fail
+"input: I attempt to solve the puzzle.,Intelligence",output: Pass
+"input: I attempt to solve the puzzle.,Intelligence",output: Fail
+"input: I look for a defensible position with good visibility.,Survival",output: Pass
+"input: I look for a defensible position with good visibility.,Survival",output: Fail
+"input: I perform a holy ritual to consecrate the ground.,Religion",output: Pass
+"input: I perform a holy ritual to consecrate the ground.,Religion",output: Fail
+"input: I try to recall the story I heard from an old woman in the last village.,History",output: Pass
+"input: I try to recall the story I heard from an old woman in the last village.,History",output: Fail
+"input: I try to resist the trap's effects through sheer force of will.,Constitution",output: Pass
+"input: I try to resist the trap's effects through sheer force of will.,Constitution",output: Fail
+"input: I try to control my anger and not let the taunts get to me.,Wisdom",output: Pass
+"input: I try to control my anger and not let the taunts get to me.,Wisdom",output: Fail
+"input: I try to create a distraction to draw the guards away from the cell.,Deception",output: Pass
+"input: I try to create a distraction to draw the guards away from the cell.,Deception",output: Fail
+"input: I transform into a large bear to intimidate them.,Druidic Magic",output: Pass
+"input: I transform into a large bear to intimidate them.,Druidic Magic",output: Fail
+"input: I wait for the perfect moment to strike.,Sleight of Hand",output: Pass
+"input: I wait for the perfect moment to strike.,Sleight of Hand",output: Fail
+"input: I try to guide my horse safely through the terrain.,Animal Handling",output: Pass
+"input: I try to guide my horse safely through the terrain.,Animal Handling",output: Fail
+"input: I try to determine if the markings are part of a ritual.,Investigation",output: Pass
+"input: I try to determine if the markings are part of a ritual.,Investigation",output: Fail
+"input: I listen carefully to gather as many details as I can.,Perception",output: Pass
+"input: I listen carefully to gather as many details as I can.,Perception",output: Fail
+"input: I use my medical knowledge to treat the patient's symptoms.,Medicine",output: Pass
+"input: I use my medical knowledge to treat the patient's symptoms.,Medicine",output: Fail
+"input: I use gestures and pantomime to communicate with the locals.,Performance",output: Pass
+"input: I use gestures and pantomime to communicate with the locals.,Performance",output: Fail
+"input: I try to recognize the components and incantation of their spell.,Arcana",output: Pass
+"input: I try to recognize the components and incantation of their spell.,Arcana",output: Fail
+"input: I throw my full weight against the door.,Athletics",output: Pass
+"input: I throw my full weight against the door.,Athletics",output: Fail
+"input: I use my thieves' tools to carefully jam the mechanism.,Thieves' Tools",output: Pass
+"input: I use my thieves' tools to carefully jam the mechanism.,Thieves' Tools",output: Fail
+"input: I try to win their favor with an acrobatic flourish.,Performance",output: Pass
+"input: I try to win their favor with an acrobatic flourish.,Performance",output: Fail
+"input: I try to lift the crate off the sailor.,Athletics",output: Pass
+"input: I try to lift the crate off the sailor.,Athletics",output: Fail
+"input: I try to identify the poison's ingredients and effects.,Medicine",output: Pass
+"input: I try to identify the poison's ingredients and effects.,Medicine",output: Fail
+"input: I use the stars to navigate towards the town on the other side.,Survival",output: Pass
+"input: I use the stars to navigate towards the town on the other side.,Survival",output: Fail
+"input: I try to resist the magical charm by focusing on my holy symbol.,Wisdom",output: Pass
+"input: I try to resist the magical charm by focusing on my holy symbol.,Wisdom",output: Fail
+"input: I try to endure the extreme heat.,Constitution",output: Pass
+"input: I try to endure the extreme heat.,Constitution",output: Fail
+"input: I try to see through its illusions.,Investigation",output: Pass
+"input: I try to see through its illusions.,Investigation",output: Fail
+"input: I attempt to repair my shield myself.,Smith's Tools",output: Pass
+"input: I attempt to repair my shield myself.,Smith's Tools",output: Fail
+"input: I try to find a non-magical solution, like a hidden latch or pulley.,Perception",output: Pass
+"input: I try to find a non-magical solution, like a hidden latch or pulley.,Perception",output: Fail
+"input: I try to sense if there is any life left in the stone trees.,Nature",output: Pass
+"input: I try to sense if there is any life left in the stone trees.,Nature",output: Fail
+"input: I discreetly spread a juicy piece of gossip among the patrons.,Deception",output: Pass
+"input: I discreetly spread a juicy piece of gossip among the patrons.,Deception",output: Fail
+"input: I attempt to out-drink my opponent.,Constitution",output: Pass
+"input: I attempt to out-drink my opponent.,Constitution",output: Fail
+"input: I try to dodge out of the way.,Acrobatics",output: Pass
+"input: I try to dodge out of the way.,Acrobatics",output: Fail
+"input: I try to compose a masterpiece.,Performance",output: Pass
+"input: I try to compose a masterpiece.,Performance",output: Fail
+"input: I pray for guidance and strength.,Religion",output: Pass
+"input: I pray for guidance and strength.,Religion",output: Fail
+"input: I use my knowledge of the beast's habits to set a clever trap.,Survival",output: Pass
+"input: I use my knowledge of the beast's habits to set a clever trap.,Survival",output: Fail
+"input: I try to interpret the images it sends me.,Insight",output: Pass
+"input: I try to interpret the images it sends me.,Insight",output: Fail
+"input: I try to unseat my opponent.,Animal Handling",output: Pass
+"input: I try to unseat my opponent.,Animal Handling",output: Fail
+"input: I try to move with absolute silence.,Stealth",output: Pass
+"input: I try to move with absolute silence.,Stealth",output: Fail
+"input: I use my magic to cleanse the water.,Nature",output: Pass
+"input: I use my magic to cleanse the water.,Nature",output: Fail
+"input: I try to determine its value.,Investigation",output: Pass
+"input: I try to determine its value.,Investigation",output: Fail
+"input: I try to grapple it into submission.,Athletics",output: Pass
+"input: I try to grapple it into submission.,Athletics",output: Fail
+"input: I try to remember the correct sequence of runes to activate it.,History",output: Pass
+"input: I try to remember the correct sequence of runes to activate it.,History",output: Fail
+"input: I act as a neutral mediator and try to find a compromise.,Persuasion",output: Pass
+"input: I act as a neutral mediator and try to find a compromise.,Persuasion",output: Fail
+"input: I try to determine if the curse can be reversed.,Medicine",output: Pass
+"input: I try to determine if the curse can be reversed.,Medicine",output: Fail
+"input: I try to find subtle signs of passage.,Survival",output: Pass
+"input: I try to find subtle signs of passage.,Survival",output: Fail
+"input: I try to trick the demon into revealing its name.,Deception",output: Pass
+"input: I try to trick the demon into revealing its name.,Deception",output: Fail
+"input: I try to inspire them with a speech about duty and honor.,Performance",output: Pass
+"input: I try to inspire them with a speech about duty and honor.,Performance",output: Fail
+"input: I try to be faster than my master's eye.,Sleight of Hand",output: Pass
+"input: I try to be faster than my master's eye.,Sleight of Hand",output: Fail
+"input: I try to communicate with the local nature spirits.,Nature",output: Pass
+"input: I try to communicate with the local nature spirits.,Nature",output: Fail
+"input: I claim to be a messenger with an urgent delivery for the king.,Deception",output: Pass
+"input: I claim to be a messenger with an urgent delivery for the king.,Deception",output: Fail
+"input: I smash a large rock with my bare hands to show them my strength.,Intimidation",output: Pass
+"input: I smash a large rock with my bare hands to show them my strength.,Intimidation",output: Fail
+"input: I try to recall its description from a bestiary I've read.,History",output: Pass
+"input: I try to recall its description from a bestiary I've read.,History",output: Fail
+"input: I try to charm the merchant into giving me a discount.,Persuasion",output: Pass
+"input: I try to charm the merchant into giving me a discount.,Persuasion",output: Fail
+"input: I perform a ritual to restore the text.,Religion",output: Pass
+"input: I perform a ritual to restore the text.,Religion",output: Fail
+"input: I use my keen senses to navigate the darkness.,Perception",output: Pass
+"input: I use my keen senses to navigate the darkness.,Perception",output: Fail
+"input: I try to bind it to my will.,Intimidation",output: Pass
+"input: I try to bind it to my will.,Intimidation",output: Fail
+"input: I try to restore order with my commanding presence.,Persuasion",output: Pass
+"input: I try to restore order with my commanding presence.,Persuasion",output: Fail
+"input: I try to enter a meditative trance to block out the pain.,Constitution",output: Pass
+"input: I try to enter a meditative trance to block out the pain.,Constitution",output: Fail
+"input: I use my knowledge of plants to find it.,Nature",output: Pass
+"input: I use my knowledge of plants to find it.,Nature",output: Fail
+"input: I try to repair the clockwork mechanism with my tools.,Tinker's Tools",output: Pass
+"input: I try to repair the clockwork mechanism with my tools.,Tinker's Tools",output: Fail
+"input: I channel my divine power to turn the undead.,Religion",output: Pass
+"input: I channel my divine power to turn the undead.,Religion",output: Fail
+"input: I try to spot which of the attendees is the wealthiest.,Perception",output: Pass
+"input: I try to spot which of the attendees is the wealthiest.,Perception",output: Fail
+"input: I try to hold my ground against the strong current.,Athletics",output: Pass
+"input: I try to hold my ground against the strong current.,Athletics",output: Fail
+"input: I scan the book for any spells I don't already know.,Arcana",output: Pass
+"input: I scan the book for any spells I don't already know.,Arcana",output: Fail
+"input: I try to talk my way past the border guards by posing as a simple traveling minstrel.,Deception",output: Pass
+"input: I try to talk my way past the border guards by posing as a simple traveling minstrel.,Deception",output: Fail
+"input: I use my knowledge to triage their wounds and stop the bleeding.,Medicine",output: Pass
+"input: I use my knowledge to triage their wounds and stop the bleeding.,Medicine",output: Fail
+"input: I listen for the sound of its movement in the water.,Perception",output: Pass
+"input: I listen for the sound of its movement in the water.,Perception",output: Fail
+"input: I focus my mind and attempt to ignore the whispers.,Wisdom",output: Pass
+"input: I focus my mind and attempt to ignore the whispers.,Wisdom",output: Fail
+"input: I try to discern which of them is telling the truth.,Insight",output: Pass
+"input: I try to discern which of them is telling the truth.,Insight",output: Fail
+"input: I maintain my footing on the treacherous surface.,Acrobatics",output: Pass
+"input: I try to maintain my footing on the treacherous surface.,Acrobatics",output: Fail
+"input: I attempt to speak to them to find out what has them so upset.,Sylvan",output: Pass
+"input: I attempt to speak to them to find out what has them so upset.,Sylvan",output: Fail
+"input: I try to find a weak point in its mechanical joints.,Investigation",output: Pass
+"input: I try to find a weak point in its mechanical joints.,Investigation",output: Fail
+"input: I lay my hands on them and channel divine healing energy.,Medicine",output: Pass
+"input: I lay my hands on them and channel divine healing energy.,Medicine",output: Fail
+"input: I use my thieves' tools to try and open the cell door.,Thieves' Tools",output: Pass
+"input: I use my thieves' tools to try and open the cell door.,Thieves' Tools",output: Fail
+"input: I use my raw, brute strength to overwhelm him.,Athletics",output: Pass
+"input: I use my raw, brute strength to overwhelm him.,Athletics",output: Fail
+"input: I try to decode the message.,Intelligence",output: Pass
+"input: I try to decode the message.,Intelligence",output: Fail
+"input: I try to charm the information out of them.,Persuasion",output: Pass
+"input: I try to charm the information out of them.,Persuasion",output: Fail
+"input: I try to spot the source of the unnatural shadows.,Perception",output: Pass
+"input: I try to spot the source of the unnatural shadows.,Perception",output: Fail
+"input: I try to build a snow cave for shelter.,Survival",output: Pass
+"input: I try to build a snow cave for shelter.,Survival",output: Fail
+"input: I consult my patron about the nature of this object.,Investigation",output: Pass
+"input: I consult my patron about the nature of this object.,Investigation",output: Fail
+"input: I give a speech about courage and the strength of community.,Performance",output: Pass
+"input: I give a speech about courage and the strength of community.,Performance",output: Fail
+"input: I attempt to snatch the arrow out of the air.,Dexterity",output: Pass
+"input: I attempt to snatch the arrow out of the air.,Dexterity",output: Fail
+"input: I try to calm the bear so I can free it.,Animal Handling",output: Pass
+"input: I try to calm the bear so I can free it.,Animal Handling",output: Fail
+"input: I study the interaction between the gears and the arcane runes.,Arcana",output: Pass
+"input: I study the interaction between the gears and the arcane runes.,Arcana",output: Fail
+"input: I call upon my divine oath to protect me from the dark magic.,Constitution",output: Pass
+"input: I call upon my divine oath to protect me from the dark magic.,Constitution",output: Fail
+"input: I attempt to snatch the key without waking him.,Sleight of Hand",output: Pass
+"input: I attempt to snatch the key without waking him.,Sleight of Hand",output: Fail
+"input: I try to steer the ship through the treacherous waters.,Navigator's Tools",output: Pass
+"input: I try to steer the ship through the treacherous waters.,Navigator's Tools",output: Fail
+"input: I search my memory for the relevant information.,History",output: Pass
+"input: I search my memory for the relevant information.,History",output: Fail
+"input: I try to maintain a poker face and convince my opponents I have a winning hand.,Deception",output: Pass
+"input: I try to maintain a poker face and convince my opponents I have a winning hand.,Deception",output: Fail
+"input: I try to sense any aura of good or evil about them.,Insight",output: Pass
+"input: I try to sense any aura of good or evil about them.,Insight",output: Fail
+"input: I look for subtle signs of its passage, like claw marks on trees.,Survival",output: Pass
+"input: I look for subtle signs of its passage, like claw marks on trees.,Survival",output: Fail
+"input: I subtly hint at the dark powers I command.,Intimidation",output: Pass
+"input: I subtly hint at the dark powers I command.,Intimidation",output: Fail
+"input: I try to soothe the animal and keep it from bolting.,Animal Handling",output: Pass
+"input: I try to calm the animal and keep it from bolting.,Animal Handling",output: Fail
+"input: I press my ear to the wall and try to hear what they are saying.,Perception",output: Pass
+"input: I press my ear to the wall and try to hear what they are saying.,Perception",output: Fail
+"input: I study the cloud patterns and the behavior of the local wildlife.,Nature",output: Pass
+"input: I study the cloud patterns and the behavior of the local wildlife.,Nature",output: Fail
+"input: I use my knowledge of alchemy to mix the correct reagents.,Alchemist's Supplies",output: Pass
+"input: I use my knowledge of alchemy to mix the correct reagents.,Alchemist's Supplies",output: Fail
+"input: I appeal to their sense of duty and honor.,Persuasion",output: Pass
+"input: I appeal to their sense of duty and honor.,Persuasion",output: Fail
+"input: I try to jury-rig a device to filter air from the water.,Tinker's Tools",output: Pass
+"input: I try to jury-rig a device to filter air from the water.,Tinker's Tools",output: Fail
+"input: I publicly call out the merchant for their sacrilegious fraud.,Intimidation",output: Pass
+"input: I publicly call out the merchant for their sacrilegious fraud.,Intimidation",output: Fail
+"input: I try to scale the sheer brick wall to escape to the rooftops.,Athletics",output: Pass
+"input: I try to scale the sheer brick wall to escape to the rooftops.,Athletics",output: Fail
+"input: I test the ice carefully before putting my full weight on it.,Survival",output: Pass
+"input: I test the ice carefully before putting my full weight on it.,Survival",output: Fail
+"input: I present my findings in a logical, academic fashion.,Persuasion",output: Pass
+"input: I present my findings in a logical, academic fashion.,Persuasion",output: Fail
+"input: I try to mimic the dining habits of the other nobles to blend in.,Sleight of Hand",output: Pass
+"input: I try to mimic the dining habits of the other nobles to blend in.,Sleight of Hand",output: Fail
+"input: I test the ropes to find a weak point.,Investigation",output: Pass
+"input: I test the ropes to find a weak point.,Investigation",output: Fail
+"input: I use my knowledge of monstrous creatures to identify the sound.,Nature",output: Pass
+"input: I use my knowledge of monstrous creatures to identify the sound.,Nature",output: Fail
+"input: I reach out with my mind to probe their consciousness.,Insight",output: Pass
+"input: I reach out with my mind to probe their consciousness.,Insight",output: Fail
+"input: I urge my steed onward to make the leap.,Animal Handling",output: Pass
+"input: I urge my steed onward to make the leap.,Animal Handling",output: Fail
+"input: I try to weave through the crowd without losing speed.,Acrobatics",output: Pass
+"input: I try to weave through the crowd without losing speed.,Acrobatics",output: Fail
+"input: I transform into a falcon to search from the sky.,Druidic Magic",output: Pass
+"input: I transform into a falcon to search from the sky.,Druidic Magic",output: Fail
+"input: I try to attach a charged crystal to my crossbow.,Arcana",output: Pass
+"input: I try to attach a charged crystal to my crossbow.,Arcana",output: Fail
+"input: I attempt to smash the door with my warhammer.,Athletics",output: Pass
+"input: I attempt to smash the door with my warhammer.,Athletics",output: Fail
+"input: I watch their hands closely for any sign of cheating.,Sleight of Hand",output: Pass
+"input: I watch their hands closely for any sign of cheating.,Sleight of Hand",output: Fail
+"input: I try to set a snare to catch a rabbit.,Survival",output: Pass
+"input: I try to set a snare to catch a rabbit.,Survival",output: Fail
+"input: I use my knowledge to mix the correct ingredients.,Herbalism Kit",output: Pass
+"input: I use my knowledge to mix the correct ingredients.,Herbalism Kit",output: Fail
+"input: I try to remember the poem in its entirety.,History",output: Pass
+"input: I try to remember the poem in its entirety.,History",output: Fail
+"input: I look for any symbols or architecture that seem out of place.,Investigation",output: Pass
+"input: I look for any symbols or architecture that seem out of place.,Investigation",output: Fail
+"input: I use my tools to fletch some new arrows.,Woodcarver's Tools",output: Pass
+"input: I use my tools to fletch some new arrows.,Woodcarver's Tools",output: Fail
+"input: I try to create a contract that is magically binding.,Arcana",output: Pass
+"input: I try to create a contract that is magically binding.,Arcana",output: Fail
+"input: I take command and try to lead them to victory.,Intimidation",output: Pass
+"input: I take command and try to lead them to victory.,Intimidation",output: Fail
+"input: I inspect the water for any signs of contamination.,Medicine",output: Pass
+"input: I inspect the water for any signs of contamination.,Medicine",output: Fail
+"input: I try to explain the importance of the grove to the ecosystem.,Nature",output: Pass
+"input: I try to explain the importance of the grove to the ecosystem.,Nature",output: Fail
+"input: I try to determine its properties.,Investigation",output: Pass
+"input: I try to determine its properties.,Investigation",output: Fail
+"input: I offer them my prayers and what little food I have.,Persuasion",output: Pass
+"input: I offer them my prayers and what little food I have.,Persuasion",output: Fail
+"input: I try to move across the roof without falling.,Acrobatics",output: Pass
+"input: I try to move across the roof without falling.,Acrobatics",output: Fail
+"input: I try to observe their traditions without causing offense.,Insight",output: Pass
+"input: I try to observe their traditions without causing offense.,Insight",output: Fail
+"input: I try to bind it to my will with a powerful spell.,Arcana",output: Pass
+"input: I try to bind it to my will with a powerful spell.,Arcana",output: Fail
+"input: I ask the bartender for information.,Investigation",output: Pass
+"input: I ask the bartender for information.,Investigation",output: Fail
+"input: I try to move quietly through the murky water.,Stealth",output: Pass
+"input: I try to move quietly through the murky water.,Stealth",output: Fail
+"input: I try to find a river and follow it downstream.,Survival",output: Pass
+"input: I try to find a river and follow it downstream.,Survival",output: Fail
+"input: I try to deceive the infernal creature.,Deception",output: Pass
+"input: I try to deceive the infernal creature.,Deception",output: Fail
+"input: I look for any signs of magical compulsion.,Insight",output: Pass
+"input: I look for any signs of magical compulsion.,Insight",output: Fail
+"input: I try to control my breathing and conserve oxygen.,Constitution",output: Pass
+"input: I try to control my breathing and conserve oxygen.,Constitution",output: Fail
+"input: I use my knowledge of herbs to create a remedy.,Herbalism Kit",output: Pass
+"input: I use my knowledge of herbs to create a remedy.,Herbalism Kit",output: Fail
+"input: I use my skills to build the device.,Tinker's Tools",output: Pass
+"input: I use my skills to build the device.,Tinker's Tools",output: Fail
+"input: I explain that my divine power can help cure the plague within.,Persuasion",output: Pass
+"input: I explain that my divine power can help cure the plague within.,Persuasion",output: Fail
+"input: I try to use my innate storm magic to calm the hurricane.,Arcana",output: Pass
+"input: I try to use my innate storm magic to calm the hurricane.,Arcana",output: Fail
+"input: I try to dodge his surprise attack and flow into a defensive stance.,Acrobatics",output: Pass
+"input: I try to dodge his surprise attack and flow into a defensive stance.,Acrobatics",output: Fail
+"input: I use my alchemist's supplies to mix the reagents.,Alchemist's Supplies",output: Pass
+"input: I use my alchemist's supplies to mix the reagents.,Alchemist's Supplies",output: Fail
+"input: I appeal to their sense of justice and compassion.,Persuasion",output: Pass
+"input: I appeal to their sense of justice and compassion.,Persuasion",output: Fail
+"input: I try to subtly spook the lead horse as it rounds the final turn.,Animal Handling",output: Pass
+"input: I try to subtly spook the lead horse as it rounds the final turn.,Animal Handling",output: Fail
+"input: I heave the massive log with all my barbarian rage.,Athletics",output: Pass
+"input: I heave the massive log with all my barbarian rage.,Athletics",output: Fail
+"input: I try to piece together the fragments to read the inscription.,Investigation",output: Pass
+"input: I try to piece together the fragments to read the inscription.,Investigation",output: Fail
+"input: I watch the dancers and try to mimic their steps.,Performance",output: Pass
+"input: I watch the dancers and try to mimic their steps.,Performance",output: Fail
+"input: I pray for divine insight into the nature of the affliction.,Medicine",output: Pass
+"input: I pray for divine insight into the nature of the affliction.,Medicine",output: Fail
+"input: I throw the grappling hook to secure a rope on the other side.,Acrobatics",output: Pass
+"input: I throw the grappling hook to secure a rope on the other side.,Acrobatics",output: Fail
+"input: I try to mask my dark thoughts and appear righteous.,Deception",output: Pass
+"input: I try to mask my dark thoughts and appear righteous.,Deception",output: Fail
+"input: I look for signs of their passage, like scared onlookers or a discarded weapon.,Insight",output: Pass
+"input: I look for signs of their passage, like scared onlookers or a discarded weapon.,Insight",output: Fail
+"input: I try to create a tiny, controlled spark of flame.,Sleight of Hand",output: Pass
+"input: I try to create a tiny, controlled spark of flame.,Sleight of Hand",output: Fail
+"input: I use my ki to propel myself up the vertical surface.,Athletics",output: Pass
+"input: I use my ki to propel myself up the vertical surface.,Athletics",output: Fail
+"input: I use my knowledge of arcane mechanics to deduce its function.,Arcana",output: Pass
+"input: I use my knowledge of arcane mechanics to deduce its function.,Arcana",output: Fail
+"input: I search my memory for the correct passage from my holy text.,Religion",output: Pass
+"input: I search my memory for the correct passage from my holy text.,Religion",output: Fail
+"input: I 'accidentally' topple a tall stack of books.,Stealth",output: Pass
+"input: I 'accidentally' topple a tall stack of books.,Stealth",output: Fail
+"input: I use my strength to push through the thorns.,Constitution",output: Pass
+"input: I use my strength to push through the thorns.,Constitution",output: Fail
+"input: I use my historical knowledge to date the artifact based on its markings.,History",output: Pass
+"input: I use my historical knowledge to date the artifact based on its markings.,History",output: Fail
+"input: I try to answer its riddle.,Intelligence",output: Pass
+"input: I try to answer its riddle.,Intelligence",output: Fail
+"input: I try to sense any source of desecration or unholy power.,Investigation",output: Pass
+"input: I try to sense any source of desecration or unholy power.,Investigation",output: Fail
+"input: I try to blend in with the leaves and branches.,Stealth",output: Pass
+"input: I try to blend in with the leaves and branches.,Stealth",output: Fail
+"input: I try to offer a fragment of a memory instead of a piece of my soul.,Deception",output: Pass
+"input: I try to offer a fragment of a memory instead of a piece of my soul.,Deception",output: Fail
+"input: I try to knock the sword from their hand with a precise strike.,Athletics",output: Pass
+"input: I try to knock the sword from their hand with a precise strike.,Athletics",output: Fail
+"input: I try to gently shape the air into a harmless vortex.,Performance",output: Pass
+"input: I try to gently shape the air into a harmless vortex.,Performance",output: Fail
+"input: I examine the tea for any abnormalities.,Perception",output: Pass
+"input: I examine the tea for any abnormalities.,Perception",output: Fail
+"input: I try to craft a masterwork set of lockpicks.,Tinker's Tools",output: Pass
+"input: I try to craft a masterwork set of lockpicks.,Tinker's Tools",output: Fail
+"input: I try to convince them to surrender their information by offering them mercy.,Persuasion",output: Pass
+"input: I try to convince them to surrender their information by offering them mercy.,Persuasion",output: Fail
+"input: I try to decipher the message using my knowledge of thieves' cant.,Investigation",output: Pass
+"input: I try to decipher the message using my knowledge of thieves' cant.,Investigation",output: Fail
+"input: I set a trap using a heavy log and a tripwire.,Survival",output: Pass
+"input: I set a trap using a heavy log and a tripwire.,Survival",output: Fail
+"input: I use my magical knowledge to try and activate the item.,Arcana",output: Pass
+"input: I use my magical knowledge to try and activate the item.,Arcana",output: Fail
+"input: I try to charm the noble's seneschal into arranging a meeting.,Persuasion",output: Pass
+"input: I try to charm the noble's seneschal into arranging a meeting.,Persuasion",output: Fail
+"input: I try to determine if the crops are blighted by dark magic.,Nature",output: Pass
+"input: I try to determine if the crops are blighted by dark magic.,Nature",output: Fail
+"input: I use my knowledge of herbs to create the poultice.,Herbalism Kit",output: Pass
+"input: I use my knowledge of herbs to create the poultice.,Herbalism Kit",output: Fail
+"input: I try to find the hidden meaning in the prophetic verse.,History",output: Pass
+"input: I try to find the hidden meaning in the prophetic verse.,History",output: Fail
+"input: I try to push my horse to its limits without exhausting it.,Animal Handling",output: Pass
+"input: I try to push my horse to its limits without exhausting it.,Animal Handling",output: Fail
+"input: I try to use my natural charisma to sell the lie.,Deception",output: Pass
+"input: I try to use my natural charisma to sell the lie.,Deception",output: Fail
+"input: I try to move through the room without getting hit.,Acrobatics",output: Pass
+"input: I try to move through the room without getting hit.,Acrobatics",output: Fail
+"input: I use my knowledge of alchemy to brew the potion.,Poisoner's Kit",output: Pass
+"input: I use my knowledge of alchemy to brew the potion.,Poisoner's Kit",output: Fail
+"input: I look for the signs of demonic possession.,Insight",output: Pass
+"input: I look for the signs of demonic possession.,Insight",output: Fail
+"input: I try to create a small, slick patch of ice on the ground in the thief's path.,Arcana",output: Pass
+"input: I try to create a small, slick patch of ice on the ground in the thief's path.,Arcana",output: Fail
+"input: I enter a meditative state to ignore the cold and the dizzying height.,Constitution",output: Pass
+"input: I enter a meditative state to ignore the cold and the dizzying height.,Constitution",output: Fail
+"input: I demonstrate my clockwork songbird, which mimics real birdsong.,Performance",output: Pass
+"input: I demonstrate my clockwork songbird, which mimics real birdsong.,Performance",output: Fail
+"input: I attempt to cleanse the sword with my divine power.,Religion",output: Pass
+"input: I attempt to cleanse the sword with my divine power.,Religion",output: Fail
+"input: I try to read their lips from across the room.,Perception",output: Pass
+"input: I try to read their lips from across the room.,Perception",output: Fail
+"input: I try to find the book by looking for one with a leather cover and a bear on it.,Investigation",output: Pass
+"input: I try to find the book by looking for one with a leather cover and a bear on it.,Investigation",output: Fail
+"input: I use my cartographer's tools to check for inconsistencies.,Cartographer's Tools",output: Pass
+"input: I use my cartographer's tools to check for inconsistencies.,Cartographer's Tools",output: Fail
+"input: I perform a series of silly juggling tricks.,Sleight of Hand",output: Pass
+"input: I perform a series of silly juggling tricks.,Sleight of Hand",output: Fail
+"input: I try to find the 'patient zero' to understand how the plague started.,Medicine",output: Pass
+"input: I try to find the 'patient zero' to understand how the plague started.,Medicine",output: Fail
+"input: I use my poisoner's kit to harvest venom from a giant spider.,Poisoner's Kit",output: Pass
+"input: I use my poisoner's kit to harvest venom from a giant spider.,Poisoner's Kit",output: Fail
+"input: I ask my patron for knowledge of the stars.,History",output: Pass
+"input: I ask my patron for knowledge of the stars.,History",output: Fail
+"input: I throw my shoulder into the pillar to topple it.,Athletics",output: Pass
+"input: I throw my shoulder into the pillar to topple it.,Athletics",output: Fail
+"input: I try to demonstrate my power with a controlled display of elemental fury.,Intimidation",output: Pass
+"input: I try to demonstrate my power with a controlled display of elemental fury.,Intimidation",output: Fail
+"input: I try to maintain my focus through the long, dark night.,Constitution",output: Pass
+"input: I try to maintain my focus through the long, dark night.,Constitution",output: Fail
+"input: I use my knowledge of stonemasonry to find the weakest spot.,Stonemasonry Tools",output: Pass
+"input: I use my knowledge of stonemasonry to find the weakest spot.,Stonemasonry Tools",output: Fail
+"input: I try to convince the ghost that I can help put it to rest if it helps me.,Persuasion",output: Pass
+"input: I try to convince the ghost that I can help put it to rest if it helps me.,Persuasion",output: Fail
+"input: I pour a small amount of water on the floor to see if it runs into any hidden seams.,Investigation",output: Pass
+"input: I pour a small amount of water on the floor to see if it runs into any hidden seams.,Investigation",output: Fail
+"input: I stare it down, showing no fear.,Animal Handling",output: Pass
+"input: I stare it down, showing no fear.,Animal Handling",output: Fail
+"input: I use my steady hand to copy the rune.,Sleight of Hand",output: Pass
+"input: I use my steady hand to copy the rune.,Sleight of Hand",output: Fail
+"input: I compose a song about the dragon's magnificent hoard and how a single missing coin would only enhance its legend.,Performance",output: Pass
+"input: I compose a song about the dragon's magnificent hoard and how a single missing coin would only enhance its legend.,Performance",output: Fail
+"input: I examine the wound for signs of necrotic energy.,Medicine",output: Pass
+"input: I examine the wound for signs of necrotic energy.,Medicine",output: Fail
+"input: I use my knowledge of natural tunnels and formations to find a way out.,Survival",output: Pass
+"input: I use my knowledge of natural tunnels and formations to find a way out.,Survival",output: Fail
+"input: I ask my patron for the answer.,Intelligence",output: Pass
+"input: I ask my patron for the answer.,Intelligence",output: Fail
+"input: I appeal to their courage and their sense of duty.,Persuasion",output: Pass
+"input: I appeal to their courage and their sense of duty.,Persuasion",output: Fail
+"input: I try to slow my descent by creating an updraft of wind.,Acrobatics",output: Pass
+"input: I try to slow my descent by creating an updraft of wind.,Acrobatics",output: Fail
+"input: I try to distribute my weight and move with perfect lightness.,Stealth",output: Pass
+"input: I try to distribute my weight and move with perfect lightness.,Stealth",output: Fail
+"input: I try to build a 'translation earhorn' using a combination of cogs and enchantment.,Arcana",output: Pass
+"input: I try to build a 'translation earhorn' using a combination of cogs and enchantment.,Arcana",output: Fail
+"input: I try to intimidate it with the power of my faith.,Intimidation",output: Pass
+"input: I try to intimidate it with the power of my faith.,Intimidation",output: Fail
+"input: I look for subtle clues to tell them apart.,Investigation",output: Pass
+"input: I look for subtle clues to tell them apart.,Investigation",output: Fail
+"input: I try to find a snow rabbit's burrow.,Survival",output: Pass
+"input: I try to find a snow rabbit's burrow.,Survival",output: Fail
+"input: I try to create a perfect illusion of their commanding officer.,Deception",output: Pass
+"input: I try to create a perfect illusion of their commanding officer.,Deception",output: Fail
+"input: I start playing a lively dwarven drinking song on my lute.,Performance",output: Pass
+"input: I start playing a lively dwarven drinking song on my lute.,Performance",output: Fail
+"input: I search my memory for the symbol.,History",output: Pass
+"input: I search my memory for the symbol.,History",output: Fail
+"input: I use mud and reeds to blend in with my surroundings.,Stealth",output: Pass
+"input: I use mud and reeds to blend in with my surroundings.,Stealth",output: Fail
+"input: I show it a glimpse of my patron's terrifying form.,Intimidation",output: Pass
+"input: I show it a glimpse of my patron's terrifying form.,Intimidation",output: Fail
+"input: I look for signs of stress or damage to the building's foundation.,Investigation",output: Pass
+"input: I look for signs of stress or damage to the building's foundation.,Investigation",output: Fail
+"input: I try to speak to it in its own fiery language.,Persuasion",output: Pass
+"input: I try to speak to it in its own fiery language.,Persuasion",output: Fail
+"input: I try to find the perfect point of balance for each stone.,Sleight of Hand",output: Pass
+"input: I try to find the perfect point of balance for each stone.,Sleight of Hand",output: Fail
+"input: I try to craft a lantern with a specially ground crystal lens.,Arcana",output: Pass
+"input: I try to craft a lantern with a specially ground crystal lens.,Arcana",output: Fail
+"input: I use my divine sense to detect any deception.,Insight",output: Pass
+"input: I use my divine sense to detect any deception.,Insight",output: Fail
+"input: I try to communicate with the elemental, offering to free it for a favor.,Persuasion",output: Pass
+"input: I try to communicate with the elemental, offering to free it for a favor.,Persuasion",output: Fail
+"input: I try to read a book from a distance by memorizing the page in a glance.,Investigation",output: Pass
+"input: I try to read a book from a distance by memorizing the page in a glance.,Investigation",output: Fail
+"input: I try to use logic to deconstruct the riddle's linguistic flaws.,Intelligence",output: Pass
+"input: I try to use logic to deconstruct the riddle's linguistic flaws.,Intelligence",output: Fail
+"input: I try to use my own faith to overwhelm the phylactery's defenses.,Religion",output: Pass
+"input: I try to use my own faith to overwhelm the phylactery's defenses.,Religion",output: Fail
+"input: I mention the name of a rival smuggler, implying they sold him out.,Deception",output: Pass
+"input: I mention the name of a rival smuggler, implying they sold him out.,Deception",output: Fail
+"input: I try to navigate the city without my primary weapon.,Wisdom",output: Pass
+"input: I try to navigate the city without my primary weapon.,Wisdom",output: Fail
+"input: I try to cast the spell by phonetically sounding out the strange words.,Arcana",output: Pass
+"input: I try to cast the spell by phonetically sounding out the strange words.,Arcana",output: Fail
+"input: I try to tell a story using only my lute.,Performance",output: Pass
+"input: I try to tell a story using only my lute.,Performance",output: Fail
+"input: I offer them a loaf of bread and a prayer for their safety.,Persuasion",output: Pass
+"input: I offer them a loaf of bread and a prayer for their safety.,Persuasion",output: Fail
+"input: I try to scrape some moss into a pouch to use for silent movement later.,Stealth",output: Pass
+"input: I try to scrape some moss into a pouch to use for silent movement later.,Stealth",output: Fail
+"input: I try to find the one true reflection by looking for the one that doesn't show a vision.,Investigation",output: Pass
+"input: I try to find the one true reflection by looking for the one that doesn't show a vision.,Investigation",output: Fail
+"input: I discreetly use the silver tip of my dagger to test the wine.,Sleight of Hand",output: Pass
+"input: I discreetly use the silver tip of my dagger to test the wine.,Sleight of Hand",output: Fail
+"input: I try to draw the heat out of the fire with my magic.,Arcana",output: Pass
+"input: I try to draw the heat out of the fire with my magic.,Arcana",output: Fail
+"input: I try to anticipate his moves by reading his body language.,Insight",output: Pass
+"input: I try to anticipate his moves by reading his body language.,Insight",output: Fail
+"input: I use my alchemist's supplies to analyze a sample.,Alchemist's Supplies",output: Pass
+"input: I use my alchemist's supplies to analyze a sample.,Alchemist's Supplies",output: Fail
+"input: I explain that its purpose in this world is fulfilled and it can now be at peace.,Religion",output: Pass
+"input: I explain that its purpose in this world is fulfilled and it can now be at peace.,Religion",output: Fail
+"input: I try to find a way to get a grip on the greasy rope.,Acrobatics",output: Pass
+"input: I try to find a way to get a grip on the greasy rope.,Acrobatics",output: Fail
+"input: I play a powerful, primal rhythm that stirs the heart.,Performance",output: Pass
+"input: I play a powerful, primal rhythm that stirs the heart.,Performance",output: Fail
+"input: I try to use a scrying spell to find him.,Arcana",output: Pass
+"input: I try to use a scrying spell to find him.,Arcana",output: Fail
+"input: I craft a clever, backhanded compliment.,Deception",output: Pass
+"input: I craft a clever, backhanded compliment.,Deception",output: Fail
+"input: I use my divine sense to detect the undead one.,Insight",output: Pass
+"input: I use my divine sense to detect the undead one.,Insight",output: Fail
+"input: I try to make the incredibly precise shot.,Athletics",output: Pass
+"input: I try to make the incredibly precise shot.,Athletics",output: Fail
+"input: I try to find a pattern in the color shifts.,Investigation",output: Pass
+"input: I try to find a pattern in the color shifts.,Investigation",output: Fail
+"input: I try to recall the castle's original blueprints from my studies.,History",output: Pass
+"input: I try to recall the castle's original blueprints from my studies.,History",output: Fail
+"input: I try to use my innate charisma, enhanced by a subtle magical aura.,Persuasion",output: Pass
+"input: I try to use my innate charisma, enhanced by a subtle magical aura.,Persuasion",output: Fail
+"input: I try to run along the walls of the room to get the key.,Acrobatics",output: Pass
+"input: I try to run along the walls of the room to get the key.,Acrobatics",output: Fail
+"input: I use my knowledge of engineering to build a sturdy raft.,Woodcarver's Tools",output: Pass
+"input: I use my knowledge of engineering to build a sturdy raft.,Woodcarver's Tools",output: Fail
+"input: I use my divine sense to detect any evil clinging to the object.,Investigation",output: Pass
+"input: I use my divine sense to detect any evil clinging to the object.,Investigation",output: Fail
+"input: I carefully taste a tiny, non-lethal amount of the poison.,Poisoner's Kit",output: Pass
+"input: I carefully taste a tiny, non-lethal amount of the poison.,Poisoner's Kit",output: Fail
+"input: I try to ignore the insult and control my temper.,Wisdom",output: Pass
+"input: I try to ignore the insult and control my temper.,Wisdom",output: Fail
+"input: I try to control the unpredictable magical energies.,Arcana",output: Pass
+"input: I try to control the unpredictable magical energies.,Arcana",output: Fail
+"input: I compose a moving sonnet about the beauty of the sunset.,Performance",output: Pass
+"input: I compose a moving sonnet about the beauty of the sunset.,Performance",output: Fail
+"input: I use my religious knowledge to narrow down the search.,Religion",output: Pass
+"input: I use my religious knowledge to narrow down the search.,Religion",output: Fail
+"input: I look for the familiar constellation to find my way.,Survival",output: Pass
+"input: I look for the familiar constellation to find my way.,Survival",output: Fail
+"input: I display a dark magical feat and speak in cryptic verses.,Deception",output: Pass
+"input: I display a dark magical feat and speak in cryptic verses.,Deception",output: Fail
+"input: I try to gauge their loyalty and morale.,Insight",output: Pass
+"input: I try to gauge their loyalty and morale.,Insight",output: Fail
+"input: I attempt to summon a localized rain shower over the fire.,Nature",output: Pass
+"input: I attempt to summon a localized rain shower over the fire.,Nature",output: Fail
+"input: I try to achieve the necessary speed and precision.,Sleight of Hand",output: Pass
+"input: I try to achieve the necessary speed and precision.,Sleight of Hand",output: Fail
+"input: I use my alchemist's supplies to create a powerful adhesive.,Alchemist's Supplies",output: Pass
+"input: I use my alchemist's supplies to create a powerful adhesive.,Alchemist's Supplies",output: Fail
+"input: I try to shatter it with a divinely empowered strike.,Athletics",output: Pass
+"input: I try to shatter it with a divinely empowered strike.,Athletics",output: Fail
+"input: I subtly feed misinformation to one side, pretending to be their ally, to manipulate them into a truce.,Deception",output: Pass
+"input: I subtly feed misinformation to one side, pretending to be their ally, to manipulate them into a truce.,Deception",output: Fail
+"input: I try to recall accounts of their previous duels to find a weakness in their fighting style.,History",output: Pass
+"input: I try to recall accounts of their previous duels to find a weakness in their fighting style.,History",output: Fail
+"input: I try to reshape the dreamscape to my advantage by imagining a weapon into existence.,Charisma",output: Pass
+"input: I try to reshape the dreamscape to my advantage by imagining a weapon into existence.,Charisma",output: Fail
+"input: I try to comfort the ghost by listening to its story with empathetic silence.,Insight",output: Pass
+"input: I try to comfort the ghost by listening to its story with empathetic silence.,Insight",output: Fail
+"input: I try to build a net-launcher to catch the specific book I need.,Tinker's Tools",output: Pass
+"input: I try to build a net-launcher to catch the specific book I need.,Tinker's Tools",output: Fail
+"input: I search their old bedroom for clues to their motivations or weaknesses.,Investigation",output: Pass
+"input: I search their old bedroom for clues to their motivations or weaknesses.,Investigation",output: Fail
+"input: I use my loaded dice to cheat.,Dice Set",output: Pass
+"input: I use my loaded dice to cheat.,Dice Set",output: Fail
+"input: I try to determine if the recent 'earthquakes' are the turtle waking up.,Nature",output: Pass
+"input: I try to determine if the recent 'earthquakes' are the turtle waking up.,Nature",output: Fail
+"input: I try to read a book by calming my mind and attuning to its resonant frequency.,Arcana",output: Pass
+"input: I try to read a book by calming my mind and attuning to its resonant frequency.,Arcana",output: Fail
+"input: I offer to perform a song in the baker's shop for a day to pay for the stolen bread.,Performance",output: Pass
+"input: I offer to perform a song in the baker's shop for a day to pay for the stolen bread.,Performance",output: Fail
+"input: I try to restore their faith by debating theology with them.,Religion",output: Pass
+"input: I try to restore their faith by debating theology with them.,Religion",output: Fail
+"input: I use my knowledge of supernatural creatures to identify the tracks.,Survival",output: Pass
+"input: I use my knowledge of supernatural creatures to identify the tracks.,Survival",output: Fail
+"input: I try to purchase the memory of a secret password from a vendor.,Deception",output: Pass
+"input: I try to purchase the memory of a secret password from a vendor.,Deception",output: Fail
+"input: I approach it slowly, with an offering of food and no sudden movements.,Animal Handling",output: Pass
+"input: I approach it slowly, with an offering of food and no sudden movements.,Animal Handling",output: Fail
+"input: I try to mimic the form with perfect muscle memory.,Sleight of Hand",output: Pass
+"input: I try to mimic the form with perfect muscle memory.,Sleight of Hand",output: Fail
+"input: I appeal to her by showing my deep connection to the forest.,Nature",output: Pass
+"input: I appeal to her by showing my deep connection to the forest.,Nature",output: Fail
+"input: I offer them a chance at a new life and a clean slate in exchange for the information.,Persuasion",output: Pass
+"input: I offer them a chance at a new life and a clean slate in exchange for the information.,Persuasion",output: Fail
+"input: I study the terrain and my knowledge of their general's favorite tactics.,History",output: Pass
+"input: I study the terrain and my knowledge of their general's favorite tactics.,History",output: Fail
+"input: I try to turn the wooden bar to ash with my fire magic.,Arcana",output: Pass
+"input: I try to turn the wooden bar to ash with my fire magic.,Arcana",output: Fail
+"input: I use my discipline to slow my heart and detect any poison in a small bite.,Constitution",output: Pass
+"input: I take a tiny bite and detect any poison with my discipline.,Constitution",output: Fail
+"input: I try to hotwire the construct's arcane power core.,Tinker's Tools",output: Pass
+"input: I try to hotwire the construct's arcane power core.,Tinker's Tools",output: Fail
+"input: I use my sheer strength and righteous fury to hold up the ceiling.,Athletics",output: Pass
+"input: I use my sheer strength and righteous fury to hold up the ceiling.,Athletics",output: Fail
+"input: I try to create a diversion by cutting a merchant's purse so his coins spill everywhere.,Sleight of Hand",output: Pass
+"input: I try to create a diversion by cutting a merchant's purse so his coins spill everywhere.,Sleight of Hand",output: Fail
+"input: I try to approach the seal without it noticing me.,Stealth",output: Pass
+"input: I try to approach the seal without it noticing me.,Stealth",output: Fail
+"input: I cast an identification spell on the metal.,Arcana",output: Pass
+"input: I cast an identification spell on the metal.,Arcana",output: Fail
+"input: I pretend to be a clueless provincial lord to get them to lower their guard.,Performance",output: Pass
+"input: I pretend to be a clueless provincial lord to get them to lower their guard.,Performance",output: Fail
+"input: I use my divine sense to detect the object's aura.,Religion",output: Pass
+"input: I use my divine sense to detect the object's aura.,Religion",output: Fail
+"input: I look for signs of its passage, like dropped feathers or claw marks on high branches.,Investigation",output: Pass
+"input: I look for signs of its passage, like dropped feathers or claw marks on high branches.,Investigation",output: Fail
+"input: I try to trick the lock with a drop of my own magically-infused blood.,Deception",output: Pass
+"input: I try to trick the lock with a drop of my own magically-infused blood.,Deception",output: Fail
+"input: I survey the battlefield from the hilltop.,Insight",output: Pass
+"input: I survey the battlefield from the hilltop.,Insight",output: Fail
+"input: I forge a letter from one crime boss to the other, making it seem like a betrayal.,Forgery Kit",output: Pass
+"input: I forge a letter from one crime boss to the other, making it seem like a betrayal.,Forgery Kit",output: Fail
+"input: I try to analyze their strange style to find a weakness.,Investigation",output: Pass
+"input: I try to analyze their strange style to find a weakness.,Investigation",output: Fail
+"input: I try to create a small, focused gust of wind.,Sleight of Hand",output: Pass
+"input: I try to create a small, focused gust of wind.,Sleight of Hand",output: Fail
+"input: I use my ki to regulate my body temperature.,Constitution",output: Pass
+"input: I use my ki to regulate my body temperature.,Constitution",output: Fail
+"input: I use my knowledge of stonework and history to understand the runes.,History",output: Pass
+"input: I use my knowledge of stonework and history to understand the runes.,History",output: Fail
+"input: I engage them in a theological discussion to prove my faith.,Religion",output: Pass
+"input: I engage them in a theological discussion to prove my faith.,Religion",output: Fail
+"input: I use my tactical knowledge to identify the best choke point to make our stand.,Investigation",output: Pass
+"input: I use my tactical knowledge to identify the best choke point to make our stand.,Investigation",output: Fail
+"input: I toss a small stone onto a nearby tile to see if it triggers a trap.,Sleight of Hand",output: Pass
+"input: I toss a small stone onto a nearby tile to see if it triggers a trap.,Sleight of Hand",output: Fail
+"input: I try to commit the path's correct sequence to memory before it changes again.,Intelligence",output: Pass
+"input: I try to commit the path's correct sequence to memory before it changes again.,Intelligence",output: Fail
+"input: I try to deliver a moving eulogy to honor their memory.,Performance",output: Pass
+"input: I try to deliver a moving eulogy to honor their memory.,Performance",output: Fail
+"input: I try to sharpen my sword with a whetstone at camp.,Smith's Tools",output: Pass
+"input: I try to sharpen my sword with a whetstone at camp.,Smith's Tools",output: Fail
+"input: I look for signs of hidden springs, like patches of green vegetation.,Survival",output: Pass
+"input: I look for signs of hidden springs, like patches of green vegetation.,Survival",output: Fail
+"input: I try to break the chains binding my hands.,Athletics",output: Pass
+"input: I try to break the chains binding my hands.,Athletics",output: Fail
+"input: I try to examine the gem for any imperfections.,Investigation",output: Pass
+"input: I try to examine the gem for any imperfections.,Investigation",output: Fail
+"input: I use my knowledge of alchemy to brew the potion.,Alchemist's Supplies",output: Pass
+"input: I use my knowledge of alchemy to brew the potion.,Alchemist's Supplies",output: Fail
+"input: I use my divine sense to detect any evil or fiendish presence.,Insight",output: Pass
+"input: I use my divine sense to detect any evil or fiendish presence.,Insight",output: Fail
+"input: I look for a gap in their armor to strike at.,Perception",output: Pass
+"input: I look for a gap in their armor to strike at.,Perception",output: Fail
+"input: I use my knowledge of nature to identify the plant.,Nature",output: Pass
+"input: I use my knowledge of nature to identify the plant.,Nature",output: Fail
+"input: I snap a wooden spear in half over my knee to show my strength.,Intimidation",output: Pass
+"input: I snap a wooden spear in half over my knee to show my strength.,Intimidation",output: Fail
+"input: I watch for signs of deception in their body language.,Insight",output: Pass
+"input: I watch for signs of deception in their body language.,Insight",output: Fail
+"input: I search my vast mental library for the name.,History",output: Pass
+"input: I search my vast mental library for the name.,History",output: Fail
+"input: I use my healing magic to neutralize the poison.,Medicine",output: Pass
+"input: I use my healing magic to neutralize the poison.,Medicine",output: Fail
+"input: I analyze their movements for weaknesses.,Insight",output: Pass
+"input: I analyze their movements for weaknesses.,Insight",output: Fail
+"input: I try to soothe the animal and show it there's no danger.,Animal Handling",output: Pass
+"input: I try to soothe the animal and show it there's no danger.,Animal Handling",output: Fail
+"input: I use my sheer endurance to withstand the cold.,Constitution",output: Pass
+"input: I use my sheer endurance to withstand the cold.,Constitution",output: Fail
+"input: I try to charm the guard with a flirtatious smile.,Deception",output: Pass
+"input: I try to charm the guard with a flirtatious smile.,Deception",output: Fail
+"input: I try to find the book among the charred remains.,Investigation",output: Pass
+"input: I try to find the book among the charred remains.,Investigation",output: Fail
+"input: I try to reveal the hag's true nature to the villagers.,Persuasion",output: Pass
+"input: I try to reveal the hag's true nature to the villagers.,Persuasion",output: Fail
+"input: I try to issue clear, simple commands to direct the soldiers.,Performance",output: Pass
+"input: I try to issue clear, simple commands to direct the soldiers.,Performance",output: Fail
+"input: I look for a suitable cave or overhang to wait out the storm.,Perception",output: Pass
+"input: I look for a suitable cave or overhang to wait out the storm.,Perception",output: Fail
+"input: I use my rage to fuel my strength and bend the bars.,Athletics",output: Pass
+"input: I use my rage to fuel my strength and bend the bars.,Athletics",output: Fail
+"input: I try to conceal the object in a hidden pocket.,Sleight of Hand",output: Pass
+"input: I try to conceal the object in a hidden pocket.,Sleight of Hand",output: Fail
+"input: I cast an 'Identify' spell on the item.,Arcana",output: Pass
+"input: I cast an 'Identify' spell on the item.,Arcana",output: Fail
+"input: I search my memory for the story of the saint.,Religion",output: Pass
+"input: I search my memory for the story of the saint.,Religion",output: Fail
+"input: I inspect the blade for balance, weight, and craftsmanship.,Investigation",output: Pass
+"input: I inspect the blade for balance, weight, and craftsmanship.,Investigation",output: Fail
+"input: I use the position of the moon and stars to find my way.,Survival",output: Pass
+"input: I use the position of the moon and stars to find my way.,Survival",output: Fail
+"input: I try to swim across the powerful current.,Athletics",output: Pass
+"input: I try to swim across the powerful current.,Athletics",output: Fail
+"input: I try to distribute my weight to avoid the squeaky board.,Stealth",output: Pass
+"input: I try to distribute my weight to avoid the squeaky board.,Stealth",output: Fail
+"input: I try to cast a 'Calm Emotions' spell on the creature.,Arcana",output: Pass
+"input: I try to cast a 'Calm Emotions' spell on the creature.,Arcana",output: Fail
+"input: I use my faith and fortitude to fight off the illness.,Constitution",output: Pass
+"input: I use my faith and fortitude to fight off the illness.,Constitution",output: Fail
+"input: I watch their formations and discipline.,Insight",output: Pass
+"input: I watch their formations and discipline.,Insight",output: Fail
+"input: I use my knowledge of animals to train the dog.,Animal Handling",output: Pass
+"input: I use my knowledge of animals to train the dog.,Animal Handling",output: Fail
+"input: I try to make sense of the confusing legal language.,Intelligence",output: Pass
+"input: I try to make sense of the confusing legal language.,Intelligence",output: Fail
+"input: I use my forgery kit to copy the signature.,Forgery Kit",output: Pass
+"input: I use my forgery kit to copy the signature.,Forgery Kit",output: Fail
+"input: I use my magical knowledge to analyze the orb.,Investigation",output: Pass
+"input: I use my magical knowledge to analyze the orb.,Investigation",output: Fail
+"input: I try to give them a reason to hope again.,Persuasion",output: Pass
+"input: I try to give them a reason to hope again.,Persuasion",output: Fail
+"input: I look for clues to their passage, like a dropped coin or a fresh footprint.,Survival",output: Pass
+"input: I look for clues to their passage, like a dropped coin or a fresh footprint.,Survival",output: Fail
+"input: I try to follow the river upstream to its source.,Nature",output: Pass
+"input: I try to follow the river upstream to its source.,Nature",output: Fail
+"input: I apply my military discipline to follow the apple pie recipe exactly.,Cook's Utensils",output: Pass
+"input: I apply my military discipline to follow the apple pie recipe exactly.,Cook's Utensils",output: Fail
+"input: I try to cross the massive expanse of the floor by navigating the furniture.,Acrobatics",output: Pass
+"input: I try to cross the massive expanse of the floor by navigating the furniture.,Acrobatics",output: Fail
+"input: I try to predict the library's organizational pattern based on arcane principles.,Arcana",output: Pass
+"input: I try to predict the library's organizational pattern based on arcane principles.,Arcana",output: Fail
+"input: I use my knowledge of religious law to find a just and impartial solution.,Religion",output: Pass
+"input: I use my knowledge of religious law to find a just and impartial solution.,Religion",output: Fail
+"input: I try to make a sharp turn to lose my pursuers in a dense forest.,Animal Handling",output: Pass
+"input: I try to make a sharp turn to lose my pursuers in a dense forest.,Animal Handling",output: Fail
+"input: I examine the water and surrounding area for signs of contamination.,Survival",output: Pass
+"input: I examine the water and surrounding area for signs of contamination.,Survival",output: Fail
+"input: I try to goad them into attacking first.,Deception",output: Pass
+"input: I try to goad them into attacking first.,Deception",output: Fail
+"input: I appeal to our old friendship to convince him to look the other way.,Persuasion",output: Pass
+"input: I appeal to our old friendship to convince him to look the other way.,Persuasion",output: Fail
+"input: I try to find the mechanism that is causing the sand to pour in.,Investigation",output: Pass
+"input: I try to find the mechanism that is causing the sand to pour in.,Investigation",output: Fail
+"input: I try to speak with the spirits of the house to learn their story.,History",output: Pass
+"input: I try to speak with the spirits of the house to learn their story.,History",output: Fail
+"input: I use my strength to brace the door.,Athletics",output: Pass
+"input: I use my strength to brace the door.,Athletics",output: Fail
+"input: I use my knowledge of medicine to treat the bite.,Medicine",output: Pass
+"input: I use my knowledge of medicine to treat the bite.,Medicine",output: Fail
+"input: I try to decipher the symbols on the map.,Intelligence",output: Pass
+"input: I try to decipher the symbols on the map.,Intelligence",output: Fail
+"input: I carefully inspect the lock and seams for any signs of a trap mechanism.,Investigation",output: Pass
+"input: I carefully inspect the lock and seams for any signs of a trap mechanism.,Investigation",output: Fail
+"input: I use a delicate mending spell to repair the page.,Sleight of Hand",output: Pass
+"input: I use a delicate mending spell to repair the page.,Sleight of Hand",output: Fail
+"input: I use my divine magic to create a protective barrier.,Religion",output: Pass
+"input: I use my divine magic to create a protective barrier.,Religion",output: Fail
+"input: I stare him down without saying a word.,Intimidation",output: Pass
+"input: I stare him down without saying a word.,Intimidation",output: Fail
+"input: I listen to the bird's song and try to identify it.,Nature",output: Pass
+"input: I listen to the bird's song and try to identify it.,Nature",output: Fail
+"input: I use my survival skills to find dry tinder and wood.,Survival",output: Pass
+"input: I use my survival skills to find dry tinder and wood.,Survival",output: Fail
+"input: I try to spot a tail in the reflection of a shop window.,Perception",output: Pass
+"input: I try to spot a tail in the reflection of a shop window.,Perception",output: Fail
+"input: I cast a 'Detect Magic' spell to find the real one.,Arcana",output: Pass
+"input: I cast a 'Detect Magic' spell to find the real one.,Arcana",output: Fail
+"input: I appeal to the memory of their faith and the god they once served.,Persuasion",output: Pass
+"input: I appeal to the memory of their faith and the god they once served.,Persuasion",output: Fail
+"input: I analyze the number and depth of the tracks to estimate their numbers.,Survival",output: Pass
+"input: I analyze the number and depth of the tracks to estimate their numbers.,Survival",output: Fail
+"input: I try to earn the hawk's trust with food and patience.,Animal Handling",output: Pass
+"input: I try to earn the hawk's trust with food and patience.,Animal Handling",output: Fail
+"input: I use a sledgehammer to smash through the wall.,Athletics",output: Pass
+"input: I use a sledgehammer to smash through the wall.,Athletics",output: Fail
+"input: I use my tinderbox to light a pile of trash on fire.,Stealth",output: Pass
+"input: I use my tinderbox to light a pile of trash on fire.,Stealth",output: Fail
+"input: I try to cast a 'Silence' spell on the area before I pass through.,Stealth",output: Pass
+"input: I try to cast a 'Silence' spell on the area before I pass through.,Stealth",output: Fail
+"input: I use a 'Zone of Truth' spell to compel them to be honest.,Religion",output: Pass
+"input: I use a 'Zone of Truth' spell to compel them to be honest.,Religion",output: Fail
+"input: I use my knowledge of military tactics to set up a perimeter.,Survival",output: Pass
+"input: I use my knowledge of military tactics to set up a perimeter.,Survival",output: Fail
+"input: I try to track the fog to its source.,Investigation",output: Pass
+"input: I try to track the fog to its source.,Investigation",output: Fail
+"input: I try to understand the story through the actors' body language.,Insight",output: Pass
+"input: I try to understand the story through the actors' body language.,Insight",output: Fail
+"input: I try to mimic the accent and demeanor of a servant.,Performance",output: Pass
+"input: I try to mimic the accent and demeanor of a servant.,Performance",output: Fail
+"input: I search my perfect memory for the information.,History",output: Pass
+"input: I search my perfect memory for the information.,History",output: Fail
+"input: I use my divine sense to detect any consecration.,Religion",output: Pass
+"input: I use my divine sense to detect any consecration.,Religion",output: Fail
+"input: I try to parry the chair with my own stool.,Athletics",output: Pass
+"input: I try to parry the chair with my own stool.,Athletics",output: Fail
+"input: I use my knowledge of the terrain to find a good ambush spot.,Stealth",output: Pass
+"input: I use my knowledge of the terrain to find a good ambush spot.,Stealth",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I'll try to force the door open with my strength.,Athletics",output: Pass
+"input: I'll try to force the door open with my strength.,Athletics",output: Fail
+"input: I'll examine the carvings on the door for a hidden mechanism or lock.,Investigation",output: Pass
+"input: I'll examine the carvings on the door for a hidden mechanism or lock.,Investigation",output: Fail
+"input: I use my thieves' tools to pick the lock.,Thieves' Tools",output: Pass
+"input: I use my thieves' tools to pick the lock.,Thieves' Tools",output: Fail
+"input: I'll take the lead with my shield up. I check the corridor for any immediate threats or ambushes.,Perception",output: Pass
+"input: I'll take the lead with my shield up. I check the corridor for any immediate threats or ambushes.,Perception",output: Fail
+"input: Something feels off. I'll check the floor ahead for pressure plates.,Investigation",output: Pass
+"input: Something feels off. I'll check the floor ahead for pressure plates.,Investigation",output: Fail
+"input: I'll inspect the sarcophagus for traps before we try to open it.,Investigation",output: Pass
+"input: I'll inspect the sarcophagus for traps before we try to open it.,Investigation",output: Fail
+"input: I'll use my thieves' tools to disarm the trap mechanism.,Thieves' Tools",output: Pass
+"input: I'll use my thieves' tools to disarm the trap mechanism.,Thieves' Tools",output: Fail
+"input: I'll push the heavy stone lid off the sarcophagus.,Athletics",output: Pass
+"input: I aim for a perfect bullseye to silence his boasting.,Athletics",output: Pass
+"input: I aim for a perfect bullseye to silence his boasting.,Athletics",output: Fail
+"input: I listen for any coded phrases hidden within the poetry being read.,Insight",output: Pass
+"input: I listen for any coded phrases hidden within the poetry being read.,Insight",output: Fail
+"input: I try to use my knowledge of anatomy to land a precise, debilitating strike.,Medicine",output: Pass
+"input: I try to use my knowledge of anatomy to land a precise, debilitating strike.,Medicine",output: Fail
+"input: I use my magic to create a sphere of soft, gentle light.,Religion",output: Pass
+"input: I use my magic to create a sphere of soft, gentle light.,Religion",output: Fail
+"input: I try to find a safe path through the falling rocks.,Acrobatics",output: Pass
+"input: I try to find a safe path through the falling rocks.,Acrobatics",output: Fail
+"input: I try to follow their trail by listening to the gossip of the courtly attendees.,Insight",output: Pass
+"input: I try to follow their trail by listening to the gossip of the courtly attendees.,Insight",output: Fail
+"input: I try to use the library's indexing system to find the book.,Investigation",output: Pass
+"input: I try to use the library's indexing system to find the book.,Investigation",output: Fail
+"input: I try to deal myself a better hand from the bottom of the deck.,Sleight of Hand",output: Pass
+"input: I try to deal myself a better hand from the bottom of the deck.,Sleight of Hand",output: Fail
+"input: I try to answer the question, 'What is the nature of magic?',Intelligence",output: Pass
+"input: I try to answer the question, 'What is the nature of magic?',Intelligence",output: Fail
+"input: I use my knowledge of religious signs to interpret the event.,Religion",output: Pass
+"input: I use my knowledge of religious signs to interpret the event.,Religion",output: Fail
+"input: I try to apply my footwork from sword fighting to the dance.,Acrobatics",output: Pass
+"input: I try to apply my footwork from sword fighting to the dance.,Acrobatics",output: Fail
+"input: I try to use the classic method of rubbing two sticks together.,Survival",output: Pass
+"input: I try to use the classic method of rubbing two sticks together.,Survival",output: Fail
+"input: I try to force the bent axle back into shape.,Athletics",output: Pass
+"input: I try to force the bent axle back into shape.,Athletics",output: Fail
+"input: I use my poisoner's kit to mix a non-lethal sedative.,Poisoner's Kit",output: Pass
+"input: I use my poisoner's kit to mix a non-lethal sedative.,Poisoner's Kit",output: Fail
+"input: I try to communicate with it using a simple 'Comprehend Languages' spell.,Arcana",output: Pass
+"input: I try to communicate with it using a simple 'Comprehend Languages' spell.,Arcana",output: Fail
+"input: I appeal to his sense of morality and community.,Persuasion",output: Pass
+"input: I appeal to his sense of morality and community.,Persuasion",output: Fail
+"input: I analyze the room for choke points and cover.,Insight",output: Pass
+"input: I analyze the room for choke points and cover.,Insight",output: Fail
+"input: I use my knowledge of fungi to identify the mushrooms.,Nature",output: Pass
+"input: I use my knowledge of fungi to identify the mushrooms.,Nature",output: Fail
+"input: I try to throw the dart with all my strength.,Athletics",output: Pass
+"input: I try to throw the dart with all my strength.,Athletics",output: Fail
+"input: I try to mask my scent by rolling in a pile of filth.,Stealth",output: Pass
+"input: I try to mask my scent by rolling in a pile of filth.,Stealth",output: Fail
+"input: I try to feel for any physical substance to the wall.,Investigation",output: Pass
+"input: I try to feel for any physical substance to the wall.,Investigation",output: Fail
+"input: I examine the body for any wounds or signs of illness.,Medicine",output: Pass
+"input: I examine the body for any wounds or signs of illness.,Medicine",output: Fail
+"input: I try to duck under the swing.,Acrobatics",output: Pass
+"input: I try to duck under the swing.,Acrobatics",output: Fail
+"input: I use a long pole to test the ground ahead for quicksand.,Survival",output: Pass
+"input: I use a long pole to test the ground ahead for quicksand.,Survival",output: Fail
+"input: I try to scare the information out of him.,Intimidation",output: Pass
+"input: I try to scare the information out of him.,Intimidation",output: Fail
+"input: I use my forgery kit to create the letter.,Forgery Kit",output: Pass
+"input: I use my forgery kit to create the letter.,Forgery Kit",output: Fail
+"input: I try to appeal to its intellectual curiosity.,Persuasion",output: Pass
+"input: I try to appeal to its intellectual curiosity.,Persuasion",output: Fail
+"input: I search my memory for the prayer.,Religion",output: Pass
+"input: I search my memory for the prayer.,Religion",output: Fail
+"input: I inspect the bridge for any signs of weakness.,Investigation",output: Pass
+"input: I inspect the bridge for any signs of weakness.,Investigation",output: Fail
+"input: I examine the tracks to determine their age.,Survival",output: Pass
+"input: I examine the tracks to determine their age.,Survival",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: [SCENE_START],None",output: N/A
+"input: He seems shifty. I want to use my Investigation to see if he's telling the truth about the crypt's location.,Insight",output: Pass
+"input: He seems shifty. I want to use my Investigation to see if he's telling the truth about the crypt's location.,Insight",output: Fail
+"input: He's holding out on us. I'm going to lean in and scare the truth out of him.,Intimidation",output: Pass
+"input: He's holding out on us. I'm going to lean in and scare the truth out of him.,Intimidation",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: Alright, I want to deal with that chest. I'll check it over first before we do anything rash.,Investigation",output: Pass
+"input: Alright, I want to deal with that chest. I'll check it over first before we do anything rash.,Investigation",output: Fail
+"input: Okay, now I'll try to get it open.,Thieves' Tools",output: Pass
+"input: Okay, now I'll try to get it open.,Thieves' Tools",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I'll use my knowledge of nature to see what kind of beast made these *four-toed* tracks.,Survival",output: Pass
+"input: I'll use my knowledge of nature to see what kind of beast made these *four-toed* tracks.,Survival",output: Fail
+"input: A Wyvern, eh? I scan the skies to see if it's circling overhead.,Perception",output: Pass
+"input: A Wyvern, eh? I scan the skies to see if it's circling overhead.,Perception",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I'll roar back at the lion to show it I'm not afraid.,Performance",output: Pass
+"input: I'll roar back at the lion to show it I'm not afraid.,Performance",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I'll try to take out the hobgoblin leader first.,Perception",output: Pass
+"input: I'll try to take out the hobgoblin leader first.,Perception",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I'll say a prayer to the god of the forest for guidance.,Religion",output: Pass
+"input: I'll say a prayer to the god of the forest for guidance.,Religion",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I'll investigate the wound to see what kind of sword could have caused it.,Medicine",output: Pass
+"input: I'll investigate the wound to see what kind of sword could have caused it.,Medicine",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I'll try to get 'Barnaby' to tell me about the Shadowfang Crypt.,Persuasion",output: Pass
+"input: I'll try to get 'Barnaby' to tell me about the Shadowfang Crypt.,Persuasion",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I'll cast 'Detect Magic' to analyze the yellow orb.,Arcana",output: Pass
+"input: I'll cast 'Detect Magic' to analyze the yellow orb.,Arcana",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I'll focus my attack on the twin with the scar on his left eye.,Athletics",output: Pass
+"input: I'll focus my attack on the twin with the scar on his left eye.,Athletics",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I'll use my knowledge of the area to plot a course to 'Smuggler's Inlet'.,Survival",output: Pass
+"input: I'll use my knowledge of the area to plot a course to 'Smuggler's Inlet'.,Survival",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I'll pray for guidance on which of the two chests is safe.,Religion",output: Pass
+"input: I'll pray for guidance on which of the two chests is safe.,Religion",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I'll follow the owlbear tracks to find its lair.,Survival",output: Pass
+"input: I'll follow the owlbear tracks to find its lair.,Survival",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I'll use my tools to carefully cut the blue wire.,Thieves' Tools",output: Pass
+"input: I'll use my tools to carefully cut the blue wire.,Thieves' Tools",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I have the bat guano, so I'll cast the spell.,Arcana",output: Pass
+"input: I have the bat guano, so I'll cast the spell.,Arcana",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I'll use my rage to smash the table.,Athletics",output: Pass
+"input: I'll use my rage to smash the table.,Athletics",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I'll try to explain to the commander that charging that valley is a bad idea.,Persuasion",output: Pass
+"input: I'll try to explain to the commander that charging that valley is a bad idea.,Persuasion",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I'll try to smash the cursed table with my mace.,Athletics",output: Pass
+"input: I'll try to smash the cursed table with my mace.,Athletics",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I'll search for the 'Silverwood' tree on the southern slopes.,Nature",output: Pass
+"input: I'll search for the 'Silverwood' tree on the southern slopes.,Nature",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I'll offer him a bottle of cheap dwarven ale.,Deception",output: Pass
+"input: I'll offer him a bottle of cheap dwarven ale.,Deception",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I'll cast a fire spell to try and evaporate the water.,Arcana",output: Pass
+"input: I'll cast a fire spell to try and evaporate the water.,Arcana",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I'll try to sneak past the sleeping cat.,Stealth",output: Pass
+"input: I'll try to sneak past the sleeping cat.,Stealth",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I'll cast a spell to muffle our footsteps as we investigate the sound of that music box.,Stealth",output: Pass
+"input: I'll cast a spell to muffle our footsteps as we investigate the sound of that music box.,Stealth",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: While he's distracted, I'll try to snatch the brass key from the hook.,Sleight of Hand",output: Pass
+"input: While he's distracted, I'll try to snatch the brass key from the hook.,Sleight of Hand",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I'll try to intimidate the leader by pointing out how her three lieutenants are outnumbered.,Intimidation",output: Pass
+"input: I'll try to intimidate the leader by pointing out how her three lieutenants are outnumbered.,Intimidation",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I'll try to shoot the blue crystal out of his hand with my bow.,Athletics",output: Pass
+"input: I'll try to shoot the blue crystal out of his hand with my bow.,Athletics",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I'll look for cracks in the golem's iron plating.,Investigation",output: Pass
+"input: I'll look for cracks in the golem's iron plating.,Investigation",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: Okay, I'll take the lead and check the tunnel on the right for traps.,Perception",output: Pass
+"input: Okay, I'll take the lead and check the tunnel on the right for traps.,Perception",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I'll try to get information from Lady Vox about the recent assassinations.,Persuasion",output: Pass
+"input: I'll try to get information from Lady Vox about the recent assassinations.,Persuasion",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I'll approach and ask the laughing nobleman what troubles him.,Insight",output: Pass
+"input: I'll approach and ask the laughing nobleman what troubles him.,Insight",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I'll pull my cloak tighter against the freezing wind and scan the area for shelter.,Survival",output: Pass
+"input: I'll pull my cloak tighter against the freezing wind and scan the area for shelter.,Survival",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I will parry his greataxe with my own.,Athletics",output: Pass
+"input: I will parry his greataxe with my own.,Athletics",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: Okay, let's get ready to break in at dawn.,Stealth",output: Pass
+"input: Okay, let's get ready to break in at dawn.,Stealth",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I want to go to the Great Library of Ironport to research the artifact.,History",output: Pass
+"input: I want to go to the Great Library of Ironport to research the artifact.,History",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: Okay, I'll set up an ambush for that group of five orcs.,Survival",output: Pass
+"input: Okay, I'll set up an ambush for that group of five orcs.,Survival",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I'll place the green gem into the statue of the sun.,Investigation",output: Pass
+"input: I'll place the green gem into the statue of the sun.,Investigation",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I'll ready my bow to shoot the giant beetle.,Athletics",output: Pass
+"input: I'll ready my bow to shoot the giant beetle.,Athletics",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I'll try to intimidate the dwarf.,Intimidation",output: Pass
+"input: I'll try to intimidate the dwarf.,Intimidation",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I'll try to sneak past the sleeping mastiff.,Stealth",output: Pass
+"input: I'll try to sneak past the sleeping mastiff.,Stealth",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I'll search the painting of the dwarven king for secret levers.,Investigation",output: Pass
+"input: I'll search the painting of the dwarven king for secret levers.,Investigation",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I'll raise my shield to block the crossbow bolt.,Acrobatics",output: Pass
+"input: I'll raise my shield to block the crossbow bolt.,Acrobatics",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I'll ask the queen for her help in this matter.,Persuasion",output: Pass
+"input: I'll ask the queen for her help in this matter.,Persuasion",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I'll look for any oak trees that I can use to make arrows.,Survival",output: Pass
+"input: I'll look for any oak trees that I can use to make arrows.,Survival",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I'll ask for a large slab of roasted boar.,Performance",output: Pass
+"input: I'll ask for a large slab of roasted boar.,Performance",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I'll check the silver statue for traps.,Investigation",output: Pass
+"input: I'll check the silver statue for traps.,Investigation",output: Fail
+"input: [SCENE_START],None",output: N/A
+"input: I'll try to dispel the evocation magic on the door.,Arcana",output: Pass
+"input: I'll try to dispel the evocation magic on the door.,Arcana",output: Fail

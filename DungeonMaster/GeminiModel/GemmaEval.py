@@ -32,17 +32,14 @@ base_model = AutoModelForCausalLM.from_pretrained(
     torch_dtype = torch.bfloat16,
     device_map = "auto"
     )
-model = PeftModel.from_pretrained(base_model, "prompt_classifier/checkpoint-664")
+model = PeftModel.from_pretrained(base_model, "prompt_classifier/checkpoint-4032")
 
 model.eval()
 
-data = {"input": ["123", "Rochich, A mage who's parents were killed by an evil Mage", "You are in the crowded central market of Silverwood. A portly merchant with a large coin purse is distracted by a customer.", "I attempt to snatch his coin purse"]}
 
-data_as_string = '<LIST_START>' + '<SEP>'.join(data['input']) + '<LIST_END>'
+prompt = "input: I attempt to pickpocket the guard in the alley.\noutput:"
 
-print(data_as_string)
 
-prompt = f"input: {data_as_string}\noutput:"
 
 inputs = tokenizer(prompt, return_tensors="pt").to("cuda")
 
