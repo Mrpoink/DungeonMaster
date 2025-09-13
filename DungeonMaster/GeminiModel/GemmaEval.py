@@ -32,12 +32,12 @@ base_model = AutoModelForCausalLM.from_pretrained(
     torch_dtype = torch.bfloat16,
     device_map = "auto"
     )
-model = PeftModel.from_pretrained(base_model, "prompt_classifier/checkpoint-4032")
+model = PeftModel.from_pretrained(base_model, "prompt_classifier/checkpoint-16128")
 
 model.eval()
 
 
-prompt = "input: I attempt to pickpocket the guard in the alley.\noutput:"
+prompt = "input: [ACTION]: I attempt to pickpocket the guard in the alley.\noutput:"
 
 
 

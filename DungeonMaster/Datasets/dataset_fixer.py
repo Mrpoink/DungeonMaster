@@ -7,8 +7,8 @@ def csv_to_dict(filename):
     with open(filename, 'r', newline='') as file:
         csv_reader = csv.reader(file)
         for row in csv_reader:
-            input_string = "input: " + "[SCENE]: " + row[2] +  " [ACTION]: " + row[3]
-            output_string = "output: " + "[CHECK]: " + str(row[4])
+            input_string = "input: " + "[SCENE]: " + row[2] +  " [ACTION]: " + row[3] + " [CHECK]: " + row[4] + " [PASS/FAIL]: " + row[5]
+            output_string = "output: " + "[OUTCOME]: " + str(row[6])
             total_list = [input_string, output_string]
             data_list.append(total_list)
 
@@ -50,6 +50,6 @@ def to_json(data, output_file, w_or_r=None):
 input= csv_to_dict('DungeonMaster/Datasets/Prompts.csv')
 print(input)
 
-list_to_csv(input, 'Scene_Action_Check.csv')
+list_to_csv(input, 'Scene_Action_Outcome.csv')
 
 #dict_to_csv(input, 'Prompts2.csv')

@@ -7,27 +7,17 @@ import evaluate
 import numpy as np
 torch.cuda.empty_cache()
 
-dataset1 = load_dataset('csv', data_files='DungeonMaster/Datasets/Check_Outcome.csv')
 dataset2 = load_dataset('csv', data_files='DungeonMaster/Datasets/Action_Check_Outcome.csv')
 dataset3 = load_dataset('csv', data_files='DungeonMaster/Datasets/Scene_Action_Outcome.csv')
-dataset4 = load_dataset('csv', data_files='DungeonMaster/Datasets/Scene_Outcome.csv')
 dataset5 = load_dataset('csv', data_files='DungeonMaster/Datasets/Action_Check.csv')
 dataset6 = load_dataset('csv', data_files='DungeonMaster/Datasets/Scene_Action_Check.csv')
 
-dataset1 = dataset1['train'].rename_columns({
-    'input: [CHECK]: check_required[PASS/FAIL]: outcome_type': 'input',
-    'output: [OUTCOME]: outcome_description': 'output'
-})
 dataset2 = dataset2['train'].rename_columns({
     'input:  [ACTION]: player_input [CHECK]: check_required [PASS/FAIL]: outcome_type' : 'input',
     'output: [OUTCOME]: outcome_description' : 'output'
 })
 dataset3 = dataset3['train'].rename_columns({
-    'input: [SCENE]: scene_context [ACTION]: player_input' : 'input',
-    'output: [OUTCOME]: outcome_description' : 'output'
-})
-dataset4 = dataset4['train'].rename_columns({
-    'input: [SCENE]: scene_context' : 'input',
+    'input: [SCENE]: scene_context [ACTION]: player_input [CHECK]: check_required [PASS/FAIL]: outcome_type' : 'input',
     'output: [OUTCOME]: outcome_description' : 'output'
 })
 dataset5 = dataset5['train'].rename_columns({
@@ -39,7 +29,7 @@ dataset6 = dataset6['train'].rename_columns({
     'output: [CHECK]: check_required' : 'output'
 })
 
-dataset = concatenate_datasets([dataset1, dataset2, dataset3, dataset4, dataset5])
+dataset = concatenate_datasets([dataset2, dataset3, dataset5])
 
 
 def format_data(examples):
@@ -95,11 +85,11 @@ training_args = TrainingArguments(
     output_dir = "prompt_classifier",
     eval_strategy= 'epoch',
     push_to_hub=False,
-    per_device_train_batch_size=3,
-    num_train_epochs=64, #<----------REPLACE WITH 32!!!!
-    gradient_accumulation_steps=32,
+    per_device_train_batch_size=4,
+    num_train_epochs=512, #<----------REPLACE WITH 32!!!!
+    gradient_accumulation_steps=128,
     fp16=True,
-    report_to=None
+    report_to=['tensorboard']
 )
 
 trainer = Trainer(
@@ -114,3 +104,12 @@ trainer = Trainer(
 
 trainer.train()
 
+log_history = trainer.state.log_history
+
+output_log_file = "training_logs.txt"
+
+with open(output_log_file, "w") as f:
+    for log_entry in log_history:
+        f.write(str(log_entry) + "\n")
+
+print(f"Training logs saved to {output_log_file}")
