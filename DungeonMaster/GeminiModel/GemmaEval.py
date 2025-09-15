@@ -32,7 +32,7 @@ base_model = AutoModelForCausalLM.from_pretrained(
     torch_dtype = torch.bfloat16,
     device_map = "auto"
     )
-model = PeftModel.from_pretrained(base_model, "prompt_classifier/checkpoint-16128")
+model = PeftModel.from_pretrained(base_model, "prompt_classifier/checkpoint-11280")
 
 model.eval()
 
