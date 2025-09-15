@@ -1,4 +1,4 @@
-from transformers import AutoTokenizer, AutoModelForCausalLM, Trainer, TrainingArguments, BitsAndBytesConfig, DataCollatorForLanguageModeling
+from transformers import AutoTokenizer, AutoModelForCausalLM, Trainer, TrainingArguments, BitsAndBytesConfig, DataCollatorForLanguageModeling, EarlyStoppingCallback
 from datasets import load_dataset, Dataset, concatenate_datasets
 from peft import get_peft_model, LoraConfig, prepare_model_for_kbit_training
 import torch
@@ -84,8 +84,11 @@ data_collator = DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm=False)
 training_args = TrainingArguments(
     output_dir = "prompt_classifier",
     eval_strategy= 'epoch',
+    save_strategy='epoch',
+    load_best_model_at_end=True,
+    metric_for_best_model='loss',
     push_to_hub=False,
-    per_device_train_batch_size=4,
+    per_device_train_batch_size=3,
     num_train_epochs=512, #<----------REPLACE WITH 32!!!!
     gradient_accumulation_steps=128,
     fp16=True,
@@ -97,7 +100,8 @@ trainer = Trainer(
     args = training_args,
     train_dataset=split_dataset['train'],
     eval_dataset=split_dataset['test'],
-    data_collator=data_collator
+    data_collator=data_collator,
+    callbacks=[EarlyStoppingCallback(early_stopping_patience=5)]
 )
 
 
