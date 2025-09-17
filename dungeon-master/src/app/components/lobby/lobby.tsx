@@ -14,8 +14,8 @@ const router = useRouter()
         <div>
           <em>What action will you take?</em>
           <div className="start-buttons-container">
-            <button className="start-buttons" type='button' onClick={()=>router.push('./components/login')}>Login</button>
-            <button className="start-buttons" type='button' onClick={()=>router.push('./components/login')}>Create an Account</button>
+            <button className="start-buttons" type='button' onClick={()=>router.push('/components/game')}>Join Game</button>
+            <button className="start-buttons" type='button' onClick={()=>router.push('/sessionHistory')}>Reminisce</button>
           </div>
         </div>
 
