@@ -29,7 +29,7 @@ tokenizer = AutoTokenizer.from_pretrained("google/gemma-3-270m")
 base_model = AutoModelForCausalLM.from_pretrained(
     "google/gemma-3-270m",
     quantization_config = bnb_config,
-    torch_dtype = torch.bfloat16,
+    dtype = torch.bfloat16,
     device_map = "auto"
     )
 model = PeftModel.from_pretrained(base_model, "prompt_classifier/checkpoint-11280")
@@ -37,7 +37,7 @@ model = PeftModel.from_pretrained(base_model, "prompt_classifier/checkpoint-1128
 model.eval()
 
 
-prompt = "input: [ACTION]: I attempt to pickpocket the guard in the alley.\noutput:"
+prompt = "input: [SCENE]: You are in a dimly lit tavern called 'The Tipsy Flagon'. [ACTION]: I ask the bartender for rumors about the lost dagger, 'Heartspike'. [CHECK]: Persuasion [PASS/FAIL]: Pass\noutput:"
 
 
 

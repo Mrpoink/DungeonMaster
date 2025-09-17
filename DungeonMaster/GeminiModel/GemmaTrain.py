@@ -7,29 +7,19 @@ import evaluate
 import numpy as np
 torch.cuda.empty_cache()
 
-dataset2 = load_dataset('csv', data_files='DungeonMaster/Datasets/Action_Check_Outcome.csv')
 dataset3 = load_dataset('csv', data_files='DungeonMaster/Datasets/Scene_Action_Outcome.csv')
-dataset5 = load_dataset('csv', data_files='DungeonMaster/Datasets/Action_Check.csv')
 dataset6 = load_dataset('csv', data_files='DungeonMaster/Datasets/Scene_Action_Check.csv')
 
-dataset2 = dataset2['train'].rename_columns({
-    'input:  [ACTION]: player_input [CHECK]: check_required [PASS/FAIL]: outcome_type' : 'input',
-    'output: [OUTCOME]: outcome_description' : 'output'
-})
 dataset3 = dataset3['train'].rename_columns({
     'input: [SCENE]: scene_context [ACTION]: player_input [CHECK]: check_required [PASS/FAIL]: outcome_type' : 'input',
     'output: [OUTCOME]: outcome_description' : 'output'
-})
-dataset5 = dataset5['train'].rename_columns({
-    'input:  [ACTION]: player_input' : 'input',
-    'output: [CHECK]: check_required' : 'output'
 })
 dataset6 = dataset6['train'].rename_columns({
     'input: [SCENE]: scene_context [ACTION]: player_input' : 'input',
     'output: [CHECK]: check_required' : 'output'
 })
 
-dataset = concatenate_datasets([dataset2, dataset3, dataset5])
+dataset = concatenate_datasets([dataset3, dataset6])
 
 
 def format_data(examples):
