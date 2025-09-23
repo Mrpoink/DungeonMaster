@@ -1,0 +1,6 @@
+[
+    {"Initial_room": "No Encounter, but there is a room to the left, right, and front"},
+    {"Room to left": "No Encounter but there is a chest with random magical items in them"},
+    {"Room to right": "Mummies protecting the chest holding the quest item"},
+    {"Room in front": "No Encounter but scratching coming from the right wall of the room. There is nothing in this room"}
+]
