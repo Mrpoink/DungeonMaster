@@ -5,7 +5,13 @@
 node_modules
 # Keep environment variables out of version control
 .env
+<<<<<<< HEAD
 FrontEnd
 /generated/prisma
 /DungeonMaster/lib
 >>>>>>> Socket.io
+=======
+
+/generated/prisma
+>>>>>>> 3807016 (schema)
+>>>>>>> 833bc2d (schema)
