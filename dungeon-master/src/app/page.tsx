@@ -1,5 +1,8 @@
 'use client'
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import Login from "./components/login/login";
+import Register from "./components/register/register";
 
 export default function Home() {
 const router = useRouter()
@@ -14,8 +17,9 @@ const router = useRouter()
         <div>
           <em>What action will you take?</em>
           <div className="start-buttons-container">
+            
             <button className="start-buttons" type='button' onClick={()=>router.push('./components/login')}>Login</button>
-            <button className="start-buttons" type='button' onClick={()=>router.push('./components/login')}>Create an Account</button>
+            <button className="start-buttons" type='button' onClick={()=>router.push('./components/register')}>Create an Account</button>
           </div>
         </div>
 
