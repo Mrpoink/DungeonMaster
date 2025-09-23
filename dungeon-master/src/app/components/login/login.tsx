@@ -1,7 +1,9 @@
 'use client'
 import React, { useState } from 'react';
+import Register from '../register/register';
 
 export default function Login() {
+  const [showLogin, setShowLogin] = useState(true);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -30,8 +32,10 @@ export default function Login() {
 
   return (
     <div className="login-container">
-      <h2>Login</h2>
-      {error && <p className="error-message">{error}</p>}
+      <button onClick={() => setShowLogin(true)}>Login</button>
+      <button onClick={() => setShowLogin(false)}>Create an Account</button>
+      {showLogin ?
+
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="username">Username:</label>
@@ -55,6 +59,7 @@ export default function Login() {
         </div>
         <button type="submit">Login</button>
       </form>
+      : <Register />}
     </div>
   );
 }
