@@ -1,2 +1,11 @@
+<<<<<<< HEAD
 /DungeonMaster/lib/python3.12/site-packages
 /DungeonMaster/lib64/python3.12/site-packages
+=======
+node_modules
+# Keep environment variables out of version control
+.env
+
+/generated/prisma
+/DungeonMaster/lib
+>>>>>>> Socket.io
