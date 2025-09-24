@@ -5,13 +5,13 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
-  output   = "../generated/prisma"
+  provider = "prisma-client-py"
+  output   = "./generated/prisma"
 }
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = env("postgresql://postgres:Pa$$w0rd@localhost:5432/postgres?schema=public")
 }
 
 model Monster {
@@ -166,9 +166,10 @@ model Spell  {
   link            String
 }
 
-model Class {
+model PlayerClass {
+  @@map("Class")
   id          Int      @id @default(autoincrement())
-  class       String
+  Playerclass       String @map("class")
   subclass    String
   source      String?
   notes       String?

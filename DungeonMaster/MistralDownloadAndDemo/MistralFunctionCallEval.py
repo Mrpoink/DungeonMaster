@@ -2,6 +2,7 @@ from Encounter_Turn import encounter
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig, GenerationConfig
 from datasets import load_dataset, Dataset
 from peft import get_peft_model, LoraConfig, prepare_model_for_kbit_training, PeftModel
+import intel_npu_acceleration_library
 import torch
 import random
 import math
@@ -36,7 +37,15 @@ def get_return_output(outputs, probs):
 
     return outputs[i]
 
-def section_string(start_phrase, initial_string):
+def section_string(start_phrase, initial_string, end_string = None):
+
+    if end_string:
+        initial_string = initial_string.split(start_phrase)
+        final_string = initial_string[1].split(end_string)
+
+        return final_string
+
+
     final_string = initial_string.split(start_phrase)
 
     return final_string[len(final_string) -1]
@@ -75,6 +84,8 @@ base_model = AutoModelForCausalLM.from_pretrained(
     )
 model = PeftModel.from_pretrained(base_model, "/home/mrpoink/github-repos/DungeonMaster/DungeonMaster/prompt_classifier_mistral/checkpoint-5733")
 
+#model = torch.compile(model, backend="npu")
+
 model.eval()
 
 userin = ""
@@ -82,18 +93,18 @@ userin = ""
 scenes = [
     "[SCENE]: No Encounter, but there is a room to the left, right, and front",
     "[SCENE]: No Encounter but there is a chest with random magical items in them",
-    "[SCENE]: Mummies protecting the chest holding the quest item",
+    "[SCENE]: Use the Encounter tool for the Mummies protecting the chest holding the quest item",
     "[SCENE]: No Encounter but scratching coming from the right wall of the room. There is nothing in this room"
 ]
 
 conversation = [{"role":"system",
-                "content":"You are required to use the encounter tool if there are enemies in the room in the format {'monster': 'race','surprise':'bool','level': 'int','number': 'int'}. If we need to continue to the next scene output [SCENE CHANGE]"}]
+                "content":"You are required to use the encounter tool if there are enemies in the room in the format {'monster': 'race','surprise':'bool','level': 'int','number': 'int'}."}]
 
 
 # scene = import_campaign("/home/mrpoink/github-repos/DungeonMaster/DungeonMaster/MistralDownloadAndDemo/Small_dungeon.json")
 
 
-scene ="[SCENE]: The Dungeon of Secrets, initial room"
+scene ="[SCENE]: The initial room of The Dungeon of Secrets. It is a long corridor"
 tools = [encounter]
 
 
@@ -156,7 +167,14 @@ while (userin != "quit"):
 
     if "[ENCOUNTER]" in final_output:
         print("\nENCOUNTER STARTED\n")
-        
+
+    if 'level' in final_output:
+        if '(' in final_output:
+            encounter_args = section_string('(', final_output, ')')
+            print(f"ENCOUNTER ARGS: {encounter_args}")
+        if '{' in final_output:
+            encounter_args = section_string('{', final_output, '}')
+            print(f"ENCOUNTER ARGS: {encounter_args}")
 
     conversation.append({"role": "assistant",
                          "content": f"{final_output}"})
