@@ -11,7 +11,7 @@ import evaluate
 import numpy as np
 
 def import_campaign(json_file):
-    with open('data.json', 'r') as file:
+    with open(json_file, 'r') as file:
         data = json.load(file)
     
     return data
@@ -90,19 +90,14 @@ model.eval()
 
 userin = ""
 
-scenes = [
-    "[SCENE]: No Encounter, but there is a room to the left, right, and front",
-    "[SCENE]: No Encounter but there is a chest with random magical items in them",
-    "[SCENE]: Use the Encounter tool for the Mummies protecting the chest holding the quest item",
-    "[SCENE]: No Encounter but scratching coming from the right wall of the room. There is nothing in this room"
-]
 
 conversation = [{"role":"system",
-                "content":"You are required to use the encounter tool if there are enemies in the room in the format {'monster': 'race','surprise':'bool','level': 'int','number': 'int'}."}]
+                "content":"You are required to use the encounter tool if there are enemies in the room in the format {'monster': 'race','surprise':'bool','level': 'int','number': 'int'}. If someone in the party attempts to enter a different room, output [SCENE CHANGE]"}]
 
 
-# scene = import_campaign("/home/mrpoink/github-repos/DungeonMaster/DungeonMaster/MistralDownloadAndDemo/Small_dungeon.json")
+scenes = import_campaign("/home/mrpoink/github-repos/DungeonMaster/DungeonMaster/MistralDownloadAndDemo/Small_dungeon.json")
 
+print(scenes)
 
 scene ="[SCENE]: The initial room of The Dungeon of Secrets. It is a long corridor"
 tools = [encounter]

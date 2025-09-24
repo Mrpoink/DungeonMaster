@@ -153,7 +153,7 @@ class Prisma(AsyncBasePrisma):
     def _default_datasource(self) -> Datasource:
         return {
             'name': 'db',
-            'url': OptionalValueFromEnvVar(**{'value': None, 'fromEnvVar': 'postgresql://postgres:Pa$$w0rd@localhost:5432/postgres?schema=public'}).resolve(),
+            'url': OptionalValueFromEnvVar(**{'value': None, 'fromEnvVar': 'DATABASE_URL'}).resolve(),
             'source_file_path': '/home/mrpoink/github-repos/DungeonMaster/prisma/schema.prisma',
         }
 

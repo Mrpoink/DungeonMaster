@@ -2,6 +2,9 @@ import tracemalloc
 import asyncio
 import sys
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'prisma', 'generated'))
 
@@ -18,7 +21,7 @@ async def get_data(name):
     db = Prisma()
     await db.connect()
 
-    data = await db.user.find_unique_or_raise(where={'name': name,})
+    data = await db.monster.find_unique_or_raise(where={'name': name,})
     
     await db.disconnect()
     return data
