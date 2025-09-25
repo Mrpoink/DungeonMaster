@@ -6,9 +6,8 @@ const router = useRouter()
 
   return (
     <div>
-        <header>
-            <dialog>Welcome player</dialog>
-        </header>
+        <div id="d20"></div>
+        <button id="rollButton">Roll d20</button>
     </div>
   )
 }

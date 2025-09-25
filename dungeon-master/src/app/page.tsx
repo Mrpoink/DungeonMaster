@@ -20,6 +20,7 @@ const router = useRouter()
             
             <button className="start-buttons" type='button' onClick={()=>router.push('./components/login')}>Login</button>
             <button className="start-buttons" type='button' onClick={()=>router.push('./components/register')}>Create an Account</button>
+            <button className="start-buttons" type='button' onClick={()=>router.push('./components/lobby')}>Quick Start</button>
           </div>
         </div>
 
