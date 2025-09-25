@@ -36,3 +36,22 @@ h1{
 button{
   border: 1px solid black;
 }
+#game-sessions-div{
+  display: flex;
+  flex-direction: row;
+}
+#game-sessions-left-div{
+  display: flex;
+  flex-direction: column;
+}
+#game-sessions-right-div{
+  display: flex;
+  flex-direction: column;
+  text-align: end;
+}
+.game-session-buttons{
+  border: 2px solid black;
+  border-radius: 25%;
+  padding: 1em;
+  margin: 1em;
+}
