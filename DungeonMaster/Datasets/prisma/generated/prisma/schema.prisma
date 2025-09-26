@@ -1,0 +1,17 @@
+generator client {
+  provider        = "prisma-client-py"
+  output          = "./generated/prisma"
+  previewFeatures = ["postgresqlExtensions"]
+}
+
+datasource db {
+  provider   = "postgresql"
+  url        = env("DATABASE_URL")
+  extensions = [pg_vector(schema: "public")]
+}
+
+model MONSTERVECTOR {
+  id        Int                         @id @default(autoincrement())
+  text      String
+  embedding Unsupported("vector(384)")?
+}

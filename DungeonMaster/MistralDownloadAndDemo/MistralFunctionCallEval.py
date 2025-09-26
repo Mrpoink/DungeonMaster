@@ -137,7 +137,7 @@ while (userin != "quit"):
         return_dict_in_generate=True,
         output_scores=True,
         do_sample=True,
-        top_p = 0.5)
+        top_p = 0.5) #WAS 0.5
     
     transition_scores = model.compute_transition_scores(outputs.sequences, outputs.scores, outputs.beam_indices, normalize_logits=False)
     
