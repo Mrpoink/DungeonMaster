@@ -13,20 +13,19 @@ const router = useRouter()
       </header>
       <main>
         <div>
-          <em>What action will you take?</em>
           <div className="start-buttons-container">
 
 
             <div id="game-sessions-div">
               <div id="game-sessions-left-div">
-                <button className="game-session-buttons" type='button' onClick={()=>router.push('/components/game')}>Join Game Session</button>
-                <button className="game-session-buttons" type='button' onClick={()=>router.push('/components/game')}>Join Game Session</button>
-                <button className="game-session-buttons" type='button' onClick={()=>router.push('/components/game')}>Join Game Session</button>
+                <button className="left-game-session-buttons" type='button' onClick={()=>router.push('/components/game')}>Join Game Session</button>
+                <button className="left-game-session-buttons" type='button' onClick={()=>router.push('/components/game')}>Join Game Session</button>
+                <button className="left-game-session-buttons" type='button' onClick={()=>router.push('/components/game')}>Join Game Session</button>
               </div>
               <div id="game-sessions-right-div">
-                <button className="game-session-buttons" type='button' onClick={()=>router.push('/components/game')}>Join Game Session</button>
-                <button className="game-session-buttons" type='button' onClick={()=>router.push('/components/game')}>Join Game Session</button>
-                <button className="game-session-buttons" type='button' onClick={()=>router.push('/components/game')}>Join Game Session</button>
+                <button className="right-game-session-buttons" type='button' onClick={()=>router.push('/components/game')}>Join Game Session</button>
+                <button className="right-game-session-buttons" type='button' onClick={()=>router.push('/components/game')}>Join Game Session</button>
+                <button className="right-game-session-buttons" type='button' onClick={()=>router.push('/components/game')}>Join Game Session</button>
               </div>
             </div>
 
