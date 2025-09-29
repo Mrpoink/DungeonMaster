@@ -5,10 +5,13 @@ export default function Game() {
 const router = useRouter()
 
   return (
-    <div>
+    <div className="game">
         <header>
-            <dialog>Welcome player</dialog>
+            <h1>Welcome Player</h1>
         </header>
+        <body>
+          
+        </body>
     </div>
   )
 }
