@@ -3,9 +3,6 @@
 :root {
   --background: #0a0a0a;
   --foreground: white;
-}
-
-@theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -17,20 +14,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-
-.lobby{
-  background: url(./components/assets/lobbyBackground.png) no-repeat;
-  background-position: center;
-  width: 100vw;
-  height: 100vh;
-}
-.main{
-  background: url(./components/assets/mainBackground.png) no-repeat;
-  background-position: center;
-  width: 100vw;
-  height: 100vh;
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
@@ -53,9 +36,16 @@ h1{
   justify-content: center;
 }
 button{
-  border: 1px solid black;
-  background-color: gray;
-  opacity: 1;
+  border-radius: 25px;
+  text-align: center;
+  background: black;
+  cursor: pointer;
+  display: inline-block;
+  padding: 10px;
+  text-align: center;
+  transition: all 250ms;
+  border: 0;
+  touch-action: manipulation;
 }
 #game-sessions-div{
   background: url('./components/assets/lobbyBackground.png') no-repeat center cover;
@@ -75,11 +65,25 @@ button{
   position: relative;
   right: 8vw;
 }
-.game-session-buttons{
-  border: 2px solid black;
-  border-radius: 15%;
+.left-game-session-buttons{
+  border: 3px solid black;
   padding: 1em;
+  padding-bottom: 4em;
   margin: 1em;
+  background-image: url(./components/assets/gameImage1.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.right-game-session-buttons{
+  border: 3px solid black;
+  padding: 1em;
+  padding-bottom: 4em;
+  margin: 1em;
+  background-image: url(./components/assets/gameImage2.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .footer{
   display: inline;
@@ -89,4 +93,59 @@ button{
   opacity: .7;
   position: relative;
   top: 60vh;
+}
+.lobby{
+  background: url(./components/assets/lobbyBackground.png) no-repeat;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+}
+.main{
+  background: url(./components/assets/mainBackground.png) no-repeat;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+}
+.game{
+  display: inline;
+  width: fit-content;
+}
+.game img{
+  display: inline;
+  width: 50vw;
+}
+.player-actions{
+  margin: 1em;
+  display: block;
+}
+.game input{
+  box-shadow:rgba(44, 108, 187, 0.37) 0 1px 1px,rgba(44, 108, 187, 0.37) 0 1px 2px,rgba(44, 108, 187, 0.37) 0 2px 4px,rgba(44, 108, 187, 0.37) 0 2px 8px,rgba(44, 108, 187, 0.37) 0 4px 16px;
+  border-radius: 25px;
+  text-align: center;
+  margin-right: 1em;
+  padding: 10px;
+  border: 0;
+}
+.game input::selection{
+  border: transparent;
+}
+.game button{
+  border-radius: 25px;
+  text-align: center;
+  background: transparent;
+  color: rgb(181, 4, 4);
+  cursor: pointer;
+  display: inline-block;
+  padding: 10px;
+  text-align: center;
+  transition: all 250ms;
+  border: 0;
+  touch-action: manipulation;
+  box-shadow:rgba(187, 84, 44, 0.37) 0 1px 1px,rgba(187, 84, 44, 0.37) 0 1px 2px,rgba(187, 84, 44, 0.37) 0 2px 4px,rgba(187, 84, 44, 0.37) 0 2px 8px,rgba(187, 84, 44, 0.37) 0 4px 16px;
+}
+
+.game button:hover{
+  color: red;
+  box-shadow: red 0 -25px 18px -14px inset,rgba(187, 84, 44, 0.37) 0 1px 2px,rgba(187, 84, 44, 0.37) 0 2px 4px,rgba(187, 84, 44, 0.37) 0 4px 8px,rgba(187, 84, 44, 0.37) 0 8px 16px,rgba(187, 84, 44, 0.37) 0 16px 32px;
+  transform: scale(1.15) rotate(-3deg);
 }
