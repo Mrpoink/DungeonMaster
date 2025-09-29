@@ -25,6 +25,7 @@ body {
   border: 2px solid black;
   margin: 1em;
   padding: 1em;
+  opacity: .8;
 }
 header{
   padding: 2em;
@@ -92,7 +93,7 @@ button{
   color: white;
   opacity: .7;
   position: relative;
-  top: 60vh;
+  top: 50vh;
 }
 .lobby{
   background: url(./components/assets/lobbyBackground.png) no-repeat;
@@ -148,4 +149,17 @@ button{
   color: red;
   box-shadow: red 0 -25px 18px -14px inset,rgba(187, 84, 44, 0.37) 0 1px 2px,rgba(187, 84, 44, 0.37) 0 2px 4px,rgba(187, 84, 44, 0.37) 0 4px 8px,rgba(187, 84, 44, 0.37) 0 8px 16px,rgba(187, 84, 44, 0.37) 0 16px 32px;
   transform: scale(1.15) rotate(-3deg);
+}
+.dice {
+  float: left;
+  position: relative;
+  left: 10vw;
+}
+.dice img{
+  width: 3em;
+  margin-bottom: 10px;
+  border: 2px solid black;
+}
+.dice img:hover{
+  border: 2px solid blue;
 }
