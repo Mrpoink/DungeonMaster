@@ -102,6 +102,7 @@ class use_vector_db:
 
         await self.db.disconnect()
 
+<<<<<<< HEAD
     async def add_user_data(self, name, username, password):
 
         await self.db.execute_raw(
@@ -132,6 +133,11 @@ class use_vector_db:
             return False, "Incorrect username"
 
     
+=======
+
+
+
+>>>>>>> 78df350 (Attempting to upload zip files for easier upload)
 
         
 class get_from_db:
@@ -270,6 +276,7 @@ class get_from_db:
         
         print("Session Successfully updated!")
 
+<<<<<<< HEAD
     async def get_session_id(self):
 
         #SELECT MAX(column_name) FROM table_name;
@@ -282,4 +289,6 @@ class get_from_db:
 
         return session_number[0]['max']
 
+=======
+>>>>>>> 78df350 (Attempting to upload zip files for easier upload)
 
