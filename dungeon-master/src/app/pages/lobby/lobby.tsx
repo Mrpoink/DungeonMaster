@@ -1,6 +1,6 @@
 'use client'
 import { useRouter } from "next/navigation";
-import backgroundImage from "../assets/lobbyBackground.png";
+import backgroundImage from "@/app/lobbyBackground.png";
 
 export default function Home() {
 const router = useRouter()
@@ -18,9 +18,9 @@ const router = useRouter()
 
             <div id="game-sessions-div">
               <div id="game-sessions-left-div">
-                <button className="left-game-session-buttons" type='button' onClick={()=>router.push('/components/game')}>Join Game Session</button>
-                <button className="left-game-session-buttons" type='button' onClick={()=>router.push('/components/game')}>Join Game Session</button>
-                <button className="left-game-session-buttons" type='button' onClick={()=>router.push('/components/game')}>Join Game Session</button>
+                <button className="left-game-session-buttons" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
+                <button className="left-game-session-buttons" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
+                <button className="left-game-session-buttons" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
               </div>
               <div id="game-sessions-right-div">
                 <button className="right-game-session-buttons" type='button' onClick={()=>router.push('/components/game')}>Join Game Session</button>

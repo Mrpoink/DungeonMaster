@@ -1,12 +1,12 @@
 'use client'
 import { useState, useEffect} from "react";
-import Background from "../assets/mainBackground.png";
-import D20 from "../components/assets/dice/d20.png";
-import D12 from "../";
-import D10 from "../assets/dice/d10.png";
-import D8 from "../assets/dice/d8.png";
-import D6 from "../assets/dice/d6.png";
-import D4 from "../assets/dice/d4.png";
+import Background from "@/app/components/assets/mainBackground.png";
+import D20 from "@/app/components/assets/dice/d20.png";
+import D12 from "@/app/components/assets/dice/d12.png";
+import D10 from "@/app/components/assets/dice/d10.png";
+import D8 from "@/app/components/assets/dice/d8.png";
+import D6 from "@/app/components/assets/dice/d6.png";
+import D4 from "@/app/components/assets/dice/d4.png";
 
 
 export default function Game() {
