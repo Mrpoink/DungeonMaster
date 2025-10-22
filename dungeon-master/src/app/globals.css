@@ -170,3 +170,9 @@ button{
   margin-bottom: 10px;
   border: 2px solid blue;
 }
+.character-info-div{
+  float: right;
+}
+.character-main-info{
+  flex-direction: row;
+}
