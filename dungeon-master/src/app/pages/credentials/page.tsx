@@ -1,11 +1,12 @@
 'use server'
+
 import React from 'react';
-import Register from './register';
+import Credentials from './credentials';
 
 export default async function App() {
   return (
     <div className="App">
-      <Register />
+      <Credentials />
     </div>
   );
 }

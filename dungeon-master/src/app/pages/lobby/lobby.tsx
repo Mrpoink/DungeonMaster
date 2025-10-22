@@ -1,6 +1,6 @@
 'use client'
 import { useRouter } from "next/navigation";
-import backgroundImage from "@/app/lobbyBackground.png";
+import Footer from "@/app/components/footer/footer";
 
 export default function Home() {
 const router = useRouter()
@@ -9,8 +9,10 @@ const router = useRouter()
     <div className="lobby">
       <header>
         <h1>Welcome to the Dungeon</h1>
-
       </header>
+      <div className="character-info-div">
+        <button onClick={()=>router.push('./characterInfo')}>Update Character Info</button>
+      </div>
       <main>
         <div>
           <div className="start-buttons-container">
@@ -23,9 +25,9 @@ const router = useRouter()
                 <button className="left-game-session-buttons" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
               </div>
               <div id="game-sessions-right-div">
-                <button className="right-game-session-buttons" type='button' onClick={()=>router.push('/components/game')}>Join Game Session</button>
-                <button className="right-game-session-buttons" type='button' onClick={()=>router.push('/components/game')}>Join Game Session</button>
-                <button className="right-game-session-buttons" type='button' onClick={()=>router.push('/components/game')}>Join Game Session</button>
+                <button className="right-game-session-buttons" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
+                <button className="right-game-session-buttons" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
+                <button className="right-game-session-buttons" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
               </div>
             </div>
 
@@ -33,9 +35,7 @@ const router = useRouter()
         </div>
 
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        
-      </footer>
+      <Footer />
     </div>
   );
 }

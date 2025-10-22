@@ -1,10 +1,8 @@
 'use client'
 import React from "react";
 import { useState } from "react";
-import Login from "../login/login";
 
 export default function Register() {
-    const [showLogin, setShowLogin] = useState(false);
     const [formData, setFormData] = useState({
     name: '',
     username: '',
@@ -34,9 +32,6 @@ export default function Register() {
 
   return (
     <div>
-        <button onClick={() => setShowLogin(false)}>Login</button>
-        <button onClick={() => setShowLogin(true)}>Create an Account</button>
-        {showLogin ? <Login /> : 
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name">Name:</label>
@@ -75,7 +70,6 @@ export default function Register() {
           Register
         </button>
       </form>
-    }
     </div>
   );
 }

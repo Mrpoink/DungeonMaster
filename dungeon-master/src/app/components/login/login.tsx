@@ -1,12 +1,12 @@
 'use client'
 import React, { useState } from 'react';
-import Register from '../register/register';
+import { useRouter } from 'next/navigation';
 
 export default function Login() {
-  const [showLogin, setShowLogin] = useState(true);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const router = useRouter();
 
   const handleSubmit = (e: { preventDefault: () => void; }) => {
     e.preventDefault(); // Prevent default form submission behavior
@@ -24,7 +24,8 @@ export default function Login() {
     if (username === 'test@example.com' && password === 'password123') {
       setError(''); // Clear any previous errors
       alert('Login successful!');
-      // Redirect or perform other actions after successful login
+      router.push('../pages/lobby');
+
     } else {
       setError('Invalid username or password.');
     }
@@ -32,10 +33,6 @@ export default function Login() {
 
   return (
     <div className="login-container">
-      <button onClick={() => setShowLogin(true)}>Login</button>
-      <button onClick={() => setShowLogin(false)}>Create an Account</button>
-      {showLogin ?
-
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="username">Username:</label>
@@ -59,7 +56,6 @@ export default function Login() {
         </div>
         <button type="submit">Login</button>
       </form>
-      : <Register />}
     </div>
   );
 }

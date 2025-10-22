@@ -5,12 +5,24 @@ export default function CharacterInfo() {
   const router = useRouter()
 
   return (
-    <div>
-        <div>
-            <h1>Character Sheet</h1>
+    <div className="character-sheet">
+        <div className="character-main-info">
+            <h1>Name</h1>
+            <div>
+              <h2>Race</h2>
+            </div>
+            <div>
+              <h2>Class</h2>
+              <h3>Subclass</h3>
+            </div>
+            <div>
+              
+            </div>
         </div>
-        <button>Save</button>
-        <button>Return</button>
+        <div>
+          <button>Save</button>
+          <button onClick={()=>router.push("./lobby")}>Return</button>
+        </div>
     </div>
   )
 }
