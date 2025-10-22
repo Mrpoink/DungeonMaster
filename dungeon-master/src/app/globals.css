@@ -155,11 +155,18 @@ button{
   position: relative;
   left: 10vw;
 }
-.dice img{
+.dice .default-dice{
   width: 3em;
   margin-bottom: 10px;
   border: 2px solid black;
 }
 .dice img:hover{
+  border: 2px solid blue;
+  transform: scale(1.15);
+  cursor: pointer;
+}
+.dice .active-dice{
+  width: 3em;
+  margin-bottom: 10px;
   border: 2px solid blue;
 }
