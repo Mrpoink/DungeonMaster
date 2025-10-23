@@ -8,7 +8,7 @@ const router = useRouter()
   return (
     <div className="main">
       <header>
-        <h1>Welcome to the Dungeon</h1>
+        <h1>Welcome to QuestWeaver</h1>
       </header>
       <main>
         <div>

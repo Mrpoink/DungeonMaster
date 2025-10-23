@@ -2,6 +2,7 @@
 import Background from "@/app/components/assets/mainBackground.png";
 import DiceComponent from "@/app/components/dice/dice";
 import GameMaster from "@/app/components/gameMaster/gameMaster";
+import { Roll } from "@/app/components/dice/dice";
 
 
 export default function Game() {
@@ -10,6 +11,9 @@ export default function Game() {
 
   const handleDiceSelect = (data: any) => {
 
+  }
+  const handleRoll = (data: number) =>{
+    
   }
 
   return (
@@ -24,14 +28,14 @@ export default function Game() {
           <img src={Background.src} alt="" />
           <div className="player-actions">
             <input type="text" placeholder="What do you do?" disabled/>
-            {/* <button onClick={handleRoll}>
+            <button onClick={handleRoll}>
               ROLL
             </button>
             {rollResult !== null && (
               <div className="roll-result">
                 Result: {rollResult}
               </div>
-            )} */}
+            )}
           </div>
         </main>
     </div>
