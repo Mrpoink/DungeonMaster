@@ -117,7 +117,9 @@ button{
 }
 .player-actions{
   margin: 1em;
-  display: block;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 .game input{
   box-shadow:rgba(44, 108, 187, 0.37) 0 1px 1px,rgba(44, 108, 187, 0.37) 0 1px 2px,rgba(44, 108, 187, 0.37) 0 2px 4px,rgba(44, 108, 187, 0.37) 0 2px 8px,rgba(44, 108, 187, 0.37) 0 4px 16px;
@@ -130,7 +132,7 @@ button{
 .game input::selection{
   border: transparent;
 }
-.game button{
+/* .game button{
   border-radius: 25px;
   text-align: center;
   background: transparent;
@@ -149,7 +151,7 @@ button{
   color: red;
   box-shadow: red 0 -25px 18px -14px inset,rgba(187, 84, 44, 0.37) 0 1px 2px,rgba(187, 84, 44, 0.37) 0 2px 4px,rgba(187, 84, 44, 0.37) 0 4px 8px,rgba(187, 84, 44, 0.37) 0 8px 16px,rgba(187, 84, 44, 0.37) 0 16px 32px;
   transform: scale(1.15) rotate(-3deg);
-}
+} */
 .dice {
   float: left;
   position: relative;
