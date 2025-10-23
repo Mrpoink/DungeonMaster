@@ -1,19 +1,21 @@
 'use client'
+import { useState } from "react";
 import Background from "@/app/components/assets/mainBackground.png";
-import DiceComponent from "@/app/components/dice/dice";
+import Dice from "@/app/components/dice/dice";
 import GameMaster from "@/app/components/gameMaster/gameMaster";
 import { Roll } from "@/app/components/dice/dice";
 
 
 export default function Game() {
-  // cast Dice to any so we can pass custom props without a type error
-  const Dice: any = DiceComponent;
 
-  const handleDiceSelect = (data: any) => {
+  const [sides, setSides] = useState<number>(20);
+  const [activeDice, setActiveDice] = useState<string | null>('d20');
 
+  const handleDiceSelect = (selectedSides: number) => {
+    setSides(selectedSides);
   }
-  const handleRoll = (data: number) =>{
-    
+  const handleActiveDice = (dice: string) => {
+    setActiveDice(dice);
   }
 
   return (
@@ -22,20 +24,17 @@ export default function Game() {
           <GameMaster />
         </div>
         <div className="dice-box">
-          <Dice onAction={handleDiceSelect} />
+          <Dice 
+            onDiceSelect={handleDiceSelect} 
+            activeDice={activeDice} 
+            onSetActiveDice={handleActiveDice} 
+          />
         </div>
         <main className="game">
           <img src={Background.src} alt="" />
           <div className="player-actions">
-            <input type="text" placeholder="What do you do?" disabled/>
-            <button onClick={handleRoll}>
-              ROLL
-            </button>
-            {rollResult !== null && (
-              <div className="roll-result">
-                Result: {rollResult}
-              </div>
-            )}
+            <input type="text" placeholder="What do you do?" />
+            <Roll sides={sides} />
           </div>
         </main>
     </div>
