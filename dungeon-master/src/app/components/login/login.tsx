@@ -6,9 +6,8 @@ export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const router = useRouter();
 
-  const handleSubmit = (e: { preventDefault: () => void; }) => {
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault(); // Prevent default form submission behavior
 
     // Basic validation
@@ -17,17 +16,22 @@ export default function Login() {
       return;
     }
 
+    const credentials= {username:username, password:password}
+
     // In a real application, you would send this data to a backend API for authentication
     console.log('Attempting login with:', { username, password });
 
     // Simulate a successful login (replace with actual API call)
-    if (username === 'test@example.com' && password === 'password123') {
-      setError(''); // Clear any previous errors
-      alert('Login successful!');
-      router.push('../pages/lobby');
-
-    } else {
-      setError('Invalid username or password.');
+    try{
+      const response = await fetch("http://localhost:1068/credentials", {
+        method : 'POST',
+        headers: {
+          'Content-Type' : 'application/json',
+        },
+        body : JSON.stringify(credentials),
+      });
+    } catch (error){
+      console.error("Failed to send user credentials: ", error)
     }
   };
 
