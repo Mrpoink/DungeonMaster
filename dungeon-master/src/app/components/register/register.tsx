@@ -17,7 +17,7 @@ export default function Register() {
     }));
   };
 
-  const handleSubmit = (e: { preventDefault: () => void; }) => {
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     // Here you would typically send the formData to a backend server for registration
     console.log('Registration data submitted:', formData);
@@ -28,6 +28,17 @@ export default function Register() {
       username: '',
       password: '',
     });
+    try{
+      const response = await fetch('http://localhost:1068/userData', {
+        method : 'POST',
+        headers: {
+          'Content-Type' : 'application/json',
+        },
+        body : JSON.stringify(formData),
+      });
+    } catch (error){
+      console.error("Failed to send userData: ", error)
+    }
   };
 
   return (

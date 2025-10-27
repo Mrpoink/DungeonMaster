@@ -295,3 +295,17 @@ button{
     margin-bottom: 2em;
   }
 }
+.message-log {
+  transform : translateX(-50%);
+  top : 20px;
+  left: 35%;
+  position : absolute;
+  height : 450px;
+  width : 60%;
+  overflow-y:auto;
+  border:1px solid #ccc;
+  padding: 15px;
+  background-color : rgba(0, 0, 0, 0.75);
+  color: #fff;
+  margin-bottom: 20px;
+}
