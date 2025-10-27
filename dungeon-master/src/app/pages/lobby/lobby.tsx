@@ -1,5 +1,7 @@
 'use client'
 import { useRouter } from "next/navigation";
+import Nav from "@/app/components/nav/nav";
+import {BottomNav} from "@/app/components/nav/nav";
 
 export default function Home() {
 const router = useRouter()
@@ -7,33 +9,29 @@ const router = useRouter()
   return (
     <div className="lobby">
       <header>
-        <h1>Welcome to QuestWeaver</h1>
+        <Nav />
       </header>
-      <div className="character-info-div">
-        <button onClick={()=>router.push('./characterInfo')}>Update Character Info</button>
-      </div>
       <main>
         <div>
           <div className="start-buttons-container">
-
-
             <div id="game-sessions-div">
-              <div id="game-sessions-left-div">
+              <div className="game-session" id="game-sessions-left-div">
                 <button className="left-game-session-buttons" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
                 <button className="left-game-session-buttons" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
                 <button className="left-game-session-buttons" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
               </div>
-              <div id="game-sessions-right-div">
+              <div className="game-session" id="game-sessions-right-div">
                 <button className="right-game-session-buttons" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
                 <button className="right-game-session-buttons" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
                 <button className="right-game-session-buttons" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
               </div>
             </div>
-
           </div>
         </div>
-
       </main>
+      <div className="bottom-nav-buttons">
+        <BottomNav />
+      </div>
     </div>
   );
 }

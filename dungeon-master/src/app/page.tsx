@@ -1,5 +1,6 @@
 'use client'
 import { useRouter } from "next/navigation";
+import Nav from "./components/nav/nav";
 import Footer from "./components/footer/footer";
 
 export default function Home() {
@@ -8,7 +9,7 @@ const router = useRouter()
   return (
     <div className="main">
       <header>
-        <h1>Welcome to QuestWeaver</h1>
+        <Nav />
       </header>
       <main>
         <div>
