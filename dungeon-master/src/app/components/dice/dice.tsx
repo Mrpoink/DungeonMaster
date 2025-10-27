@@ -1,5 +1,5 @@
 'use client'
-import { SetStateAction, useState } from "react";
+import { useState } from "react";
 import D20 from "@/app/components/assets/dice/d20.png";
 import D12 from "@/app/components/assets/dice/d12.png";
 import D10 from "@/app/components/assets/dice/d10.png";
@@ -35,12 +35,12 @@ export default function Dice({ onDiceSelect, activeDice, onSetActiveDice }: Dice
   return (
     <div>
         <div className="dice">
-          <img id="d20" src={D20.src} title="D20" alt="" onClick={() => handleClick("d20")} className={activeDice === 'd20' ? 'active' : ''}/>
-          <img id="d12" src={D12.src} title="D12" alt="" onClick={() => handleClick("d12")} className={activeDice === 'd12' ? 'active' : ''}/>
-          <img id="d10" src={D10.src} title="D10" alt="" onClick={() => handleClick("d10")} className={activeDice === 'd10' ? 'active' : ''}/>
-          <img id="d8" src={D8.src} title="D8" alt="" onClick={() => handleClick("d8")} className={activeDice === 'd8' ? 'active' : ''}/>
-          <img id="d6" src={D6.src} title="D6" alt="" onClick={() => handleClick("d6")} className={activeDice === 'd6' ? 'active' : ''}/>
-          <img id="d4" src={D4.src} title="D4" alt="" onClick={() => handleClick("d4")} className={activeDice === 'd4' ? 'active' : ''}/>
+          <img id="d20" src={D20.src} title="D20" alt="" onClick={() => handleClick("d20")} className={activeDice === 'd20' ? 'active-dice' : ''}/>
+          <img id="d12" src={D12.src} title="D12" alt="" onClick={() => handleClick("d12")} className={activeDice === 'd12' ? 'active-dice' : ''}/>
+          <img id="d10" src={D10.src} title="D10" alt="" onClick={() => handleClick("d10")} className={activeDice === 'd10' ? 'active-dice' : ''}/>
+          <img id="d8" src={D8.src} title="D8" alt="" onClick={() => handleClick("d8")} className={activeDice === 'd8' ? 'active-dice' : ''}/>
+          <img id="d6" src={D6.src} title="D6" alt="" onClick={() => handleClick("d6")} className={activeDice === 'd6' ? 'active-dice' : ''}/>
+          <img id="d4" src={D4.src} title="D4" alt="" onClick={() => handleClick("d4")} className={activeDice === 'd4' ? 'active-dice' : ''}/>
         </div>
     </div>
   )

@@ -110,68 +110,56 @@ button{
 .game{
   display: inline;
   width: fit-content;
+  img{
+    display: inline;
+    width: 40vw;
+  }
+  input{
+    box-shadow:rgba(44, 108, 187, 0.37) 0 1px 1px,rgba(44, 108, 187, 0.37) 0 1px 2px,rgba(44, 108, 187, 0.37) 0 2px 4px,rgba(44, 108, 187, 0.37) 0 2px 8px,rgba(44, 108, 187, 0.37) 0 4px 16px;
+    border-radius: 25px;
+    text-align: center;
+    margin-right: 1em;
+    padding: 10px;
+    border: 0;
+  }
+  input::selection{
+    border: transparent;
+  }
 }
-.game img{
-  display: inline;
-  width: 50vw;
-}
+
 .player-actions{
   margin: 1em;
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
-.game input{
-  box-shadow:rgba(44, 108, 187, 0.37) 0 1px 1px,rgba(44, 108, 187, 0.37) 0 1px 2px,rgba(44, 108, 187, 0.37) 0 2px 4px,rgba(44, 108, 187, 0.37) 0 2px 8px,rgba(44, 108, 187, 0.37) 0 4px 16px;
-  border-radius: 25px;
-  text-align: center;
-  margin-right: 1em;
-  padding: 10px;
-  border: 0;
-}
-.game input::selection{
-  border: transparent;
-}
-/* .game button{
-  border-radius: 25px;
-  text-align: center;
-  background: transparent;
-  color: rgb(181, 4, 4);
-  cursor: pointer;
-  display: inline-block;
-  padding: 10px;
-  text-align: center;
-  transition: all 250ms;
-  border: 0;
-  touch-action: manipulation;
-  box-shadow:rgba(187, 84, 44, 0.37) 0 1px 1px,rgba(187, 84, 44, 0.37) 0 1px 2px,rgba(187, 84, 44, 0.37) 0 2px 4px,rgba(187, 84, 44, 0.37) 0 2px 8px,rgba(187, 84, 44, 0.37) 0 4px 16px;
-}
 
-.game button:hover{
-  color: red;
-  box-shadow: red 0 -25px 18px -14px inset,rgba(187, 84, 44, 0.37) 0 1px 2px,rgba(187, 84, 44, 0.37) 0 2px 4px,rgba(187, 84, 44, 0.37) 0 4px 8px,rgba(187, 84, 44, 0.37) 0 8px 16px,rgba(187, 84, 44, 0.37) 0 16px 32px;
-  transform: scale(1.15) rotate(-3deg);
-} */
 .dice {
   float: left;
   position: relative;
   left: 10vw;
+  top: -10vh;
+  img{
+    width: 3em;
+    margin-bottom: 10px;
+    border: 2px solid black;
+    border-radius: 25%;
+  }
+  img:hover{
+    border: 2px solid blue;
+    transform: scale(1.15);
+    cursor: pointer;
+  }  
+  .active-dice{
+    margin-bottom: 10px;
+    border: 2px solid green;
+  }
+  .active-dice:hover{
+    border: 2px solid greenyellow;
+    cursor: pointer;
+  }
 }
-.dice img{
-  width: 3em;
-  margin-bottom: 10px;
-  border: 2px solid black;
-}
-.dice img:hover{
-  border: 2px solid blue;
-  transform: scale(1.15);
-  cursor: pointer;
-}
-.dice .active img{
-  width: 3em;
-  margin-bottom: 10px;
-  border: 2px solid blue;
-}
+
 .character-info-div{
   float: right;
 }
@@ -197,3 +185,46 @@ button{
   box-shadow: red 0 -25px 18px -14px inset,rgba(187, 84, 44, 0.37) 0 1px 2px,rgba(187, 84, 44, 0.37) 0 2px 4px,rgba(187, 84, 44, 0.37) 0 4px 8px,rgba(187, 84, 44, 0.37) 0 8px 16px,rgba(187, 84, 44, 0.37) 0 16px 32px;
   transform: scale(1.15) rotate(-3deg);
 }
+.member{
+  float: right;
+  position: relative;
+  right: 10vw;
+  top: -10vh;
+  .member-icon{
+    font-size: 2.5em;
+    border: 2px solid black;
+    color: darkblue;
+  }
+  .member-icon-div{
+    margin-bottom: 10px;
+    border-radius: 25%;
+    border: 2px solid black;
+  }
+  .member-icon-div:hover{
+    border: 2px solid blue;
+    transform: scale(1.15);
+    cursor: pointer;
+  }
+  .member-icon.active-member{
+    color: blue;
+    border: 2px solid black;
+    background: transparent;
+  }
+  .member-icon-div.active-member{
+    border: 2px solid black;
+    border-radius: 25%;
+    background: transparent;
+  }
+  .member-icon-div.active-member:hover{
+    border: 2px solid black;
+    cursor: pointer;
+    transform: scale(1.15);
+  }
+}
+.main-session-box{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
