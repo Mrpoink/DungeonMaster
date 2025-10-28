@@ -1,5 +1,5 @@
 'use client'
-import { useState } from "react";
+import { useState, useEffect, SetStateAction } from "react";
 import Background from "@/app/components/assets/mainBackground.png";
 import Dice from "@/app/components/dice/dice";
 import GameMaster from "@/app/components/gameMaster/gameMaster";
@@ -9,44 +9,19 @@ import Party from "@/app/components/party/party";
 
 export default function Game() {
   var turn_num = 0;
-  const [dice, setDice] = useState("d20");
-  const [rollResult, setRollResult] = useState<number | null>(null);
-  const [isActive, setIsActive] = useState(false);
+  type ConversationMessage = { sender: 'User' | 'DM' | string; text: string };
+  const [sides, setSides] = useState<number>(20);
+  const [activeDice, setActiveDice] = useState("d20");
   const [DMmessage, setDMmessage] = useState("Connecting...");
-  const [conversation, setConversation] = useState([]);
+  const [conversation, setConversation] = useState<ConversationMessage[]>([]);
 
-
-  const handleActive = ()=>{
-    setIsActive(!isActive);
+  const handleDiceSelect = (selectedSides: number) => {
+    setSides(selectedSides);
   }
-  const handleRoll = () => {
-    let sides = 20;
-    switch (dice) {
-      case "d20":
-        sides = 20;
-        break;
-      case "d12":
-        sides = 12;
-        break;
-      case "d10":
-        sides = 10;
-        break;
-      case "d8":
-        sides = 8;
-        break;
-      case "d6":
-        sides = 6;
-        break;
-      case "d4":
-        sides = 4;
-        break;
-      default:
-        sides = 20;
-    }
-    const roll = Math.floor(Math.random() * sides) + 1;
-    setRollResult(roll);
-    
+  const handleActiveSelect = (dice: string) => {
+    setActiveDice(dice);
   }
+  
 
   const sendUserin = async () => {
     const userMessage = userin;
@@ -73,7 +48,7 @@ export default function Game() {
   };
   const [userin, send_userin] = useState('');
 
-  const handleUserin = (event) => {
+  const handleUserin = (event: { target: { value: SetStateAction<string> } }) => {
     send_userin(event.target.value);
   };
 
@@ -97,53 +72,51 @@ export default function Game() {
 
   return (
     <div>
-        <header>
-            <h1>Dungeon Master:</h1>
-        </header>
-        <div className="dice">
-          <img id="d20" src={D20.src} alt="" onClick={() => setDice("d20")} className={isActive ? 'active-dice' : 'default-dice'}/>
-          <img id="d12" src={D12.src} alt="" onClick={() => setDice("d12")} className={isActive ? 'active-dice' : 'default-dice'}/>
-          <img id="d10" src={D10.src} alt="" onClick={() => setDice("d10")} className={isActive ? 'activeDice' : 'default-dice'}/>
-          <img id="d8" src={D8.src} alt="" onClick={() => setDice("d8")} className={isActive ? 'active-dice' : 'default-dice'}/>
-          <img id="d6" src={D6.src} alt="" onClick={() => setDice("d6")} className={isActive ? 'active-dice' : 'default-dice'}/>
-          <img id="d4" src={D4.src} alt="" onClick={() => setDice("d4")} className={isActive ? 'active-dice' : 'default-dice'}/>
-
+        <div className="game-master-box">
+          <GameMaster />
         </div>
-        <main className="game">
-          <img src={Background.src} alt="" />
-          <div className = "message-log">
+        <div className="main-session-box">
+          <div className="dice-box">
+            <Dice 
+              onDiceSelect={handleDiceSelect} 
+              activeDice={activeDice} 
+              onSetActiveDice={handleActiveSelect}
+            />
+          </div>
+          <main className="game">
+            <img src={Background.src} alt="" />
+            <div className = "message-log">
               {conversation.map((msg, index) => (
                 <p key={index} className={`message ${msg.sender.toLowerCase()}`}>
                   <strong>{msg.sender}:</strong> {msg.text}
                 </p>
               ))}
             </div>
-          <div className="player-actions">
-            <input type="text" value={userin} onChange={handleUserin} placeholder="What do you do?"
-            onKeyDown={(event) => {
-              if (event.key == 'Enter') {
-                event.preventDefault();
-                sendUserin();
-              }
-            }}/>
-            <button onClick={() => {sendUserin()}}>
-              Enter
-            </button>
-            <button onClick={handleRoll}>
-              ROLL
-            </button>
-            {rollResult !== null && (
-              <div className="roll-result">
-                Result: {rollResult}
-              </div>
-            )}
-          </div>
-          <div>
-            <blockquote>
-              {DMmessage}
-            </blockquote>
-          </div>
-        </main>
+            <div className="player-actions">
+              <input type="text" value={userin} 
+                onChange={handleUserin} placeholder="What do you do?"
+                onKeyDown={(event) => {
+                  if (event.key == 'Enter') {
+                    event.preventDefault();
+                    sendUserin();
+                  }
+                }}
+              />
+              <button onClick={() => {sendUserin()}}>
+                Enter
+              </button>
+              <Roll sides={sides} />
+            </div>
+            <div className="party-box">
+              <Party />
+            </div>
+            <div>
+              <blockquote>
+                {DMmessage}
+              </blockquote>
+            </div>
+          </main>
+        </div>
     </div>
   )
 }
