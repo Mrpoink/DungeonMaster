@@ -1,6 +1,6 @@
 'use client'
 
-export default function GameMaster(){
+export default function GameMasterHeader(){
     return (
         <div>
             <header>
