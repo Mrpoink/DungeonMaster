@@ -249,6 +249,29 @@ button{
   background-position: center;
   width: 100vw;
   height: 100vh;
+  input[type="file"] {
+    padding: 1em;
+    border-radius: 25%;
+    background-color: #fff;
+    color: #000;
+    transition: border-color .25s ease-in-out;
+    margin: 1em;
+    &::file-selector-button{
+      padding: 1em;
+      border-radius: 25%;
+      background-color: darkgreen;
+      color: hsl(210 40% 90%);
+      transition: all .25s ease-in-out;
+      cursor: pointer;
+      margin-right: 1em;
+    }
+    &:hover {
+      border-color: #888;
+      &::file-selector-button{
+        background-color: green;
+      }
+    }
+  }
   .character-info{
     .sub-info{
       display: flex;
