@@ -310,14 +310,14 @@ button{
 }
 .message-log {
   transform : translateX(-50%);
-  top : 20px;
-  left: 35%;
+  top : 10%;
+  left: 50%;
   position : absolute;
-  height : 450px;
-  width : 60%;
+  height : 50vh;
+  width : 60vw;
   overflow-y:auto;
   border:1px solid #ccc;
-  padding: 15px;
+  padding: 2em;
   background-color : rgba(0, 0, 0, 0.75);
   color: #fff;
   margin-bottom: 20px;

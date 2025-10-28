@@ -2,7 +2,7 @@
 import { useState, useEffect, SetStateAction } from "react";
 import Background from "@/app/components/assets/mainBackground.png";
 import Dice from "@/app/components/dice/dice";
-import GameMaster from "@/app/components/gameMaster/gameMaster";
+import GameMasterHeader from "@/app/components/gameMasterHeader/gameMasterHeader";
 import { Roll } from "@/app/components/dice/dice";
 import Party from "@/app/components/party/party";
 
@@ -73,7 +73,7 @@ export default function Game() {
   return (
     <div>
         <div className="game-master-box">
-          <GameMaster />
+          <GameMasterHeader />
         </div>
         <div className="main-session-box">
           <div className="dice-box">
@@ -102,7 +102,7 @@ export default function Game() {
                   }
                 }}
               />
-              <button onClick={() => {sendUserin()}}>
+              <button className="submit-action" onClick={() => {sendUserin()}}>
                 Enter
               </button>
               <Roll sides={sides} />
