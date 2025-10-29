@@ -6,12 +6,16 @@ node_modules
 # Keep environment variables out of version control
 .env
 <<<<<<< HEAD
+<<<<<<< HEAD
 FrontEnd
 /generated/prisma
 /DungeonMaster/lib
 >>>>>>> Socket.io
 =======
 
+=======
+FrontEnd
+>>>>>>> 7d8205b (Updated gitignore so we can inititate pull request)
 /generated/prisma
 <<<<<<< HEAD
 >>>>>>> 3807016 (schema)
