@@ -109,7 +109,7 @@ async def model_output_check(userin : str, model, tokenizer):
     with torch.no_grad():
         outputs = model.generate(
             **inputs, 
-            max_new_tokens = 32,
+            max_new_tokens = 256,
             num_beams=2,
             num_return_sequences=1,
             return_dict_in_generate=True,
@@ -224,13 +224,11 @@ class DungeonMaster:
 
         prompt = f"{scene} [/ACTION]: {userin}"
 
-        
-
         final_input = await final_prompt(prompt, instance.vb, instance.seed, instance.turn_num)
 
         final_input = f"{final_input} |end|\n|assistant|: [/GENERATED CHECK]:"
 
-        print(final_input)
+        print("final input: ", final_input, "\n--------------\n")
 
         modelOut = await model_output_check(final_input, instance.model, instance.tokenizer)
 
@@ -259,7 +257,7 @@ class DungeonMaster:
 
         final_input = f"{final_input}  |end|\n|assistant|: [/GENERATED OUTCOME]:"
 
-        print("Final input: ", final_input)
+        print("Final input: ", final_input, "\n------------\n")
 
         modelOut = await model_output(final_input, instance.model, instance.tokenizer)
 
