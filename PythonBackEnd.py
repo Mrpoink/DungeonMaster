@@ -89,8 +89,8 @@ async def model_output(userin : str, model, tokenizer):
             # top_k = 40,
             # pad_token_id=tokenizer.eos_token_id,
             # eos_token_id=tokenizer.eos_token_id,
-            repetition_penalty = 5.0,
-            temperature = 0.85
+            repetition_penalty = 3.3
+            #temperature = 0.85
             )
     decoded_ouput = tokenizer.decode(outputs[0][0], skip_special_tokens = True)
     print(decoded_ouput)
@@ -119,7 +119,7 @@ async def model_output_check(userin : str, model, tokenizer):
             # top_k = 40,
             # pad_token_id=tokenizer.eos_token_id,
             # eos_token_id=tokenizer.eos_token_id,
-            repetition_penalty = 5.0
+            repetition_penalty = 3.3
             # temperature = 0.85
             )
     decoded_ouput = tokenizer.decode(outputs[0][0], skip_special_tokens = True)
