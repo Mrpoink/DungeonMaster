@@ -1,0 +1,267 @@
+generator client {
+  provider        = "prisma-client-py"
+  output          = "./generated/prisma"
+  previewFeatures = ["postgresqlExtensions"]
+}
+
+datasource db {
+  provider   = "postgresql"
+  url        = env("DATABASE_URL1")
+  extensions = [vector(schema: "public")]
+}
+
+model CHARACTERVECTOR {
+  id        Int                    @id @default(autoincrement())
+  text      String
+  embedding Unsupported("vector")?
+}
+
+model Classes {
+  id          Int     @id @default(autoincrement())
+  reg_class   String
+  subclass    String
+  source      String?
+  notes       String?
+  features    String?
+  level       String?
+  description String?
+}
+
+model GeneralEquipment {
+  id           Int     @id @default(autoincrement())
+  name         String  @unique
+  cost         String
+  Weight__lbs_ String? @map("Weight (lbs)")
+}
+
+model ITEMSVECTOR {
+  id        Int                    @id @default(autoincrement())
+  text      String
+  embedding Unsupported("vector")?
+}
+
+model MONSTERVECTOR {
+  id        Int                    @id @default(autoincrement())
+  text      String
+  embedding Unsupported("vector")?
+}
+
+model MagicItem {
+  id                          Int     @id @default(autoincrement())
+  name                        String
+  rarity                      String?
+  attunement                  String?
+  Cost__gp_                   Int?    @map("Cost (gp)")
+  note                        String?
+  Armor_Cost                  Int?    @map("Armor Cost")
+  Rare_Material               String? @map("Rare Material")
+  AC_Bonus                    Int?    @map("AC Bonus")
+  Save_Bonus                  Int?    @map("Save Bonus")
+  Set_Score__Modifier_        Int?    @map("Set Score (Modifier)")
+  Bonus_To_Score__Y_N_        String? @map("+2 Bonus To Score (Y/N)")
+  Weapon_Bonus                Int?    @map("Weapon Bonus")
+  Spell_Level                 Int?    @map("Spell Level")
+  Unlimited_Charges__Y_N_     String? @map("Unlimited Charges (Y/N)")
+  Charges_Day__Unlimit___7_   Int?    @map("Charges/Day (Unlimit = 7)")
+  Charges_Item__Destroyed_    Int?    @map("Charges/Item (Destroyed)")
+  Spells_Share_Charges        Int?    @map("Spells Share Charges")
+  Condition__1Min__Save_      String? @map("Condition (1Min, Save)")
+  Consumable_Damage__Avg_     Int?    @map("Consumable Damage (Avg)")
+  Consumable_Save___Y_N_      String? @map("Consumable Save? (Y/N)")
+  Semi_Permanent_Damage__Avg_ Int?    @map("Semi-Permanent Damage (Avg)")
+  Semi_Perm_Save___Y_N_       String? @map("Semi-Perm Save? (Y/N)")
+  Duration___Minutes_         Int?    @map("Duration? (Minutes)")
+  Permanent_Damage__Avg_      Int?    @map("Permanent Damage (Avg)")
+  Perm_Save___Y_N_            String? @map("Perm Save? (Y/N)")
+  Specific_Situations__Y_N_   String? @map("Specific Situations (Y/N)")
+  Restore_HP__Avg_            Int?    @map("Restore HP (Avg)")
+  MatCost                     Int?
+  ACCost                      Int?
+  SaveCost                    Int?
+  SetScore_Cost               Int?    @map("SetScore Cost")
+  BonusScore_Cost             Int?    @map("BonusScore Cost")
+  WeaponCost                  Int?
+  Consum_Spell_Cost           Int?    @map("Consum Spell Cost")
+  PermCharges_Cost            Int?    @map("PermCharges Cost")
+  Charges___Destroyed         Int?    @map("Charges - Destroyed")
+  SpellShare_ChargesCost      Int?    @map("SpellShare ChargesCost")
+  ConditionCost               Int?
+  ConsDMG_Cost                Int?    @map("ConsDMG Cost")
+  Sm_PrDMG_Cost               Int?    @map("Sm-PrDMG Cost")
+  PerDMG_Cost                 Int?    @map("PerDMG Cost")
+  AVGHP_Cost                  Int?    @map("AVGHP Cost")
+  MiscCost                    Int?
+  Perm_Charges_Cost           Int?    @map("2 Perm Charges Cost")
+}
+
+model Monster {
+  id                         String  @id
+  name                       String
+  size                       String?
+  type                       String?
+  alignment                  String?
+  habitat                    String?
+  mainHabitat                String?
+  otherHabitat               String?
+  treasure                   String?
+  ac                         String?
+  hp                         String?
+  initiative                 String?
+  walk                       String?
+  burrow                     String?
+  climb                      String?
+  fly                        String?
+  hover                      String?
+  swim                       String?
+  strMod                     String?
+  intMod                     String?
+  dexMod                     String?
+  wisMod                     String?
+  conMod                     String?
+  chaMod                     String?
+  strSave                    String?
+  intSave                    String?
+  dexSave                    String?
+  wisSave                    String?
+  conSave                    String?
+  chaSave                    String?
+  proficient                 String?
+  expertise                  String?
+  vulnerabilities            String?
+  slashing                   String?
+  immunitiesConditions       String?
+  immunitiesDamage           String?
+  blindsight                 String?
+  darkvision                 String?
+  truesight                  String?
+  tremorsense                String?
+  passivePerception          String?
+  languages                  String?
+  cr                         String?
+  XP_                        String? @map("XP.")
+  pb                         String?
+  traits                     String?
+  legendaryResistanceCount   String?
+  of_Atk                     String? @map("# of Atk")
+  atk1Type                   String?
+  atk1Mod                    String?
+  atk1Range                  String?
+  atk1RangeShort             String?
+  atk1Dam                    String?
+  atk1DamageType             String?
+  atk2Type                   String?
+  atk2Mod                    String?
+  atk2Range                  String?
+  atk2RangeShort             String?
+  atk2Dam                    String?
+  atk2DamageType             String?
+  atk3Type                   String?
+  atk3Mod                    String?
+  atk3Range                  String?
+  atk3RangeShort             String?
+  atk3Dam                    String?
+  atk3DamageType             String?
+  atk4Type                   String?
+  atk4Mod                    String?
+  atk4Range                  String?
+  atk4RangeShort             String?
+  atk4Dam                    String?
+  atk4DamageType             String?
+  saveDC                     String?
+  savingThrow                String?
+  actionNotes                String?
+  ability                    String?
+  spellSaveDC                String?
+  spellSavingThrows          String?
+  spellAttack                String?
+  At_Will                    String? @map("At Will")
+  Day3                       String? @map("3/Day")
+  Day2                       String? @map("2/Day")
+  Day1                       String? @map("1/Day")
+  bonusAction                String?
+  reaction                   String?
+  amount                     String?
+  legendaryActionSaveDC      String?
+  legendaryActionSavingThrow String?
+  Legendary_Actions_         String? @map("Legendary Actions.")
+  lair                       String?
+  xp                         String?
+  Legendary_Resistance       String? @map("Legendary Resistance")
+  Legendary_Actions          String? @map("Legendary Actions")
+  lairSaveDC                 String?
+  lairSavingThrows           String?
+  other                      String?
+  align                      String?
+  speeds                     String?
+  STR                        String?
+  DEX                        String?
+  CON                        String?
+  INT                        String?
+  WIS                        String?
+  CHA                        String?
+  Sav__Throws                String? @map("Sav. Throws")
+  skills                     String?
+  WRI                        String?
+  senses                     String?
+  additional                 String?
+  font                       String?
+  additionalInfo             String?
+  author                     String?
+}
+
+model Race {
+  id      Int     @id @default(autoincrement())
+  race    String  @unique
+  str     String?
+  dex     String?
+  con     String?
+  int     String?
+  wis     String?
+  cha     String?
+  special String?
+  source  String
+  notes   String?
+}
+
+model SESSION {
+  id        Int                    @id @default(autoincrement())
+  sessionID Int
+  text      String
+  embedding Unsupported("vector")?
+}
+
+model SPELLSVECTOR {
+  id        Int                    @id @default(autoincrement())
+  text      String
+  embedding Unsupported("vector")?
+}
+
+model Spell {
+  id            Int     @id @default(autoincrement())
+  name          String
+  level         String
+  school        String
+  castingTime   String
+  duration      String
+  range         String
+  area          String?
+  attack        String?
+  save          String?
+  damageEffect  String
+  ritual        String?
+  concentration String?
+  verbal        String?
+  somatic       String?
+  material      String?
+  material_     String? @map("material*")
+  source        String
+  details       String
+  link          String
+}
+
+model USERDATA {
+  id       Int    @id @default(autoincrement())
+  name     String
+  username String
+  password String
+}
