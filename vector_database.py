@@ -102,9 +102,36 @@ class use_vector_db:
 
         await self.db.disconnect()
 
+    async def add_user_data(self, name, username, password):
 
+        await self.db.execute_raw(
+            f'INSERT INTO \"USERDATA\" (name, username, password) VALUES ($1, $2, $3)',
+            name,
+            username,
+            password
+        )
 
+        print("Successfully added user data")
 
+    async def check_user_data(self, username, password):
+
+        result = await self.db.query_raw(
+            f"SELECT password FROM \"USERDATA\" WHERE username = '{username}'"
+        )
+
+        print("From vector_db: ", result)
+
+        try:
+
+            if result[0]['password'] == password:
+                return True
+            else:
+                return False, "Incorrect password"
+        except IndexError:
+
+            return False, "Incorrect username"
+
+    
 
         
 class get_from_db:
@@ -242,5 +269,17 @@ class get_from_db:
             )
         
         print("Session Successfully updated!")
+
+    async def get_session_id(self):
+
+        #SELECT MAX(column_name) FROM table_name;
+
+        session_number = await self.db.query_raw(
+            'select max("sessionID") from "SESSION"'
+        )
+
+        print("Seed from db: ", session_number)
+
+        return session_number[0]['max']
 
 
