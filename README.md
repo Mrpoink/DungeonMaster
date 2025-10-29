@@ -8,11 +8,7 @@ The LLM Dungeon Master addresses these gaps by using a fine-tuned large language
 ### Credits
 Dr. Adithya Kulkarni, Brandon Dean, Elijah Webb, Tierra Williams
 
-<<<<<<< HEAD
 **How to run the application:**
-=======
-##How to run the application:##
->>>>>>> 3df6769 (Add application run instructions to README)
 
 * You can either clone into this branch or the main one, whichever one you'd like
 * Run "pip install -r requirements.txt"
@@ -23,3 +19,4 @@ Dr. Adithya Kulkarni, Brandon Dean, Elijah Webb, Tierra Williams
 - Run "npm run dev"
 - Run the pythoncompatibilitylayerback.py file (I should probably change this file name)
 - Interact with the webpage
+
