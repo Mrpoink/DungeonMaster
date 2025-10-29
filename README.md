@@ -1,4 +1,4 @@
-##How to run the application:##
+**How to run the application:**
 
 * You can either clone into this branch or the main one, whichever one you'd like
 * Run "pip install -r requirements.txt"
