@@ -1,0 +1,1329 @@
+input:  [ACTION]: player_input,output: [CHECK]: check_required
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I attempt to lift the coin purse from the merchant's belt.,output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I attempt to lift the coin purse from the merchant's belt.,output: [CHECK]: Sleight of Hand
+"input:  [ACTION]: I ask the bartender for rumors about the lost dagger, 'Heartspike'.",output: [CHECK]: Persuasion
+"input:  [ACTION]: I ask the bartender for rumors about the lost dagger, 'Heartspike'.",output: [CHECK]: Persuasion
+input:  [ACTION]: I check the door for traps.,output: [CHECK]: Investigation
+input:  [ACTION]: I check the door for traps.,output: [CHECK]: Investigation
+input:  [ACTION]: I try to jump across the chasm.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I try to jump across the chasm.,output: [CHECK]: Acrobatics
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I attempt to climb the icy cliff.,output: [CHECK]: Athletics
+input:  [ACTION]: I attempt to climb the icy cliff.,output: [CHECK]: Athletics
+input:  [ACTION]: I let out a fearsome roar to try and scare it away.,output: [CHECK]: Intimidation
+input:  [ACTION]: I let out a fearsome roar to try and scare it away.,output: [CHECK]: Intimidation
+input:  [ACTION]: I offer the traveler my spare fur cloak.,output: [CHECK]: None
+input:  [ACTION]: I listen carefully to determine the source of the sound.,output: [CHECK]: Perception
+input:  [ACTION]: I listen carefully to determine the source of the sound.,output: [CHECK]: Perception
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I try to decipher the arcane lock.,output: [CHECK]: Arcana
+input:  [ACTION]: I try to decipher the arcane lock.,output: [CHECK]: Arcana
+"input:  [ACTION]: I try to reason with the spirit, explaining I'm here to preserve its knowledge.",output: [CHECK]: Persuasion
+"input:  [ACTION]: I try to reason with the spirit, explaining I'm here to preserve its knowledge.",output: [CHECK]: Persuasion
+input:  [ACTION]: I examine the wall for secret passages.,output: [CHECK]: Investigation
+input:  [ACTION]: I examine the wall for secret passages.,output: [CHECK]: Investigation
+input:  [ACTION]: I attempt to memorize the spell written on the scroll.,output: [CHECK]: Intelligence
+input:  [ACTION]: I attempt to memorize the spell written on the scroll.,output: [CHECK]: Intelligence
+input:  [ACTION]: I try to win over the crowd with a lively song.,output: [CHECK]: Performance
+input:  [ACTION]: I try to win over the crowd with a lively song.,output: [CHECK]: Performance
+input:  [ACTION]: I try to talk my way out of the fine with a charming smile and a silver tongue.,output: [CHECK]: Deception
+input:  [ACTION]: I try to talk my way out of the fine with a charming smile and a silver tongue.,output: [CHECK]: Deception
+"input:  [ACTION]: I flatter the Duke, complimenting his impeccable fashion sense.",output: [CHECK]: Persuasion
+"input:  [ACTION]: I flatter the Duke, complimenting his impeccable fashion sense.",output: [CHECK]: Persuasion
+input:  [ACTION]: I listen in on the conversations around me.,output: [CHECK]: Perception
+input:  [ACTION]: I listen in on the conversations around me.,output: [CHECK]: Perception
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I use my divine magic to try and heal the child.,output: [CHECK]: Medicine
+input:  [ACTION]: I use my divine magic to try and heal the child.,output: [CHECK]: Medicine
+input:  [ACTION]: I try to identify the symbol.,output: [CHECK]: Religion
+input:  [ACTION]: I try to identify the symbol.,output: [CHECK]: Religion
+"input:  [ACTION]: I try to reassure him, promising the Sun God's protection.",output: [CHECK]: Persuasion
+"input:  [ACTION]: I try to reassure him, promising the Sun God's protection.",output: [CHECK]: Persuasion
+input:  [ACTION]: I can feel the evil here. I want to know where it's strongest.,output: [CHECK]: Divine Sense
+input:  [ACTION]: I can feel the evil here. I want to know where it's strongest.,output: [CHECK]: Divine Sense
+input:  [ACTION]: I attempt to sneak past the guard.,output: [CHECK]: Stealth
+input:  [ACTION]: I attempt to sneak past the guard.,output: [CHECK]: Stealth
+input:  [ACTION]: I use my thieves' tools to pick the lock.,output: [CHECK]: Thieves' Tools
+input:  [ACTION]: I use my thieves' tools to pick the lock.,output: [CHECK]: Thieves' Tools
+input:  [ACTION]: I ignore his taunts and ready my axe.,output: [CHECK]: Wisdom
+input:  [ACTION]: I ignore his taunts and ready my axe.,output: [CHECK]: Wisdom
+input:  [ACTION]: I try to identify what kind of creature made these tracks.,output: [CHECK]: Survival
+input:  [ACTION]: I try to identify what kind of creature made these tracks.,output: [CHECK]: Survival
+input:  [ACTION]: I try to push the boulder out of the way.,output: [CHECK]: Athletics
+input:  [ACTION]: I try to push the boulder out of the way.,output: [CHECK]: Athletics
+input:  [ACTION]: I try to remember what my books said about the native creatures here.,output: [CHECK]: Nature
+input:  [ACTION]: I try to remember what my books said about the native creatures here.,output: [CHECK]: Nature
+input:  [ACTION]: I try to discern its function.,output: [CHECK]: Arcana
+input:  [ACTION]: I try to discern its function.,output: [CHECK]: Arcana
+input:  [ACTION]: I think hard about the riddle's meaning.,output: [CHECK]: Intelligence
+input:  [ACTION]: I think hard about the riddle's meaning.,output: [CHECK]: Intelligence
+input:  [ACTION]: I carefully make my way across the bridge.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I carefully make my way across the bridge.,output: [CHECK]: Acrobatics
+"input:  [ACTION]: I start a loud, obnoxious, and very public argument with a street vendor.",output: [CHECK]: Performance
+"input:  [ACTION]: I start a loud, obnoxious, and very public argument with a street vendor.",output: [CHECK]: Performance
+input:  [ACTION]: I try to bluff my way through the conversation.,output: [CHECK]: Deception
+input:  [ACTION]: I try to bluff my way through the conversation.,output: [CHECK]: Deception
+input:  [ACTION]: I use my healer's kit to bandage their wounds.,output: [CHECK]: Medicine
+input:  [ACTION]: I use my healer's kit to bandage their wounds.,output: [CHECK]: Medicine
+input:  [ACTION]: I attempt to calm the animal using gentle words and gestures.,output: [CHECK]: Animal Handling
+input:  [ACTION]: I attempt to calm the animal using gentle words and gestures.,output: [CHECK]: Animal Handling
+input:  [ACTION]: I look for signs of which path is least affected by the blight.,output: [CHECK]: Survival
+input:  [ACTION]: I look for signs of which path is least affected by the blight.,output: [CHECK]: Survival
+input:  [ACTION]: I try to recall the symbol from my time on the streets.,output: [CHECK]: History
+input:  [ACTION]: I try to recall the symbol from my time on the streets.,output: [CHECK]: History
+input:  [ACTION]: I use my raw strength to try and beat him.,output: [CHECK]: Athletics
+input:  [ACTION]: I use my raw strength to try and beat him.,output: [CHECK]: Athletics
+input:  [ACTION]: I try to withstand the effects of the poison through sheer resilience.,output: [CHECK]: Constitution
+input:  [ACTION]: I try to withstand the effects of the poison through sheer resilience.,output: [CHECK]: Constitution
+input:  [ACTION]: I quickly put on the disguise.,output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I quickly put on the disguise.,output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I ask my deity to show me the way forward.,output: [CHECK]: Religion
+input:  [ACTION]: I ask my deity to show me the way forward.,output: [CHECK]: Religion
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I look for a safe place to cross the river.,output: [CHECK]: Survival
+input:  [ACTION]: I look for a safe place to cross the river.,output: [CHECK]: Survival
+input:  [ACTION]: I inspect the tracks to identify the creature.,output: [CHECK]: Nature
+input:  [ACTION]: I inspect the tracks to identify the creature.,output: [CHECK]: Nature
+input:  [ACTION]: I ready my bow and try to move silently towards the sound.,output: [CHECK]: Stealth
+input:  [ACTION]: I ready my bow and try to move silently towards the sound.,output: [CHECK]: Stealth
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I ask my otherworldly patron what this spirit is.,output: [CHECK]: Pact Magic
+input:  [ACTION]: I ask my otherworldly patron what this spirit is.,output: [CHECK]: Pact Magic
+input:  [ACTION]: I use my pact-given knowledge to translate the text.,output: [CHECK]: History
+input:  [ACTION]: I use my pact-given knowledge to translate the text.,output: [CHECK]: History
+input:  [ACTION]: I try to scare him off by showing him a glimpse of my patron's power.,output: [CHECK]: Intimidation
+input:  [ACTION]: I try to scare him off by showing him a glimpse of my patron's power.,output: [CHECK]: Intimidation
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I try to determine if the Baron is being deceptive.,output: [CHECK]: Insight
+input:  [ACTION]: I try to determine if the Baron is being deceptive.,output: [CHECK]: Insight
+input:  [ACTION]: I stand and publicly admonish the jester for his lack of honor.,output: [CHECK]: Persuasion
+input:  [ACTION]: I stand and publicly admonish the jester for his lack of honor.,output: [CHECK]: Persuasion
+input:  [ACTION]: I try to subtly knock the goblet from the king's hand before he drinks.,output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I try to subtly knock the goblet from the king's hand before he drinks.,output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I check the water for any hidden dangers before entering.,output: [CHECK]: Perception
+input:  [ACTION]: I check the water for any hidden dangers before entering.,output: [CHECK]: Perception
+input:  [ACTION]: I throw the stone with all my might.,output: [CHECK]: Athletics
+input:  [ACTION]: I throw the stone with all my might.,output: [CHECK]: Athletics
+input:  [ACTION]: I try to identify the potion and its intended effects.,output: [CHECK]: Arcana
+input:  [ACTION]: I try to identify the potion and its intended effects.,output: [CHECK]: Arcana
+"input:  [ACTION]: I compose a short, flattering song about the guard's heroic vigil.",output: [CHECK]: Performance
+"input:  [ACTION]: I compose a short, flattering song about the guard's heroic vigil.",output: [CHECK]: Performance
+input:  [ACTION]: I brace myself to keep my footing.,output: [CHECK]: Dexterity
+input:  [ACTION]: I brace myself to keep my footing.,output: [CHECK]: Dexterity
+input:  [ACTION]: I try to calm the wolf and tend to its wounds.,output: [CHECK]: Animal Handling
+input:  [ACTION]: I try to calm the wolf and tend to its wounds.,output: [CHECK]: Animal Handling
+input:  [ACTION]: I try to sense if the imp is trying to magically swindle me.,output: [CHECK]: Insight
+input:  [ACTION]: I try to sense if the imp is trying to magically swindle me.,output: [CHECK]: Insight
+"input:  [ACTION]: I resist their interrogation, holding true to my oath.",output: [CHECK]: Constitution
+"input:  [ACTION]: I resist their interrogation, holding true to my oath.",output: [CHECK]: Constitution
+input:  [ACTION]: I continue to move carefully along the ledge.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I continue to move carefully along the ledge.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I attempt to hold the portcullis open long enough for my friends to escape.,output: [CHECK]: Athletics
+input:  [ACTION]: I attempt to hold the portcullis open long enough for my friends to escape.,output: [CHECK]: Athletics
+input:  [ACTION]: I study the tapestry to understand the historical context of the battle.,output: [CHECK]: History
+input:  [ACTION]: I study the tapestry to understand the historical context of the battle.,output: [CHECK]: History
+input:  [ACTION]: I try to recall the ancient song.,output: [CHECK]: Performance
+input:  [ACTION]: I try to recall the ancient song.,output: [CHECK]: Performance
+input:  [ACTION]: I step between them and call for peace in the name of the Sun God.,output: [CHECK]: Persuasion
+input:  [ACTION]: I step between them and call for peace in a God's name.,output: [CHECK]: Persuasion
+input:  [ACTION]: I watch their patrol patterns to determine the best time to sneak in.,output: [CHECK]: Investigation
+input:  [ACTION]: I watch their patrol patterns to determine the best time to sneak in.,output: [CHECK]: Investigation
+input:  [ACTION]: I try to convince the magistrate that I am innocent of any crime.,output: [CHECK]: Deception
+input:  [ACTION]: I try to convince the magistrate that I am innocent of any crime.,output: [CHECK]: Deception
+input:  [ACTION]: I urge my horse to jump over the log.,output: [CHECK]: Animal Handling
+input:  [ACTION]: I urge my horse to jump over the log.,output: [CHECK]: Animal Handling
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+"input:  [ACTION]: I attempt to disarm him using swift, non-lethal strikes.",output: [CHECK]: Sleight of Hand
+"input:  [ACTION]: I attempt to disarm him using swift, non-lethal strikes.",output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I try to find a pressure point on the most aggressive brawler to incapacitate him peacefully.,output: [CHECK]: Medicine
+input:  [ACTION]: I try to find a pressure point on the most aggressive brawler to incapacitate him peacefully.,output: [CHECK]: Medicine
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I call upon the power of the forest to create a path of damp earth for them to escape.,output: [CHECK]: Nature
+input:  [ACTION]: I call upon the power of the forest to create a path of damp earth for them to escape.,output: [CHECK]: Nature
+input:  [ACTION]: I shapeshift into a great eagle to fly above the fire and find its source.,output: [CHECK]: Druidic Magic
+input:  [ACTION]: I shapeshift into a great eagle to fly above the fire and find its source.,output: [CHECK]: Druidic Magic
+input:  [ACTION]: I look for the trigger mechanism for the magical traps.,output: [CHECK]: Investigation
+input:  [ACTION]: I look for the trigger mechanism for the magical traps.,output: [CHECK]: Investigation
+input:  [ACTION]: I try to give my testimony as clearly as possible.,output: [CHECK]: Persuasion
+input:  [ACTION]: I try to give my testimony as clearly as possible.,output: [CHECK]: Persuasion
+input:  [ACTION]: I search my memory for any lore regarding obsidian golem weaknesses.,output: [CHECK]: History
+input:  [ACTION]: I search my memory for any lore regarding obsidian golem weaknesses.,output: [CHECK]: History
+input:  [ACTION]: I attempt to solve the riddle.,output: [CHECK]: Intelligence
+input:  [ACTION]: I attempt to solve the riddle.,output: [CHECK]: Intelligence
+input:  [ACTION]: I try to use my knowledge to diagnose the specific type of magical plague.,output: [CHECK]: Medicine
+input:  [ACTION]: I try to use my knowledge to diagnose the specific type of magical plague.,output: [CHECK]: Medicine
+input:  [ACTION]: I scan the horizon for any signs of an oasis or water source.,output: [CHECK]: Survival
+input:  [ACTION]: I scan the horizon for any signs of an oasis or water source.,output: [CHECK]: Survival
+input:  [ACTION]: I look for someone who seems out of place or shows signs of a dark pact.,output: [CHECK]: Insight
+input:  [ACTION]: I look for someone who seems out of place or shows signs of a dark pact.,output: [CHECK]: Insight
+input:  [ACTION]: I leap from one rooftop to the next in pursuit.,output: [CHECK]: Athletics
+input:  [ACTION]: I leap from one rooftop to the next in pursuit.,output: [CHECK]: Athletics
+input:  [ACTION]: I try to maintain my balance as I cross.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I try to maintain my balance as I cross.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I try to sneak past the sleeping bear.,output: [CHECK]: Stealth
+input:  [ACTION]: I try to sneak past the sleeping bear.,output: [CHECK]: Stealth
+input:  [ACTION]: I use my forgery kit to replicate the seal.,output: [CHECK]: Forgery Kit
+input:  [ACTION]: I use my forgery kit to replicate the seal.,output: [CHECK]: Forgery Kit
+input:  [ACTION]: I try to intimidate the chieftain into accepting our terms.,output: [CHECK]: Intimidation
+input:  [ACTION]: I try to intimidate the chieftain into accepting our terms.,output: [CHECK]: Intimidation
+input:  [ACTION]: I attempt to disarm the magical trap.,output: [CHECK]: Arcana
+input:  [ACTION]: I attempt to disarm the magical trap.,output: [CHECK]: Arcana
+input:  [ACTION]: I tell him a heroic and inspiring story about the potential discoveries.,output: [CHECK]: Performance
+input:  [ACTION]: I tell him a heroic and inspiring story about the potential discoveries.,output: [CHECK]: Performance
+input:  [ACTION]: I meditate and search my memory for the passage.,output: [CHECK]: Religion
+input:  [ACTION]: I meditate and search my memory for the passage.,output: [CHECK]: Religion
+input:  [ACTION]: I dive into the water to rescue the child.,output: [CHECK]: Athletics
+input:  [ACTION]: I dive into the water to rescue the child.,output: [CHECK]: Athletics
+input:  [ACTION]: I try to discern if there is any residual divine magic left in the statue.,output: [CHECK]: Religion
+input:  [ACTION]: I try to discern if there is any residual divine magic left in the statue.,output: [CHECK]: Religion
+"input:  [ACTION]: I speak in my own defense, appealing to the court's sense of justice.",output: [CHECK]: Persuasion
+"input:  [ACTION]: I speak in my own defense, appealing to the court's sense of justice.",output: [CHECK]: Persuasion
+input:  [ACTION]: I try to deflect the arrows with my open hands.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I try to deflect the arrows with my open hands.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I use my knowledge of nature to see if it's poisonous.,output: [CHECK]: Nature
+input:  [ACTION]: I use my knowledge of nature to see if it's poisonous.,output: [CHECK]: Nature
+input:  [ACTION]: I try to find shelter from the oppressive heat.,output: [CHECK]: Survival
+input:  [ACTION]: I try to find shelter from the oppressive heat.,output: [CHECK]: Survival
+input:  [ACTION]: I try to brace the mast with my raw strength.,output: [CHECK]: Athletics
+input:  [ACTION]: I try to brace the mast with my raw strength.,output: [CHECK]: Athletics
+input:  [ACTION]: I explain the principles of elemental magic to the court.,output: [CHECK]: Arcana
+input:  [ACTION]: I explain the principles of elemental magic to the court.,output: [CHECK]: Arcana
+"input:  [ACTION]: I try to flatter the dragon, complimenting the luster of its scales.",output: [CHECK]: Persuasion
+"input:  [ACTION]: I try to flatter the dragon, complimenting the luster of its scales.",output: [CHECK]: Persuasion
+input:  [ACTION]: I approach the creature cautiously and attempt to mend its wing with healing magic.,output: [CHECK]: Animal Handling
+input:  [ACTION]: I approach the creature cautiously and attempt to mend its wing with healing magic.,output: [CHECK]: Animal Handling
+input:  [ACTION]: I ask the old sailors at the docks if they've seen the creature.,output: [CHECK]: Investigation
+input:  [ACTION]: I ask the old sailors at the docks if they've seen the creature.,output: [CHECK]: Investigation
+input:  [ACTION]: I allow the whispers of my patron to guide my path.,output: [CHECK]: Pact Magic
+input:  [ACTION]: I allow the whispers of my patron to guide my path.,output: [CHECK]: Pact Magic
+"input:  [ACTION]: I watch the diplomat's interactions closely, looking for any sign of treachery.",output: [CHECK]: Insight
+"input:  [ACTION]: I watch the diplomat's interactions closely, looking for any sign of treachery.",output: [CHECK]: Insight
+input:  [ACTION]: I attempt to kick the door open.,output: [CHECK]: Athletics
+input:  [ACTION]: I attempt to kick the door open.,output: [CHECK]: Athletics
+input:  [ACTION]: I attempt to use my magic to encourage new life to grow.,output: [CHECK]: Nature
+input:  [ACTION]: I attempt to use my magic to encourage new life to grow.,output: [CHECK]: Nature
+input:  [ACTION]: I try to swim across the moat under the cover of darkness.,output: [CHECK]: Stealth
+input:  [ACTION]: I try to swim across the moat under the cover of darkness.,output: [CHECK]: Stealth
+input:  [ACTION]: I push through the illness with sheer toughness.,output: [CHECK]: Constitution
+input:  [ACTION]: I push through the illness with sheer toughness.,output: [CHECK]: Constitution
+input:  [ACTION]: I try to deduce the purpose of the mechanism.,output: [CHECK]: Investigation
+input:  [ACTION]: I try to deduce the purpose of the mechanism.,output: [CHECK]: Investigation
+input:  [ACTION]: I tell the children a silly story to make them laugh and forget their fears.,output: [CHECK]: Performance
+input:  [ACTION]: I tell the children a silly story to make them laugh and forget their fears.,output: [CHECK]: Performance
+"input:  [ACTION]: I look for subtle signs of their allegiance, like a hidden holy symbol or coded language.",output: [CHECK]: Insight
+"input:  [ACTION]: I look for subtle signs of their allegiance, like a hidden holy symbol or coded language.",output: [CHECK]: Insight
+input:  [ACTION]: I try to navigate the darkness using my other senses.,output: [CHECK]: Perception
+input:  [ACTION]: I try to navigate the darkness using my other senses.,output: [CHECK]: Perception
+input:  [ACTION]: I try to overwhelm my rival with a blast of pure eldritch power.,output: [CHECK]: Arcana
+input:  [ACTION]: I try to overwhelm my rival with a blast of pure eldritch power.,output: [CHECK]: Arcana
+input:  [ACTION]: I chop down a large tree to create a makeshift bridge.,output: [CHECK]: Athletics
+input:  [ACTION]: I chop down a large tree to create a makeshift bridge.,output: [CHECK]: Athletics
+input:  [ACTION]: I attempt to enter a state of calm and block out the distractions.,output: [CHECK]: Wisdom
+input:  [ACTION]: I attempt to enter a state of calm and block out the distractions.,output: [CHECK]: Wisdom
+input:  [ACTION]: I use my magic to find the nearest underground water source.,output: [CHECK]: Survival
+input:  [ACTION]: I use my magic to find the nearest underground water source.,output: [CHECK]: Survival
+input:  [ACTION]: I try to show them respect by observing their customs from a distance before approaching.,output: [CHECK]: Nature
+input:  [ACTION]: I try to show them respect by observing their customs from a distance before approaching.,output: [CHECK]: Nature
+input:  [ACTION]: I try to keep my balance as the ship rocks violently.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I try to keep my balance as the ship rocks violently.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I try to keep their spirits up with a tale of a past victory.,output: [CHECK]: Performance
+input:  [ACTION]: I try to keep their spirits up with a tale of a past victory.,output: [CHECK]: Performance
+input:  [ACTION]: I try to determine the nature of the altar's magic.,output: [CHECK]: Religion
+input:  [ACTION]: I try to determine the nature of the altar's magic.,output: [CHECK]: Religion
+"input:  [ACTION]: I try to take it down with a single, clean shot from my bow.",output: [CHECK]: Stealth
+"input:  [ACTION]: I try to take it down with a single, clean shot from my bow.",output: [CHECK]: Stealth
+input:  [ACTION]: I try to tell from the noble's expression which goblet is safe.,output: [CHECK]: Insight
+input:  [ACTION]: I try to tell from the noble's expression which goblet is safe.,output: [CHECK]: Insight
+input:  [ACTION]: I offer to pay for my passage by working as a deckhand and entertainer.,output: [CHECK]: Persuasion
+input:  [ACTION]: I offer to pay for my passage by working as a deckhand and entertainer.,output: [CHECK]: Persuasion
+input:  [ACTION]: I translate the hieroglyphs to learn the tomb owner's story.,output: [CHECK]: History
+input:  [ACTION]: I translate the hieroglyphs to learn the tomb owner's story.,output: [CHECK]: History
+input:  [ACTION]: I use my strength to pull myself up the thick branches.,output: [CHECK]: Athletics
+input:  [ACTION]: I use my strength to pull myself up the thick branches.,output: [CHECK]: Athletics
+input:  [ACTION]: I attempt to slip the note into my contact's pocket as I 'accidentally' bump into them.,output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I attempt to slip the note into my contact's pocket as I 'accidentally' bump into them.,output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I try to identify the type of magic used.,output: [CHECK]: Arcana
+input:  [ACTION]: I try to identify the type of magic used.,output: [CHECK]: Arcana
+input:  [ACTION]: I clear my mind and focus only on the rope and my goal.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I clear my mind and focus only on the rope and my goal.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I stand my ground and attempt to stop its charge with my shield.,output: [CHECK]: Athletics
+input:  [ACTION]: I stand my ground and attempt to stop its charge with my shield.,output: [CHECK]: Athletics
+input:  [ACTION]: I search the occult section for the specific tome.,output: [CHECK]: Investigation
+input:  [ACTION]: I search the occult section for the specific tome.,output: [CHECK]: Investigation
+input:  [ACTION]: I use my knowledge of herbs to create an antidote.,output: [CHECK]: Medicine
+input:  [ACTION]: I use my knowledge of herbs to create an antidote.,output: [CHECK]: Medicine
+input:  [ACTION]: I present the evidence I've gathered in a logical manner.,output: [CHECK]: Persuasion
+input:  [ACTION]: I present the evidence I've gathered in a logical manner.,output: [CHECK]: Persuasion
+input:  [ACTION]: I try to bribe a guard to deliver the message for me.,output: [CHECK]: Deception
+input:  [ACTION]: I try to bribe a guard to deliver the message for me.,output: [CHECK]: Deception
+input:  [ACTION]: I try to overload the barrier by channeling too much energy into it.,output: [CHECK]: Arcana
+input:  [ACTION]: I try to overload the barrier by channeling too much energy into it.,output: [CHECK]: Arcana
+input:  [ACTION]: I search for signs of their passage.,output: [CHECK]: Survival
+input:  [ACTION]: I search for signs of their passage.,output: [CHECK]: Survival
+input:  [ACTION]: I hold my breath and try to remain perfectly still in the shadows.,output: [CHECK]: Stealth
+input:  [ACTION]: I hold my breath and try to remain perfectly still in the shadows.,output: [CHECK]: Stealth
+input:  [ACTION]: I try to identify the plant and its properties.,output: [CHECK]: Nature
+input:  [ACTION]: I try to identify the plant and its properties.,output: [CHECK]: Nature
+input:  [ACTION]: I try to react faster than my opponent.,output: [CHECK]: Dexterity
+input:  [ACTION]: I try to react faster than my opponent.,output: [CHECK]: Dexterity
+input:  [ACTION]: I search my memory for the details of the family tree.,output: [CHECK]: History
+input:  [ACTION]: I search my memory for the details of the family tree.,output: [CHECK]: History
+input:  [ACTION]: I attempt to solve the puzzle.,output: [CHECK]: Intelligence
+input:  [ACTION]: I attempt to solve the puzzle.,output: [CHECK]: Intelligence
+input:  [ACTION]: I look for a defensible position with good visibility.,output: [CHECK]: Survival
+input:  [ACTION]: I look for a defensible position with good visibility.,output: [CHECK]: Survival
+input:  [ACTION]: I perform a holy ritual to consecrate the ground.,output: [CHECK]: Religion
+input:  [ACTION]: I perform a holy ritual to consecrate the ground.,output: [CHECK]: Religion
+input:  [ACTION]: I try to recall the story I heard from an old woman in the last village.,output: [CHECK]: History
+input:  [ACTION]: I try to recall the story I heard from an old woman in the last village.,output: [CHECK]: History
+input:  [ACTION]: I try to resist the trap's effects through sheer force of will.,output: [CHECK]: Constitution
+input:  [ACTION]: I try to resist the trap's effects through sheer force of will.,output: [CHECK]: Constitution
+input:  [ACTION]: I try to control my anger and not let the taunts get to me.,output: [CHECK]: Wisdom
+input:  [ACTION]: I try to control my anger and not let the taunts get to me.,output: [CHECK]: Wisdom
+input:  [ACTION]: I try to create a distraction to draw the guards away from the cell.,output: [CHECK]: Deception
+input:  [ACTION]: I try to create a distraction to draw the guards away from the cell.,output: [CHECK]: Deception
+input:  [ACTION]: I transform into a large bear to intimidate them.,output: [CHECK]: Druidic Magic
+input:  [ACTION]: I transform into a large bear to intimidate them.,output: [CHECK]: Druidic Magic
+input:  [ACTION]: I wait for the perfect moment to strike.,output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I wait for the perfect moment to strike.,output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I try to guide my horse safely through the terrain.,output: [CHECK]: Animal Handling
+input:  [ACTION]: I try to guide my horse safely through the terrain.,output: [CHECK]: Animal Handling
+input:  [ACTION]: I try to determine if the markings are part of a ritual.,output: [CHECK]: Investigation
+input:  [ACTION]: I try to determine if the markings are part of a ritual.,output: [CHECK]: Investigation
+input:  [ACTION]: I listen carefully to gather as many details as I can.,output: [CHECK]: Perception
+input:  [ACTION]: I listen carefully to gather as many details as I can.,output: [CHECK]: Perception
+input:  [ACTION]: I use my medical knowledge to treat the patient's symptoms.,output: [CHECK]: Medicine
+input:  [ACTION]: I use my medical knowledge to treat the patient's symptoms.,output: [CHECK]: Medicine
+input:  [ACTION]: I use gestures and pantomime to communicate with the locals.,output: [CHECK]: Performance
+input:  [ACTION]: I use gestures and pantomime to communicate with the locals.,output: [CHECK]: Performance
+input:  [ACTION]: I try to recognize the components and incantation of their spell.,output: [CHECK]: Arcana
+input:  [ACTION]: I try to recognize the components and incantation of their spell.,output: [CHECK]: Arcana
+input:  [ACTION]: I throw my full weight against the door.,output: [CHECK]: Athletics
+input:  [ACTION]: I throw my full weight against the door.,output: [CHECK]: Athletics
+input:  [ACTION]: I use my thieves' tools to carefully jam the mechanism.,output: [CHECK]: Thieves' Tools
+input:  [ACTION]: I use my thieves' tools to carefully jam the mechanism.,output: [CHECK]: Thieves' Tools
+input:  [ACTION]: I try to win their favor with an acrobatic flourish.,output: [CHECK]: Performance
+input:  [ACTION]: I try to win their favor with an acrobatic flourish.,output: [CHECK]: Performance
+input:  [ACTION]: I try to lift the crate off the sailor.,output: [CHECK]: Athletics
+input:  [ACTION]: I try to lift the crate off the sailor.,output: [CHECK]: Athletics
+input:  [ACTION]: I try to identify the poison's ingredients and effects.,output: [CHECK]: Medicine
+input:  [ACTION]: I try to identify the poison's ingredients and effects.,output: [CHECK]: Medicine
+input:  [ACTION]: I use the stars to navigate towards the town on the other side.,output: [CHECK]: Survival
+input:  [ACTION]: I use the stars to navigate towards the town on the other side.,output: [CHECK]: Survival
+input:  [ACTION]: I try to resist the magical charm by focusing on my holy symbol.,output: [CHECK]: Wisdom
+input:  [ACTION]: I try to resist the magical charm by focusing on my holy symbol.,output: [CHECK]: Wisdom
+input:  [ACTION]: I try to endure the extreme heat.,output: [CHECK]: Constitution
+input:  [ACTION]: I try to endure the extreme heat.,output: [CHECK]: Constitution
+input:  [ACTION]: I try to see through its illusions.,output: [CHECK]: Investigation
+input:  [ACTION]: I try to see through its illusions.,output: [CHECK]: Investigation
+input:  [ACTION]: I attempt to repair my shield myself.,output: [CHECK]: Smith's Tools
+input:  [ACTION]: I attempt to repair my shield myself.,output: [CHECK]: Smith's Tools
+"input:  [ACTION]: I try to find a non-magical solution, like a hidden latch or pulley.",output: [CHECK]: Perception
+"input:  [ACTION]: I try to find a non-magical solution, like a hidden latch or pulley.",output: [CHECK]: Perception
+input:  [ACTION]: I try to sense if there is any life left in the stone trees.,output: [CHECK]: Nature
+input:  [ACTION]: I try to sense if there is any life left in the stone trees.,output: [CHECK]: Nature
+input:  [ACTION]: I discreetly spread a juicy piece of gossip among the patrons.,output: [CHECK]: Deception
+input:  [ACTION]: I discreetly spread a juicy piece of gossip among the patrons.,output: [CHECK]: Deception
+input:  [ACTION]: I attempt to out-drink my opponent.,output: [CHECK]: Constitution
+input:  [ACTION]: I attempt to out-drink my opponent.,output: [CHECK]: Constitution
+input:  [ACTION]: I try to dodge out of the way.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I try to dodge out of the way.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I try to compose a masterpiece.,output: [CHECK]: Performance
+input:  [ACTION]: I try to compose a masterpiece.,output: [CHECK]: Performance
+input:  [ACTION]: I pray for guidance and strength.,output: [CHECK]: Religion
+input:  [ACTION]: I pray for guidance and strength.,output: [CHECK]: Religion
+input:  [ACTION]: I use my knowledge of the beast's habits to set a clever trap.,output: [CHECK]: Survival
+input:  [ACTION]: I use my knowledge of the beast's habits to set a clever trap.,output: [CHECK]: Survival
+input:  [ACTION]: I try to interpret the images it sends me.,output: [CHECK]: Insight
+input:  [ACTION]: I try to interpret the images it sends me.,output: [CHECK]: Insight
+input:  [ACTION]: I try to unseat my opponent.,output: [CHECK]: Animal Handling
+input:  [ACTION]: I try to unseat my opponent.,output: [CHECK]: Animal Handling
+input:  [ACTION]: I try to move with absolute silence.,output: [CHECK]: Stealth
+input:  [ACTION]: I try to move with absolute silence.,output: [CHECK]: Stealth
+input:  [ACTION]: I use my magic to cleanse the water.,output: [CHECK]: Nature
+input:  [ACTION]: I use my magic to cleanse the water.,output: [CHECK]: Nature
+input:  [ACTION]: I try to determine its value.,output: [CHECK]: Investigation
+input:  [ACTION]: I try to determine its value.,output: [CHECK]: Investigation
+input:  [ACTION]: I try to grapple it into submission.,output: [CHECK]: Athletics
+input:  [ACTION]: I try to grapple it into submission.,output: [CHECK]: Athletics
+input:  [ACTION]: I try to remember the correct sequence of runes to activate it.,output: [CHECK]: History
+input:  [ACTION]: I try to remember the correct sequence of runes to activate it.,output: [CHECK]: History
+input:  [ACTION]: I act as a neutral mediator and try to find a compromise.,output: [CHECK]: Persuasion
+input:  [ACTION]: I act as a neutral mediator and try to find a compromise.,output: [CHECK]: Persuasion
+input:  [ACTION]: I try to determine if the curse can be reversed.,output: [CHECK]: Medicine
+input:  [ACTION]: I try to determine if the curse can be reversed.,output: [CHECK]: Medicine
+input:  [ACTION]: I try to find subtle signs of passage.,output: [CHECK]: Survival
+input:  [ACTION]: I try to find subtle signs of passage.,output: [CHECK]: Survival
+input:  [ACTION]: I try to trick the demon into revealing its name.,output: [CHECK]: Deception
+input:  [ACTION]: I try to trick the demon into revealing its name.,output: [CHECK]: Deception
+input:  [ACTION]: I try to inspire them with a speech about duty and honor.,output: [CHECK]: Performance
+input:  [ACTION]: I try to inspire them with a speech about duty and honor.,output: [CHECK]: Performance
+input:  [ACTION]: I try to be faster than my master's eye.,output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I try to be faster than my master's eye.,output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I try to communicate with the local nature spirits.,output: [CHECK]: Nature
+input:  [ACTION]: I try to communicate with the local nature spirits.,output: [CHECK]: Nature
+input:  [ACTION]: I claim to be a messenger with an urgent delivery for the king.,output: [CHECK]: Deception
+input:  [ACTION]: I claim to be a messenger with an urgent delivery for the king.,output: [CHECK]: Deception
+input:  [ACTION]: I smash a large rock with my bare hands to show them my strength.,output: [CHECK]: Intimidation
+input:  [ACTION]: I smash a large rock with my bare hands to show them my strength.,output: [CHECK]: Intimidation
+input:  [ACTION]: I try to recall its description from a bestiary I've read.,output: [CHECK]: History
+input:  [ACTION]: I try to recall its description from a bestiary I've read.,output: [CHECK]: History
+input:  [ACTION]: I try to charm the merchant into giving me a discount.,output: [CHECK]: Persuasion
+input:  [ACTION]: I try to charm the merchant into giving me a discount.,output: [CHECK]: Persuasion
+input:  [ACTION]: I perform a ritual to restore the text.,output: [CHECK]: Religion
+input:  [ACTION]: I perform a ritual to restore the text.,output: [CHECK]: Religion
+input:  [ACTION]: I use my keen senses to navigate the darkness.,output: [CHECK]: Perception
+input:  [ACTION]: I use my keen senses to navigate the darkness.,output: [CHECK]: Perception
+input:  [ACTION]: I try to bind it to my will.,output: [CHECK]: Intimidation
+input:  [ACTION]: I try to bind it to my will.,output: [CHECK]: Intimidation
+input:  [ACTION]: I try to restore order with my commanding presence.,output: [CHECK]: Persuasion
+input:  [ACTION]: I try to restore order with my commanding presence.,output: [CHECK]: Persuasion
+input:  [ACTION]: I try to enter a meditative trance to block out the pain.,output: [CHECK]: Constitution
+input:  [ACTION]: I try to enter a meditative trance to block out the pain.,output: [CHECK]: Constitution
+input:  [ACTION]: I use my knowledge of plants to find it.,output: [CHECK]: Nature
+input:  [ACTION]: I use my knowledge of plants to find it.,output: [CHECK]: Nature
+input:  [ACTION]: I try to repair the clockwork mechanism with my tools.,output: [CHECK]: Tinker's Tools
+input:  [ACTION]: I try to repair the clockwork mechanism with my tools.,output: [CHECK]: Tinker's Tools
+input:  [ACTION]: I channel my divine power to turn the undead.,output: [CHECK]: Religion
+input:  [ACTION]: I channel my divine power to turn the undead.,output: [CHECK]: Religion
+input:  [ACTION]: I try to spot which of the attendees is the wealthiest.,output: [CHECK]: Perception
+input:  [ACTION]: I try to spot which of the attendees is the wealthiest.,output: [CHECK]: Perception
+input:  [ACTION]: I try to hold my ground against the strong current.,output: [CHECK]: Athletics
+input:  [ACTION]: I try to hold my ground against the strong current.,output: [CHECK]: Athletics
+input:  [ACTION]: I scan the book for any spells I don't already know.,output: [CHECK]: Arcana
+input:  [ACTION]: I scan the book for any spells I don't already know.,output: [CHECK]: Arcana
+input:  [ACTION]: I try to talk my way past the border guards by posing as a simple traveling minstrel.,output: [CHECK]: Deception
+input:  [ACTION]: I try to talk my way past the border guards by posing as a simple traveling minstrel.,output: [CHECK]: Deception
+input:  [ACTION]: I use my knowledge to triage their wounds and stop the bleeding.,output: [CHECK]: Medicine
+input:  [ACTION]: I use my knowledge to triage their wounds and stop the bleeding.,output: [CHECK]: Medicine
+input:  [ACTION]: I listen for the sound of its movement in the water.,output: [CHECK]: Perception
+input:  [ACTION]: I listen for the sound of its movement in the water.,output: [CHECK]: Perception
+input:  [ACTION]: I focus my mind and attempt to ignore the whispers.,output: [CHECK]: Wisdom
+input:  [ACTION]: I focus my mind and attempt to ignore the whispers.,output: [CHECK]: Wisdom
+input:  [ACTION]: I try to discern which of them is telling the truth.,output: [CHECK]: Insight
+input:  [ACTION]: I try to discern which of them is telling the truth.,output: [CHECK]: Insight
+input:  [ACTION]: I maintain my footing on the treacherous surface.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I try to maintain my footing on the treacherous surface.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I attempt to speak to them to find out what has them so upset.,output: [CHECK]: Sylvan
+input:  [ACTION]: I attempt to speak to them to find out what has them so upset.,output: [CHECK]: Sylvan
+input:  [ACTION]: I try to find a weak point in its mechanical joints.,output: [CHECK]: Investigation
+input:  [ACTION]: I try to find a weak point in its mechanical joints.,output: [CHECK]: Investigation
+input:  [ACTION]: I lay my hands on them and channel divine healing energy.,output: [CHECK]: Medicine
+input:  [ACTION]: I lay my hands on them and channel divine healing energy.,output: [CHECK]: Medicine
+input:  [ACTION]: I use my thieves' tools to try and open the cell door.,output: [CHECK]: Thieves' Tools
+input:  [ACTION]: I use my thieves' tools to try and open the cell door.,output: [CHECK]: Thieves' Tools
+"input:  [ACTION]: I use my raw, brute strength to overwhelm him.",output: [CHECK]: Athletics
+"input:  [ACTION]: I use my raw, brute strength to overwhelm him.",output: [CHECK]: Athletics
+input:  [ACTION]: I try to decode the message.,output: [CHECK]: Intelligence
+input:  [ACTION]: I try to decode the message.,output: [CHECK]: Intelligence
+input:  [ACTION]: I try to charm the information out of them.,output: [CHECK]: Persuasion
+input:  [ACTION]: I try to charm the information out of them.,output: [CHECK]: Persuasion
+input:  [ACTION]: I try to spot the source of the unnatural shadows.,output: [CHECK]: Perception
+input:  [ACTION]: I try to spot the source of the unnatural shadows.,output: [CHECK]: Perception
+input:  [ACTION]: I try to build a snow cave for shelter.,output: [CHECK]: Survival
+input:  [ACTION]: I try to build a snow cave for shelter.,output: [CHECK]: Survival
+input:  [ACTION]: I consult my patron about the nature of this object.,output: [CHECK]: Investigation
+input:  [ACTION]: I consult my patron about the nature of this object.,output: [CHECK]: Investigation
+input:  [ACTION]: I give a speech about courage and the strength of community.,output: [CHECK]: Performance
+input:  [ACTION]: I give a speech about courage and the strength of community.,output: [CHECK]: Performance
+input:  [ACTION]: I attempt to snatch the arrow out of the air.,output: [CHECK]: Dexterity
+input:  [ACTION]: I attempt to snatch the arrow out of the air.,output: [CHECK]: Dexterity
+input:  [ACTION]: I try to calm the bear so I can free it.,output: [CHECK]: Animal Handling
+input:  [ACTION]: I try to calm the bear so I can free it.,output: [CHECK]: Animal Handling
+input:  [ACTION]: I study the interaction between the gears and the arcane runes.,output: [CHECK]: Arcana
+input:  [ACTION]: I study the interaction between the gears and the arcane runes.,output: [CHECK]: Arcana
+input:  [ACTION]: I call upon my divine oath to protect me from the dark magic.,output: [CHECK]: Constitution
+input:  [ACTION]: I call upon my divine oath to protect me from the dark magic.,output: [CHECK]: Constitution
+input:  [ACTION]: I attempt to snatch the key without waking him.,output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I attempt to snatch the key without waking him.,output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I try to steer the ship through the treacherous waters.,output: [CHECK]: Navigator's Tools
+input:  [ACTION]: I try to steer the ship through the treacherous waters.,output: [CHECK]: Navigator's Tools
+input:  [ACTION]: I search my memory for the relevant information.,output: [CHECK]: History
+input:  [ACTION]: I search my memory for the relevant information.,output: [CHECK]: History
+input:  [ACTION]: I try to maintain a poker face and convince my opponents I have a winning hand.,output: [CHECK]: Deception
+input:  [ACTION]: I try to maintain a poker face and convince my opponents I have a winning hand.,output: [CHECK]: Deception
+input:  [ACTION]: I try to sense any aura of good or evil about them.,output: [CHECK]: Insight
+input:  [ACTION]: I try to sense any aura of good or evil about them.,output: [CHECK]: Insight
+"input:  [ACTION]: I look for subtle signs of its passage, like claw marks on trees.",output: [CHECK]: Survival
+"input:  [ACTION]: I look for subtle signs of its passage, like claw marks on trees.",output: [CHECK]: Survival
+input:  [ACTION]: I subtly hint at the dark powers I command.,output: [CHECK]: Intimidation
+input:  [ACTION]: I subtly hint at the dark powers I command.,output: [CHECK]: Intimidation
+input:  [ACTION]: I try to soothe the animal and keep it from bolting.,output: [CHECK]: Animal Handling
+input:  [ACTION]: I try to calm the animal and keep it from bolting.,output: [CHECK]: Animal Handling
+input:  [ACTION]: I press my ear to the wall and try to hear what they are saying.,output: [CHECK]: Perception
+input:  [ACTION]: I press my ear to the wall and try to hear what they are saying.,output: [CHECK]: Perception
+input:  [ACTION]: I study the cloud patterns and the behavior of the local wildlife.,output: [CHECK]: Nature
+input:  [ACTION]: I study the cloud patterns and the behavior of the local wildlife.,output: [CHECK]: Nature
+input:  [ACTION]: I use my knowledge of alchemy to mix the correct reagents.,output: [CHECK]: Alchemist's Supplies
+input:  [ACTION]: I use my knowledge of alchemy to mix the correct reagents.,output: [CHECK]: Alchemist's Supplies
+input:  [ACTION]: I appeal to their sense of duty and honor.,output: [CHECK]: Persuasion
+input:  [ACTION]: I appeal to their sense of duty and honor.,output: [CHECK]: Persuasion
+input:  [ACTION]: I try to jury-rig a device to filter air from the water.,output: [CHECK]: Tinker's Tools
+input:  [ACTION]: I try to jury-rig a device to filter air from the water.,output: [CHECK]: Tinker's Tools
+input:  [ACTION]: I publicly call out the merchant for their sacrilegious fraud.,output: [CHECK]: Intimidation
+input:  [ACTION]: I publicly call out the merchant for their sacrilegious fraud.,output: [CHECK]: Intimidation
+input:  [ACTION]: I try to scale the sheer brick wall to escape to the rooftops.,output: [CHECK]: Athletics
+input:  [ACTION]: I try to scale the sheer brick wall to escape to the rooftops.,output: [CHECK]: Athletics
+input:  [ACTION]: I test the ice carefully before putting my full weight on it.,output: [CHECK]: Survival
+input:  [ACTION]: I test the ice carefully before putting my full weight on it.,output: [CHECK]: Survival
+"input:  [ACTION]: I present my findings in a logical, academic fashion.",output: [CHECK]: Persuasion
+"input:  [ACTION]: I present my findings in a logical, academic fashion.",output: [CHECK]: Persuasion
+input:  [ACTION]: I try to mimic the dining habits of the other nobles to blend in.,output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I try to mimic the dining habits of the other nobles to blend in.,output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I test the ropes to find a weak point.,output: [CHECK]: Investigation
+input:  [ACTION]: I test the ropes to find a weak point.,output: [CHECK]: Investigation
+input:  [ACTION]: I use my knowledge of monstrous creatures to identify the sound.,output: [CHECK]: Nature
+input:  [ACTION]: I use my knowledge of monstrous creatures to identify the sound.,output: [CHECK]: Nature
+input:  [ACTION]: I reach out with my mind to probe their consciousness.,output: [CHECK]: Insight
+input:  [ACTION]: I reach out with my mind to probe their consciousness.,output: [CHECK]: Insight
+input:  [ACTION]: I urge my steed onward to make the leap.,output: [CHECK]: Animal Handling
+input:  [ACTION]: I urge my steed onward to make the leap.,output: [CHECK]: Animal Handling
+input:  [ACTION]: I try to weave through the crowd without losing speed.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I try to weave through the crowd without losing speed.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I transform into a falcon to search from the sky.,output: [CHECK]: Druidic Magic
+input:  [ACTION]: I transform into a falcon to search from the sky.,output: [CHECK]: Druidic Magic
+input:  [ACTION]: I try to attach a charged crystal to my crossbow.,output: [CHECK]: Arcana
+input:  [ACTION]: I try to attach a charged crystal to my crossbow.,output: [CHECK]: Arcana
+input:  [ACTION]: I attempt to smash the door with my warhammer.,output: [CHECK]: Athletics
+input:  [ACTION]: I attempt to smash the door with my warhammer.,output: [CHECK]: Athletics
+input:  [ACTION]: I watch their hands closely for any sign of cheating.,output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I watch their hands closely for any sign of cheating.,output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I try to set a snare to catch a rabbit.,output: [CHECK]: Survival
+input:  [ACTION]: I try to set a snare to catch a rabbit.,output: [CHECK]: Survival
+input:  [ACTION]: I use my knowledge to mix the correct ingredients.,output: [CHECK]: Herbalism Kit
+input:  [ACTION]: I use my knowledge to mix the correct ingredients.,output: [CHECK]: Herbalism Kit
+input:  [ACTION]: I try to remember the poem in its entirety.,output: [CHECK]: History
+input:  [ACTION]: I try to remember the poem in its entirety.,output: [CHECK]: History
+input:  [ACTION]: I look for any symbols or architecture that seem out of place.,output: [CHECK]: Investigation
+input:  [ACTION]: I look for any symbols or architecture that seem out of place.,output: [CHECK]: Investigation
+input:  [ACTION]: I use my tools to fletch some new arrows.,output: [CHECK]: Woodcarver's Tools
+input:  [ACTION]: I use my tools to fletch some new arrows.,output: [CHECK]: Woodcarver's Tools
+input:  [ACTION]: I try to create a contract that is magically binding.,output: [CHECK]: Arcana
+input:  [ACTION]: I try to create a contract that is magically binding.,output: [CHECK]: Arcana
+input:  [ACTION]: I take command and try to lead them to victory.,output: [CHECK]: Intimidation
+input:  [ACTION]: I take command and try to lead them to victory.,output: [CHECK]: Intimidation
+input:  [ACTION]: I inspect the water for any signs of contamination.,output: [CHECK]: Medicine
+input:  [ACTION]: I inspect the water for any signs of contamination.,output: [CHECK]: Medicine
+input:  [ACTION]: I try to explain the importance of the grove to the ecosystem.,output: [CHECK]: Nature
+input:  [ACTION]: I try to explain the importance of the grove to the ecosystem.,output: [CHECK]: Nature
+input:  [ACTION]: I try to determine its properties.,output: [CHECK]: Investigation
+input:  [ACTION]: I try to determine its properties.,output: [CHECK]: Investigation
+input:  [ACTION]: I offer them my prayers and what little food I have.,output: [CHECK]: Persuasion
+input:  [ACTION]: I offer them my prayers and what little food I have.,output: [CHECK]: Persuasion
+input:  [ACTION]: I try to move across the roof without falling.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I try to move across the roof without falling.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I try to observe their traditions without causing offense.,output: [CHECK]: Insight
+input:  [ACTION]: I try to observe their traditions without causing offense.,output: [CHECK]: Insight
+input:  [ACTION]: I try to bind it to my will with a powerful spell.,output: [CHECK]: Arcana
+input:  [ACTION]: I try to bind it to my will with a powerful spell.,output: [CHECK]: Arcana
+input:  [ACTION]: I ask the bartender for information.,output: [CHECK]: Investigation
+input:  [ACTION]: I ask the bartender for information.,output: [CHECK]: Investigation
+input:  [ACTION]: I try to move quietly through the murky water.,output: [CHECK]: Stealth
+input:  [ACTION]: I try to move quietly through the murky water.,output: [CHECK]: Stealth
+input:  [ACTION]: I try to find a river and follow it downstream.,output: [CHECK]: Survival
+input:  [ACTION]: I try to find a river and follow it downstream.,output: [CHECK]: Survival
+input:  [ACTION]: I try to deceive the infernal creature.,output: [CHECK]: Deception
+input:  [ACTION]: I try to deceive the infernal creature.,output: [CHECK]: Deception
+input:  [ACTION]: I look for any signs of magical compulsion.,output: [CHECK]: Insight
+input:  [ACTION]: I look for any signs of magical compulsion.,output: [CHECK]: Insight
+input:  [ACTION]: I try to control my breathing and conserve oxygen.,output: [CHECK]: Constitution
+input:  [ACTION]: I try to control my breathing and conserve oxygen.,output: [CHECK]: Constitution
+input:  [ACTION]: I use my knowledge of herbs to create a remedy.,output: [CHECK]: Herbalism Kit
+input:  [ACTION]: I use my knowledge of herbs to create a remedy.,output: [CHECK]: Herbalism Kit
+input:  [ACTION]: I use my skills to build the device.,output: [CHECK]: Tinker's Tools
+input:  [ACTION]: I use my skills to build the device.,output: [CHECK]: Tinker's Tools
+input:  [ACTION]: I explain that my divine power can help cure the plague within.,output: [CHECK]: Persuasion
+input:  [ACTION]: I explain that my divine power can help cure the plague within.,output: [CHECK]: Persuasion
+input:  [ACTION]: I try to use my innate storm magic to calm the hurricane.,output: [CHECK]: Arcana
+input:  [ACTION]: I try to use my innate storm magic to calm the hurricane.,output: [CHECK]: Arcana
+input:  [ACTION]: I try to dodge his surprise attack and flow into a defensive stance.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I try to dodge his surprise attack and flow into a defensive stance.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I use my alchemist's supplies to mix the reagents.,output: [CHECK]: Alchemist's Supplies
+input:  [ACTION]: I use my alchemist's supplies to mix the reagents.,output: [CHECK]: Alchemist's Supplies
+input:  [ACTION]: I appeal to their sense of justice and compassion.,output: [CHECK]: Persuasion
+input:  [ACTION]: I appeal to their sense of justice and compassion.,output: [CHECK]: Persuasion
+input:  [ACTION]: I try to subtly spook the lead horse as it rounds the final turn.,output: [CHECK]: Animal Handling
+input:  [ACTION]: I try to subtly spook the lead horse as it rounds the final turn.,output: [CHECK]: Animal Handling
+input:  [ACTION]: I heave the massive log with all my barbarian rage.,output: [CHECK]: Athletics
+input:  [ACTION]: I heave the massive log with all my barbarian rage.,output: [CHECK]: Athletics
+input:  [ACTION]: I try to piece together the fragments to read the inscription.,output: [CHECK]: Investigation
+input:  [ACTION]: I try to piece together the fragments to read the inscription.,output: [CHECK]: Investigation
+input:  [ACTION]: I watch the dancers and try to mimic their steps.,output: [CHECK]: Performance
+input:  [ACTION]: I watch the dancers and try to mimic their steps.,output: [CHECK]: Performance
+input:  [ACTION]: I pray for divine insight into the nature of the affliction.,output: [CHECK]: Medicine
+input:  [ACTION]: I pray for divine insight into the nature of the affliction.,output: [CHECK]: Medicine
+input:  [ACTION]: I throw the grappling hook to secure a rope on the other side.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I throw the grappling hook to secure a rope on the other side.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I try to mask my dark thoughts and appear righteous.,output: [CHECK]: Deception
+input:  [ACTION]: I try to mask my dark thoughts and appear righteous.,output: [CHECK]: Deception
+"input:  [ACTION]: I look for signs of their passage, like scared onlookers or a discarded weapon.",output: [CHECK]: Insight
+"input:  [ACTION]: I look for signs of their passage, like scared onlookers or a discarded weapon.",output: [CHECK]: Insight
+"input:  [ACTION]: I try to create a tiny, controlled spark of flame.",output: [CHECK]: Sleight of Hand
+"input:  [ACTION]: I try to create a tiny, controlled spark of flame.",output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I use my ki to propel myself up the vertical surface.,output: [CHECK]: Athletics
+input:  [ACTION]: I use my ki to propel myself up the vertical surface.,output: [CHECK]: Athletics
+input:  [ACTION]: I use my knowledge of arcane mechanics to deduce its function.,output: [CHECK]: Arcana
+input:  [ACTION]: I use my knowledge of arcane mechanics to deduce its function.,output: [CHECK]: Arcana
+input:  [ACTION]: I search my memory for the correct passage from my holy text.,output: [CHECK]: Religion
+input:  [ACTION]: I search my memory for the correct passage from my holy text.,output: [CHECK]: Religion
+input:  [ACTION]: I 'accidentally' topple a tall stack of books.,output: [CHECK]: Stealth
+input:  [ACTION]: I 'accidentally' topple a tall stack of books.,output: [CHECK]: Stealth
+input:  [ACTION]: I use my strength to push through the thorns.,output: [CHECK]: Constitution
+input:  [ACTION]: I use my strength to push through the thorns.,output: [CHECK]: Constitution
+input:  [ACTION]: I use my historical knowledge to date the artifact based on its markings.,output: [CHECK]: History
+input:  [ACTION]: I use my historical knowledge to date the artifact based on its markings.,output: [CHECK]: History
+input:  [ACTION]: I try to answer its riddle.,output: [CHECK]: Intelligence
+input:  [ACTION]: I try to answer its riddle.,output: [CHECK]: Intelligence
+input:  [ACTION]: I try to sense any source of desecration or unholy power.,output: [CHECK]: Investigation
+input:  [ACTION]: I try to sense any source of desecration or unholy power.,output: [CHECK]: Investigation
+input:  [ACTION]: I try to blend in with the leaves and branches.,output: [CHECK]: Stealth
+input:  [ACTION]: I try to blend in with the leaves and branches.,output: [CHECK]: Stealth
+input:  [ACTION]: I try to offer a fragment of a memory instead of a piece of my soul.,output: [CHECK]: Deception
+input:  [ACTION]: I try to offer a fragment of a memory instead of a piece of my soul.,output: [CHECK]: Deception
+input:  [ACTION]: I try to knock the sword from their hand with a precise strike.,output: [CHECK]: Athletics
+input:  [ACTION]: I try to knock the sword from their hand with a precise strike.,output: [CHECK]: Athletics
+input:  [ACTION]: I try to gently shape the air into a harmless vortex.,output: [CHECK]: Performance
+input:  [ACTION]: I try to gently shape the air into a harmless vortex.,output: [CHECK]: Performance
+input:  [ACTION]: I examine the tea for any abnormalities.,output: [CHECK]: Perception
+input:  [ACTION]: I examine the tea for any abnormalities.,output: [CHECK]: Perception
+input:  [ACTION]: I try to craft a masterwork set of lockpicks.,output: [CHECK]: Tinker's Tools
+input:  [ACTION]: I try to craft a masterwork set of lockpicks.,output: [CHECK]: Tinker's Tools
+input:  [ACTION]: I try to convince them to surrender their information by offering them mercy.,output: [CHECK]: Persuasion
+input:  [ACTION]: I try to convince them to surrender their information by offering them mercy.,output: [CHECK]: Persuasion
+input:  [ACTION]: I try to decipher the message using my knowledge of thieves' cant.,output: [CHECK]: Investigation
+input:  [ACTION]: I try to decipher the message using my knowledge of thieves' cant.,output: [CHECK]: Investigation
+input:  [ACTION]: I set a trap using a heavy log and a tripwire.,output: [CHECK]: Survival
+input:  [ACTION]: I set a trap using a heavy log and a tripwire.,output: [CHECK]: Survival
+input:  [ACTION]: I use my magical knowledge to try and activate the item.,output: [CHECK]: Arcana
+input:  [ACTION]: I use my magical knowledge to try and activate the item.,output: [CHECK]: Arcana
+input:  [ACTION]: I try to charm the noble's seneschal into arranging a meeting.,output: [CHECK]: Persuasion
+input:  [ACTION]: I try to charm the noble's seneschal into arranging a meeting.,output: [CHECK]: Persuasion
+input:  [ACTION]: I try to determine if the crops are blighted by dark magic.,output: [CHECK]: Nature
+input:  [ACTION]: I try to determine if the crops are blighted by dark magic.,output: [CHECK]: Nature
+input:  [ACTION]: I use my knowledge of herbs to create the poultice.,output: [CHECK]: Herbalism Kit
+input:  [ACTION]: I use my knowledge of herbs to create the poultice.,output: [CHECK]: Herbalism Kit
+input:  [ACTION]: I try to find the hidden meaning in the prophetic verse.,output: [CHECK]: History
+input:  [ACTION]: I try to find the hidden meaning in the prophetic verse.,output: [CHECK]: History
+input:  [ACTION]: I try to push my horse to its limits without exhausting it.,output: [CHECK]: Animal Handling
+input:  [ACTION]: I try to push my horse to its limits without exhausting it.,output: [CHECK]: Animal Handling
+input:  [ACTION]: I try to use my natural charisma to sell the lie.,output: [CHECK]: Deception
+input:  [ACTION]: I try to use my natural charisma to sell the lie.,output: [CHECK]: Deception
+input:  [ACTION]: I try to move through the room without getting hit.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I try to move through the room without getting hit.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I use my knowledge of alchemy to brew the potion.,output: [CHECK]: Poisoner's Kit
+input:  [ACTION]: I use my knowledge of alchemy to brew the potion.,output: [CHECK]: Poisoner's Kit
+input:  [ACTION]: I look for the signs of demonic possession.,output: [CHECK]: Insight
+input:  [ACTION]: I look for the signs of demonic possession.,output: [CHECK]: Insight
+"input:  [ACTION]: I try to create a small, slick patch of ice on the ground in the thief's path.",output: [CHECK]: Arcana
+"input:  [ACTION]: I try to create a small, slick patch of ice on the ground in the thief's path.",output: [CHECK]: Arcana
+input:  [ACTION]: I enter a meditative state to ignore the cold and the dizzying height.,output: [CHECK]: Constitution
+input:  [ACTION]: I enter a meditative state to ignore the cold and the dizzying height.,output: [CHECK]: Constitution
+"input:  [ACTION]: I demonstrate my clockwork songbird, which mimics real birdsong.",output: [CHECK]: Performance
+"input:  [ACTION]: I demonstrate my clockwork songbird, which mimics real birdsong.",output: [CHECK]: Performance
+input:  [ACTION]: I attempt to cleanse the sword with my divine power.,output: [CHECK]: Religion
+input:  [ACTION]: I attempt to cleanse the sword with my divine power.,output: [CHECK]: Religion
+input:  [ACTION]: I try to read their lips from across the room.,output: [CHECK]: Perception
+input:  [ACTION]: I try to read their lips from across the room.,output: [CHECK]: Perception
+input:  [ACTION]: I try to find the book by looking for one with a leather cover and a bear on it.,output: [CHECK]: Investigation
+input:  [ACTION]: I try to find the book by looking for one with a leather cover and a bear on it.,output: [CHECK]: Investigation
+input:  [ACTION]: I use my cartographer's tools to check for inconsistencies.,output: [CHECK]: Cartographer's Tools
+input:  [ACTION]: I use my cartographer's tools to check for inconsistencies.,output: [CHECK]: Cartographer's Tools
+input:  [ACTION]: I perform a series of silly juggling tricks.,output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I perform a series of silly juggling tricks.,output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I try to find the 'patient zero' to understand how the plague started.,output: [CHECK]: Medicine
+input:  [ACTION]: I try to find the 'patient zero' to understand how the plague started.,output: [CHECK]: Medicine
+input:  [ACTION]: I use my poisoner's kit to harvest venom from a giant spider.,output: [CHECK]: Poisoner's Kit
+input:  [ACTION]: I use my poisoner's kit to harvest venom from a giant spider.,output: [CHECK]: Poisoner's Kit
+input:  [ACTION]: I ask my patron for knowledge of the stars.,output: [CHECK]: History
+input:  [ACTION]: I ask my patron for knowledge of the stars.,output: [CHECK]: History
+input:  [ACTION]: I throw my shoulder into the pillar to topple it.,output: [CHECK]: Athletics
+input:  [ACTION]: I throw my shoulder into the pillar to topple it.,output: [CHECK]: Athletics
+input:  [ACTION]: I try to demonstrate my power with a controlled display of elemental fury.,output: [CHECK]: Intimidation
+input:  [ACTION]: I try to demonstrate my power with a controlled display of elemental fury.,output: [CHECK]: Intimidation
+"input:  [ACTION]: I try to maintain my focus through the long, dark night.",output: [CHECK]: Constitution
+"input:  [ACTION]: I try to maintain my focus through the long, dark night.",output: [CHECK]: Constitution
+input:  [ACTION]: I use my knowledge of stonemasonry to find the weakest spot.,output: [CHECK]: Stonemasonry Tools
+input:  [ACTION]: I use my knowledge of stonemasonry to find the weakest spot.,output: [CHECK]: Stonemasonry Tools
+input:  [ACTION]: I try to convince the ghost that I can help put it to rest if it helps me.,output: [CHECK]: Persuasion
+input:  [ACTION]: I try to convince the ghost that I can help put it to rest if it helps me.,output: [CHECK]: Persuasion
+input:  [ACTION]: I pour a small amount of water on the floor to see if it runs into any hidden seams.,output: [CHECK]: Investigation
+input:  [ACTION]: I pour a small amount of water on the floor to see if it runs into any hidden seams.,output: [CHECK]: Investigation
+"input:  [ACTION]: I stare it down, showing no fear.",output: [CHECK]: Animal Handling
+"input:  [ACTION]: I stare it down, showing no fear.",output: [CHECK]: Animal Handling
+input:  [ACTION]: I use my steady hand to copy the rune.,output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I use my steady hand to copy the rune.,output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I compose a song about the dragon's magnificent hoard and how a single missing coin would only enhance its legend.,output: [CHECK]: Performance
+input:  [ACTION]: I compose a song about the dragon's magnificent hoard and how a single missing coin would only enhance its legend.,output: [CHECK]: Performance
+input:  [ACTION]: I examine the wound for signs of necrotic energy.,output: [CHECK]: Medicine
+input:  [ACTION]: I examine the wound for signs of necrotic energy.,output: [CHECK]: Medicine
+input:  [ACTION]: I use my knowledge of natural tunnels and formations to find a way out.,output: [CHECK]: Survival
+input:  [ACTION]: I use my knowledge of natural tunnels and formations to find a way out.,output: [CHECK]: Survival
+input:  [ACTION]: I ask my patron for the answer.,output: [CHECK]: Intelligence
+input:  [ACTION]: I ask my patron for the answer.,output: [CHECK]: Intelligence
+input:  [ACTION]: I appeal to their courage and their sense of duty.,output: [CHECK]: Persuasion
+input:  [ACTION]: I appeal to their courage and their sense of duty.,output: [CHECK]: Persuasion
+input:  [ACTION]: I try to slow my descent by creating an updraft of wind.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I try to slow my descent by creating an updraft of wind.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I try to distribute my weight and move with perfect lightness.,output: [CHECK]: Stealth
+input:  [ACTION]: I try to distribute my weight and move with perfect lightness.,output: [CHECK]: Stealth
+input:  [ACTION]: I try to build a 'translation earhorn' using a combination of cogs and enchantment.,output: [CHECK]: Arcana
+input:  [ACTION]: I try to build a 'translation earhorn' using a combination of cogs and enchantment.,output: [CHECK]: Arcana
+input:  [ACTION]: I try to intimidate it with the power of my faith.,output: [CHECK]: Intimidation
+input:  [ACTION]: I try to intimidate it with the power of my faith.,output: [CHECK]: Intimidation
+input:  [ACTION]: I look for subtle clues to tell them apart.,output: [CHECK]: Investigation
+input:  [ACTION]: I look for subtle clues to tell them apart.,output: [CHECK]: Investigation
+input:  [ACTION]: I try to find a snow rabbit's burrow.,output: [CHECK]: Survival
+input:  [ACTION]: I try to find a snow rabbit's burrow.,output: [CHECK]: Survival
+input:  [ACTION]: I try to create a perfect illusion of their commanding officer.,output: [CHECK]: Deception
+input:  [ACTION]: I try to create a perfect illusion of their commanding officer.,output: [CHECK]: Deception
+input:  [ACTION]: I start playing a lively dwarven drinking song on my lute.,output: [CHECK]: Performance
+input:  [ACTION]: I start playing a lively dwarven drinking song on my lute.,output: [CHECK]: Performance
+input:  [ACTION]: I search my memory for the symbol.,output: [CHECK]: History
+input:  [ACTION]: I search my memory for the symbol.,output: [CHECK]: History
+input:  [ACTION]: I use mud and reeds to blend in with my surroundings.,output: [CHECK]: Stealth
+input:  [ACTION]: I use mud and reeds to blend in with my surroundings.,output: [CHECK]: Stealth
+input:  [ACTION]: I show it a glimpse of my patron's terrifying form.,output: [CHECK]: Intimidation
+input:  [ACTION]: I show it a glimpse of my patron's terrifying form.,output: [CHECK]: Intimidation
+input:  [ACTION]: I look for signs of stress or damage to the building's foundation.,output: [CHECK]: Investigation
+input:  [ACTION]: I look for signs of stress or damage to the building's foundation.,output: [CHECK]: Investigation
+input:  [ACTION]: I try to speak to it in its own fiery language.,output: [CHECK]: Persuasion
+input:  [ACTION]: I try to speak to it in its own fiery language.,output: [CHECK]: Persuasion
+input:  [ACTION]: I try to find the perfect point of balance for each stone.,output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I try to find the perfect point of balance for each stone.,output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I try to craft a lantern with a specially ground crystal lens.,output: [CHECK]: Arcana
+input:  [ACTION]: I try to craft a lantern with a specially ground crystal lens.,output: [CHECK]: Arcana
+input:  [ACTION]: I use my divine sense to detect any deception.,output: [CHECK]: Insight
+input:  [ACTION]: I use my divine sense to detect any deception.,output: [CHECK]: Insight
+"input:  [ACTION]: I try to communicate with the elemental, offering to free it for a favor.",output: [CHECK]: Persuasion
+"input:  [ACTION]: I try to communicate with the elemental, offering to free it for a favor.",output: [CHECK]: Persuasion
+input:  [ACTION]: I try to read a book from a distance by memorizing the page in a glance.,output: [CHECK]: Investigation
+input:  [ACTION]: I try to read a book from a distance by memorizing the page in a glance.,output: [CHECK]: Investigation
+input:  [ACTION]: I try to use logic to deconstruct the riddle's linguistic flaws.,output: [CHECK]: Intelligence
+input:  [ACTION]: I try to use logic to deconstruct the riddle's linguistic flaws.,output: [CHECK]: Intelligence
+input:  [ACTION]: I try to use my own faith to overwhelm the phylactery's defenses.,output: [CHECK]: Religion
+input:  [ACTION]: I try to use my own faith to overwhelm the phylactery's defenses.,output: [CHECK]: Religion
+"input:  [ACTION]: I mention the name of a rival smuggler, implying they sold him out.",output: [CHECK]: Deception
+"input:  [ACTION]: I mention the name of a rival smuggler, implying they sold him out.",output: [CHECK]: Deception
+input:  [ACTION]: I try to navigate the city without my primary weapon.,output: [CHECK]: Wisdom
+input:  [ACTION]: I try to navigate the city without my primary weapon.,output: [CHECK]: Wisdom
+input:  [ACTION]: I try to cast the spell by phonetically sounding out the strange words.,output: [CHECK]: Arcana
+input:  [ACTION]: I try to cast the spell by phonetically sounding out the strange words.,output: [CHECK]: Arcana
+input:  [ACTION]: I try to tell a story using only my lute.,output: [CHECK]: Performance
+input:  [ACTION]: I try to tell a story using only my lute.,output: [CHECK]: Performance
+input:  [ACTION]: I offer them a loaf of bread and a prayer for their safety.,output: [CHECK]: Persuasion
+input:  [ACTION]: I offer them a loaf of bread and a prayer for their safety.,output: [CHECK]: Persuasion
+input:  [ACTION]: I try to scrape some moss into a pouch to use for silent movement later.,output: [CHECK]: Stealth
+input:  [ACTION]: I try to scrape some moss into a pouch to use for silent movement later.,output: [CHECK]: Stealth
+input:  [ACTION]: I try to find the one true reflection by looking for the one that doesn't show a vision.,output: [CHECK]: Investigation
+input:  [ACTION]: I try to find the one true reflection by looking for the one that doesn't show a vision.,output: [CHECK]: Investigation
+input:  [ACTION]: I discreetly use the silver tip of my dagger to test the wine.,output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I discreetly use the silver tip of my dagger to test the wine.,output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I try to draw the heat out of the fire with my magic.,output: [CHECK]: Arcana
+input:  [ACTION]: I try to draw the heat out of the fire with my magic.,output: [CHECK]: Arcana
+input:  [ACTION]: I try to anticipate his moves by reading his body language.,output: [CHECK]: Insight
+input:  [ACTION]: I try to anticipate his moves by reading his body language.,output: [CHECK]: Insight
+input:  [ACTION]: I use my alchemist's supplies to analyze a sample.,output: [CHECK]: Alchemist's Supplies
+input:  [ACTION]: I use my alchemist's supplies to analyze a sample.,output: [CHECK]: Alchemist's Supplies
+input:  [ACTION]: I explain that its purpose in this world is fulfilled and it can now be at peace.,output: [CHECK]: Religion
+input:  [ACTION]: I explain that its purpose in this world is fulfilled and it can now be at peace.,output: [CHECK]: Religion
+input:  [ACTION]: I try to find a way to get a grip on the greasy rope.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I try to find a way to get a grip on the greasy rope.,output: [CHECK]: Acrobatics
+"input:  [ACTION]: I play a powerful, primal rhythm that stirs the heart.",output: [CHECK]: Performance
+"input:  [ACTION]: I play a powerful, primal rhythm that stirs the heart.",output: [CHECK]: Performance
+input:  [ACTION]: I try to use a scrying spell to find him.,output: [CHECK]: Arcana
+input:  [ACTION]: I try to use a scrying spell to find him.,output: [CHECK]: Arcana
+"input:  [ACTION]: I craft a clever, backhanded compliment.",output: [CHECK]: Deception
+"input:  [ACTION]: I craft a clever, backhanded compliment.",output: [CHECK]: Deception
+input:  [ACTION]: I use my divine sense to detect the undead one.,output: [CHECK]: Insight
+input:  [ACTION]: I use my divine sense to detect the undead one.,output: [CHECK]: Insight
+input:  [ACTION]: I try to make the incredibly precise shot.,output: [CHECK]: Athletics
+input:  [ACTION]: I try to make the incredibly precise shot.,output: [CHECK]: Athletics
+input:  [ACTION]: I try to find a pattern in the color shifts.,output: [CHECK]: Investigation
+input:  [ACTION]: I try to find a pattern in the color shifts.,output: [CHECK]: Investigation
+input:  [ACTION]: I try to recall the castle's original blueprints from my studies.,output: [CHECK]: History
+input:  [ACTION]: I try to recall the castle's original blueprints from my studies.,output: [CHECK]: History
+"input:  [ACTION]: I try to use my innate charisma, enhanced by a subtle magical aura.",output: [CHECK]: Persuasion
+"input:  [ACTION]: I try to use my innate charisma, enhanced by a subtle magical aura.",output: [CHECK]: Persuasion
+input:  [ACTION]: I try to run along the walls of the room to get the key.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I try to run along the walls of the room to get the key.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I use my knowledge of engineering to build a sturdy raft.,output: [CHECK]: Woodcarver's Tools
+input:  [ACTION]: I use my knowledge of engineering to build a sturdy raft.,output: [CHECK]: Woodcarver's Tools
+input:  [ACTION]: I use my divine sense to detect any evil clinging to the object.,output: [CHECK]: Investigation
+input:  [ACTION]: I use my divine sense to detect any evil clinging to the object.,output: [CHECK]: Investigation
+"input:  [ACTION]: I carefully taste a tiny, non-lethal amount of the poison.",output: [CHECK]: Poisoner's Kit
+"input:  [ACTION]: I carefully taste a tiny, non-lethal amount of the poison.",output: [CHECK]: Poisoner's Kit
+input:  [ACTION]: I try to ignore the insult and control my temper.,output: [CHECK]: Wisdom
+input:  [ACTION]: I try to ignore the insult and control my temper.,output: [CHECK]: Wisdom
+input:  [ACTION]: I try to control the unpredictable magical energies.,output: [CHECK]: Arcana
+input:  [ACTION]: I try to control the unpredictable magical energies.,output: [CHECK]: Arcana
+input:  [ACTION]: I compose a moving sonnet about the beauty of the sunset.,output: [CHECK]: Performance
+input:  [ACTION]: I compose a moving sonnet about the beauty of the sunset.,output: [CHECK]: Performance
+input:  [ACTION]: I use my religious knowledge to narrow down the search.,output: [CHECK]: Religion
+input:  [ACTION]: I use my religious knowledge to narrow down the search.,output: [CHECK]: Religion
+input:  [ACTION]: I look for the familiar constellation to find my way.,output: [CHECK]: Survival
+input:  [ACTION]: I look for the familiar constellation to find my way.,output: [CHECK]: Survival
+input:  [ACTION]: I display a dark magical feat and speak in cryptic verses.,output: [CHECK]: Deception
+input:  [ACTION]: I display a dark magical feat and speak in cryptic verses.,output: [CHECK]: Deception
+input:  [ACTION]: I try to gauge their loyalty and morale.,output: [CHECK]: Insight
+input:  [ACTION]: I try to gauge their loyalty and morale.,output: [CHECK]: Insight
+input:  [ACTION]: I attempt to summon a localized rain shower over the fire.,output: [CHECK]: Nature
+input:  [ACTION]: I attempt to summon a localized rain shower over the fire.,output: [CHECK]: Nature
+input:  [ACTION]: I try to achieve the necessary speed and precision.,output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I try to achieve the necessary speed and precision.,output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I use my alchemist's supplies to create a powerful adhesive.,output: [CHECK]: Alchemist's Supplies
+input:  [ACTION]: I use my alchemist's supplies to create a powerful adhesive.,output: [CHECK]: Alchemist's Supplies
+input:  [ACTION]: I try to shatter it with a divinely empowered strike.,output: [CHECK]: Athletics
+input:  [ACTION]: I try to shatter it with a divinely empowered strike.,output: [CHECK]: Athletics
+"input:  [ACTION]: I subtly feed misinformation to one side, pretending to be their ally, to manipulate them into a truce.",output: [CHECK]: Deception
+"input:  [ACTION]: I subtly feed misinformation to one side, pretending to be their ally, to manipulate them into a truce.",output: [CHECK]: Deception
+input:  [ACTION]: I try to recall accounts of their previous duels to find a weakness in their fighting style.,output: [CHECK]: History
+input:  [ACTION]: I try to recall accounts of their previous duels to find a weakness in their fighting style.,output: [CHECK]: History
+input:  [ACTION]: I try to reshape the dreamscape to my advantage by imagining a weapon into existence.,output: [CHECK]: Charisma
+input:  [ACTION]: I try to reshape the dreamscape to my advantage by imagining a weapon into existence.,output: [CHECK]: Charisma
+input:  [ACTION]: I try to comfort the ghost by listening to its story with empathetic silence.,output: [CHECK]: Insight
+input:  [ACTION]: I try to comfort the ghost by listening to its story with empathetic silence.,output: [CHECK]: Insight
+input:  [ACTION]: I try to build a net-launcher to catch the specific book I need.,output: [CHECK]: Tinker's Tools
+input:  [ACTION]: I try to build a net-launcher to catch the specific book I need.,output: [CHECK]: Tinker's Tools
+input:  [ACTION]: I search their old bedroom for clues to their motivations or weaknesses.,output: [CHECK]: Investigation
+input:  [ACTION]: I search their old bedroom for clues to their motivations or weaknesses.,output: [CHECK]: Investigation
+input:  [ACTION]: I use my loaded dice to cheat.,output: [CHECK]: Dice Set
+input:  [ACTION]: I use my loaded dice to cheat.,output: [CHECK]: Dice Set
+input:  [ACTION]: I try to determine if the recent 'earthquakes' are the turtle waking up.,output: [CHECK]: Nature
+input:  [ACTION]: I try to determine if the recent 'earthquakes' are the turtle waking up.,output: [CHECK]: Nature
+input:  [ACTION]: I try to read a book by calming my mind and attuning to its resonant frequency.,output: [CHECK]: Arcana
+input:  [ACTION]: I try to read a book by calming my mind and attuning to its resonant frequency.,output: [CHECK]: Arcana
+input:  [ACTION]: I offer to perform a song in the baker's shop for a day to pay for the stolen bread.,output: [CHECK]: Performance
+input:  [ACTION]: I offer to perform a song in the baker's shop for a day to pay for the stolen bread.,output: [CHECK]: Performance
+input:  [ACTION]: I try to restore their faith by debating theology with them.,output: [CHECK]: Religion
+input:  [ACTION]: I try to restore their faith by debating theology with them.,output: [CHECK]: Religion
+input:  [ACTION]: I use my knowledge of supernatural creatures to identify the tracks.,output: [CHECK]: Survival
+input:  [ACTION]: I use my knowledge of supernatural creatures to identify the tracks.,output: [CHECK]: Survival
+input:  [ACTION]: I try to purchase the memory of a secret password from a vendor.,output: [CHECK]: Deception
+input:  [ACTION]: I try to purchase the memory of a secret password from a vendor.,output: [CHECK]: Deception
+"input:  [ACTION]: I approach it slowly, with an offering of food and no sudden movements.",output: [CHECK]: Animal Handling
+"input:  [ACTION]: I approach it slowly, with an offering of food and no sudden movements.",output: [CHECK]: Animal Handling
+input:  [ACTION]: I try to mimic the form with perfect muscle memory.,output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I try to mimic the form with perfect muscle memory.,output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I appeal to her by showing my deep connection to the forest.,output: [CHECK]: Nature
+input:  [ACTION]: I appeal to her by showing my deep connection to the forest.,output: [CHECK]: Nature
+input:  [ACTION]: I offer them a chance at a new life and a clean slate in exchange for the information.,output: [CHECK]: Persuasion
+input:  [ACTION]: I offer them a chance at a new life and a clean slate in exchange for the information.,output: [CHECK]: Persuasion
+input:  [ACTION]: I study the terrain and my knowledge of their general's favorite tactics.,output: [CHECK]: History
+input:  [ACTION]: I study the terrain and my knowledge of their general's favorite tactics.,output: [CHECK]: History
+input:  [ACTION]: I try to turn the wooden bar to ash with my fire magic.,output: [CHECK]: Arcana
+input:  [ACTION]: I try to turn the wooden bar to ash with my fire magic.,output: [CHECK]: Arcana
+input:  [ACTION]: I use my discipline to slow my heart and detect any poison in a small bite.,output: [CHECK]: Constitution
+input:  [ACTION]: I take a tiny bite and detect any poison with my discipline.,output: [CHECK]: Constitution
+input:  [ACTION]: I try to hotwire the construct's arcane power core.,output: [CHECK]: Tinker's Tools
+input:  [ACTION]: I try to hotwire the construct's arcane power core.,output: [CHECK]: Tinker's Tools
+input:  [ACTION]: I use my sheer strength and righteous fury to hold up the ceiling.,output: [CHECK]: Athletics
+input:  [ACTION]: I use my sheer strength and righteous fury to hold up the ceiling.,output: [CHECK]: Athletics
+input:  [ACTION]: I try to create a diversion by cutting a merchant's purse so his coins spill everywhere.,output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I try to create a diversion by cutting a merchant's purse so his coins spill everywhere.,output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I try to approach the seal without it noticing me.,output: [CHECK]: Stealth
+input:  [ACTION]: I try to approach the seal without it noticing me.,output: [CHECK]: Stealth
+input:  [ACTION]: I cast an identification spell on the metal.,output: [CHECK]: Arcana
+input:  [ACTION]: I cast an identification spell on the metal.,output: [CHECK]: Arcana
+input:  [ACTION]: I pretend to be a clueless provincial lord to get them to lower their guard.,output: [CHECK]: Performance
+input:  [ACTION]: I pretend to be a clueless provincial lord to get them to lower their guard.,output: [CHECK]: Performance
+input:  [ACTION]: I use my divine sense to detect the object's aura.,output: [CHECK]: Religion
+input:  [ACTION]: I use my divine sense to detect the object's aura.,output: [CHECK]: Religion
+"input:  [ACTION]: I look for signs of its passage, like dropped feathers or claw marks on high branches.",output: [CHECK]: Investigation
+"input:  [ACTION]: I look for signs of its passage, like dropped feathers or claw marks on high branches.",output: [CHECK]: Investigation
+input:  [ACTION]: I try to trick the lock with a drop of my own magically-infused blood.,output: [CHECK]: Deception
+input:  [ACTION]: I try to trick the lock with a drop of my own magically-infused blood.,output: [CHECK]: Deception
+input:  [ACTION]: I survey the battlefield from the hilltop.,output: [CHECK]: Insight
+input:  [ACTION]: I survey the battlefield from the hilltop.,output: [CHECK]: Insight
+"input:  [ACTION]: I forge a letter from one crime boss to the other, making it seem like a betrayal.",output: [CHECK]: Forgery Kit
+"input:  [ACTION]: I forge a letter from one crime boss to the other, making it seem like a betrayal.",output: [CHECK]: Forgery Kit
+input:  [ACTION]: I try to analyze their strange style to find a weakness.,output: [CHECK]: Investigation
+input:  [ACTION]: I try to analyze their strange style to find a weakness.,output: [CHECK]: Investigation
+"input:  [ACTION]: I try to create a small, focused gust of wind.",output: [CHECK]: Sleight of Hand
+"input:  [ACTION]: I try to create a small, focused gust of wind.",output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I use my ki to regulate my body temperature.,output: [CHECK]: Constitution
+input:  [ACTION]: I use my ki to regulate my body temperature.,output: [CHECK]: Constitution
+input:  [ACTION]: I use my knowledge of stonework and history to understand the runes.,output: [CHECK]: History
+input:  [ACTION]: I use my knowledge of stonework and history to understand the runes.,output: [CHECK]: History
+input:  [ACTION]: I engage them in a theological discussion to prove my faith.,output: [CHECK]: Religion
+input:  [ACTION]: I engage them in a theological discussion to prove my faith.,output: [CHECK]: Religion
+input:  [ACTION]: I use my tactical knowledge to identify the best choke point to make our stand.,output: [CHECK]: Investigation
+input:  [ACTION]: I use my tactical knowledge to identify the best choke point to make our stand.,output: [CHECK]: Investigation
+input:  [ACTION]: I toss a small stone onto a nearby tile to see if it triggers a trap.,output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I toss a small stone onto a nearby tile to see if it triggers a trap.,output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I try to commit the path's correct sequence to memory before it changes again.,output: [CHECK]: Intelligence
+input:  [ACTION]: I try to commit the path's correct sequence to memory before it changes again.,output: [CHECK]: Intelligence
+input:  [ACTION]: I try to deliver a moving eulogy to honor their memory.,output: [CHECK]: Performance
+input:  [ACTION]: I try to deliver a moving eulogy to honor their memory.,output: [CHECK]: Performance
+input:  [ACTION]: I try to sharpen my sword with a whetstone at camp.,output: [CHECK]: Smith's Tools
+input:  [ACTION]: I try to sharpen my sword with a whetstone at camp.,output: [CHECK]: Smith's Tools
+"input:  [ACTION]: I look for signs of hidden springs, like patches of green vegetation.",output: [CHECK]: Survival
+"input:  [ACTION]: I look for signs of hidden springs, like patches of green vegetation.",output: [CHECK]: Survival
+input:  [ACTION]: I try to break the chains binding my hands.,output: [CHECK]: Athletics
+input:  [ACTION]: I try to break the chains binding my hands.,output: [CHECK]: Athletics
+input:  [ACTION]: I try to examine the gem for any imperfections.,output: [CHECK]: Investigation
+input:  [ACTION]: I try to examine the gem for any imperfections.,output: [CHECK]: Investigation
+input:  [ACTION]: I use my knowledge of alchemy to brew the potion.,output: [CHECK]: Alchemist's Supplies
+input:  [ACTION]: I use my knowledge of alchemy to brew the potion.,output: [CHECK]: Alchemist's Supplies
+input:  [ACTION]: I use my divine sense to detect any evil or fiendish presence.,output: [CHECK]: Insight
+input:  [ACTION]: I use my divine sense to detect any evil or fiendish presence.,output: [CHECK]: Insight
+input:  [ACTION]: I look for a gap in their armor to strike at.,output: [CHECK]: Perception
+input:  [ACTION]: I look for a gap in their armor to strike at.,output: [CHECK]: Perception
+input:  [ACTION]: I use my knowledge of nature to identify the plant.,output: [CHECK]: Nature
+input:  [ACTION]: I use my knowledge of nature to identify the plant.,output: [CHECK]: Nature
+input:  [ACTION]: I snap a wooden spear in half over my knee to show my strength.,output: [CHECK]: Intimidation
+input:  [ACTION]: I snap a wooden spear in half over my knee to show my strength.,output: [CHECK]: Intimidation
+input:  [ACTION]: I watch for signs of deception in their body language.,output: [CHECK]: Insight
+input:  [ACTION]: I watch for signs of deception in their body language.,output: [CHECK]: Insight
+input:  [ACTION]: I search my vast mental library for the name.,output: [CHECK]: History
+input:  [ACTION]: I search my vast mental library for the name.,output: [CHECK]: History
+input:  [ACTION]: I use my healing magic to neutralize the poison.,output: [CHECK]: Medicine
+input:  [ACTION]: I use my healing magic to neutralize the poison.,output: [CHECK]: Medicine
+input:  [ACTION]: I analyze their movements for weaknesses.,output: [CHECK]: Insight
+input:  [ACTION]: I analyze their movements for weaknesses.,output: [CHECK]: Insight
+input:  [ACTION]: I try to soothe the animal and show it there's no danger.,output: [CHECK]: Animal Handling
+input:  [ACTION]: I try to soothe the animal and show it there's no danger.,output: [CHECK]: Animal Handling
+input:  [ACTION]: I use my sheer endurance to withstand the cold.,output: [CHECK]: Constitution
+input:  [ACTION]: I use my sheer endurance to withstand the cold.,output: [CHECK]: Constitution
+input:  [ACTION]: I try to charm the guard with a flirtatious smile.,output: [CHECK]: Deception
+input:  [ACTION]: I try to charm the guard with a flirtatious smile.,output: [CHECK]: Deception
+input:  [ACTION]: I try to find the book among the charred remains.,output: [CHECK]: Investigation
+input:  [ACTION]: I try to find the book among the charred remains.,output: [CHECK]: Investigation
+input:  [ACTION]: I try to reveal the hag's true nature to the villagers.,output: [CHECK]: Persuasion
+input:  [ACTION]: I try to reveal the hag's true nature to the villagers.,output: [CHECK]: Persuasion
+"input:  [ACTION]: I try to issue clear, simple commands to direct the soldiers.",output: [CHECK]: Performance
+"input:  [ACTION]: I try to issue clear, simple commands to direct the soldiers.",output: [CHECK]: Performance
+input:  [ACTION]: I look for a suitable cave or overhang to wait out the storm.,output: [CHECK]: Perception
+input:  [ACTION]: I look for a suitable cave or overhang to wait out the storm.,output: [CHECK]: Perception
+input:  [ACTION]: I use my rage to fuel my strength and bend the bars.,output: [CHECK]: Athletics
+input:  [ACTION]: I use my rage to fuel my strength and bend the bars.,output: [CHECK]: Athletics
+input:  [ACTION]: I try to conceal the object in a hidden pocket.,output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I try to conceal the object in a hidden pocket.,output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I cast an 'Identify' spell on the item.,output: [CHECK]: Arcana
+input:  [ACTION]: I cast an 'Identify' spell on the item.,output: [CHECK]: Arcana
+input:  [ACTION]: I search my memory for the story of the saint.,output: [CHECK]: Religion
+input:  [ACTION]: I search my memory for the story of the saint.,output: [CHECK]: Religion
+"input:  [ACTION]: I inspect the blade for balance, weight, and craftsmanship.",output: [CHECK]: Investigation
+"input:  [ACTION]: I inspect the blade for balance, weight, and craftsmanship.",output: [CHECK]: Investigation
+input:  [ACTION]: I use the position of the moon and stars to find my way.,output: [CHECK]: Survival
+input:  [ACTION]: I use the position of the moon and stars to find my way.,output: [CHECK]: Survival
+input:  [ACTION]: I try to swim across the powerful current.,output: [CHECK]: Athletics
+input:  [ACTION]: I try to swim across the powerful current.,output: [CHECK]: Athletics
+input:  [ACTION]: I try to distribute my weight to avoid the squeaky board.,output: [CHECK]: Stealth
+input:  [ACTION]: I try to distribute my weight to avoid the squeaky board.,output: [CHECK]: Stealth
+input:  [ACTION]: I try to cast a 'Calm Emotions' spell on the creature.,output: [CHECK]: Arcana
+input:  [ACTION]: I try to cast a 'Calm Emotions' spell on the creature.,output: [CHECK]: Arcana
+input:  [ACTION]: I use my faith and fortitude to fight off the illness.,output: [CHECK]: Constitution
+input:  [ACTION]: I use my faith and fortitude to fight off the illness.,output: [CHECK]: Constitution
+input:  [ACTION]: I watch their formations and discipline.,output: [CHECK]: Insight
+input:  [ACTION]: I watch their formations and discipline.,output: [CHECK]: Insight
+input:  [ACTION]: I use my knowledge of animals to train the dog.,output: [CHECK]: Animal Handling
+input:  [ACTION]: I use my knowledge of animals to train the dog.,output: [CHECK]: Animal Handling
+input:  [ACTION]: I try to make sense of the confusing legal language.,output: [CHECK]: Intelligence
+input:  [ACTION]: I try to make sense of the confusing legal language.,output: [CHECK]: Intelligence
+input:  [ACTION]: I use my forgery kit to copy the signature.,output: [CHECK]: Forgery Kit
+input:  [ACTION]: I use my forgery kit to copy the signature.,output: [CHECK]: Forgery Kit
+input:  [ACTION]: I use my magical knowledge to analyze the orb.,output: [CHECK]: Investigation
+input:  [ACTION]: I use my magical knowledge to analyze the orb.,output: [CHECK]: Investigation
+input:  [ACTION]: I try to give them a reason to hope again.,output: [CHECK]: Persuasion
+input:  [ACTION]: I try to give them a reason to hope again.,output: [CHECK]: Persuasion
+"input:  [ACTION]: I look for clues to their passage, like a dropped coin or a fresh footprint.",output: [CHECK]: Survival
+"input:  [ACTION]: I look for clues to their passage, like a dropped coin or a fresh footprint.",output: [CHECK]: Survival
+input:  [ACTION]: I try to follow the river upstream to its source.,output: [CHECK]: Nature
+input:  [ACTION]: I try to follow the river upstream to its source.,output: [CHECK]: Nature
+input:  [ACTION]: I apply my military discipline to follow the apple pie recipe exactly.,output: [CHECK]: Cook's Utensils
+input:  [ACTION]: I apply my military discipline to follow the apple pie recipe exactly.,output: [CHECK]: Cook's Utensils
+input:  [ACTION]: I try to cross the massive expanse of the floor by navigating the furniture.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I try to cross the massive expanse of the floor by navigating the furniture.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I try to predict the library's organizational pattern based on arcane principles.,output: [CHECK]: Arcana
+input:  [ACTION]: I try to predict the library's organizational pattern based on arcane principles.,output: [CHECK]: Arcana
+input:  [ACTION]: I use my knowledge of religious law to find a just and impartial solution.,output: [CHECK]: Religion
+input:  [ACTION]: I use my knowledge of religious law to find a just and impartial solution.,output: [CHECK]: Religion
+input:  [ACTION]: I try to make a sharp turn to lose my pursuers in a dense forest.,output: [CHECK]: Animal Handling
+input:  [ACTION]: I try to make a sharp turn to lose my pursuers in a dense forest.,output: [CHECK]: Animal Handling
+input:  [ACTION]: I examine the water and surrounding area for signs of contamination.,output: [CHECK]: Survival
+input:  [ACTION]: I examine the water and surrounding area for signs of contamination.,output: [CHECK]: Survival
+input:  [ACTION]: I try to goad them into attacking first.,output: [CHECK]: Deception
+input:  [ACTION]: I try to goad them into attacking first.,output: [CHECK]: Deception
+input:  [ACTION]: I appeal to our old friendship to convince him to look the other way.,output: [CHECK]: Persuasion
+input:  [ACTION]: I appeal to our old friendship to convince him to look the other way.,output: [CHECK]: Persuasion
+input:  [ACTION]: I try to find the mechanism that is causing the sand to pour in.,output: [CHECK]: Investigation
+input:  [ACTION]: I try to find the mechanism that is causing the sand to pour in.,output: [CHECK]: Investigation
+input:  [ACTION]: I try to speak with the spirits of the house to learn their story.,output: [CHECK]: History
+input:  [ACTION]: I try to speak with the spirits of the house to learn their story.,output: [CHECK]: History
+input:  [ACTION]: I use my strength to brace the door.,output: [CHECK]: Athletics
+input:  [ACTION]: I use my strength to brace the door.,output: [CHECK]: Athletics
+input:  [ACTION]: I use my knowledge of medicine to treat the bite.,output: [CHECK]: Medicine
+input:  [ACTION]: I use my knowledge of medicine to treat the bite.,output: [CHECK]: Medicine
+input:  [ACTION]: I try to decipher the symbols on the map.,output: [CHECK]: Intelligence
+input:  [ACTION]: I try to decipher the symbols on the map.,output: [CHECK]: Intelligence
+input:  [ACTION]: I carefully inspect the lock and seams for any signs of a trap mechanism.,output: [CHECK]: Investigation
+input:  [ACTION]: I carefully inspect the lock and seams for any signs of a trap mechanism.,output: [CHECK]: Investigation
+input:  [ACTION]: I use a delicate mending spell to repair the page.,output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I use a delicate mending spell to repair the page.,output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I use my divine magic to create a protective barrier.,output: [CHECK]: Religion
+input:  [ACTION]: I use my divine magic to create a protective barrier.,output: [CHECK]: Religion
+input:  [ACTION]: I stare him down without saying a word.,output: [CHECK]: Intimidation
+input:  [ACTION]: I stare him down without saying a word.,output: [CHECK]: Intimidation
+input:  [ACTION]: I listen to the bird's song and try to identify it.,output: [CHECK]: Nature
+input:  [ACTION]: I listen to the bird's song and try to identify it.,output: [CHECK]: Nature
+input:  [ACTION]: I use my survival skills to find dry tinder and wood.,output: [CHECK]: Survival
+input:  [ACTION]: I use my survival skills to find dry tinder and wood.,output: [CHECK]: Survival
+input:  [ACTION]: I try to spot a tail in the reflection of a shop window.,output: [CHECK]: Perception
+input:  [ACTION]: I try to spot a tail in the reflection of a shop window.,output: [CHECK]: Perception
+input:  [ACTION]: I cast a 'Detect Magic' spell to find the real one.,output: [CHECK]: Arcana
+input:  [ACTION]: I cast a 'Detect Magic' spell to find the real one.,output: [CHECK]: Arcana
+input:  [ACTION]: I appeal to the memory of their faith and the god they once served.,output: [CHECK]: Persuasion
+input:  [ACTION]: I appeal to the memory of their faith and the god they once served.,output: [CHECK]: Persuasion
+input:  [ACTION]: I analyze the number and depth of the tracks to estimate their numbers.,output: [CHECK]: Survival
+input:  [ACTION]: I analyze the number and depth of the tracks to estimate their numbers.,output: [CHECK]: Survival
+input:  [ACTION]: I try to earn the hawk's trust with food and patience.,output: [CHECK]: Animal Handling
+input:  [ACTION]: I try to earn the hawk's trust with food and patience.,output: [CHECK]: Animal Handling
+input:  [ACTION]: I use a sledgehammer to smash through the wall.,output: [CHECK]: Athletics
+input:  [ACTION]: I use a sledgehammer to smash through the wall.,output: [CHECK]: Athletics
+input:  [ACTION]: I use my tinderbox to light a pile of trash on fire.,output: [CHECK]: Stealth
+input:  [ACTION]: I use my tinderbox to light a pile of trash on fire.,output: [CHECK]: Stealth
+input:  [ACTION]: I try to cast a 'Silence' spell on the area before I pass through.,output: [CHECK]: Stealth
+input:  [ACTION]: I try to cast a 'Silence' spell on the area before I pass through.,output: [CHECK]: Stealth
+input:  [ACTION]: I use a 'Zone of Truth' spell to compel them to be honest.,output: [CHECK]: Religion
+input:  [ACTION]: I use a 'Zone of Truth' spell to compel them to be honest.,output: [CHECK]: Religion
+input:  [ACTION]: I use my knowledge of military tactics to set up a perimeter.,output: [CHECK]: Survival
+input:  [ACTION]: I use my knowledge of military tactics to set up a perimeter.,output: [CHECK]: Survival
+input:  [ACTION]: I try to track the fog to its source.,output: [CHECK]: Investigation
+input:  [ACTION]: I try to track the fog to its source.,output: [CHECK]: Investigation
+input:  [ACTION]: I try to understand the story through the actors' body language.,output: [CHECK]: Insight
+input:  [ACTION]: I try to understand the story through the actors' body language.,output: [CHECK]: Insight
+input:  [ACTION]: I try to mimic the accent and demeanor of a servant.,output: [CHECK]: Performance
+input:  [ACTION]: I try to mimic the accent and demeanor of a servant.,output: [CHECK]: Performance
+input:  [ACTION]: I search my perfect memory for the information.,output: [CHECK]: History
+input:  [ACTION]: I search my perfect memory for the information.,output: [CHECK]: History
+input:  [ACTION]: I use my divine sense to detect any consecration.,output: [CHECK]: Religion
+input:  [ACTION]: I use my divine sense to detect any consecration.,output: [CHECK]: Religion
+input:  [ACTION]: I try to parry the chair with my own stool.,output: [CHECK]: Athletics
+input:  [ACTION]: I try to parry the chair with my own stool.,output: [CHECK]: Athletics
+input:  [ACTION]: I use my knowledge of the terrain to find a good ambush spot.,output: [CHECK]: Stealth
+input:  [ACTION]: I use my knowledge of the terrain to find a good ambush spot.,output: [CHECK]: Stealth
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I'll try to force the door open with my strength.,output: [CHECK]: Athletics
+input:  [ACTION]: I'll try to force the door open with my strength.,output: [CHECK]: Athletics
+input:  [ACTION]: I'll examine the carvings on the door for a hidden mechanism or lock.,output: [CHECK]: Investigation
+input:  [ACTION]: I'll examine the carvings on the door for a hidden mechanism or lock.,output: [CHECK]: Investigation
+input:  [ACTION]: I use my thieves' tools to pick the lock.,output: [CHECK]: Thieves' Tools
+input:  [ACTION]: I use my thieves' tools to pick the lock.,output: [CHECK]: Thieves' Tools
+input:  [ACTION]: I'll take the lead with my shield up. I check the corridor for any immediate threats or ambushes.,output: [CHECK]: Perception
+input:  [ACTION]: I'll take the lead with my shield up. I check the corridor for any immediate threats or ambushes.,output: [CHECK]: Perception
+input:  [ACTION]: Something feels off. I'll check the floor ahead for pressure plates.,output: [CHECK]: Investigation
+input:  [ACTION]: Something feels off. I'll check the floor ahead for pressure plates.,output: [CHECK]: Investigation
+input:  [ACTION]: I'll inspect the sarcophagus for traps before we try to open it.,output: [CHECK]: Investigation
+input:  [ACTION]: I'll inspect the sarcophagus for traps before we try to open it.,output: [CHECK]: Investigation
+input:  [ACTION]: I'll use my thieves' tools to disarm the trap mechanism.,output: [CHECK]: Thieves' Tools
+input:  [ACTION]: I'll use my thieves' tools to disarm the trap mechanism.,output: [CHECK]: Thieves' Tools
+input:  [ACTION]: I'll push the heavy stone lid off the sarcophagus.,output: [CHECK]: Athletics
+input:  [ACTION]: I aim for a perfect bullseye to silence his boasting.,output: [CHECK]: Athletics
+input:  [ACTION]: I aim for a perfect bullseye to silence his boasting.,output: [CHECK]: Athletics
+input:  [ACTION]: I listen for any coded phrases hidden within the poetry being read.,output: [CHECK]: Insight
+input:  [ACTION]: I listen for any coded phrases hidden within the poetry being read.,output: [CHECK]: Insight
+"input:  [ACTION]: I try to use my knowledge of anatomy to land a precise, debilitating strike.",output: [CHECK]: Medicine
+"input:  [ACTION]: I try to use my knowledge of anatomy to land a precise, debilitating strike.",output: [CHECK]: Medicine
+"input:  [ACTION]: I use my magic to create a sphere of soft, gentle light.",output: [CHECK]: Religion
+"input:  [ACTION]: I use my magic to create a sphere of soft, gentle light.",output: [CHECK]: Religion
+input:  [ACTION]: I try to find a safe path through the falling rocks.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I try to find a safe path through the falling rocks.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I try to follow their trail by listening to the gossip of the courtly attendees.,output: [CHECK]: Insight
+input:  [ACTION]: I try to follow their trail by listening to the gossip of the courtly attendees.,output: [CHECK]: Insight
+input:  [ACTION]: I try to use the library's indexing system to find the book.,output: [CHECK]: Investigation
+input:  [ACTION]: I try to use the library's indexing system to find the book.,output: [CHECK]: Investigation
+input:  [ACTION]: I try to deal myself a better hand from the bottom of the deck.,output: [CHECK]: Sleight of Hand
+input:  [ACTION]: I try to deal myself a better hand from the bottom of the deck.,output: [CHECK]: Sleight of Hand
+"input:  [ACTION]: I try to answer the question, 'What is the nature of magic?'",output: [CHECK]: Intelligence
+"input:  [ACTION]: I try to answer the question, 'What is the nature of magic?'",output: [CHECK]: Intelligence
+input:  [ACTION]: I use my knowledge of religious signs to interpret the event.,output: [CHECK]: Religion
+input:  [ACTION]: I use my knowledge of religious signs to interpret the event.,output: [CHECK]: Religion
+input:  [ACTION]: I try to apply my footwork from sword fighting to the dance.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I try to apply my footwork from sword fighting to the dance.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I try to use the classic method of rubbing two sticks together.,output: [CHECK]: Survival
+input:  [ACTION]: I try to use the classic method of rubbing two sticks together.,output: [CHECK]: Survival
+input:  [ACTION]: I try to force the bent axle back into shape.,output: [CHECK]: Athletics
+input:  [ACTION]: I try to force the bent axle back into shape.,output: [CHECK]: Athletics
+input:  [ACTION]: I use my poisoner's kit to mix a non-lethal sedative.,output: [CHECK]: Poisoner's Kit
+input:  [ACTION]: I use my poisoner's kit to mix a non-lethal sedative.,output: [CHECK]: Poisoner's Kit
+input:  [ACTION]: I try to communicate with it using a simple 'Comprehend Languages' spell.,output: [CHECK]: Arcana
+input:  [ACTION]: I try to communicate with it using a simple 'Comprehend Languages' spell.,output: [CHECK]: Arcana
+input:  [ACTION]: I appeal to his sense of morality and community.,output: [CHECK]: Persuasion
+input:  [ACTION]: I appeal to his sense of morality and community.,output: [CHECK]: Persuasion
+input:  [ACTION]: I analyze the room for choke points and cover.,output: [CHECK]: Insight
+input:  [ACTION]: I analyze the room for choke points and cover.,output: [CHECK]: Insight
+input:  [ACTION]: I use my knowledge of fungi to identify the mushrooms.,output: [CHECK]: Nature
+input:  [ACTION]: I use my knowledge of fungi to identify the mushrooms.,output: [CHECK]: Nature
+input:  [ACTION]: I try to throw the dart with all my strength.,output: [CHECK]: Athletics
+input:  [ACTION]: I try to throw the dart with all my strength.,output: [CHECK]: Athletics
+input:  [ACTION]: I try to mask my scent by rolling in a pile of filth.,output: [CHECK]: Stealth
+input:  [ACTION]: I try to mask my scent by rolling in a pile of filth.,output: [CHECK]: Stealth
+input:  [ACTION]: I try to feel for any physical substance to the wall.,output: [CHECK]: Investigation
+input:  [ACTION]: I try to feel for any physical substance to the wall.,output: [CHECK]: Investigation
+input:  [ACTION]: I examine the body for any wounds or signs of illness.,output: [CHECK]: Medicine
+input:  [ACTION]: I examine the body for any wounds or signs of illness.,output: [CHECK]: Medicine
+input:  [ACTION]: I try to duck under the swing.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I try to duck under the swing.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I use a long pole to test the ground ahead for quicksand.,output: [CHECK]: Survival
+input:  [ACTION]: I use a long pole to test the ground ahead for quicksand.,output: [CHECK]: Survival
+input:  [ACTION]: I try to scare the information out of him.,output: [CHECK]: Intimidation
+input:  [ACTION]: I try to scare the information out of him.,output: [CHECK]: Intimidation
+input:  [ACTION]: I use my forgery kit to create the letter.,output: [CHECK]: Forgery Kit
+input:  [ACTION]: I use my forgery kit to create the letter.,output: [CHECK]: Forgery Kit
+input:  [ACTION]: I try to appeal to its intellectual curiosity.,output: [CHECK]: Persuasion
+input:  [ACTION]: I try to appeal to its intellectual curiosity.,output: [CHECK]: Persuasion
+input:  [ACTION]: I search my memory for the prayer.,output: [CHECK]: Religion
+input:  [ACTION]: I search my memory for the prayer.,output: [CHECK]: Religion
+input:  [ACTION]: I inspect the bridge for any signs of weakness.,output: [CHECK]: Investigation
+input:  [ACTION]: I inspect the bridge for any signs of weakness.,output: [CHECK]: Investigation
+input:  [ACTION]: I examine the tracks to determine their age.,output: [CHECK]: Survival
+input:  [ACTION]: I examine the tracks to determine their age.,output: [CHECK]: Survival
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: He seems shifty. I want to use my Investigation to see if he's telling the truth about the crypt's location.,output: [CHECK]: Insight
+input:  [ACTION]: He seems shifty. I want to use my Investigation to see if he's telling the truth about the crypt's location.,output: [CHECK]: Insight
+input:  [ACTION]: He's holding out on us. I'm going to lean in and scare the truth out of him.,output: [CHECK]: Intimidation
+input:  [ACTION]: He's holding out on us. I'm going to lean in and scare the truth out of him.,output: [CHECK]: Intimidation
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+"input:  [ACTION]: Alright, I want to deal with that chest. I'll check it over first before we do anything rash.",output: [CHECK]: Investigation
+"input:  [ACTION]: Alright, I want to deal with that chest. I'll check it over first before we do anything rash.",output: [CHECK]: Investigation
+"input:  [ACTION]: Okay, now I'll try to get it open.",output: [CHECK]: Thieves' Tools
+"input:  [ACTION]: Okay, now I'll try to get it open.",output: [CHECK]: Thieves' Tools
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I'll use my knowledge of nature to see what kind of beast made these *four-toed* tracks.,output: [CHECK]: Survival
+input:  [ACTION]: I'll use my knowledge of nature to see what kind of beast made these *four-toed* tracks.,output: [CHECK]: Survival
+"input:  [ACTION]: A Wyvern, eh? I scan the skies to see if it's circling overhead.",output: [CHECK]: Perception
+"input:  [ACTION]: A Wyvern, eh? I scan the skies to see if it's circling overhead.",output: [CHECK]: Perception
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I'll roar back at the lion to show it I'm not afraid.,output: [CHECK]: Performance
+input:  [ACTION]: I'll roar back at the lion to show it I'm not afraid.,output: [CHECK]: Performance
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I'll try to take out the hobgoblin leader first.,output: [CHECK]: Perception
+input:  [ACTION]: I'll try to take out the hobgoblin leader first.,output: [CHECK]: Perception
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I'll say a prayer to the god of the forest for guidance.,output: [CHECK]: Religion
+input:  [ACTION]: I'll say a prayer to the god of the forest for guidance.,output: [CHECK]: Religion
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I'll investigate the wound to see what kind of sword could have caused it.,output: [CHECK]: Medicine
+input:  [ACTION]: I'll investigate the wound to see what kind of sword could have caused it.,output: [CHECK]: Medicine
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I'll try to get 'Barnaby' to tell me about the Shadowfang Crypt.,output: [CHECK]: Persuasion
+input:  [ACTION]: I'll try to get 'Barnaby' to tell me about the Shadowfang Crypt.,output: [CHECK]: Persuasion
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I'll cast 'Detect Magic' to analyze the yellow orb.,output: [CHECK]: Arcana
+input:  [ACTION]: I'll cast 'Detect Magic' to analyze the yellow orb.,output: [CHECK]: Arcana
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I'll focus my attack on the twin with the scar on his left eye.,output: [CHECK]: Athletics
+input:  [ACTION]: I'll focus my attack on the twin with the scar on his left eye.,output: [CHECK]: Athletics
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I'll use my knowledge of the area to plot a course to 'Smuggler's Inlet'.,output: [CHECK]: Survival
+input:  [ACTION]: I'll use my knowledge of the area to plot a course to 'Smuggler's Inlet'.,output: [CHECK]: Survival
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I'll pray for guidance on which of the two chests is safe.,output: [CHECK]: Religion
+input:  [ACTION]: I'll pray for guidance on which of the two chests is safe.,output: [CHECK]: Religion
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I'll follow the owlbear tracks to find its lair.,output: [CHECK]: Survival
+input:  [ACTION]: I'll follow the owlbear tracks to find its lair.,output: [CHECK]: Survival
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I'll use my tools to carefully cut the blue wire.,output: [CHECK]: Thieves' Tools
+input:  [ACTION]: I'll use my tools to carefully cut the blue wire.,output: [CHECK]: Thieves' Tools
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+"input:  [ACTION]: I have the bat guano, so I'll cast the spell.",output: [CHECK]: Arcana
+"input:  [ACTION]: I have the bat guano, so I'll cast the spell.",output: [CHECK]: Arcana
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I'll use my rage to smash the table.,output: [CHECK]: Athletics
+input:  [ACTION]: I'll use my rage to smash the table.,output: [CHECK]: Athletics
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I'll try to explain to the commander that charging that valley is a bad idea.,output: [CHECK]: Persuasion
+input:  [ACTION]: I'll try to explain to the commander that charging that valley is a bad idea.,output: [CHECK]: Persuasion
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I'll try to smash the cursed table with my mace.,output: [CHECK]: Athletics
+input:  [ACTION]: I'll try to smash the cursed table with my mace.,output: [CHECK]: Athletics
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I'll search for the 'Silverwood' tree on the southern slopes.,output: [CHECK]: Nature
+input:  [ACTION]: I'll search for the 'Silverwood' tree on the southern slopes.,output: [CHECK]: Nature
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I'll offer him a bottle of cheap dwarven ale.,output: [CHECK]: Deception
+input:  [ACTION]: I'll offer him a bottle of cheap dwarven ale.,output: [CHECK]: Deception
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I'll cast a fire spell to try and evaporate the water.,output: [CHECK]: Arcana
+input:  [ACTION]: I'll cast a fire spell to try and evaporate the water.,output: [CHECK]: Arcana
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I'll try to sneak past the sleeping cat.,output: [CHECK]: Stealth
+input:  [ACTION]: I'll try to sneak past the sleeping cat.,output: [CHECK]: Stealth
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I'll cast a spell to muffle our footsteps as we investigate the sound of that music box.,output: [CHECK]: Stealth
+input:  [ACTION]: I'll cast a spell to muffle our footsteps as we investigate the sound of that music box.,output: [CHECK]: Stealth
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+"input:  [ACTION]: While he's distracted, I'll try to snatch the brass key from the hook.",output: [CHECK]: Sleight of Hand
+"input:  [ACTION]: While he's distracted, I'll try to snatch the brass key from the hook.",output: [CHECK]: Sleight of Hand
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I'll try to intimidate the leader by pointing out how her three lieutenants are outnumbered.,output: [CHECK]: Intimidation
+input:  [ACTION]: I'll try to intimidate the leader by pointing out how her three lieutenants are outnumbered.,output: [CHECK]: Intimidation
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I'll try to shoot the blue crystal out of his hand with my bow.,output: [CHECK]: Athletics
+input:  [ACTION]: I'll try to shoot the blue crystal out of his hand with my bow.,output: [CHECK]: Athletics
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I'll look for cracks in the golem's iron plating.,output: [CHECK]: Investigation
+input:  [ACTION]: I'll look for cracks in the golem's iron plating.,output: [CHECK]: Investigation
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+"input:  [ACTION]: Okay, I'll take the lead and check the tunnel on the right for traps.",output: [CHECK]: Perception
+"input:  [ACTION]: Okay, I'll take the lead and check the tunnel on the right for traps.",output: [CHECK]: Perception
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I'll try to get information from Lady Vox about the recent assassinations.,output: [CHECK]: Persuasion
+input:  [ACTION]: I'll try to get information from Lady Vox about the recent assassinations.,output: [CHECK]: Persuasion
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I'll approach and ask the laughing nobleman what troubles him.,output: [CHECK]: Insight
+input:  [ACTION]: I'll approach and ask the laughing nobleman what troubles him.,output: [CHECK]: Insight
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I'll pull my cloak tighter against the freezing wind and scan the area for shelter.,output: [CHECK]: Survival
+input:  [ACTION]: I'll pull my cloak tighter against the freezing wind and scan the area for shelter.,output: [CHECK]: Survival
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I will parry his greataxe with my own.,output: [CHECK]: Athletics
+input:  [ACTION]: I will parry his greataxe with my own.,output: [CHECK]: Athletics
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+"input:  [ACTION]: Okay, let's get ready to break in at dawn.",output: [CHECK]: Stealth
+"input:  [ACTION]: Okay, let's get ready to break in at dawn.",output: [CHECK]: Stealth
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I want to go to the Great Library of Ironport to research the artifact.,output: [CHECK]: History
+input:  [ACTION]: I want to go to the Great Library of Ironport to research the artifact.,output: [CHECK]: History
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+"input:  [ACTION]: Okay, I'll set up an ambush for that group of five orcs.",output: [CHECK]: Survival
+"input:  [ACTION]: Okay, I'll set up an ambush for that group of five orcs.",output: [CHECK]: Survival
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I'll place the green gem into the statue of the sun.,output: [CHECK]: Investigation
+input:  [ACTION]: I'll place the green gem into the statue of the sun.,output: [CHECK]: Investigation
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I'll ready my bow to shoot the giant beetle.,output: [CHECK]: Athletics
+input:  [ACTION]: I'll ready my bow to shoot the giant beetle.,output: [CHECK]: Athletics
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I'll try to intimidate the dwarf.,output: [CHECK]: Intimidation
+input:  [ACTION]: I'll try to intimidate the dwarf.,output: [CHECK]: Intimidation
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I'll try to sneak past the sleeping mastiff.,output: [CHECK]: Stealth
+input:  [ACTION]: I'll try to sneak past the sleeping mastiff.,output: [CHECK]: Stealth
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I'll search the painting of the dwarven king for secret levers.,output: [CHECK]: Investigation
+input:  [ACTION]: I'll search the painting of the dwarven king for secret levers.,output: [CHECK]: Investigation
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I'll raise my shield to block the crossbow bolt.,output: [CHECK]: Acrobatics
+input:  [ACTION]: I'll raise my shield to block the crossbow bolt.,output: [CHECK]: Acrobatics
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I'll ask the queen for her help in this matter.,output: [CHECK]: Persuasion
+input:  [ACTION]: I'll ask the queen for her help in this matter.,output: [CHECK]: Persuasion
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I'll look for any oak trees that I can use to make arrows.,output: [CHECK]: Survival
+input:  [ACTION]: I'll look for any oak trees that I can use to make arrows.,output: [CHECK]: Survival
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I'll ask for a large slab of roasted boar.,output: [CHECK]: Performance
+input:  [ACTION]: I'll ask for a large slab of roasted boar.,output: [CHECK]: Performance
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I'll check the silver statue for traps.,output: [CHECK]: Investigation
+input:  [ACTION]: I'll check the silver statue for traps.,output: [CHECK]: Investigation
+input:  [ACTION]: [SCENE_START],output: [CHECK]: None
+input:  [ACTION]: I'll try to dispel the evocation magic on the door.,output: [CHECK]: Arcana
+input:  [ACTION]: I'll try to dispel the evocation magic on the door.,output: [CHECK]: Arcana

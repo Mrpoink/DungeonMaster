@@ -1,0 +1,28 @@
+<<<<<<< HEAD
+/DungeonMaster/lib/python3.12/site-packages
+/DungeonMaster/lib64/python3.12/site-packages
+=======
+node_modules
+# Keep environment variables out of version control
+.env
+<<<<<<< HEAD
+<<<<<<< HEAD
+FrontEnd
+/generated/prisma
+/DungeonMaster/lib
+>>>>>>> Socket.io
+=======
+
+=======
+FrontEnd
+>>>>>>> 7d8205b (Updated gitignore so we can inititate pull request)
+/generated/prisma
+<<<<<<< HEAD
+>>>>>>> 3807016 (schema)
+<<<<<<< HEAD
+>>>>>>> 833bc2d (schema)
+=======
+=======
+/DungeonMaster/lib
+>>>>>>> 4d58c13 (Fixed gitignore)
+>>>>>>> 97b8681 (Fixed gitignore)

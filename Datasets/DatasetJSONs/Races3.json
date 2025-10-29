@@ -1,0 +1,182 @@
+{
+    "Dwarf": {
+        "Ability Score Bonuses": "Con +2",
+        "Speed": "25'",
+        "Dark- vision": "60'",
+        "Advantages": "Saves vs. Poison",
+        "Resistances/ Immunities": "Resistance to Poison",
+        "Proficiencies": "Battleaxe, hand axe, light hammer, war hammer, tools [smith's OR brewer's OR mason's]",
+        "Misc. Bonuses": "No move speed penalty from armor, stonecunning (proficient and x2 bonus to stonework History checks)",
+        "Languages": "Common, Dwarvish"
+    },
+    " - Hill": {
+        "Ability Score Bonuses": "Wis +1",
+        "Speed": "25'",
+        "Dark- vision": "60'",
+        "Advantages": "",
+        "Resistances/ Immunities": "",
+        "Proficiencies": "",
+        "Misc. Bonuses": "HP maximum +1 per level",
+        "Languages": ""
+    },
+    " - Mountain": {
+        "Ability Score Bonuses": "Str +2",
+        "Speed": "25'",
+        "Dark- vision": "60'",
+        "Advantages": "",
+        "Resistances/ Immunities": "",
+        "Proficiencies": "Light armor, medium armor",
+        "Misc. Bonuses": "",
+        "Languages": ""
+    },
+    "Elf": {
+        "Ability Score Bonuses": "Dex +2",
+        "Speed": "30'",
+        "Dark- vision": "60'",
+        "Advantages": "Saves vs. Charm",
+        "Resistances/ Immunities": "Immunity to Sleep",
+        "Proficiencies": "Perception",
+        "Misc. Bonuses": "Trance (4 hours instead of sleeping 8 hours)",
+        "Languages": "Common, Elvish"
+    },
+    " - High": {
+        "Ability Score Bonuses": "Int +1",
+        "Speed": "30'",
+        "Dark- vision": "60'",
+        "Advantages": "",
+        "Resistances/ Immunities": "",
+        "Proficiencies": "Longsword, shortsword, shortbow, long bow",
+        "Misc. Bonuses": "One Wizard Cantrip (spellcasting ability Int)",
+        "Languages": "[+1 of player's choice]"
+    },
+    " - Wood": {
+        "Ability Score Bonuses": "Wis +1",
+        "Speed": "35'",
+        "Dark- vision": "60'",
+        "Advantages": "",
+        "Resistances/ Immunities": "",
+        "Proficiencies": "Longsword, shortsword, shortbow, long bow",
+        "Misc. Bonuses": "Can hide when lightly obscured by natural phenomena",
+        "Languages": ""
+    },
+    " - Drow": {
+        "Ability Score Bonuses": "Cha +1",
+        "Speed": "30'",
+        "Dark- vision": "120'",
+        "Advantages": "",
+        "Resistances/ Immunities": "",
+        "Proficiencies": "Rapiers, shortswords, hand crossbows",
+        "Misc. Bonuses": "Sunlight sensitivity (disadvantage on attacks & Perception checks), spells (Dancing Lights cantrip (level 1), Faerie Fire 1/day (level 3), Darkness 1/day (level 5) (spellcasting ability Cha)",
+        "Languages": ""
+    },
+    "Halfling": {
+        "Ability Score Bonuses": "Dex +2",
+        "Speed": "25'",
+        "Dark- vision": "-",
+        "Advantages": "Saves vs. Fright",
+        "Resistances/ Immunities": "",
+        "Proficiencies": "",
+        "Misc. Bonuses": "Lucky (reroll critical fails on attacks, ability checks, & saves), nimbleness (move through space occupied by larger creature)",
+        "Languages": "Common, Halfling"
+    },
+    " - Lightfoot": {
+        "Ability Score Bonuses": "Cha +1",
+        "Speed": "25'",
+        "Dark- vision": "-",
+        "Advantages": "",
+        "Resistances/ Immunities": "",
+        "Proficiencies": "",
+        "Misc. Bonuses": "Stealthy (hide when obscured by larger creature)",
+        "Languages": ""
+    },
+    " - Stout": {
+        "Ability Score Bonuses": "Con +1",
+        "Speed": "25'",
+        "Dark- vision": "-",
+        "Advantages": "Saves vs. Poison",
+        "Resistances/ Immunities": "Resistance to Poison",
+        "Proficiencies": "",
+        "Misc. Bonuses": "",
+        "Languages": ""
+    },
+    "Human": {
+        "Ability Score Bonuses": "[+1 to All] OR [+1 to Any 2]",
+        "Speed": "30'",
+        "Dark- vision": "-",
+        "Advantages": "",
+        "Resistances/ Immunities": "",
+        "Proficiencies": "If lesser ability score bonus taken: 1 skill proficiency of player's choice",
+        "Misc. Bonuses": "If lesser ability score bonus taken: +1 feat of player's choice",
+        "Languages": "Common, [+1 of player's choice]"
+    },
+    "Dragonborn": {
+        "Ability Score Bonuses": "Str +2, Cha +1",
+        "Speed": "30'",
+        "Dark- vision": "-",
+        "Advantages": "",
+        "Resistances/ Immunities": "Resistance to Energy Type",
+        "Proficiencies": "",
+        "Misc. Bonuses": "Breath Weapon (once per rest, DC 8 + Con mod + prof bonus, have damage on successful save)",
+        "Languages": "Common, Draconic"
+    },
+    "Gnome": {
+        "Ability Score Bonuses": "Int +2",
+        "Speed": "25'",
+        "Dark- vision": "60'",
+        "Advantages": "Int, Wis, & Cha Saves vs. Magic",
+        "Resistances/ Immunities": "",
+        "Proficiencies": "",
+        "Misc. Bonuses": "",
+        "Languages": "Common, Gnomish"
+    },
+    " - Forest": {
+        "Ability Score Bonuses": "Dex +1",
+        "Speed": "25'",
+        "Dark- vision": "60'",
+        "Advantages": "",
+        "Resistances/ Immunities": "",
+        "Proficiencies": "",
+        "Misc. Bonuses": "Minor Illusion cantrip (spellcasting ability Int), communicate with beasts (Small and smaller)",
+        "Languages": ""
+    },
+    " - Rock": {
+        "Ability Score Bonuses": "Con +1",
+        "Speed": "25'",
+        "Dark- vision": "60'",
+        "Advantages": "",
+        "Resistances/ Immunities": "",
+        "Proficiencies": "Tools (artisan's)",
+        "Misc. Bonuses": "Artificer's Lore (x2 bonus to magical, alchemical, and technological item History checks), construct Tiny clockwork device",
+        "Languages": ""
+    },
+    "Half-Elf": {
+        "Ability Score Bonuses": "Cha +2 AND [+1 to Any 2]",
+        "Speed": "30'",
+        "Dark- vision": "60'",
+        "Advantages": "Saves vs. Charm",
+        "Resistances/ Immunities": "Immunity to Sleep",
+        "Proficiencies": "2 skill proficiencies of player's choice",
+        "Misc. Bonuses": "",
+        "Languages": "Common, Elvish, [+1 of player's choice]"
+    },
+    "Half-Orc": {
+        "Ability Score Bonuses": "Str +2, Con +1",
+        "Speed": "30'",
+        "Dark- vision": "60'",
+        "Advantages": "",
+        "Resistances/ Immunities": "",
+        "Proficiencies": "Intimidation",
+        "Misc. Bonuses": "Relentless Endurance (drop to 1 hp instead of 0, 1/rest), Savage Attacks (roll a damage die again from critical melee attack)",
+        "Languages": "Common, Orc"
+    },
+    "Tiefling": {
+        "Ability Score Bonuses": "Cha +2, Int +1",
+        "Speed": "30'",
+        "Dark- vision": "60'",
+        "Advantages": "",
+        "Resistances/ Immunities": "Resistance to Fire",
+        "Proficiencies": "",
+        "Misc. Bonuses": "Spells (Thaumaturgy cantrip (level 1), Hellish Rebuke 1/day (level 3), Darkness 1/day (level 5) (spellcasting ability Int)",
+        "Languages": "Common, Infernal"
+    }
+}
