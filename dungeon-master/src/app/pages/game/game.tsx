@@ -33,11 +33,13 @@ export default function Game() {
               onSetActiveDice={handleActiveSelect}
             />
           </div>
-          <main className="game">
+          <main className="game-box">
             <img src={Background.src} alt="" />
+            <div className="game">
               <GameManager />
-            <div className="player-actions">
-              <Roll sides={sides} />
+              <div className="player-actions">
+                <Roll sides={sides} />
+              </div>
             </div>
           </main>
           <div className="party-box">

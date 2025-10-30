@@ -48,6 +48,7 @@ const UserActionInput = ({ userin, setUserin, handleSend, isLoading }: UserActio
             <button
                 onClick={handleSend}
                 disabled={isLoading || !userin.trim()}
+                id="enter-button"
             >
                 <span className="hidden sm:inline">Enter</span>
             </button>
@@ -123,7 +124,7 @@ export default function GameManager() {
                 ))}
                 {isLoading && (
                      <div className="flex justify-start mb-3">
-                        <div className="max-w-[75%] p-3 rounded-xl bg-gray-700 text-gray-100 rounded-br-none animate-pulse shadow-md">
+                        <div>
                             <strong className="font-semibold">DM: </strong>
                             <span>Typing...</span>
                         </div>
