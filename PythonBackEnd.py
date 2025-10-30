@@ -54,13 +54,13 @@ lora_config = LoraConfig(
 
 def def_model():
     torch.cuda.empty_cache()
-    tokenizer = AutoTokenizer.from_pretrained("SmolLM2/SmolTokenizer")
+    tokenizer = AutoTokenizer.from_pretrained("SmolLM2/SmolTokens")
     base_model = AutoModelForCausalLM.from_pretrained(
         "HuggingFaceTB/SmolLM2-360M-Instruct",
         dtype = torch.bfloat16,
         device_map = "cuda"
         )
-    model = PeftModel.from_pretrained(base_model, "prompt_classifier_Smol\checkpoint-7124")
+    model = PeftModel.from_pretrained(base_model, "prompt_classifier_Smol/checkpoint-7124")
 
     model.to("cuda")
 

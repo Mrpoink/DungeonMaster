@@ -28,30 +28,24 @@ class userin:
         self.userin = input
 
     def get_userin(self):
-        try:
-            int(self.userin)
-            print(True)
-            self.check=True
-            return self.userin
-        except ValueError:
-            print(False)
-            self.check=False
-            return self.userin
+        return self.userin
 
         # model_out = loop.run_until_complete(model.model_output(self.userin))
         # return model_out if self.userin != "" else "Roll for Initiative"
 
-    def set_roll(self, roll):
-        self.roll = roll
+    def roll(self, roll):
+        print(roll)
+        if roll == True:
+            print(True)
+        else:
+            print(False)
+
+        model_out = loop.run_until_complete(model.model_output_check(self.userin, roll))
+        return model_out
 
     def send_userin(self):
-        if self.check  == True:
-            roll = True if int(self.userin) > 11 else False
-            model_out = loop.run_until_complete(model.model_output_check(self.userin, roll))
-            return model_out
-        else:
-            model_out = loop.run_until_complete(model.model_output(self.userin))
-            return model_out if self.userin != "" else "Roll for Initiative"
+        model_out = loop.run_until_complete(model.model_output(self.userin))
+        return model_out if self.userin != "" else "Roll for Initiative"
     
 class userData:
 
@@ -137,6 +131,26 @@ async def process_userdata():
         print("Error receiving userData, Line 106", e)
         traceback.print_exc()
         return jsonify({"error": "Failed to save user data.", "details": str(e)}), 500
+    
+@app.route("/roll", methods=['POST'])
+def process_roll():
+    try:
+        data = request.get_json()
+        model_output = userInput.roll(data.get('command'))
+
+        response_text = f"{model_output}"
+
+
+        return jsonify({
+            'message':response_text
+        })
+
+
+    except Exception as e:
+        return jsonify({'message': 'Something went wrong, error output on line 15'})
+    
+
+
 
 @app.route("/credentials", methods=['POST', 'OPTIONS'])
 async def check_creds():

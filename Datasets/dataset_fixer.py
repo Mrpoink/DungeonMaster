@@ -14,7 +14,7 @@ async def csv_to_SAC(filename):
         
         number = 0
         csv_reader = csv.reader(file)
-        #extra_info = await make_random_list()
+        extra_info = await make_random_list()
         for row in csv_reader:
             if len(row) < 7:
                 print(row)
@@ -26,10 +26,10 @@ async def csv_to_SAC(filename):
 
             if row[4] == "None":
 
-                input_string = "|user|:" + "[/EXTRA INFO]: "  + "[/PLAYER]: " + row[1] + " [/ACTION]: " + row[3] +"|end|"
+                input_string = "|user|:" + "[/EXTRA INFO]: " + random.choice(extra_info)  + "[/PLAYER]: " + row[1] + " [/ACTION]: " + row[3] +"|end|"
                 output_string = "|assistant|:" + " [/GENERATED OUTCOME]: "+row[6]  + "|end|"
             else:
-                input_string = "|user|:" + "[/EXTRA INFO]: "  + "[/PLAYER]: " + row[1] + " [/ACTION]: " + row[3] +"|end|"
+                input_string = "|user|:" + "[/EXTRA INFO]: " + random.choice(extra_info)   + "[/PLAYER]: " + row[1] + " [/ACTION]: " + row[3] +"|end|"
                 output_string = "|assistant|:" + " [/GENERATED OUTCOME]: Roll for "+row[4]  + "|end|"
 
             total_list = [input_string, output_string]

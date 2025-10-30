@@ -105,7 +105,7 @@ export default function Game() {
               <button className="submit-action" onClick={() => {sendUserin()}}>
                 Enter
               </button>
-              <Roll sides={sides} />
+              <Roll sides={sides} setConversation={setConversation}/>
             </div>
             <div className="party-box">
               <Party />
