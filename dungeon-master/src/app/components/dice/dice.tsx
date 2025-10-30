@@ -1,5 +1,4 @@
 'use client'
-import { useState } from "react";
 import D20 from "@/app/components/assets/dice/d20.png";
 import D12 from "@/app/components/assets/dice/d12.png";
 import D10 from "@/app/components/assets/dice/d10.png";
@@ -44,26 +43,4 @@ export default function Dice({ onDiceSelect, activeDice, onSetActiveDice }: Dice
         </div>
     </div>
   )
-}
-
-export function Roll({ sides }: { sides: number }){
-  const [rollResult, setRollResult] = useState<number | null>(null);
-
-  const handleRoll = () => {
-    const roll = Math.floor(Math.random() * sides) + 1;
-    setRollResult(roll);
-  }
-  return(
-    <div>
-        <button id="roll-dice-button" onClick={() => handleRoll()}>
-          ROLL
-        </button>
-        {rollResult !== null && (
-          <div className="roll-result">
-            Result: {rollResult}
-          </div>
-        )}
-    </div>
-  )
-
 }

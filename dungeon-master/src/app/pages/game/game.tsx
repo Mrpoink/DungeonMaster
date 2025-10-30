@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Background from "@/app/components/assets/mainBackground.png";
 import Dice from "@/app/components/dice/dice";
-import { Roll } from "@/app/components/dice/dice";
+import Roll from "@/app/components/dice/roll";
 import Party from "@/app/components/party/party";
 import GameManager from "@/app/components/gameManager/gameManager";
 
