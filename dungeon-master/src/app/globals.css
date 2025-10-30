@@ -331,3 +331,12 @@ button{
     margin-bottom: 2em;
   }
 }
+.message-log {
+  border:1px solid #ccc;
+  padding: 2em;
+  background-color : rgba(0, 0, 0, 0.75);
+  color: #fff;
+  margin-bottom: 20px;
+  width: 50vw;
+  overflow-y: scroll;
+}

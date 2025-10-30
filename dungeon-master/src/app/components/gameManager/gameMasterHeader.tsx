@@ -5,11 +5,11 @@ export default function GameMasterHeader(){
         <div>
             <header>
                 <h1>Dungeon Master:</h1>
-                <div>
+                {/* <div>
                     <blockquote>
                         You enter into combat.<br></br> Roll for initiative.
                     </blockquote>
-                </div>
+                </div> */}
             </header>
         </div>
     )
