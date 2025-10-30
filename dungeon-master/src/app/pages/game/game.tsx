@@ -1,8 +1,7 @@
 'use client'
-import { useState, useEffect, SetStateAction } from "react";
+import { useState } from "react";
 import Background from "@/app/components/assets/mainBackground.png";
 import Dice from "@/app/components/dice/dice";
-import GameMasterHeader from "@/app/components/gameManager/gameMasterHeader";
 import { Roll } from "@/app/components/dice/dice";
 import Party from "@/app/components/party/party";
 import GameManager from "@/app/components/gameManager/gameManager";
@@ -23,7 +22,9 @@ export default function Game() {
   return (
     <div>
         <div className="game-master-box">
-          <GameMasterHeader />
+          <header>
+            <h1>Dungeon Master:</h1>      
+          </header>
         </div>
         <div className="main-session-box">
           <div className="dice-box">
