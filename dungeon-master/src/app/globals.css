@@ -331,17 +331,3 @@ button{
     margin-bottom: 2em;
   }
 }
-.message-log {
-  transform : translateX(-50%);
-  top : 10%;
-  left: 50%;
-  position : absolute;
-  height : 50vh;
-  width : 60vw;
-  overflow-y:auto;
-  border:1px solid #ccc;
-  padding: 2em;
-  background-color : rgba(0, 0, 0, 0.75);
-  color: #fff;
-  margin-bottom: 20px;
-}
