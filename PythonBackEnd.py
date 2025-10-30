@@ -60,7 +60,7 @@ def def_model():
         dtype = torch.bfloat16,
         device_map = "cuda"
         )
-    model = base_model
+    model = PeftModel.from_pretrained(base_model, "prompt_classifier_Smol\checkpoint-7124")
 
     model.to("cuda")
 
@@ -124,7 +124,7 @@ async def model_output_check(userin : str, model, tokenizer):
             )
     decoded_ouput = tokenizer.decode(outputs[0][0], skip_special_tokens = True)
     print(decoded_ouput)
-    final_output = decoded_ouput.split('[/GENERATED CHECK]:')
+    final_output = decoded_ouput.split('[/GENERATED OUTCOME]:')
     final_output = final_output[1].split('|end|')
     print(len(final_output))
     
@@ -202,6 +202,10 @@ class DungeonMaster:
         print("Seed: ", instance.seed)
         await instance.vb.add_session('all-MiniLM-L6-v2', "start of session", instance.seed)
 
+        instance.player = "[/PLAYER]: A Half-Foot looking for thier dagger that was owned by their father, on a quest to change their life"
+
+        instance.player_says = None
+
         instance.check = None #If false, check required, else generate outcome
 
         return instance
@@ -220,24 +224,21 @@ class DungeonMaster:
 
         print("running check script")
 
-        scene = "[/SCENE]: The well known streets of Zanzebar"
+        instance.player_says = userin
 
-        prompt = f"{scene} [/ACTION]: {userin}"
+        scene = "[/SCENE]: The well known streets of Zanzebar"
+        prompt = f"{scene} {instance.player} [/ACTION]: {instance.player_says}"
 
         final_input = await final_prompt(prompt, instance.vb, instance.seed, instance.turn_num)
-
-        final_input = f"{final_input} |end|\n|assistant|: [/GENERATED CHECK]:"
-
+        final_input = f"{final_input} |end|\n|assistant|: [/GENERATED OUTCOME]:"
         print("final input: ", final_input, "\n--------------\n")
 
         modelOut = await model_output_check(final_input, instance.model, instance.tokenizer)
 
         await instance.vb.add_session('all-MiniLM-L6-v2', str(f"|user| {prompt}"), instance.seed)
-
         await instance.vb.add_session('all-MiniLM-L6-v2', str(f"{modelOut}"), instance.seed)
 
         instance.check = modelOut
-
         instance.turn_num += 1
 
         return modelOut
@@ -248,21 +249,19 @@ class DungeonMaster:
         print("running script WITH check")
 
         scene = "[/SCENE]: The well known streets of Zanzebar"
-
-        prompt = f"{scene} [/ACTION]: {userin} [/CHECK]: {instance.check} [/PASS/FAIL]: {pass_fail}"
-
-        
+        if pass_fail == True:
+            pass_fail = "Pass"
+        else:
+            pass_fail = "Fail"
+        prompt = f"{scene} {instance.player} [/ACTION]: {instance.player_says} [/CHECK]: {instance.check} [/PASS/FAIL]: {pass_fail}" 
 
         final_input = await final_prompt(prompt, instance.vb, instance.seed, instance.turn_num)
-
         final_input = f"{final_input}  |end|\n|assistant|: [/GENERATED OUTCOME]:"
-
         print("Final input: ", final_input, "\n------------\n")
 
         modelOut = await model_output(final_input, instance.model, instance.tokenizer)
 
         await instance.vb.add_session('all-MiniLM-L6-v2', str(f"|user| {prompt}"), instance.seed)
-
         await instance.vb.add_session('all-MiniLM-L6-v2', str(f"{modelOut}"), instance.seed)
 
         instance.turn_num +=1 
