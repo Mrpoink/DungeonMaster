@@ -16,19 +16,19 @@ from datasets import Dataset, concatenate_datasets
 torch.cuda.empty_cache()
 
 
-df3 = pd.read_csv('Datasets/Scene_Action_Outcome.csv')
-df4 = pd.read_csv('Datasets/Scene_Action_Check.csv')
+df3 = pd.read_csv('Datasets\Scene_Action_Outcome.csv')
+df4 = pd.read_csv('Datasets\Scene_Action_Check.csv')
 
 df3.columns = df3.columns.str.strip()
 df4.columns = df4.columns.str.strip()
 
 rename_dict3 = {
-    '|user|:[/EXTRA INFO]: info from vector database[/PLAYER]: character_backstory [/ACTION]: player_input[/CHECK]: check_required[/PASS/FAIL]: outcome_type|end|' : 'input',
+    '|user|:[/EXTRA INFO]: info from vectordb[/PLAYER]: character_backstory [/ACTION]: player_input[/CHECK]: check_required[/PASS/FAIL]: outcome_type|end|' : 'input',
     '|assistant|: [/GENERATED OUTCOME]: outcome_description|end|' : 'output'
 }
 
 rename_dict4 = {
-    '|user|:[/EXTRA INFO]: info from vector database[/PLAYER]: character_backstory [/ACTION]: player_input|end|' : 'input',
+    '|user|:[/EXTRA INFO]: info from vectordb[/PLAYER]: character_backstory [/ACTION]: player_input|end|' : 'input',
     '|assistant|: [/GENERATED CHECK]: check_required|end|' : 'output'
 }
 
@@ -72,7 +72,7 @@ lora_config = LoraConfig(
 )
 
 
-tokenizer = AutoTokenizer.from_pretrained("SmolLM2\SmolTokenizer")
+tokenizer = AutoTokenizer.from_pretrained('SmolLM2\SmolTokens')
 #quantization_config=bnb_config
 if tokenizer.pad_token is None:
     tokenizer.pad_token = tokenizer.eos_token
