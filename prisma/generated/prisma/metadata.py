@@ -18,6 +18,7 @@ PRISMA_MODELS: set[str] = {
     'SPELLSVECTOR',
     'Spell',
     'USERDATA',
+    'STORYVECTOR',
 }
 
 RELATIONAL_FIELD_MAPPINGS: dict[str, dict[str, str]] = {
@@ -44,6 +45,8 @@ RELATIONAL_FIELD_MAPPINGS: dict[str, dict[str, str]] = {
     'Spell': {
     },
     'USERDATA': {
+    },
+    'STORYVECTOR': {
     },
 }
 

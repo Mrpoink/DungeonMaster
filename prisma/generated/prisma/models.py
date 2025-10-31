@@ -1507,6 +1507,111 @@ class USERDATA(bases.BaseUSERDATA):
         _created_partial_types.add(name)
 
 
+class STORYVECTOR(bases.BaseSTORYVECTOR):
+    """Represents a STORYVECTOR record"""
+
+    id: _int
+    text: _str
+
+    # take *args and **kwargs so that other metaclasses can define arguments
+    def __init_subclass__(
+        cls,
+        *args: Any,
+        warn_subclass: Optional[bool] = None,
+        **kwargs: Any,
+    ) -> None:
+        super().__init_subclass__()
+        if warn_subclass is not None:
+            warnings.warn(
+                'The `warn_subclass` argument is deprecated as it is no longer necessary and will be removed in the next release',
+                DeprecationWarning,
+                stacklevel=3,
+            )
+
+
+    @staticmethod
+    def create_partial(
+        name: str,
+        include: Optional[Iterable['types.STORYVECTORKeys']] = None,
+        exclude: Optional[Iterable['types.STORYVECTORKeys']] = None,
+        required: Optional[Iterable['types.STORYVECTORKeys']] = None,
+        optional: Optional[Iterable['types.STORYVECTORKeys']] = None,
+        relations: Optional[Mapping['types.STORYVECTORRelationalFieldKeys', str]] = None,
+        exclude_relational_fields: bool = False,
+    ) -> None:
+        if not os.environ.get('PRISMA_GENERATOR_INVOCATION'):
+            raise RuntimeError(
+                'Attempted to create a partial type outside of client generation.'
+            )
+
+        if name in _created_partial_types:
+            raise ValueError(f'Partial type "{name}" has already been created.')
+
+        if include is not None:
+            if exclude is not None:
+                raise TypeError('Exclude and include are mutually exclusive.')
+            if exclude_relational_fields is True:
+                raise TypeError('Include and exclude_relational_fields=True are mutually exclusive.')
+
+        if required and optional:
+            shared = set(required) & set(optional)
+            if shared:
+                raise ValueError(f'Cannot make the same field(s) required and optional {shared}')
+
+        if exclude_relational_fields and relations:
+            raise ValueError(
+                'exclude_relational_fields and relations are mutually exclusive'
+            )
+
+        fields: Dict['types.STORYVECTORKeys', PartialModelField] = OrderedDict()
+
+        try:
+            if include:
+                for field in include:
+                    fields[field] = _STORYVECTOR_fields[field].copy()
+            elif exclude:
+                for field in exclude:
+                    if field not in _STORYVECTOR_fields:
+                        raise KeyError(field)
+
+                fields = {
+                    key: data.copy()
+                    for key, data in _STORYVECTOR_fields.items()
+                    if key not in exclude
+                }
+            else:
+                fields = {
+                    key: data.copy()
+                    for key, data in _STORYVECTOR_fields.items()
+                }
+
+            if required:
+                for field in required:
+                    fields[field]['optional'] = False
+
+            if optional:
+                for field in optional:
+                    fields[field]['optional'] = True
+
+
+            if relations:
+                raise ValueError('Model: "STORYVECTOR" has no relational fields.')
+        except KeyError as exc:
+            raise ValueError(
+                f'{exc.args[0]} is not a valid STORYVECTOR / {name} field.'
+            ) from None
+
+        models = partial_models_ctx.get()
+        models.append(
+            {
+                'name': name,
+                'fields': cast(Mapping[str, PartialModelField], fields),
+                'from_model': 'STORYVECTOR',
+            }
+        )
+        _created_partial_types.add(name)
+
+
 
 _CHARACTERVECTOR_relational_fields: Set[str] = set()  # pyright: ignore[reportUnusedVariable]
 _CHARACTERVECTOR_fields: Dict['types.CHARACTERVECTORKeys', PartialModelField] = OrderedDict(
@@ -3300,6 +3405,28 @@ _USERDATA_fields: Dict['types.USERDATAKeys', PartialModelField] = OrderedDict(
     ],
 )
 
+_STORYVECTOR_relational_fields: Set[str] = set()  # pyright: ignore[reportUnusedVariable]
+_STORYVECTOR_fields: Dict['types.STORYVECTORKeys', PartialModelField] = OrderedDict(
+    [
+        ('id', {
+            'name': 'id',
+            'is_list': False,
+            'optional': False,
+            'type': '_int',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('text', {
+            'name': 'text',
+            'is_list': False,
+            'optional': False,
+            'type': '_str',
+            'is_relational': False,
+            'documentation': None,
+        }),
+    ],
+)
+
 
 
 # we have to import ourselves as relation types are namespaced to models
@@ -3319,3 +3446,4 @@ model_rebuild(SESSION)
 model_rebuild(SPELLSVECTOR)
 model_rebuild(Spell)
 model_rebuild(USERDATA)
+model_rebuild(STORYVECTOR)
