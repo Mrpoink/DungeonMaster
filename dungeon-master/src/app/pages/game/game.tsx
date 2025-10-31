@@ -59,16 +59,7 @@ export default function Game() {
             const result = await response.json();
             
             setConversation(prev => [...prev, { sender: 'DM', text: result.message || "The DM responds, 'Silence falls over the area...'" }]);
-<<<<<<< HEAD
-      setDMmessage(data.dm_text);
-    } catch (error) {
-      console.error("Something went wrong with fetch dm message, line 81", error);
-      setDMmessage("Error: could not fetch python response, something went wrong, line 82");
-    }
-    turn_num += 1;
-  };
-=======
->>>>>>> parent of e725999 (Merge branch 'LLM-Actual' into dev)
+
 
         } catch (error) {
             console.error("Failed to communicate with backend:", error);
