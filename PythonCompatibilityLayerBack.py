@@ -89,9 +89,8 @@ userInput = userin()
 def process_message():
     try:
         data = request.get_json()
-        userInput.set_userin(data.get('command'))
+        userInput.set_userin(data.get('message'))
     except Exception as e:
-
         return jsonify({'message': 'Something went wrong, error output on line 15'})
     
     userinput = userInput.get_userin()
@@ -100,11 +99,9 @@ def process_message():
 
     model_output = userInput.send_userin()
 
-    response_text = f"{model_output}"
-
 
     return jsonify({
-        'message':response_text
+        'message':model_output
     })
 
 @app.route("/DMout", methods=['GET'])

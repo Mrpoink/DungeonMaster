@@ -1,5 +1,5 @@
 'use client'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Background from "@/app/components/assets/mainBackground.jpg";
 import Dice from "@/app/components/dice/dice";
 import Roll from "@/app/components/dice/roll";
@@ -14,6 +14,7 @@ type ConversationItem = {
 export default function Game() {
   const [sides, setSides] = useState<number>(20);
   const [activeDice, setActiveDice] = useState("d20");
+  const [DMmessage, setDMmessage] = useState("Connecting...");
 
   const [userin, setUserin] = useState('');
     const [conversation, setConversation] = useState<ConversationItem[]>([
@@ -28,20 +29,18 @@ export default function Game() {
     setActiveDice(dice);
   }
 
-  const handleSend = async (isRoll: boolean) => {
+  const handleSend = async () => {
         if (!userin.trim() || isLoading) return;
 
         const userMessage = userin.trim();
         setUserin('');
         setIsLoading(true);
 
-        const rollSuffix = isRoll ? ' (Attempted Roll)' : '';
-        setConversation(prev => [...prev, { sender: 'User', text: userMessage + rollSuffix }]);
+        setConversation(prev => [...prev, { sender: 'User', text: userMessage }]);
         
         try {
             const payload = {
-                message: userMessage,
-                roll: isRoll
+                message: userMessage
             };
 
             const response = await fetch('http://localhost:1068/userin', {
@@ -59,25 +58,31 @@ export default function Game() {
             const result = await response.json();
             
             setConversation(prev => [...prev, { sender: 'DM', text: result.message || "The DM responds, 'Silence falls over the area...'" }]);
+      setDMmessage(result.message);
+      setConversation(prev => [...prev, {sender : 'DM', text : result.message}]);
+    } catch (error) {
+      console.error("Something went wrong with fetch dm message, line 81", error);
+      setDMmessage("Error: could not fetch python response, something went wrong, line 82");
+    }
+  };
+
+  const fetchDMmessage = async () => {
+    try{
+
+      const response = await fetch('http://localhost:1068/DMout');
+      const data = await response.json();
+
       setDMmessage(data.dm_text);
       setConversation(prev => [...prev, {sender : 'DM', text : data.message}]);
     } catch (error) {
       console.error("Something went wrong with fetch dm message, line 81", error);
       setDMmessage("Error: could not fetch python response, something went wrong, line 82");
     }
-    turn_num += 1;
   };
 
-        } catch (error) {
-            console.error("Failed to communicate with backend:", error);
-            setConversation(prev => [
-                ...prev, 
-                { sender: 'DM', text: "System Error: Could not connect to Python backend (http://localhost:1068)." }
-            ]);
-        } finally {
-            setIsLoading(false);
-        }
-    };
+  useEffect(() => {
+    fetchDMmessage();
+  }, []);
 
 
   return (
@@ -111,7 +116,7 @@ export default function Game() {
                   onRollClick={handleSend}
                 />
               </div>
-              <button className="submit-action" onClick={() => {sendUserin()}}>
+              <button className="submit-action" onClick={() => {handleSend()}}>
                 Enter
               </button>
               <Roll sides={sides} setConversation={setConversation}/>
@@ -131,4 +136,4 @@ export default function Game() {
         </div>
     </div>
   )
-}
+};
