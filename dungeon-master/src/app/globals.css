@@ -127,10 +127,18 @@ button{
 }
 
 .main{
-  background: url(./components/assets/mainBackground.png) no-repeat;
+  background: url(./components/assets/mainBackground.jpg) no-repeat;
   background-position: center;
-  width: 100vw;
+  background-size: contain;
+  width: auto;
   height: 100vh;
+  #landing-text{
+    display: inline-block;
+    padding: 1em;
+    background-color: rgba(112, 123, 140, 0.37);
+    width: fit-content;
+    border-radius: 25px;
+  }
 }
 .game-box{
   display: inline;
@@ -219,7 +227,7 @@ button{
   }
   .member-icon-div{
     margin-bottom: 10px;
-    border-radius: 25%;
+    border-radius: 25px;
     border: 2px solid black;
   }
   .member-icon-div:hover{
@@ -234,7 +242,7 @@ button{
   }
   .member-icon-div.active-member{
     border: 2px solid black;
-    border-radius: 25%;
+    border-radius: 25px;
     background: transparent;
   }
   .member-icon-div.active-member:hover{
@@ -250,19 +258,21 @@ button{
   align-items: center;
 }
 .character-sheet{
+  background: url(./components/assets/characterSheetBackground.jpg) no-repeat;
   background-position: center;
+  background-size: contain;
   width: 100vw;
   height: 100vh;
   input[type="file"] {
     padding: 1em;
-    border-radius: 25%;
+    border-radius: 25px;
     background-color: #fff;
     color: #000;
     transition: border-color .25s ease-in-out;
     margin: 1em;
     &::file-selector-button{
       padding: 1em;
-      border-radius: 25%;
+      border-radius: 25px;
       background-color: darkgreen;
       color: hsl(210 40% 90%);
       transition: all .25s ease-in-out;
@@ -284,6 +294,7 @@ button{
       border: 2px solid white;
       padding: 1em;
       margin: auto;
+      width: fit-content;
     }
     .key-stats{
       margin: 1em;

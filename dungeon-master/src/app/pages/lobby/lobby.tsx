@@ -18,10 +18,8 @@ const router = useRouter()
               <div className="game-session" id="game-sessions-left-div">
                 <button className="left-game-session-buttons" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
                 <button className="left-game-session-buttons" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
-                <button className="left-game-session-buttons" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
               </div>
               <div className="game-session" id="game-sessions-right-div">
-                <button className="right-game-session-buttons" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
                 <button className="right-game-session-buttons" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
                 <button className="right-game-session-buttons" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
               </div>

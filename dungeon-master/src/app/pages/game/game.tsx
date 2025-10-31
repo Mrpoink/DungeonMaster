@@ -1,6 +1,6 @@
 'use client'
 import { useState } from "react";
-import Background from "@/app/components/assets/mainBackground.png";
+import Background from "@/app/components/assets/mainBackground.jpg";
 import Dice from "@/app/components/dice/dice";
 import Roll from "@/app/components/dice/roll";
 import Party from "@/app/components/party/party";
