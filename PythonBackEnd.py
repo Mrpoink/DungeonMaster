@@ -206,6 +206,9 @@ class DungeonMaster:
 
         instance.player_says = None
 
+        instance.scene = await instance.vb.find_scene(0.0,'all-MiniLM-L6-v2', 'Tavern')
+        instance.roll_number = 0
+
         instance.check = None #If false, check required, else generate outcome
 
         return instance
@@ -226,8 +229,10 @@ class DungeonMaster:
 
         instance.player_says = userin
 
-        scene = "[/SCENE]: The well known streets of Zanzebar"
-        prompt = f"{scene} {instance.player} [/ACTION]: {instance.player_says}"
+        if instance.roll_number > 2:
+            instance.scene = await instance.vb.find_scene(0.0,'all-MiniLM-L6-v2', userin)
+
+        prompt = f"{instance.scene} {instance.player} [/ACTION]: {instance.player_says}"
 
         final_input = await final_prompt(prompt, instance.vb, instance.seed, instance.turn_num)
         final_input = f"{final_input} |end|\n|assistant|: [/GENERATED OUTCOME]:"
@@ -248,12 +253,11 @@ class DungeonMaster:
 
         print("running script WITH check")
 
-        scene = "[/SCENE]: The well known streets of Zanzebar"
         if pass_fail == True:
             pass_fail = "Pass"
         else:
             pass_fail = "Fail"
-        prompt = f"{scene} {instance.player} [/ACTION]: {instance.player_says} [/CHECK]: {instance.check} [/PASS/FAIL]: {pass_fail}" 
+        prompt = f"{instance.scene} {instance.player} [/ACTION]: {instance.player_says} [/CHECK]: {instance.check} [/PASS/FAIL]: {pass_fail}" 
 
         final_input = await final_prompt(prompt, instance.vb, instance.seed, instance.turn_num)
         final_input = f"{final_input}  |end|\n|assistant|: [/GENERATED OUTCOME]:"
@@ -264,7 +268,10 @@ class DungeonMaster:
         await instance.vb.add_session('all-MiniLM-L6-v2', str(f"|user| {prompt}"), instance.seed)
         await instance.vb.add_session('all-MiniLM-L6-v2', str(f"{modelOut}"), instance.seed)
 
-        instance.turn_num +=1 
+        instance.turn_num +=1
+
+        instance.roll_number += 1
+
 
         return modelOut
 
