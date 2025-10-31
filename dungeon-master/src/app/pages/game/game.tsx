@@ -1,19 +1,25 @@
 'use client'
-import { useState, useEffect, SetStateAction } from "react";
-import Background from "@/app/components/assets/mainBackground.png";
+import { useState } from "react";
+import Background from "@/app/components/assets/mainBackground.jpg";
 import Dice from "@/app/components/dice/dice";
-import GameMasterHeader from "@/app/components/gameMasterHeader/gameMasterHeader";
-import { Roll } from "@/app/components/dice/dice";
+import Roll from "@/app/components/dice/roll";
 import Party from "@/app/components/party/party";
+import GameManager from "@/app/components/gameManager/gameManager";
 
+type ConversationItem = {
+    sender: 'User' | 'DM' | string;
+    text: string;
+};
 
 export default function Game() {
-  var turn_num = 0;
-  type ConversationMessage = { sender: 'User' | 'DM' | string; text: string };
   const [sides, setSides] = useState<number>(20);
   const [activeDice, setActiveDice] = useState("d20");
-  const [DMmessage, setDMmessage] = useState("Connecting...");
-  const [conversation, setConversation] = useState<ConversationMessage[]>([]);
+
+  const [userin, setUserin] = useState('');
+    const [conversation, setConversation] = useState<ConversationItem[]>([
+        { sender: 'DM', text: "Welcome, adventurer! You find yourself at the entrance of a dark, damp cave. What is your first action?" }
+    ]);
+    const [isLoading, setIsLoading] = useState(false);
 
   const handleDiceSelect = (selectedSides: number) => {
     setSides(selectedSides);
@@ -21,43 +27,38 @@ export default function Game() {
   const handleActiveSelect = (dice: string) => {
     setActiveDice(dice);
   }
-  
 
-  const sendUserin = async () => {
-    const userMessage = userin;
-    setConversation(prev => [...prev, {sender: 'User', text:userMessage}]);
-    send_userin('');
-    try {
-      const response = await fetch('http://localhost:1068/userin', {
-        method : 'POST',
-        headers: {
-          'Content-Type' : 'application/json',
-        },
-        body : JSON.stringify({command : userMessage}),
-      });
-      send_userin('');
+  const handleSend = async (isRoll: boolean) => {
+        if (!userin.trim() || isLoading) return;
 
-      const result = await response.json();
+        const userMessage = userin.trim();
+        setUserin('');
+        setIsLoading(true);
 
-      setConversation(prev => [...prev, {sender : 'DM', text : result.message}]);
-    } catch (error){
-      console.error("Failed to send userin to python: ", error)
-      setConversation(prev => [...prev, { sender: 'DM', text: "Server Error: Could not connect to Python backend." }]);
-    }
-    
-  };
-  const [userin, send_userin] = useState('');
+        const rollSuffix = isRoll ? ' (Attempted Roll)' : '';
+        setConversation(prev => [...prev, { sender: 'User', text: userMessage + rollSuffix }]);
+        
+        try {
+            const payload = {
+                message: userMessage,
+                roll: isRoll
+            };
 
-  const handleUserin = (event: { target: { value: SetStateAction<string> } }) => {
-    send_userin(event.target.value);
-  };
+            const response = await fetch('http://localhost:1068/userin', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload),
+            });
 
-  const fetchDMmessage = async () => {
-    try{
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
 
-      const response = await fetch('http://localhost:1068/DMout');
-      const data = await response.json();
-
+            const result = await response.json();
+            
+            setConversation(prev => [...prev, { sender: 'DM', text: result.message || "The DM responds, 'Silence falls over the area...'" }]);
       setDMmessage(data.dm_text);
       setConversation(prev => [...prev, {sender : 'DM', text : data.message}]);
     } catch (error) {
@@ -67,15 +68,24 @@ export default function Game() {
     turn_num += 1;
   };
 
-  useEffect(() => {
-    fetchDMmessage();
-  }, []);
+        } catch (error) {
+            console.error("Failed to communicate with backend:", error);
+            setConversation(prev => [
+                ...prev, 
+                { sender: 'DM', text: "System Error: Could not connect to Python backend (http://localhost:1068)." }
+            ]);
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
 
   return (
     <div>
         <div className="game-master-box">
-          <GameMasterHeader />
+          <header>
+            <h1>Dungeon Master:</h1>      
+          </header>
         </div>
         <div className="main-session-box">
           <div className="dice-box">
@@ -85,25 +95,22 @@ export default function Game() {
               onSetActiveDice={handleActiveSelect}
             />
           </div>
-          <main className="game">
+          <main className="game-box">
             <img src={Background.src} alt="" />
-            <div className = "message-log">
-              {conversation.map((msg, index) => (
-                <p key={index} className={`message ${msg.sender.toLowerCase()}`}>
-                  <strong>{msg.sender}:</strong> {msg.text}
-                </p>
-              ))}
-            </div>
-            <div className="player-actions">
-              <input type="text" value={userin} 
-                onChange={handleUserin} placeholder="What do you do?"
-                onKeyDown={(event) => {
-                  if (event.key == 'Enter') {
-                    event.preventDefault();
-                    sendUserin();
-                  }
-                }}
+            <div className="game">
+              <GameManager 
+                userin={userin}
+                setUserin={setUserin}
+                handleSend={handleSend}
+                isLoading={isLoading}              
               />
+              <div className="player-actions">
+                <Roll 
+                  sides={sides} 
+                  command={userin}
+                  onRollClick={handleSend}
+                />
+              </div>
               <button className="submit-action" onClick={() => {sendUserin()}}>
                 Enter
               </button>
@@ -118,6 +125,9 @@ export default function Game() {
               </blockquote>
             </div>
           </main>
+          <div className="party-box">
+            <Party />
+          </div>
         </div>
     </div>
   )

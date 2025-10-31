@@ -127,12 +127,20 @@ button{
 }
 
 .main{
-  background: url(./components/assets/mainBackground.png) no-repeat;
+  background: url(./components/assets/mainBackground.jpg) no-repeat;
   background-position: center;
-  width: 100vw;
+  background-size: contain;
+  width: auto;
   height: 100vh;
+  #landing-text{
+    display: inline-block;
+    padding: 1em;
+    background-color: rgba(112, 123, 140, 0.37);
+    width: fit-content;
+    border-radius: 25px;
+  }
 }
-.game{
+.game-box{
   display: inline;
   width: fit-content;
   img{
@@ -149,6 +157,10 @@ button{
   }
   input::selection{
     border: transparent;
+  }
+  .game{
+    position: relative;
+    bottom: 10vh;
   }
 }
 
@@ -184,7 +196,7 @@ button{
     cursor: pointer;
   }
 }
-#roll-dice-button{
+#roll-dice-button, #enter-button{
   border-radius: 25px;
   text-align: center;
   background: transparent;
@@ -198,7 +210,7 @@ button{
   touch-action: manipulation;
   box-shadow:rgba(187, 84, 44, 0.37) 0 1px 1px,rgba(187, 84, 44, 0.37) 0 1px 2px,rgba(187, 84, 44, 0.37) 0 2px 4px,rgba(187, 84, 44, 0.37) 0 2px 8px,rgba(187, 84, 44, 0.37) 0 4px 16px;
 }
-#roll-dice-button:hover{
+#roll-dice-button:hover, #enter-button:hover{
   color: red;
   box-shadow: red 0 -25px 18px -14px inset,rgba(187, 84, 44, 0.37) 0 1px 2px,rgba(187, 84, 44, 0.37) 0 2px 4px,rgba(187, 84, 44, 0.37) 0 4px 8px,rgba(187, 84, 44, 0.37) 0 8px 16px,rgba(187, 84, 44, 0.37) 0 16px 32px;
   transform: scale(1.15) rotate(-3deg);
@@ -215,7 +227,7 @@ button{
   }
   .member-icon-div{
     margin-bottom: 10px;
-    border-radius: 25%;
+    border-radius: 25px;
     border: 2px solid black;
   }
   .member-icon-div:hover{
@@ -230,7 +242,7 @@ button{
   }
   .member-icon-div.active-member{
     border: 2px solid black;
-    border-radius: 25%;
+    border-radius: 25px;
     background: transparent;
   }
   .member-icon-div.active-member:hover{
@@ -246,19 +258,21 @@ button{
   align-items: center;
 }
 .character-sheet{
+  background: url(./components/assets/characterSheetBackground.jpg) no-repeat;
   background-position: center;
+  background-size: contain;
   width: 100vw;
   height: 100vh;
   input[type="file"] {
     padding: 1em;
-    border-radius: 25%;
+    border-radius: 25px;
     background-color: #fff;
     color: #000;
     transition: border-color .25s ease-in-out;
     margin: 1em;
     &::file-selector-button{
       padding: 1em;
-      border-radius: 25%;
+      border-radius: 25px;
       background-color: darkgreen;
       color: hsl(210 40% 90%);
       transition: all .25s ease-in-out;
@@ -280,6 +294,7 @@ button{
       border: 2px solid white;
       padding: 1em;
       margin: auto;
+      width: fit-content;
     }
     .key-stats{
       margin: 1em;
@@ -332,16 +347,11 @@ button{
   }
 }
 .message-log {
-  transform : translateX(-50%);
-  top : 10%;
-  left: 50%;
-  position : absolute;
-  height : 50vh;
-  width : 60vw;
-  overflow-y:auto;
   border:1px solid #ccc;
   padding: 2em;
-  background-color : rgba(0, 0, 0, 0.75);
+  background: black;
   color: #fff;
   margin-bottom: 20px;
+  width: 50vw;
+  overflow:auto;
 }
