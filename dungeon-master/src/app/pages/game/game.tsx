@@ -60,7 +60,6 @@ export default function Game() {
             
             setConversation(prev => [...prev, { sender: 'DM', text: result.message || "The DM responds, 'Silence falls over the area...'" }]);
       setDMmessage(data.dm_text);
-      setConversation(prev => [...prev, {sender : 'DM', text : data.message}]);
     } catch (error) {
       console.error("Something went wrong with fetch dm message, line 81", error);
       setDMmessage("Error: could not fetch python response, something went wrong, line 82");
@@ -78,7 +77,6 @@ export default function Game() {
             setIsLoading(false);
         }
     };
-
 
   return (
     <div>

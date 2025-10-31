@@ -33,9 +33,6 @@ class userin:
         # model_out = loop.run_until_complete(model.model_output(self.userin))
         # return model_out if self.userin != "" else "Roll for Initiative"
 
-    def get_scene(self):
-        return model.get_scene()
-
     def roll(self, roll):
         print(roll)
         if roll == True:
@@ -110,16 +107,13 @@ def process_message():
 @app.route("/DMout", methods=['GET'])
 async def output_message():
     try:
-        test_response = userInput.get_userin()
+        test_response = await userInput.get_userin()
         print(test_response)
 
-        scene = userInput.get_scene()
-
-        return jsonify({"dm_text" : test_response, "status":"ready", "message" : scene}), 200
+        return jsonify({"dm_text" : test_response, "status":"ready"}), 200
 
     except Exception as e:
         print(e)
-        return jsonify({"dm_text": "Roll for intiative", "status" : "ready"}), 200
 
 @app.route("/userData", methods=['POST'])
 async def process_userdata():
