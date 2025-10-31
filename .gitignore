@@ -18,6 +18,7 @@ FrontEnd
 >>>>>>> 7d8205b (Updated gitignore so we can inititate pull request)
 /generated/prisma
 /prisma
+/dungeon-master
 <<<<<<< HEAD
 >>>>>>> 3807016 (schema)
 <<<<<<< HEAD
