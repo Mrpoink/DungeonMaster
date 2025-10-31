@@ -114,15 +114,12 @@ export default function Game() {
                   sides={sides} 
                   command={userin}
                   onRollClick={handleSend}
+                  setConversation={setConversation}
                 />
               </div>
               <button className="submit-action" onClick={() => {handleSend()}}>
                 Enter
               </button>
-              <Roll sides={sides} setConversation={setConversation}/>
-            </div>
-            <div className="party-box">
-              <Party />
             </div>
             <div>
               <blockquote>
