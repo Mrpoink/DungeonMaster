@@ -12,7 +12,7 @@ def read_pdf(filename):
             text = page.extract_text()
 
             if text:
-                text_on_page = text.split('Chapter')
+                text_on_page = text.split('.')
 
                 for item in text_on_page:
                     if len(item) > max_length:

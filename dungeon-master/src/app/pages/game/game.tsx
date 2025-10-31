@@ -59,6 +59,7 @@ export default function Game() {
       const data = await response.json();
 
       setDMmessage(data.dm_text);
+      setConversation(prev => [...prev, {sender : 'DM', text : data.message}]);
     } catch (error) {
       console.error("Something went wrong with fetch dm message, line 81", error);
       setDMmessage("Error: could not fetch python response, something went wrong, line 82");
@@ -69,6 +70,7 @@ export default function Game() {
   useEffect(() => {
     fetchDMmessage();
   }, []);
+
 
   return (
     <div>

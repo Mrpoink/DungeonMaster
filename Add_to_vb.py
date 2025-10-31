@@ -18,4 +18,4 @@ async def add_pdf_to_vb(filename, model):
 
     print("Successfully added everything to db")
 
-asyncio.run(add_pdf_to_vb('Datasets\\Campaigns\\armyofthedamned.pdf', 'all-MiniLM-L6-v2'))
+asyncio.run(add_pdf_to_vb('Datasets/Campaigns/FoFD.pdf', 'all-MiniLM-L6-v2'))

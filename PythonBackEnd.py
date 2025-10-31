@@ -14,7 +14,7 @@ project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 sys.path.append(project_root)
 
-import vector_database
+import vector_database as vector_database
 
 metric = evaluate.load('accuracy')
 
@@ -85,17 +85,18 @@ async def model_output(userin : str, model, tokenizer):
             return_dict_in_generate=True,
             output_scores=True,
             do_sample=True,
-            # top_p = .65,
-            # top_k = 40,
+            #top_p = .65,
+            #top_k = 40,
             # pad_token_id=tokenizer.eos_token_id,
             # eos_token_id=tokenizer.eos_token_id,
-            repetition_penalty = 3.3
-            #temperature = 0.85
+            repetition_penalty = 3.3,
+            temperature = 2.5
             )
     decoded_ouput = tokenizer.decode(outputs[0][0], skip_special_tokens = True)
     print(decoded_ouput)
     final_output = decoded_ouput.split('[/GENERATED OUTCOME]:')
     final_output = final_output[1].split('|end|')
+    
     print(len(final_output))
     
     torch.cuda.empty_cache()
@@ -115,12 +116,12 @@ async def model_output_check(userin : str, model, tokenizer):
             return_dict_in_generate=True,
             output_scores=True,
             do_sample=True,
-            # top_p = .65,
-            # top_k = 40,
+            #top_p = .65,
+            #top_k = 40,
             # pad_token_id=tokenizer.eos_token_id,
             # eos_token_id=tokenizer.eos_token_id,
-            repetition_penalty = 3.3
-            # temperature = 0.85
+            repetition_penalty = 3.3,
+            temperature = 2.15
             )
     decoded_ouput = tokenizer.decode(outputs[0][0], skip_special_tokens = True)
     print(decoded_ouput)
@@ -206,12 +207,16 @@ class DungeonMaster:
 
         instance.player_says = None
 
-        instance.scene = await instance.vb.find_scene(0.0,'all-MiniLM-L6-v2', 'Tavern')
+        scene = await instance.vb.find_scene(0.0,'all-MiniLM-L6-v2', 'Tavern')
+        instance.scene = f"[/SCENE]: {scene}"
         instance.roll_number = 0
 
         instance.check = None #If false, check required, else generate outcome
 
         return instance
+    
+    def get_scene(instance):
+        return instance.scene.replace("[/SCENE]:", "")
     
     @classmethod
     async def create_backend(cls):
@@ -230,7 +235,8 @@ class DungeonMaster:
         instance.player_says = userin
 
         if instance.roll_number > 2:
-            instance.scene = await instance.vb.find_scene(0.0,'all-MiniLM-L6-v2', userin)
+            scene = await instance.vb.find_scene(0.0,'all-MiniLM-L6-v2', userin)
+            instance.scene = f"[/SCENE]: {scene}"
 
         prompt = f"{instance.scene} {instance.player} [/ACTION]: {instance.player_says}"
 
@@ -239,6 +245,12 @@ class DungeonMaster:
         print("final input: ", final_input, "\n--------------\n")
 
         modelOut = await model_output_check(final_input, instance.model, instance.tokenizer)
+
+        if "[SCENE CHANGE]" in modelOut:
+            scene = await instance.vb.find_scene(0.0,'all-MiniLM-L6-v2', userin)
+            instance.scene = f"[/SCENE]: {scene}"
+
+            modelOut.replace('[SCENE CHANGE]', '')
 
         await instance.vb.add_session('all-MiniLM-L6-v2', str(f"|user| {prompt}"), instance.seed)
         await instance.vb.add_session('all-MiniLM-L6-v2', str(f"{modelOut}"), instance.seed)
@@ -264,6 +276,12 @@ class DungeonMaster:
         print("Final input: ", final_input, "\n------------\n")
 
         modelOut = await model_output(final_input, instance.model, instance.tokenizer)
+
+        if "[SCENE CHANGE]" in modelOut:
+            scene = await instance.vb.find_scene(0.0,'all-MiniLM-L6-v2', userin)
+            instance.scene = f"[/SCENE]: {scene}"
+
+            modelOut.replace('[SCENE CHANGE]', '')
 
         await instance.vb.add_session('all-MiniLM-L6-v2', str(f"|user| {prompt}"), instance.seed)
         await instance.vb.add_session('all-MiniLM-L6-v2', str(f"{modelOut}"), instance.seed)
