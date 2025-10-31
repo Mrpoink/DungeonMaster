@@ -28,11 +28,20 @@ class userin:
         self.userin = input
 
     def get_userin(self):
-        return self.userin
+        try:
+            int(self.userin)
+            print(True)
+            self.check=True
+            return self.userin
+        except ValueError:
+            print(False)
+            self.check=False
+            return self.userin
 
         # model_out = loop.run_until_complete(model.model_output(self.userin))
         # return model_out if self.userin != "" else "Roll for Initiative"
 
+<<<<<<< HEAD
     def roll(self, roll):
         print(roll)
         if roll == True:
@@ -42,10 +51,19 @@ class userin:
 
         model_out = loop.run_until_complete(model.model_output_check(self.userin, roll))
         return model_out
+=======
+    def set_roll(self, roll):
+        self.roll = roll
+>>>>>>> parent of e725999 (Merge branch 'LLM-Actual' into dev)
 
     def send_userin(self):
-        model_out = loop.run_until_complete(model.model_output(self.userin))
-        return model_out if self.userin != "" else "Roll for Initiative"
+        if self.check  == True:
+            roll = True if int(self.userin) > 11 else False
+            model_out = loop.run_until_complete(model.model_output_check(self.userin, roll))
+            return model_out
+        else:
+            model_out = loop.run_until_complete(model.model_output(self.userin))
+            return model_out if self.userin != "" else "Roll for Initiative"
     
 class userData:
 
@@ -131,26 +149,6 @@ async def process_userdata():
         print("Error receiving userData, Line 106", e)
         traceback.print_exc()
         return jsonify({"error": "Failed to save user data.", "details": str(e)}), 500
-    
-@app.route("/roll", methods=['POST'])
-def process_roll():
-    try:
-        data = request.get_json()
-        model_output = userInput.roll(data.get('command'))
-
-        response_text = f"{model_output}"
-
-
-        return jsonify({
-            'message':response_text
-        })
-
-
-    except Exception as e:
-        return jsonify({'message': 'Something went wrong, error output on line 15'})
-    
-
-
 
 @app.route("/credentials", methods=['POST', 'OPTIONS'])
 async def check_creds():
