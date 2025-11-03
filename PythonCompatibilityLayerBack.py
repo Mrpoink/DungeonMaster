@@ -112,7 +112,7 @@ async def output_message():
 
         scene = userInput.get_scene()
 
-        return jsonify({"dm_text" : test_response, "status":"ready", "message" : scene}), 200
+        return jsonify({"dm_text" : scene, "status":"ready", "message" : scene}), 200
 
     except Exception as e:
         print(e)

@@ -9,7 +9,7 @@ type RollProps = {
 
 type ConversationItem = { sender: string, text: string };
 
-export default function Roll({ sides, command, onRollClick, setConversation}: {sides : number, RollProps, setConversation: React.Dispatch<React.SetStateAction<ConversationItem[]>>}){
+export default function Roll({ sides, command, onRollClick, setConversation}: {sides : number, command: any, onRollClick: any, setConversation: React.Dispatch<React.SetStateAction<ConversationItem[]>>}){
     const [rollResult, setRollResult] = useState<number | null>(null);
 
     const handleRoll = async () => {

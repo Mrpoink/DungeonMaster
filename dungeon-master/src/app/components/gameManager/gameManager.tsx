@@ -61,12 +61,13 @@ type GameManagerProps = {
     setUserin: Dispatch<SetStateAction<string>>;
     handleSend: (isRoll: boolean) => Promise<void>;
     isLoading: boolean;
+    message: string;
+    conversation: { sender: string; text: string }[];
+    setConversation: Dispatch<SetStateAction<{ sender: string; text: string }[]>>;
 };
 
-export default function GameManager({ userin, setUserin, handleSend, isLoading }: GameManagerProps) {
-    const [conversation, setConversation] = useState([
-        { sender: 'DM', text: "Welcome, adventurer! You find yourself at the entrance of a dark, damp cave. What is your first action?" }
-    ]);
+export default function GameManager({ userin, setUserin, handleSend, isLoading, conversation }: GameManagerProps) {
+    
     
     const chatContainerRef = useRef<HTMLDivElement | null>(null);
     

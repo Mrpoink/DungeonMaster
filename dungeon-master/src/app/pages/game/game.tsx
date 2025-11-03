@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from "react";
+import { useState, useEffect, SetStateAction } from "react";
 import Background from "@/app/components/assets/mainBackground.jpg";
 import Dice from "@/app/components/dice/dice";
 import Roll from "@/app/components/dice/roll";
@@ -18,7 +18,7 @@ export default function Game() {
 
   const [userin, setUserin] = useState('');
     const [conversation, setConversation] = useState<ConversationItem[]>([
-        { sender: 'DM', text: "Welcome, adventurer! You find yourself at the entrance of a dark, damp cave. What is your first action?" }
+        { sender: 'DM', text: DMmessage }
     ]);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -59,7 +59,7 @@ export default function Game() {
             
             setConversation(prev => [...prev, { sender: 'DM', text: result.message || "The DM responds, 'Silence falls over the area...'" }]);
       setDMmessage(result.message);
-      setConversation(prev => [...prev, {sender : 'DM', text : result.message}]);
+      setConversation(prev => [...prev, {sender : 'DM', text : result.message || "The DM responds, 'Silence falls over the area...'" }]);
     } catch (error) {
       console.error("Something went wrong with fetch dm message, line 81", error);
       setDMmessage("Error: could not fetch python response, something went wrong, line 82");
@@ -73,7 +73,7 @@ export default function Game() {
       const data = await response.json();
 
       setDMmessage(data.dm_text);
-      setConversation(prev => [...prev, {sender : 'DM', text : data.message}]);
+      setConversation(prev => [...prev, {sender : 'DM', text : data.dm_text}]);
     } catch (error) {
       console.error("Something went wrong with fetch dm message, line 81", error);
       setDMmessage("Error: could not fetch python response, something went wrong, line 82");
@@ -104,11 +104,13 @@ export default function Game() {
             <img src={Background.src} alt="" />
             <div className="game">
               <GameManager 
-                userin={userin}
-                setUserin={setUserin}
-                handleSend={handleSend}
-                isLoading={isLoading}              
-              />
+              userin={userin}
+              setUserin={setUserin}
+              handleSend={handleSend}
+              isLoading={isLoading}
+              conversation={conversation} message={""} setConversation={function (value: SetStateAction<{ sender: string; text: string; }[]>): void {
+                throw new Error("Function not implemented.");
+              } }              />
               <div className="player-actions">
                 <Roll 
                   sides={sides} 
@@ -121,11 +123,11 @@ export default function Game() {
                 Enter
               </button>
             </div>
-            <div>
+            {/* <div>
               <blockquote>
                 {DMmessage}
               </blockquote>
-            </div>
+            </div> */}
           </main>
           <div className="party-box">
             <Party />
