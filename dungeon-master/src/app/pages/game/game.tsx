@@ -64,6 +64,7 @@ export default function Game() {
       console.error("Something went wrong with fetch dm message, line 81", error);
       setDMmessage("Error: could not fetch python response, something went wrong, line 82");
     }
+    setIsLoading(false);
   };
 
   const fetchDMmessage = async () => {
