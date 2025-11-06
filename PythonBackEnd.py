@@ -60,7 +60,7 @@ def def_model():
         dtype = torch.bfloat16,
         device_map = "cuda"
         )
-    model = PeftModel.from_pretrained(base_model, "prompt_classifier_Smol/checkpoint-7124")
+    model = PeftModel.from_pretrained(base_model, "prompt_classifier_Smol/checkpoint-3560")
 
     model.to("cuda")
 
@@ -72,7 +72,7 @@ def def_model():
     return model, tokenizer
 
 
-async def model_output(userin : str, model, tokenizer):
+async def model_output(userin : str, model, tokenizer): #running script WITH check
     torch.cuda.empty_cache()
     inputs = tokenizer(userin, return_tensors="pt", padding=True).to("cuda")
 
@@ -85,12 +85,12 @@ async def model_output(userin : str, model, tokenizer):
             return_dict_in_generate=True,
             output_scores=True,
             do_sample=True,
-            top_p = .65,
+            #top_p = .65,
             #top_k = 40,
             # pad_token_id=tokenizer.eos_token_id,
             # eos_token_id=tokenizer.eos_token_id,
             repetition_penalty = 3.3,
-            temperature = 2.15
+            temperature = 2.25
             )
     decoded_ouput = tokenizer.decode(outputs[0][0], skip_special_tokens = True)
     print(decoded_ouput)
@@ -103,7 +103,7 @@ async def model_output(userin : str, model, tokenizer):
 
     return final_output[0]
 
-async def model_output_check(userin : str, model, tokenizer):
+async def model_output_check(userin : str, model, tokenizer): #Running check script
     torch.cuda.empty_cache()
     inputs = tokenizer(userin, return_tensors="pt", padding=True).to("cuda")
 
@@ -116,8 +116,8 @@ async def model_output_check(userin : str, model, tokenizer):
             return_dict_in_generate=True,
             output_scores=True,
             do_sample=True,
-            top_p = .65,
-            #top_k = 40,
+            top_p = .35,
+            top_k = 20,
             # pad_token_id=tokenizer.eos_token_id,
             # eos_token_id=tokenizer.eos_token_id,
             repetition_penalty = 3.3,
