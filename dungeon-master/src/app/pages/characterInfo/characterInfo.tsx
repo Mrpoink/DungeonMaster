@@ -374,7 +374,7 @@ const AbilityScore = ({ name, score }: { name: string, score: number }) => {
                     <div className="lg:col-span-2 space-y-8">
                         {renderSkills()}
                     </div>
-                    <div className="lg:col-span-3 space-y-8">
+                    <div className="lg:col-span-2 space-y-8">
                         {renderBackstory()}
                     </div>
                 </div>
