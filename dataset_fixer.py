@@ -14,7 +14,7 @@ async def csv_to_SAC(filename):
         
         number = 0
         csv_reader = csv.reader(file)
-        extra_info = await make_random_list()
+        #extra_info = await make_random_list()
         for row in csv_reader:
             if len(row) < 7:
                 print(row)

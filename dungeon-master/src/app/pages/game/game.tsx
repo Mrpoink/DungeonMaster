@@ -88,7 +88,6 @@ export default function Game() {
 
   const latestMessage = conversation[conversation.length - 1];
 
-
   return (
     <div>
         <div className="game-master-box">
