@@ -85,35 +85,46 @@ class userData:
     
 userInput = userin()
 
+lock = False
+
 @app.route("/userin", methods=['POST'])
 def process_message():
-    try:
-        data = request.get_json()
-        userInput.set_userin(data.get('message'))
-    except Exception as e:
-        return jsonify({'message': 'Something went wrong, error output on line 15'})
-    
-    userinput = userInput.get_userin()
-    
-    print(f"Python received: {userinput}")
+    global lock
+    if not lock:
+        try:
+            data = request.get_json()
+            userInput.set_userin(data.get('message'))
+            lock = True
+        except Exception as e:
+            return jsonify({'message': 'Something went wrong, error output on line 15'})
+        
+        userinput = userInput.get_userin()
+        
+        print(f"Python received: {userinput}")
 
-    model_output = userInput.send_userin()
+        model_output = userInput.send_userin()
 
-
-    return jsonify({
-        'message':model_output
-    })
+        lock = False
+        return jsonify({
+            'message':model_output
+        })
+    else:
+        return jsonify({'message': 'DM is typing, please wait...'})
 
 @app.route("/DMout", methods=['GET'])
 async def output_message():
+    global lock
     try:
+        lock = False
         test_response = userInput.get_userin()
         print(test_response)
 
         scene = userInput.get_scene()
 
-        return jsonify({"dm_text" : scene, "status":"ready", "message" : scene}), 200
+        lock = False
 
+        return jsonify({"dm_text" : scene, "status":"ready", "message" : scene}), 200
+    
     except Exception as e:
         print(e)
         return jsonify({"dm_text": "Roll for intiative", "status" : "ready"}), 200
@@ -134,26 +145,28 @@ async def process_userdata():
         print("Error receiving userData, Line 106", e)
         traceback.print_exc()
         return jsonify({"error": "Failed to save user data.", "details": str(e)}), 500
-    
+
+
 @app.route("/roll", methods=['POST'])
 def process_roll():
-    try:
-        data = request.get_json()
-        model_output = userInput.roll(data.get('command'))
+    global lock
+    print(f"Lock is: {lock}")
+    if not lock:
+        try:
+            data = request.get_json()
+            model_output = userInput.roll(data.get('command'))
 
-        response_text = f"{model_output}"
+            response_text = f"{model_output}"
 
-
-        return jsonify({
-            'message':response_text
-        })
-
-
-    except Exception as e:
-        return jsonify({'message': 'Something went wrong, error output on line 15'})
+            return jsonify({
+                'message':response_text
+            })
+        
+        except Exception as e:
+            return jsonify({'message': 'Something went wrong, error output on line 15'})
+    else:
+        return jsonify({'message': 'DM is typing, please wait...'})
     
-
-
 
 @app.route("/credentials", methods=['POST', 'OPTIONS'])
 async def check_creds():

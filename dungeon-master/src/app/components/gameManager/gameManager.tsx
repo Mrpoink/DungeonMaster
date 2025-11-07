@@ -61,52 +61,20 @@ type GameManagerProps = {
     setUserin: Dispatch<SetStateAction<string>>;
     handleSend: (isRoll: boolean) => Promise<void>;
     isLoading: boolean;
-    message: string;
-    conversation: { sender: string; text: string }[];
-    setConversation: Dispatch<SetStateAction<{ sender: string; text: string }[]>>;
 };
 
-export default function GameManager({ userin, setUserin, handleSend, isLoading, conversation }: GameManagerProps) {
-    
-    
-    const chatContainerRef = useRef<HTMLDivElement | null>(null);
-    
-    useEffect(() => {
-        if (chatContainerRef.current) {
-            const el = chatContainerRef.current;
-            el.scrollTop = el.scrollHeight;
-        }
-    }, [conversation]);
+export default function GameManager({ userin, setUserin, handleSend, isLoading}: GameManagerProps) {
 
     
     return (
-        <div className="flex flex-col h-full">
-            {/* Conversation Log */}
-            <div 
-                ref={chatContainerRef} 
-                className="overflow-y-auto flex-grow"
-            >
-                {conversation.map((msg, index) => (
-                    <ConversationMessage key={index} sender={msg.sender} text={msg.text} />
-                ))}
-                {isLoading && (
-                    <div className="flex justify-start mb-3">
-                        <div>
-                            <strong className="font-semibold">DM: </strong>
-                            <span>Typing...</span>
-                        </div>
-                    </div>
-                )}
-            </div>
 
-            <div className="mt-4">
-                <UserActionInput 
-                    userin={userin} 
-                    setUserin={setUserin} 
-                    handleSend={handleSend}
-                    isLoading={isLoading} 
-                />
-            </div>
+        <div className="mt-4">
+            <UserActionInput 
+                userin={userin} 
+                setUserin={setUserin} 
+                handleSend={handleSend}
+                isLoading={isLoading} 
+            />
         </div>
     );
 }

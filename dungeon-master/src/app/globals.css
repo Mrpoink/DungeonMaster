@@ -9,7 +9,7 @@
   --font-mono: var(--font-geist-mono);
 }
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -21,22 +21,22 @@ body {
   text-align: center;
   justify-content: center;
 }
-.start-buttons{
+.start-buttons {
   border: 2px solid black;
   margin: 1em;
   padding: 1em;
   opacity: .8;
 }
-header{
+header {
   padding: 2em;
 }
-h1{
+h1 {
   font-size: xx-large;
   font-weight: bold;
   text-align: center;
   justify-content: center;
 }
-button{
+button {
   border-radius: 25px;
   text-align: center;
   background-color: black;
@@ -48,7 +48,7 @@ button{
   border: 0;
   touch-action: manipulation;
 }
-.navbar{
+.navbar {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -56,45 +56,45 @@ button{
   padding: 1em 2em;
   background-color: rgba(0, 0, 0, 0.5);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  button{
+  button {
     background-color: transparent;
     border: none;
     cursor: pointer;
   }
-  .character-icon{
+  .character-icon {
     font-size: 2em;
     background: transparent;
     border: none;
   }
-  .character-info-div{
+  .character-info-div {
     float: right;
     position: relative;
   }
 }
-.lobby{
+.lobby {
   background: url(./components/assets/lobbyBackground.png) no-repeat;
   background-position: center;
   width: 100vw;
   height: 100vh;
-  #game-sessions-div{
+  #game-sessions-div {
     background: url('./components/assets/lobbyBackground.png') no-repeat center cover;
     position: relative;
   }
-  #game-sessions-left-div{
+  #game-sessions-left-div {
     display: flex;
     flex-direction: column;
     float: left;
     position: relative;
     left: 8vw;
   }
-  #game-sessions-right-div{
+  #game-sessions-right-div {
     display: flex;
     flex-direction: column;
     float: right;
     position: relative;
     right: 8vw;
   }
-  .left-game-session-buttons{
+  .left-game-session-buttons {
     border: 3px solid black;
     padding: 1em;
     padding-bottom: 4em;
@@ -104,7 +104,7 @@ button{
     background-repeat: no-repeat;
     background-position: center;
   }
-  .right-game-session-buttons{
+  .right-game-session-buttons {
     border: 3px solid black;
     padding: 1em;
     padding-bottom: 4em;
@@ -115,8 +115,7 @@ button{
     background-position: center;
   }
 }
-
-.footer{
+.footer {
   display: inline;
   text-align: center;
   justify-content: center;
@@ -125,14 +124,13 @@ button{
   position: relative;
   top: 50vh;
 }
-
-.main{
+.main {
   background: url(./components/assets/mainBackground.jpg) no-repeat;
   background-position: center;
   background-size: contain;
   width: auto;
   height: 100vh;
-  #landing-text{
+  #landing-text {
     display: inline-block;
     padding: 1em;
     background-color: rgba(112, 123, 140, 0.37);
@@ -140,67 +138,146 @@ button{
     border-radius: 25px;
   }
 }
-.game-box{
+
+.game-box {
+  position: relative;
+  display: inline-block;
+  width: 40vw;
+  height: auto;
+}
+.game-box img {
   display: inline;
-  width: fit-content;
-  img{
-    display: inline;
-    width: 40vw;
-  }
-  input{
-    box-shadow:rgba(44, 108, 187, 0.37) 0 1px 1px,rgba(44, 108, 187, 0.37) 0 1px 2px,rgba(44, 108, 187, 0.37) 0 2px 4px,rgba(44, 108, 187, 0.37) 0 2px 8px,rgba(44, 108, 187, 0.37) 0 4px 16px;
-    border-radius: 25px;
-    text-align: center;
-    margin-right: 1em;
-    padding: 10px;
-    border: 0;
-  }
-  input::selection{
-    border: transparent;
-  }
-  .game{
-    position: relative;
-    bottom: 10vh;
-  }
+  width: 100%;
+  height: auto;
+  z-index: 1;
+}
+input {
+  background-color: black;
+  color: white;
+  box-shadow: rgba(44, 108, 187, 0.7) 0 1px 1px, rgba(44, 108, 187, 0.7) 0 1px 2px, rgba(44, 108, 187, 0.7) 0 2px 4px, rgba(44, 108, 187, 0.7) 0 2px 8px, rgba(44, 108, 187, 0.7) 0 4px 16px;
+  border-radius: 25px;
+  text-align: center;
+  margin-right: 1em;
+  padding: 10px;
+  border: 0;
+}
+input::selection {
+  border: transparent;
+}
+.game {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
 }
 
-.player-actions{
-  margin: 1em;
+.message-display-toggle {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 500px;
+  min-height: 100px;
+  background-color: rgba(0, 0, 0, 0.75);
+  border: 2px solid #555;
+  border-radius: 10px;
+  padding: 15px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.3s ease-in-out;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.game .mt-4 {
+  position: absolute;
+  bottom: 6.5em;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  z-index: 20;
+  margin-top: 0;
+  padding: 0;
+}
+.message-display-toggle p {
+  word-wrap: break-word;
+  white-space: normal;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
+.message-display-toggle:hover {
+  border-color: #aaa;
+}
+.full-conversation-log {
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 5px;
+  width: 100%;
+}
+.full-conversation-log p {
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+.latest-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.click-prompt {
+  display: block;
+  font-size: 0.8em;
+  color: #ccc;
+  margin-top: 5px;
+  text-align: center;
+}
+.player-actions {
+  position: absolute;
+  bottom: 3.5em;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  z-index: 20;
+  margin: 0;
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
-
 .dice {
   float: left;
   position: relative;
   left: 10vw;
   top: -10vh;
-  img{
+  img {
     width: 3em;
     margin-bottom: 10px;
     border: 2px solid black;
     border-radius: 25%;
   }
-  img:hover{
+  img:hover {
     border: 2px solid blue;
     transform: scale(1.15);
     cursor: pointer;
-  }  
-  .active-dice{
+  }
+  .active-dice {
     margin-bottom: 10px;
     border: 2px solid green;
   }
-  .active-dice:hover{
+  .active-dice:hover {
     border: 2px solid greenyellow;
     cursor: pointer;
   }
 }
-#roll-dice-button, #enter-button{
+#roll-dice-button, #enter-button {
   border-radius: 25px;
   text-align: center;
-  background: transparent;
-  color: rgb(181, 4, 4);
+  color: red;
   cursor: pointer;
   display: inline-block;
   padding: 10px;
@@ -208,56 +285,56 @@ button{
   transition: all 250ms;
   border: 0;
   touch-action: manipulation;
-  box-shadow:rgba(187, 84, 44, 0.37) 0 1px 1px,rgba(187, 84, 44, 0.37) 0 1px 2px,rgba(187, 84, 44, 0.37) 0 2px 4px,rgba(187, 84, 44, 0.37) 0 2px 8px,rgba(187, 84, 44, 0.37) 0 4px 16px;
+  box-shadow: red 0 -25px 18px -14px inset, rgba(187, 84, 44, 0.7) 0 1px 1px, rgba(187, 84, 44, 0.7) 0 1px 2px, rgba(187, 84, 44, 0.7) 0 2px 4px, rgba(187, 84, 44, 0.7) 0 2px 8px, rgba(187, 84, 44, 0.7) 0 4px 16px;
 }
-#roll-dice-button:hover, #enter-button:hover{
+#roll-dice-button:hover, #enter-button:hover {
   color: red;
-  box-shadow: red 0 -25px 18px -14px inset,rgba(187, 84, 44, 0.37) 0 1px 2px,rgba(187, 84, 44, 0.37) 0 2px 4px,rgba(187, 84, 44, 0.37) 0 4px 8px,rgba(187, 84, 44, 0.37) 0 8px 16px,rgba(187, 84, 44, 0.37) 0 16px 32px;
+  box-shadow: red 0 -25px 18px -14px inset, rgba(187, 84, 44, 0.7) 0 1px 2px, rgba(187, 84, 44, 0.7) 0 2px 4px, rgba(187, 84, 44, 0.7) 0 4px 8px, rgba(187, 84, 44, 0.7) 0 8px 16px, rgba(187, 84, 44, 0.7) 0 16px 32px;
   transform: scale(1.15) rotate(-3deg);
 }
-.member{
+.member {
   float: right;
   position: relative;
   right: 10vw;
   top: -10vh;
-  .member-icon{
+  .member-icon {
     font-size: 2.5em;
     border: 2px solid black;
     color: darkblue;
   }
-  .member-icon-div{
+  .member-icon-div {
     margin-bottom: 10px;
     border-radius: 25px;
     border: 2px solid black;
   }
-  .member-icon-div:hover{
+  .member-icon-div:hover {
     border: 2px solid blue;
     transform: scale(1.15);
     cursor: pointer;
   }
-  .member-icon.active-member{
+  .member-icon.active-member {
     color: blue;
     border: 2px solid black;
     background: transparent;
   }
-  .member-icon-div.active-member{
+  .member-icon-div.active-member {
     border: 2px solid black;
     border-radius: 25px;
     background: transparent;
   }
-  .member-icon-div.active-member:hover{
+  .member-icon-div.active-member:hover {
     border: 2px solid black;
     cursor: pointer;
     transform: scale(1.15);
   }
 }
-.main-session-box{
+.main-session-box {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
-.character-sheet{
+.character-sheet {
   background: url(./components/assets/characterSheetBackground.jpg) no-repeat;
   background-position: center;
   background-size: contain;
@@ -270,7 +347,7 @@ button{
     color: #000;
     transition: border-color .25s ease-in-out;
     margin: 1em;
-    &::file-selector-button{
+    &::file-selector-button {
       padding: 1em;
       border-radius: 25px;
       background-color: darkgreen;
@@ -281,13 +358,13 @@ button{
     }
     &:hover {
       border-color: #888;
-      &::file-selector-button{
+      &::file-selector-button {
         background-color: green;
       }
     }
   }
-  .character-info{
-    .sub-info{
+  .character-info {
+    .sub-info {
       display: flex;
       flex-direction: row;
       justify-content: space-evenly;
@@ -296,7 +373,7 @@ button{
       margin: auto;
       width: fit-content;
     }
-    .key-stats{
+    .key-stats {
       margin: 1em;
       margin-top: 0;
       margin-right: auto;
@@ -308,7 +385,7 @@ button{
       border: 2px solid white;
       padding: 1em;
     }
-    .skills{
+    .skills {
       margin: 1em;
       margin-top: 0;
       display: flex;
@@ -321,7 +398,7 @@ button{
     }
   }
 }
-.bottom-nav-buttons{
+.bottom-nav-buttons {
   position: absolute;
   bottom: 2em;
   width: 100%;
@@ -330,28 +407,37 @@ button{
   justify-content: center;
   gap: 1em;
   margin-top: 1em;
-  button{
+  button {
     padding: 1em;
   }
 }
-.session-history-page{
+.session-history-page {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  h1{
+  h1 {
     font-size: xx-large;
     font-weight: bold;
     margin-bottom: 2em;
   }
 }
 .message-log {
-  border:1px solid #ccc;
+  border: 1px solid #ccc;
   padding: 2em;
   background: black;
   color: #fff;
   margin-bottom: 20px;
   width: 50vw;
-  overflow:auto;
+  overflow: auto;
+}
+.submit-action {
+  position: absolute;
+  bottom: 0.5em;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  z-index: 20;
+  margin-top: 0;
 }

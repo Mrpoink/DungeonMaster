@@ -129,6 +129,8 @@ def outputs_from_prompt(prompt_list):
 
     for prompt in prompt_list:
 
+        print(prompt)
+
         inputs = tokenizer(prompt, return_tensors="pt").to("cuda")
 
         with torch.no_grad():
@@ -141,9 +143,9 @@ def outputs_from_prompt(prompt_list):
 
         decoded_ouput = tokenizer.decode(ouputs[0], skip_special_tokens = True)
 
-        real_output = decoded_ouput.replace(prompt, "")
-        real_output = real_output.split('[REWRITTEN OUTCOME]:')[1].strip()
-        real_output = real_output.replace('---','').strip()
+        real_output = decoded_ouput
+
+        print(real_output)
 
         output_list.append(real_output)
 

@@ -17,10 +17,11 @@ export default function Game() {
   const [DMmessage, setDMmessage] = useState("Connecting...");
 
   const [userin, setUserin] = useState('');
-    const [conversation, setConversation] = useState<ConversationItem[]>([
-        { sender: 'DM', text: DMmessage }
-    ]);
-    const [isLoading, setIsLoading] = useState(false);
+  const [conversation, setConversation] = useState<ConversationItem[]>([
+      { sender: 'DM', text: DMmessage }
+  ]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isHistoryOpen, setIsHistoryOpen] = useState(false);
 
   const handleDiceSelect = (selectedSides: number) => {
     setSides(selectedSides);
@@ -64,6 +65,7 @@ export default function Game() {
       setDMmessage("Error: could not fetch python response, something went wrong, line 82");
     }
     setIsLoading(false);
+    setIsHistoryOpen(false);
   };
 
   const fetchDMmessage = async () => {
@@ -84,6 +86,8 @@ export default function Game() {
     fetchDMmessage();
   }, []);
 
+  const latestMessage = conversation[conversation.length - 1];
+
 
   return (
     <div>
@@ -102,15 +106,28 @@ export default function Game() {
           </div>
           <main className="game-box">
             <img src={Background.src} alt="" />
+            <div className={`message-display-toggle ${isHistoryOpen ? 'full-history' : 'latest-message'}`} onClick={() => setIsHistoryOpen(!isHistoryOpen)}>
+            {isHistoryOpen ? (
+              <div className="full-conversation-log">
+                {conversation.map((item, index) => (
+                  <p key={index} className={item.sender === 'User' ? 'user-text' : 'dm-text'}>
+                    **{item.sender}:** {item.text}
+                  </p>
+                ))}
+              </div>
+            ) : (
+              <p className={latestMessage.sender === 'User' ? 'user-text' : 'dm-text'}>
+                **{latestMessage.sender}:** {latestMessage.text}
+                <span className="click-prompt">(Click to see history)</span>
+              </p>
+            )}
+          </div>
             <div className="game">
               <GameManager 
               userin={userin}
               setUserin={setUserin}
               handleSend={handleSend}
-              isLoading={isLoading}
-              conversation={conversation} message={""} setConversation={function (value: SetStateAction<{ sender: string; text: string; }[]>): void {
-                throw new Error("Function not implemented.");
-              } }              />
+              isLoading={isLoading}          />
               <div className="player-actions">
                 <Roll 
                   sides={sides} 

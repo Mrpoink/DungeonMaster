@@ -9,7 +9,7 @@ type RollProps = {
 
 type ConversationItem = { sender: string, text: string };
 
-export default function Roll({ sides, command, onRollClick, setConversation}: {sides : number, command: any, onRollClick: any, setConversation: React.Dispatch<React.SetStateAction<ConversationItem[]>>}){
+export default function Roll({ sides, command, onRollClick, setConversation, rollIsDone}: {sides : number, command: any, onRollClick: any, setConversation: React.Dispatch<React.SetStateAction<ConversationItem[]>>, rollIsDone: boolean}) {
     const [rollResult, setRollResult] = useState<number | null>(null);
 
     const handleRoll = async () => {
@@ -28,9 +28,11 @@ export default function Roll({ sides, command, onRollClick, setConversation}: {s
             },
             body : JSON.stringify({command : roll_result}),
         });
-        setConversation(prev => [...prev, {sender: 'User', text: `Rolling a D${sides}...` }]);
+        setConversation(prev => [...prev, {sender: 'User', text: `Rolling a D${sides} with result as ${roll}` }]);
         const result = await response.json();
         setConversation(prev => [...prev, {sender : 'DM', text : result.message}]);
+
+        setRollResult(null);
 
         } catch (error){
         console.error("Failed to send roll to python: ", error)
