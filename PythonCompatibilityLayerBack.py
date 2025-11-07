@@ -28,14 +28,20 @@ class userin:
         self.userin = input
 
     def get_userin(self):
-        return self.userin
+        try:
+            int(self.userin)
+            print(True)
+            self.check=True
+            return self.userin
+        except ValueError:
+            print(False)
+            self.check=False
+            return self.userin
 
         # model_out = loop.run_until_complete(model.model_output(self.userin))
         # return model_out if self.userin != "" else "Roll for Initiative"
 
-    def get_scene(self):
-        return model.get_scene()
-
+<<<<<<< HEAD
     def roll(self, roll):
         print(roll)
         if roll == True:
@@ -45,10 +51,19 @@ class userin:
 
         model_out = loop.run_until_complete(model.model_output_check(self.userin, roll))
         return model_out
+=======
+    def set_roll(self, roll):
+        self.roll = roll
+>>>>>>> parent of e725999 (Merge branch 'LLM-Actual' into dev)
 
     def send_userin(self):
-        model_out = loop.run_until_complete(model.model_output(self.userin))
-        return model_out if self.userin != "" else "Roll for Initiative"
+        if self.check  == True:
+            roll = True if int(self.userin) > 11 else False
+            model_out = loop.run_until_complete(model.model_output_check(self.userin, roll))
+            return model_out
+        else:
+            model_out = loop.run_until_complete(model.model_output(self.userin))
+            return model_out if self.userin != "" else "Roll for Initiative"
     
 class userData:
 
@@ -110,16 +125,13 @@ def process_message():
 @app.route("/DMout", methods=['GET'])
 async def output_message():
     try:
-        test_response = userInput.get_userin()
+        test_response = await userInput.get_userin()
         print(test_response)
 
-        scene = userInput.get_scene()
-
-        return jsonify({"dm_text" : test_response, "status":"ready", "message" : scene}), 200
+        return jsonify({"dm_text" : test_response, "status":"ready"}), 200
 
     except Exception as e:
         print(e)
-        return jsonify({"dm_text": "Roll for intiative", "status" : "ready"}), 200
 
 @app.route("/userData", methods=['POST'])
 async def process_userdata():
@@ -137,26 +149,6 @@ async def process_userdata():
         print("Error receiving userData, Line 106", e)
         traceback.print_exc()
         return jsonify({"error": "Failed to save user data.", "details": str(e)}), 500
-    
-@app.route("/roll", methods=['POST'])
-def process_roll():
-    try:
-        data = request.get_json()
-        model_output = userInput.roll(data.get('command'))
-
-        response_text = f"{model_output}"
-
-
-        return jsonify({
-            'message':response_text
-        })
-
-
-    except Exception as e:
-        return jsonify({'message': 'Something went wrong, error output on line 15'})
-    
-
-
 
 @app.route("/credentials", methods=['POST', 'OPTIONS'])
 async def check_creds():

@@ -14,7 +14,7 @@ project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 sys.path.append(project_root)
 
-import vector_database as vector_database
+import vector_database
 
 metric = evaluate.load('accuracy')
 
@@ -54,13 +54,13 @@ lora_config = LoraConfig(
 
 def def_model():
     torch.cuda.empty_cache()
-    tokenizer = AutoTokenizer.from_pretrained("SmolLM2/SmolTokens")
+    tokenizer = AutoTokenizer.from_pretrained("SmolLM2/SmolTokenizer")
     base_model = AutoModelForCausalLM.from_pretrained(
         "HuggingFaceTB/SmolLM2-360M-Instruct",
         dtype = torch.bfloat16,
         device_map = "cuda"
         )
-    model = PeftModel.from_pretrained(base_model, "prompt_classifier_Smol/checkpoint-7124")
+    model = base_model
 
     model.to("cuda")
 
@@ -85,18 +85,35 @@ async def model_output(userin : str, model, tokenizer):
             return_dict_in_generate=True,
             output_scores=True,
             do_sample=True,
+<<<<<<< HEAD
+<<<<<<< HEAD
             top_p = .65,
             #top_k = 40,
             # pad_token_id=tokenizer.eos_token_id,
             # eos_token_id=tokenizer.eos_token_id,
             repetition_penalty = 3.3,
             temperature = 2.15
+=======
+            # top_p = .65,
+            # top_k = 40,
+            # pad_token_id=tokenizer.eos_token_id,
+            # eos_token_id=tokenizer.eos_token_id,
+            repetition_penalty = 3.3
+            #temperature = 0.85
+>>>>>>> parent of 9cacb24 (improved model performance)
+=======
+            # top_p = .65,
+            # top_k = 40,
+            # pad_token_id=tokenizer.eos_token_id,
+            # eos_token_id=tokenizer.eos_token_id,
+            repetition_penalty = 3.3
+            #temperature = 0.85
+>>>>>>> parent of e725999 (Merge branch 'LLM-Actual' into dev)
             )
     decoded_ouput = tokenizer.decode(outputs[0][0], skip_special_tokens = True)
     print(decoded_ouput)
     final_output = decoded_ouput.split('[/GENERATED OUTCOME]:')
     final_output = final_output[1].split('|end|')
-    
     print(len(final_output))
     
     torch.cuda.empty_cache()
@@ -116,16 +133,34 @@ async def model_output_check(userin : str, model, tokenizer):
             return_dict_in_generate=True,
             output_scores=True,
             do_sample=True,
+<<<<<<< HEAD
+<<<<<<< HEAD
             top_p = .65,
             #top_k = 40,
             # pad_token_id=tokenizer.eos_token_id,
             # eos_token_id=tokenizer.eos_token_id,
             repetition_penalty = 3.3,
             temperature = 1.75
+=======
+            # top_p = .65,
+            # top_k = 40,
+            # pad_token_id=tokenizer.eos_token_id,
+            # eos_token_id=tokenizer.eos_token_id,
+            repetition_penalty = 3.3
+            # temperature = 0.85
+>>>>>>> parent of 9cacb24 (improved model performance)
+=======
+            # top_p = .65,
+            # top_k = 40,
+            # pad_token_id=tokenizer.eos_token_id,
+            # eos_token_id=tokenizer.eos_token_id,
+            repetition_penalty = 3.3
+            # temperature = 0.85
+>>>>>>> parent of e725999 (Merge branch 'LLM-Actual' into dev)
             )
     decoded_ouput = tokenizer.decode(outputs[0][0], skip_special_tokens = True)
     print(decoded_ouput)
-    final_output = decoded_ouput.split('[/GENERATED OUTCOME]:')
+    final_output = decoded_ouput.split('[/GENERATED CHECK]:')
     final_output = final_output[1].split('|end|')
     print(len(final_output))
     
@@ -203,20 +238,19 @@ class DungeonMaster:
         print("Seed: ", instance.seed)
         await instance.vb.add_session('all-MiniLM-L6-v2', "start of session", instance.seed)
 
+<<<<<<< HEAD
         instance.player = "[/PLAYER]: A Half-Foot looking for thier dagger that was owned by their father, on a quest to change their life"
 
         instance.player_says = None
 
-        scene = await instance.vb.find_scene(0.0,'all-MiniLM-L6-v2', 'Tavern')
-        instance.scene = f"[/SCENE]: {scene}"
+        instance.scene = await instance.vb.find_scene(0.0,'all-MiniLM-L6-v2', 'Tavern')
         instance.roll_number = 0
 
+=======
+>>>>>>> parent of e725999 (Merge branch 'LLM-Actual' into dev)
         instance.check = None #If false, check required, else generate outcome
 
         return instance
-    
-    def get_scene(instance):
-        return instance.scene.replace("[/SCENE]:", "")
     
     @classmethod
     async def create_backend(cls):
@@ -232,30 +266,31 @@ class DungeonMaster:
 
         print("running check script")
 
-        instance.player_says = userin
+        scene = "[/SCENE]: The well known streets of Zanzebar"
 
+<<<<<<< HEAD
         if instance.roll_number > 2:
-            scene = await instance.vb.find_scene(0.0,'all-MiniLM-L6-v2', userin)
-            instance.scene = f"[/SCENE]: {scene}"
+            instance.scene = await instance.vb.find_scene(0.0,'all-MiniLM-L6-v2', userin)
 
         prompt = f"{instance.scene} {instance.player} [/ACTION]: {instance.player_says}"
+=======
+        prompt = f"{scene} [/ACTION]: {userin}"
+>>>>>>> parent of e725999 (Merge branch 'LLM-Actual' into dev)
 
         final_input = await final_prompt(prompt, instance.vb, instance.seed, instance.turn_num)
-        final_input = f"{final_input} |end|\n|assistant|: [/GENERATED OUTCOME]:"
+
+        final_input = f"{final_input} |end|\n|assistant|: [/GENERATED CHECK]:"
+
         print("final input: ", final_input, "\n--------------\n")
 
         modelOut = await model_output_check(final_input, instance.model, instance.tokenizer)
 
-        if "[SCENE CHANGE]" in modelOut:
-            scene = await instance.vb.find_scene(0.0,'all-MiniLM-L6-v2', userin)
-            instance.scene = f"[/SCENE]: {scene}"
-
-            modelOut.replace('[SCENE CHANGE]', '')
-
         await instance.vb.add_session('all-MiniLM-L6-v2', str(f"|user| {prompt}"), instance.seed)
+
         await instance.vb.add_session('all-MiniLM-L6-v2', str(f"{modelOut}"), instance.seed)
 
         instance.check = modelOut
+
         instance.turn_num += 1
 
         return modelOut
@@ -265,31 +300,25 @@ class DungeonMaster:
 
         print("running script WITH check")
 
-        if pass_fail == True:
-            pass_fail = "Pass"
-        else:
-            pass_fail = "Fail"
-        prompt = f"{instance.scene} {instance.player} [/ACTION]: {instance.player_says} [/CHECK]: {instance.check} [/PASS/FAIL]: {pass_fail}" 
+        scene = "[/SCENE]: The well known streets of Zanzebar"
+
+        prompt = f"{scene} [/ACTION]: {userin} [/CHECK]: {instance.check} [/PASS/FAIL]: {pass_fail}"
+
+        
 
         final_input = await final_prompt(prompt, instance.vb, instance.seed, instance.turn_num)
+
         final_input = f"{final_input}  |end|\n|assistant|: [/GENERATED OUTCOME]:"
+
         print("Final input: ", final_input, "\n------------\n")
 
         modelOut = await model_output(final_input, instance.model, instance.tokenizer)
 
-        if "[SCENE CHANGE]" in modelOut:
-            scene = await instance.vb.find_scene(0.0,'all-MiniLM-L6-v2', userin)
-            instance.scene = f"[/SCENE]: {scene}"
-
-            modelOut.replace('[SCENE CHANGE]', '')
-
         await instance.vb.add_session('all-MiniLM-L6-v2', str(f"|user| {prompt}"), instance.seed)
+
         await instance.vb.add_session('all-MiniLM-L6-v2', str(f"{modelOut}"), instance.seed)
 
-        instance.turn_num +=1
-
-        instance.roll_number += 1
-
+        instance.turn_num +=1 
 
         return modelOut
 

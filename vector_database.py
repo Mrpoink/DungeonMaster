@@ -83,7 +83,7 @@ class use_vector_db:
         return self.query_tuple_list
     
     
-    async def add_json_to_db(self, databasename: str, json_file : str, model : str):
+    async def add_to_db(self, databasename: str, json_file : str, model : str):
 
         self.create_data(json_file)
 
@@ -102,25 +102,7 @@ class use_vector_db:
 
         await self.db.disconnect()
 
-    async def add_to_db(self, databasename : str, list : list, model : str):
-
-        self.data_list= list
-
-        self.make_embedding(model)
-
-        self.create_query()
-    
-        for text, embedding in self.query_tuple_list:
-            await self.db.execute_raw(
-                f"INSERT INTO \"{databasename}\" (text, embedding) VALUES ($1, $2)",
-                text,
-                embedding
-            )
-
-        print("Successfully updated!")
-
-        await self.db.disconnect()
-
+<<<<<<< HEAD
     async def add_user_data(self, name, username, password):
 
         await self.db.execute_raw(
@@ -151,6 +133,11 @@ class use_vector_db:
             return False, "Incorrect username"
 
     
+=======
+
+
+
+>>>>>>> 78df350 (Attempting to upload zip files for easier upload)
 
         
 class get_from_db:
@@ -184,6 +171,7 @@ class get_from_db:
 
 
         results = []
+        similarities = []
 
         for i in range(1, len(tables)):
 
@@ -252,19 +240,6 @@ class get_from_db:
 
         return final_list
     
-    async def find_scene(self, initial_confidence : float, model: str, words : str):
-        embedding = self.create_embedding(model, words)
-
-        results = []
-
-        tuple_list = []
-        entry = await self.db.query_raw(f'SELECT id, text FROM \"STORYVECTOR\" ORDER BY embedding <-> $1::vector LIMIT 3;', embedding.tolist())
-
-        print(entry[0])
-                
-
-        return entry[0]['text'].strip()
-    
     async def for_training(self, input):
         torch.cuda.empty_cache()
 
@@ -301,6 +276,7 @@ class get_from_db:
         
         print("Session Successfully updated!")
 
+<<<<<<< HEAD
     async def get_session_id(self):
 
         #SELECT MAX(column_name) FROM table_name;
@@ -313,4 +289,6 @@ class get_from_db:
 
         return session_number[0]['max']
 
+=======
+>>>>>>> 78df350 (Attempting to upload zip files for easier upload)
 

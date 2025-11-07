@@ -2,6 +2,7 @@
 import { useRouter } from "next/navigation";
 import Nav from "@/app/components/nav/nav";
 import {BottomNav} from "@/app/components/nav/nav";
+import { BsPersonStanding } from "react-icons/bs";
 
 export default function Home() {
 const router = useRouter()
@@ -13,15 +14,16 @@ const router = useRouter()
       </header>
       <main>
         <div>
+          <div id="lobby-character">
+            <BsPersonStanding/>
+          </div>
           <div className="start-buttons-container">
             <div id="game-sessions-div">
               <div className="game-session" id="game-sessions-left-div">
                 <button className="left-game-session-buttons" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
                 <button className="left-game-session-buttons" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
-                <button className="left-game-session-buttons" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
               </div>
               <div className="game-session" id="game-sessions-right-div">
-                <button className="right-game-session-buttons" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
                 <button className="right-game-session-buttons" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
                 <button className="right-game-session-buttons" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
               </div>

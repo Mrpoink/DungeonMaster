@@ -194,13 +194,3 @@ class BaseUSERDATA(_PrismaModel):
         return actions.USERDATAActions[_PrismaModelT](client or get_client(), cls)
 
 
-class BaseSTORYVECTOR(_PrismaModel):
-    __prisma_model__: ClassVar[Literal['STORYVECTOR']] = 'STORYVECTOR'  # pyright: ignore[reportIncompatibleVariableOverride]
-
-    @classmethod
-    def prisma(cls: Type[_PrismaModelT], client: Optional['Prisma'] = None) -> 'actions.STORYVECTORActions[_PrismaModelT]':
-        from .client import get_client
-
-        return actions.STORYVECTORActions[_PrismaModelT](client or get_client(), cls)
-
-

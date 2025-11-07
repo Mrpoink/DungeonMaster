@@ -7,14 +7,32 @@ export const DEFAULT_CHARACTER: Character = {
     class: "Rogue",
     subclass: "Thief",
     stats: {
-        Strength: 10, Dexterity: 15, Constitution: 14,
-        Intelligence: 8, Wisdom: 12, Charisma: 10
+        STRENGTH: 14,
+        DEXTERITY: 12,
+        CONSTITUTION: 13,
+        INTELLIGENCE: 10,
+        WISDOM: 11,
+        CHARISMA: 15,
     },
     skills: {
-        Acrobatics: true, "Animal Handling": false, Arcana: false, Athletics: false, 
-        Deception: true, History: false, Insight: true, Intimidation: false, 
-        Investigation: false, Medicine: false, Nature: false, Perception: true, 
-        Performance: false, Persuasion: false, Religion: false, 
-        "Sleight of Hand": true, Stealth: true, Survival: false
-    }
+        "Acrobatics (Dex)": false,
+        "Animal Handling (Wis)": false,
+        "Arcana (Int)": false,
+        "Athletics (Str)": true,
+        "Deception (Cha)": true, 
+        "History (Int)": false, 
+        "Insight (Wis)": true, 
+        "Investigation (Int)": false, 
+        "Medicine (Wis)": false, 
+        "Nature (Int)": false, 
+        "Performance (Cha)": false, 
+        "Persuasion (Cha)": false, 
+        "Religion (Int)": false, 
+        "Sleight of Hand (Dex)": true, 
+        "Stealth (Dex)": true, 
+        "Survival (Wis)": false,
+        "Perception (Wis)": true,
+        "Intimidation (Cha)": false,
+    },
+    backstory: "He was a super cool hero or something"
 };

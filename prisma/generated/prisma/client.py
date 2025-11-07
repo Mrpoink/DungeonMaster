@@ -85,10 +85,10 @@ __all__ = (
 
 log: logging.Logger = logging.getLogger(__name__)
 
-SCHEMA_PATH = Path('C:/Users/mrpoi/GithubRepos/DungeonMaster/prisma/schema.prisma')
+SCHEMA_PATH = Path('/home/mrpoink/github-repos/DungeonMaster_Research/prisma/schema.prisma')
 PACKAGED_SCHEMA_PATH = Path(__file__).parent.joinpath('schema.prisma')
 ENGINE_TYPE: EngineType = EngineType.binary
-BINARY_PATHS = model_parse(BinaryPaths, {'queryEngine': {'windows': 'C:\\Users\\mrpoi\\AppData\\Local\\npm-cache\\_npx\\55ad0b431757dc30\\node_modules\\prisma\\query-engine-windows.exe'}, 'introspectionEngine': {}, 'migrationEngine': {}, 'libqueryEngine': {}, 'prismaFmt': {}})
+BINARY_PATHS = model_parse(BinaryPaths, {'queryEngine': {'debian-openssl-3.0.x': '/home/mrpoink/.cache/prisma-python/binaries/5.17.0/393aa359c9ad4a4bb28630fb5613f9c281cde053/node_modules/prisma/query-engine-debian-openssl-3.0.x'}, 'introspectionEngine': {}, 'migrationEngine': {}, 'libqueryEngine': {}, 'prismaFmt': {}})
 
 
 class Prisma(AsyncBasePrisma):
@@ -106,7 +106,6 @@ class Prisma(AsyncBasePrisma):
     spellsvector: 'actions.SPELLSVECTORActions[models.SPELLSVECTOR]'
     spell: 'actions.SpellActions[models.Spell]'
     userdata: 'actions.USERDATAActions[models.USERDATA]'
-    storyvector: 'actions.STORYVECTORActions[models.STORYVECTOR]'
 
     __slots__ = (
         'charactervector',
@@ -121,7 +120,6 @@ class Prisma(AsyncBasePrisma):
         'spellsvector',
         'spell',
         'userdata',
-        'storyvector',
     )
 
     def __init__(
@@ -164,7 +162,6 @@ class Prisma(AsyncBasePrisma):
         self.spellsvector = actions.SPELLSVECTORActions[models.SPELLSVECTOR](self, models.SPELLSVECTOR)
         self.spell = actions.SpellActions[models.Spell](self, models.Spell)
         self.userdata = actions.USERDATAActions[models.USERDATA](self, models.USERDATA)
-        self.storyvector = actions.STORYVECTORActions[models.STORYVECTOR](self, models.STORYVECTOR)
 
         if auto_register:
             register(self)
@@ -175,7 +172,7 @@ class Prisma(AsyncBasePrisma):
         return {
             'name': 'db',
             'url': OptionalValueFromEnvVar(**{'value': None, 'fromEnvVar': 'DATABASE_URL1'}).resolve(),
-            'source_file_path': 'C:/Users/mrpoi/GithubRepos/DungeonMaster/prisma/schema.prisma',
+            'source_file_path': '/home/mrpoink/github-repos/DungeonMaster_Research/prisma/schema.prisma',
         }
 
     async def execute_raw(self, query: LiteralString, *args: Any) -> int:
@@ -327,7 +324,6 @@ class Batch:
     spellsvector: 'SPELLSVECTORBatchActions'
     spell: 'SpellBatchActions'
     userdata: 'USERDATABatchActions'
-    storyvector: 'STORYVECTORBatchActions'
 
     def __init__(self, client: Prisma) -> None:
         self.__client = client
@@ -345,7 +341,6 @@ class Batch:
         self.spellsvector = SPELLSVECTORBatchActions(self)
         self.spell = SpellBatchActions(self)
         self.userdata = USERDATABatchActions(self)
-        self.storyvector = STORYVECTORBatchActions(self)
 
     def _add(self, **kwargs: Any) -> None:
         builder = QueryBuilder(
@@ -1724,117 +1719,6 @@ class USERDATABatchActions:
         self._batcher._add(
             method='delete_many',
             model=models.USERDATA,
-            arguments={'where': where},
-            root_selection=['count'],
-        )
-
-
-
-# NOTE: some arguments are meaningless in this context but are included
-# for completeness sake
-class STORYVECTORBatchActions:
-    def __init__(self, batcher: Batch) -> None:
-        self._batcher = batcher
-
-    def create(
-        self,
-        data: types.STORYVECTORCreateInput,
-        include: Optional[types.STORYVECTORInclude] = None
-    ) -> None:
-        self._batcher._add(
-            method='create',
-            model=models.STORYVECTOR,
-            arguments={
-                'data': data,
-                'include': include,
-            },
-        )
-
-    def create_many(
-        self,
-        data: List[types.STORYVECTORCreateWithoutRelationsInput],
-        *,
-        skip_duplicates: Optional[bool] = None,
-    ) -> None:
-        if skip_duplicates and self._batcher._active_provider in CREATE_MANY_SKIP_DUPLICATES_UNSUPPORTED:
-            raise errors.UnsupportedDatabaseError(self._batcher._active_provider, 'create_many_skip_duplicates')
-
-        self._batcher._add(
-            method='create_many',
-            model=models.STORYVECTOR,
-            arguments={
-                'data': data,
-                'skipDuplicates': skip_duplicates,
-            },
-            root_selection=['count'],
-        )
-
-    def delete(
-        self,
-        where: types.STORYVECTORWhereUniqueInput,
-        include: Optional[types.STORYVECTORInclude] = None,
-    ) -> None:
-        self._batcher._add(
-            method='delete',
-            model=models.STORYVECTOR,
-            arguments={
-                'where': where,
-                'include': include,
-            },
-        )
-
-    def update(
-        self,
-        data: types.STORYVECTORUpdateInput,
-        where: types.STORYVECTORWhereUniqueInput,
-        include: Optional[types.STORYVECTORInclude] = None
-    ) -> None:
-        self._batcher._add(
-            method='update',
-            model=models.STORYVECTOR,
-            arguments={
-                'data': data,
-                'where': where,
-                'include': include,
-            },
-        )
-
-    def upsert(
-        self,
-        where: types.STORYVECTORWhereUniqueInput,
-        data: types.STORYVECTORUpsertInput,
-        include: Optional[types.STORYVECTORInclude] = None,
-    ) -> None:
-        self._batcher._add(
-            method='upsert',
-            model=models.STORYVECTOR,
-            arguments={
-                'where': where,
-                'include': include,
-                'create': data.get('create'),
-                'update': data.get('update'),
-            },
-        )
-
-    def update_many(
-        self,
-        data: types.STORYVECTORUpdateManyMutationInput,
-        where: types.STORYVECTORWhereInput,
-    ) -> None:
-        self._batcher._add(
-            method='update_many',
-            model=models.STORYVECTOR,
-            arguments={'data': data, 'where': where,},
-            root_selection=['count'],
-        )
-
-    def delete_many(
-        self,
-        where: Optional[types.STORYVECTORWhereInput] = None,
-    ) -> None:
-        self._batcher._add(
-            method='delete_many',
-            model=models.STORYVECTOR,
             arguments={'where': where},
             root_selection=['count'],
         )

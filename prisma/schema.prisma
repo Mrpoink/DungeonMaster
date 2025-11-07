@@ -265,9 +265,3 @@ model USERDATA {
   username      String
   password      String
 }
-
-model STORYVECTOR {
-  id        Int                    @id @default(autoincrement())
-  text      String
-  embedding Unsupported("vector")?
-}
