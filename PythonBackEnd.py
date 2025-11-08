@@ -206,7 +206,7 @@ class DungeonMaster:
 
         instance.player_says = None
 
-        instance.scene = await instance.vb.find_scene(0.0,'all-MiniLM-L6-v2', 'Tavern')
+        instance.scene = instance.vb.find_scene()
         instance.roll_number = 0
 
         instance.check = None #If false, check required, else generate outcome

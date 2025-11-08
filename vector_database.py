@@ -281,5 +281,8 @@ class get_from_db:
         print("Seed from db: ", session_number)
 
         return session_number[0]['max']
+    
+    def find_scene(self):
+        return "The party is outside the dungeon of secrets. The air is thick with anticipation as they prepare to enter the dark corridors within."
 
 
