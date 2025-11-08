@@ -27,8 +27,6 @@ body {
   text-align: center;
   justify-content: center;
 }
-.start-buttons {
-  border: 2px solid black;
 .start-buttons{
   border: 2px solid #111827;
   margin: 1em;
@@ -79,8 +77,6 @@ button {
     position: relative;
   }
 }
-.lobby {
-  background: url(./components/assets/lobbyBackground.png) no-repeat;
 .lobby{
   background: url(./components/assets/lobbyBackground2.jpg) no-repeat;
   background-position: center;
@@ -91,7 +87,6 @@ button {
     background: url('./components/assets/lobbyBackground.png') no-repeat center cover;
     position: relative;
   }
-  #game-sessions-left-div {
   #lobby-character{
     position: absolute;
     justify-content: center;
@@ -122,8 +117,6 @@ button {
     position: relative;
     right: 8vw;
   }
-  .left-game-session-buttons {
-    border: 3px solid black;
   .left-game-session-buttons{
     border: 3px solid #111827;
     padding: 1em;
