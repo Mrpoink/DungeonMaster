@@ -41,7 +41,6 @@ class userin:
         # model_out = loop.run_until_complete(model.model_output(self.userin))
         # return model_out if self.userin != "" else "Roll for Initiative"
 
-<<<<<<< HEAD
     def roll(self, roll):
         print(roll)
         if roll == True:
@@ -51,10 +50,6 @@ class userin:
 
         model_out = loop.run_until_complete(model.model_output_check(self.userin, roll))
         return model_out
-=======
-    def set_roll(self, roll):
-        self.roll = roll
->>>>>>> parent of e725999 (Merge branch 'LLM-Actual' into dev)
 
     def send_userin(self):
         if self.check  == True:
@@ -130,7 +125,6 @@ def process_message():
 async def output_message():
     global lock
     try:
-<<<<<<< HEAD
         lock = False
         test_response = userInput.get_userin()
         print(test_response)
@@ -138,12 +132,6 @@ async def output_message():
         scene = userInput.get_scene()
 
         lock = False
-=======
-        test_response = await userInput.get_userin()
-        print(test_response)
-
-        return jsonify({"dm_text" : test_response, "status":"ready"}), 200
->>>>>>> main
 
         return jsonify({"dm_text" : scene, "status":"ready", "message" : scene}), 200
     
@@ -167,7 +155,6 @@ async def process_userdata():
         traceback.print_exc()
         return jsonify({"error": "Failed to save user data.", "details": str(e)}), 500
 
-<<<<<<< HEAD
 
 @app.route("/roll", methods=['POST'])
 def process_roll():
@@ -190,8 +177,6 @@ def process_roll():
         return jsonify({'message': 'DM is typing, please wait...'})
     
 
-=======
->>>>>>> main
 @app.route("/credentials", methods=['POST', 'OPTIONS'])
 async def check_creds():
     if request.method == 'OPTIONS':
