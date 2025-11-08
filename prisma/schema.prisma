@@ -18,7 +18,7 @@ model CHARACTERVECTOR {
 
 model Classes {
   id          Int     @id @default(autoincrement())
-  reg_class       String
+  reg_class   String
   subclass    String
   source      String?
   notes       String?
@@ -175,9 +175,9 @@ model Monster {
   spellSavingThrows          String?
   spellAttack                String?
   At_Will                    String? @map("At Will")
-  Day3                        String? @map("3/Day")
-  Day2                        String? @map("2/Day")
-  Day1                        String? @map("1/Day")
+  Day3                       String? @map("3/Day")
+  Day2                       String? @map("2/Day")
+  Day1                       String? @map("1/Day")
   bonusAction                String?
   reaction                   String?
   amount                     String?
@@ -262,6 +262,28 @@ model Spell {
 model USERDATA {
   id            Int   @id @default(autoincrement())
   name          String
-  username      String
+  username      String @unique
   password      String
+  characters USERCHAR[]
+}
+
+model STORYVECTOR {
+  id        Int                    @id @default(autoincrement())
+  text      String
+  embedding Unsupported("vector")?
+}
+
+model USERCHAR {
+  id            Int   @id @default(autoincrement())
+  user          String
+  username      USERDATA  @relation(fields: [user], references: [username])
+  race          String
+  class         String
+  subclass      String
+  str           Int
+  dex           Int
+  con           Int
+  int           Int
+  wis           Int
+  cha           Int  
 }

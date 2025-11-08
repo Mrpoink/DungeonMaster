@@ -194,6 +194,17 @@ async def check_creds():
         traceback.print_exc()
         return jsonify({"error" : "Failed to retrieve user credentials", "details" : str(e)}), 500
     
+@app.route("/characters", methods=['POST'])
+async def process_characters():
+    try:
+        data = request.get_json()
+        print("Received character data: ", data)
+        return jsonify({"characterData" : data, "status":"ready", "message" : "Character data received"}), 200
+    except Exception as e:
+        print("Error receiving character data, Line 144", e)
+        traceback.print_exc()
+        return jsonify({"error" : "Failed to retrieve character data", "details" : str(e)}), 500
+    
 
 @app.route("/")
 def connection_message():
