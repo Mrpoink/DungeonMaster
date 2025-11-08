@@ -60,7 +60,7 @@ def def_model():
         dtype = torch.bfloat16,
         device_map = "cuda"
         )
-    model = base_model
+    model = PeftModel.from_pretrained(base_model, "prompt_classifier_Smol/checkpoint-2673")
 
     model.to("cuda")
 
@@ -72,7 +72,7 @@ def def_model():
     return model, tokenizer
 
 
-async def model_output(userin : str, model, tokenizer):
+async def model_output(userin : str, model, tokenizer): #running script WITH check
     torch.cuda.empty_cache()
     inputs = tokenizer(userin, return_tensors="pt", padding=True).to("cuda")
 
@@ -85,30 +85,12 @@ async def model_output(userin : str, model, tokenizer):
             return_dict_in_generate=True,
             output_scores=True,
             do_sample=True,
-<<<<<<< HEAD
-<<<<<<< HEAD
-            top_p = .65,
+            top_p = .9,
             #top_k = 40,
             # pad_token_id=tokenizer.eos_token_id,
             # eos_token_id=tokenizer.eos_token_id,
             repetition_penalty = 3.3,
             temperature = 2.15
-=======
-            # top_p = .65,
-            # top_k = 40,
-            # pad_token_id=tokenizer.eos_token_id,
-            # eos_token_id=tokenizer.eos_token_id,
-            repetition_penalty = 3.3
-            #temperature = 0.85
->>>>>>> parent of 9cacb24 (improved model performance)
-=======
-            # top_p = .65,
-            # top_k = 40,
-            # pad_token_id=tokenizer.eos_token_id,
-            # eos_token_id=tokenizer.eos_token_id,
-            repetition_penalty = 3.3
-            #temperature = 0.85
->>>>>>> parent of e725999 (Merge branch 'LLM-Actual' into dev)
             )
     decoded_ouput = tokenizer.decode(outputs[0][0], skip_special_tokens = True)
     print(decoded_ouput)
@@ -120,7 +102,7 @@ async def model_output(userin : str, model, tokenizer):
 
     return final_output[0]
 
-async def model_output_check(userin : str, model, tokenizer):
+async def model_output_check(userin : str, model, tokenizer): #Running check script
     torch.cuda.empty_cache()
     inputs = tokenizer(userin, return_tensors="pt", padding=True).to("cuda")
 
@@ -133,30 +115,12 @@ async def model_output_check(userin : str, model, tokenizer):
             return_dict_in_generate=True,
             output_scores=True,
             do_sample=True,
-<<<<<<< HEAD
-<<<<<<< HEAD
             top_p = .65,
             #top_k = 40,
             # pad_token_id=tokenizer.eos_token_id,
             # eos_token_id=tokenizer.eos_token_id,
             repetition_penalty = 3.3,
             temperature = 1.75
-=======
-            # top_p = .65,
-            # top_k = 40,
-            # pad_token_id=tokenizer.eos_token_id,
-            # eos_token_id=tokenizer.eos_token_id,
-            repetition_penalty = 3.3
-            # temperature = 0.85
->>>>>>> parent of 9cacb24 (improved model performance)
-=======
-            # top_p = .65,
-            # top_k = 40,
-            # pad_token_id=tokenizer.eos_token_id,
-            # eos_token_id=tokenizer.eos_token_id,
-            repetition_penalty = 3.3
-            # temperature = 0.85
->>>>>>> parent of e725999 (Merge branch 'LLM-Actual' into dev)
             )
     decoded_ouput = tokenizer.decode(outputs[0][0], skip_special_tokens = True)
     print(decoded_ouput)
@@ -238,7 +202,6 @@ class DungeonMaster:
         print("Seed: ", instance.seed)
         await instance.vb.add_session('all-MiniLM-L6-v2', "start of session", instance.seed)
 
-<<<<<<< HEAD
         instance.player = "[/PLAYER]: A Half-Foot looking for thier dagger that was owned by their father, on a quest to change their life"
 
         instance.player_says = None
@@ -246,8 +209,6 @@ class DungeonMaster:
         instance.scene = await instance.vb.find_scene(0.0,'all-MiniLM-L6-v2', 'Tavern')
         instance.roll_number = 0
 
-=======
->>>>>>> parent of e725999 (Merge branch 'LLM-Actual' into dev)
         instance.check = None #If false, check required, else generate outcome
 
         return instance
@@ -268,14 +229,10 @@ class DungeonMaster:
 
         scene = "[/SCENE]: The well known streets of Zanzebar"
 
-<<<<<<< HEAD
         if instance.roll_number > 2:
             instance.scene = await instance.vb.find_scene(0.0,'all-MiniLM-L6-v2', userin)
 
         prompt = f"{instance.scene} {instance.player} [/ACTION]: {instance.player_says}"
-=======
-        prompt = f"{scene} [/ACTION]: {userin}"
->>>>>>> parent of e725999 (Merge branch 'LLM-Actual' into dev)
 
         final_input = await final_prompt(prompt, instance.vb, instance.seed, instance.turn_num)
 

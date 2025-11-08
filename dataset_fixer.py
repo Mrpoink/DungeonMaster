@@ -26,10 +26,10 @@ async def csv_to_SAC(filename):
 
             if row[4] == "None":
 
-                input_string = "|user|:" + "[/EXTRA INFO]: "  + "[/PLAYER]: " + row[1] + " [/ACTION]: " + row[3] +"|end|"
+                input_string = "|user|:" + "[/EXTRA INFO]: "  + random.choice(extra_info) + "[/SCENE]: " + row[2]  + "[/PLAYER]: " + row[1] + " [/ACTION]: " + row[3] +"|end|"
                 output_string = "|assistant|:" + " [/GENERATED OUTCOME]: "+row[6]  + "|end|"
             else:
-                input_string = "|user|:" + "[/EXTRA INFO]: "  + "[/PLAYER]: " + row[1] + " [/ACTION]: " + row[3] +"|end|"
+                input_string = "|user|:" + "[/EXTRA INFO]: " + random.choice(extra_info) + "[/SCENE]: " + row[2]   + "[/PLAYER]: " + row[1] + " [/ACTION]: " + row[3] +"|end|"
                 output_string = "|assistant|:" + " [/GENERATED OUTCOME]: Roll for "+row[4]  + "|end|"
 
             total_list = [input_string, output_string]
@@ -59,7 +59,7 @@ async def csv_to_SAO(filename):
                 row[4] = "[NO_CHECK]"
 
             else:
-                input_string = "|user|:" + "[/EXTRA INFO]: " + random.choice(extra_info).replace(",", "") + " [/PLAYER]: " + row[1] + " [/ACTION]: " + row[3] + "[/CHECK]: " + row[4] + "[/PASS/FAIL]: " + row[5] +"|end|"
+                input_string = "|user|:" + "[/EXTRA INFO]: " + random.choice(extra_info).replace(",", "") + "[/SCENE]: " + row[2] + " [/PLAYER]: " + row[1] + " [/ACTION]: " + row[3] + "[/CHECK]: " + row[4] + "[/PASS/FAIL]: " + row[5] +"|end|"
                 output_string = "|assistant|:" + " [/GENERATED OUTCOME]: "+row[6]  + "|end|"
 
             total_list = [input_string, output_string]
@@ -98,8 +98,8 @@ async def few_prompt_csv():
 
     for i in range(100):
 
-        sac = "|user|: [/EXTRA] extra info from vector database, [/PLAYER] player backstory, [/ACTION] player input|end|, |assistant|: [/GENERATED CHECK] required check|end|"
-        sao = "|user|: [/EXTRA] extra info from vector database, [/PLAYER] player backstory, [/ACTION] player input, [/CHECK] generated check, [/PASS/FAIL] check result|end|, |assistant|: [/GENERATED OUTCOME] generated outcome|end|"
+        sac = "|user|: [/EXTRA] extra info from vector database [/SCENE] scene [/PLAYER] player backstory [/ACTION] player input|end|, |assistant|: [/GENERATED CHECK] required check|end|"
+        sao = "|user|: [/EXTRA] extra info from vector database [/SCENE] scene [/PLAYER] player backstory [/ACTION] player input [/CHECK] generated check [/PASS/FAIL] check result|end|, |assistant|: [/GENERATED OUTCOME] generated outcome|end|"
 
 async def make_random_list():
     vb = get_from_db()
@@ -114,7 +114,7 @@ async def make_random_list():
     for item in initial_list:
         print(f"{number} out of 18")
         extra_info = await vb.for_training(item)
-        result_list.append(extra_info)
+        result_list.append(extra_info.replace(",", " "))
         number += 1
 
     return result_list
@@ -130,13 +130,18 @@ def dict_to_csv(data, filename):
         writer.writeheader()
         writer.writerows(data)
 
+
 def list_to_csv(data, filename):
 
     with open(filename, "w", newline='') as file:
 
         csv_writer = csv.writer(file)
 
-        csv_writer.writerows(data)
+        print(data)
+
+        for item in data:
+            csv_writer.writerow([item])
+
 
 def to_json(data, output_file, w_or_r=None):
 
@@ -157,9 +162,15 @@ async def main():
 
     await vb.connect()
 
+    extra_info_list = await make_random_list()
 
-    #sao = await csv_to_SAO('Datasets/Prompts.csv')
-    sac = await csv_to_SAC('Datasets/Prompts.csv')
+    print(extra_info_list)
+
+    list_to_csv(extra_info_list, 'extra_info.csv')
+
+
+    # sao = await csv_to_SAO('Datasets/Prompts.csv')
+    # sac = await csv_to_SAC('Datasets/Prompts.csv')
 
     # list_to_csv(sao, 'Scene_Action_Outcome.csv')
     # list_to_csv(sac, "Scene_Action_Check.csv")
