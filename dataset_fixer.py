@@ -4,9 +4,12 @@ import asyncio
 import random
 from vector_database import get_from_db
 
-async def csv_to_SAC(filename):
+is_in_list = []
+
+async def csv_to_SAC(filename, outcome_list):
 
     data_list = []
+    i = 0
     
     with open(filename, 'r', newline='') as file:
 
@@ -14,7 +17,7 @@ async def csv_to_SAC(filename):
         
         number = 0
         csv_reader = csv.reader(file)
-        #extra_info = await make_random_list()
+        extra_info = await make_random_list()
         for row in csv_reader:
             if len(row) < 7:
                 print(row)
@@ -27,7 +30,7 @@ async def csv_to_SAC(filename):
             if row[4] == "None":
 
                 input_string = "|user|:" + "[/EXTRA INFO]: "  + random.choice(extra_info) + "[/SCENE]: " + row[2]  + "[/PLAYER]: " + row[1] + " [/ACTION]: " + row[3] +"|end|"
-                output_string = "|assistant|:" + " [/GENERATED OUTCOME]: "+row[6]  + "|end|"
+                output_string = "|assistant|:" + " [/GENERATED OUTCOME]: "+outcome_list[i]  + "|end|"
             else:
                 input_string = "|user|:" + "[/EXTRA INFO]: " + random.choice(extra_info) + "[/SCENE]: " + row[2]   + "[/PLAYER]: " + row[1] + " [/ACTION]: " + row[3] +"|end|"
                 output_string = "|assistant|:" + " [/GENERATED OUTCOME]: Roll for "+row[4]  + "|end|"
@@ -35,14 +38,16 @@ async def csv_to_SAC(filename):
             total_list = [input_string, output_string]
             data_list.append(total_list)
             number+=1
+            i+=1
 
     print(special_tokens)
 
     return data_list
 
-async def csv_to_SAO(filename):
+async def csv_to_SAO(filename, outcome_list):
 
     data_list = []
+    i=0
     
     with open(filename, 'r', newline='') as file:
         
@@ -60,11 +65,12 @@ async def csv_to_SAO(filename):
 
             else:
                 input_string = "|user|:" + "[/EXTRA INFO]: " + random.choice(extra_info).replace(",", "") + "[/SCENE]: " + row[2] + " [/PLAYER]: " + row[1] + " [/ACTION]: " + row[3] + "[/CHECK]: " + row[4] + "[/PASS/FAIL]: " + row[5] +"|end|"
-                output_string = "|assistant|:" + " [/GENERATED OUTCOME]: "+row[6]  + "|end|"
+                output_string = "|assistant|:" + " [/GENERATED OUTCOME]: "+outcome_list[i]  + "|end|"
 
             total_list = [input_string, output_string]
             data_list.append(total_list)
             number+=1
+            i+=1
 
     return data_list
 
@@ -93,6 +99,50 @@ async def encounter_to_csv(filename):
         "I talk to the zombie"
     ]
     
+def read_csv_default(filename):
+    data_list = []
+
+    with open(filename, 'r', newline="") as file:
+
+        csv_reader = csv.reader(file)
+
+        for row in csv_reader:
+
+
+            data_list.append(row)
+
+    return data_list
+
+def read_csv_deafult_2(filename):
+    data_list = []
+
+    with open(filename, 'r', newline="") as file:
+
+        csv_reader = csv.reader(file)
+
+        for row in csv_reader:
+
+
+            data_list.append(row[6])
+
+    return data_list
+
+def compare_two(prompt_list, output_list):
+
+    i =0
+
+    global is_in_list
+
+    for line in prompt_list:
+        x = 0
+
+        for outcome in output_list:
+
+            if x < 1 and outcome not in is_in_list:
+                if line in outcome:
+                    i+= 1
+                    x+=1
+                    return outcome
 
 async def few_prompt_csv():
 
@@ -158,6 +208,9 @@ def to_json(data, output_file, w_or_r=None):
         print(e)
 
 async def main():
+
+    output_list = read_csv_default('grand_output.csv')
+
     vb = get_from_db()
 
     await vb.connect()
@@ -169,11 +222,11 @@ async def main():
     list_to_csv(extra_info_list, 'extra_info.csv')
 
 
-    # sao = await csv_to_SAO('Datasets/Prompts.csv')
-    # sac = await csv_to_SAC('Datasets/Prompts.csv')
+    sao = await csv_to_SAO('Datasets/Prompts.csv', output_list)
+    sac = await csv_to_SAC('Datasets/Prompts.csv', output_list)
 
-    # list_to_csv(sao, 'Scene_Action_Outcome.csv')
-    # list_to_csv(sac, "Scene_Action_Check.csv")
+    list_to_csv(sao, 'Scene_Action_Outcome.csv')
+    list_to_csv(sac, "Scene_Action_Check.csv")
 
 asyncio.run(main())
 
