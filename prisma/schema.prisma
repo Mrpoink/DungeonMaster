@@ -285,5 +285,6 @@ model USERCHAR {
   con           Int
   int           Int
   wis           Int
-  cha           Int  
+  cha           Int
+  backstory     String
 }

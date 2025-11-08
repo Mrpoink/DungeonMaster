@@ -130,6 +130,31 @@ class use_vector_db:
         except IndexError:
 
             return False, "Incorrect username"
+        
+    async def add_user_character(self, username, name, race, char_class, subclass, str, dex, con, int, wis, cha, backstory):
+
+        data = {
+            "user": username,
+            "name": name,
+            "race": race,
+            "class": char_class,
+            "subclass": subclass,
+            "str": str,
+            "dex": dex,
+            "con": con,
+            "int": int,
+            "wis": wis,
+            "cha": cha,
+            "backstory": backstory
+        }
+
+        try:
+            await self.db.userchar.create(data=data)
+
+            print("Successfully added user character data")
+        except Exception as e:
+            print(e)
+            print("Failed to add user character data")
 
     
 
@@ -284,5 +309,16 @@ class get_from_db:
     
     def find_scene(self):
         return "The party is outside the dungeon of secrets. The air is thick with anticipation as they prepare to enter the dark corridors within."
+    
+    async def get_character(self, username):
 
+        character_data = await self.db.query_raw('' \
+        'SELECT T2.* FROM "USERDATA" AS T1 ' \
+        'INNER JOIN "USERCHAR" AS T2 ON T1."username" = T2."user"' \
+        'WHERE T1."username" = $1',
+        username)
+
+        print("Character data from db: ", character_data)
+
+        return character_data
 
