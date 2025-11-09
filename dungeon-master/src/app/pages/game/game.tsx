@@ -135,9 +135,6 @@ export default function Game() {
                   setConversation={setConversation}
                 />
               </div>
-              <button className="submit-action" onClick={() => {handleSend()}}>
-                Enter
-              </button>
             </div>
           </main>
           <div className="party-box">
