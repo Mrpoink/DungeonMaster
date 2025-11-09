@@ -127,8 +127,6 @@ button {
     background-repeat: no-repeat;
     background-position: center;
   }
-  .right-game-session-buttons {
-    border: 3px solid black;
   .right-game-session-buttons{
     border: 3px solid #111827;
     padding: 1em;
@@ -484,8 +482,6 @@ input::selection {
   width: auto;
   z-index: 20;
   margin-top: 0;
-}
-  overflow:auto;
 }
 
 .upload-file-type-note {
