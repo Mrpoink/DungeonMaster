@@ -5,6 +5,7 @@ import Dice from "@/app/components/dice/dice";
 import Roll from "@/app/components/dice/roll";
 import Party from "@/app/components/party/party";
 import GameManager from "@/app/components/gameManager/gameManager";
+import { useRouter } from "next/navigation";
 
 type ConversationItem = {
     sender: 'User' | 'DM' | string;
@@ -12,6 +13,7 @@ type ConversationItem = {
 };
 
 export default function Game() {
+  const router = useRouter()
   const [sides, setSides] = useState<number>(20);
   const [activeDice, setActiveDice] = useState("d20");
   const [DMmessage, setDMmessage] = useState("Connecting...");
@@ -96,6 +98,11 @@ export default function Game() {
           <header>
             <h1>Dungeon Master:</h1>      
           </header>
+          <div className="exit-game-button">
+            <button onClick={()=>router.back()}>
+              Leave Experience
+            </button>
+          </div>
           <div className="scene-box" style={{
             backgroundColor: 'rgba(0, 0, 0, 0.7)',
             padding: '15px',

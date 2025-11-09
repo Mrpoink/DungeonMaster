@@ -35,6 +35,7 @@ body {
 }
 header {
   padding: 2em;
+  padding-top: 0;
 }
 h1 {
   font-size: xx-large;
@@ -161,7 +162,17 @@ button {
     border-radius: 1.5rem;
   }
 }
-
+.exit-game-button{
+  float: left;
+  top: 10px;
+  button {
+    padding: 1em;
+    font-size: small;
+    margin-left: 2.5rem;
+    background-color: #000;
+    opacity: 0.5;
+  }
+}
 .game-box {
   position: relative;
   display: block;
