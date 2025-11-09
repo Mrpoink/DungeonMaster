@@ -18,10 +18,8 @@ export default function Login() {
 
     const credentials= {username:username, password:password}
 
-    // In a real application, you would send this data to a backend API for authentication
     console.log('Attempting login with:', { username, password });
 
-    // Simulate a successful login (replace with actual API call)
     try{
       const response = await fetch("http://localhost:1068/credentials", {
         method : 'POST',
