@@ -1,8 +1,10 @@
 'use client'
 import React from "react";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Register() {
+    const router = useRouter()
     const [formData, setFormData] = useState({
     name: '',
     username: '',
@@ -33,11 +35,17 @@ export default function Register() {
         body : JSON.stringify(formData),
       });
       if (!response.ok){
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Registration failed due to a server error.');
+        let errorData;
+        try {
+          errorData = await response.json();
+        } catch (jsonError) {
+          throw new Error(`Registration failed with status: ${response.status}`);
+        }
+        throw new Error(errorData.message || 'Username already exists.');
       }
-      console.log('Registration data submitted:', formData);
-      alert(`User ${formData.name} registered successfully!`);
+      if (response.ok){
+        router.push("./characterInfo")
+      }
       setFormData({
         name: '',
         username: '',

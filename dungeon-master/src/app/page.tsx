@@ -19,7 +19,6 @@ const router = useRouter()
           <div className="start-buttons-container">
             
             <button className="start-buttons" type='button' onClick={()=>router.push('./pages/credentials')}>Login</button>
-            <button className="start-buttons" type='button' onClick={()=>router.push('./pages/credentials')}>Create an Account</button>
             <button className="start-buttons" type='button' onClick={()=>router.push('./pages/lobby')}>Quick Start</button>
           </div>
         </div>
