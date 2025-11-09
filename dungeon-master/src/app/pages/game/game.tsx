@@ -15,6 +15,7 @@ export default function Game() {
   const [sides, setSides] = useState<number>(20);
   const [activeDice, setActiveDice] = useState("d20");
   const [DMmessage, setDMmessage] = useState("Connecting...");
+  const [scene, setScene] = useState('');
 
   const [userin, setUserin] = useState('');
   const [conversation, setConversation] = useState<ConversationItem[]>([
@@ -59,6 +60,7 @@ export default function Game() {
             const result = await response.json();
             
             setConversation(prev => [...prev, { sender: 'DM', text: result.message || "The DM responds, 'Silence falls over the area...'" }]);
+            setScene(result.scene || '');
       setDMmessage(result.message);
     } catch (error) {
       console.error("Something went wrong with fetch dm message, line 81", error);
