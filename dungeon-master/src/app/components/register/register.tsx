@@ -9,6 +9,9 @@ export default function Register() {
     password: '',
   });
 
+  const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleChange = (e: { target: { name: any; value: any; }; }) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -19,13 +22,8 @@ export default function Register() {
 
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-    console.log('Registration data submitted:', formData);
-    alert(`User ${formData.name} registered successfully!`);
-    setFormData({
-      name: '',
-      username: '',
-      password: '',
-    });
+    setIsLoading(true)
+    setError('')
     try{
       const response = await fetch('http://localhost:1068/userData', {
         method : 'POST',
@@ -34,8 +32,23 @@ export default function Register() {
         },
         body : JSON.stringify(formData),
       });
-    } catch (error){
-      console.error("Failed to send userData: ", error)
+      if (!response.ok){
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Registration failed due to a server error.');
+      }
+      console.log('Registration data submitted:', formData);
+      alert(`User ${formData.name} registered successfully!`);
+      setFormData({
+        name: '',
+        username: '',
+        password: '',
+      });
+    } catch (err){
+      const message = (err instanceof Error) ? err.message : "An unknown error occurred.";
+      console.error("Failed to send userData: ", message);
+      setError(message)
+    } finally {
+      setIsLoading(false)
     }
   };
 
@@ -75,8 +88,12 @@ export default function Register() {
             required
           />
         </div>
-        <button className="submit-button" type="submit">
-          Register
+        <button 
+          className="submit-button" 
+          type="submit"
+          disabled={isLoading}
+        >
+          {isLoading ? 'Registering...' : 'Register'}
         </button>
       </form>
     </div>
