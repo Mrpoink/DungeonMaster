@@ -3,18 +3,31 @@ from flask_cors import CORS
 import PythonBackEnd
 import asyncio
 import traceback
+import nest_asyncio
 
 app = Flask(__name__)
 CORS(app)
 
+# Enable nested event loops
+nest_asyncio.apply()
+
+# Create a single event loop for the application
+loop = asyncio.new_event_loop()
+asyncio.set_event_loop(loop)
+
+def initialize_app():
+    return loop.run_until_complete(async_initialize())
+
+async def async_initialize():
+    model = await PythonBackEnd.DungeonMaster.create_dm()
+    backend = await PythonBackEnd.DungeonMaster.create_backend()
+    return model, backend
+
 try:
-    print("Initializing model...")
-    model = asyncio.run(PythonBackEnd.DungeonMaster.create_dm())
-    print("Initializing backend...")
-    backend = asyncio.run(PythonBackEnd.DungeonMaster.create_backend())
-    print("Initialization complete.")
+    model, backend = initialize_app()
 except Exception as e:
     print("Error initializing: ", e)
+    raise
 
 
 turn_num = 0
@@ -51,18 +64,15 @@ class userin:
             print(True)
         else:
             print(False)
-
-        model_out = asyncio.run(model.model_output_check(self.userin, roll))
-        return model_out
+        return loop.run_until_complete(model.model_output_check(self.userin, roll))
 
     def send_userin(self):
-        if self.check  == True:
+        if self.check == True:
             roll = True if int(self.userin) > 11 else False
-            model_out = asyncio.run(model.model_output_check(self.userin, roll))
-            return model_out
+            return loop.run_until_complete(model.model_output_check(self.userin, roll))
         else:
-            model_out = asyncio.run(model.model_output(self.userin))
-            return model_out if self.userin != "" else "Roll for Initiative"
+            result = loop.run_until_complete(model.model_output(self.userin))
+            return result if self.userin != "" else "Roll for Initiative"
     
 class userData:
 
@@ -85,16 +95,14 @@ class userData:
     
     async def add_user_data_to_db(self):
 
-        result = await backend.add_user_data(self.name, self.username, self.password)
-
-        return result
+        return loop.run_until_complete(backend.add_user_data(self.name, self.username, self.password))
     
     @staticmethod
     async def check_credentials(username, password):
 
         print(username, password)
 
-        result = await backend.check_creds(username, password)
+        result = loop.run_until_complete(backend.check_creds(username, password))
 
         print("From userData class: ", result)
 
@@ -155,7 +163,7 @@ def process_userdata():
         user_data.set_info(data.get('name'), data.get('username'), data.get('password'))
         print(user_data.get_username(), user_data.get_name(), user_data.get_password())
 
-        result = asyncio.run(user_data.add_user_data_to_db())
+        result = loop.run_until_complete(user_data.add_user_data_to_db())
 
         return jsonify({"userData" : data, "status" : "ready", "message" : result}), 200
 
@@ -192,7 +200,7 @@ def check_creds():
         return '', 200
     try:
         data = request.get_json()
-        user_creds = asyncio.run(userData.check_credentials(data.get('username'), data.get('password')))
+        user_creds = loop.run_until_complete(userData.check_credentials(data.get('username'), data.get('password')))
 
         print(user_creds)
 
