@@ -30,7 +30,7 @@ async def csv_to_SAC(filename, outcome_list):
             if row[4] == "None":
 
                 input_string = "|user|:" + "[/EXTRA INFO]: "  + random.choice(extra_info) + "[/SCENE]: " + row[2]  + "[/PLAYER]: " + row[1] + " [/ACTION]: " + row[3] +"|end|"
-                output_string = "|assistant|:" + " [/GENERATED OUTCOME]: "+outcome_list[i]  + "|end|"
+                output_string = "|assistant|:" + " [/GENERATED OUTCOME]: "+str(outcome_list[i])  + "|end|"
             else:
                 input_string = "|user|:" + "[/EXTRA INFO]: " + random.choice(extra_info) + "[/SCENE]: " + row[2]   + "[/PLAYER]: " + row[1] + " [/ACTION]: " + row[3] +"|end|"
                 output_string = "|assistant|:" + " [/GENERATED OUTCOME]: Roll for "+row[4]  + "|end|"
@@ -61,11 +61,22 @@ async def csv_to_SAO(filename, outcome_list):
             print(number)
 
             if row[4] == "None":
-                row[4] = "[NO_CHECK]"
+                # normalize missing checks
+                check_val = "[NO_CHECK]"
+                pass_fail = ""
+            
+            # when a check exists include it and the pass/fail value
+            if row[4] != "None":
+                check_val = row[4]
+                pass_fail = row[5] if len(row) > 5 else ""
 
+            if i < len(outcome_list):
+
+                input_string = "|user|:" + "[/EXTRA INFO]: " + random.choice(extra_info).replace(",", "") + "[/SCENE]: " + row[2] + " [/PLAYER]: " + row[1] + " [/ACTION]: " + row[3] + " [/CHECK]: " + check_val + " [/PASS/FAIL]: " + pass_fail +"|end|"
+                output_string = "|assistant|:" + " [/GENERATED OUTCOME]: "+ str(outcome_list[i])  + "|end|"
             else:
-                input_string = "|user|:" + "[/EXTRA INFO]: " + random.choice(extra_info).replace(",", "") + "[/SCENE]: " + row[2] + " [/PLAYER]: " + row[1] + " [/ACTION]: " + row[3] + "[/CHECK]: " + row[4] + "[/PASS/FAIL]: " + row[5] +"|end|"
-                output_string = "|assistant|:" + " [/GENERATED OUTCOME]: "+outcome_list[i]  + "|end|"
+                input_string = "|user|:" + "[/EXTRA INFO]: " + random.choice(extra_info).replace(",", "") + "[/SCENE]: " + row[2] + " [/PLAYER]: " + row[1] + " [/ACTION]: " + row[3] + " [/CHECK]: " + check_val + " [/PASS/FAIL]: " + pass_fail +"|end|"
+                output_string = "|assistant|:" + " [/GENERATED OUTCOME]: "+ row[6] + "|end|"
 
             total_list = [input_string, output_string]
             data_list.append(total_list)
