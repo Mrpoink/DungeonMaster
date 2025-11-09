@@ -153,11 +153,7 @@ class use_vector_db:
             
             # Create the character data according to schema
             character_data = {
-                "username": {
-                    "connect": {
-                        "username": username
-                    }
-                },
+                "user": username,
                 "name": name,
                 "race": race,
                 "cla": char_class,
