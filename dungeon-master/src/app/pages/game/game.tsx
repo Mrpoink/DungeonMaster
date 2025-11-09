@@ -71,12 +71,12 @@ export default function Game() {
   };
 
   const fetchDMmessage = async () => {
-    try{
-
+    try {
       const response = await fetch('http://localhost:1068/DMout');
       const data = await response.json();
 
       setDMmessage(data.dm_text);
+      setScene(data.scene || '');
       setConversation(prev => [...prev, {sender : 'DM', text : data.dm_text}]);
     } catch (error) {
       console.error("Something went wrong with fetch dm message, line 81", error);

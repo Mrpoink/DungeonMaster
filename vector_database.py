@@ -317,8 +317,8 @@ class get_from_db:
     
     def find_scene(self, num_turns):
         scenes = [
-            "The party is outside the doors of the Dungeon of Secreats",
-            "The party is inside the hallways of the Dungeon of Secreats, torches flicker on the walls",
+            "The party is outside the doors of the Dungeon of Secrets",
+            "The party is inside the hallways of the Dungeon of Secrets, torches flicker on the walls",
             "The party is in a large chamber with high ceilings, the sound of dripping water echoes through the room",
             "The party enters a dimly lit room filled with ancient statues and mysterious inscriptions on the walls",
             "The party is in a room where the air feels sticky and damp, with a faint smell of mold and decay",
