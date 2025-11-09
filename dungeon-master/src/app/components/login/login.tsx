@@ -33,18 +33,20 @@ export default function Login() {
         body : JSON.stringify(credentials),
       });
       if (!response.ok) {
-            let errorData;
-            try {
-                errorData = await response.json();
-            } catch (jsonError) {
-                throw new Error(`Login failed with status: ${response.status}`);
-            }
-            throw new Error(errorData.message || 'Invalid username or password.');
+        let errorData;
+        try {
+          errorData = await response.json();
+        } catch (jsonError) {
+          throw new Error(`Login failed with status: ${response.status}`);
         }
-        const data = await response.json();
-        localStorage.setItem('authToken', data.token);
-        console.log('Login successful! Token stored.');
+        throw new Error(errorData.message || 'Invalid username or password.');
+      }
+      const data = await response.json();
+      localStorage.setItem('authToken', data.token);
+      console.log('Login successful! Token stored.');
+      if(response.ok){
         router.push("./lobby")
+      }
     } catch (err) {
       const message = err instanceof Error ? err.message : String(err);
       setError(message)
