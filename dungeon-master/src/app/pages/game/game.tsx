@@ -91,7 +91,7 @@ export default function Game() {
   const latestMessage = conversation[conversation.length - 1];
 
   return (
-    <div>
+    <div className="root-container">
         <div className="game-master-box">
           <header>
             <h1>Dungeon Master:</h1>      
