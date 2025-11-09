@@ -105,14 +105,20 @@ class use_vector_db:
 
     async def add_user_data(self, name, username, password):
 
-        await self.db.execute_raw(
-            f'INSERT INTO \"USERDATA\" (name, username, password) VALUES ($1, $2, $3)',
-            name,
-            username,
-            password
-        )
+        try:
 
-        print("Successfully added user data")
+            await self.db.execute_raw(
+                f'INSERT INTO \"USERDATA\" (name, username, password) VALUES ($1, $2, $3)',
+                name,
+                username,
+                password
+            )
+
+        except RawQueryError:
+            print("Failed to add user data: Username already exists")
+            return False, "Username already exists"
+        
+        return True, "User successfully added"
 
     async def check_user_data(self, username, password):
 
