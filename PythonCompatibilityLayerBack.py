@@ -41,6 +41,9 @@ class userin:
         # model_out = loop.run_until_complete(model.model_output(self.userin))
         # return model_out if self.userin != "" else "Roll for Initiative"
 
+    def get_scene(self):
+        return model.scene
+
     def roll(self, roll):
         print(roll)
         if roll == True:
@@ -75,6 +78,9 @@ class userData:
     
     def get_password(self):
         return self.password
+    
+    def get_scene(self):
+        return model.get_scene()
     
     async def add_user_data_to_db(self):
 
