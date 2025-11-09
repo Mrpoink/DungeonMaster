@@ -140,29 +140,57 @@ class use_vector_db:
             return False, "Name already exists"
         
     async def add_user_character(self, username, name, race, char_class, subclass, strength, dexterity, constitution, intelligence, wisdom, charisma, backstory):
-
-        data = {
-            "user": username,
-            "race": race,
-            "cla": char_class,
-            "subclass": subclass,
-            "str": strength,  # Using schema field names but avoiding built-in name conflicts
-            "dex": dexterity,
-            "con": constitution,
-            "int": intelligence,
-            "wis": wisdom,
-            "cha": charisma,
-            "backstory": backstory
-        }
-
         try:
-            await self.db.userchar.create(data=data)
-            print("Successfully added user character data")
+            # First, check if user exists
+            user_check = await self.db.userdata.find_first(
+                where={
+                    "username": username
+                }
+            )
+            
+            if not user_check:
+                return False, f"User {username} not found"
+            
+            # Create the character data according to schema
+            character_data = {
+                "username": {
+                    "connect": {
+                        "username": username
+                    }
+                },
+                "name": name,
+                "race": race,
+                "cla": char_class,
+                "subclass": subclass or "",  # Handle optional subclass
+                "str": int(float(strength)),
+                "dex": int(float(dexterity)),
+                "con": int(float(constitution)),
+                "int": int(float(intelligence)),
+                "wis": int(float(wisdom)),
+                "cha": int(float(charisma)),
+                "backstory": backstory or ""  # Handle optional backstory
+            }
+            
+            # Create the character using Prisma's generated client
+            await self.db.userchar.create(
+                data=character_data
+            )
+            
+            print(f"Successfully created character {name} for user {username}")
             return True, "Character successfully created"
+
+        except ValueError as e:
+            print(f"Invalid data format: {e}")
+            return False, "Invalid stat values. Please ensure all stats are numbers."
         except Exception as e:
-            print(e)
-            print("Failed to add user character data")
-            return False, str(e)
+            error_msg = str(e)
+            print(f"Failed to add user character data: {error_msg}")
+            if "Foreign key constraint failed" in error_msg:
+                return False, f"User {username} does not exist. Please create an account first."
+            elif "Unique constraint failed" in error_msg:
+                return False, f"A character named {name} already exists. Please choose a different name."
+            else:
+                return False, f"Database error: {error_msg}"
 
     
 

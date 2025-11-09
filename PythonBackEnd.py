@@ -212,7 +212,7 @@ class DungeonMaster:
             if char_data and len(char_data) > 0:
                 char = char_data[0]
                 # Format player description using character data
-                instance.player = f"[/PLAYER]: A {char['race']} {char['class']}"
+                instance.player = f"[/PLAYER]: A {char['race']} {char['cla']}"
                 if char['subclass']:
                     instance.player += f" ({char['subclass']})"
                 instance.player += f" named {char['name']}"
@@ -255,12 +255,11 @@ class DungeonMaster:
 
         print("running check script")
 
-        scene = "[/SCENE]: The well known streets of Zanzebar"
-
         if instance.turn_num % 3 == 0:
             instance.scene_num += 1
             instance.scene = instance.vb.find_scene(instance.scene_num)
 
+        # Use the instance's scene and player data
         prompt = f"{instance.scene} {instance.player} [/ACTION]: {userin}"
 
         final_input = await final_prompt(prompt, instance.vb, instance.seed, instance.turn_num)
@@ -286,9 +285,8 @@ class DungeonMaster:
 
         print("running script WITH check")
 
-        scene = "[/SCENE]: The well known streets of Zanzebar"
-
-        prompt = f"{scene} [/ACTION]: {userin} [/CHECK]: {instance.check} [/PASS/FAIL]: {pass_fail}"
+        # Use the instance's scene instead of hardcoded one
+        prompt = f"{instance.scene} [/ACTION]: {userin} [/CHECK]: {instance.check} [/PASS/FAIL]: {pass_fail}"
 
         
 

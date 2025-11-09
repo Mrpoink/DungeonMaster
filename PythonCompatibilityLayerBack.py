@@ -126,28 +126,50 @@ lock = False
 
 @app.route("/userin", methods=['POST'])
 def process_message():
-    global lock, model
+    global lock, model, backend
     if not lock:
         try:
             data = request.get_json()
-            userInput.set_userin(data.get('message'))
-            username = data.get('username', 'User')
+            if not data:
+                return jsonify({'message': 'No data received'}), 400
+
+            message = data.get('message')
+            if not message:
+                return jsonify({'message': 'No message provided'}), 400
+
+            username = data.get('username')
+            if not username:
+                return jsonify({'message': 'No username provided'}), 400
+
+            userInput.set_userin(message)
             
-            # Reinitialize DM with username to get character data if not already done
-            if model and hasattr(model, 'player') and model.player == "[/PLAYER]: A wandering adventurer seeking their destiny":
-                model, _ = initialize_app(username)
+            try:
+                # Check if we have a valid model instance
+                if not model:
+                    model, backend = initialize_app(username)
+                # Check if we need to reinitialize with character data
+                elif hasattr(model, 'player') and model.player == "[/PLAYER]: A wandering adventurer seeking their destiny":
+                    print(f"Reinitializing model for user: {username}")
+                    model, backend = initialize_app(username)
+            except Exception as reinit_error:
+                print(f"Error reinitializing model: {reinit_error}")
+                traceback.print_exc()
             
             lock = True
+            
+            userinput = userInput.get_userin()
+            print(f"Python received from {username}: {userinput}")
+            model_output = userInput.send_userin()
+
         except Exception as e:
-            return jsonify({'message': 'Something went wrong, error output on line 15'})
+            print(f"Error processing message: {str(e)}")
+            traceback.print_exc()
+            lock = False
+            return jsonify({'message': f'Error processing message: {str(e)}'}), 500
         
-        userinput = userInput.get_userin()
-        
-        print(f"Python received from {username}: {userinput}")
+        finally:
+            lock = False
 
-        model_output = userInput.send_userin()
-
-        lock = False
         return jsonify({
             'message': model_output,
             'scene': userInput.get_scene(),
