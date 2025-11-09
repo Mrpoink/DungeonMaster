@@ -139,30 +139,30 @@ class use_vector_db:
         except RawQueryError:
             return False, "Name already exists"
         
-    async def add_user_character(self, username, name, race, char_class, subclass, str, dex, con, int, wis, cha, backstory):
+    async def add_user_character(self, username, name, race, char_class, subclass, strength, dexterity, constitution, intelligence, wisdom, charisma, backstory):
 
         data = {
             "user": username,
-            "name": name,
             "race": race,
-            "class": char_class,
+            "cla": char_class,
             "subclass": subclass,
-            "str": str,
-            "dex": dex,
-            "con": con,
-            "int": int,
-            "wis": wis,
-            "cha": cha,
+            "str": strength,  # Using schema field names but avoiding built-in name conflicts
+            "dex": dexterity,
+            "con": constitution,
+            "int": intelligence,
+            "wis": wisdom,
+            "cha": charisma,
             "backstory": backstory
         }
 
         try:
             await self.db.userchar.create(data=data)
-
             print("Successfully added user character data")
+            return True, "Character successfully created"
         except Exception as e:
             print(e)
             print("Failed to add user character data")
+            return False, str(e)
 
     
 

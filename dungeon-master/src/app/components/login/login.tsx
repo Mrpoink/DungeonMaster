@@ -42,7 +42,23 @@ export default function Login() {
       }
       const data = await response.json();
       localStorage.setItem('authToken', data.token);
+      localStorage.setItem('username', username);
       console.log('Login successful! Token stored.');
+
+      // Fetch character data
+      const characterResponse = await fetch('http://localhost:1068/character-data', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username })
+      });
+
+      if (characterResponse.ok) {
+        const characterData = await characterResponse.json();
+        localStorage.setItem('characterData', JSON.stringify(characterData));
+      }
+
       if(response.ok){
         router.push("./lobby")
       }

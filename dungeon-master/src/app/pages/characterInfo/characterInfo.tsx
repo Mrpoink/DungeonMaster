@@ -385,7 +385,57 @@ const AbilityScore = ({ name, score }: { name: string, score: number }) => {
                 </div>
 
                 <div className="action-button-container">
-                    <button className="action-button" onClick={() => console.log('Saving character data:', characterData)}>
+                    <button 
+                        className="action-button" 
+                        onClick={async () => {
+                            try {
+                                const username = localStorage.getItem('username');
+                                if (!username) {
+                                    throw new Error('No username found');
+                                }
+
+                                const characterDataToSend = {
+                                    username,
+                                    name: characterData.name,
+                                    race: characterData.race,
+                                    class: characterData.class,
+                                    subclass: characterData.subclass,
+                                    str: characterData.stats.STRENGTH,
+                                    dex: characterData.stats.DEXTERITY,
+                                    con: characterData.stats.CONSTITUTION,
+                                    int: characterData.stats.INTELLIGENCE,
+                                    wis: characterData.stats.WISDOM,
+                                    cha: characterData.stats.CHARISMA,
+                                    backstory: characterData.backstory
+                                };
+
+                                const response = await fetch('http://localhost:1068/characters', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify(characterDataToSend)
+                                });
+
+                                const result = await response.json();
+
+                                if (!response.ok) {
+                                    throw new Error(result.details || result.error || 'Failed to save character');
+                                }
+
+                                if (result.status === 'success') {
+                                    console.log(result.message); // Log success message
+                                    // Redirect to lobby after successful character creation
+                                    window.location.href = '/pages/lobby';
+                                } else {
+                                    throw new Error(result.message || 'Failed to save character');
+                                }
+                            } catch (err) {
+                                console.error('Error saving character:', err);
+                                // You might want to show an error message to the user here
+                            }
+                        }}
+                    >
                         Save Character
                     </button>
                     <div>

@@ -44,7 +44,10 @@ export default function Register() {
         throw new Error(errorData.message || 'Username already exists.');
       }
       if (response.ok){
-        router.push("./characterInfo")
+        // Store username in localStorage
+        localStorage.setItem('username', formData.username);
+        // Redirect to character creation
+        router.push("/pages/characterInfo");
       }
       setFormData({
         name: '',

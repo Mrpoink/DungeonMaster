@@ -278,7 +278,7 @@ model USERCHAR {
   user          String
   username      USERDATA  @relation(fields: [user], references: [username])
   race          String
-  class         String
+  cla         String
   subclass      String
   str           Int
   dex           Int

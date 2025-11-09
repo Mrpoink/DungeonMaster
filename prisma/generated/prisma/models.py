@@ -1407,6 +1407,7 @@ class USERDATA(bases.BaseUSERDATA):
     name: _str
     username: _str
     password: _str
+    characters: Optional[List['models.USERCHAR']] = None
 
     # take *args and **kwargs so that other metaclasses can define arguments
     def __init_subclass__(
@@ -1488,9 +1489,33 @@ class USERDATA(bases.BaseUSERDATA):
                 for field in optional:
                     fields[field]['optional'] = True
 
+            if exclude_relational_fields:
+                fields = {
+                    key: data
+                    for key, data in fields.items()
+                    if key not in _USERDATA_relational_fields
+                }
 
             if relations:
-                raise ValueError('Model: "USERDATA" has no relational fields.')
+                for field, type_ in relations.items():
+                    if field not in _USERDATA_relational_fields:
+                        raise errors.UnknownRelationalFieldError('USERDATA', field)
+
+                    # TODO: this method of validating types is not ideal
+                    # as it means we cannot two create partial types that
+                    # reference each other
+                    if type_ not in _created_partial_types:
+                        raise ValueError(
+                            f'Unknown partial type: "{type_}". '
+                            f'Did you remember to generate the {type_} type before this one?'
+                        )
+
+                    # TODO: support non prisma.partials models
+                    info = fields[field]
+                    if info['is_list']:
+                        info['type'] = f'List[\'partials.{type_}\']'
+                    else:
+                        info['type'] = f'\'partials.{type_}\''
         except KeyError as exc:
             raise ValueError(
                 f'{exc.args[0]} is not a valid USERDATA / {name} field.'
@@ -1502,6 +1527,251 @@ class USERDATA(bases.BaseUSERDATA):
                 'name': name,
                 'fields': cast(Mapping[str, PartialModelField], fields),
                 'from_model': 'USERDATA',
+            }
+        )
+        _created_partial_types.add(name)
+
+
+class STORYVECTOR(bases.BaseSTORYVECTOR):
+    """Represents a STORYVECTOR record"""
+
+    id: _int
+    text: _str
+
+    # take *args and **kwargs so that other metaclasses can define arguments
+    def __init_subclass__(
+        cls,
+        *args: Any,
+        warn_subclass: Optional[bool] = None,
+        **kwargs: Any,
+    ) -> None:
+        super().__init_subclass__()
+        if warn_subclass is not None:
+            warnings.warn(
+                'The `warn_subclass` argument is deprecated as it is no longer necessary and will be removed in the next release',
+                DeprecationWarning,
+                stacklevel=3,
+            )
+
+
+    @staticmethod
+    def create_partial(
+        name: str,
+        include: Optional[Iterable['types.STORYVECTORKeys']] = None,
+        exclude: Optional[Iterable['types.STORYVECTORKeys']] = None,
+        required: Optional[Iterable['types.STORYVECTORKeys']] = None,
+        optional: Optional[Iterable['types.STORYVECTORKeys']] = None,
+        relations: Optional[Mapping['types.STORYVECTORRelationalFieldKeys', str]] = None,
+        exclude_relational_fields: bool = False,
+    ) -> None:
+        if not os.environ.get('PRISMA_GENERATOR_INVOCATION'):
+            raise RuntimeError(
+                'Attempted to create a partial type outside of client generation.'
+            )
+
+        if name in _created_partial_types:
+            raise ValueError(f'Partial type "{name}" has already been created.')
+
+        if include is not None:
+            if exclude is not None:
+                raise TypeError('Exclude and include are mutually exclusive.')
+            if exclude_relational_fields is True:
+                raise TypeError('Include and exclude_relational_fields=True are mutually exclusive.')
+
+        if required and optional:
+            shared = set(required) & set(optional)
+            if shared:
+                raise ValueError(f'Cannot make the same field(s) required and optional {shared}')
+
+        if exclude_relational_fields and relations:
+            raise ValueError(
+                'exclude_relational_fields and relations are mutually exclusive'
+            )
+
+        fields: Dict['types.STORYVECTORKeys', PartialModelField] = OrderedDict()
+
+        try:
+            if include:
+                for field in include:
+                    fields[field] = _STORYVECTOR_fields[field].copy()
+            elif exclude:
+                for field in exclude:
+                    if field not in _STORYVECTOR_fields:
+                        raise KeyError(field)
+
+                fields = {
+                    key: data.copy()
+                    for key, data in _STORYVECTOR_fields.items()
+                    if key not in exclude
+                }
+            else:
+                fields = {
+                    key: data.copy()
+                    for key, data in _STORYVECTOR_fields.items()
+                }
+
+            if required:
+                for field in required:
+                    fields[field]['optional'] = False
+
+            if optional:
+                for field in optional:
+                    fields[field]['optional'] = True
+
+
+            if relations:
+                raise ValueError('Model: "STORYVECTOR" has no relational fields.')
+        except KeyError as exc:
+            raise ValueError(
+                f'{exc.args[0]} is not a valid STORYVECTOR / {name} field.'
+            ) from None
+
+        models = partial_models_ctx.get()
+        models.append(
+            {
+                'name': name,
+                'fields': cast(Mapping[str, PartialModelField], fields),
+                'from_model': 'STORYVECTOR',
+            }
+        )
+        _created_partial_types.add(name)
+
+
+class USERCHAR(bases.BaseUSERCHAR):
+    """Represents a USERCHAR record"""
+
+    id: _int
+    user: _str
+    username: Optional['models.USERDATA'] = None
+    race: _str
+    cla: _str
+    subclass: _str
+    str: _int
+    dex: _int
+    con: _int
+    int: _int
+    wis: _int
+    cha: _int
+    backstory: _str
+
+    # take *args and **kwargs so that other metaclasses can define arguments
+    def __init_subclass__(
+        cls,
+        *args: Any,
+        warn_subclass: Optional[bool] = None,
+        **kwargs: Any,
+    ) -> None:
+        super().__init_subclass__()
+        if warn_subclass is not None:
+            warnings.warn(
+                'The `warn_subclass` argument is deprecated as it is no longer necessary and will be removed in the next release',
+                DeprecationWarning,
+                stacklevel=3,
+            )
+
+
+    @staticmethod
+    def create_partial(
+        name: str,
+        include: Optional[Iterable['types.USERCHARKeys']] = None,
+        exclude: Optional[Iterable['types.USERCHARKeys']] = None,
+        required: Optional[Iterable['types.USERCHARKeys']] = None,
+        optional: Optional[Iterable['types.USERCHARKeys']] = None,
+        relations: Optional[Mapping['types.USERCHARRelationalFieldKeys', str]] = None,
+        exclude_relational_fields: bool = False,
+    ) -> None:
+        if not os.environ.get('PRISMA_GENERATOR_INVOCATION'):
+            raise RuntimeError(
+                'Attempted to create a partial type outside of client generation.'
+            )
+
+        if name in _created_partial_types:
+            raise ValueError(f'Partial type "{name}" has already been created.')
+
+        if include is not None:
+            if exclude is not None:
+                raise TypeError('Exclude and include are mutually exclusive.')
+            if exclude_relational_fields is True:
+                raise TypeError('Include and exclude_relational_fields=True are mutually exclusive.')
+
+        if required and optional:
+            shared = set(required) & set(optional)
+            if shared:
+                raise ValueError(f'Cannot make the same field(s) required and optional {shared}')
+
+        if exclude_relational_fields and relations:
+            raise ValueError(
+                'exclude_relational_fields and relations are mutually exclusive'
+            )
+
+        fields: Dict['types.USERCHARKeys', PartialModelField] = OrderedDict()
+
+        try:
+            if include:
+                for field in include:
+                    fields[field] = _USERCHAR_fields[field].copy()
+            elif exclude:
+                for field in exclude:
+                    if field not in _USERCHAR_fields:
+                        raise KeyError(field)
+
+                fields = {
+                    key: data.copy()
+                    for key, data in _USERCHAR_fields.items()
+                    if key not in exclude
+                }
+            else:
+                fields = {
+                    key: data.copy()
+                    for key, data in _USERCHAR_fields.items()
+                }
+
+            if required:
+                for field in required:
+                    fields[field]['optional'] = False
+
+            if optional:
+                for field in optional:
+                    fields[field]['optional'] = True
+
+            if exclude_relational_fields:
+                fields = {
+                    key: data
+                    for key, data in fields.items()
+                    if key not in _USERCHAR_relational_fields
+                }
+
+            if relations:
+                for field, type_ in relations.items():
+                    if field not in _USERCHAR_relational_fields:
+                        raise errors.UnknownRelationalFieldError('USERCHAR', field)
+
+                    # TODO: this method of validating types is not ideal
+                    # as it means we cannot two create partial types that
+                    # reference each other
+                    if type_ not in _created_partial_types:
+                        raise ValueError(
+                            f'Unknown partial type: "{type_}". '
+                            f'Did you remember to generate the {type_} type before this one?'
+                        )
+
+                    # TODO: support non prisma.partials models
+                    info = fields[field]
+                    if info['is_list']:
+                        info['type'] = f'List[\'partials.{type_}\']'
+                    else:
+                        info['type'] = f'\'partials.{type_}\''
+        except KeyError as exc:
+            raise ValueError(
+                f'{exc.args[0]} is not a valid USERCHAR / {name} field.'
+            ) from None
+
+        models = partial_models_ctx.get()
+        models.append(
+            {
+                'name': name,
+                'fields': cast(Mapping[str, PartialModelField], fields),
+                'from_model': 'USERCHAR',
             }
         )
         _created_partial_types.add(name)
@@ -3262,7 +3532,9 @@ _Spell_fields: Dict['types.SpellKeys', PartialModelField] = OrderedDict(
     ],
 )
 
-_USERDATA_relational_fields: Set[str] = set()  # pyright: ignore[reportUnusedVariable]
+_USERDATA_relational_fields: Set[str] = {
+        'characters',
+    }
 _USERDATA_fields: Dict['types.USERDATAKeys', PartialModelField] = OrderedDict(
     [
         ('id', {
@@ -3297,6 +3569,148 @@ _USERDATA_fields: Dict['types.USERDATAKeys', PartialModelField] = OrderedDict(
             'is_relational': False,
             'documentation': None,
         }),
+        ('characters', {
+            'name': 'characters',
+            'is_list': True,
+            'optional': True,
+            'type': 'List[\'models.USERCHAR\']',
+            'is_relational': True,
+            'documentation': None,
+        }),
+    ],
+)
+
+_STORYVECTOR_relational_fields: Set[str] = set()  # pyright: ignore[reportUnusedVariable]
+_STORYVECTOR_fields: Dict['types.STORYVECTORKeys', PartialModelField] = OrderedDict(
+    [
+        ('id', {
+            'name': 'id',
+            'is_list': False,
+            'optional': False,
+            'type': '_int',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('text', {
+            'name': 'text',
+            'is_list': False,
+            'optional': False,
+            'type': '_str',
+            'is_relational': False,
+            'documentation': None,
+        }),
+    ],
+)
+
+_USERCHAR_relational_fields: Set[str] = {
+        'username',
+    }
+_USERCHAR_fields: Dict['types.USERCHARKeys', PartialModelField] = OrderedDict(
+    [
+        ('id', {
+            'name': 'id',
+            'is_list': False,
+            'optional': False,
+            'type': '_int',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('user', {
+            'name': 'user',
+            'is_list': False,
+            'optional': False,
+            'type': '_str',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('username', {
+            'name': 'username',
+            'is_list': False,
+            'optional': True,
+            'type': 'models.USERDATA',
+            'is_relational': True,
+            'documentation': None,
+        }),
+        ('race', {
+            'name': 'race',
+            'is_list': False,
+            'optional': False,
+            'type': '_str',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('cla', {
+            'name': 'cla',
+            'is_list': False,
+            'optional': False,
+            'type': '_str',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('subclass', {
+            'name': 'subclass',
+            'is_list': False,
+            'optional': False,
+            'type': '_str',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('str', {
+            'name': 'str',
+            'is_list': False,
+            'optional': False,
+            'type': '_int',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('dex', {
+            'name': 'dex',
+            'is_list': False,
+            'optional': False,
+            'type': '_int',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('con', {
+            'name': 'con',
+            'is_list': False,
+            'optional': False,
+            'type': '_int',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('int', {
+            'name': 'int',
+            'is_list': False,
+            'optional': False,
+            'type': '_int',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('wis', {
+            'name': 'wis',
+            'is_list': False,
+            'optional': False,
+            'type': '_int',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('cha', {
+            'name': 'cha',
+            'is_list': False,
+            'optional': False,
+            'type': '_int',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('backstory', {
+            'name': 'backstory',
+            'is_list': False,
+            'optional': False,
+            'type': '_str',
+            'is_relational': False,
+            'documentation': None,
+        }),
     ],
 )
 
@@ -3319,3 +3733,5 @@ model_rebuild(SESSION)
 model_rebuild(SPELLSVECTOR)
 model_rebuild(Spell)
 model_rebuild(USERDATA)
+model_rebuild(STORYVECTOR)
+model_rebuild(USERCHAR)

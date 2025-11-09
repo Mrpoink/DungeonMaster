@@ -2419,18 +2419,22 @@ class FindManySpellArgsFromCHARACTERVECTORRecursive4(TypedDict, total=False):
 
 class USERDATAIncludeFromCHARACTERVECTOR(TypedDict, total=False):
     """Relational arguments for CHARACTERVECTOR"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromCHARACTERVECTORRecursive1']
 
 
 class USERDATAIncludeFromCHARACTERVECTORRecursive1(TypedDict, total=False):
     """Relational arguments for CHARACTERVECTOR"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromCHARACTERVECTORRecursive2']
 
 
 class USERDATAIncludeFromCHARACTERVECTORRecursive2(TypedDict, total=False):
     """Relational arguments for CHARACTERVECTOR"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromCHARACTERVECTORRecursive3']
 
 
 class USERDATAIncludeFromCHARACTERVECTORRecursive3(TypedDict, total=False):
     """Relational arguments for CHARACTERVECTOR"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromCHARACTERVECTORRecursive4']
 
 
 class USERDATAIncludeFromCHARACTERVECTORRecursive4(TypedDict, total=False):
@@ -2515,6 +2519,212 @@ class FindManyUSERDATAArgsFromCHARACTERVECTORRecursive4(TypedDict, total=False):
     where: 'USERDATAWhereInput'
     cursor: 'USERDATAWhereUniqueInput'
     distinct: List['USERDATAScalarFieldKeys']
+    
+    
+
+class STORYVECTORIncludeFromCHARACTERVECTOR(TypedDict, total=False):
+    """Relational arguments for CHARACTERVECTOR"""
+
+
+class STORYVECTORIncludeFromCHARACTERVECTORRecursive1(TypedDict, total=False):
+    """Relational arguments for CHARACTERVECTOR"""
+
+
+class STORYVECTORIncludeFromCHARACTERVECTORRecursive2(TypedDict, total=False):
+    """Relational arguments for CHARACTERVECTOR"""
+
+
+class STORYVECTORIncludeFromCHARACTERVECTORRecursive3(TypedDict, total=False):
+    """Relational arguments for CHARACTERVECTOR"""
+
+
+class STORYVECTORIncludeFromCHARACTERVECTORRecursive4(TypedDict, total=False):
+    """Relational arguments for CHARACTERVECTOR"""
+
+    
+
+class STORYVECTORArgsFromCHARACTERVECTOR(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive1'
+
+
+class STORYVECTORArgsFromCHARACTERVECTORRecursive1(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive2'
+
+
+class STORYVECTORArgsFromCHARACTERVECTORRecursive2(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive3'
+
+
+class STORYVECTORArgsFromCHARACTERVECTORRecursive3(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive4'
+
+
+class STORYVECTORArgsFromCHARACTERVECTORRecursive4(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    
+    
+
+class FindManySTORYVECTORArgsFromCHARACTERVECTOR(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive1'
+
+
+class FindManySTORYVECTORArgsFromCHARACTERVECTORRecursive1(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive2'
+
+
+class FindManySTORYVECTORArgsFromCHARACTERVECTORRecursive2(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive3'
+
+
+class FindManySTORYVECTORArgsFromCHARACTERVECTORRecursive3(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive4'
+
+
+class FindManySTORYVECTORArgsFromCHARACTERVECTORRecursive4(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    
+    
+
+class USERCHARIncludeFromCHARACTERVECTOR(TypedDict, total=False):
+    """Relational arguments for CHARACTERVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromCHARACTERVECTORRecursive1']
+
+
+class USERCHARIncludeFromCHARACTERVECTORRecursive1(TypedDict, total=False):
+    """Relational arguments for CHARACTERVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromCHARACTERVECTORRecursive2']
+
+
+class USERCHARIncludeFromCHARACTERVECTORRecursive2(TypedDict, total=False):
+    """Relational arguments for CHARACTERVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromCHARACTERVECTORRecursive3']
+
+
+class USERCHARIncludeFromCHARACTERVECTORRecursive3(TypedDict, total=False):
+    """Relational arguments for CHARACTERVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromCHARACTERVECTORRecursive4']
+
+
+class USERCHARIncludeFromCHARACTERVECTORRecursive4(TypedDict, total=False):
+    """Relational arguments for CHARACTERVECTOR"""
+
+    
+
+class USERCHARArgsFromCHARACTERVECTOR(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive1'
+
+
+class USERCHARArgsFromCHARACTERVECTORRecursive1(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive2'
+
+
+class USERCHARArgsFromCHARACTERVECTORRecursive2(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive3'
+
+
+class USERCHARArgsFromCHARACTERVECTORRecursive3(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive4'
+
+
+class USERCHARArgsFromCHARACTERVECTORRecursive4(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    
+    
+
+class FindManyUSERCHARArgsFromCHARACTERVECTOR(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive1'
+
+
+class FindManyUSERCHARArgsFromCHARACTERVECTORRecursive1(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive2'
+
+
+class FindManyUSERCHARArgsFromCHARACTERVECTORRecursive2(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive3'
+
+
+class FindManyUSERCHARArgsFromCHARACTERVECTORRecursive3(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive4'
+
+
+class FindManyUSERCHARArgsFromCHARACTERVECTORRecursive4(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
     
 
 
@@ -4072,18 +4282,22 @@ class FindManySpellArgsFromClassesRecursive4(TypedDict, total=False):
 
 class USERDATAIncludeFromClasses(TypedDict, total=False):
     """Relational arguments for Classes"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromClassesRecursive1']
 
 
 class USERDATAIncludeFromClassesRecursive1(TypedDict, total=False):
     """Relational arguments for Classes"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromClassesRecursive2']
 
 
 class USERDATAIncludeFromClassesRecursive2(TypedDict, total=False):
     """Relational arguments for Classes"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromClassesRecursive3']
 
 
 class USERDATAIncludeFromClassesRecursive3(TypedDict, total=False):
     """Relational arguments for Classes"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromClassesRecursive4']
 
 
 class USERDATAIncludeFromClassesRecursive4(TypedDict, total=False):
@@ -4168,6 +4382,212 @@ class FindManyUSERDATAArgsFromClassesRecursive4(TypedDict, total=False):
     where: 'USERDATAWhereInput'
     cursor: 'USERDATAWhereUniqueInput'
     distinct: List['USERDATAScalarFieldKeys']
+    
+    
+
+class STORYVECTORIncludeFromClasses(TypedDict, total=False):
+    """Relational arguments for Classes"""
+
+
+class STORYVECTORIncludeFromClassesRecursive1(TypedDict, total=False):
+    """Relational arguments for Classes"""
+
+
+class STORYVECTORIncludeFromClassesRecursive2(TypedDict, total=False):
+    """Relational arguments for Classes"""
+
+
+class STORYVECTORIncludeFromClassesRecursive3(TypedDict, total=False):
+    """Relational arguments for Classes"""
+
+
+class STORYVECTORIncludeFromClassesRecursive4(TypedDict, total=False):
+    """Relational arguments for Classes"""
+
+    
+
+class STORYVECTORArgsFromClasses(TypedDict, total=False):
+    """Arguments for Classes"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive1'
+
+
+class STORYVECTORArgsFromClassesRecursive1(TypedDict, total=False):
+    """Arguments for Classes"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive2'
+
+
+class STORYVECTORArgsFromClassesRecursive2(TypedDict, total=False):
+    """Arguments for Classes"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive3'
+
+
+class STORYVECTORArgsFromClassesRecursive3(TypedDict, total=False):
+    """Arguments for Classes"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive4'
+
+
+class STORYVECTORArgsFromClassesRecursive4(TypedDict, total=False):
+    """Arguments for Classes"""
+    
+    
+
+class FindManySTORYVECTORArgsFromClasses(TypedDict, total=False):
+    """Arguments for Classes"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive1'
+
+
+class FindManySTORYVECTORArgsFromClassesRecursive1(TypedDict, total=False):
+    """Arguments for Classes"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive2'
+
+
+class FindManySTORYVECTORArgsFromClassesRecursive2(TypedDict, total=False):
+    """Arguments for Classes"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive3'
+
+
+class FindManySTORYVECTORArgsFromClassesRecursive3(TypedDict, total=False):
+    """Arguments for Classes"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive4'
+
+
+class FindManySTORYVECTORArgsFromClassesRecursive4(TypedDict, total=False):
+    """Arguments for Classes"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    
+    
+
+class USERCHARIncludeFromClasses(TypedDict, total=False):
+    """Relational arguments for Classes"""
+    username: Union[bool, 'USERDATAArgsFromClassesRecursive1']
+
+
+class USERCHARIncludeFromClassesRecursive1(TypedDict, total=False):
+    """Relational arguments for Classes"""
+    username: Union[bool, 'USERDATAArgsFromClassesRecursive2']
+
+
+class USERCHARIncludeFromClassesRecursive2(TypedDict, total=False):
+    """Relational arguments for Classes"""
+    username: Union[bool, 'USERDATAArgsFromClassesRecursive3']
+
+
+class USERCHARIncludeFromClassesRecursive3(TypedDict, total=False):
+    """Relational arguments for Classes"""
+    username: Union[bool, 'USERDATAArgsFromClassesRecursive4']
+
+
+class USERCHARIncludeFromClassesRecursive4(TypedDict, total=False):
+    """Relational arguments for Classes"""
+
+    
+
+class USERCHARArgsFromClasses(TypedDict, total=False):
+    """Arguments for Classes"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive1'
+
+
+class USERCHARArgsFromClassesRecursive1(TypedDict, total=False):
+    """Arguments for Classes"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive2'
+
+
+class USERCHARArgsFromClassesRecursive2(TypedDict, total=False):
+    """Arguments for Classes"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive3'
+
+
+class USERCHARArgsFromClassesRecursive3(TypedDict, total=False):
+    """Arguments for Classes"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive4'
+
+
+class USERCHARArgsFromClassesRecursive4(TypedDict, total=False):
+    """Arguments for Classes"""
+    
+    
+
+class FindManyUSERCHARArgsFromClasses(TypedDict, total=False):
+    """Arguments for Classes"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive1'
+
+
+class FindManyUSERCHARArgsFromClassesRecursive1(TypedDict, total=False):
+    """Arguments for Classes"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive2'
+
+
+class FindManyUSERCHARArgsFromClassesRecursive2(TypedDict, total=False):
+    """Arguments for Classes"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive3'
+
+
+class FindManyUSERCHARArgsFromClassesRecursive3(TypedDict, total=False):
+    """Arguments for Classes"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive4'
+
+
+class FindManyUSERCHARArgsFromClassesRecursive4(TypedDict, total=False):
+    """Arguments for Classes"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
     
 
 
@@ -5792,18 +6212,22 @@ class FindManySpellArgsFromGeneralEquipmentRecursive4(TypedDict, total=False):
 
 class USERDATAIncludeFromGeneralEquipment(TypedDict, total=False):
     """Relational arguments for GeneralEquipment"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromGeneralEquipmentRecursive1']
 
 
 class USERDATAIncludeFromGeneralEquipmentRecursive1(TypedDict, total=False):
     """Relational arguments for GeneralEquipment"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromGeneralEquipmentRecursive2']
 
 
 class USERDATAIncludeFromGeneralEquipmentRecursive2(TypedDict, total=False):
     """Relational arguments for GeneralEquipment"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromGeneralEquipmentRecursive3']
 
 
 class USERDATAIncludeFromGeneralEquipmentRecursive3(TypedDict, total=False):
     """Relational arguments for GeneralEquipment"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromGeneralEquipmentRecursive4']
 
 
 class USERDATAIncludeFromGeneralEquipmentRecursive4(TypedDict, total=False):
@@ -5888,6 +6312,212 @@ class FindManyUSERDATAArgsFromGeneralEquipmentRecursive4(TypedDict, total=False)
     where: 'USERDATAWhereInput'
     cursor: 'USERDATAWhereUniqueInput'
     distinct: List['USERDATAScalarFieldKeys']
+    
+    
+
+class STORYVECTORIncludeFromGeneralEquipment(TypedDict, total=False):
+    """Relational arguments for GeneralEquipment"""
+
+
+class STORYVECTORIncludeFromGeneralEquipmentRecursive1(TypedDict, total=False):
+    """Relational arguments for GeneralEquipment"""
+
+
+class STORYVECTORIncludeFromGeneralEquipmentRecursive2(TypedDict, total=False):
+    """Relational arguments for GeneralEquipment"""
+
+
+class STORYVECTORIncludeFromGeneralEquipmentRecursive3(TypedDict, total=False):
+    """Relational arguments for GeneralEquipment"""
+
+
+class STORYVECTORIncludeFromGeneralEquipmentRecursive4(TypedDict, total=False):
+    """Relational arguments for GeneralEquipment"""
+
+    
+
+class STORYVECTORArgsFromGeneralEquipment(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive1'
+
+
+class STORYVECTORArgsFromGeneralEquipmentRecursive1(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive2'
+
+
+class STORYVECTORArgsFromGeneralEquipmentRecursive2(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive3'
+
+
+class STORYVECTORArgsFromGeneralEquipmentRecursive3(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive4'
+
+
+class STORYVECTORArgsFromGeneralEquipmentRecursive4(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    
+    
+
+class FindManySTORYVECTORArgsFromGeneralEquipment(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive1'
+
+
+class FindManySTORYVECTORArgsFromGeneralEquipmentRecursive1(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive2'
+
+
+class FindManySTORYVECTORArgsFromGeneralEquipmentRecursive2(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive3'
+
+
+class FindManySTORYVECTORArgsFromGeneralEquipmentRecursive3(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive4'
+
+
+class FindManySTORYVECTORArgsFromGeneralEquipmentRecursive4(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    
+    
+
+class USERCHARIncludeFromGeneralEquipment(TypedDict, total=False):
+    """Relational arguments for GeneralEquipment"""
+    username: Union[bool, 'USERDATAArgsFromGeneralEquipmentRecursive1']
+
+
+class USERCHARIncludeFromGeneralEquipmentRecursive1(TypedDict, total=False):
+    """Relational arguments for GeneralEquipment"""
+    username: Union[bool, 'USERDATAArgsFromGeneralEquipmentRecursive2']
+
+
+class USERCHARIncludeFromGeneralEquipmentRecursive2(TypedDict, total=False):
+    """Relational arguments for GeneralEquipment"""
+    username: Union[bool, 'USERDATAArgsFromGeneralEquipmentRecursive3']
+
+
+class USERCHARIncludeFromGeneralEquipmentRecursive3(TypedDict, total=False):
+    """Relational arguments for GeneralEquipment"""
+    username: Union[bool, 'USERDATAArgsFromGeneralEquipmentRecursive4']
+
+
+class USERCHARIncludeFromGeneralEquipmentRecursive4(TypedDict, total=False):
+    """Relational arguments for GeneralEquipment"""
+
+    
+
+class USERCHARArgsFromGeneralEquipment(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive1'
+
+
+class USERCHARArgsFromGeneralEquipmentRecursive1(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive2'
+
+
+class USERCHARArgsFromGeneralEquipmentRecursive2(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive3'
+
+
+class USERCHARArgsFromGeneralEquipmentRecursive3(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive4'
+
+
+class USERCHARArgsFromGeneralEquipmentRecursive4(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    
+    
+
+class FindManyUSERCHARArgsFromGeneralEquipment(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive1'
+
+
+class FindManyUSERCHARArgsFromGeneralEquipmentRecursive1(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive2'
+
+
+class FindManyUSERCHARArgsFromGeneralEquipmentRecursive2(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive3'
+
+
+class FindManyUSERCHARArgsFromGeneralEquipmentRecursive3(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive4'
+
+
+class FindManyUSERCHARArgsFromGeneralEquipmentRecursive4(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
     
 
 
@@ -7403,18 +8033,22 @@ class FindManySpellArgsFromITEMSVECTORRecursive4(TypedDict, total=False):
 
 class USERDATAIncludeFromITEMSVECTOR(TypedDict, total=False):
     """Relational arguments for ITEMSVECTOR"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromITEMSVECTORRecursive1']
 
 
 class USERDATAIncludeFromITEMSVECTORRecursive1(TypedDict, total=False):
     """Relational arguments for ITEMSVECTOR"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromITEMSVECTORRecursive2']
 
 
 class USERDATAIncludeFromITEMSVECTORRecursive2(TypedDict, total=False):
     """Relational arguments for ITEMSVECTOR"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromITEMSVECTORRecursive3']
 
 
 class USERDATAIncludeFromITEMSVECTORRecursive3(TypedDict, total=False):
     """Relational arguments for ITEMSVECTOR"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromITEMSVECTORRecursive4']
 
 
 class USERDATAIncludeFromITEMSVECTORRecursive4(TypedDict, total=False):
@@ -7499,6 +8133,212 @@ class FindManyUSERDATAArgsFromITEMSVECTORRecursive4(TypedDict, total=False):
     where: 'USERDATAWhereInput'
     cursor: 'USERDATAWhereUniqueInput'
     distinct: List['USERDATAScalarFieldKeys']
+    
+    
+
+class STORYVECTORIncludeFromITEMSVECTOR(TypedDict, total=False):
+    """Relational arguments for ITEMSVECTOR"""
+
+
+class STORYVECTORIncludeFromITEMSVECTORRecursive1(TypedDict, total=False):
+    """Relational arguments for ITEMSVECTOR"""
+
+
+class STORYVECTORIncludeFromITEMSVECTORRecursive2(TypedDict, total=False):
+    """Relational arguments for ITEMSVECTOR"""
+
+
+class STORYVECTORIncludeFromITEMSVECTORRecursive3(TypedDict, total=False):
+    """Relational arguments for ITEMSVECTOR"""
+
+
+class STORYVECTORIncludeFromITEMSVECTORRecursive4(TypedDict, total=False):
+    """Relational arguments for ITEMSVECTOR"""
+
+    
+
+class STORYVECTORArgsFromITEMSVECTOR(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive1'
+
+
+class STORYVECTORArgsFromITEMSVECTORRecursive1(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive2'
+
+
+class STORYVECTORArgsFromITEMSVECTORRecursive2(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive3'
+
+
+class STORYVECTORArgsFromITEMSVECTORRecursive3(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive4'
+
+
+class STORYVECTORArgsFromITEMSVECTORRecursive4(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    
+    
+
+class FindManySTORYVECTORArgsFromITEMSVECTOR(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive1'
+
+
+class FindManySTORYVECTORArgsFromITEMSVECTORRecursive1(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive2'
+
+
+class FindManySTORYVECTORArgsFromITEMSVECTORRecursive2(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive3'
+
+
+class FindManySTORYVECTORArgsFromITEMSVECTORRecursive3(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive4'
+
+
+class FindManySTORYVECTORArgsFromITEMSVECTORRecursive4(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    
+    
+
+class USERCHARIncludeFromITEMSVECTOR(TypedDict, total=False):
+    """Relational arguments for ITEMSVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromITEMSVECTORRecursive1']
+
+
+class USERCHARIncludeFromITEMSVECTORRecursive1(TypedDict, total=False):
+    """Relational arguments for ITEMSVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromITEMSVECTORRecursive2']
+
+
+class USERCHARIncludeFromITEMSVECTORRecursive2(TypedDict, total=False):
+    """Relational arguments for ITEMSVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromITEMSVECTORRecursive3']
+
+
+class USERCHARIncludeFromITEMSVECTORRecursive3(TypedDict, total=False):
+    """Relational arguments for ITEMSVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromITEMSVECTORRecursive4']
+
+
+class USERCHARIncludeFromITEMSVECTORRecursive4(TypedDict, total=False):
+    """Relational arguments for ITEMSVECTOR"""
+
+    
+
+class USERCHARArgsFromITEMSVECTOR(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive1'
+
+
+class USERCHARArgsFromITEMSVECTORRecursive1(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive2'
+
+
+class USERCHARArgsFromITEMSVECTORRecursive2(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive3'
+
+
+class USERCHARArgsFromITEMSVECTORRecursive3(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive4'
+
+
+class USERCHARArgsFromITEMSVECTORRecursive4(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    
+    
+
+class FindManyUSERCHARArgsFromITEMSVECTOR(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive1'
+
+
+class FindManyUSERCHARArgsFromITEMSVECTORRecursive1(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive2'
+
+
+class FindManyUSERCHARArgsFromITEMSVECTORRecursive2(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive3'
+
+
+class FindManyUSERCHARArgsFromITEMSVECTORRecursive3(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive4'
+
+
+class FindManyUSERCHARArgsFromITEMSVECTORRecursive4(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
     
 
 
@@ -8978,18 +9818,22 @@ class FindManySpellArgsFromMONSTERVECTORRecursive4(TypedDict, total=False):
 
 class USERDATAIncludeFromMONSTERVECTOR(TypedDict, total=False):
     """Relational arguments for MONSTERVECTOR"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromMONSTERVECTORRecursive1']
 
 
 class USERDATAIncludeFromMONSTERVECTORRecursive1(TypedDict, total=False):
     """Relational arguments for MONSTERVECTOR"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromMONSTERVECTORRecursive2']
 
 
 class USERDATAIncludeFromMONSTERVECTORRecursive2(TypedDict, total=False):
     """Relational arguments for MONSTERVECTOR"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromMONSTERVECTORRecursive3']
 
 
 class USERDATAIncludeFromMONSTERVECTORRecursive3(TypedDict, total=False):
     """Relational arguments for MONSTERVECTOR"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromMONSTERVECTORRecursive4']
 
 
 class USERDATAIncludeFromMONSTERVECTORRecursive4(TypedDict, total=False):
@@ -9074,6 +9918,212 @@ class FindManyUSERDATAArgsFromMONSTERVECTORRecursive4(TypedDict, total=False):
     where: 'USERDATAWhereInput'
     cursor: 'USERDATAWhereUniqueInput'
     distinct: List['USERDATAScalarFieldKeys']
+    
+    
+
+class STORYVECTORIncludeFromMONSTERVECTOR(TypedDict, total=False):
+    """Relational arguments for MONSTERVECTOR"""
+
+
+class STORYVECTORIncludeFromMONSTERVECTORRecursive1(TypedDict, total=False):
+    """Relational arguments for MONSTERVECTOR"""
+
+
+class STORYVECTORIncludeFromMONSTERVECTORRecursive2(TypedDict, total=False):
+    """Relational arguments for MONSTERVECTOR"""
+
+
+class STORYVECTORIncludeFromMONSTERVECTORRecursive3(TypedDict, total=False):
+    """Relational arguments for MONSTERVECTOR"""
+
+
+class STORYVECTORIncludeFromMONSTERVECTORRecursive4(TypedDict, total=False):
+    """Relational arguments for MONSTERVECTOR"""
+
+    
+
+class STORYVECTORArgsFromMONSTERVECTOR(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive1'
+
+
+class STORYVECTORArgsFromMONSTERVECTORRecursive1(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive2'
+
+
+class STORYVECTORArgsFromMONSTERVECTORRecursive2(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive3'
+
+
+class STORYVECTORArgsFromMONSTERVECTORRecursive3(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive4'
+
+
+class STORYVECTORArgsFromMONSTERVECTORRecursive4(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    
+    
+
+class FindManySTORYVECTORArgsFromMONSTERVECTOR(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive1'
+
+
+class FindManySTORYVECTORArgsFromMONSTERVECTORRecursive1(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive2'
+
+
+class FindManySTORYVECTORArgsFromMONSTERVECTORRecursive2(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive3'
+
+
+class FindManySTORYVECTORArgsFromMONSTERVECTORRecursive3(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive4'
+
+
+class FindManySTORYVECTORArgsFromMONSTERVECTORRecursive4(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    
+    
+
+class USERCHARIncludeFromMONSTERVECTOR(TypedDict, total=False):
+    """Relational arguments for MONSTERVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromMONSTERVECTORRecursive1']
+
+
+class USERCHARIncludeFromMONSTERVECTORRecursive1(TypedDict, total=False):
+    """Relational arguments for MONSTERVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromMONSTERVECTORRecursive2']
+
+
+class USERCHARIncludeFromMONSTERVECTORRecursive2(TypedDict, total=False):
+    """Relational arguments for MONSTERVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromMONSTERVECTORRecursive3']
+
+
+class USERCHARIncludeFromMONSTERVECTORRecursive3(TypedDict, total=False):
+    """Relational arguments for MONSTERVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromMONSTERVECTORRecursive4']
+
+
+class USERCHARIncludeFromMONSTERVECTORRecursive4(TypedDict, total=False):
+    """Relational arguments for MONSTERVECTOR"""
+
+    
+
+class USERCHARArgsFromMONSTERVECTOR(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive1'
+
+
+class USERCHARArgsFromMONSTERVECTORRecursive1(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive2'
+
+
+class USERCHARArgsFromMONSTERVECTORRecursive2(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive3'
+
+
+class USERCHARArgsFromMONSTERVECTORRecursive3(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive4'
+
+
+class USERCHARArgsFromMONSTERVECTORRecursive4(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    
+    
+
+class FindManyUSERCHARArgsFromMONSTERVECTOR(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive1'
+
+
+class FindManyUSERCHARArgsFromMONSTERVECTORRecursive1(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive2'
+
+
+class FindManyUSERCHARArgsFromMONSTERVECTORRecursive2(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive3'
+
+
+class FindManyUSERCHARArgsFromMONSTERVECTORRecursive3(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive4'
+
+
+class FindManyUSERCHARArgsFromMONSTERVECTORRecursive4(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
     
 
 
@@ -11112,18 +12162,22 @@ class FindManySpellArgsFromMagicItemRecursive4(TypedDict, total=False):
 
 class USERDATAIncludeFromMagicItem(TypedDict, total=False):
     """Relational arguments for MagicItem"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromMagicItemRecursive1']
 
 
 class USERDATAIncludeFromMagicItemRecursive1(TypedDict, total=False):
     """Relational arguments for MagicItem"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromMagicItemRecursive2']
 
 
 class USERDATAIncludeFromMagicItemRecursive2(TypedDict, total=False):
     """Relational arguments for MagicItem"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromMagicItemRecursive3']
 
 
 class USERDATAIncludeFromMagicItemRecursive3(TypedDict, total=False):
     """Relational arguments for MagicItem"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromMagicItemRecursive4']
 
 
 class USERDATAIncludeFromMagicItemRecursive4(TypedDict, total=False):
@@ -11208,6 +12262,212 @@ class FindManyUSERDATAArgsFromMagicItemRecursive4(TypedDict, total=False):
     where: 'USERDATAWhereInput'
     cursor: 'USERDATAWhereUniqueInput'
     distinct: List['USERDATAScalarFieldKeys']
+    
+    
+
+class STORYVECTORIncludeFromMagicItem(TypedDict, total=False):
+    """Relational arguments for MagicItem"""
+
+
+class STORYVECTORIncludeFromMagicItemRecursive1(TypedDict, total=False):
+    """Relational arguments for MagicItem"""
+
+
+class STORYVECTORIncludeFromMagicItemRecursive2(TypedDict, total=False):
+    """Relational arguments for MagicItem"""
+
+
+class STORYVECTORIncludeFromMagicItemRecursive3(TypedDict, total=False):
+    """Relational arguments for MagicItem"""
+
+
+class STORYVECTORIncludeFromMagicItemRecursive4(TypedDict, total=False):
+    """Relational arguments for MagicItem"""
+
+    
+
+class STORYVECTORArgsFromMagicItem(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive1'
+
+
+class STORYVECTORArgsFromMagicItemRecursive1(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive2'
+
+
+class STORYVECTORArgsFromMagicItemRecursive2(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive3'
+
+
+class STORYVECTORArgsFromMagicItemRecursive3(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive4'
+
+
+class STORYVECTORArgsFromMagicItemRecursive4(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    
+    
+
+class FindManySTORYVECTORArgsFromMagicItem(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive1'
+
+
+class FindManySTORYVECTORArgsFromMagicItemRecursive1(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive2'
+
+
+class FindManySTORYVECTORArgsFromMagicItemRecursive2(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive3'
+
+
+class FindManySTORYVECTORArgsFromMagicItemRecursive3(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive4'
+
+
+class FindManySTORYVECTORArgsFromMagicItemRecursive4(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    
+    
+
+class USERCHARIncludeFromMagicItem(TypedDict, total=False):
+    """Relational arguments for MagicItem"""
+    username: Union[bool, 'USERDATAArgsFromMagicItemRecursive1']
+
+
+class USERCHARIncludeFromMagicItemRecursive1(TypedDict, total=False):
+    """Relational arguments for MagicItem"""
+    username: Union[bool, 'USERDATAArgsFromMagicItemRecursive2']
+
+
+class USERCHARIncludeFromMagicItemRecursive2(TypedDict, total=False):
+    """Relational arguments for MagicItem"""
+    username: Union[bool, 'USERDATAArgsFromMagicItemRecursive3']
+
+
+class USERCHARIncludeFromMagicItemRecursive3(TypedDict, total=False):
+    """Relational arguments for MagicItem"""
+    username: Union[bool, 'USERDATAArgsFromMagicItemRecursive4']
+
+
+class USERCHARIncludeFromMagicItemRecursive4(TypedDict, total=False):
+    """Relational arguments for MagicItem"""
+
+    
+
+class USERCHARArgsFromMagicItem(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive1'
+
+
+class USERCHARArgsFromMagicItemRecursive1(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive2'
+
+
+class USERCHARArgsFromMagicItemRecursive2(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive3'
+
+
+class USERCHARArgsFromMagicItemRecursive3(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive4'
+
+
+class USERCHARArgsFromMagicItemRecursive4(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    
+    
+
+class FindManyUSERCHARArgsFromMagicItem(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive1'
+
+
+class FindManyUSERCHARArgsFromMagicItemRecursive1(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive2'
+
+
+class FindManyUSERCHARArgsFromMagicItemRecursive2(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive3'
+
+
+class FindManyUSERCHARArgsFromMagicItemRecursive3(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive4'
+
+
+class FindManyUSERCHARArgsFromMagicItemRecursive4(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
     
 
 
@@ -14987,18 +16247,22 @@ class FindManySpellArgsFromMonsterRecursive4(TypedDict, total=False):
 
 class USERDATAIncludeFromMonster(TypedDict, total=False):
     """Relational arguments for Monster"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromMonsterRecursive1']
 
 
 class USERDATAIncludeFromMonsterRecursive1(TypedDict, total=False):
     """Relational arguments for Monster"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromMonsterRecursive2']
 
 
 class USERDATAIncludeFromMonsterRecursive2(TypedDict, total=False):
     """Relational arguments for Monster"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromMonsterRecursive3']
 
 
 class USERDATAIncludeFromMonsterRecursive3(TypedDict, total=False):
     """Relational arguments for Monster"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromMonsterRecursive4']
 
 
 class USERDATAIncludeFromMonsterRecursive4(TypedDict, total=False):
@@ -15083,6 +16347,212 @@ class FindManyUSERDATAArgsFromMonsterRecursive4(TypedDict, total=False):
     where: 'USERDATAWhereInput'
     cursor: 'USERDATAWhereUniqueInput'
     distinct: List['USERDATAScalarFieldKeys']
+    
+    
+
+class STORYVECTORIncludeFromMonster(TypedDict, total=False):
+    """Relational arguments for Monster"""
+
+
+class STORYVECTORIncludeFromMonsterRecursive1(TypedDict, total=False):
+    """Relational arguments for Monster"""
+
+
+class STORYVECTORIncludeFromMonsterRecursive2(TypedDict, total=False):
+    """Relational arguments for Monster"""
+
+
+class STORYVECTORIncludeFromMonsterRecursive3(TypedDict, total=False):
+    """Relational arguments for Monster"""
+
+
+class STORYVECTORIncludeFromMonsterRecursive4(TypedDict, total=False):
+    """Relational arguments for Monster"""
+
+    
+
+class STORYVECTORArgsFromMonster(TypedDict, total=False):
+    """Arguments for Monster"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive1'
+
+
+class STORYVECTORArgsFromMonsterRecursive1(TypedDict, total=False):
+    """Arguments for Monster"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive2'
+
+
+class STORYVECTORArgsFromMonsterRecursive2(TypedDict, total=False):
+    """Arguments for Monster"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive3'
+
+
+class STORYVECTORArgsFromMonsterRecursive3(TypedDict, total=False):
+    """Arguments for Monster"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive4'
+
+
+class STORYVECTORArgsFromMonsterRecursive4(TypedDict, total=False):
+    """Arguments for Monster"""
+    
+    
+
+class FindManySTORYVECTORArgsFromMonster(TypedDict, total=False):
+    """Arguments for Monster"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive1'
+
+
+class FindManySTORYVECTORArgsFromMonsterRecursive1(TypedDict, total=False):
+    """Arguments for Monster"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive2'
+
+
+class FindManySTORYVECTORArgsFromMonsterRecursive2(TypedDict, total=False):
+    """Arguments for Monster"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive3'
+
+
+class FindManySTORYVECTORArgsFromMonsterRecursive3(TypedDict, total=False):
+    """Arguments for Monster"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive4'
+
+
+class FindManySTORYVECTORArgsFromMonsterRecursive4(TypedDict, total=False):
+    """Arguments for Monster"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    
+    
+
+class USERCHARIncludeFromMonster(TypedDict, total=False):
+    """Relational arguments for Monster"""
+    username: Union[bool, 'USERDATAArgsFromMonsterRecursive1']
+
+
+class USERCHARIncludeFromMonsterRecursive1(TypedDict, total=False):
+    """Relational arguments for Monster"""
+    username: Union[bool, 'USERDATAArgsFromMonsterRecursive2']
+
+
+class USERCHARIncludeFromMonsterRecursive2(TypedDict, total=False):
+    """Relational arguments for Monster"""
+    username: Union[bool, 'USERDATAArgsFromMonsterRecursive3']
+
+
+class USERCHARIncludeFromMonsterRecursive3(TypedDict, total=False):
+    """Relational arguments for Monster"""
+    username: Union[bool, 'USERDATAArgsFromMonsterRecursive4']
+
+
+class USERCHARIncludeFromMonsterRecursive4(TypedDict, total=False):
+    """Relational arguments for Monster"""
+
+    
+
+class USERCHARArgsFromMonster(TypedDict, total=False):
+    """Arguments for Monster"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive1'
+
+
+class USERCHARArgsFromMonsterRecursive1(TypedDict, total=False):
+    """Arguments for Monster"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive2'
+
+
+class USERCHARArgsFromMonsterRecursive2(TypedDict, total=False):
+    """Arguments for Monster"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive3'
+
+
+class USERCHARArgsFromMonsterRecursive3(TypedDict, total=False):
+    """Arguments for Monster"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive4'
+
+
+class USERCHARArgsFromMonsterRecursive4(TypedDict, total=False):
+    """Arguments for Monster"""
+    
+    
+
+class FindManyUSERCHARArgsFromMonster(TypedDict, total=False):
+    """Arguments for Monster"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive1'
+
+
+class FindManyUSERCHARArgsFromMonsterRecursive1(TypedDict, total=False):
+    """Arguments for Monster"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive2'
+
+
+class FindManyUSERCHARArgsFromMonsterRecursive2(TypedDict, total=False):
+    """Arguments for Monster"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive3'
+
+
+class FindManyUSERCHARArgsFromMonsterRecursive3(TypedDict, total=False):
+    """Arguments for Monster"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive4'
+
+
+class FindManyUSERCHARArgsFromMonsterRecursive4(TypedDict, total=False):
+    """Arguments for Monster"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
     
 
 
@@ -18667,18 +20137,22 @@ class FindManySpellArgsFromRaceRecursive4(TypedDict, total=False):
 
 class USERDATAIncludeFromRace(TypedDict, total=False):
     """Relational arguments for Race"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromRaceRecursive1']
 
 
 class USERDATAIncludeFromRaceRecursive1(TypedDict, total=False):
     """Relational arguments for Race"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromRaceRecursive2']
 
 
 class USERDATAIncludeFromRaceRecursive2(TypedDict, total=False):
     """Relational arguments for Race"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromRaceRecursive3']
 
 
 class USERDATAIncludeFromRaceRecursive3(TypedDict, total=False):
     """Relational arguments for Race"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromRaceRecursive4']
 
 
 class USERDATAIncludeFromRaceRecursive4(TypedDict, total=False):
@@ -18763,6 +20237,212 @@ class FindManyUSERDATAArgsFromRaceRecursive4(TypedDict, total=False):
     where: 'USERDATAWhereInput'
     cursor: 'USERDATAWhereUniqueInput'
     distinct: List['USERDATAScalarFieldKeys']
+    
+    
+
+class STORYVECTORIncludeFromRace(TypedDict, total=False):
+    """Relational arguments for Race"""
+
+
+class STORYVECTORIncludeFromRaceRecursive1(TypedDict, total=False):
+    """Relational arguments for Race"""
+
+
+class STORYVECTORIncludeFromRaceRecursive2(TypedDict, total=False):
+    """Relational arguments for Race"""
+
+
+class STORYVECTORIncludeFromRaceRecursive3(TypedDict, total=False):
+    """Relational arguments for Race"""
+
+
+class STORYVECTORIncludeFromRaceRecursive4(TypedDict, total=False):
+    """Relational arguments for Race"""
+
+    
+
+class STORYVECTORArgsFromRace(TypedDict, total=False):
+    """Arguments for Race"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive1'
+
+
+class STORYVECTORArgsFromRaceRecursive1(TypedDict, total=False):
+    """Arguments for Race"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive2'
+
+
+class STORYVECTORArgsFromRaceRecursive2(TypedDict, total=False):
+    """Arguments for Race"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive3'
+
+
+class STORYVECTORArgsFromRaceRecursive3(TypedDict, total=False):
+    """Arguments for Race"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive4'
+
+
+class STORYVECTORArgsFromRaceRecursive4(TypedDict, total=False):
+    """Arguments for Race"""
+    
+    
+
+class FindManySTORYVECTORArgsFromRace(TypedDict, total=False):
+    """Arguments for Race"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive1'
+
+
+class FindManySTORYVECTORArgsFromRaceRecursive1(TypedDict, total=False):
+    """Arguments for Race"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive2'
+
+
+class FindManySTORYVECTORArgsFromRaceRecursive2(TypedDict, total=False):
+    """Arguments for Race"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive3'
+
+
+class FindManySTORYVECTORArgsFromRaceRecursive3(TypedDict, total=False):
+    """Arguments for Race"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive4'
+
+
+class FindManySTORYVECTORArgsFromRaceRecursive4(TypedDict, total=False):
+    """Arguments for Race"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    
+    
+
+class USERCHARIncludeFromRace(TypedDict, total=False):
+    """Relational arguments for Race"""
+    username: Union[bool, 'USERDATAArgsFromRaceRecursive1']
+
+
+class USERCHARIncludeFromRaceRecursive1(TypedDict, total=False):
+    """Relational arguments for Race"""
+    username: Union[bool, 'USERDATAArgsFromRaceRecursive2']
+
+
+class USERCHARIncludeFromRaceRecursive2(TypedDict, total=False):
+    """Relational arguments for Race"""
+    username: Union[bool, 'USERDATAArgsFromRaceRecursive3']
+
+
+class USERCHARIncludeFromRaceRecursive3(TypedDict, total=False):
+    """Relational arguments for Race"""
+    username: Union[bool, 'USERDATAArgsFromRaceRecursive4']
+
+
+class USERCHARIncludeFromRaceRecursive4(TypedDict, total=False):
+    """Relational arguments for Race"""
+
+    
+
+class USERCHARArgsFromRace(TypedDict, total=False):
+    """Arguments for Race"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive1'
+
+
+class USERCHARArgsFromRaceRecursive1(TypedDict, total=False):
+    """Arguments for Race"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive2'
+
+
+class USERCHARArgsFromRaceRecursive2(TypedDict, total=False):
+    """Arguments for Race"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive3'
+
+
+class USERCHARArgsFromRaceRecursive3(TypedDict, total=False):
+    """Arguments for Race"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive4'
+
+
+class USERCHARArgsFromRaceRecursive4(TypedDict, total=False):
+    """Arguments for Race"""
+    
+    
+
+class FindManyUSERCHARArgsFromRace(TypedDict, total=False):
+    """Arguments for Race"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive1'
+
+
+class FindManyUSERCHARArgsFromRaceRecursive1(TypedDict, total=False):
+    """Arguments for Race"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive2'
+
+
+class FindManyUSERCHARArgsFromRaceRecursive2(TypedDict, total=False):
+    """Arguments for Race"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive3'
+
+
+class FindManyUSERCHARArgsFromRaceRecursive3(TypedDict, total=False):
+    """Arguments for Race"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive4'
+
+
+class FindManyUSERCHARArgsFromRaceRecursive4(TypedDict, total=False):
+    """Arguments for Race"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
     
 
 
@@ -20417,18 +22097,22 @@ class FindManySpellArgsFromSESSIONRecursive4(TypedDict, total=False):
 
 class USERDATAIncludeFromSESSION(TypedDict, total=False):
     """Relational arguments for SESSION"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromSESSIONRecursive1']
 
 
 class USERDATAIncludeFromSESSIONRecursive1(TypedDict, total=False):
     """Relational arguments for SESSION"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromSESSIONRecursive2']
 
 
 class USERDATAIncludeFromSESSIONRecursive2(TypedDict, total=False):
     """Relational arguments for SESSION"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromSESSIONRecursive3']
 
 
 class USERDATAIncludeFromSESSIONRecursive3(TypedDict, total=False):
     """Relational arguments for SESSION"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromSESSIONRecursive4']
 
 
 class USERDATAIncludeFromSESSIONRecursive4(TypedDict, total=False):
@@ -20513,6 +22197,212 @@ class FindManyUSERDATAArgsFromSESSIONRecursive4(TypedDict, total=False):
     where: 'USERDATAWhereInput'
     cursor: 'USERDATAWhereUniqueInput'
     distinct: List['USERDATAScalarFieldKeys']
+    
+    
+
+class STORYVECTORIncludeFromSESSION(TypedDict, total=False):
+    """Relational arguments for SESSION"""
+
+
+class STORYVECTORIncludeFromSESSIONRecursive1(TypedDict, total=False):
+    """Relational arguments for SESSION"""
+
+
+class STORYVECTORIncludeFromSESSIONRecursive2(TypedDict, total=False):
+    """Relational arguments for SESSION"""
+
+
+class STORYVECTORIncludeFromSESSIONRecursive3(TypedDict, total=False):
+    """Relational arguments for SESSION"""
+
+
+class STORYVECTORIncludeFromSESSIONRecursive4(TypedDict, total=False):
+    """Relational arguments for SESSION"""
+
+    
+
+class STORYVECTORArgsFromSESSION(TypedDict, total=False):
+    """Arguments for SESSION"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive1'
+
+
+class STORYVECTORArgsFromSESSIONRecursive1(TypedDict, total=False):
+    """Arguments for SESSION"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive2'
+
+
+class STORYVECTORArgsFromSESSIONRecursive2(TypedDict, total=False):
+    """Arguments for SESSION"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive3'
+
+
+class STORYVECTORArgsFromSESSIONRecursive3(TypedDict, total=False):
+    """Arguments for SESSION"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive4'
+
+
+class STORYVECTORArgsFromSESSIONRecursive4(TypedDict, total=False):
+    """Arguments for SESSION"""
+    
+    
+
+class FindManySTORYVECTORArgsFromSESSION(TypedDict, total=False):
+    """Arguments for SESSION"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive1'
+
+
+class FindManySTORYVECTORArgsFromSESSIONRecursive1(TypedDict, total=False):
+    """Arguments for SESSION"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive2'
+
+
+class FindManySTORYVECTORArgsFromSESSIONRecursive2(TypedDict, total=False):
+    """Arguments for SESSION"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive3'
+
+
+class FindManySTORYVECTORArgsFromSESSIONRecursive3(TypedDict, total=False):
+    """Arguments for SESSION"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive4'
+
+
+class FindManySTORYVECTORArgsFromSESSIONRecursive4(TypedDict, total=False):
+    """Arguments for SESSION"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    
+    
+
+class USERCHARIncludeFromSESSION(TypedDict, total=False):
+    """Relational arguments for SESSION"""
+    username: Union[bool, 'USERDATAArgsFromSESSIONRecursive1']
+
+
+class USERCHARIncludeFromSESSIONRecursive1(TypedDict, total=False):
+    """Relational arguments for SESSION"""
+    username: Union[bool, 'USERDATAArgsFromSESSIONRecursive2']
+
+
+class USERCHARIncludeFromSESSIONRecursive2(TypedDict, total=False):
+    """Relational arguments for SESSION"""
+    username: Union[bool, 'USERDATAArgsFromSESSIONRecursive3']
+
+
+class USERCHARIncludeFromSESSIONRecursive3(TypedDict, total=False):
+    """Relational arguments for SESSION"""
+    username: Union[bool, 'USERDATAArgsFromSESSIONRecursive4']
+
+
+class USERCHARIncludeFromSESSIONRecursive4(TypedDict, total=False):
+    """Relational arguments for SESSION"""
+
+    
+
+class USERCHARArgsFromSESSION(TypedDict, total=False):
+    """Arguments for SESSION"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive1'
+
+
+class USERCHARArgsFromSESSIONRecursive1(TypedDict, total=False):
+    """Arguments for SESSION"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive2'
+
+
+class USERCHARArgsFromSESSIONRecursive2(TypedDict, total=False):
+    """Arguments for SESSION"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive3'
+
+
+class USERCHARArgsFromSESSIONRecursive3(TypedDict, total=False):
+    """Arguments for SESSION"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive4'
+
+
+class USERCHARArgsFromSESSIONRecursive4(TypedDict, total=False):
+    """Arguments for SESSION"""
+    
+    
+
+class FindManyUSERCHARArgsFromSESSION(TypedDict, total=False):
+    """Arguments for SESSION"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive1'
+
+
+class FindManyUSERCHARArgsFromSESSIONRecursive1(TypedDict, total=False):
+    """Arguments for SESSION"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive2'
+
+
+class FindManyUSERCHARArgsFromSESSIONRecursive2(TypedDict, total=False):
+    """Arguments for SESSION"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive3'
+
+
+class FindManyUSERCHARArgsFromSESSIONRecursive3(TypedDict, total=False):
+    """Arguments for SESSION"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive4'
+
+
+class FindManyUSERCHARArgsFromSESSIONRecursive4(TypedDict, total=False):
+    """Arguments for SESSION"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
     
 
 
@@ -22013,18 +23903,22 @@ class FindManySpellArgsFromSPELLSVECTORRecursive4(TypedDict, total=False):
 
 class USERDATAIncludeFromSPELLSVECTOR(TypedDict, total=False):
     """Relational arguments for SPELLSVECTOR"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromSPELLSVECTORRecursive1']
 
 
 class USERDATAIncludeFromSPELLSVECTORRecursive1(TypedDict, total=False):
     """Relational arguments for SPELLSVECTOR"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromSPELLSVECTORRecursive2']
 
 
 class USERDATAIncludeFromSPELLSVECTORRecursive2(TypedDict, total=False):
     """Relational arguments for SPELLSVECTOR"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromSPELLSVECTORRecursive3']
 
 
 class USERDATAIncludeFromSPELLSVECTORRecursive3(TypedDict, total=False):
     """Relational arguments for SPELLSVECTOR"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromSPELLSVECTORRecursive4']
 
 
 class USERDATAIncludeFromSPELLSVECTORRecursive4(TypedDict, total=False):
@@ -22109,6 +24003,212 @@ class FindManyUSERDATAArgsFromSPELLSVECTORRecursive4(TypedDict, total=False):
     where: 'USERDATAWhereInput'
     cursor: 'USERDATAWhereUniqueInput'
     distinct: List['USERDATAScalarFieldKeys']
+    
+    
+
+class STORYVECTORIncludeFromSPELLSVECTOR(TypedDict, total=False):
+    """Relational arguments for SPELLSVECTOR"""
+
+
+class STORYVECTORIncludeFromSPELLSVECTORRecursive1(TypedDict, total=False):
+    """Relational arguments for SPELLSVECTOR"""
+
+
+class STORYVECTORIncludeFromSPELLSVECTORRecursive2(TypedDict, total=False):
+    """Relational arguments for SPELLSVECTOR"""
+
+
+class STORYVECTORIncludeFromSPELLSVECTORRecursive3(TypedDict, total=False):
+    """Relational arguments for SPELLSVECTOR"""
+
+
+class STORYVECTORIncludeFromSPELLSVECTORRecursive4(TypedDict, total=False):
+    """Relational arguments for SPELLSVECTOR"""
+
+    
+
+class STORYVECTORArgsFromSPELLSVECTOR(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive1'
+
+
+class STORYVECTORArgsFromSPELLSVECTORRecursive1(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive2'
+
+
+class STORYVECTORArgsFromSPELLSVECTORRecursive2(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive3'
+
+
+class STORYVECTORArgsFromSPELLSVECTORRecursive3(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive4'
+
+
+class STORYVECTORArgsFromSPELLSVECTORRecursive4(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    
+    
+
+class FindManySTORYVECTORArgsFromSPELLSVECTOR(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive1'
+
+
+class FindManySTORYVECTORArgsFromSPELLSVECTORRecursive1(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive2'
+
+
+class FindManySTORYVECTORArgsFromSPELLSVECTORRecursive2(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive3'
+
+
+class FindManySTORYVECTORArgsFromSPELLSVECTORRecursive3(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive4'
+
+
+class FindManySTORYVECTORArgsFromSPELLSVECTORRecursive4(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    
+    
+
+class USERCHARIncludeFromSPELLSVECTOR(TypedDict, total=False):
+    """Relational arguments for SPELLSVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromSPELLSVECTORRecursive1']
+
+
+class USERCHARIncludeFromSPELLSVECTORRecursive1(TypedDict, total=False):
+    """Relational arguments for SPELLSVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromSPELLSVECTORRecursive2']
+
+
+class USERCHARIncludeFromSPELLSVECTORRecursive2(TypedDict, total=False):
+    """Relational arguments for SPELLSVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromSPELLSVECTORRecursive3']
+
+
+class USERCHARIncludeFromSPELLSVECTORRecursive3(TypedDict, total=False):
+    """Relational arguments for SPELLSVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromSPELLSVECTORRecursive4']
+
+
+class USERCHARIncludeFromSPELLSVECTORRecursive4(TypedDict, total=False):
+    """Relational arguments for SPELLSVECTOR"""
+
+    
+
+class USERCHARArgsFromSPELLSVECTOR(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive1'
+
+
+class USERCHARArgsFromSPELLSVECTORRecursive1(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive2'
+
+
+class USERCHARArgsFromSPELLSVECTORRecursive2(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive3'
+
+
+class USERCHARArgsFromSPELLSVECTORRecursive3(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive4'
+
+
+class USERCHARArgsFromSPELLSVECTORRecursive4(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    
+    
+
+class FindManyUSERCHARArgsFromSPELLSVECTOR(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive1'
+
+
+class FindManyUSERCHARArgsFromSPELLSVECTORRecursive1(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive2'
+
+
+class FindManyUSERCHARArgsFromSPELLSVECTORRecursive2(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive3'
+
+
+class FindManyUSERCHARArgsFromSPELLSVECTORRecursive3(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive4'
+
+
+class FindManyUSERCHARArgsFromSPELLSVECTORRecursive4(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
     
 
 
@@ -23822,18 +25922,22 @@ class FindManySpellArgsFromSpellRecursive4(TypedDict, total=False):
 
 class USERDATAIncludeFromSpell(TypedDict, total=False):
     """Relational arguments for Spell"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromSpellRecursive1']
 
 
 class USERDATAIncludeFromSpellRecursive1(TypedDict, total=False):
     """Relational arguments for Spell"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromSpellRecursive2']
 
 
 class USERDATAIncludeFromSpellRecursive2(TypedDict, total=False):
     """Relational arguments for Spell"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromSpellRecursive3']
 
 
 class USERDATAIncludeFromSpellRecursive3(TypedDict, total=False):
     """Relational arguments for Spell"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromSpellRecursive4']
 
 
 class USERDATAIncludeFromSpellRecursive4(TypedDict, total=False):
@@ -23918,6 +26022,212 @@ class FindManyUSERDATAArgsFromSpellRecursive4(TypedDict, total=False):
     where: 'USERDATAWhereInput'
     cursor: 'USERDATAWhereUniqueInput'
     distinct: List['USERDATAScalarFieldKeys']
+    
+    
+
+class STORYVECTORIncludeFromSpell(TypedDict, total=False):
+    """Relational arguments for Spell"""
+
+
+class STORYVECTORIncludeFromSpellRecursive1(TypedDict, total=False):
+    """Relational arguments for Spell"""
+
+
+class STORYVECTORIncludeFromSpellRecursive2(TypedDict, total=False):
+    """Relational arguments for Spell"""
+
+
+class STORYVECTORIncludeFromSpellRecursive3(TypedDict, total=False):
+    """Relational arguments for Spell"""
+
+
+class STORYVECTORIncludeFromSpellRecursive4(TypedDict, total=False):
+    """Relational arguments for Spell"""
+
+    
+
+class STORYVECTORArgsFromSpell(TypedDict, total=False):
+    """Arguments for Spell"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive1'
+
+
+class STORYVECTORArgsFromSpellRecursive1(TypedDict, total=False):
+    """Arguments for Spell"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive2'
+
+
+class STORYVECTORArgsFromSpellRecursive2(TypedDict, total=False):
+    """Arguments for Spell"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive3'
+
+
+class STORYVECTORArgsFromSpellRecursive3(TypedDict, total=False):
+    """Arguments for Spell"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive4'
+
+
+class STORYVECTORArgsFromSpellRecursive4(TypedDict, total=False):
+    """Arguments for Spell"""
+    
+    
+
+class FindManySTORYVECTORArgsFromSpell(TypedDict, total=False):
+    """Arguments for Spell"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive1'
+
+
+class FindManySTORYVECTORArgsFromSpellRecursive1(TypedDict, total=False):
+    """Arguments for Spell"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive2'
+
+
+class FindManySTORYVECTORArgsFromSpellRecursive2(TypedDict, total=False):
+    """Arguments for Spell"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive3'
+
+
+class FindManySTORYVECTORArgsFromSpellRecursive3(TypedDict, total=False):
+    """Arguments for Spell"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive4'
+
+
+class FindManySTORYVECTORArgsFromSpellRecursive4(TypedDict, total=False):
+    """Arguments for Spell"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    
+    
+
+class USERCHARIncludeFromSpell(TypedDict, total=False):
+    """Relational arguments for Spell"""
+    username: Union[bool, 'USERDATAArgsFromSpellRecursive1']
+
+
+class USERCHARIncludeFromSpellRecursive1(TypedDict, total=False):
+    """Relational arguments for Spell"""
+    username: Union[bool, 'USERDATAArgsFromSpellRecursive2']
+
+
+class USERCHARIncludeFromSpellRecursive2(TypedDict, total=False):
+    """Relational arguments for Spell"""
+    username: Union[bool, 'USERDATAArgsFromSpellRecursive3']
+
+
+class USERCHARIncludeFromSpellRecursive3(TypedDict, total=False):
+    """Relational arguments for Spell"""
+    username: Union[bool, 'USERDATAArgsFromSpellRecursive4']
+
+
+class USERCHARIncludeFromSpellRecursive4(TypedDict, total=False):
+    """Relational arguments for Spell"""
+
+    
+
+class USERCHARArgsFromSpell(TypedDict, total=False):
+    """Arguments for Spell"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive1'
+
+
+class USERCHARArgsFromSpellRecursive1(TypedDict, total=False):
+    """Arguments for Spell"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive2'
+
+
+class USERCHARArgsFromSpellRecursive2(TypedDict, total=False):
+    """Arguments for Spell"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive3'
+
+
+class USERCHARArgsFromSpellRecursive3(TypedDict, total=False):
+    """Arguments for Spell"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive4'
+
+
+class USERCHARArgsFromSpellRecursive4(TypedDict, total=False):
+    """Arguments for Spell"""
+    
+    
+
+class FindManyUSERCHARArgsFromSpell(TypedDict, total=False):
+    """Arguments for Spell"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive1'
+
+
+class FindManyUSERCHARArgsFromSpellRecursive1(TypedDict, total=False):
+    """Arguments for Spell"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive2'
+
+
+class FindManyUSERCHARArgsFromSpellRecursive2(TypedDict, total=False):
+    """Arguments for Spell"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive3'
+
+
+class FindManyUSERCHARArgsFromSpellRecursive3(TypedDict, total=False):
+    """Arguments for Spell"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive4'
+
+
+class FindManyUSERCHARArgsFromSpellRecursive4(TypedDict, total=False):
+    """Arguments for Spell"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
     
 
 
@@ -24447,6 +26757,7 @@ SpellRelationalFieldKeys = _NoneType
 class USERDATAOptionalCreateInput(TypedDict, total=False):
     """Optional arguments to the USERDATA create method"""
     id: _int
+    characters: 'USERCHARCreateManyNestedWithoutRelationsInput'
 
 
 class USERDATACreateInput(USERDATAOptionalCreateInput):
@@ -24493,7 +26804,18 @@ _USERDATAWhereUnique_id_Input = TypedDict(
     total=True
 )
 
-USERDATAWhereUniqueInput = _USERDATAWhereUnique_id_Input
+_USERDATAWhereUnique_username_Input = TypedDict(
+    '_USERDATAWhereUnique_username_Input',
+    {
+        'username': '_str',
+    },
+    total=True
+)
+
+USERDATAWhereUniqueInput = Union[
+    '_USERDATAWhereUnique_id_Input',
+    '_USERDATAWhereUnique_username_Input',
+]
 
 
 class USERDATAUpdateInput(TypedDict, total=False):
@@ -24502,6 +26824,7 @@ class USERDATAUpdateInput(TypedDict, total=False):
     name: _str
     username: _str
     password: _str
+    characters: 'USERCHARUpdateManyWithoutRelationsInput'
 
 
 class USERDATAUpdateManyMutationInput(TypedDict, total=False):
@@ -24630,6 +26953,7 @@ class USERDATAListRelationFilter(TypedDict, total=False):
 
 class USERDATAInclude(TypedDict, total=False):
     """USERDATA relational arguments"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromUSERDATA']
 
 
     
@@ -25747,18 +28071,22 @@ class FindManySpellArgsFromUSERDATARecursive4(TypedDict, total=False):
 
 class USERDATAIncludeFromUSERDATA(TypedDict, total=False):
     """Relational arguments for USERDATA"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromUSERDATARecursive1']
 
 
 class USERDATAIncludeFromUSERDATARecursive1(TypedDict, total=False):
     """Relational arguments for USERDATA"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromUSERDATARecursive2']
 
 
 class USERDATAIncludeFromUSERDATARecursive2(TypedDict, total=False):
     """Relational arguments for USERDATA"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromUSERDATARecursive3']
 
 
 class USERDATAIncludeFromUSERDATARecursive3(TypedDict, total=False):
     """Relational arguments for USERDATA"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromUSERDATARecursive4']
 
 
 class USERDATAIncludeFromUSERDATARecursive4(TypedDict, total=False):
@@ -25844,6 +28172,212 @@ class FindManyUSERDATAArgsFromUSERDATARecursive4(TypedDict, total=False):
     cursor: 'USERDATAWhereUniqueInput'
     distinct: List['USERDATAScalarFieldKeys']
     
+    
+
+class STORYVECTORIncludeFromUSERDATA(TypedDict, total=False):
+    """Relational arguments for USERDATA"""
+
+
+class STORYVECTORIncludeFromUSERDATARecursive1(TypedDict, total=False):
+    """Relational arguments for USERDATA"""
+
+
+class STORYVECTORIncludeFromUSERDATARecursive2(TypedDict, total=False):
+    """Relational arguments for USERDATA"""
+
+
+class STORYVECTORIncludeFromUSERDATARecursive3(TypedDict, total=False):
+    """Relational arguments for USERDATA"""
+
+
+class STORYVECTORIncludeFromUSERDATARecursive4(TypedDict, total=False):
+    """Relational arguments for USERDATA"""
+
+    
+
+class STORYVECTORArgsFromUSERDATA(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive1'
+
+
+class STORYVECTORArgsFromUSERDATARecursive1(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive2'
+
+
+class STORYVECTORArgsFromUSERDATARecursive2(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive3'
+
+
+class STORYVECTORArgsFromUSERDATARecursive3(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive4'
+
+
+class STORYVECTORArgsFromUSERDATARecursive4(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    
+    
+
+class FindManySTORYVECTORArgsFromUSERDATA(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive1'
+
+
+class FindManySTORYVECTORArgsFromUSERDATARecursive1(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive2'
+
+
+class FindManySTORYVECTORArgsFromUSERDATARecursive2(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive3'
+
+
+class FindManySTORYVECTORArgsFromUSERDATARecursive3(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive4'
+
+
+class FindManySTORYVECTORArgsFromUSERDATARecursive4(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    
+    
+
+class USERCHARIncludeFromUSERDATA(TypedDict, total=False):
+    """Relational arguments for USERDATA"""
+    username: Union[bool, 'USERDATAArgsFromUSERDATARecursive1']
+
+
+class USERCHARIncludeFromUSERDATARecursive1(TypedDict, total=False):
+    """Relational arguments for USERDATA"""
+    username: Union[bool, 'USERDATAArgsFromUSERDATARecursive2']
+
+
+class USERCHARIncludeFromUSERDATARecursive2(TypedDict, total=False):
+    """Relational arguments for USERDATA"""
+    username: Union[bool, 'USERDATAArgsFromUSERDATARecursive3']
+
+
+class USERCHARIncludeFromUSERDATARecursive3(TypedDict, total=False):
+    """Relational arguments for USERDATA"""
+    username: Union[bool, 'USERDATAArgsFromUSERDATARecursive4']
+
+
+class USERCHARIncludeFromUSERDATARecursive4(TypedDict, total=False):
+    """Relational arguments for USERDATA"""
+
+    
+
+class USERCHARArgsFromUSERDATA(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive1'
+
+
+class USERCHARArgsFromUSERDATARecursive1(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive2'
+
+
+class USERCHARArgsFromUSERDATARecursive2(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive3'
+
+
+class USERCHARArgsFromUSERDATARecursive3(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive4'
+
+
+class USERCHARArgsFromUSERDATARecursive4(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    
+    
+
+class FindManyUSERCHARArgsFromUSERDATA(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive1'
+
+
+class FindManyUSERCHARArgsFromUSERDATARecursive1(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive2'
+
+
+class FindManyUSERCHARArgsFromUSERDATARecursive2(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive3'
+
+
+class FindManyUSERCHARArgsFromUSERDATARecursive3(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive4'
+
+
+class FindManyUSERCHARArgsFromUSERDATARecursive4(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    
 
 
 FindManyUSERDATAArgs = FindManyUSERDATAArgsFromUSERDATA
@@ -25858,6 +28392,7 @@ class USERDATAWhereInput(TypedDict, total=False):
     name: Union[_str, 'types.StringFilter']
     username: Union[_str, 'types.StringFilter']
     password: Union[_str, 'types.StringFilter']
+    characters: 'USERCHARListRelationFilter'
 
     # should be noted that AND and NOT should be Union['USERDATAWhereInputRecursive1', List['USERDATAWhereInputRecursive1']]
     # but this causes mypy to hang :/
@@ -25872,6 +28407,7 @@ class USERDATAWhereInputRecursive1(TypedDict, total=False):
     name: Union[_str, 'types.StringFilter']
     username: Union[_str, 'types.StringFilter']
     password: Union[_str, 'types.StringFilter']
+    characters: 'USERCHARListRelationFilter'
 
     # should be noted that AND and NOT should be Union['USERDATAWhereInputRecursive2', List['USERDATAWhereInputRecursive2']]
     # but this causes mypy to hang :/
@@ -25886,6 +28422,7 @@ class USERDATAWhereInputRecursive2(TypedDict, total=False):
     name: Union[_str, 'types.StringFilter']
     username: Union[_str, 'types.StringFilter']
     password: Union[_str, 'types.StringFilter']
+    characters: 'USERCHARListRelationFilter'
 
     # should be noted that AND and NOT should be Union['USERDATAWhereInputRecursive3', List['USERDATAWhereInputRecursive3']]
     # but this causes mypy to hang :/
@@ -25900,6 +28437,7 @@ class USERDATAWhereInputRecursive3(TypedDict, total=False):
     name: Union[_str, 'types.StringFilter']
     username: Union[_str, 'types.StringFilter']
     password: Union[_str, 'types.StringFilter']
+    characters: 'USERCHARListRelationFilter'
 
     # should be noted that AND and NOT should be Union['USERDATAWhereInputRecursive4', List['USERDATAWhereInputRecursive4']]
     # but this causes mypy to hang :/
@@ -25914,6 +28452,7 @@ class USERDATAWhereInputRecursive4(TypedDict, total=False):
     name: Union[_str, 'types.StringFilter']
     username: Union[_str, 'types.StringFilter']
     password: Union[_str, 'types.StringFilter']
+    characters: 'USERCHARListRelationFilter'
 
 
 
@@ -26068,6 +28607,7 @@ USERDATAKeys = Literal[
     'name',
     'username',
     'password',
+    'characters',
 ]
 USERDATAScalarFieldKeys = Literal[
     'id',
@@ -26077,7 +28617,3916 @@ USERDATAScalarFieldKeys = Literal[
 ]
 USERDATAScalarFieldKeysT = TypeVar('USERDATAScalarFieldKeysT', bound=USERDATAScalarFieldKeys)
 
-USERDATARelationalFieldKeys = _NoneType
+USERDATARelationalFieldKeys = Literal[
+        'characters',
+    ]
+
+# STORYVECTOR types
+
+class STORYVECTOROptionalCreateInput(TypedDict, total=False):
+    """Optional arguments to the STORYVECTOR create method"""
+    id: _int
+
+
+class STORYVECTORCreateInput(STORYVECTOROptionalCreateInput):
+    """Required arguments to the STORYVECTOR create method"""
+    text: _str
+
+
+# TODO: remove this in favour of without explicit relations
+# e.g. PostCreateWithoutAuthorInput
+
+class STORYVECTOROptionalCreateWithoutRelationsInput(TypedDict, total=False):
+    """Optional arguments to the STORYVECTOR create method, without relations"""
+    id: _int
+
+
+class STORYVECTORCreateWithoutRelationsInput(STORYVECTOROptionalCreateWithoutRelationsInput):
+    """Required arguments to the STORYVECTOR create method, without relations"""
+    text: _str
+
+class STORYVECTORConnectOrCreateWithoutRelationsInput(TypedDict):
+    create: 'STORYVECTORCreateWithoutRelationsInput'
+    where: 'STORYVECTORWhereUniqueInput'
+
+class STORYVECTORCreateNestedWithoutRelationsInput(TypedDict, total=False):
+    create: 'STORYVECTORCreateWithoutRelationsInput'
+    connect: 'STORYVECTORWhereUniqueInput'
+    connect_or_create: 'STORYVECTORConnectOrCreateWithoutRelationsInput'
+
+
+class STORYVECTORCreateManyNestedWithoutRelationsInput(TypedDict, total=False):
+    create: Union['STORYVECTORCreateWithoutRelationsInput', List['STORYVECTORCreateWithoutRelationsInput']]
+    connect: Union['STORYVECTORWhereUniqueInput', List['STORYVECTORWhereUniqueInput']]
+    connect_or_create: Union['STORYVECTORConnectOrCreateWithoutRelationsInput', List['STORYVECTORConnectOrCreateWithoutRelationsInput']]
+
+_STORYVECTORWhereUnique_id_Input = TypedDict(
+    '_STORYVECTORWhereUnique_id_Input',
+    {
+        'id': '_int',
+    },
+    total=True
+)
+
+STORYVECTORWhereUniqueInput = _STORYVECTORWhereUnique_id_Input
+
+
+class STORYVECTORUpdateInput(TypedDict, total=False):
+    """Optional arguments for updating a record"""
+    id: Union[AtomicIntInput, _int]
+    text: _str
+
+
+class STORYVECTORUpdateManyMutationInput(TypedDict, total=False):
+    """Arguments for updating many records"""
+    id: Union[AtomicIntInput, _int]
+    text: _str
+
+
+class STORYVECTORUpdateManyWithoutRelationsInput(TypedDict, total=False):
+    create: List['STORYVECTORCreateWithoutRelationsInput']
+    connect: List['STORYVECTORWhereUniqueInput']
+    connect_or_create: List['STORYVECTORConnectOrCreateWithoutRelationsInput']
+    set: List['STORYVECTORWhereUniqueInput']
+    disconnect: List['STORYVECTORWhereUniqueInput']
+    delete: List['STORYVECTORWhereUniqueInput']
+
+    # TODO
+    # update: List['STORYVECTORUpdateWithWhereUniqueWithoutRelationsInput']
+    # updateMany: List['STORYVECTORUpdateManyWithWhereUniqueWithoutRelationsInput']
+    # deleteMany: List['STORYVECTORScalarWhereInput']
+    # upsert: List['STORYVECTORUpserteWithWhereUniqueWithoutRelationsInput']
+
+
+class STORYVECTORUpdateOneWithoutRelationsInput(TypedDict, total=False):
+    create: 'STORYVECTORCreateWithoutRelationsInput'
+    connect: 'STORYVECTORWhereUniqueInput'
+    connect_or_create: 'STORYVECTORConnectOrCreateWithoutRelationsInput'
+    disconnect: bool
+    delete: bool
+
+    # TODO
+    # update: 'STORYVECTORUpdateInput'
+    # upsert: 'STORYVECTORUpsertWithoutRelationsInput'
+
+
+class STORYVECTORUpsertInput(TypedDict):
+    create: 'STORYVECTORCreateInput'
+    update: 'STORYVECTORUpdateInput'  # pyright: ignore[reportIncompatibleMethodOverride]
+
+
+_STORYVECTOR_id_OrderByInput = TypedDict(
+    '_STORYVECTOR_id_OrderByInput',
+    {
+        'id': 'SortOrder',
+    },
+    total=True
+)
+
+_STORYVECTOR_text_OrderByInput = TypedDict(
+    '_STORYVECTOR_text_OrderByInput',
+    {
+        'text': 'SortOrder',
+    },
+    total=True
+)
+
+_STORYVECTOR_RelevanceInner = TypedDict(
+    '_STORYVECTOR_RelevanceInner',
+    {
+        'fields': 'List[STORYVECTORScalarFieldKeys]',
+        'search': 'str',
+        'sort': 'SortOrder',
+    },
+    total=True
+)
+
+_STORYVECTOR_RelevanceOrderByInput = TypedDict(
+    '_STORYVECTOR_RelevanceOrderByInput',
+    {
+        '_relevance': '_STORYVECTOR_RelevanceInner',
+    },
+    total=True
+)
+
+STORYVECTOROrderByInput = Union[
+    '_STORYVECTOR_id_OrderByInput',
+    '_STORYVECTOR_text_OrderByInput',
+    '_STORYVECTOR_RelevanceOrderByInput',
+]
+
+
+
+# recursive STORYVECTOR types
+# TODO: cleanup these types
+
+
+# Dict[str, Any] is a mypy limitation
+# see https://github.com/RobertCraigie/prisma-client-py/issues/45
+# switch to pyright for improved types, see https://prisma-client-py.readthedocs.io/en/stable/reference/limitations/
+
+STORYVECTORRelationFilter = TypedDict(
+    'STORYVECTORRelationFilter',
+    {
+        'is': 'Dict[str, Any]',
+        'is_not': 'Dict[str, Any]',
+    },
+    total=False,
+)
+
+
+class STORYVECTORListRelationFilter(TypedDict, total=False):
+    some: 'Dict[str, Any]'
+    none: 'Dict[str, Any]'
+    every: 'Dict[str, Any]'
+
+
+class STORYVECTORInclude(TypedDict, total=False):
+    """STORYVECTOR relational arguments"""
+
+
+    
+
+class CHARACTERVECTORIncludeFromSTORYVECTOR(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class CHARACTERVECTORIncludeFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class CHARACTERVECTORIncludeFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class CHARACTERVECTORIncludeFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class CHARACTERVECTORIncludeFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+    
+
+class CHARACTERVECTORArgsFromSTORYVECTOR(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive1'
+
+
+class CHARACTERVECTORArgsFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive2'
+
+
+class CHARACTERVECTORArgsFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive3'
+
+
+class CHARACTERVECTORArgsFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive4'
+
+
+class CHARACTERVECTORArgsFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    
+    
+
+class FindManyCHARACTERVECTORArgsFromSTORYVECTOR(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['CHARACTERVECTOROrderByInput', List['CHARACTERVECTOROrderByInput']]
+    where: 'CHARACTERVECTORWhereInput'
+    cursor: 'CHARACTERVECTORWhereUniqueInput'
+    distinct: List['CHARACTERVECTORScalarFieldKeys']
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive1'
+
+
+class FindManyCHARACTERVECTORArgsFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['CHARACTERVECTOROrderByInput', List['CHARACTERVECTOROrderByInput']]
+    where: 'CHARACTERVECTORWhereInput'
+    cursor: 'CHARACTERVECTORWhereUniqueInput'
+    distinct: List['CHARACTERVECTORScalarFieldKeys']
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive2'
+
+
+class FindManyCHARACTERVECTORArgsFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['CHARACTERVECTOROrderByInput', List['CHARACTERVECTOROrderByInput']]
+    where: 'CHARACTERVECTORWhereInput'
+    cursor: 'CHARACTERVECTORWhereUniqueInput'
+    distinct: List['CHARACTERVECTORScalarFieldKeys']
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive3'
+
+
+class FindManyCHARACTERVECTORArgsFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['CHARACTERVECTOROrderByInput', List['CHARACTERVECTOROrderByInput']]
+    where: 'CHARACTERVECTORWhereInput'
+    cursor: 'CHARACTERVECTORWhereUniqueInput'
+    distinct: List['CHARACTERVECTORScalarFieldKeys']
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive4'
+
+
+class FindManyCHARACTERVECTORArgsFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['CHARACTERVECTOROrderByInput', List['CHARACTERVECTOROrderByInput']]
+    where: 'CHARACTERVECTORWhereInput'
+    cursor: 'CHARACTERVECTORWhereUniqueInput'
+    distinct: List['CHARACTERVECTORScalarFieldKeys']
+    
+    
+
+class ClassesIncludeFromSTORYVECTOR(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class ClassesIncludeFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class ClassesIncludeFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class ClassesIncludeFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class ClassesIncludeFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+    
+
+class ClassesArgsFromSTORYVECTOR(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'ClassesIncludeFromClassesRecursive1'
+
+
+class ClassesArgsFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'ClassesIncludeFromClassesRecursive2'
+
+
+class ClassesArgsFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'ClassesIncludeFromClassesRecursive3'
+
+
+class ClassesArgsFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'ClassesIncludeFromClassesRecursive4'
+
+
+class ClassesArgsFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    
+    
+
+class FindManyClassesArgsFromSTORYVECTOR(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['ClassesOrderByInput', List['ClassesOrderByInput']]
+    where: 'ClassesWhereInput'
+    cursor: 'ClassesWhereUniqueInput'
+    distinct: List['ClassesScalarFieldKeys']
+    include: 'ClassesIncludeFromClassesRecursive1'
+
+
+class FindManyClassesArgsFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['ClassesOrderByInput', List['ClassesOrderByInput']]
+    where: 'ClassesWhereInput'
+    cursor: 'ClassesWhereUniqueInput'
+    distinct: List['ClassesScalarFieldKeys']
+    include: 'ClassesIncludeFromClassesRecursive2'
+
+
+class FindManyClassesArgsFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['ClassesOrderByInput', List['ClassesOrderByInput']]
+    where: 'ClassesWhereInput'
+    cursor: 'ClassesWhereUniqueInput'
+    distinct: List['ClassesScalarFieldKeys']
+    include: 'ClassesIncludeFromClassesRecursive3'
+
+
+class FindManyClassesArgsFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['ClassesOrderByInput', List['ClassesOrderByInput']]
+    where: 'ClassesWhereInput'
+    cursor: 'ClassesWhereUniqueInput'
+    distinct: List['ClassesScalarFieldKeys']
+    include: 'ClassesIncludeFromClassesRecursive4'
+
+
+class FindManyClassesArgsFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['ClassesOrderByInput', List['ClassesOrderByInput']]
+    where: 'ClassesWhereInput'
+    cursor: 'ClassesWhereUniqueInput'
+    distinct: List['ClassesScalarFieldKeys']
+    
+    
+
+class GeneralEquipmentIncludeFromSTORYVECTOR(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class GeneralEquipmentIncludeFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class GeneralEquipmentIncludeFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class GeneralEquipmentIncludeFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class GeneralEquipmentIncludeFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+    
+
+class GeneralEquipmentArgsFromSTORYVECTOR(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive1'
+
+
+class GeneralEquipmentArgsFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive2'
+
+
+class GeneralEquipmentArgsFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive3'
+
+
+class GeneralEquipmentArgsFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive4'
+
+
+class GeneralEquipmentArgsFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    
+    
+
+class FindManyGeneralEquipmentArgsFromSTORYVECTOR(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['GeneralEquipmentOrderByInput', List['GeneralEquipmentOrderByInput']]
+    where: 'GeneralEquipmentWhereInput'
+    cursor: 'GeneralEquipmentWhereUniqueInput'
+    distinct: List['GeneralEquipmentScalarFieldKeys']
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive1'
+
+
+class FindManyGeneralEquipmentArgsFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['GeneralEquipmentOrderByInput', List['GeneralEquipmentOrderByInput']]
+    where: 'GeneralEquipmentWhereInput'
+    cursor: 'GeneralEquipmentWhereUniqueInput'
+    distinct: List['GeneralEquipmentScalarFieldKeys']
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive2'
+
+
+class FindManyGeneralEquipmentArgsFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['GeneralEquipmentOrderByInput', List['GeneralEquipmentOrderByInput']]
+    where: 'GeneralEquipmentWhereInput'
+    cursor: 'GeneralEquipmentWhereUniqueInput'
+    distinct: List['GeneralEquipmentScalarFieldKeys']
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive3'
+
+
+class FindManyGeneralEquipmentArgsFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['GeneralEquipmentOrderByInput', List['GeneralEquipmentOrderByInput']]
+    where: 'GeneralEquipmentWhereInput'
+    cursor: 'GeneralEquipmentWhereUniqueInput'
+    distinct: List['GeneralEquipmentScalarFieldKeys']
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive4'
+
+
+class FindManyGeneralEquipmentArgsFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['GeneralEquipmentOrderByInput', List['GeneralEquipmentOrderByInput']]
+    where: 'GeneralEquipmentWhereInput'
+    cursor: 'GeneralEquipmentWhereUniqueInput'
+    distinct: List['GeneralEquipmentScalarFieldKeys']
+    
+    
+
+class ITEMSVECTORIncludeFromSTORYVECTOR(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class ITEMSVECTORIncludeFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class ITEMSVECTORIncludeFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class ITEMSVECTORIncludeFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class ITEMSVECTORIncludeFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+    
+
+class ITEMSVECTORArgsFromSTORYVECTOR(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive1'
+
+
+class ITEMSVECTORArgsFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive2'
+
+
+class ITEMSVECTORArgsFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive3'
+
+
+class ITEMSVECTORArgsFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive4'
+
+
+class ITEMSVECTORArgsFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    
+    
+
+class FindManyITEMSVECTORArgsFromSTORYVECTOR(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['ITEMSVECTOROrderByInput', List['ITEMSVECTOROrderByInput']]
+    where: 'ITEMSVECTORWhereInput'
+    cursor: 'ITEMSVECTORWhereUniqueInput'
+    distinct: List['ITEMSVECTORScalarFieldKeys']
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive1'
+
+
+class FindManyITEMSVECTORArgsFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['ITEMSVECTOROrderByInput', List['ITEMSVECTOROrderByInput']]
+    where: 'ITEMSVECTORWhereInput'
+    cursor: 'ITEMSVECTORWhereUniqueInput'
+    distinct: List['ITEMSVECTORScalarFieldKeys']
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive2'
+
+
+class FindManyITEMSVECTORArgsFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['ITEMSVECTOROrderByInput', List['ITEMSVECTOROrderByInput']]
+    where: 'ITEMSVECTORWhereInput'
+    cursor: 'ITEMSVECTORWhereUniqueInput'
+    distinct: List['ITEMSVECTORScalarFieldKeys']
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive3'
+
+
+class FindManyITEMSVECTORArgsFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['ITEMSVECTOROrderByInput', List['ITEMSVECTOROrderByInput']]
+    where: 'ITEMSVECTORWhereInput'
+    cursor: 'ITEMSVECTORWhereUniqueInput'
+    distinct: List['ITEMSVECTORScalarFieldKeys']
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive4'
+
+
+class FindManyITEMSVECTORArgsFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['ITEMSVECTOROrderByInput', List['ITEMSVECTOROrderByInput']]
+    where: 'ITEMSVECTORWhereInput'
+    cursor: 'ITEMSVECTORWhereUniqueInput'
+    distinct: List['ITEMSVECTORScalarFieldKeys']
+    
+    
+
+class MONSTERVECTORIncludeFromSTORYVECTOR(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class MONSTERVECTORIncludeFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class MONSTERVECTORIncludeFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class MONSTERVECTORIncludeFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class MONSTERVECTORIncludeFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+    
+
+class MONSTERVECTORArgsFromSTORYVECTOR(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive1'
+
+
+class MONSTERVECTORArgsFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive2'
+
+
+class MONSTERVECTORArgsFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive3'
+
+
+class MONSTERVECTORArgsFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive4'
+
+
+class MONSTERVECTORArgsFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    
+    
+
+class FindManyMONSTERVECTORArgsFromSTORYVECTOR(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['MONSTERVECTOROrderByInput', List['MONSTERVECTOROrderByInput']]
+    where: 'MONSTERVECTORWhereInput'
+    cursor: 'MONSTERVECTORWhereUniqueInput'
+    distinct: List['MONSTERVECTORScalarFieldKeys']
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive1'
+
+
+class FindManyMONSTERVECTORArgsFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['MONSTERVECTOROrderByInput', List['MONSTERVECTOROrderByInput']]
+    where: 'MONSTERVECTORWhereInput'
+    cursor: 'MONSTERVECTORWhereUniqueInput'
+    distinct: List['MONSTERVECTORScalarFieldKeys']
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive2'
+
+
+class FindManyMONSTERVECTORArgsFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['MONSTERVECTOROrderByInput', List['MONSTERVECTOROrderByInput']]
+    where: 'MONSTERVECTORWhereInput'
+    cursor: 'MONSTERVECTORWhereUniqueInput'
+    distinct: List['MONSTERVECTORScalarFieldKeys']
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive3'
+
+
+class FindManyMONSTERVECTORArgsFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['MONSTERVECTOROrderByInput', List['MONSTERVECTOROrderByInput']]
+    where: 'MONSTERVECTORWhereInput'
+    cursor: 'MONSTERVECTORWhereUniqueInput'
+    distinct: List['MONSTERVECTORScalarFieldKeys']
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive4'
+
+
+class FindManyMONSTERVECTORArgsFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['MONSTERVECTOROrderByInput', List['MONSTERVECTOROrderByInput']]
+    where: 'MONSTERVECTORWhereInput'
+    cursor: 'MONSTERVECTORWhereUniqueInput'
+    distinct: List['MONSTERVECTORScalarFieldKeys']
+    
+    
+
+class MagicItemIncludeFromSTORYVECTOR(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class MagicItemIncludeFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class MagicItemIncludeFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class MagicItemIncludeFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class MagicItemIncludeFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+    
+
+class MagicItemArgsFromSTORYVECTOR(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'MagicItemIncludeFromMagicItemRecursive1'
+
+
+class MagicItemArgsFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'MagicItemIncludeFromMagicItemRecursive2'
+
+
+class MagicItemArgsFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'MagicItemIncludeFromMagicItemRecursive3'
+
+
+class MagicItemArgsFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'MagicItemIncludeFromMagicItemRecursive4'
+
+
+class MagicItemArgsFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    
+    
+
+class FindManyMagicItemArgsFromSTORYVECTOR(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['MagicItemOrderByInput', List['MagicItemOrderByInput']]
+    where: 'MagicItemWhereInput'
+    cursor: 'MagicItemWhereUniqueInput'
+    distinct: List['MagicItemScalarFieldKeys']
+    include: 'MagicItemIncludeFromMagicItemRecursive1'
+
+
+class FindManyMagicItemArgsFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['MagicItemOrderByInput', List['MagicItemOrderByInput']]
+    where: 'MagicItemWhereInput'
+    cursor: 'MagicItemWhereUniqueInput'
+    distinct: List['MagicItemScalarFieldKeys']
+    include: 'MagicItemIncludeFromMagicItemRecursive2'
+
+
+class FindManyMagicItemArgsFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['MagicItemOrderByInput', List['MagicItemOrderByInput']]
+    where: 'MagicItemWhereInput'
+    cursor: 'MagicItemWhereUniqueInput'
+    distinct: List['MagicItemScalarFieldKeys']
+    include: 'MagicItemIncludeFromMagicItemRecursive3'
+
+
+class FindManyMagicItemArgsFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['MagicItemOrderByInput', List['MagicItemOrderByInput']]
+    where: 'MagicItemWhereInput'
+    cursor: 'MagicItemWhereUniqueInput'
+    distinct: List['MagicItemScalarFieldKeys']
+    include: 'MagicItemIncludeFromMagicItemRecursive4'
+
+
+class FindManyMagicItemArgsFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['MagicItemOrderByInput', List['MagicItemOrderByInput']]
+    where: 'MagicItemWhereInput'
+    cursor: 'MagicItemWhereUniqueInput'
+    distinct: List['MagicItemScalarFieldKeys']
+    
+    
+
+class MonsterIncludeFromSTORYVECTOR(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class MonsterIncludeFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class MonsterIncludeFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class MonsterIncludeFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class MonsterIncludeFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+    
+
+class MonsterArgsFromSTORYVECTOR(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'MonsterIncludeFromMonsterRecursive1'
+
+
+class MonsterArgsFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'MonsterIncludeFromMonsterRecursive2'
+
+
+class MonsterArgsFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'MonsterIncludeFromMonsterRecursive3'
+
+
+class MonsterArgsFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'MonsterIncludeFromMonsterRecursive4'
+
+
+class MonsterArgsFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    
+    
+
+class FindManyMonsterArgsFromSTORYVECTOR(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['MonsterOrderByInput', List['MonsterOrderByInput']]
+    where: 'MonsterWhereInput'
+    cursor: 'MonsterWhereUniqueInput'
+    distinct: List['MonsterScalarFieldKeys']
+    include: 'MonsterIncludeFromMonsterRecursive1'
+
+
+class FindManyMonsterArgsFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['MonsterOrderByInput', List['MonsterOrderByInput']]
+    where: 'MonsterWhereInput'
+    cursor: 'MonsterWhereUniqueInput'
+    distinct: List['MonsterScalarFieldKeys']
+    include: 'MonsterIncludeFromMonsterRecursive2'
+
+
+class FindManyMonsterArgsFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['MonsterOrderByInput', List['MonsterOrderByInput']]
+    where: 'MonsterWhereInput'
+    cursor: 'MonsterWhereUniqueInput'
+    distinct: List['MonsterScalarFieldKeys']
+    include: 'MonsterIncludeFromMonsterRecursive3'
+
+
+class FindManyMonsterArgsFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['MonsterOrderByInput', List['MonsterOrderByInput']]
+    where: 'MonsterWhereInput'
+    cursor: 'MonsterWhereUniqueInput'
+    distinct: List['MonsterScalarFieldKeys']
+    include: 'MonsterIncludeFromMonsterRecursive4'
+
+
+class FindManyMonsterArgsFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['MonsterOrderByInput', List['MonsterOrderByInput']]
+    where: 'MonsterWhereInput'
+    cursor: 'MonsterWhereUniqueInput'
+    distinct: List['MonsterScalarFieldKeys']
+    
+    
+
+class RaceIncludeFromSTORYVECTOR(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class RaceIncludeFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class RaceIncludeFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class RaceIncludeFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class RaceIncludeFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+    
+
+class RaceArgsFromSTORYVECTOR(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'RaceIncludeFromRaceRecursive1'
+
+
+class RaceArgsFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'RaceIncludeFromRaceRecursive2'
+
+
+class RaceArgsFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'RaceIncludeFromRaceRecursive3'
+
+
+class RaceArgsFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'RaceIncludeFromRaceRecursive4'
+
+
+class RaceArgsFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    
+    
+
+class FindManyRaceArgsFromSTORYVECTOR(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['RaceOrderByInput', List['RaceOrderByInput']]
+    where: 'RaceWhereInput'
+    cursor: 'RaceWhereUniqueInput'
+    distinct: List['RaceScalarFieldKeys']
+    include: 'RaceIncludeFromRaceRecursive1'
+
+
+class FindManyRaceArgsFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['RaceOrderByInput', List['RaceOrderByInput']]
+    where: 'RaceWhereInput'
+    cursor: 'RaceWhereUniqueInput'
+    distinct: List['RaceScalarFieldKeys']
+    include: 'RaceIncludeFromRaceRecursive2'
+
+
+class FindManyRaceArgsFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['RaceOrderByInput', List['RaceOrderByInput']]
+    where: 'RaceWhereInput'
+    cursor: 'RaceWhereUniqueInput'
+    distinct: List['RaceScalarFieldKeys']
+    include: 'RaceIncludeFromRaceRecursive3'
+
+
+class FindManyRaceArgsFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['RaceOrderByInput', List['RaceOrderByInput']]
+    where: 'RaceWhereInput'
+    cursor: 'RaceWhereUniqueInput'
+    distinct: List['RaceScalarFieldKeys']
+    include: 'RaceIncludeFromRaceRecursive4'
+
+
+class FindManyRaceArgsFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['RaceOrderByInput', List['RaceOrderByInput']]
+    where: 'RaceWhereInput'
+    cursor: 'RaceWhereUniqueInput'
+    distinct: List['RaceScalarFieldKeys']
+    
+    
+
+class SESSIONIncludeFromSTORYVECTOR(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class SESSIONIncludeFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class SESSIONIncludeFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class SESSIONIncludeFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class SESSIONIncludeFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+    
+
+class SESSIONArgsFromSTORYVECTOR(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'SESSIONIncludeFromSESSIONRecursive1'
+
+
+class SESSIONArgsFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'SESSIONIncludeFromSESSIONRecursive2'
+
+
+class SESSIONArgsFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'SESSIONIncludeFromSESSIONRecursive3'
+
+
+class SESSIONArgsFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'SESSIONIncludeFromSESSIONRecursive4'
+
+
+class SESSIONArgsFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    
+    
+
+class FindManySESSIONArgsFromSTORYVECTOR(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SESSIONOrderByInput', List['SESSIONOrderByInput']]
+    where: 'SESSIONWhereInput'
+    cursor: 'SESSIONWhereUniqueInput'
+    distinct: List['SESSIONScalarFieldKeys']
+    include: 'SESSIONIncludeFromSESSIONRecursive1'
+
+
+class FindManySESSIONArgsFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SESSIONOrderByInput', List['SESSIONOrderByInput']]
+    where: 'SESSIONWhereInput'
+    cursor: 'SESSIONWhereUniqueInput'
+    distinct: List['SESSIONScalarFieldKeys']
+    include: 'SESSIONIncludeFromSESSIONRecursive2'
+
+
+class FindManySESSIONArgsFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SESSIONOrderByInput', List['SESSIONOrderByInput']]
+    where: 'SESSIONWhereInput'
+    cursor: 'SESSIONWhereUniqueInput'
+    distinct: List['SESSIONScalarFieldKeys']
+    include: 'SESSIONIncludeFromSESSIONRecursive3'
+
+
+class FindManySESSIONArgsFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SESSIONOrderByInput', List['SESSIONOrderByInput']]
+    where: 'SESSIONWhereInput'
+    cursor: 'SESSIONWhereUniqueInput'
+    distinct: List['SESSIONScalarFieldKeys']
+    include: 'SESSIONIncludeFromSESSIONRecursive4'
+
+
+class FindManySESSIONArgsFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SESSIONOrderByInput', List['SESSIONOrderByInput']]
+    where: 'SESSIONWhereInput'
+    cursor: 'SESSIONWhereUniqueInput'
+    distinct: List['SESSIONScalarFieldKeys']
+    
+    
+
+class SPELLSVECTORIncludeFromSTORYVECTOR(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class SPELLSVECTORIncludeFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class SPELLSVECTORIncludeFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class SPELLSVECTORIncludeFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class SPELLSVECTORIncludeFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+    
+
+class SPELLSVECTORArgsFromSTORYVECTOR(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive1'
+
+
+class SPELLSVECTORArgsFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive2'
+
+
+class SPELLSVECTORArgsFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive3'
+
+
+class SPELLSVECTORArgsFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive4'
+
+
+class SPELLSVECTORArgsFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    
+    
+
+class FindManySPELLSVECTORArgsFromSTORYVECTOR(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SPELLSVECTOROrderByInput', List['SPELLSVECTOROrderByInput']]
+    where: 'SPELLSVECTORWhereInput'
+    cursor: 'SPELLSVECTORWhereUniqueInput'
+    distinct: List['SPELLSVECTORScalarFieldKeys']
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive1'
+
+
+class FindManySPELLSVECTORArgsFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SPELLSVECTOROrderByInput', List['SPELLSVECTOROrderByInput']]
+    where: 'SPELLSVECTORWhereInput'
+    cursor: 'SPELLSVECTORWhereUniqueInput'
+    distinct: List['SPELLSVECTORScalarFieldKeys']
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive2'
+
+
+class FindManySPELLSVECTORArgsFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SPELLSVECTOROrderByInput', List['SPELLSVECTOROrderByInput']]
+    where: 'SPELLSVECTORWhereInput'
+    cursor: 'SPELLSVECTORWhereUniqueInput'
+    distinct: List['SPELLSVECTORScalarFieldKeys']
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive3'
+
+
+class FindManySPELLSVECTORArgsFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SPELLSVECTOROrderByInput', List['SPELLSVECTOROrderByInput']]
+    where: 'SPELLSVECTORWhereInput'
+    cursor: 'SPELLSVECTORWhereUniqueInput'
+    distinct: List['SPELLSVECTORScalarFieldKeys']
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive4'
+
+
+class FindManySPELLSVECTORArgsFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SPELLSVECTOROrderByInput', List['SPELLSVECTOROrderByInput']]
+    where: 'SPELLSVECTORWhereInput'
+    cursor: 'SPELLSVECTORWhereUniqueInput'
+    distinct: List['SPELLSVECTORScalarFieldKeys']
+    
+    
+
+class SpellIncludeFromSTORYVECTOR(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class SpellIncludeFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class SpellIncludeFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class SpellIncludeFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class SpellIncludeFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+    
+
+class SpellArgsFromSTORYVECTOR(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'SpellIncludeFromSpellRecursive1'
+
+
+class SpellArgsFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'SpellIncludeFromSpellRecursive2'
+
+
+class SpellArgsFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'SpellIncludeFromSpellRecursive3'
+
+
+class SpellArgsFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'SpellIncludeFromSpellRecursive4'
+
+
+class SpellArgsFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    
+    
+
+class FindManySpellArgsFromSTORYVECTOR(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SpellOrderByInput', List['SpellOrderByInput']]
+    where: 'SpellWhereInput'
+    cursor: 'SpellWhereUniqueInput'
+    distinct: List['SpellScalarFieldKeys']
+    include: 'SpellIncludeFromSpellRecursive1'
+
+
+class FindManySpellArgsFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SpellOrderByInput', List['SpellOrderByInput']]
+    where: 'SpellWhereInput'
+    cursor: 'SpellWhereUniqueInput'
+    distinct: List['SpellScalarFieldKeys']
+    include: 'SpellIncludeFromSpellRecursive2'
+
+
+class FindManySpellArgsFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SpellOrderByInput', List['SpellOrderByInput']]
+    where: 'SpellWhereInput'
+    cursor: 'SpellWhereUniqueInput'
+    distinct: List['SpellScalarFieldKeys']
+    include: 'SpellIncludeFromSpellRecursive3'
+
+
+class FindManySpellArgsFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SpellOrderByInput', List['SpellOrderByInput']]
+    where: 'SpellWhereInput'
+    cursor: 'SpellWhereUniqueInput'
+    distinct: List['SpellScalarFieldKeys']
+    include: 'SpellIncludeFromSpellRecursive4'
+
+
+class FindManySpellArgsFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SpellOrderByInput', List['SpellOrderByInput']]
+    where: 'SpellWhereInput'
+    cursor: 'SpellWhereUniqueInput'
+    distinct: List['SpellScalarFieldKeys']
+    
+    
+
+class USERDATAIncludeFromSTORYVECTOR(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromSTORYVECTORRecursive1']
+
+
+class USERDATAIncludeFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromSTORYVECTORRecursive2']
+
+
+class USERDATAIncludeFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromSTORYVECTORRecursive3']
+
+
+class USERDATAIncludeFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromSTORYVECTORRecursive4']
+
+
+class USERDATAIncludeFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+    
+
+class USERDATAArgsFromSTORYVECTOR(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'USERDATAIncludeFromUSERDATARecursive1'
+
+
+class USERDATAArgsFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'USERDATAIncludeFromUSERDATARecursive2'
+
+
+class USERDATAArgsFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'USERDATAIncludeFromUSERDATARecursive3'
+
+
+class USERDATAArgsFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'USERDATAIncludeFromUSERDATARecursive4'
+
+
+class USERDATAArgsFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    
+    
+
+class FindManyUSERDATAArgsFromSTORYVECTOR(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERDATAOrderByInput', List['USERDATAOrderByInput']]
+    where: 'USERDATAWhereInput'
+    cursor: 'USERDATAWhereUniqueInput'
+    distinct: List['USERDATAScalarFieldKeys']
+    include: 'USERDATAIncludeFromUSERDATARecursive1'
+
+
+class FindManyUSERDATAArgsFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERDATAOrderByInput', List['USERDATAOrderByInput']]
+    where: 'USERDATAWhereInput'
+    cursor: 'USERDATAWhereUniqueInput'
+    distinct: List['USERDATAScalarFieldKeys']
+    include: 'USERDATAIncludeFromUSERDATARecursive2'
+
+
+class FindManyUSERDATAArgsFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERDATAOrderByInput', List['USERDATAOrderByInput']]
+    where: 'USERDATAWhereInput'
+    cursor: 'USERDATAWhereUniqueInput'
+    distinct: List['USERDATAScalarFieldKeys']
+    include: 'USERDATAIncludeFromUSERDATARecursive3'
+
+
+class FindManyUSERDATAArgsFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERDATAOrderByInput', List['USERDATAOrderByInput']]
+    where: 'USERDATAWhereInput'
+    cursor: 'USERDATAWhereUniqueInput'
+    distinct: List['USERDATAScalarFieldKeys']
+    include: 'USERDATAIncludeFromUSERDATARecursive4'
+
+
+class FindManyUSERDATAArgsFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERDATAOrderByInput', List['USERDATAOrderByInput']]
+    where: 'USERDATAWhereInput'
+    cursor: 'USERDATAWhereUniqueInput'
+    distinct: List['USERDATAScalarFieldKeys']
+    
+    
+
+class STORYVECTORIncludeFromSTORYVECTOR(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class STORYVECTORIncludeFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class STORYVECTORIncludeFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class STORYVECTORIncludeFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+
+class STORYVECTORIncludeFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+    
+
+class STORYVECTORArgsFromSTORYVECTOR(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive1'
+
+
+class STORYVECTORArgsFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive2'
+
+
+class STORYVECTORArgsFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive3'
+
+
+class STORYVECTORArgsFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive4'
+
+
+class STORYVECTORArgsFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    
+    
+
+class FindManySTORYVECTORArgsFromSTORYVECTOR(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive1'
+
+
+class FindManySTORYVECTORArgsFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive2'
+
+
+class FindManySTORYVECTORArgsFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive3'
+
+
+class FindManySTORYVECTORArgsFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive4'
+
+
+class FindManySTORYVECTORArgsFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    
+    
+
+class USERCHARIncludeFromSTORYVECTOR(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromSTORYVECTORRecursive1']
+
+
+class USERCHARIncludeFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromSTORYVECTORRecursive2']
+
+
+class USERCHARIncludeFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromSTORYVECTORRecursive3']
+
+
+class USERCHARIncludeFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromSTORYVECTORRecursive4']
+
+
+class USERCHARIncludeFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+    
+
+class USERCHARArgsFromSTORYVECTOR(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive1'
+
+
+class USERCHARArgsFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive2'
+
+
+class USERCHARArgsFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive3'
+
+
+class USERCHARArgsFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive4'
+
+
+class USERCHARArgsFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    
+    
+
+class FindManyUSERCHARArgsFromSTORYVECTOR(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive1'
+
+
+class FindManyUSERCHARArgsFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive2'
+
+
+class FindManyUSERCHARArgsFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive3'
+
+
+class FindManyUSERCHARArgsFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive4'
+
+
+class FindManyUSERCHARArgsFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    
+
+
+FindManySTORYVECTORArgs = FindManySTORYVECTORArgsFromSTORYVECTOR
+FindFirstSTORYVECTORArgs = FindManySTORYVECTORArgsFromSTORYVECTOR
+
+
+    
+
+class STORYVECTORWhereInput(TypedDict, total=False):
+    """STORYVECTOR arguments for searching"""
+    id: Union[_int, 'types.IntFilter']
+    text: Union[_str, 'types.StringFilter']
+
+    # should be noted that AND and NOT should be Union['STORYVECTORWhereInputRecursive1', List['STORYVECTORWhereInputRecursive1']]
+    # but this causes mypy to hang :/
+    AND: List['STORYVECTORWhereInputRecursive1']
+    OR: List['STORYVECTORWhereInputRecursive1']
+    NOT: List['STORYVECTORWhereInputRecursive1']
+
+
+class STORYVECTORWhereInputRecursive1(TypedDict, total=False):
+    """STORYVECTOR arguments for searching"""
+    id: Union[_int, 'types.IntFilter']
+    text: Union[_str, 'types.StringFilter']
+
+    # should be noted that AND and NOT should be Union['STORYVECTORWhereInputRecursive2', List['STORYVECTORWhereInputRecursive2']]
+    # but this causes mypy to hang :/
+    AND: List['STORYVECTORWhereInputRecursive2']
+    OR: List['STORYVECTORWhereInputRecursive2']
+    NOT: List['STORYVECTORWhereInputRecursive2']
+
+
+class STORYVECTORWhereInputRecursive2(TypedDict, total=False):
+    """STORYVECTOR arguments for searching"""
+    id: Union[_int, 'types.IntFilter']
+    text: Union[_str, 'types.StringFilter']
+
+    # should be noted that AND and NOT should be Union['STORYVECTORWhereInputRecursive3', List['STORYVECTORWhereInputRecursive3']]
+    # but this causes mypy to hang :/
+    AND: List['STORYVECTORWhereInputRecursive3']
+    OR: List['STORYVECTORWhereInputRecursive3']
+    NOT: List['STORYVECTORWhereInputRecursive3']
+
+
+class STORYVECTORWhereInputRecursive3(TypedDict, total=False):
+    """STORYVECTOR arguments for searching"""
+    id: Union[_int, 'types.IntFilter']
+    text: Union[_str, 'types.StringFilter']
+
+    # should be noted that AND and NOT should be Union['STORYVECTORWhereInputRecursive4', List['STORYVECTORWhereInputRecursive4']]
+    # but this causes mypy to hang :/
+    AND: List['STORYVECTORWhereInputRecursive4']
+    OR: List['STORYVECTORWhereInputRecursive4']
+    NOT: List['STORYVECTORWhereInputRecursive4']
+
+
+class STORYVECTORWhereInputRecursive4(TypedDict, total=False):
+    """STORYVECTOR arguments for searching"""
+    id: Union[_int, 'types.IntFilter']
+    text: Union[_str, 'types.StringFilter']
+
+
+
+# aggregate STORYVECTOR types
+
+
+    
+
+class STORYVECTORScalarWhereWithAggregatesInput(TypedDict, total=False):
+    """STORYVECTOR arguments for searching"""
+    id: Union[_int, 'types.IntWithAggregatesFilter']
+    text: Union[_str, 'types.StringWithAggregatesFilter']
+
+    AND: List['STORYVECTORScalarWhereWithAggregatesInputRecursive1']
+    OR: List['STORYVECTORScalarWhereWithAggregatesInputRecursive1']
+    NOT: List['STORYVECTORScalarWhereWithAggregatesInputRecursive1']
+
+
+class STORYVECTORScalarWhereWithAggregatesInputRecursive1(TypedDict, total=False):
+    """STORYVECTOR arguments for searching"""
+    id: Union[_int, 'types.IntWithAggregatesFilter']
+    text: Union[_str, 'types.StringWithAggregatesFilter']
+
+    AND: List['STORYVECTORScalarWhereWithAggregatesInputRecursive2']
+    OR: List['STORYVECTORScalarWhereWithAggregatesInputRecursive2']
+    NOT: List['STORYVECTORScalarWhereWithAggregatesInputRecursive2']
+
+
+class STORYVECTORScalarWhereWithAggregatesInputRecursive2(TypedDict, total=False):
+    """STORYVECTOR arguments for searching"""
+    id: Union[_int, 'types.IntWithAggregatesFilter']
+    text: Union[_str, 'types.StringWithAggregatesFilter']
+
+    AND: List['STORYVECTORScalarWhereWithAggregatesInputRecursive3']
+    OR: List['STORYVECTORScalarWhereWithAggregatesInputRecursive3']
+    NOT: List['STORYVECTORScalarWhereWithAggregatesInputRecursive3']
+
+
+class STORYVECTORScalarWhereWithAggregatesInputRecursive3(TypedDict, total=False):
+    """STORYVECTOR arguments for searching"""
+    id: Union[_int, 'types.IntWithAggregatesFilter']
+    text: Union[_str, 'types.StringWithAggregatesFilter']
+
+    AND: List['STORYVECTORScalarWhereWithAggregatesInputRecursive4']
+    OR: List['STORYVECTORScalarWhereWithAggregatesInputRecursive4']
+    NOT: List['STORYVECTORScalarWhereWithAggregatesInputRecursive4']
+
+
+class STORYVECTORScalarWhereWithAggregatesInputRecursive4(TypedDict, total=False):
+    """STORYVECTOR arguments for searching"""
+    id: Union[_int, 'types.IntWithAggregatesFilter']
+    text: Union[_str, 'types.StringWithAggregatesFilter']
+
+
+
+class STORYVECTORGroupByOutput(TypedDict, total=False):
+    id: _int
+    text: _str
+    _sum: 'STORYVECTORSumAggregateOutput'
+    _avg: 'STORYVECTORAvgAggregateOutput'
+    _min: 'STORYVECTORMinAggregateOutput'
+    _max: 'STORYVECTORMaxAggregateOutput'
+    _count: 'STORYVECTORCountAggregateOutput'
+
+
+class STORYVECTORAvgAggregateOutput(TypedDict, total=False):
+    """STORYVECTOR output for aggregating averages"""
+    id: float
+
+
+class STORYVECTORSumAggregateOutput(TypedDict, total=False):
+    """STORYVECTOR output for aggregating sums"""
+    id: _int
+
+
+class STORYVECTORScalarAggregateOutput(TypedDict, total=False):
+    """STORYVECTOR output including scalar fields"""
+    id: _int
+    text: _str
+
+
+STORYVECTORMinAggregateOutput = STORYVECTORScalarAggregateOutput
+STORYVECTORMaxAggregateOutput = STORYVECTORScalarAggregateOutput
+
+
+class STORYVECTORMaxAggregateInput(TypedDict, total=False):
+    """STORYVECTOR input for aggregating by max"""
+    id: bool
+    text: bool
+
+
+class STORYVECTORMinAggregateInput(TypedDict, total=False):
+    """STORYVECTOR input for aggregating by min"""
+    id: bool
+    text: bool
+
+
+class STORYVECTORNumberAggregateInput(TypedDict, total=False):
+    """STORYVECTOR input for aggregating numbers"""
+    id: bool
+
+
+STORYVECTORAvgAggregateInput = STORYVECTORNumberAggregateInput
+STORYVECTORSumAggregateInput = STORYVECTORNumberAggregateInput
+
+
+STORYVECTORCountAggregateInput = TypedDict(
+    'STORYVECTORCountAggregateInput',
+    {
+        'id': bool,
+        'text': bool,
+        '_all': bool,
+    },
+    total=False,
+)
+
+STORYVECTORCountAggregateOutput = TypedDict(
+    'STORYVECTORCountAggregateOutput',
+    {
+        'id': int,
+        'text': int,
+        '_all': int,
+    },
+    total=False,
+)
+
+
+STORYVECTORKeys = Literal[
+    'id',
+    'text',
+]
+STORYVECTORScalarFieldKeys = Literal[
+    'id',
+    'text',
+]
+STORYVECTORScalarFieldKeysT = TypeVar('STORYVECTORScalarFieldKeysT', bound=STORYVECTORScalarFieldKeys)
+
+STORYVECTORRelationalFieldKeys = _NoneType
+
+# USERCHAR types
+
+class USERCHAROptionalCreateInput(TypedDict, total=False):
+    """Optional arguments to the USERCHAR create method"""
+    id: _int
+    user: _str
+    username: 'USERDATACreateNestedWithoutRelationsInput'
+
+
+class USERCHARCreateInput(USERCHAROptionalCreateInput):
+    """Required arguments to the USERCHAR create method"""
+    race: _str
+    cla: _str
+    subclass: _str
+    str: _int
+    dex: _int
+    con: _int
+    int: _int
+    wis: _int
+    cha: _int
+    backstory: _str
+
+
+# TODO: remove this in favour of without explicit relations
+# e.g. PostCreateWithoutAuthorInput
+
+class USERCHAROptionalCreateWithoutRelationsInput(TypedDict, total=False):
+    """Optional arguments to the USERCHAR create method, without relations"""
+    id: _int
+    user: _str
+
+
+class USERCHARCreateWithoutRelationsInput(USERCHAROptionalCreateWithoutRelationsInput):
+    """Required arguments to the USERCHAR create method, without relations"""
+    race: _str
+    cla: _str
+    subclass: _str
+    str: _int
+    dex: _int
+    con: _int
+    int: _int
+    wis: _int
+    cha: _int
+    backstory: _str
+
+class USERCHARConnectOrCreateWithoutRelationsInput(TypedDict):
+    create: 'USERCHARCreateWithoutRelationsInput'
+    where: 'USERCHARWhereUniqueInput'
+
+class USERCHARCreateNestedWithoutRelationsInput(TypedDict, total=False):
+    create: 'USERCHARCreateWithoutRelationsInput'
+    connect: 'USERCHARWhereUniqueInput'
+    connect_or_create: 'USERCHARConnectOrCreateWithoutRelationsInput'
+
+
+class USERCHARCreateManyNestedWithoutRelationsInput(TypedDict, total=False):
+    create: Union['USERCHARCreateWithoutRelationsInput', List['USERCHARCreateWithoutRelationsInput']]
+    connect: Union['USERCHARWhereUniqueInput', List['USERCHARWhereUniqueInput']]
+    connect_or_create: Union['USERCHARConnectOrCreateWithoutRelationsInput', List['USERCHARConnectOrCreateWithoutRelationsInput']]
+
+_USERCHARWhereUnique_id_Input = TypedDict(
+    '_USERCHARWhereUnique_id_Input',
+    {
+        'id': '_int',
+    },
+    total=True
+)
+
+USERCHARWhereUniqueInput = _USERCHARWhereUnique_id_Input
+
+
+class USERCHARUpdateInput(TypedDict, total=False):
+    """Optional arguments for updating a record"""
+    id: Union[AtomicIntInput, _int]
+    username: 'USERDATAUpdateOneWithoutRelationsInput'
+    race: _str
+    cla: _str
+    subclass: _str
+    str: Union[AtomicIntInput, _int]
+    dex: Union[AtomicIntInput, _int]
+    con: Union[AtomicIntInput, _int]
+    int: Union[AtomicIntInput, _int]
+    wis: Union[AtomicIntInput, _int]
+    cha: Union[AtomicIntInput, _int]
+    backstory: _str
+
+
+class USERCHARUpdateManyMutationInput(TypedDict, total=False):
+    """Arguments for updating many records"""
+    id: Union[AtomicIntInput, _int]
+    race: _str
+    cla: _str
+    subclass: _str
+    str: Union[AtomicIntInput, _int]
+    dex: Union[AtomicIntInput, _int]
+    con: Union[AtomicIntInput, _int]
+    int: Union[AtomicIntInput, _int]
+    wis: Union[AtomicIntInput, _int]
+    cha: Union[AtomicIntInput, _int]
+    backstory: _str
+
+
+class USERCHARUpdateManyWithoutRelationsInput(TypedDict, total=False):
+    create: List['USERCHARCreateWithoutRelationsInput']
+    connect: List['USERCHARWhereUniqueInput']
+    connect_or_create: List['USERCHARConnectOrCreateWithoutRelationsInput']
+    set: List['USERCHARWhereUniqueInput']
+    disconnect: List['USERCHARWhereUniqueInput']
+    delete: List['USERCHARWhereUniqueInput']
+
+    # TODO
+    # update: List['USERCHARUpdateWithWhereUniqueWithoutRelationsInput']
+    # updateMany: List['USERCHARUpdateManyWithWhereUniqueWithoutRelationsInput']
+    # deleteMany: List['USERCHARScalarWhereInput']
+    # upsert: List['USERCHARUpserteWithWhereUniqueWithoutRelationsInput']
+
+
+class USERCHARUpdateOneWithoutRelationsInput(TypedDict, total=False):
+    create: 'USERCHARCreateWithoutRelationsInput'
+    connect: 'USERCHARWhereUniqueInput'
+    connect_or_create: 'USERCHARConnectOrCreateWithoutRelationsInput'
+    disconnect: bool
+    delete: bool
+
+    # TODO
+    # update: 'USERCHARUpdateInput'
+    # upsert: 'USERCHARUpsertWithoutRelationsInput'
+
+
+class USERCHARUpsertInput(TypedDict):
+    create: 'USERCHARCreateInput'
+    update: 'USERCHARUpdateInput'  # pyright: ignore[reportIncompatibleMethodOverride]
+
+
+_USERCHAR_id_OrderByInput = TypedDict(
+    '_USERCHAR_id_OrderByInput',
+    {
+        'id': 'SortOrder',
+    },
+    total=True
+)
+
+_USERCHAR_user_OrderByInput = TypedDict(
+    '_USERCHAR_user_OrderByInput',
+    {
+        'user': 'SortOrder',
+    },
+    total=True
+)
+
+_USERCHAR_race_OrderByInput = TypedDict(
+    '_USERCHAR_race_OrderByInput',
+    {
+        'race': 'SortOrder',
+    },
+    total=True
+)
+
+_USERCHAR_cla_OrderByInput = TypedDict(
+    '_USERCHAR_cla_OrderByInput',
+    {
+        'cla': 'SortOrder',
+    },
+    total=True
+)
+
+_USERCHAR_subclass_OrderByInput = TypedDict(
+    '_USERCHAR_subclass_OrderByInput',
+    {
+        'subclass': 'SortOrder',
+    },
+    total=True
+)
+
+_USERCHAR_str_OrderByInput = TypedDict(
+    '_USERCHAR_str_OrderByInput',
+    {
+        'str': 'SortOrder',
+    },
+    total=True
+)
+
+_USERCHAR_dex_OrderByInput = TypedDict(
+    '_USERCHAR_dex_OrderByInput',
+    {
+        'dex': 'SortOrder',
+    },
+    total=True
+)
+
+_USERCHAR_con_OrderByInput = TypedDict(
+    '_USERCHAR_con_OrderByInput',
+    {
+        'con': 'SortOrder',
+    },
+    total=True
+)
+
+_USERCHAR_int_OrderByInput = TypedDict(
+    '_USERCHAR_int_OrderByInput',
+    {
+        'int': 'SortOrder',
+    },
+    total=True
+)
+
+_USERCHAR_wis_OrderByInput = TypedDict(
+    '_USERCHAR_wis_OrderByInput',
+    {
+        'wis': 'SortOrder',
+    },
+    total=True
+)
+
+_USERCHAR_cha_OrderByInput = TypedDict(
+    '_USERCHAR_cha_OrderByInput',
+    {
+        'cha': 'SortOrder',
+    },
+    total=True
+)
+
+_USERCHAR_backstory_OrderByInput = TypedDict(
+    '_USERCHAR_backstory_OrderByInput',
+    {
+        'backstory': 'SortOrder',
+    },
+    total=True
+)
+
+_USERCHAR_RelevanceInner = TypedDict(
+    '_USERCHAR_RelevanceInner',
+    {
+        'fields': 'List[USERCHARScalarFieldKeys]',
+        'search': 'str',
+        'sort': 'SortOrder',
+    },
+    total=True
+)
+
+_USERCHAR_RelevanceOrderByInput = TypedDict(
+    '_USERCHAR_RelevanceOrderByInput',
+    {
+        '_relevance': '_USERCHAR_RelevanceInner',
+    },
+    total=True
+)
+
+USERCHAROrderByInput = Union[
+    '_USERCHAR_id_OrderByInput',
+    '_USERCHAR_user_OrderByInput',
+    '_USERCHAR_race_OrderByInput',
+    '_USERCHAR_cla_OrderByInput',
+    '_USERCHAR_subclass_OrderByInput',
+    '_USERCHAR_str_OrderByInput',
+    '_USERCHAR_dex_OrderByInput',
+    '_USERCHAR_con_OrderByInput',
+    '_USERCHAR_int_OrderByInput',
+    '_USERCHAR_wis_OrderByInput',
+    '_USERCHAR_cha_OrderByInput',
+    '_USERCHAR_backstory_OrderByInput',
+    '_USERCHAR_RelevanceOrderByInput',
+]
+
+
+
+# recursive USERCHAR types
+# TODO: cleanup these types
+
+
+# Dict[str, Any] is a mypy limitation
+# see https://github.com/RobertCraigie/prisma-client-py/issues/45
+# switch to pyright for improved types, see https://prisma-client-py.readthedocs.io/en/stable/reference/limitations/
+
+USERCHARRelationFilter = TypedDict(
+    'USERCHARRelationFilter',
+    {
+        'is': 'Dict[str, Any]',
+        'is_not': 'Dict[str, Any]',
+    },
+    total=False,
+)
+
+
+class USERCHARListRelationFilter(TypedDict, total=False):
+    some: 'Dict[str, Any]'
+    none: 'Dict[str, Any]'
+    every: 'Dict[str, Any]'
+
+
+class USERCHARInclude(TypedDict, total=False):
+    """USERCHAR relational arguments"""
+    username: Union[bool, 'USERDATAArgsFromUSERCHAR']
+
+
+    
+
+class CHARACTERVECTORIncludeFromUSERCHAR(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class CHARACTERVECTORIncludeFromUSERCHARRecursive1(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class CHARACTERVECTORIncludeFromUSERCHARRecursive2(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class CHARACTERVECTORIncludeFromUSERCHARRecursive3(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class CHARACTERVECTORIncludeFromUSERCHARRecursive4(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+    
+
+class CHARACTERVECTORArgsFromUSERCHAR(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive1'
+
+
+class CHARACTERVECTORArgsFromUSERCHARRecursive1(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive2'
+
+
+class CHARACTERVECTORArgsFromUSERCHARRecursive2(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive3'
+
+
+class CHARACTERVECTORArgsFromUSERCHARRecursive3(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive4'
+
+
+class CHARACTERVECTORArgsFromUSERCHARRecursive4(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    
+    
+
+class FindManyCHARACTERVECTORArgsFromUSERCHAR(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['CHARACTERVECTOROrderByInput', List['CHARACTERVECTOROrderByInput']]
+    where: 'CHARACTERVECTORWhereInput'
+    cursor: 'CHARACTERVECTORWhereUniqueInput'
+    distinct: List['CHARACTERVECTORScalarFieldKeys']
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive1'
+
+
+class FindManyCHARACTERVECTORArgsFromUSERCHARRecursive1(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['CHARACTERVECTOROrderByInput', List['CHARACTERVECTOROrderByInput']]
+    where: 'CHARACTERVECTORWhereInput'
+    cursor: 'CHARACTERVECTORWhereUniqueInput'
+    distinct: List['CHARACTERVECTORScalarFieldKeys']
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive2'
+
+
+class FindManyCHARACTERVECTORArgsFromUSERCHARRecursive2(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['CHARACTERVECTOROrderByInput', List['CHARACTERVECTOROrderByInput']]
+    where: 'CHARACTERVECTORWhereInput'
+    cursor: 'CHARACTERVECTORWhereUniqueInput'
+    distinct: List['CHARACTERVECTORScalarFieldKeys']
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive3'
+
+
+class FindManyCHARACTERVECTORArgsFromUSERCHARRecursive3(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['CHARACTERVECTOROrderByInput', List['CHARACTERVECTOROrderByInput']]
+    where: 'CHARACTERVECTORWhereInput'
+    cursor: 'CHARACTERVECTORWhereUniqueInput'
+    distinct: List['CHARACTERVECTORScalarFieldKeys']
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive4'
+
+
+class FindManyCHARACTERVECTORArgsFromUSERCHARRecursive4(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['CHARACTERVECTOROrderByInput', List['CHARACTERVECTOROrderByInput']]
+    where: 'CHARACTERVECTORWhereInput'
+    cursor: 'CHARACTERVECTORWhereUniqueInput'
+    distinct: List['CHARACTERVECTORScalarFieldKeys']
+    
+    
+
+class ClassesIncludeFromUSERCHAR(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class ClassesIncludeFromUSERCHARRecursive1(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class ClassesIncludeFromUSERCHARRecursive2(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class ClassesIncludeFromUSERCHARRecursive3(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class ClassesIncludeFromUSERCHARRecursive4(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+    
+
+class ClassesArgsFromUSERCHAR(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'ClassesIncludeFromClassesRecursive1'
+
+
+class ClassesArgsFromUSERCHARRecursive1(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'ClassesIncludeFromClassesRecursive2'
+
+
+class ClassesArgsFromUSERCHARRecursive2(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'ClassesIncludeFromClassesRecursive3'
+
+
+class ClassesArgsFromUSERCHARRecursive3(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'ClassesIncludeFromClassesRecursive4'
+
+
+class ClassesArgsFromUSERCHARRecursive4(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    
+    
+
+class FindManyClassesArgsFromUSERCHAR(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['ClassesOrderByInput', List['ClassesOrderByInput']]
+    where: 'ClassesWhereInput'
+    cursor: 'ClassesWhereUniqueInput'
+    distinct: List['ClassesScalarFieldKeys']
+    include: 'ClassesIncludeFromClassesRecursive1'
+
+
+class FindManyClassesArgsFromUSERCHARRecursive1(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['ClassesOrderByInput', List['ClassesOrderByInput']]
+    where: 'ClassesWhereInput'
+    cursor: 'ClassesWhereUniqueInput'
+    distinct: List['ClassesScalarFieldKeys']
+    include: 'ClassesIncludeFromClassesRecursive2'
+
+
+class FindManyClassesArgsFromUSERCHARRecursive2(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['ClassesOrderByInput', List['ClassesOrderByInput']]
+    where: 'ClassesWhereInput'
+    cursor: 'ClassesWhereUniqueInput'
+    distinct: List['ClassesScalarFieldKeys']
+    include: 'ClassesIncludeFromClassesRecursive3'
+
+
+class FindManyClassesArgsFromUSERCHARRecursive3(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['ClassesOrderByInput', List['ClassesOrderByInput']]
+    where: 'ClassesWhereInput'
+    cursor: 'ClassesWhereUniqueInput'
+    distinct: List['ClassesScalarFieldKeys']
+    include: 'ClassesIncludeFromClassesRecursive4'
+
+
+class FindManyClassesArgsFromUSERCHARRecursive4(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['ClassesOrderByInput', List['ClassesOrderByInput']]
+    where: 'ClassesWhereInput'
+    cursor: 'ClassesWhereUniqueInput'
+    distinct: List['ClassesScalarFieldKeys']
+    
+    
+
+class GeneralEquipmentIncludeFromUSERCHAR(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class GeneralEquipmentIncludeFromUSERCHARRecursive1(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class GeneralEquipmentIncludeFromUSERCHARRecursive2(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class GeneralEquipmentIncludeFromUSERCHARRecursive3(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class GeneralEquipmentIncludeFromUSERCHARRecursive4(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+    
+
+class GeneralEquipmentArgsFromUSERCHAR(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive1'
+
+
+class GeneralEquipmentArgsFromUSERCHARRecursive1(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive2'
+
+
+class GeneralEquipmentArgsFromUSERCHARRecursive2(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive3'
+
+
+class GeneralEquipmentArgsFromUSERCHARRecursive3(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive4'
+
+
+class GeneralEquipmentArgsFromUSERCHARRecursive4(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    
+    
+
+class FindManyGeneralEquipmentArgsFromUSERCHAR(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['GeneralEquipmentOrderByInput', List['GeneralEquipmentOrderByInput']]
+    where: 'GeneralEquipmentWhereInput'
+    cursor: 'GeneralEquipmentWhereUniqueInput'
+    distinct: List['GeneralEquipmentScalarFieldKeys']
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive1'
+
+
+class FindManyGeneralEquipmentArgsFromUSERCHARRecursive1(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['GeneralEquipmentOrderByInput', List['GeneralEquipmentOrderByInput']]
+    where: 'GeneralEquipmentWhereInput'
+    cursor: 'GeneralEquipmentWhereUniqueInput'
+    distinct: List['GeneralEquipmentScalarFieldKeys']
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive2'
+
+
+class FindManyGeneralEquipmentArgsFromUSERCHARRecursive2(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['GeneralEquipmentOrderByInput', List['GeneralEquipmentOrderByInput']]
+    where: 'GeneralEquipmentWhereInput'
+    cursor: 'GeneralEquipmentWhereUniqueInput'
+    distinct: List['GeneralEquipmentScalarFieldKeys']
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive3'
+
+
+class FindManyGeneralEquipmentArgsFromUSERCHARRecursive3(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['GeneralEquipmentOrderByInput', List['GeneralEquipmentOrderByInput']]
+    where: 'GeneralEquipmentWhereInput'
+    cursor: 'GeneralEquipmentWhereUniqueInput'
+    distinct: List['GeneralEquipmentScalarFieldKeys']
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive4'
+
+
+class FindManyGeneralEquipmentArgsFromUSERCHARRecursive4(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['GeneralEquipmentOrderByInput', List['GeneralEquipmentOrderByInput']]
+    where: 'GeneralEquipmentWhereInput'
+    cursor: 'GeneralEquipmentWhereUniqueInput'
+    distinct: List['GeneralEquipmentScalarFieldKeys']
+    
+    
+
+class ITEMSVECTORIncludeFromUSERCHAR(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class ITEMSVECTORIncludeFromUSERCHARRecursive1(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class ITEMSVECTORIncludeFromUSERCHARRecursive2(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class ITEMSVECTORIncludeFromUSERCHARRecursive3(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class ITEMSVECTORIncludeFromUSERCHARRecursive4(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+    
+
+class ITEMSVECTORArgsFromUSERCHAR(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive1'
+
+
+class ITEMSVECTORArgsFromUSERCHARRecursive1(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive2'
+
+
+class ITEMSVECTORArgsFromUSERCHARRecursive2(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive3'
+
+
+class ITEMSVECTORArgsFromUSERCHARRecursive3(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive4'
+
+
+class ITEMSVECTORArgsFromUSERCHARRecursive4(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    
+    
+
+class FindManyITEMSVECTORArgsFromUSERCHAR(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['ITEMSVECTOROrderByInput', List['ITEMSVECTOROrderByInput']]
+    where: 'ITEMSVECTORWhereInput'
+    cursor: 'ITEMSVECTORWhereUniqueInput'
+    distinct: List['ITEMSVECTORScalarFieldKeys']
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive1'
+
+
+class FindManyITEMSVECTORArgsFromUSERCHARRecursive1(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['ITEMSVECTOROrderByInput', List['ITEMSVECTOROrderByInput']]
+    where: 'ITEMSVECTORWhereInput'
+    cursor: 'ITEMSVECTORWhereUniqueInput'
+    distinct: List['ITEMSVECTORScalarFieldKeys']
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive2'
+
+
+class FindManyITEMSVECTORArgsFromUSERCHARRecursive2(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['ITEMSVECTOROrderByInput', List['ITEMSVECTOROrderByInput']]
+    where: 'ITEMSVECTORWhereInput'
+    cursor: 'ITEMSVECTORWhereUniqueInput'
+    distinct: List['ITEMSVECTORScalarFieldKeys']
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive3'
+
+
+class FindManyITEMSVECTORArgsFromUSERCHARRecursive3(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['ITEMSVECTOROrderByInput', List['ITEMSVECTOROrderByInput']]
+    where: 'ITEMSVECTORWhereInput'
+    cursor: 'ITEMSVECTORWhereUniqueInput'
+    distinct: List['ITEMSVECTORScalarFieldKeys']
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive4'
+
+
+class FindManyITEMSVECTORArgsFromUSERCHARRecursive4(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['ITEMSVECTOROrderByInput', List['ITEMSVECTOROrderByInput']]
+    where: 'ITEMSVECTORWhereInput'
+    cursor: 'ITEMSVECTORWhereUniqueInput'
+    distinct: List['ITEMSVECTORScalarFieldKeys']
+    
+    
+
+class MONSTERVECTORIncludeFromUSERCHAR(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class MONSTERVECTORIncludeFromUSERCHARRecursive1(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class MONSTERVECTORIncludeFromUSERCHARRecursive2(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class MONSTERVECTORIncludeFromUSERCHARRecursive3(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class MONSTERVECTORIncludeFromUSERCHARRecursive4(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+    
+
+class MONSTERVECTORArgsFromUSERCHAR(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive1'
+
+
+class MONSTERVECTORArgsFromUSERCHARRecursive1(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive2'
+
+
+class MONSTERVECTORArgsFromUSERCHARRecursive2(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive3'
+
+
+class MONSTERVECTORArgsFromUSERCHARRecursive3(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive4'
+
+
+class MONSTERVECTORArgsFromUSERCHARRecursive4(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    
+    
+
+class FindManyMONSTERVECTORArgsFromUSERCHAR(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['MONSTERVECTOROrderByInput', List['MONSTERVECTOROrderByInput']]
+    where: 'MONSTERVECTORWhereInput'
+    cursor: 'MONSTERVECTORWhereUniqueInput'
+    distinct: List['MONSTERVECTORScalarFieldKeys']
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive1'
+
+
+class FindManyMONSTERVECTORArgsFromUSERCHARRecursive1(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['MONSTERVECTOROrderByInput', List['MONSTERVECTOROrderByInput']]
+    where: 'MONSTERVECTORWhereInput'
+    cursor: 'MONSTERVECTORWhereUniqueInput'
+    distinct: List['MONSTERVECTORScalarFieldKeys']
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive2'
+
+
+class FindManyMONSTERVECTORArgsFromUSERCHARRecursive2(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['MONSTERVECTOROrderByInput', List['MONSTERVECTOROrderByInput']]
+    where: 'MONSTERVECTORWhereInput'
+    cursor: 'MONSTERVECTORWhereUniqueInput'
+    distinct: List['MONSTERVECTORScalarFieldKeys']
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive3'
+
+
+class FindManyMONSTERVECTORArgsFromUSERCHARRecursive3(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['MONSTERVECTOROrderByInput', List['MONSTERVECTOROrderByInput']]
+    where: 'MONSTERVECTORWhereInput'
+    cursor: 'MONSTERVECTORWhereUniqueInput'
+    distinct: List['MONSTERVECTORScalarFieldKeys']
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive4'
+
+
+class FindManyMONSTERVECTORArgsFromUSERCHARRecursive4(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['MONSTERVECTOROrderByInput', List['MONSTERVECTOROrderByInput']]
+    where: 'MONSTERVECTORWhereInput'
+    cursor: 'MONSTERVECTORWhereUniqueInput'
+    distinct: List['MONSTERVECTORScalarFieldKeys']
+    
+    
+
+class MagicItemIncludeFromUSERCHAR(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class MagicItemIncludeFromUSERCHARRecursive1(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class MagicItemIncludeFromUSERCHARRecursive2(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class MagicItemIncludeFromUSERCHARRecursive3(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class MagicItemIncludeFromUSERCHARRecursive4(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+    
+
+class MagicItemArgsFromUSERCHAR(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'MagicItemIncludeFromMagicItemRecursive1'
+
+
+class MagicItemArgsFromUSERCHARRecursive1(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'MagicItemIncludeFromMagicItemRecursive2'
+
+
+class MagicItemArgsFromUSERCHARRecursive2(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'MagicItemIncludeFromMagicItemRecursive3'
+
+
+class MagicItemArgsFromUSERCHARRecursive3(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'MagicItemIncludeFromMagicItemRecursive4'
+
+
+class MagicItemArgsFromUSERCHARRecursive4(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    
+    
+
+class FindManyMagicItemArgsFromUSERCHAR(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['MagicItemOrderByInput', List['MagicItemOrderByInput']]
+    where: 'MagicItemWhereInput'
+    cursor: 'MagicItemWhereUniqueInput'
+    distinct: List['MagicItemScalarFieldKeys']
+    include: 'MagicItemIncludeFromMagicItemRecursive1'
+
+
+class FindManyMagicItemArgsFromUSERCHARRecursive1(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['MagicItemOrderByInput', List['MagicItemOrderByInput']]
+    where: 'MagicItemWhereInput'
+    cursor: 'MagicItemWhereUniqueInput'
+    distinct: List['MagicItemScalarFieldKeys']
+    include: 'MagicItemIncludeFromMagicItemRecursive2'
+
+
+class FindManyMagicItemArgsFromUSERCHARRecursive2(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['MagicItemOrderByInput', List['MagicItemOrderByInput']]
+    where: 'MagicItemWhereInput'
+    cursor: 'MagicItemWhereUniqueInput'
+    distinct: List['MagicItemScalarFieldKeys']
+    include: 'MagicItemIncludeFromMagicItemRecursive3'
+
+
+class FindManyMagicItemArgsFromUSERCHARRecursive3(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['MagicItemOrderByInput', List['MagicItemOrderByInput']]
+    where: 'MagicItemWhereInput'
+    cursor: 'MagicItemWhereUniqueInput'
+    distinct: List['MagicItemScalarFieldKeys']
+    include: 'MagicItemIncludeFromMagicItemRecursive4'
+
+
+class FindManyMagicItemArgsFromUSERCHARRecursive4(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['MagicItemOrderByInput', List['MagicItemOrderByInput']]
+    where: 'MagicItemWhereInput'
+    cursor: 'MagicItemWhereUniqueInput'
+    distinct: List['MagicItemScalarFieldKeys']
+    
+    
+
+class MonsterIncludeFromUSERCHAR(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class MonsterIncludeFromUSERCHARRecursive1(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class MonsterIncludeFromUSERCHARRecursive2(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class MonsterIncludeFromUSERCHARRecursive3(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class MonsterIncludeFromUSERCHARRecursive4(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+    
+
+class MonsterArgsFromUSERCHAR(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'MonsterIncludeFromMonsterRecursive1'
+
+
+class MonsterArgsFromUSERCHARRecursive1(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'MonsterIncludeFromMonsterRecursive2'
+
+
+class MonsterArgsFromUSERCHARRecursive2(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'MonsterIncludeFromMonsterRecursive3'
+
+
+class MonsterArgsFromUSERCHARRecursive3(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'MonsterIncludeFromMonsterRecursive4'
+
+
+class MonsterArgsFromUSERCHARRecursive4(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    
+    
+
+class FindManyMonsterArgsFromUSERCHAR(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['MonsterOrderByInput', List['MonsterOrderByInput']]
+    where: 'MonsterWhereInput'
+    cursor: 'MonsterWhereUniqueInput'
+    distinct: List['MonsterScalarFieldKeys']
+    include: 'MonsterIncludeFromMonsterRecursive1'
+
+
+class FindManyMonsterArgsFromUSERCHARRecursive1(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['MonsterOrderByInput', List['MonsterOrderByInput']]
+    where: 'MonsterWhereInput'
+    cursor: 'MonsterWhereUniqueInput'
+    distinct: List['MonsterScalarFieldKeys']
+    include: 'MonsterIncludeFromMonsterRecursive2'
+
+
+class FindManyMonsterArgsFromUSERCHARRecursive2(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['MonsterOrderByInput', List['MonsterOrderByInput']]
+    where: 'MonsterWhereInput'
+    cursor: 'MonsterWhereUniqueInput'
+    distinct: List['MonsterScalarFieldKeys']
+    include: 'MonsterIncludeFromMonsterRecursive3'
+
+
+class FindManyMonsterArgsFromUSERCHARRecursive3(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['MonsterOrderByInput', List['MonsterOrderByInput']]
+    where: 'MonsterWhereInput'
+    cursor: 'MonsterWhereUniqueInput'
+    distinct: List['MonsterScalarFieldKeys']
+    include: 'MonsterIncludeFromMonsterRecursive4'
+
+
+class FindManyMonsterArgsFromUSERCHARRecursive4(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['MonsterOrderByInput', List['MonsterOrderByInput']]
+    where: 'MonsterWhereInput'
+    cursor: 'MonsterWhereUniqueInput'
+    distinct: List['MonsterScalarFieldKeys']
+    
+    
+
+class RaceIncludeFromUSERCHAR(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class RaceIncludeFromUSERCHARRecursive1(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class RaceIncludeFromUSERCHARRecursive2(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class RaceIncludeFromUSERCHARRecursive3(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class RaceIncludeFromUSERCHARRecursive4(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+    
+
+class RaceArgsFromUSERCHAR(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'RaceIncludeFromRaceRecursive1'
+
+
+class RaceArgsFromUSERCHARRecursive1(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'RaceIncludeFromRaceRecursive2'
+
+
+class RaceArgsFromUSERCHARRecursive2(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'RaceIncludeFromRaceRecursive3'
+
+
+class RaceArgsFromUSERCHARRecursive3(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'RaceIncludeFromRaceRecursive4'
+
+
+class RaceArgsFromUSERCHARRecursive4(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    
+    
+
+class FindManyRaceArgsFromUSERCHAR(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['RaceOrderByInput', List['RaceOrderByInput']]
+    where: 'RaceWhereInput'
+    cursor: 'RaceWhereUniqueInput'
+    distinct: List['RaceScalarFieldKeys']
+    include: 'RaceIncludeFromRaceRecursive1'
+
+
+class FindManyRaceArgsFromUSERCHARRecursive1(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['RaceOrderByInput', List['RaceOrderByInput']]
+    where: 'RaceWhereInput'
+    cursor: 'RaceWhereUniqueInput'
+    distinct: List['RaceScalarFieldKeys']
+    include: 'RaceIncludeFromRaceRecursive2'
+
+
+class FindManyRaceArgsFromUSERCHARRecursive2(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['RaceOrderByInput', List['RaceOrderByInput']]
+    where: 'RaceWhereInput'
+    cursor: 'RaceWhereUniqueInput'
+    distinct: List['RaceScalarFieldKeys']
+    include: 'RaceIncludeFromRaceRecursive3'
+
+
+class FindManyRaceArgsFromUSERCHARRecursive3(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['RaceOrderByInput', List['RaceOrderByInput']]
+    where: 'RaceWhereInput'
+    cursor: 'RaceWhereUniqueInput'
+    distinct: List['RaceScalarFieldKeys']
+    include: 'RaceIncludeFromRaceRecursive4'
+
+
+class FindManyRaceArgsFromUSERCHARRecursive4(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['RaceOrderByInput', List['RaceOrderByInput']]
+    where: 'RaceWhereInput'
+    cursor: 'RaceWhereUniqueInput'
+    distinct: List['RaceScalarFieldKeys']
+    
+    
+
+class SESSIONIncludeFromUSERCHAR(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class SESSIONIncludeFromUSERCHARRecursive1(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class SESSIONIncludeFromUSERCHARRecursive2(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class SESSIONIncludeFromUSERCHARRecursive3(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class SESSIONIncludeFromUSERCHARRecursive4(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+    
+
+class SESSIONArgsFromUSERCHAR(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'SESSIONIncludeFromSESSIONRecursive1'
+
+
+class SESSIONArgsFromUSERCHARRecursive1(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'SESSIONIncludeFromSESSIONRecursive2'
+
+
+class SESSIONArgsFromUSERCHARRecursive2(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'SESSIONIncludeFromSESSIONRecursive3'
+
+
+class SESSIONArgsFromUSERCHARRecursive3(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'SESSIONIncludeFromSESSIONRecursive4'
+
+
+class SESSIONArgsFromUSERCHARRecursive4(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    
+    
+
+class FindManySESSIONArgsFromUSERCHAR(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['SESSIONOrderByInput', List['SESSIONOrderByInput']]
+    where: 'SESSIONWhereInput'
+    cursor: 'SESSIONWhereUniqueInput'
+    distinct: List['SESSIONScalarFieldKeys']
+    include: 'SESSIONIncludeFromSESSIONRecursive1'
+
+
+class FindManySESSIONArgsFromUSERCHARRecursive1(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['SESSIONOrderByInput', List['SESSIONOrderByInput']]
+    where: 'SESSIONWhereInput'
+    cursor: 'SESSIONWhereUniqueInput'
+    distinct: List['SESSIONScalarFieldKeys']
+    include: 'SESSIONIncludeFromSESSIONRecursive2'
+
+
+class FindManySESSIONArgsFromUSERCHARRecursive2(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['SESSIONOrderByInput', List['SESSIONOrderByInput']]
+    where: 'SESSIONWhereInput'
+    cursor: 'SESSIONWhereUniqueInput'
+    distinct: List['SESSIONScalarFieldKeys']
+    include: 'SESSIONIncludeFromSESSIONRecursive3'
+
+
+class FindManySESSIONArgsFromUSERCHARRecursive3(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['SESSIONOrderByInput', List['SESSIONOrderByInput']]
+    where: 'SESSIONWhereInput'
+    cursor: 'SESSIONWhereUniqueInput'
+    distinct: List['SESSIONScalarFieldKeys']
+    include: 'SESSIONIncludeFromSESSIONRecursive4'
+
+
+class FindManySESSIONArgsFromUSERCHARRecursive4(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['SESSIONOrderByInput', List['SESSIONOrderByInput']]
+    where: 'SESSIONWhereInput'
+    cursor: 'SESSIONWhereUniqueInput'
+    distinct: List['SESSIONScalarFieldKeys']
+    
+    
+
+class SPELLSVECTORIncludeFromUSERCHAR(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class SPELLSVECTORIncludeFromUSERCHARRecursive1(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class SPELLSVECTORIncludeFromUSERCHARRecursive2(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class SPELLSVECTORIncludeFromUSERCHARRecursive3(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class SPELLSVECTORIncludeFromUSERCHARRecursive4(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+    
+
+class SPELLSVECTORArgsFromUSERCHAR(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive1'
+
+
+class SPELLSVECTORArgsFromUSERCHARRecursive1(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive2'
+
+
+class SPELLSVECTORArgsFromUSERCHARRecursive2(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive3'
+
+
+class SPELLSVECTORArgsFromUSERCHARRecursive3(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive4'
+
+
+class SPELLSVECTORArgsFromUSERCHARRecursive4(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    
+    
+
+class FindManySPELLSVECTORArgsFromUSERCHAR(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['SPELLSVECTOROrderByInput', List['SPELLSVECTOROrderByInput']]
+    where: 'SPELLSVECTORWhereInput'
+    cursor: 'SPELLSVECTORWhereUniqueInput'
+    distinct: List['SPELLSVECTORScalarFieldKeys']
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive1'
+
+
+class FindManySPELLSVECTORArgsFromUSERCHARRecursive1(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['SPELLSVECTOROrderByInput', List['SPELLSVECTOROrderByInput']]
+    where: 'SPELLSVECTORWhereInput'
+    cursor: 'SPELLSVECTORWhereUniqueInput'
+    distinct: List['SPELLSVECTORScalarFieldKeys']
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive2'
+
+
+class FindManySPELLSVECTORArgsFromUSERCHARRecursive2(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['SPELLSVECTOROrderByInput', List['SPELLSVECTOROrderByInput']]
+    where: 'SPELLSVECTORWhereInput'
+    cursor: 'SPELLSVECTORWhereUniqueInput'
+    distinct: List['SPELLSVECTORScalarFieldKeys']
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive3'
+
+
+class FindManySPELLSVECTORArgsFromUSERCHARRecursive3(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['SPELLSVECTOROrderByInput', List['SPELLSVECTOROrderByInput']]
+    where: 'SPELLSVECTORWhereInput'
+    cursor: 'SPELLSVECTORWhereUniqueInput'
+    distinct: List['SPELLSVECTORScalarFieldKeys']
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive4'
+
+
+class FindManySPELLSVECTORArgsFromUSERCHARRecursive4(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['SPELLSVECTOROrderByInput', List['SPELLSVECTOROrderByInput']]
+    where: 'SPELLSVECTORWhereInput'
+    cursor: 'SPELLSVECTORWhereUniqueInput'
+    distinct: List['SPELLSVECTORScalarFieldKeys']
+    
+    
+
+class SpellIncludeFromUSERCHAR(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class SpellIncludeFromUSERCHARRecursive1(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class SpellIncludeFromUSERCHARRecursive2(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class SpellIncludeFromUSERCHARRecursive3(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class SpellIncludeFromUSERCHARRecursive4(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+    
+
+class SpellArgsFromUSERCHAR(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'SpellIncludeFromSpellRecursive1'
+
+
+class SpellArgsFromUSERCHARRecursive1(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'SpellIncludeFromSpellRecursive2'
+
+
+class SpellArgsFromUSERCHARRecursive2(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'SpellIncludeFromSpellRecursive3'
+
+
+class SpellArgsFromUSERCHARRecursive3(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'SpellIncludeFromSpellRecursive4'
+
+
+class SpellArgsFromUSERCHARRecursive4(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    
+    
+
+class FindManySpellArgsFromUSERCHAR(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['SpellOrderByInput', List['SpellOrderByInput']]
+    where: 'SpellWhereInput'
+    cursor: 'SpellWhereUniqueInput'
+    distinct: List['SpellScalarFieldKeys']
+    include: 'SpellIncludeFromSpellRecursive1'
+
+
+class FindManySpellArgsFromUSERCHARRecursive1(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['SpellOrderByInput', List['SpellOrderByInput']]
+    where: 'SpellWhereInput'
+    cursor: 'SpellWhereUniqueInput'
+    distinct: List['SpellScalarFieldKeys']
+    include: 'SpellIncludeFromSpellRecursive2'
+
+
+class FindManySpellArgsFromUSERCHARRecursive2(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['SpellOrderByInput', List['SpellOrderByInput']]
+    where: 'SpellWhereInput'
+    cursor: 'SpellWhereUniqueInput'
+    distinct: List['SpellScalarFieldKeys']
+    include: 'SpellIncludeFromSpellRecursive3'
+
+
+class FindManySpellArgsFromUSERCHARRecursive3(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['SpellOrderByInput', List['SpellOrderByInput']]
+    where: 'SpellWhereInput'
+    cursor: 'SpellWhereUniqueInput'
+    distinct: List['SpellScalarFieldKeys']
+    include: 'SpellIncludeFromSpellRecursive4'
+
+
+class FindManySpellArgsFromUSERCHARRecursive4(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['SpellOrderByInput', List['SpellOrderByInput']]
+    where: 'SpellWhereInput'
+    cursor: 'SpellWhereUniqueInput'
+    distinct: List['SpellScalarFieldKeys']
+    
+    
+
+class USERDATAIncludeFromUSERCHAR(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromUSERCHARRecursive1']
+
+
+class USERDATAIncludeFromUSERCHARRecursive1(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromUSERCHARRecursive2']
+
+
+class USERDATAIncludeFromUSERCHARRecursive2(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromUSERCHARRecursive3']
+
+
+class USERDATAIncludeFromUSERCHARRecursive3(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromUSERCHARRecursive4']
+
+
+class USERDATAIncludeFromUSERCHARRecursive4(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+    
+
+class USERDATAArgsFromUSERCHAR(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'USERDATAIncludeFromUSERDATARecursive1'
+
+
+class USERDATAArgsFromUSERCHARRecursive1(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'USERDATAIncludeFromUSERDATARecursive2'
+
+
+class USERDATAArgsFromUSERCHARRecursive2(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'USERDATAIncludeFromUSERDATARecursive3'
+
+
+class USERDATAArgsFromUSERCHARRecursive3(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'USERDATAIncludeFromUSERDATARecursive4'
+
+
+class USERDATAArgsFromUSERCHARRecursive4(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    
+    
+
+class FindManyUSERDATAArgsFromUSERCHAR(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['USERDATAOrderByInput', List['USERDATAOrderByInput']]
+    where: 'USERDATAWhereInput'
+    cursor: 'USERDATAWhereUniqueInput'
+    distinct: List['USERDATAScalarFieldKeys']
+    include: 'USERDATAIncludeFromUSERDATARecursive1'
+
+
+class FindManyUSERDATAArgsFromUSERCHARRecursive1(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['USERDATAOrderByInput', List['USERDATAOrderByInput']]
+    where: 'USERDATAWhereInput'
+    cursor: 'USERDATAWhereUniqueInput'
+    distinct: List['USERDATAScalarFieldKeys']
+    include: 'USERDATAIncludeFromUSERDATARecursive2'
+
+
+class FindManyUSERDATAArgsFromUSERCHARRecursive2(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['USERDATAOrderByInput', List['USERDATAOrderByInput']]
+    where: 'USERDATAWhereInput'
+    cursor: 'USERDATAWhereUniqueInput'
+    distinct: List['USERDATAScalarFieldKeys']
+    include: 'USERDATAIncludeFromUSERDATARecursive3'
+
+
+class FindManyUSERDATAArgsFromUSERCHARRecursive3(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['USERDATAOrderByInput', List['USERDATAOrderByInput']]
+    where: 'USERDATAWhereInput'
+    cursor: 'USERDATAWhereUniqueInput'
+    distinct: List['USERDATAScalarFieldKeys']
+    include: 'USERDATAIncludeFromUSERDATARecursive4'
+
+
+class FindManyUSERDATAArgsFromUSERCHARRecursive4(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['USERDATAOrderByInput', List['USERDATAOrderByInput']]
+    where: 'USERDATAWhereInput'
+    cursor: 'USERDATAWhereUniqueInput'
+    distinct: List['USERDATAScalarFieldKeys']
+    
+    
+
+class STORYVECTORIncludeFromUSERCHAR(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class STORYVECTORIncludeFromUSERCHARRecursive1(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class STORYVECTORIncludeFromUSERCHARRecursive2(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class STORYVECTORIncludeFromUSERCHARRecursive3(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+
+class STORYVECTORIncludeFromUSERCHARRecursive4(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+    
+
+class STORYVECTORArgsFromUSERCHAR(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive1'
+
+
+class STORYVECTORArgsFromUSERCHARRecursive1(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive2'
+
+
+class STORYVECTORArgsFromUSERCHARRecursive2(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive3'
+
+
+class STORYVECTORArgsFromUSERCHARRecursive3(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive4'
+
+
+class STORYVECTORArgsFromUSERCHARRecursive4(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    
+    
+
+class FindManySTORYVECTORArgsFromUSERCHAR(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive1'
+
+
+class FindManySTORYVECTORArgsFromUSERCHARRecursive1(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive2'
+
+
+class FindManySTORYVECTORArgsFromUSERCHARRecursive2(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive3'
+
+
+class FindManySTORYVECTORArgsFromUSERCHARRecursive3(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive4'
+
+
+class FindManySTORYVECTORArgsFromUSERCHARRecursive4(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    
+    
+
+class USERCHARIncludeFromUSERCHAR(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+    username: Union[bool, 'USERDATAArgsFromUSERCHARRecursive1']
+
+
+class USERCHARIncludeFromUSERCHARRecursive1(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+    username: Union[bool, 'USERDATAArgsFromUSERCHARRecursive2']
+
+
+class USERCHARIncludeFromUSERCHARRecursive2(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+    username: Union[bool, 'USERDATAArgsFromUSERCHARRecursive3']
+
+
+class USERCHARIncludeFromUSERCHARRecursive3(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+    username: Union[bool, 'USERDATAArgsFromUSERCHARRecursive4']
+
+
+class USERCHARIncludeFromUSERCHARRecursive4(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+    
+
+class USERCHARArgsFromUSERCHAR(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive1'
+
+
+class USERCHARArgsFromUSERCHARRecursive1(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive2'
+
+
+class USERCHARArgsFromUSERCHARRecursive2(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive3'
+
+
+class USERCHARArgsFromUSERCHARRecursive3(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive4'
+
+
+class USERCHARArgsFromUSERCHARRecursive4(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    
+    
+
+class FindManyUSERCHARArgsFromUSERCHAR(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive1'
+
+
+class FindManyUSERCHARArgsFromUSERCHARRecursive1(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive2'
+
+
+class FindManyUSERCHARArgsFromUSERCHARRecursive2(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive3'
+
+
+class FindManyUSERCHARArgsFromUSERCHARRecursive3(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive4'
+
+
+class FindManyUSERCHARArgsFromUSERCHARRecursive4(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    
+
+
+FindManyUSERCHARArgs = FindManyUSERCHARArgsFromUSERCHAR
+FindFirstUSERCHARArgs = FindManyUSERCHARArgsFromUSERCHAR
+
+
+    
+
+class USERCHARWhereInput(TypedDict, total=False):
+    """USERCHAR arguments for searching"""
+    id: Union[_int, 'types.IntFilter']
+    user: Union[_str, 'types.StringFilter']
+    username: 'USERDATARelationFilter'
+    race: Union[_str, 'types.StringFilter']
+    cla: Union[_str, 'types.StringFilter']
+    subclass: Union[_str, 'types.StringFilter']
+    str: Union[_int, 'types.IntFilter']
+    dex: Union[_int, 'types.IntFilter']
+    con: Union[_int, 'types.IntFilter']
+    int: Union[_int, 'types.IntFilter']
+    wis: Union[_int, 'types.IntFilter']
+    cha: Union[_int, 'types.IntFilter']
+    backstory: Union[_str, 'types.StringFilter']
+
+    # should be noted that AND and NOT should be Union['USERCHARWhereInputRecursive1', List['USERCHARWhereInputRecursive1']]
+    # but this causes mypy to hang :/
+    AND: List['USERCHARWhereInputRecursive1']
+    OR: List['USERCHARWhereInputRecursive1']
+    NOT: List['USERCHARWhereInputRecursive1']
+
+
+class USERCHARWhereInputRecursive1(TypedDict, total=False):
+    """USERCHAR arguments for searching"""
+    id: Union[_int, 'types.IntFilter']
+    user: Union[_str, 'types.StringFilter']
+    username: 'USERDATARelationFilter'
+    race: Union[_str, 'types.StringFilter']
+    cla: Union[_str, 'types.StringFilter']
+    subclass: Union[_str, 'types.StringFilter']
+    str: Union[_int, 'types.IntFilter']
+    dex: Union[_int, 'types.IntFilter']
+    con: Union[_int, 'types.IntFilter']
+    int: Union[_int, 'types.IntFilter']
+    wis: Union[_int, 'types.IntFilter']
+    cha: Union[_int, 'types.IntFilter']
+    backstory: Union[_str, 'types.StringFilter']
+
+    # should be noted that AND and NOT should be Union['USERCHARWhereInputRecursive2', List['USERCHARWhereInputRecursive2']]
+    # but this causes mypy to hang :/
+    AND: List['USERCHARWhereInputRecursive2']
+    OR: List['USERCHARWhereInputRecursive2']
+    NOT: List['USERCHARWhereInputRecursive2']
+
+
+class USERCHARWhereInputRecursive2(TypedDict, total=False):
+    """USERCHAR arguments for searching"""
+    id: Union[_int, 'types.IntFilter']
+    user: Union[_str, 'types.StringFilter']
+    username: 'USERDATARelationFilter'
+    race: Union[_str, 'types.StringFilter']
+    cla: Union[_str, 'types.StringFilter']
+    subclass: Union[_str, 'types.StringFilter']
+    str: Union[_int, 'types.IntFilter']
+    dex: Union[_int, 'types.IntFilter']
+    con: Union[_int, 'types.IntFilter']
+    int: Union[_int, 'types.IntFilter']
+    wis: Union[_int, 'types.IntFilter']
+    cha: Union[_int, 'types.IntFilter']
+    backstory: Union[_str, 'types.StringFilter']
+
+    # should be noted that AND and NOT should be Union['USERCHARWhereInputRecursive3', List['USERCHARWhereInputRecursive3']]
+    # but this causes mypy to hang :/
+    AND: List['USERCHARWhereInputRecursive3']
+    OR: List['USERCHARWhereInputRecursive3']
+    NOT: List['USERCHARWhereInputRecursive3']
+
+
+class USERCHARWhereInputRecursive3(TypedDict, total=False):
+    """USERCHAR arguments for searching"""
+    id: Union[_int, 'types.IntFilter']
+    user: Union[_str, 'types.StringFilter']
+    username: 'USERDATARelationFilter'
+    race: Union[_str, 'types.StringFilter']
+    cla: Union[_str, 'types.StringFilter']
+    subclass: Union[_str, 'types.StringFilter']
+    str: Union[_int, 'types.IntFilter']
+    dex: Union[_int, 'types.IntFilter']
+    con: Union[_int, 'types.IntFilter']
+    int: Union[_int, 'types.IntFilter']
+    wis: Union[_int, 'types.IntFilter']
+    cha: Union[_int, 'types.IntFilter']
+    backstory: Union[_str, 'types.StringFilter']
+
+    # should be noted that AND and NOT should be Union['USERCHARWhereInputRecursive4', List['USERCHARWhereInputRecursive4']]
+    # but this causes mypy to hang :/
+    AND: List['USERCHARWhereInputRecursive4']
+    OR: List['USERCHARWhereInputRecursive4']
+    NOT: List['USERCHARWhereInputRecursive4']
+
+
+class USERCHARWhereInputRecursive4(TypedDict, total=False):
+    """USERCHAR arguments for searching"""
+    id: Union[_int, 'types.IntFilter']
+    user: Union[_str, 'types.StringFilter']
+    username: 'USERDATARelationFilter'
+    race: Union[_str, 'types.StringFilter']
+    cla: Union[_str, 'types.StringFilter']
+    subclass: Union[_str, 'types.StringFilter']
+    str: Union[_int, 'types.IntFilter']
+    dex: Union[_int, 'types.IntFilter']
+    con: Union[_int, 'types.IntFilter']
+    int: Union[_int, 'types.IntFilter']
+    wis: Union[_int, 'types.IntFilter']
+    cha: Union[_int, 'types.IntFilter']
+    backstory: Union[_str, 'types.StringFilter']
+
+
+
+# aggregate USERCHAR types
+
+
+    
+
+class USERCHARScalarWhereWithAggregatesInput(TypedDict, total=False):
+    """USERCHAR arguments for searching"""
+    id: Union[_int, 'types.IntWithAggregatesFilter']
+    user: Union[_str, 'types.StringWithAggregatesFilter']
+    race: Union[_str, 'types.StringWithAggregatesFilter']
+    cla: Union[_str, 'types.StringWithAggregatesFilter']
+    subclass: Union[_str, 'types.StringWithAggregatesFilter']
+    str: Union[_int, 'types.IntWithAggregatesFilter']
+    dex: Union[_int, 'types.IntWithAggregatesFilter']
+    con: Union[_int, 'types.IntWithAggregatesFilter']
+    int: Union[_int, 'types.IntWithAggregatesFilter']
+    wis: Union[_int, 'types.IntWithAggregatesFilter']
+    cha: Union[_int, 'types.IntWithAggregatesFilter']
+    backstory: Union[_str, 'types.StringWithAggregatesFilter']
+
+    AND: List['USERCHARScalarWhereWithAggregatesInputRecursive1']
+    OR: List['USERCHARScalarWhereWithAggregatesInputRecursive1']
+    NOT: List['USERCHARScalarWhereWithAggregatesInputRecursive1']
+
+
+class USERCHARScalarWhereWithAggregatesInputRecursive1(TypedDict, total=False):
+    """USERCHAR arguments for searching"""
+    id: Union[_int, 'types.IntWithAggregatesFilter']
+    user: Union[_str, 'types.StringWithAggregatesFilter']
+    race: Union[_str, 'types.StringWithAggregatesFilter']
+    cla: Union[_str, 'types.StringWithAggregatesFilter']
+    subclass: Union[_str, 'types.StringWithAggregatesFilter']
+    str: Union[_int, 'types.IntWithAggregatesFilter']
+    dex: Union[_int, 'types.IntWithAggregatesFilter']
+    con: Union[_int, 'types.IntWithAggregatesFilter']
+    int: Union[_int, 'types.IntWithAggregatesFilter']
+    wis: Union[_int, 'types.IntWithAggregatesFilter']
+    cha: Union[_int, 'types.IntWithAggregatesFilter']
+    backstory: Union[_str, 'types.StringWithAggregatesFilter']
+
+    AND: List['USERCHARScalarWhereWithAggregatesInputRecursive2']
+    OR: List['USERCHARScalarWhereWithAggregatesInputRecursive2']
+    NOT: List['USERCHARScalarWhereWithAggregatesInputRecursive2']
+
+
+class USERCHARScalarWhereWithAggregatesInputRecursive2(TypedDict, total=False):
+    """USERCHAR arguments for searching"""
+    id: Union[_int, 'types.IntWithAggregatesFilter']
+    user: Union[_str, 'types.StringWithAggregatesFilter']
+    race: Union[_str, 'types.StringWithAggregatesFilter']
+    cla: Union[_str, 'types.StringWithAggregatesFilter']
+    subclass: Union[_str, 'types.StringWithAggregatesFilter']
+    str: Union[_int, 'types.IntWithAggregatesFilter']
+    dex: Union[_int, 'types.IntWithAggregatesFilter']
+    con: Union[_int, 'types.IntWithAggregatesFilter']
+    int: Union[_int, 'types.IntWithAggregatesFilter']
+    wis: Union[_int, 'types.IntWithAggregatesFilter']
+    cha: Union[_int, 'types.IntWithAggregatesFilter']
+    backstory: Union[_str, 'types.StringWithAggregatesFilter']
+
+    AND: List['USERCHARScalarWhereWithAggregatesInputRecursive3']
+    OR: List['USERCHARScalarWhereWithAggregatesInputRecursive3']
+    NOT: List['USERCHARScalarWhereWithAggregatesInputRecursive3']
+
+
+class USERCHARScalarWhereWithAggregatesInputRecursive3(TypedDict, total=False):
+    """USERCHAR arguments for searching"""
+    id: Union[_int, 'types.IntWithAggregatesFilter']
+    user: Union[_str, 'types.StringWithAggregatesFilter']
+    race: Union[_str, 'types.StringWithAggregatesFilter']
+    cla: Union[_str, 'types.StringWithAggregatesFilter']
+    subclass: Union[_str, 'types.StringWithAggregatesFilter']
+    str: Union[_int, 'types.IntWithAggregatesFilter']
+    dex: Union[_int, 'types.IntWithAggregatesFilter']
+    con: Union[_int, 'types.IntWithAggregatesFilter']
+    int: Union[_int, 'types.IntWithAggregatesFilter']
+    wis: Union[_int, 'types.IntWithAggregatesFilter']
+    cha: Union[_int, 'types.IntWithAggregatesFilter']
+    backstory: Union[_str, 'types.StringWithAggregatesFilter']
+
+    AND: List['USERCHARScalarWhereWithAggregatesInputRecursive4']
+    OR: List['USERCHARScalarWhereWithAggregatesInputRecursive4']
+    NOT: List['USERCHARScalarWhereWithAggregatesInputRecursive4']
+
+
+class USERCHARScalarWhereWithAggregatesInputRecursive4(TypedDict, total=False):
+    """USERCHAR arguments for searching"""
+    id: Union[_int, 'types.IntWithAggregatesFilter']
+    user: Union[_str, 'types.StringWithAggregatesFilter']
+    race: Union[_str, 'types.StringWithAggregatesFilter']
+    cla: Union[_str, 'types.StringWithAggregatesFilter']
+    subclass: Union[_str, 'types.StringWithAggregatesFilter']
+    str: Union[_int, 'types.IntWithAggregatesFilter']
+    dex: Union[_int, 'types.IntWithAggregatesFilter']
+    con: Union[_int, 'types.IntWithAggregatesFilter']
+    int: Union[_int, 'types.IntWithAggregatesFilter']
+    wis: Union[_int, 'types.IntWithAggregatesFilter']
+    cha: Union[_int, 'types.IntWithAggregatesFilter']
+    backstory: Union[_str, 'types.StringWithAggregatesFilter']
+
+
+
+class USERCHARGroupByOutput(TypedDict, total=False):
+    id: _int
+    user: _str
+    race: _str
+    cla: _str
+    subclass: _str
+    str: _int
+    dex: _int
+    con: _int
+    int: _int
+    wis: _int
+    cha: _int
+    backstory: _str
+    _sum: 'USERCHARSumAggregateOutput'
+    _avg: 'USERCHARAvgAggregateOutput'
+    _min: 'USERCHARMinAggregateOutput'
+    _max: 'USERCHARMaxAggregateOutput'
+    _count: 'USERCHARCountAggregateOutput'
+
+
+class USERCHARAvgAggregateOutput(TypedDict, total=False):
+    """USERCHAR output for aggregating averages"""
+    id: float
+    str: float
+    dex: float
+    con: float
+    int: float
+    wis: float
+    cha: float
+
+
+class USERCHARSumAggregateOutput(TypedDict, total=False):
+    """USERCHAR output for aggregating sums"""
+    id: _int
+    str: _int
+    dex: _int
+    con: _int
+    int: _int
+    wis: _int
+    cha: _int
+
+
+class USERCHARScalarAggregateOutput(TypedDict, total=False):
+    """USERCHAR output including scalar fields"""
+    id: _int
+    user: _str
+    race: _str
+    cla: _str
+    subclass: _str
+    str: _int
+    dex: _int
+    con: _int
+    int: _int
+    wis: _int
+    cha: _int
+    backstory: _str
+
+
+USERCHARMinAggregateOutput = USERCHARScalarAggregateOutput
+USERCHARMaxAggregateOutput = USERCHARScalarAggregateOutput
+
+
+class USERCHARMaxAggregateInput(TypedDict, total=False):
+    """USERCHAR input for aggregating by max"""
+    id: bool
+    user: bool
+    race: bool
+    cla: bool
+    subclass: bool
+    str: bool
+    dex: bool
+    con: bool
+    int: bool
+    wis: bool
+    cha: bool
+    backstory: bool
+
+
+class USERCHARMinAggregateInput(TypedDict, total=False):
+    """USERCHAR input for aggregating by min"""
+    id: bool
+    user: bool
+    race: bool
+    cla: bool
+    subclass: bool
+    str: bool
+    dex: bool
+    con: bool
+    int: bool
+    wis: bool
+    cha: bool
+    backstory: bool
+
+
+class USERCHARNumberAggregateInput(TypedDict, total=False):
+    """USERCHAR input for aggregating numbers"""
+    id: bool
+    str: bool
+    dex: bool
+    con: bool
+    int: bool
+    wis: bool
+    cha: bool
+
+
+USERCHARAvgAggregateInput = USERCHARNumberAggregateInput
+USERCHARSumAggregateInput = USERCHARNumberAggregateInput
+
+
+USERCHARCountAggregateInput = TypedDict(
+    'USERCHARCountAggregateInput',
+    {
+        'id': bool,
+        'user': bool,
+        'race': bool,
+        'cla': bool,
+        'subclass': bool,
+        'str': bool,
+        'dex': bool,
+        'con': bool,
+        'int': bool,
+        'wis': bool,
+        'cha': bool,
+        'backstory': bool,
+        '_all': bool,
+    },
+    total=False,
+)
+
+USERCHARCountAggregateOutput = TypedDict(
+    'USERCHARCountAggregateOutput',
+    {
+        'id': int,
+        'user': int,
+        'race': int,
+        'cla': int,
+        'subclass': int,
+        'str': int,
+        'dex': int,
+        'con': int,
+        'int': int,
+        'wis': int,
+        'cha': int,
+        'backstory': int,
+        '_all': int,
+    },
+    total=False,
+)
+
+
+USERCHARKeys = Literal[
+    'id',
+    'user',
+    'username',
+    'race',
+    'cla',
+    'subclass',
+    'str',
+    'dex',
+    'con',
+    'int',
+    'wis',
+    'cha',
+    'backstory',
+]
+USERCHARScalarFieldKeys = Literal[
+    'id',
+    'user',
+    'race',
+    'cla',
+    'subclass',
+    'str',
+    'dex',
+    'con',
+    'int',
+    'wis',
+    'cha',
+    'backstory',
+]
+USERCHARScalarFieldKeysT = TypeVar('USERCHARScalarFieldKeysT', bound=USERCHARScalarFieldKeys)
+
+USERCHARRelationalFieldKeys = Literal[
+        'username',
+    ]
 
 
 

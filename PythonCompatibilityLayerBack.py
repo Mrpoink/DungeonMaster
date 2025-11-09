@@ -15,19 +15,30 @@ nest_asyncio.apply()
 loop = asyncio.new_event_loop()
 asyncio.set_event_loop(loop)
 
-def initialize_app():
-    return loop.run_until_complete(async_initialize())
+def initialize_app(username=None):
+    return loop.run_until_complete(async_initialize(username))
 
-async def async_initialize():
-    model = await PythonBackEnd.DungeonMaster.create_dm()
+async def async_initialize(username=None):
+    model = await PythonBackEnd.DungeonMaster.create_dm(username)
     backend = await PythonBackEnd.DungeonMaster.create_backend()
     return model, backend
 
+# Initially create with no username - will be updated when user logs in
 try:
     model, backend = initialize_app()
 except Exception as e:
     print("Error initializing: ", e)
     raise
+
+# Add function to reinitialize DM with character data when user logs in
+def reinitialize_dm(username):
+    global model, backend
+    try:
+        model, backend = initialize_app(username)
+        return True
+    except Exception as e:
+        print("Error reinitializing DM:", e)
+        return False
 
 
 turn_num = 0
@@ -115,25 +126,32 @@ lock = False
 
 @app.route("/userin", methods=['POST'])
 def process_message():
-    global lock
+    global lock, model
     if not lock:
         try:
             data = request.get_json()
             userInput.set_userin(data.get('message'))
+            username = data.get('username', 'User')
+            
+            # Reinitialize DM with username to get character data if not already done
+            if model and hasattr(model, 'player') and model.player == "[/PLAYER]: A wandering adventurer seeking their destiny":
+                model, _ = initialize_app(username)
+            
             lock = True
         except Exception as e:
             return jsonify({'message': 'Something went wrong, error output on line 15'})
         
         userinput = userInput.get_userin()
         
-        print(f"Python received: {userinput}")
+        print(f"Python received from {username}: {userinput}")
 
         model_output = userInput.send_userin()
 
         lock = False
         return jsonify({
-            'message':model_output,
-            'scene': userInput.get_scene()
+            'message': model_output,
+            'scene': userInput.get_scene(),
+            'username': username
         })
     else:
         return jsonify({'message': 'DM is typing, please wait...'})
@@ -144,7 +162,7 @@ def output_message():
     try:
         lock = False
         scene = userInput.get_scene()
-        initial_message = "Welcome to the game! What would you like to do?"
+        initial_message = scene
 
         lock = False
         return jsonify({
@@ -202,9 +220,14 @@ def check_creds():
         return '', 200
     try:
         data = request.get_json()
-        user_creds = loop.run_until_complete(userData.check_credentials(data.get('username'), data.get('password')))
+        username = data.get('username')
+        user_creds = loop.run_until_complete(userData.check_credentials(username, data.get('password')))
 
         print(user_creds)
+
+        # If login successful, reinitialize DM with character data
+        if isinstance(user_creds, bool) and user_creds:
+            reinitialize_dm(username)
 
         return jsonify({"userCreds" : data, "status":"ready", "message" : user_creds}), 200
     
@@ -213,16 +236,58 @@ def check_creds():
         traceback.print_exc()
         return jsonify({"error" : "Failed to retrieve user credentials", "details" : str(e)}), 500
     
+@app.route("/character-data", methods=['POST'])
+def get_character_data():
+    try:
+        data = request.get_json()
+        username = data.get('username')
+        if not username:
+            return jsonify({"error": "Username is required"}), 400
+
+        character_data = loop.run_until_complete(model.vb.get_character(username))
+        return jsonify({"characterData": character_data}), 200
+    except Exception as e:
+        print("Error fetching character data:", e)
+        traceback.print_exc()
+        return jsonify({"error": "Failed to fetch character data", "details": str(e)}), 500
+
 @app.route("/characters", methods=['POST'])
 def process_characters():
     try:
         data = request.get_json()
-        print("Received character data: ", data)
-        return jsonify({"characterData" : data, "status":"ready", "message" : "Character data received"}), 200
+        username = data.get('username')
+        
+        # Store character data in database
+        success, message = loop.run_until_complete(backend.bvb.add_user_character(
+            username=username,
+            name=data.get('name'),
+            race=data.get('race'),
+            char_class=data.get('class'),
+            subclass=data.get('subclass'),
+            strength=data.get('str'),
+            dexterity=data.get('dex'),
+            constitution=data.get('con'),
+            intelligence=data.get('int'),
+            wisdom=data.get('wis'),
+            charisma=data.get('cha'),
+            backstory=data.get('backstory')
+        ))
+        
+        if not success:
+            return jsonify({
+                "error": "Failed to store character data",
+                "details": message
+            }), 400
+
+        return jsonify({
+            "characterData": data, 
+            "status": "success", 
+            "message": message
+        }), 200
     except Exception as e:
-        print("Error receiving character data, Line 144", e)
+        print("Error storing character data:", e)
         traceback.print_exc()
-        return jsonify({"error" : "Failed to retrieve character data", "details" : str(e)}), 500
+        return jsonify({"error": "Failed to store character data", "details": str(e)}), 500
     
 
 @app.route("/")
