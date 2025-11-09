@@ -139,11 +139,6 @@ export default function Game() {
                 Enter
               </button>
             </div>
-            {/* <div>
-              <blockquote>
-                {DMmessage}
-              </blockquote>
-            </div> */}
           </main>
           <div className="party-box">
             <Party />

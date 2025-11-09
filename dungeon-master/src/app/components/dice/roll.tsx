@@ -5,11 +5,12 @@ type RollProps = {
     sides: number;
     command: string; 
     onRollClick: (isRoll: boolean) => Promise<void>; 
+    setConversation: React.Dispatch<React.SetStateAction<ConversationItem[]>>
 }
 
 type ConversationItem = { sender: string, text: string };
 
-export default function Roll({ sides, command, onRollClick, setConversation, rollIsDone}: {sides : number, command: any, onRollClick: any, setConversation: React.Dispatch<React.SetStateAction<ConversationItem[]>>, rollIsDone: boolean}) {
+export default function Roll({ sides, command, onRollClick, setConversation}: RollProps){
     const [rollResult, setRollResult] = useState<number | null>(null);
 
     const handleRoll = async () => {
@@ -45,7 +46,6 @@ export default function Roll({ sides, command, onRollClick, setConversation, rol
             <button 
                 id="roll-dice-button" 
                 onClick={handleRoll}
-                // disabled={!command.trim()} // Disable if no text command is present
             >
                 ROLL
             </button>
