@@ -144,7 +144,7 @@ const AbilityScore = ({ name, score }: { name: string, score: number }) => {
                     </div>
                     <div>
                         <label className="text-sm text-gray-400 block mb-1">Select your Icon</label>
-                        <SelectIcon/>
+                        <SelectIcon onIconSelect={setTempIcon} currentIconId={tempIcon}/>
                     </div>
                     <div>
                         <label className="text-sm text-gray-400 block mb-1">Character Race</label>
@@ -174,9 +174,9 @@ const AbilityScore = ({ name, score }: { name: string, score: number }) => {
                         <BiPencil className="w-4 h-4" />
                     </button>
                 </div>
-                <div className="ability-scores-grid">
+                <div className="basic-info-grid">
                     <div className="basicInfo-icon">
-                        <CharacterIcon id={0}/>
+                        <CharacterIcon id={tempIcon}/>
                     </div>
                     <p className="basicInfo-text">
                         {characterData.race}

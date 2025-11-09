@@ -1,7 +1,17 @@
 'use client'
-import React, { useState } from "react";
+import React from "react";
 import { CgProfile } from "react-icons/cg";
 import { GiAquarium, GiArrowed, GiAstronautHelmet, GiPlagueDoctorProfile, GiRabbit } from "react-icons/gi"
+
+
+const availableIcons = [
+    {id: 0, Component: <CgProfile/>},
+    {id: 1, Component: <GiPlagueDoctorProfile/>},
+    {id: 2, Component: <GiAquarium/>},
+    {id: 3, Component: <GiRabbit/>},
+    {id: 4, Component: <GiArrowed/>},
+]
+
 
 export function CharacterIcon({ id }: { id: number }) {
     switch (id) {
@@ -20,31 +30,30 @@ export function CharacterIcon({ id }: { id: number }) {
     }
 }
 
-export default function SelectIcon() {
-    const [icon, setIcon] = useState(0)
+export default function SelectIcon({onIconSelect, currentIconId}: { onIconSelect: (id: number) => void; currentIconId: number }) {
+    
     const handleIconSelect = (id: number) => {
-        setIcon(id)
+        onIconSelect(id)
     }
+
+    const iconElements = availableIcons.map((icon) => {
+        const isSelected = icon.id === currentIconId;
+        return (
+            <div
+                key={icon.id}
+                onClick={() => handleIconSelect(icon.id)}
+                className={`icon-item ${isSelected ? 'selected' : ''}`}
+                role="button"
+                tabIndex={0}
+            >
+                {icon.Component}
+            </div>
+        )
+    })
+
     return(
         <div className="icon-select">
-            <div className="character-icon">
-                <GiPlagueDoctorProfile onClick={() => handleIconSelect(1)}/>
-            </div>
-            <div className="character-icon">
-                <GiAquarium onClick={() => handleIconSelect(2)}/>
-            </div>
-            <div className="character-icon">
-                <GiRabbit onClick={() => handleIconSelect(3)}/>
-            </div>
-            <div className="character-icon">
-                <GiArrowed onClick={() => handleIconSelect(4)}/>
-            </div>
-            <div className="character-icon">
-                <GiAstronautHelmet onClick={() => handleIconSelect(5)}/>
-            </div>
-            <div className="character-icon">
-                <CgProfile onClick={() => handleIconSelect(0)}/>
-            </div>
+            {iconElements}
         </div>
     )
 }
