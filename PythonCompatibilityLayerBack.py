@@ -143,14 +143,16 @@ def output_message():
     global lock
     try:
         lock = False
-        test_response = userInput.get_userin()
-        print(test_response)
-
         scene = userInput.get_scene()
+        initial_message = "Welcome to the game! What would you like to do?"
 
         lock = False
-
-        return jsonify({"dm_text" : scene, "status":"ready", "message" : scene}), 200
+        return jsonify({
+            "dm_text": initial_message,
+            "status": "ready",
+            "message": initial_message,
+            "scene": scene
+        }), 200
     
     except Exception as e:
         print(e)

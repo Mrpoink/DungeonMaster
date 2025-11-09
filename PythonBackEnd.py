@@ -60,7 +60,7 @@ def def_model():
         dtype = torch.bfloat16,
         device_map = "cuda"
         )
-    model = PeftModel.from_pretrained(base_model, "prompt_classifier_Smol/checkpoint-3560")
+    model = PeftModel.from_pretrained(base_model, "prompt_classifier_Smol/checkpoint-2673")
 
     model.to("cuda")
 
@@ -85,7 +85,7 @@ async def model_output(userin : str, model, tokenizer): #running script WITH che
             return_dict_in_generate=True,
             output_scores=True,
             do_sample=True,
-            top_p = .75,
+            top_p = .82,
             #top_k = 40,
             # pad_token_id=tokenizer.eos_token_id,
             # eos_token_id=tokenizer.eos_token_id,
@@ -243,7 +243,7 @@ class DungeonMaster:
 
         scene = "[/SCENE]: The well known streets of Zanzebar"
 
-        if instance.roll_number > 2:
+        if instance.turn_num % 2 == 0:
             instance.scene_num += 1
             instance.scene = await instance.vb.find_scene(instance.scene_num)
 
