@@ -814,7 +814,7 @@ ring-color: #F59E0B;
     display: flex;
     justify-content: center;
     align-items: center;
-    m-height: 100vh;
+    max-height: 100vh;
     padding: 1rem;
     width: 100%;
     box-sizing: border-box;
