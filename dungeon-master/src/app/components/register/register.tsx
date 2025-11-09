@@ -43,14 +43,15 @@ export default function Register() {
         }
         throw new Error(errorData.message || 'Username already exists.');
       }
-      if (response.ok){
-        router.push("./characterInfo")
-      }
+      console.log('Registration data submitted successfully!')
       setFormData({
         name: '',
         username: '',
         password: '',
       });
+      if (response.ok){
+        router.push("./characterInfo")
+      }
     } catch (err){
       const message = (err instanceof Error) ? err.message : "An unknown error occurred.";
       console.error("Failed to send userData: ", message);
