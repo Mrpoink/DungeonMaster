@@ -56,10 +56,10 @@ export default function Login() {
   };
 
   return (
-    <div className="login-container">
-      <form onSubmit={handleSubmit}>
+    <div className="credentials-container">
+      <form onSubmit={handleSubmit} className='credentials-form'>
         <div className="form-group">
-          <label htmlFor="username">Username:</label>
+          <label className='input-group' htmlFor="username">Username:</label>
           <input
             type="username"
             id="username"
@@ -69,7 +69,7 @@ export default function Login() {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password">Password:</label>
+          <label className='input-group' htmlFor="password">Password:</label>
           <input
             type="password"
             id="password"
@@ -78,7 +78,7 @@ export default function Login() {
             required
           />
         </div>
-        <button type="submit" disabled={isLoading}>
+        <button className="submit-button" type="submit" disabled={isLoading}>
             {isLoading ? 'Logging In...' : 'Login'}
         </button>
         {error && <p style={{ color: 'red' }}>{error}</p>}

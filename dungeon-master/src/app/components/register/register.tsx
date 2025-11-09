@@ -19,10 +19,8 @@ export default function Register() {
 
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-    // Here you would typically send the formData to a backend server for registration
     console.log('Registration data submitted:', formData);
     alert(`User ${formData.name} registered successfully!`);
-    // Optionally clear the form after submission
     setFormData({
       name: '',
       username: '',
@@ -42,10 +40,10 @@ export default function Register() {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className="credentials-container">
+      <form onSubmit={handleSubmit} className="credentials-form">
         <div>
-          <label htmlFor="name">Name:</label>
+          <label className="input-group" htmlFor="name">Name:</label>
           <input
             type="text"
             id="name"
@@ -56,7 +54,7 @@ export default function Register() {
           />
         </div>
         <div>
-          <label htmlFor="username">Username:</label>
+          <label className="input-group" htmlFor="username">Username:</label>
           <input
             type="username"
             id="username"
@@ -67,7 +65,7 @@ export default function Register() {
           />
         </div>
         <div>
-          <label htmlFor="password">Password:</label>
+          <label className="input-group" htmlFor="password">Password:</label>
           <input
             type="password"
             id="password"
@@ -77,7 +75,7 @@ export default function Register() {
             required
           />
         </div>
-        <button type="submit">
+        <button className="submit-button" type="submit">
           Register
         </button>
       </form>
