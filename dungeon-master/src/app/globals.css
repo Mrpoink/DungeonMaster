@@ -68,6 +68,11 @@ button {
     border: none;
     cursor: pointer;
   }
+  .dnd-icon{
+    font-size: 2em;
+    background: transparent;
+    border: none;
+  }
   .character-icon {
     font-size: 2em;
     background: transparent;
@@ -78,6 +83,7 @@ button {
     position: relative;
   }
 }
+
 .lobby{
   background: url(./components/assets/lobbyBackground2.jpg) no-repeat;
   background-position: center;
