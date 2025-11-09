@@ -314,6 +314,11 @@ input::selection {
     cursor: pointer;
   }
 }
+.roll-container{
+  position: absolute;
+  top: -130px;
+  left: 2px;
+}
 #roll-dice-button, #enter-button {
   border-radius: 25px;
   text-align: center;

@@ -42,7 +42,7 @@ export default function Roll({ sides, command, onRollClick, setConversation}: Ro
     }
 
     return(
-        <div>
+        <div className="roll-container">
             <button 
                 id="roll-dice-button" 
                 onClick={handleRoll}
