@@ -96,6 +96,25 @@ export default function Game() {
           <header>
             <h1>Dungeon Master:</h1>      
           </header>
+          <div className="scene-box" style={{
+            backgroundColor: 'rgba(0, 0, 0, 0.7)',
+            padding: '15px',
+            margin: '10px auto',
+            borderRadius: '8px',
+            border: '1px solid #4a4a4a',
+            color: '#fff',
+            maxWidth: '800px',
+            minHeight: '50px',
+            boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+            textAlign: 'center'
+          }}>
+            <p style={{
+              margin: 0,
+              fontSize: '1rem',
+              lineHeight: '1.5',
+              fontFamily: 'serif'
+            }}>{scene || 'The scene is about to unfold...'}</p>
+          </div>
         </div>
         <div className="main-session-box">
           <div className="dice-box">
