@@ -1,37 +1,55 @@
 'use client'
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { Router } from 'next/router';
 
 export default function Login() {
+  const router = useRouter()
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
-    e.preventDefault(); // Prevent default form submission behavior
-
-    // Basic validation
+    e.preventDefault();
+    setIsLoading(true);
+    setError('');
+    
     if (!username || !password) {
       setError('Please enter both username and password.');
+      setIsLoading(false)
       return;
     }
 
     const credentials= {username:username, password:password}
+    const loginEndpoint = "http://localhost:1068/credentials"
 
-    // In a real application, you would send this data to a backend API for authentication
-    console.log('Attempting login with:', { username, password });
-
-    // Simulate a successful login (replace with actual API call)
     try{
-      const response = await fetch("http://localhost:1068/credentials", {
+      const response = await fetch(loginEndpoint, {
         method : 'POST',
         headers: {
           'Content-Type' : 'application/json',
         },
         body : JSON.stringify(credentials),
       });
-    } catch (error){
-      console.error("Failed to send user credentials: ", error)
+      if (!response.ok) {
+            let errorData;
+            try {
+                errorData = await response.json();
+            } catch (jsonError) {
+                throw new Error(`Login failed with status: ${response.status}`);
+            }
+            throw new Error(errorData.message || 'Invalid username or password.');
+        }
+        const data = await response.json();
+        localStorage.setItem('authToken', data.token);
+        console.log('Login successful! Token stored.');
+        router.push("./lobby")
+    } catch (err) {
+      const message = err instanceof Error ? err.message : String(err);
+      setError(message)
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -58,7 +76,10 @@ export default function Login() {
             required
           />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" disabled={isLoading}>
+            {isLoading ? 'Logging In...' : 'Login'}
+        </button>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
       </form>
     </div>
   );
