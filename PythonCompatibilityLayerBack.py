@@ -193,7 +193,8 @@ async def check_creds():
         print("Error receiving userCreds, Line 124", e)
         traceback.print_exc()
         return jsonify({"error" : "Failed to retrieve user credentials", "details" : str(e)}), 500
-    
+
+
 
 @app.route("/")
 def connection_message():

@@ -210,6 +210,7 @@ def to_json(data, output_file, w_or_r=None):
 async def main():
 
     output_list = read_csv_default('grand_output.csv')
+    print(type(output_list))
 
     vb = get_from_db()
 
