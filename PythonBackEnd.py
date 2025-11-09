@@ -60,7 +60,7 @@ def def_model():
         dtype = torch.bfloat16,
         device_map = "cuda"
         )
-    model = PeftModel.from_pretrained(base_model, "prompt_classifier_Smol/checkpoint-3560", quantization_config=bnb_config)
+    model = PeftModel.from_pretrained(base_model, "prompt_classifier_Smol/checkpoint-3560")
 
     model.to("cuda")
 
@@ -85,7 +85,7 @@ async def model_output(userin : str, model, tokenizer): #running script WITH che
             return_dict_in_generate=True,
             output_scores=True,
             do_sample=True,
-            top_p = .9,
+            top_p = .75,
             #top_k = 40,
             # pad_token_id=tokenizer.eos_token_id,
             # eos_token_id=tokenizer.eos_token_id,
@@ -124,12 +124,8 @@ async def model_output_check(userin : str, model, tokenizer): #Running check scr
             )
     decoded_ouput = tokenizer.decode(outputs[0][0], skip_special_tokens = True)
     print(decoded_ouput)
-    final_output = decoded_ouput.split('[/GENERATED CHECK]:')
-    try:
-        final_output = final_output[1].split('[/CHECK]')
-    except Exception:
-        final_output = final_output[1].split('|end|')
-    print(len(final_output))
+    final_output = decoded_ouput.split('[/GENERATED OUTCOME]:')
+    final_output = final_output[1].split('|end|')
     
     torch.cuda.empty_cache()
 
@@ -255,7 +251,7 @@ class DungeonMaster:
 
         final_input = await final_prompt(prompt, instance.vb, instance.seed, instance.turn_num)
 
-        final_input = f"{final_input} |end|\n|assistant|: [/GENERATED CHECK]:"
+        final_input = f"{final_input} |end|\n|assistant|: [/GENERATED OUTCOME]:"
 
         print("final input: ", final_input, "\n--------------\n")
 

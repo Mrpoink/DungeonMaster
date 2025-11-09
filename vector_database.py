@@ -55,7 +55,7 @@ class use_vector_db:
 
 
     def make_embedding(self, model : str):
-        model = st(model, device="cpu")
+        model = st(model, device="cuda")
         #Turns model into sentence piece transformer
 
         data = self.data_list
@@ -179,7 +179,7 @@ class get_from_db:
 
 
     def create_embedding(self, model : str, input):
-        self.model = st(model, device="cpu")
+        self.model = st(model, device="cuda")
         self.embeddings = self.model.encode(input)
 
         return self.embeddings
