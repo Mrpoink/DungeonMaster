@@ -807,3 +807,84 @@ ring-color: #F59E0B;
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+
+
+/* --- Credentials/Form Page Styling --- */
+.credentials-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    m-height: 100vh;
+    padding: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.credentials-form {
+    max-width: 400px; /* Max width for the form */
+    width: 100%;
+    /* Reusing char-sheet-container's visual style */
+    background-color: rgba(31, 41, 55, 0.3); /* bg-gray-800/30 */
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); /* shadow-2xl */
+    border: 1px solid rgba(55, 65, 81, 0.5); /* border border-gray-700/50 */
+    backdrop-filter: blur(12px); /* backdrop-blur-md */
+    border-radius: 1.5rem; /* rounded-3xl */
+    padding: 2.5rem; /* p-10 */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-heading {
+    /* Styles similar to h1 or another major heading */
+    font-size: 1.875rem; /* text-3xl */
+    font-weight: 700;
+    color: #FBBF24; /* text-yellow-400 */
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.input-label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: white; /* Consistent foreground color */
+    text-align: left;
+    padding-left: 0.5rem; /* Slight indentation */
+}
+
+/* Leveraging the existing global 'input' style */
+.credentials-form .form-input {
+    /* Overwrite global styles if necessary, but mainly just ensure they apply */
+    width: 100%; /* Make input full width of the form container */
+    box-sizing: border-box;
+    /* The global 'input' style:
+       background-color: black;
+       color: white;
+       box-shadow: rgba(44, 108, 187, 0.7) ...;
+       border-radius: 25px;
+       padding: 10px; */
+}
+
+/* Applying the existing global 'button' style */
+.credentials-form .submit-button {
+    /* Inherits global button styles:
+       border-radius: 25px;
+       background-color: #111827;
+       ...
+    */
+    width: 100%;
+    margin-top: 1rem;
+    color: white; /* Ensure text is visible on the dark button */
+    /* Add a subtle box-shadow for emphasis, maybe an inverted one */
+    box-shadow: rgba(44, 108, 187, 0.7) 0 4px 6px -1px, rgba(44, 108, 187, 0.5) 0 2px 4px -2px;
+}
+.credentials-form .submit-button:hover {
+    transform: scale(1.05);
+    background-color: #1f2937; /* Slightly lighter on hover */
+}
