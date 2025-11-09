@@ -189,7 +189,7 @@ class DungeonMaster:
         self.vb = None
         
     @classmethod
-    async def create_dm(cls):
+    async def create_dm(cls, username=None):
         try:
             loop = asyncio.get_running_loop()
         except RuntimeError:
@@ -206,10 +206,24 @@ class DungeonMaster:
         print("Seed: ", instance.seed)
         await instance.vb.add_session('all-MiniLM-L6-v2', "start of session", instance.seed)
 
-        instance.player = "[/PLAYER]: A Half-Foot looking for thier dagger that was owned by their father, on a quest to change their life"
+        # Get character data if username provided, otherwise use default
+        if username:
+            char_data = await instance.vb.get_character(username)
+            if char_data and len(char_data) > 0:
+                char = char_data[0]
+                # Format player description using character data
+                instance.player = f"[/PLAYER]: A {char['race']} {char['cla']}"
+                if char['subclass']:
+                    instance.player += f" ({char['subclass']})"
+                instance.player += f" named {char['name']}"
+                if char['backstory']:
+                    instance.player += f". {char['backstory']}"
+            else:
+                instance.player = "[/PLAYER]: A wandering adventurer seeking their destiny"
+        else:
+            instance.player = "[/PLAYER]: A wandering adventurer seeking their destiny"
 
         instance.player_says = None
-
         
         instance.roll_number = 0
 
@@ -241,12 +255,11 @@ class DungeonMaster:
 
         print("running check script")
 
-        scene = "[/SCENE]: The well known streets of Zanzebar"
-
-        if instance.turn_num % 2 == 0:
+        if instance.turn_num % 3 == 0:
             instance.scene_num += 1
-            instance.scene = await instance.vb.find_scene(instance.scene_num)
+            instance.scene = instance.vb.find_scene(instance.scene_num)
 
+        # Use the instance's scene and player data
         prompt = f"{instance.scene} {instance.player} [/ACTION]: {userin}"
 
         final_input = await final_prompt(prompt, instance.vb, instance.seed, instance.turn_num)
@@ -272,9 +285,8 @@ class DungeonMaster:
 
         print("running script WITH check")
 
-        scene = "[/SCENE]: The well known streets of Zanzebar"
-
-        prompt = f"{scene} [/ACTION]: {userin} [/CHECK]: {instance.check} [/PASS/FAIL]: {pass_fail}"
+        # Use the instance's scene instead of hardcoded one
+        prompt = f"{instance.scene} [/ACTION]: {userin} [/CHECK]: {instance.check} [/PASS/FAIL]: {pass_fail}"
 
         
 

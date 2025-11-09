@@ -18,6 +18,8 @@ export default function Game() {
   const [activeDice, setActiveDice] = useState("d20");
   const [DMmessage, setDMmessage] = useState("Connecting...");
   const [scene, setScene] = useState('');
+  const [username, setUsername] = useState('');
+  const [characterData, setCharacterData] = useState(null);
 
   const [userin, setUserin] = useState('');
   const [conversation, setConversation] = useState<ConversationItem[]>([
@@ -40,11 +42,13 @@ export default function Game() {
         setUserin('');
         setIsLoading(true);
 
-        setConversation(prev => [...prev, { sender: 'User', text: userMessage }]);
+        setConversation(prev => [...prev, { sender: username || username, text: userMessage }]);
         
         try {
             const payload = {
-                message: userMessage
+                message: userMessage,
+                username: username,
+                characterData: characterData
             };
 
             const response = await fetch('http://localhost:1068/userin', {
@@ -78,7 +82,7 @@ export default function Game() {
       const data = await response.json();
 
       setDMmessage(data.dm_text);
-      setScene(data.scene || '');
+      setScene("Scene: " + data.scene || '');
       setConversation(prev => [...prev, {sender : 'DM', text : data.dm_text}]);
     } catch (error) {
       console.error("Something went wrong with fetch dm message, line 81", error);
@@ -86,8 +90,33 @@ export default function Game() {
     }
   };
 
+  const fetchCharacterData = async (username: string) => {
+    try {
+      const response = await fetch('http://localhost:1068/character-data', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username }),
+      });
+      
+      if (!response.ok) throw new Error('Failed to fetch character data');
+      
+      const data = await response.json();
+      setCharacterData(data.characterData);
+    } catch (error) {
+      console.error('Error fetching character data:', error);
+    }
+  };
+
   useEffect(() => {
     fetchDMmessage();
+    // If we have a username (from localStorage or login), fetch character data
+    const savedUsername = localStorage.getItem('username');
+    if (savedUsername) {
+      setUsername(savedUsername);
+      fetchCharacterData(savedUsername);
+    }
   }, []);
 
   const latestMessage = conversation[conversation.length - 1];

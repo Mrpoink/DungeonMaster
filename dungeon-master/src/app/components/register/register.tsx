@@ -43,7 +43,12 @@ export default function Register() {
         }
         throw new Error(errorData.message || 'Username already exists.');
       }
-      console.log('Registration data submitted successfully!')
+      if (response.ok){
+        // Store username in localStorage
+        localStorage.setItem('username', formData.username);
+        // Redirect to character creation
+        router.push("/pages/characterInfo");
+      }
       setFormData({
         name: '',
         username: '',

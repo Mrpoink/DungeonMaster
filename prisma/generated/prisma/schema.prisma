@@ -260,8 +260,31 @@ model Spell {
 }
 
 model USERDATA {
-  id       Int    @id @default(autoincrement())
-  name     String
-  username String
-  password String
+  id         Int        @id @default(autoincrement())
+  name       String
+  username   String     @unique
+  password   String
+  characters USERCHAR[]
+}
+
+model STORYVECTOR {
+  id        Int                    @id @default(autoincrement())
+  text      String
+  embedding Unsupported("vector")?
+}
+
+model USERCHAR {
+  id        Int      @id @default(autoincrement())
+  user      String
+  username  USERDATA @relation(fields: [user], references: [username])
+  race      String
+  cla       String
+  subclass  String
+  str       Int
+  dex       Int
+  con       Int
+  int       Int
+  wis       Int
+  cha       Int
+  backstory String
 }
