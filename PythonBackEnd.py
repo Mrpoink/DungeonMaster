@@ -206,12 +206,14 @@ class DungeonMaster:
 
         instance.player_says = None
 
-        instance.scene = instance.vb.find_scene()
+        
         instance.roll_number = 0
 
         instance.check = None #If false, check required, else generate outcome
 
         instance.scene_num = 0
+
+        instance.scene = instance.vb.find_scene(instance.scene_num)
 
         return instance
     
