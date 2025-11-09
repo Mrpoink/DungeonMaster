@@ -211,6 +211,8 @@ class DungeonMaster:
 
         instance.check = None #If false, check required, else generate outcome
 
+        instance.scene_num = 0
+
         return instance
     
     @classmethod
@@ -230,7 +232,8 @@ class DungeonMaster:
         scene = "[/SCENE]: The well known streets of Zanzebar"
 
         if instance.roll_number > 2:
-            instance.scene = await instance.vb.find_scene(0.0,'all-MiniLM-L6-v2', userin)
+            instance.scene_num += 1
+            instance.scene = await instance.vb.find_scene(instance.scene_num)
 
         prompt = f"{instance.scene} {instance.player} [/ACTION]: {instance.player_says}"
 

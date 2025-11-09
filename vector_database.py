@@ -309,8 +309,26 @@ class get_from_db:
 
         return session_number[0]['max']
     
-    def find_scene(self):
-        return "The party is outside the dungeon of secrets. The air is thick with anticipation as they prepare to enter the dark corridors within."
+    def find_scene(self, num_turns):
+        scenes = [
+            "The party is outside the doors of the Dungeon of Secreats",
+            "The party is inside the hallways of the Dungeon of Secreats, torches flicker on the walls",
+            "The party is in a large chamber with high ceilings, the sound of dripping water echoes through the room",
+            "The party enters a dimly lit room filled with ancient statues and mysterious inscriptions on the walls",
+            "The party is in a room where the air feels sticky and damp, with a faint smell of mold and decay",
+            "The party finds themselves in a cavernous space where the walls glisten with moisture, and the sound of distant dripping water reverberates",
+            "The party steps into a grand hall adorned with faded tapestries and broken chandeliers, the atmosphere thick with dust and neglect",
+            "The party enters a shadowy chamber where the walls are lined with ancient bookshelves, their contents long forgotten",
+            "The party is in a narrow corridor where the walls are slick with moisture, and the air is heavy with the scent of mildew",
+            "The party finds themselves in a vast underground lake, the water dark and still, reflecting the faint light from above",
+            "The party steps into a cavern filled with bioluminescent fungi, casting an eerie glow on the damp walls",
+            "The party enters a chamber where the walls are covered in strange, pulsating growths, and the air is thick with an unsettling energy",
+            "The party is in a labyrinthine network of tunnels, the walls slick with moisture and the air filled with the sound of dripping water",
+            "The party finds themselves in a vast underground cavern, the walls shimmering with mineral deposits and the air cool and damp",
+            "The party steps into a dimly lit chamber where the walls are adorned with ancient murals, their colors faded by time and moisture"
+        ]
+
+        return scenes[num_turns]
     
     async def get_character(self, username):
 

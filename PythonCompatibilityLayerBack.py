@@ -124,7 +124,8 @@ def process_message():
 
         lock = False
         return jsonify({
-            'message':model_output
+            'message':model_output,
+            'scene': userInput.get_scene()
         })
     else:
         return jsonify({'message': 'DM is typing, please wait...'})
