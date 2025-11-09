@@ -4,13 +4,12 @@ import { BottomNav } from "@/app/components/nav/nav";
 import { useState } from "react";
 import Character from "@/app/components/character/characterType";
 import { DEFAULT_CHARACTER } from "@/app/components/character/defaultCharacter";
-import { BiHeart, BiPencil, BiShield } from "react-icons/bi";
+import { BiPencil } from "react-icons/bi";
 import { FaCheck } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
-import { LuScrollText } from "react-icons/lu";
-import { BsLightning } from "react-icons/bs";
-import { GiSwordBreak } from "react-icons/gi";
 import { MdBook } from 'react-icons/md';
+import {CharacterIcon} from "@/app/components/character/characterIcon";
+import SelectIcon from "@/app/components/character/characterIcon";
 
 
 
@@ -43,8 +42,7 @@ const AbilityScore = ({ name, score }: { name: string, score: number }) => {
 
  // --- MAIN COMPONENT ---
  export default function CharacterInfo() {
-     const [characterData, setCharacterData] = useState(DEFAULT_CHARACTER);
-     const [uploadError, setUploadError] = useState<string | null>(null);
+    const [characterData, setCharacterData] = useState(DEFAULT_CHARACTER);
 
     // --- EDITING STATES ---
     const [isEditingName, setIsEditingName] = useState(false);
@@ -61,6 +59,7 @@ const AbilityScore = ({ name, score }: { name: string, score: number }) => {
     const [tempStats, setTempStats] = useState(characterData.stats);
     const [tempSkills, setTempSkills] = useState(characterData.skills);
     const [tempBackstory, setTempBackstory] = useState(characterData.backstory);
+    const [tempIcon, setTempIcon] = useState(0);
 
 
     // --- SAVE HANDLERS ---
@@ -70,6 +69,7 @@ const AbilityScore = ({ name, score }: { name: string, score: number }) => {
     };
 
     const handleSaveBasic = () => {
+        setCharacterData(prev => ({ ...prev, icon: tempIcon }));
         setCharacterData(prev => ({ ...prev, race: tempRace }));
         setCharacterData(prev => ({ ...prev, class: tempClass }));
         setCharacterData(prev => ({ ...prev, subclass: tempSubclass }));
@@ -143,6 +143,10 @@ const AbilityScore = ({ name, score }: { name: string, score: number }) => {
                         </div>
                     </div>
                     <div>
+                        <label className="text-sm text-gray-400 block mb-1">Select your Icon</label>
+                        <SelectIcon/>
+                    </div>
+                    <div>
                         <label className="text-sm text-gray-400 block mb-1">Character Race</label>
                         <EditInput value={tempRace} onChange={(e) => setTempRace(e.target.value)} />
                     </div>
@@ -171,6 +175,9 @@ const AbilityScore = ({ name, score }: { name: string, score: number }) => {
                     </button>
                 </div>
                 <div className="ability-scores-grid">
+                    <div className="basicInfo-icon">
+                        <CharacterIcon id={0}/>
+                    </div>
                     <p className="basicInfo-text">
                         {characterData.race}
                     </p>
@@ -358,9 +365,7 @@ const AbilityScore = ({ name, score }: { name: string, score: number }) => {
     
     return (
         <div className="root-container">
-
             <div className="char-sheet-container">
-                
                 <header className="sheet-header">
                     {renderHeader()}
                 </header>
