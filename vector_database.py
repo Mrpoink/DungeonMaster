@@ -9,6 +9,7 @@ import torch
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'prisma', 'generated'))
 
 from prisma import Prisma
+import prisma.errors
 import asyncio
 from sentence_transformers import SentenceTransformer as st
 
@@ -128,8 +129,10 @@ class use_vector_db:
             else:
                 return False, "Incorrect password"
         except IndexError:
-
             return False, "Incorrect username"
+        except prisma.errors.RawQueryError as e:
+            print(e)
+            return False, "Name already exists"
         
     async def add_user_character(self, username, name, race, char_class, subclass, str, dex, con, int, wis, cha, backstory):
 

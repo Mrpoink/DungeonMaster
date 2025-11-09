@@ -8,10 +8,11 @@ app = Flask(__name__)
 CORS(app)
 
 try:
-    loop = asyncio.new_event_loop()
-
-    model = loop.run_until_complete(PythonBackEnd.DungeonMaster.create_dm())
-    backend = loop.run_until_complete(PythonBackEnd.DungeonMaster.create_backend())
+    print("Initializing model...")
+    model = asyncio.run(PythonBackEnd.DungeonMaster.create_dm())
+    print("Initializing backend...")
+    backend = asyncio.run(PythonBackEnd.DungeonMaster.create_backend())
+    print("Initialization complete.")
 except Exception as e:
     print("Error initializing: ", e)
 
@@ -51,16 +52,16 @@ class userin:
         else:
             print(False)
 
-        model_out = loop.run_until_complete(model.model_output_check(self.userin, roll))
+        model_out = asyncio.run(model.model_output_check(self.userin, roll))
         return model_out
 
     def send_userin(self):
         if self.check  == True:
             roll = True if int(self.userin) > 11 else False
-            model_out = loop.run_until_complete(model.model_output_check(self.userin, roll))
+            model_out = asyncio.run(model.model_output_check(self.userin, roll))
             return model_out
         else:
-            model_out = loop.run_until_complete(model.model_output(self.userin))
+            model_out = asyncio.run(model.model_output(self.userin))
             return model_out if self.userin != "" else "Roll for Initiative"
     
 class userData:
@@ -88,6 +89,7 @@ class userData:
 
         return result
     
+    @staticmethod
     async def check_credentials(username, password):
 
         print(username, password)
@@ -128,7 +130,7 @@ def process_message():
         return jsonify({'message': 'DM is typing, please wait...'})
 
 @app.route("/DMout", methods=['GET'])
-async def output_message():
+def output_message():
     global lock
     try:
         lock = False
@@ -145,14 +147,14 @@ async def output_message():
         print(e)
 
 @app.route("/userData", methods=['POST'])
-async def process_userdata():
+def process_userdata():
     try:
         data = request.get_json()
         user_data = userData()
         user_data.set_info(data.get('name'), data.get('username'), data.get('password'))
         print(user_data.get_username(), user_data.get_name(), user_data.get_password())
 
-        result = await user_data.add_user_data_to_db()
+        result = asyncio.run(user_data.add_user_data_to_db())
 
         return jsonify({"userData" : data, "status" : "ready", "message" : result}), 200
 
@@ -184,12 +186,12 @@ def process_roll():
     
 
 @app.route("/credentials", methods=['POST', 'OPTIONS'])
-async def check_creds():
+def check_creds():
     if request.method == 'OPTIONS':
         return '', 200
     try:
         data = request.get_json()
-        user_creds = await userData.check_credentials(data.get('username'), data.get('password'))
+        user_creds = asyncio.run(userData.check_credentials(data.get('username'), data.get('password')))
 
         print(user_creds)
 
@@ -201,7 +203,7 @@ async def check_creds():
         return jsonify({"error" : "Failed to retrieve user credentials", "details" : str(e)}), 500
     
 @app.route("/characters", methods=['POST'])
-async def process_characters():
+def process_characters():
     try:
         data = request.get_json()
         print("Received character data: ", data)
