@@ -38,9 +38,9 @@ def remove_parts(initial : str):
 
 
 bnb_config = BitsAndBytesConfig(
-    load_in_4bit=True,
-    bnb_4bit_quant_type="nf4",
-    bnb_4bit_compute_dtype=torch.bfloat16
+    load_in_8bit=True,
+    bnb_8bit_quant_type="nf8",
+    bnb_8bit_compute_dtype=torch.bfloat16
 )
 
 lora_config = LoraConfig(
@@ -60,7 +60,7 @@ def def_model():
         dtype = torch.bfloat16,
         device_map = "cuda"
         )
-    model = PeftModel.from_pretrained(base_model, "prompt_classifier_Smol/checkpoint-2673")
+    model = PeftModel.from_pretrained(base_model, "prompt_classifier_Smol/checkpoint-3560")
 
     model.to("cuda")
 
@@ -85,7 +85,7 @@ async def model_output(userin : str, model, tokenizer): #running script WITH che
             return_dict_in_generate=True,
             output_scores=True,
             do_sample=True,
-            top_p = .9,
+            top_p = .75,
             #top_k = 40,
             # pad_token_id=tokenizer.eos_token_id,
             # eos_token_id=tokenizer.eos_token_id,
@@ -115,8 +115,8 @@ async def model_output_check(userin : str, model, tokenizer): #Running check scr
             return_dict_in_generate=True,
             output_scores=True,
             do_sample=True,
-            top_p = .65,
-            #top_k = 40,
+            #top_p = .65,
+            top_k = 20,
             # pad_token_id=tokenizer.eos_token_id,
             # eos_token_id=tokenizer.eos_token_id,
             repetition_penalty = 3.3,
@@ -124,9 +124,8 @@ async def model_output_check(userin : str, model, tokenizer): #Running check scr
             )
     decoded_ouput = tokenizer.decode(outputs[0][0], skip_special_tokens = True)
     print(decoded_ouput)
-    final_output = decoded_ouput.split('[/GENERATED CHECK]:')
+    final_output = decoded_ouput.split('[/GENERATED OUTCOME]:')
     final_output = final_output[1].split('|end|')
-    print(len(final_output))
     
     torch.cuda.empty_cache()
 
@@ -191,7 +190,12 @@ class DungeonMaster:
         
     @classmethod
     async def create_dm(cls):
-        
+        try:
+            loop = asyncio.get_running_loop()
+        except RuntimeError:
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+            
         instance = cls()
 
         instance.model, instance.tokenizer = def_model()
@@ -206,15 +210,25 @@ class DungeonMaster:
 
         instance.player_says = None
 
-        instance.scene = instance.vb.find_scene()
+        
         instance.roll_number = 0
 
         instance.check = None #If false, check required, else generate outcome
+
+        instance.scene_num = 0
+
+        instance.scene = instance.vb.find_scene(instance.scene_num)
 
         return instance
     
     @classmethod
     async def create_backend(cls):
+        try:
+            loop = asyncio.get_running_loop()
+        except RuntimeError:
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+            
         instance = cls()
 
         instance.bvb = vector_database.use_vector_db()
@@ -230,13 +244,14 @@ class DungeonMaster:
         scene = "[/SCENE]: The well known streets of Zanzebar"
 
         if instance.roll_number > 2:
-            instance.scene = await instance.vb.find_scene(0.0,'all-MiniLM-L6-v2', userin)
+            instance.scene_num += 1
+            instance.scene = await instance.vb.find_scene(instance.scene_num)
 
-        prompt = f"{instance.scene} {instance.player} [/ACTION]: {instance.player_says}"
+        prompt = f"{instance.scene} {instance.player} [/ACTION]: {userin}"
 
         final_input = await final_prompt(prompt, instance.vb, instance.seed, instance.turn_num)
 
-        final_input = f"{final_input} |end|\n|assistant|: [/GENERATED CHECK]:"
+        final_input = f"{final_input} |end|\n|assistant|: [/GENERATED OUTCOME]:"
 
         print("final input: ", final_input, "\n--------------\n")
 

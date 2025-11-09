@@ -15,6 +15,7 @@ export default function Game() {
   const [sides, setSides] = useState<number>(20);
   const [activeDice, setActiveDice] = useState("d20");
   const [DMmessage, setDMmessage] = useState("Connecting...");
+  const [scene, setScene] = useState('');
 
   const [userin, setUserin] = useState('');
   const [conversation, setConversation] = useState<ConversationItem[]>([
@@ -59,6 +60,7 @@ export default function Game() {
             const result = await response.json();
             
             setConversation(prev => [...prev, { sender: 'DM', text: result.message || "The DM responds, 'Silence falls over the area...'" }]);
+            setScene(result.scene || '');
       setDMmessage(result.message);
     } catch (error) {
       console.error("Something went wrong with fetch dm message, line 81", error);
@@ -89,11 +91,30 @@ export default function Game() {
   const latestMessage = conversation[conversation.length - 1];
 
   return (
-    <div>
+    <div className="root-container">
         <div className="game-master-box">
           <header>
             <h1>Dungeon Master:</h1>      
           </header>
+          <div className="scene-box" style={{
+            backgroundColor: 'rgba(0, 0, 0, 0.7)',
+            padding: '15px',
+            margin: '10px auto',
+            borderRadius: '8px',
+            border: '1px solid #4a4a4a',
+            color: '#fff',
+            maxWidth: '800px',
+            minHeight: '50px',
+            boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+            textAlign: 'center'
+          }}>
+            <p style={{
+              margin: 0,
+              fontSize: '1rem',
+              lineHeight: '1.5',
+              fontFamily: 'serif'
+            }}>{scene || 'The scene is about to unfold...'}</p>
+          </div>
         </div>
         <div className="main-session-box">
           <div className="dice-box">

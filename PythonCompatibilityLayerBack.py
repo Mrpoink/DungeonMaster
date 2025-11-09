@@ -3,17 +3,31 @@ from flask_cors import CORS
 import PythonBackEnd
 import asyncio
 import traceback
+import nest_asyncio
 
 app = Flask(__name__)
 CORS(app)
 
-try:
-    loop = asyncio.new_event_loop()
+# Enable nested event loops
+nest_asyncio.apply()
 
-    model = loop.run_until_complete(PythonBackEnd.DungeonMaster.create_dm())
-    backend = loop.run_until_complete(PythonBackEnd.DungeonMaster.create_backend())
+# Create a single event loop for the application
+loop = asyncio.new_event_loop()
+asyncio.set_event_loop(loop)
+
+def initialize_app():
+    return loop.run_until_complete(async_initialize())
+
+async def async_initialize():
+    model = await PythonBackEnd.DungeonMaster.create_dm()
+    backend = await PythonBackEnd.DungeonMaster.create_backend()
+    return model, backend
+
+try:
+    model, backend = initialize_app()
 except Exception as e:
     print("Error initializing: ", e)
+    raise
 
 
 turn_num = 0
@@ -50,18 +64,15 @@ class userin:
             print(True)
         else:
             print(False)
-
-        model_out = loop.run_until_complete(model.model_output_check(self.userin, roll))
-        return model_out
+        return loop.run_until_complete(model.model_output_check(self.userin, roll))
 
     def send_userin(self):
-        if self.check  == True:
+        if self.check == True:
             roll = True if int(self.userin) > 11 else False
-            model_out = loop.run_until_complete(model.model_output_check(self.userin, roll))
-            return model_out
+            return loop.run_until_complete(model.model_output_check(self.userin, roll))
         else:
-            model_out = loop.run_until_complete(model.model_output(self.userin))
-            return model_out if self.userin != "" else "Roll for Initiative"
+            result = loop.run_until_complete(model.model_output(self.userin))
+            return result if self.userin != "" else "Roll for Initiative"
     
 class userData:
 
@@ -84,15 +95,14 @@ class userData:
     
     async def add_user_data_to_db(self):
 
-        result = await backend.add_user_data(self.name, self.username, self.password)
-
-        return result
+        return loop.run_until_complete(backend.add_user_data(self.name, self.username, self.password))
     
+    @staticmethod
     async def check_credentials(username, password):
 
         print(username, password)
 
-        result = await backend.check_creds(username, password)
+        result = loop.run_until_complete(backend.check_creds(username, password))
 
         print("From userData class: ", result)
 
@@ -122,13 +132,14 @@ def process_message():
 
         lock = False
         return jsonify({
-            'message':model_output
+            'message':model_output,
+            'scene': userInput.get_scene()
         })
     else:
         return jsonify({'message': 'DM is typing, please wait...'})
 
 @app.route("/DMout", methods=['GET'])
-async def output_message():
+def output_message():
     global lock
     try:
         lock = False
@@ -145,14 +156,14 @@ async def output_message():
         print(e)
 
 @app.route("/userData", methods=['POST'])
-async def process_userdata():
+def process_userdata():
     try:
         data = request.get_json()
         user_data = userData()
         user_data.set_info(data.get('name'), data.get('username'), data.get('password'))
         print(user_data.get_username(), user_data.get_name(), user_data.get_password())
 
-        result = await user_data.add_user_data_to_db()
+        result = loop.run_until_complete(user_data.add_user_data_to_db())
 
         return jsonify({"userData" : data, "status" : "ready", "message" : result}), 200
 
@@ -184,12 +195,12 @@ def process_roll():
     
 
 @app.route("/credentials", methods=['POST', 'OPTIONS'])
-async def check_creds():
+def check_creds():
     if request.method == 'OPTIONS':
         return '', 200
     try:
         data = request.get_json()
-        user_creds = await userData.check_credentials(data.get('username'), data.get('password'))
+        user_creds = loop.run_until_complete(userData.check_credentials(data.get('username'), data.get('password')))
 
         print(user_creds)
 
@@ -201,7 +212,7 @@ async def check_creds():
         return jsonify({"error" : "Failed to retrieve user credentials", "details" : str(e)}), 500
     
 @app.route("/characters", methods=['POST'])
-async def process_characters():
+def process_characters():
     try:
         data = request.get_json()
         print("Received character data: ", data)

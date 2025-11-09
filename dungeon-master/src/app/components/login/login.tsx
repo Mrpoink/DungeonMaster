@@ -1,7 +1,6 @@
 'use client'
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Router } from 'next/router';
 
 export default function Login() {
   const router = useRouter()

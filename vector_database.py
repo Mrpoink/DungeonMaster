@@ -9,6 +9,7 @@ import torch
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'prisma', 'generated'))
 
 from prisma import Prisma
+from prisma.errors import RawQueryError
 import asyncio
 from sentence_transformers import SentenceTransformer as st
 
@@ -54,7 +55,7 @@ class use_vector_db:
 
 
     def make_embedding(self, model : str):
-        model = st(model, device="cpu")
+        model = st(model, device="cuda")
         #Turns model into sentence piece transformer
 
         data = self.data_list
@@ -104,14 +105,20 @@ class use_vector_db:
 
     async def add_user_data(self, name, username, password):
 
-        await self.db.execute_raw(
-            f'INSERT INTO \"USERDATA\" (name, username, password) VALUES ($1, $2, $3)',
-            name,
-            username,
-            password
-        )
+        try:
 
-        print("Successfully added user data")
+            await self.db.execute_raw(
+                f'INSERT INTO \"USERDATA\" (name, username, password) VALUES ($1, $2, $3)',
+                name,
+                username,
+                password
+            )
+
+        except RawQueryError:
+            print("Failed to add user data: Username already exists")
+            return False, "Username already exists"
+        
+        return True, "User successfully added"
 
     async def check_user_data(self, username, password):
 
@@ -128,8 +135,9 @@ class use_vector_db:
             else:
                 return False, "Incorrect password"
         except IndexError:
-
             return False, "Incorrect username"
+        except RawQueryError:
+            return False, "Name already exists"
         
     async def add_user_character(self, username, name, race, char_class, subclass, str, dex, con, int, wis, cha, backstory):
 
@@ -171,7 +179,7 @@ class get_from_db:
 
 
     def create_embedding(self, model : str, input):
-        self.model = st(model, device="cpu")
+        self.model = st(model, device="cuda")
         self.embeddings = self.model.encode(input)
 
         return self.embeddings
@@ -307,8 +315,26 @@ class get_from_db:
 
         return session_number[0]['max']
     
-    def find_scene(self):
-        return "The party is outside the dungeon of secrets. The air is thick with anticipation as they prepare to enter the dark corridors within."
+    def find_scene(self, num_turns):
+        scenes = [
+            "The party is outside the doors of the Dungeon of Secreats",
+            "The party is inside the hallways of the Dungeon of Secreats, torches flicker on the walls",
+            "The party is in a large chamber with high ceilings, the sound of dripping water echoes through the room",
+            "The party enters a dimly lit room filled with ancient statues and mysterious inscriptions on the walls",
+            "The party is in a room where the air feels sticky and damp, with a faint smell of mold and decay",
+            "The party finds themselves in a cavernous space where the walls glisten with moisture, and the sound of distant dripping water reverberates",
+            "The party steps into a grand hall adorned with faded tapestries and broken chandeliers, the atmosphere thick with dust and neglect",
+            "The party enters a shadowy chamber where the walls are lined with ancient bookshelves, their contents long forgotten",
+            "The party is in a narrow corridor where the walls are slick with moisture, and the air is heavy with the scent of mildew",
+            "The party finds themselves in a vast underground lake, the water dark and still, reflecting the faint light from above",
+            "The party steps into a cavern filled with bioluminescent fungi, casting an eerie glow on the damp walls",
+            "The party enters a chamber where the walls are covered in strange, pulsating growths, and the air is thick with an unsettling energy",
+            "The party is in a labyrinthine network of tunnels, the walls slick with moisture and the air filled with the sound of dripping water",
+            "The party finds themselves in a vast underground cavern, the walls shimmering with mineral deposits and the air cool and damp",
+            "The party steps into a dimly lit chamber where the walls are adorned with ancient murals, their colors faded by time and moisture"
+        ]
+
+        return scenes[num_turns]
     
     async def get_character(self, username):
 
