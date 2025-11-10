@@ -1,0 +1,2245 @@
+{
+  "meta": {
+    "title": "Echoes of the Ember King",
+    "version": "1.1",
+    "notes": "Classic fantasy interactive fiction with dice. Abilities 0-30; total 120; skill thresholds at 10/20/25. This export includes hidden, skill-gated options in several scenes."
+  },
+  "abilities": {
+    "Intellect": {
+      "skills": [
+        {
+          "name": "Arcana",
+          "threshold": 10
+        },
+        {
+          "name": "Investigation",
+          "threshold": 20
+        },
+        {
+          "name": "Engineering",
+          "threshold": 25
+        }
+      ]
+    },
+    "Might": {
+      "skills": [
+        {
+          "name": "Athletics",
+          "threshold": 10
+        },
+        {
+          "name": "Brawling",
+          "threshold": 20
+        },
+        {
+          "name": "Endurance",
+          "threshold": 25
+        }
+      ]
+    },
+    "Agility": {
+      "skills": [
+        {
+          "name": "Stealth",
+          "threshold": 10
+        },
+        {
+          "name": "Acrobatics",
+          "threshold": 20
+        },
+        {
+          "name": "Sleight of Hand",
+          "threshold": 25
+        }
+      ]
+    },
+    "Presence": {
+      "skills": [
+        {
+          "name": "Persuasion",
+          "threshold": 10
+        },
+        {
+          "name": "Deception",
+          "threshold": 20
+        },
+        {
+          "name": "Performance",
+          "threshold": 25
+        }
+      ]
+    },
+    "Wisdom": {
+      "skills": [
+        {
+          "name": "Insight",
+          "threshold": 10
+        },
+        {
+          "name": "Survival",
+          "threshold": 20
+        },
+        {
+          "name": "Medicine",
+          "threshold": 25
+        }
+      ]
+    },
+    "Spirit": {
+      "skills": [
+        {
+          "name": "Faith",
+          "threshold": 10
+        },
+        {
+          "name": "Willpower",
+          "threshold": 20
+        },
+        {
+          "name": "Attunement",
+          "threshold": 25
+        }
+      ]
+    }
+  },
+  "rules": {
+    "dice": "1d20",
+    "check": "total = d20 + floor(ability/5); success if total >= dc",
+    "win_condition": "Reach 'victory' with all abilities > 0",
+    "lose_condition": "Any ability <= 0 moves to 'defeat'",
+    "sum_of_abilities": 120
+  },
+  "scenes": [
+    {
+      "id": "emberfall_square",
+      "act": "I",
+      "title": "Leaving the Village",
+      "description": "Lanterns sway as villagers whisper about embers in the night sky. An old seer presses a coal-black charm into your hand.",
+      "choices": [
+        {
+          "option": "Consult the seer for omens",
+          "ability": "Presence",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "forest_gate",
+            "narration": "The seer reveals a path through murmuring trees and blesses your name.",
+            "ability_change": {
+              "Presence": -1,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "forest_gate",
+            "narration": "The seer grows evasive; you depart with doubts gnawing.",
+            "ability_change": {
+              "Presence": -2
+            }
+          }
+        },
+        {
+          "option": "Study the coal-black charm",
+          "ability": "Intellect",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "forest_gate",
+            "narration": "Glyphs bloom in your mind; the charm resonates with hidden wards.",
+            "ability_change": {
+              "Intellect": -1,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "forest_gate",
+            "narration": "The charm remains mute; soot stains your fingers.",
+            "ability_change": {
+              "Intellect": -2
+            }
+          }
+        }
+      ],
+      "background": "Wind carries woodsmoke and damp earth; distant owls and whispering leaves make every footstep feel seen."
+    },
+    {
+      "id": "forest_gate",
+      "act": "I",
+      "title": "Barred by Iron and Ivy",
+      "description": "A towering gate entangled in thorned ivy blocks the forest path; winds carry whispering voices.",
+      "choices": [
+        {
+          "option": "Force the gate",
+          "ability": "Might",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "forest_clearing",
+            "narration": "Iron groans; you heave the gate ajar and slip through.",
+            "ability_change": {
+              "Might": -2
+            }
+          },
+          "failure": {
+            "next": "injured_gate",
+            "narration": "The gate slams; a jolt shoots through your shoulder.",
+            "ability_change": {
+              "Might": -4
+            }
+          }
+        },
+        {
+          "option": "Seek a hidden latch",
+          "ability": "Intellect",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "secret_passage",
+            "narration": "Under ivy, a rune-pin clicks; a side passage yawns open.",
+            "ability_change": {
+              "Intellect": -1
+            }
+          },
+          "failure": {
+            "next": "lost_thicket",
+            "narration": "You wander into brambles that tangle the way.",
+            "ability_change": {
+              "Intellect": -2,
+              "Agility": -1
+            }
+          }
+        }
+      ],
+      "background": "Wind carries woodsmoke and damp earth; distant owls and whispering leaves make every footstep feel seen. Moss drinks the moonlight while unseen things watch from the understory."
+    },
+    {
+      "id": "injured_gate",
+      "act": "I",
+      "title": "Wounded Start",
+      "description": "Pain throbs as twilight thickens; night creatures stir.",
+      "choices": [
+        {
+          "option": "Bind the shoulder with a strip of cloth",
+          "ability": "Wisdom",
+          "dc": 11,
+          "dice": "1d20",
+          "success": {
+            "next": "forest_clearing",
+            "narration": "The binding steadies you; breath comes easier.",
+            "ability_change": {
+              "Wisdom": -1,
+              "Might": 1
+            }
+          },
+          "failure": {
+            "next": "forest_clearing",
+            "narration": "The knot slips; the ache lingers.",
+            "ability_change": {
+              "Wisdom": -2
+            }
+          }
+        },
+        {
+          "option": "Whisper a focusing mantra",
+          "ability": "Spirit",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "forest_clearing",
+            "narration": "Warmth spreads from the charm; the pain dulls.",
+            "ability_change": {
+              "Spirit": -1,
+              "Might": 1
+            }
+          },
+          "failure": {
+            "next": "forest_clearing",
+            "narration": "The mantra falters; shadows press in.",
+            "ability_change": {
+              "Spirit": -2
+            }
+          }
+        }
+      ],
+      "background": "Wind carries woodsmoke and damp earth; distant owls and whispering leaves make every footstep feel seen."
+    },
+    {
+      "id": "secret_passage",
+      "act": "I",
+      "title": "Vein of Roots",
+      "description": "A tunnel of roots and stones hums with old warding magic.",
+      "choices": [
+        {
+          "option": "Trace the ward pattern",
+          "ability": "Intellect",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "riddle_shrine",
+            "narration": "You map the sigils; a safer branch reveals itself.",
+            "ability_change": {
+              "Intellect": -1,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "lost_thicket",
+            "narration": "The sigils blur; you emerge amid clutching thorns.",
+            "ability_change": {
+              "Intellect": -2
+            }
+          }
+        },
+        {
+          "option": "Crawl swiftly before wards shift",
+          "ability": "Agility",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "forest_clearing",
+            "narration": "You slip through moments before roots twist shut.",
+            "ability_change": {
+              "Agility": -2
+            }
+          },
+          "failure": {
+            "next": "root_snare",
+            "narration": "Roots cinch; you wrestle free with scrapes.",
+            "ability_change": {
+              "Agility": -3,
+              "Might": -1
+            }
+          }
+        }
+      ],
+      "background": "Wind carries woodsmoke and damp earth; distant owls and whispering leaves make every footstep feel seen."
+    },
+    {
+      "id": "forest_clearing",
+      "act": "I",
+      "title": "Watchful Grove",
+      "description": "Moonlight pools in a ring of oaks; carved masks stare.",
+      "choices": [
+        {
+          "option": "Approach openly and declare intent",
+          "ability": "Presence",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "secret_glade",
+            "narration": "The masks relax; a path of soft moss unfolds.",
+            "ability_change": {
+              "Presence": -1,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "bandit_ambush",
+            "narration": "Something rustles; you have been overheard.",
+            "ability_change": {
+              "Presence": -2
+            }
+          }
+        },
+        {
+          "option": "Move between shadows",
+          "ability": "Agility",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "riddle_shrine",
+            "narration": "You skirt the clearing unseen and find a stone altar.",
+            "ability_change": {
+              "Agility": -1
+            }
+          },
+          "failure": {
+            "next": "bandit_ambush",
+            "narration": "A twig snaps; shapes close in.",
+            "ability_change": {
+              "Agility": -2
+            }
+          }
+        }
+      ],
+      "background": "Wind carries woodsmoke and damp earth; distant owls and whispering leaves make every footstep feel seen. Moss drinks the moonlight while unseen things watch from the understory."
+    },
+    {
+      "id": "secret_glade",
+      "act": "I",
+      "title": "Bonus: Blessing of the Green",
+      "description": "A trickle of silver water murmurs; fireflies drift like stars.",
+      "choices": [
+        {
+          "option": "Drink reverently",
+          "ability": "Wisdom",
+          "dc": 10,
+          "dice": "1d20",
+          "success": {
+            "next": "riddle_shrine",
+            "narration": "Clarity blooms; your path through the woods feels true.",
+            "ability_change": {
+              "Wisdom": -1,
+              "Spirit": 2
+            }
+          },
+          "failure": {
+            "next": "riddle_shrine",
+            "narration": "You cough on the chill; resolve hardens anyway.",
+            "ability_change": {
+              "Wisdom": -1,
+              "Spirit": 1
+            }
+          }
+        },
+        {
+          "option": "Offer the charm to the pool",
+          "ability": "Spirit",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "riddle_shrine",
+            "narration": "The charm sings; a gentle ward settles over you.",
+            "ability_change": {
+              "Spirit": -1,
+              "Agility": 1,
+              "Might": 1
+            }
+          },
+          "failure": {
+            "next": "riddle_shrine",
+            "narration": "The waters ripple but keep their secrets.",
+            "ability_change": {
+              "Spirit": -1
+            }
+          }
+        }
+      ],
+      "background": "Wind carries woodsmoke and damp earth; distant owls and whispering leaves make every footstep feel seen. Moss drinks the moonlight while unseen things watch from the understory."
+    },
+    {
+      "id": "bandit_ambush",
+      "act": "I",
+      "title": "Knives in the Brush",
+      "description": "Bandits spring from the undergrowth, blades glinting.",
+      "choices": [
+        {
+          "option": "Grapple the leader",
+          "ability": "Might",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "forest_clearing",
+            "narration": "You slam the leader down; the others scatter.",
+            "ability_change": {
+              "Might": -2,
+              "Presence": 1
+            }
+          },
+          "failure": {
+            "next": "wounded_retreat",
+            "narration": "The leader twists free; you stagger back bleeding.",
+            "ability_change": {
+              "Might": -4,
+              "Wisdom": -1
+            }
+          }
+        },
+        {
+          "option": "Throw dust and dash",
+          "ability": "Agility",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "riddle_shrine",
+            "narration": "Eyes sting; you vanish between trunks.",
+            "ability_change": {
+              "Agility": -2
+            }
+          },
+          "failure": {
+            "next": "wounded_retreat",
+            "narration": "A blade nicks your side; you flee limping.",
+            "ability_change": {
+              "Agility": -3,
+              "Might": -1
+            }
+          }
+        }
+      ],
+      "background": "Wind carries woodsmoke and damp earth; distant owls and whispering leaves make every footstep feel seen."
+    },
+    {
+      "id": "wounded_retreat",
+      "act": "I",
+      "title": "Wounded Retreat",
+      "description": "You stumble into a hollow beneath leaning pines; blood patters on old needles.",
+      "background": "Wind carries woodsmoke and damp earth; distant owls and whispering leaves make every footstep feel seen. Resin-sweet air tries to steady your breath.",
+      "choices": [
+        {
+          "option": "Bind the cut and catch your breath",
+          "ability": "Wisdom",
+          "dc": 11,
+          "dice": "1d20",
+          "success": {
+            "next": "forest_clearing",
+            "narration": "You clean the wound and tighten a bandage; the world steadies.",
+            "ability_change": {
+              "Wisdom": -1,
+              "Might": 1
+            }
+          },
+          "failure": {
+            "next": "forest_clearing",
+            "narration": "The wrap slips and stings, but you can move again.",
+            "ability_change": {
+              "Wisdom": -2
+            }
+          }
+        },
+        {
+          "option": "Steel yourself with a whispered vow",
+          "ability": "Spirit",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "forest_clearing",
+            "narration": "Resolve cools the panic; the pain becomes background noise.",
+            "ability_change": {
+              "Spirit": -1,
+              "Presence": 1
+            }
+          },
+          "failure": {
+            "next": "forest_clearing",
+            "narration": "Your vow wavers; you rise anyway, teeth clenched.",
+            "ability_change": {
+              "Spirit": -2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "riddle_shrine",
+      "act": "I",
+      "title": "Stone that Speaks",
+      "description": "A face carved in granite whispers half-truths and riddles.",
+      "choices": [
+        {
+          "option": "Solve the riddle of ash and seed",
+          "ability": "Intellect",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "river_crossing",
+            "narration": "The stone exhales; a hidden route to the river is revealed.",
+            "ability_change": {
+              "Intellect": -2,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "lost_thicket",
+            "narration": "Your answer echoes hollow; the forest tightens.",
+            "ability_change": {
+              "Intellect": -3
+            }
+          }
+        },
+        {
+          "option": "Ask for the forest's mercy",
+          "ability": "Presence",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "river_crossing",
+            "narration": "The shrine softens; vines part in welcome.",
+            "ability_change": {
+              "Presence": -2,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "lost_thicket",
+            "narration": "The visage stills; silence disapproves.",
+            "ability_change": {
+              "Presence": -3
+            }
+          }
+        },
+        {
+          "option": "Trace the ley-lines only you see (Arcana)",
+          "ability": "Intellect",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "river_crossing",
+            "narration": "Ley-lines brighten beneath your touch; a safer path unfurls.",
+            "ability_change": {
+              "Intellect": -1,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "lost_thicket",
+            "narration": "The lines flicker away; briars bite your ankles.",
+            "ability_change": {
+              "Intellect": -2,
+              "Agility": -1
+            }
+          },
+          "gate": {
+            "skill": "Arcana",
+            "min": 10
+          }
+        }
+      ],
+      "background": "Wind carries woodsmoke and damp earth; distant owls and whispering leaves make every footstep feel seen."
+    },
+    {
+      "id": "river_crossing",
+      "act": "I",
+      "title": "Current of Whispers",
+      "description": "A swift river roars. Slick stones hint at a ford; a fallen log spans a narrower bend.",
+      "choices": [
+        {
+          "option": "Wade and brace against the current",
+          "ability": "Might",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "act2_watchtower",
+            "narration": "You shoulder the water aside and gain the far bank.",
+            "ability_change": {
+              "Might": -2
+            }
+          },
+          "failure": {
+            "next": "soaked_camp",
+            "narration": "The river tumbles you; you drag yourself to shore.",
+            "ability_change": {
+              "Might": -4,
+              "Agility": -1
+            }
+          }
+        },
+        {
+          "option": "Balance along the fallen log",
+          "ability": "Agility",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "act2_watchtower",
+            "narration": "You dance over spray; damp but triumphant.",
+            "ability_change": {
+              "Agility": -2
+            }
+          },
+          "failure": {
+            "next": "soaked_camp",
+            "narration": "A misstep dunks you; teeth chatter.",
+            "ability_change": {
+              "Agility": -3,
+              "Spirit": -1
+            }
+          }
+        }
+      ],
+      "background": "Wind carries woodsmoke and damp earth; distant owls and whispering leaves make every footstep feel seen. Spray kisses your face and the rush of water turns thoughts into bright, sharp edges."
+    },
+    {
+      "id": "lost_thicket",
+      "act": "I",
+      "title": "Tangles and Echoes [Optional]",
+      "description": "Slowing side path; small penalty but loops forward.",
+      "choices": [
+        {
+          "option": "Cut a careful path",
+          "ability": "Wisdom",
+          "dc": 11,
+          "dice": "1d20",
+          "success": {
+            "next": "river_crossing",
+            "narration": "You skirt briars and regain the trail.",
+            "ability_change": {
+              "Wisdom": -1
+            }
+          },
+          "failure": {
+            "next": "river_crossing",
+            "narration": "Thorns bite; you emerge scratched and weary.",
+            "ability_change": {
+              "Wisdom": -2,
+              "Agility": -1
+            }
+          }
+        }
+      ],
+      "background": "Wind carries woodsmoke and damp earth; distant owls and whispering leaves make every footstep feel seen. Moss drinks the moonlight while unseen things watch from the understory."
+    },
+    {
+      "id": "root_snare",
+      "act": "I",
+      "title": "Snagged by the Old Magic",
+      "description": "Brief hazard branch.",
+      "choices": [
+        {
+          "option": "Tear free with a roar",
+          "ability": "Might",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "forest_clearing",
+            "narration": "Roots tear; you stumble out.",
+            "ability_change": {
+              "Might": -2
+            }
+          },
+          "failure": {
+            "next": "forest_clearing",
+            "narration": "Splinters rake your skin, but you are loose.",
+            "ability_change": {
+              "Might": -3,
+              "Spirit": -1
+            }
+          }
+        }
+      ],
+      "background": "Wind carries woodsmoke and damp earth; distant owls and whispering leaves make every footstep feel seen."
+    },
+    {
+      "id": "soaked_camp",
+      "act": "I",
+      "title": "Damp Fire, Damp Spirits",
+      "description": "Short rest with risk/reward.",
+      "choices": [
+        {
+          "option": "Coax fire from wet tinder",
+          "ability": "Intellect",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "act2_watchtower",
+            "narration": "Smoke giving way to warmth; you rally.",
+            "ability_change": {
+              "Intellect": -1,
+              "Spirit": 2
+            }
+          },
+          "failure": {
+            "next": "act2_watchtower",
+            "narration": "Sputters and ash; you push on shivering.",
+            "ability_change": {
+              "Intellect": -2
+            }
+          }
+        }
+      ],
+      "background": "Wind carries woodsmoke and damp earth; distant owls and whispering leaves make every footstep feel seen. Fatigue loosens your thoughts; small rituals keep despair at bay."
+    },
+    {
+      "id": "act2_watchtower",
+      "act": "II",
+      "title": "Ruined Watchtower",
+      "description": "A collapsed tower overlooks crossroads; a beacon dish lies cracked.",
+      "choices": [
+        {
+          "option": "Search rubble for clues (Investigation)",
+          "ability": "Intellect",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "shadow_market",
+            "narration": "You find a charred map naming the Obsidian Labyrinth.",
+            "ability_change": {
+              "Intellect": -2,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "cliff_ascent",
+            "narration": "Dust chokes; you learn little but sight a mountain route.",
+            "ability_change": {
+              "Intellect": -3
+            }
+          },
+          "gate": {
+            "skill": "Investigation",
+            "min": 20
+          }
+        },
+        {
+          "option": "Signal potential allies with the dish",
+          "ability": "Presence",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "shadow_market",
+            "narration": "A distant horn answers; traders will meet you.",
+            "ability_change": {
+              "Presence": -2,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "cliff_ascent",
+            "narration": "Only crows reply; you move on alone.",
+            "ability_change": {
+              "Presence": -3
+            }
+          }
+        }
+      ],
+      "background": "The world feels wider and stranger; markets murmur in hidden tongues and old roads remember wars. Dust and old bargains cling to the air, and every echo sounds like a half-remembered rumor."
+    },
+    {
+      "id": "shadow_market",
+      "act": "II",
+      "title": "Bazaar Between Worlds",
+      "description": "Lanterns of colored smoke; masked merchants whisper of the Ember King.",
+      "choices": [
+        {
+          "option": "Barter for a warded token",
+          "ability": "Presence",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "trapped_library",
+            "narration": "You secure a token against flame-spirits.",
+            "ability_change": {
+              "Presence": -2,
+              "Spirit": 2
+            }
+          },
+          "failure": {
+            "next": "trapped_library",
+            "narration": "A costly trade drains your vigor.",
+            "ability_change": {
+              "Presence": -3
+            }
+          }
+        },
+        {
+          "option": "Eavesdrop for secrets",
+          "ability": "Agility",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "cursed_bridge",
+            "narration": "You overhear a route across a cursed bridge.",
+            "ability_change": {
+              "Agility": -2,
+              "Intellect": 1
+            }
+          },
+          "failure": {
+            "next": "cursed_bridge",
+            "narration": "A guard spots you; you slip away breathless.",
+            "ability_change": {
+              "Agility": -3
+            }
+          }
+        },
+        {
+          "option": "Run a quick con on a fence (Deception)",
+          "ability": "Presence",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "trapped_library",
+            "narration": "A forged tale nets you a sigil coin and a rumor.",
+            "ability_change": {
+              "Presence": -2,
+              "Intellect": 1,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "trapped_library",
+            "narration": "They see through it; your reputation sours.",
+            "ability_change": {
+              "Presence": -3
+            }
+          },
+          "gate": {
+            "skill": "Deception",
+            "min": 20
+          }
+        }
+      ],
+      "background": "The world feels wider and stranger; markets murmur in hidden tongues and old roads remember wars. Dust and old bargains cling to the air, and every echo sounds like a half-remembered rumor."
+    },
+    {
+      "id": "cursed_bridge",
+      "act": "II",
+      "title": "Chains Over Fog",
+      "description": "A chain bridge sways over a chasm where fog swallows sound.",
+      "choices": [
+        {
+          "option": "Intone a warding verse",
+          "ability": "Spirit",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "moonlit_barrow",
+            "narration": "Pale runes glow along the chains; the fog parts.",
+            "ability_change": {
+              "Spirit": -2
+            }
+          },
+          "failure": {
+            "next": "moonlit_barrow",
+            "narration": "Whispers buffet you; courage frays.",
+            "ability_change": {
+              "Spirit": -3,
+              "Presence": -1
+            }
+          }
+        },
+        {
+          "option": "Cross quickly, light on your feet",
+          "ability": "Agility",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "moonlit_barrow",
+            "narration": "You skim the swaying links to solid ground.",
+            "ability_change": {
+              "Agility": -2
+            }
+          },
+          "failure": {
+            "next": "moonlit_barrow",
+            "narration": "The bridge bucks; you scrape hands and knees.",
+            "ability_change": {
+              "Agility": -3,
+              "Might": -1
+            }
+          }
+        }
+      ],
+      "background": "The world feels wider and stranger; markets murmur in hidden tongues and old roads remember wars. Spray kisses your face and the rush of water turns thoughts into bright, sharp edges."
+    },
+    {
+      "id": "moonlit_barrow",
+      "act": "II",
+      "title": "Mound of the Sleeper",
+      "description": "A grassy mound gleams under a thin moon; a stone door grinds.",
+      "choices": [
+        {
+          "option": "Read the burial wards",
+          "ability": "Intellect",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "fae_court",
+            "narration": "Glyphs speak of a pact with the Fae; a safer way opens.",
+            "ability_change": {
+              "Intellect": -2
+            }
+          },
+          "failure": {
+            "next": "fae_court",
+            "narration": "Dust blinds; spirits stir, impatient.",
+            "ability_change": {
+              "Intellect": -3,
+              "Spirit": -1
+            }
+          }
+        },
+        {
+          "option": "Push the door with leverage",
+          "ability": "Might",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "fae_court",
+            "narration": "The slab rolls; stale air sighs out.",
+            "ability_change": {
+              "Might": -2
+            }
+          },
+          "failure": {
+            "next": "fae_court",
+            "narration": "The barrow shudders; you strain your back.",
+            "ability_change": {
+              "Might": -3
+            }
+          }
+        }
+      ],
+      "background": "The world feels wider and stranger; markets murmur in hidden tongues and old roads remember wars. Ancient courtesy weighs on your shoulders; names and promises matter here."
+    },
+    {
+      "id": "fae_court",
+      "act": "II",
+      "title": "Audience of Thorns",
+      "description": "Thorn-clad courtiers watch with gemstone eyes; a queen lounges on a bark-throne.",
+      "choices": [
+        {
+          "option": "Petition aid in elegant terms",
+          "ability": "Presence",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "rest_camp",
+            "narration": "The queen grants a boon: dew-gold that mends.",
+            "ability_change": {
+              "Presence": -2,
+              "Wisdom": 2
+            }
+          },
+          "failure": {
+            "next": "cliff_ascent",
+            "narration": "A bored flick of her hand dismisses you to mortal roads.",
+            "ability_change": {
+              "Presence": -3
+            }
+          }
+        },
+        {
+          "option": "Offer a secret in exchange",
+          "ability": "Wisdom",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "rest_camp",
+            "narration": "Your traded insight warms the court; you receive safe passage.",
+            "ability_change": {
+              "Wisdom": -2,
+              "Spirit": 2
+            }
+          },
+          "failure": {
+            "next": "cliff_ascent",
+            "narration": "Your secret is too small; laughter follows.",
+            "ability_change": {
+              "Wisdom": -3
+            }
+          }
+        }
+      ],
+      "background": "The world feels wider and stranger; markets murmur in hidden tongues and old roads remember wars. Ancient courtesy weighs on your shoulders; names and promises matter here."
+    },
+    {
+      "id": "trapped_library",
+      "act": "II",
+      "title": "Pages That Bite",
+      "description": "A ruined library where brass-spined tomes snap at fingers.",
+      "choices": [
+        {
+          "option": "Disarm the page-traps",
+          "ability": "Intellect",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "echo_runes",
+            "narration": "You extract a map of rune halls beneath a volcano.",
+            "ability_change": {
+              "Intellect": -2,
+              "Presence": 1
+            }
+          },
+          "failure": {
+            "next": "echo_runes",
+            "narration": "Traps bite; you yank free with bleeding knuckles.",
+            "ability_change": {
+              "Intellect": -3,
+              "Might": -1
+            }
+          }
+        },
+        {
+          "option": "Weave through snapping shelves",
+          "ability": "Agility",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "echo_runes",
+            "narration": "You thread a silent path and pocket a sigil coin.",
+            "ability_change": {
+              "Agility": -2,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "echo_runes",
+            "narration": "A shelf collapses; you scramble out coughing.",
+            "ability_change": {
+              "Agility": -3
+            }
+          }
+        }
+      ],
+      "background": "The world feels wider and stranger; markets murmur in hidden tongues and old roads remember wars. Dust and old bargains cling to the air, and every echo sounds like a half-remembered rumor."
+    },
+    {
+      "id": "cliff_ascent",
+      "act": "II",
+      "title": "Teeth of Stone",
+      "description": "A jagged cliff rears toward ash-dark clouds.",
+      "choices": [
+        {
+          "option": "Climb with raw strength",
+          "ability": "Might",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "ashen_valley",
+            "narration": "Fingers numb; you haul yourself onto a narrow ledge.",
+            "ability_change": {
+              "Might": -3
+            }
+          },
+          "failure": {
+            "next": "rest_camp",
+            "narration": "You slip, catching yourself bruised.",
+            "ability_change": {
+              "Might": -4,
+              "Agility": -1
+            }
+          }
+        },
+        {
+          "option": "Pick a nimble route",
+          "ability": "Agility",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "ashen_valley",
+            "narration": "You flow from handhold to handhold.",
+            "ability_change": {
+              "Agility": -3
+            }
+          },
+          "failure": {
+            "next": "rest_camp",
+            "narration": "A foothold crumbles; you tumble onto a ledge below.",
+            "ability_change": {
+              "Agility": -4,
+              "Might": -1
+            }
+          }
+        }
+      ],
+      "background": "The world feels wider and stranger; markets murmur in hidden tongues and old roads remember wars."
+    },
+    {
+      "id": "rest_camp",
+      "act": "II",
+      "title": "Bonus: Veil of Dawn",
+      "description": "A sheltered fold in the hills; dawn paints the world with peach light.",
+      "choices": [
+        {
+          "option": "Meditate with the charm",
+          "ability": "Spirit",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "ashen_valley",
+            "narration": "The charm sings of purpose; your resolve steels.",
+            "ability_change": {
+              "Spirit": -1,
+              "Presence": 1,
+              "Might": 1
+            }
+          },
+          "failure": {
+            "next": "ashen_valley",
+            "narration": "Thoughts wander; rest is still rest.",
+            "ability_change": {
+              "Spirit": -1,
+              "Might": 1
+            }
+          }
+        },
+        {
+          "option": "Tend wounds and ration food",
+          "ability": "Wisdom",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "ashen_valley",
+            "narration": "Clean bandages and careful sips restore you.",
+            "ability_change": {
+              "Wisdom": -1,
+              "Agility": 1,
+              "Intellect": 1
+            }
+          },
+          "failure": {
+            "next": "ashen_valley",
+            "narration": "Supplies are thinner than you hoped.",
+            "ability_change": {
+              "Wisdom": -1,
+              "Intellect": 1
+            }
+          }
+        }
+      ],
+      "background": "The world feels wider and stranger; markets murmur in hidden tongues and old roads remember wars. Fatigue loosens your thoughts; small rituals keep despair at bay."
+    },
+    {
+      "id": "ashen_valley",
+      "act": "III",
+      "title": "Wind of Cinders",
+      "description": "A gray valley chokes with ash; distant thunder is a volcano's heart.",
+      "choices": [
+        {
+          "option": "Mask your breath and march",
+          "ability": "Might",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "obsidian_labyrinth",
+            "narration": "You grind forward, steps relentless.",
+            "ability_change": {
+              "Might": -2
+            }
+          },
+          "failure": {
+            "next": "drowned_archive",
+            "narration": "You veer toward a half-buried ruin seeking shelter.",
+            "ability_change": {
+              "Might": -3,
+              "Wisdom": -1
+            }
+          }
+        },
+        {
+          "option": "Navigate by wind patterns",
+          "ability": "Wisdom",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "obsidian_labyrinth",
+            "narration": "You read the ash like ocean currents.",
+            "ability_change": {
+              "Wisdom": -2
+            }
+          },
+          "failure": {
+            "next": "drowned_archive",
+            "narration": "A dust devil blinds you; you stumble aside.",
+            "ability_change": {
+              "Wisdom": -3
+            }
+          }
+        }
+      ],
+      "background": "Ash rides the wind. Heat thrums beneath the ground, as if some great heart beats below. Every breath tastes of cinder; footprints fade almost as quickly as you make them."
+    },
+    {
+      "id": "obsidian_labyrinth",
+      "act": "III",
+      "title": "Glass Halls",
+      "description": "Corridors of black glass reflect warped copies of you.",
+      "choices": [
+        {
+          "option": "Track your path with sigils",
+          "ability": "Intellect",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "echo_runes",
+            "narration": "You map a non-Euclidean grid and keep your bearings.",
+            "ability_change": {
+              "Intellect": -2
+            }
+          },
+          "failure": {
+            "next": "mirror_chamber",
+            "narration": "Your marks twist; mirrors grin.",
+            "ability_change": {
+              "Intellect": -3,
+              "Spirit": -1
+            }
+          }
+        },
+        {
+          "option": "Sprint between reflections",
+          "ability": "Agility",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "echo_runes",
+            "narration": "You dash past luring doubles.",
+            "ability_change": {
+              "Agility": -3
+            }
+          },
+          "failure": {
+            "next": "mirror_chamber",
+            "narration": "You collide with a slick wall; stars explode in your vision.",
+            "ability_change": {
+              "Agility": -4
+            }
+          }
+        },
+        {
+          "option": "Palm a key from your reflection (Sleight of Hand)",
+          "ability": "Agility",
+          "dc": 17,
+          "dice": "1d20",
+          "success": {
+            "next": "echo_runes",
+            "narration": "Your double flinches as you lift a shimmering key.",
+            "ability_change": {
+              "Agility": -2,
+              "Intellect": 1
+            }
+          },
+          "failure": {
+            "next": "mirror_chamber",
+            "narration": "The key smears like oil; you recoil.",
+            "ability_change": {
+              "Agility": -3
+            }
+          },
+          "gate": {
+            "skill": "Sleight of Hand",
+            "min": 25
+          }
+        }
+      ],
+      "background": "Ash rides the wind. Heat thrums beneath the ground, as if some great heart beats below. Reflections and whispers test what you know about yourself."
+    },
+    {
+      "id": "echo_runes",
+      "act": "III",
+      "title": "Hall of Whispers",
+      "description": "Columns hum with spoken glyphs; each word tastes like smoke.",
+      "choices": [
+        {
+          "option": "Speak the counterphrase",
+          "ability": "Intellect",
+          "dc": 17,
+          "dice": "1d20",
+          "success": {
+            "next": "molten_foundry",
+            "narration": "The echoes align; a basalt door swings wide.",
+            "ability_change": {
+              "Intellect": -2,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "whispering_vault",
+            "narration": "Voices crowd your head; the wrong door opens.",
+            "ability_change": {
+              "Intellect": -3,
+              "Spirit": -1
+            }
+          }
+        },
+        {
+          "option": "Endure the cacophony by sheer will",
+          "ability": "Spirit",
+          "dc": 17,
+          "dice": "1d20",
+          "success": {
+            "next": "molten_foundry",
+            "narration": "You become a still point; the storm flows around you.",
+            "ability_change": {
+              "Spirit": -3
+            }
+          },
+          "failure": {
+            "next": "whispering_vault",
+            "narration": "Your breath hitches; you stumble into an ominous alcove.",
+            "ability_change": {
+              "Spirit": -4
+            }
+          }
+        },
+        {
+          "option": "Tune your heartbeat to the glyphs (Attunement)",
+          "ability": "Spirit",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "molten_foundry",
+            "narration": "Rhythms synchronize; the hall quiets for you alone.",
+            "ability_change": {
+              "Spirit": -2,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "whispering_vault",
+            "narration": "The beat slips; echoes nip at your resolve.",
+            "ability_change": {
+              "Spirit": -3
+            }
+          },
+          "gate": {
+            "skill": "Attunement",
+            "min": 25
+          }
+        }
+      ],
+      "background": "Ash rides the wind. Heat thrums beneath the ground, as if some great heart beats below. Reflections and whispers test what you know about yourself."
+    },
+    {
+      "id": "molten_foundry",
+      "act": "III",
+      "title": "Engines of Fire",
+      "description": "Chains dip crucibles into lakes of slow lava; sparks are fireflies.",
+      "choices": [
+        {
+          "option": "Time a leap across the gantries",
+          "ability": "Agility",
+          "dc": 17,
+          "dice": "1d20",
+          "success": {
+            "next": "chained_guardian",
+            "narration": "You land on a moving chain like a cat.",
+            "ability_change": {
+              "Agility": -3
+            }
+          },
+          "failure": {
+            "next": "chained_guardian",
+            "narration": "Heat sears your palms; you grit your teeth.",
+            "ability_change": {
+              "Agility": -4,
+              "Might": -1
+            }
+          }
+        },
+        {
+          "option": "Use levers to redirect flow",
+          "ability": "Intellect",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "chained_guardian",
+            "narration": "A path of cooler plates forms.",
+            "ability_change": {
+              "Intellect": -2
+            }
+          },
+          "failure": {
+            "next": "chained_guardian",
+            "narration": "A valve sticks; you strain in the heat.",
+            "ability_change": {
+              "Intellect": -3,
+              "Spirit": -1
+            }
+          }
+        }
+      ],
+      "background": "Ash rides the wind. Heat thrums beneath the ground, as if some great heart beats below. Metal sings under strain, and sparks drift like orange fireflies."
+    },
+    {
+      "id": "chained_guardian",
+      "act": "III",
+      "title": "The Forged Warden",
+      "description": "A giant of black iron bound by runed chains stirs awake.",
+      "choices": [
+        {
+          "option": "Break a binding at its weakest link",
+          "ability": "Might",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "whispering_vault",
+            "narration": "The chain snaps; the guardian bows and grants passage.",
+            "ability_change": {
+              "Might": -3,
+              "Presence": 1
+            }
+          },
+          "failure": {
+            "next": "whispering_vault",
+            "narration": "Sparks bite; the guardian grudgingly lets you pass.",
+            "ability_change": {
+              "Might": -4
+            }
+          }
+        },
+        {
+          "option": "Recite the pacifying litany",
+          "ability": "Spirit",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "whispering_vault",
+            "narration": "The runes cool; a path opens in respect.",
+            "ability_change": {
+              "Spirit": -3
+            }
+          },
+          "failure": {
+            "next": "whispering_vault",
+            "narration": "The warden growls; you slip by under duress.",
+            "ability_change": {
+              "Spirit": -4
+            }
+          }
+        }
+      ],
+      "background": "Ash rides the wind. Heat thrums beneath the ground, as if some great heart beats below. Metal sings under strain, and sparks drift like orange fireflies."
+    },
+    {
+      "id": "whispering_vault",
+      "act": "III",
+      "title": "Secrets Caged",
+      "description": "Cells of obsidian hold flickers of memory and ash-gray phantoms.",
+      "choices": [
+        {
+          "option": "Bargain with a memory for guidance",
+          "ability": "Presence",
+          "dc": 17,
+          "dice": "1d20",
+          "success": {
+            "next": "mirror_chamber",
+            "narration": "A memory of a hero grants you a route and resolve.",
+            "ability_change": {
+              "Presence": -2,
+              "Spirit": 2
+            }
+          },
+          "failure": {
+            "next": "mirror_chamber",
+            "narration": "The phantom scoffs; you leave uneasy.",
+            "ability_change": {
+              "Presence": -3
+            }
+          }
+        },
+        {
+          "option": "Analyze the cell locks",
+          "ability": "Intellect",
+          "dc": 17,
+          "dice": "1d20",
+          "success": {
+            "next": "mirror_chamber",
+            "narration": "You decode tumblers; a cache of supplies falls open.",
+            "ability_change": {
+              "Intellect": -2,
+              "Might": 1,
+              "Agility": 1
+            }
+          },
+          "failure": {
+            "next": "mirror_chamber",
+            "narration": "A ward nips you; fingers tingle.",
+            "ability_change": {
+              "Intellect": -3
+            }
+          }
+        },
+        {
+          "option": "Discern the kindest captive (Insight)",
+          "ability": "Wisdom",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "mirror_chamber",
+            "narration": "You free a benign memory; it blesses your courage.",
+            "ability_change": {
+              "Wisdom": -1,
+              "Spirit": 2
+            }
+          },
+          "failure": {
+            "next": "mirror_chamber",
+            "narration": "It fades before you can help.",
+            "ability_change": {
+              "Wisdom": -2
+            }
+          },
+          "gate": {
+            "skill": "Insight",
+            "min": 10
+          }
+        }
+      ],
+      "background": "Ash rides the wind. Heat thrums beneath the ground, as if some great heart beats below. Reflections and whispers test what you know about yourself."
+    },
+    {
+      "id": "mirror_chamber",
+      "act": "III",
+      "title": "Faces That Are Not Yours",
+      "description": "Mirrors present possible selves; one draws a blade.",
+      "choices": [
+        {
+          "option": "Duel your reflection",
+          "ability": "Might",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "drowned_archive",
+            "narration": "You disarm the double; it nods and dissolves into motes.",
+            "ability_change": {
+              "Might": -3,
+              "Presence": 1
+            }
+          },
+          "failure": {
+            "next": "drowned_archive",
+            "narration": "You're cut; pride stings worse.",
+            "ability_change": {
+              "Might": -4,
+              "Spirit": -1
+            }
+          }
+        },
+        {
+          "option": "Deny all illusions by will",
+          "ability": "Spirit",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "drowned_archive",
+            "narration": "Reflections blacken; only the true path remains.",
+            "ability_change": {
+              "Spirit": -3
+            }
+          },
+          "failure": {
+            "next": "drowned_archive",
+            "narration": "Doubts cling; each step feels heavier.",
+            "ability_change": {
+              "Spirit": -4
+            }
+          }
+        }
+      ],
+      "background": "Ash rides the wind. Heat thrums beneath the ground, as if some great heart beats below. Reflections and whispers test what you know about yourself."
+    },
+    {
+      "id": "drowned_archive",
+      "act": "III",
+      "title": "Scrolls Under Glassy Water",
+      "description": "A half-submerged hall; ripples carry letters.",
+      "choices": [
+        {
+          "option": "Salvage a waterproof tube",
+          "ability": "Agility",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "ember_elevator",
+            "narration": "You retrieve a sealed scroll: the Heartforge rite.",
+            "ability_change": {
+              "Agility": -2,
+              "Intellect": 1
+            }
+          },
+          "failure": {
+            "next": "ember_elevator",
+            "narration": "The tube slips; you grab a soggy map instead.",
+            "ability_change": {
+              "Agility": -3
+            }
+          }
+        },
+        {
+          "option": "Interpret the ripples' message",
+          "ability": "Wisdom",
+          "dc": 17,
+          "dice": "1d20",
+          "success": {
+            "next": "ember_elevator",
+            "narration": "The water spells 'descend where the ash breathes in'.",
+            "ability_change": {
+              "Wisdom": -2,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "ember_elevator",
+            "narration": "Patterns elude you; you follow the faint rumble anyway.",
+            "ability_change": {
+              "Wisdom": -3
+            }
+          }
+        }
+      ],
+      "background": "Ash rides the wind. Heat thrums beneath the ground, as if some great heart beats below."
+    },
+    {
+      "id": "ember_elevator",
+      "act": "III",
+      "title": "Lift of Chains and Flame",
+      "description": "A platform hangs over a red throat of earth; chains rattle.",
+      "choices": [
+        {
+          "option": "Operate the brake wheels",
+          "ability": "Intellect",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "antechamber",
+            "narration": "You time the descent between gouts of fire.",
+            "ability_change": {
+              "Intellect": -2
+            }
+          },
+          "failure": {
+            "next": "antechamber",
+            "narration": "The platform lurches; your stomach with it.",
+            "ability_change": {
+              "Intellect": -3,
+              "Agility": -1
+            }
+          }
+        },
+        {
+          "option": "Brace and ride it out",
+          "ability": "Might",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "antechamber",
+            "narration": "You anchor yourself and any companions.",
+            "ability_change": {
+              "Might": -2
+            }
+          },
+          "failure": {
+            "next": "antechamber",
+            "narration": "Arms shake; a link grazes your shoulder.",
+            "ability_change": {
+              "Might": -3
+            }
+          }
+        }
+      ],
+      "background": "Ash rides the wind. Heat thrums beneath the ground, as if some great heart beats below."
+    },
+    {
+      "id": "antechamber",
+      "act": "IV",
+      "title": "Ash Before the Door",
+      "description": "A vast door carved with a slumbering king; heat presses from the seams.",
+      "choices": [
+        {
+          "option": "Decode the seal's riddle",
+          "ability": "Intellect",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "heartforge_altar",
+            "narration": "The panels slide with a sigh; the seal permits you.",
+            "ability_change": {
+              "Intellect": -3
+            }
+          },
+          "failure": {
+            "next": "heartforge_altar",
+            "narration": "You force the last meaning; the door protests.",
+            "ability_change": {
+              "Intellect": -4,
+              "Spirit": -1
+            }
+          }
+        },
+        {
+          "option": "Call the Ember King by true name fragment",
+          "ability": "Spirit",
+          "dc": 19,
+          "dice": "1d20",
+          "success": {
+            "next": "heartforge_altar",
+            "narration": "The wards bend; the threshold cools.",
+            "ability_change": {
+              "Spirit": -3
+            }
+          },
+          "failure": {
+            "next": "heartforge_altar",
+            "narration": "The name scrapes your throat; embers sting your eyes.",
+            "ability_change": {
+              "Spirit": -4
+            }
+          }
+        }
+      ],
+      "background": "The mountain breathes fire between iron heartbeats; even silence feels hot and heavy."
+    },
+    {
+      "id": "heartforge_altar",
+      "act": "IV",
+      "title": "Where Worlds Are Tempered",
+      "description": "An altar of black iron, runes hungry for oaths; the Heartforge thrums.",
+      "choices": [
+        {
+          "option": "Prepare the sealing rite from the scroll",
+          "ability": "Intellect",
+          "dc": 19,
+          "dice": "1d20",
+          "success": {
+            "next": "throne_approach",
+            "narration": "The rite hums, awaiting a king to bind or banish.",
+            "ability_change": {
+              "Intellect": -3,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "throne_approach",
+            "narration": "A sigil misaligns; you will need strength to compensate.",
+            "ability_change": {
+              "Intellect": -4,
+              "Might": -1
+            }
+          }
+        },
+        {
+          "option": "Swear a vow of protection",
+          "ability": "Presence",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "throne_approach",
+            "narration": "Your vow hardens the runes against despair.",
+            "ability_change": {
+              "Presence": -3,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "throne_approach",
+            "narration": "Your voice cracks; the altar remains watchful.",
+            "ability_change": {
+              "Presence": -4
+            }
+          }
+        },
+        {
+          "option": "Channel the heart-song through the charm (Attunement)",
+          "ability": "Spirit",
+          "dc": 19,
+          "dice": "1d20",
+          "success": {
+            "next": "throne_approach",
+            "narration": "The charm brightens; runes align eagerly to your pulse.",
+            "ability_change": {
+              "Spirit": -3,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "throne_approach",
+            "narration": "Power surges wild; you steady yourself with effort.",
+            "ability_change": {
+              "Spirit": -4
+            }
+          },
+          "gate": {
+            "skill": "Attunement",
+            "min": 25
+          }
+        }
+      ],
+      "background": "The mountain breathes fire between iron heartbeats; even silence feels hot and heavy. Metal sings under strain, and sparks drift like orange fireflies."
+    },
+    {
+      "id": "throne_approach",
+      "act": "IV",
+      "title": "Steps Through Cinder Snow",
+      "description": "A long hall where ash falls like snow toward a dim throne.",
+      "choices": [
+        {
+          "option": "Advance with measured breath",
+          "ability": "Wisdom",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "throne_duel",
+            "narration": "You read the rhythm of the furnace winds.",
+            "ability_change": {
+              "Wisdom": -3
+            }
+          },
+          "failure": {
+            "next": "throne_duel",
+            "narration": "A hot gust staggers you.",
+            "ability_change": {
+              "Wisdom": -4,
+              "Agility": -1
+            }
+          }
+        },
+        {
+          "option": "Sprint before the ash surge",
+          "ability": "Agility",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "throne_duel",
+            "narration": "You reach the dais as the surge roars behind.",
+            "ability_change": {
+              "Agility": -3
+            }
+          },
+          "failure": {
+            "next": "throne_duel",
+            "narration": "You stumble and slide, coughing.",
+            "ability_change": {
+              "Agility": -4
+            }
+          }
+        }
+      ],
+      "background": "The mountain breathes fire between iron heartbeats; even silence feels hot and heavy. Metal sings under strain, and sparks drift like orange fireflies."
+    },
+    {
+      "id": "throne_duel",
+      "act": "IV",
+      "title": "Audience with the Ember King",
+      "description": "The Ember King stirs: a figure of coal and crown, eyes like kiln doors.",
+      "choices": [
+        {
+          "option": "Challenge in honorable combat",
+          "ability": "Might",
+          "dc": 20,
+          "dice": "1d20",
+          "success": {
+            "next": "final_seal",
+            "narration": "Steel rings; you drive the King to one knee.",
+            "ability_change": {
+              "Might": -4,
+              "Presence": 1
+            }
+          },
+          "failure": {
+            "next": "final_seal",
+            "narration": "His blade is a comet; you bear the scorch.",
+            "ability_change": {
+              "Might": -5,
+              "Spirit": -1
+            }
+          }
+        },
+        {
+          "option": "Parley about the old pact",
+          "ability": "Presence",
+          "dc": 20,
+          "dice": "1d20",
+          "success": {
+            "next": "final_seal",
+            "narration": "Words strike true; the King hesitates, listening.",
+            "ability_change": {
+              "Presence": -4,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "final_seal",
+            "narration": "He laughs like a furnace; your plea withers.",
+            "ability_change": {
+              "Presence": -5
+            }
+          }
+        },
+        {
+          "option": "Sing the First Cooling, an ancient lay (Performance)",
+          "ability": "Presence",
+          "dc": 20,
+          "dice": "1d20",
+          "success": {
+            "next": "final_seal",
+            "narration": "The hall itself hushes; embers drift like snow.",
+            "ability_change": {
+              "Presence": -4,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "final_seal",
+            "narration": "Your voice falters under the heat.",
+            "ability_change": {
+              "Presence": -5
+            }
+          },
+          "gate": {
+            "skill": "Performance",
+            "min": 25
+          }
+        }
+      ],
+      "background": "The mountain breathes fire between iron heartbeats; even silence feels hot and heavy. Metal sings under strain, and sparks drift like orange fireflies."
+    },
+    {
+      "id": "final_seal",
+      "act": "IV",
+      "title": "Pillars of Binding",
+      "description": "Four pillars encircle the heart of the forge; each demands a trial.",
+      "choices": [
+        {
+          "option": "Bear the weight of the Crown",
+          "ability": "Might",
+          "dc": 19,
+          "dice": "1d20",
+          "success": {
+            "next": "heartforge_binding",
+            "narration": "You lift the burning crown; sparks form a ring.",
+            "ability_change": {
+              "Might": -3,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "heartforge_binding",
+            "narration": "The crown bites; your arms tremble.",
+            "ability_change": {
+              "Might": -4
+            }
+          }
+        },
+        {
+          "option": "Speak the Names of Cooling",
+          "ability": "Intellect",
+          "dc": 19,
+          "dice": "1d20",
+          "success": {
+            "next": "heartforge_binding",
+            "narration": "The pillars drink the words and dim.",
+            "ability_change": {
+              "Intellect": -3
+            }
+          },
+          "failure": {
+            "next": "heartforge_binding",
+            "narration": "A syllable slips; heat flares.",
+            "ability_change": {
+              "Intellect": -4,
+              "Spirit": -1
+            }
+          }
+        },
+        {
+          "option": "Offer a binding vow",
+          "ability": "Presence",
+          "dc": 19,
+          "dice": "1d20",
+          "success": {
+            "next": "heartforge_binding",
+            "narration": "Your vow bridges mortal and elemental law.",
+            "ability_change": {
+              "Presence": -3,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "heartforge_binding",
+            "narration": "The vow wavers; ash doubts you.",
+            "ability_change": {
+              "Presence": -4
+            }
+          }
+        },
+        {
+          "option": "Withstand the furnace breath",
+          "ability": "Spirit",
+          "dc": 19,
+          "dice": "1d20",
+          "success": {
+            "next": "heartforge_binding",
+            "narration": "You stand unbowed; the breath gentles.",
+            "ability_change": {
+              "Spirit": -3
+            }
+          },
+          "failure": {
+            "next": "heartforge_binding",
+            "narration": "The breath scalds; your will frays.",
+            "ability_change": {
+              "Spirit": -4
+            }
+          }
+        },
+        {
+          "option": "Reinforce a cracked pillar with quick rigging (Engineering)",
+          "ability": "Intellect",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "heartforge_binding",
+            "narration": "Improvised braces channel pressure away from you.",
+            "ability_change": {
+              "Intellect": -2,
+              "Might": 1
+            }
+          },
+          "failure": {
+            "next": "heartforge_binding",
+            "narration": "Your rig slips; you throw yourself clear.",
+            "ability_change": {
+              "Intellect": -3,
+              "Agility": -1
+            }
+          },
+          "gate": {
+            "skill": "Engineering",
+            "min": 25
+          }
+        }
+      ],
+      "background": "The mountain breathes fire between iron heartbeats; even silence feels hot and heavy."
+    },
+    {
+      "id": "heartforge_binding",
+      "act": "IV",
+      "title": "Moment of Truth",
+      "description": "The rite nears completion; you must either banish the Ember King or bind him.",
+      "choices": [
+        {
+          "option": "Banish with pure will",
+          "ability": "Spirit",
+          "dc": 21,
+          "dice": "1d20",
+          "success": {
+            "next": "escape_collapse",
+            "narration": "A wind from nowhere sweeps embers into the void.",
+            "ability_change": {
+              "Spirit": -4
+            }
+          },
+          "failure": {
+            "next": "escape_collapse",
+            "narration": "The King shrieks; you manage only a partial banishment.",
+            "ability_change": {
+              "Spirit": -5,
+              "Might": -1
+            }
+          }
+        },
+        {
+          "option": "Bind with rune-law",
+          "ability": "Intellect",
+          "dc": 21,
+          "dice": "1d20",
+          "success": {
+            "next": "escape_collapse",
+            "narration": "Chains of meaning wrap the throne and fuse.",
+            "ability_change": {
+              "Intellect": -4
+            }
+          },
+          "failure": {
+            "next": "escape_collapse",
+            "narration": "A link breaks; the bond holds by a thread.",
+            "ability_change": {
+              "Intellect": -5,
+              "Spirit": -1
+            }
+          }
+        }
+      ],
+      "background": "The mountain breathes fire between iron heartbeats; even silence feels hot and heavy. Metal sings under strain, and sparks drift like orange fireflies."
+    },
+    {
+      "id": "escape_collapse",
+      "act": "IV",
+      "title": "Run From the Dying Forge",
+      "description": "The Heartforge shakes apart; ash avalanches through halls.",
+      "choices": [
+        {
+          "option": "Dash through falling slag",
+          "ability": "Agility",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "victory",
+            "narration": "You burst into night air as the mountain groans.",
+            "ability_change": {
+              "Agility": -3
+            }
+          },
+          "failure": {
+            "next": "defeat",
+            "narration": "A beam pins your leg; the world goes red.",
+            "ability_change": {
+              "Agility": -5,
+              "Might": -2
+            }
+          }
+        },
+        {
+          "option": "Hold the passage for a count of ten",
+          "ability": "Might",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "victory",
+            "narration": "You shoulder a brace as others sprint by.",
+            "ability_change": {
+              "Might": -3
+            }
+          },
+          "failure": {
+            "next": "defeat",
+            "narration": "The brace snaps; you vanish under cinders.",
+            "ability_change": {
+              "Might": -5
+            }
+          }
+        }
+      ],
+      "background": "The mountain breathes fire between iron heartbeats; even silence feels hot and heavy."
+    },
+    {
+      "id": "victory",
+      "act": "IV",
+      "title": "Embers at Dawn",
+      "description": "You emerge soot-streaked. The first birds are brave enough to sing; the coal-black charm is warm.",
+      "choices": [
+        {
+          "option": "Breathe and watch the sunrise",
+          "ability": "Wisdom",
+          "dc": 0,
+          "dice": "1d20",
+          "success": {
+            "next": "END",
+            "narration": "Peace answers; you have kept your flame.",
+            "ability_change": {
+              "Wisdom": 0
+            }
+          },
+          "failure": {
+            "next": "END",
+            "narration": "(No check needed)",
+            "ability_change": {
+              "Wisdom": 0
+            }
+          }
+        }
+      ],
+      "background": "The mountain breathes fire between iron heartbeats; even silence feels hot and heavy. Dawn tests the color of the sky and finds it worthy of song."
+    },
+    {
+      "id": "defeat",
+      "act": "IV",
+      "title": "Ash and Silence",
+      "description": "Your story cools here. In ember and echo, your name waits to be reignited in another life.",
+      "choices": [
+        {
+          "option": "Fall to darkness",
+          "ability": "Spirit",
+          "dc": 0,
+          "dice": "1d20",
+          "success": {
+            "next": "END",
+            "narration": "(No effect)",
+            "ability_change": {
+              "Spirit": 0
+            }
+          },
+          "failure": {
+            "next": "END",
+            "narration": "(No effect)",
+            "ability_change": {
+              "Spirit": 0
+            }
+          }
+        }
+      ],
+      "background": "The mountain breathes fire between iron heartbeats; even silence feels hot and heavy. The world folds around your silence like cooling slag."
+    }
+  ]
+}
