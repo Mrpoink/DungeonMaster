@@ -22,183 +22,268 @@ warnings.filterwarnings("ignore", category=UserWarning, module="peft.peft_model"
 
 
 
-def section_string(initial : str, beginning : str, ending : str):
-    first_section = initial.split(beginning)
-    final = first_section[1].split(ending)
+# def section_string(initial : str, beginning : str, ending : str):
+#     first_section = initial.split(beginning)
+#     final = first_section[1].split(ending)
 
-    return final[0]
+#     return final[0]
 
-def remove_parts(initial : str):
-    sections = initial.split("[")
-    if "|" in sections[0]:
-        sections = sections[0].split("|")
-    final = sections[0]
+# def remove_parts(initial : str):
+#     sections = initial.split("[")
+#     if "|" in sections[0]:
+#         sections = sections[0].split("|")
+#     final = sections[0]
 
-    return final
-
-
-bnb_config = BitsAndBytesConfig(
-    load_in_8bit=True,
-    bnb_8bit_quant_type="nf8",
-    bnb_8bit_compute_dtype=torch.bfloat16
-)
-
-lora_config = LoraConfig(
-    r=8,
-    lora_alpha=16,
-    target_modules=["q_proj", "v_proj"],
-    lora_dropout=0.05,
-    bias="none",
-    task_type="CAUSAL_LM"
-)
-
-def def_model():
-    torch.cuda.empty_cache()
-    tokenizer = AutoTokenizer.from_pretrained("SmolLM2/SmolTokenizer")
-    base_model = AutoModelForCausalLM.from_pretrained(
-        "HuggingFaceTB/SmolLM2-360M-Instruct",
-        dtype = torch.bfloat16,
-        device_map = "cuda"
-        )
-    model = PeftModel.from_pretrained(base_model, "prompt_classifier_Smol/checkpoint-2673")
-
-    model.to("cuda")
-
-    model.eval()
-
-    model=torch.compile(model)
-    torch.cuda.empty_cache()
-
-    return model, tokenizer
+#     return final
 
 
-async def model_output(userin : str, model, tokenizer): #running script WITH check
-    torch.cuda.empty_cache()
-    inputs = tokenizer(userin, return_tensors="pt", padding=True).to("cuda")
+# bnb_config = BitsAndBytesConfig(
+#     load_in_4bit=True,
+#     bnb_4bit_quant_type="nf4",
+#     bnb_4bit_compute_dtype=torch.bfloat16
+# )
 
-    with torch.no_grad():
-        outputs = model.generate(
-            **inputs, 
-            max_new_tokens = 256,
-            num_beams=2,
-            num_return_sequences=1,
-            return_dict_in_generate=True,
-            output_scores=True,
-            do_sample=True,
-            top_p = .82,
-            #top_k = 40,
-            # pad_token_id=tokenizer.eos_token_id,
-            # eos_token_id=tokenizer.eos_token_id,
-            repetition_penalty = 3.3,
-            temperature = 2.15
-            )
-    decoded_ouput = tokenizer.decode(outputs[0][0], skip_special_tokens = True)
-    print(decoded_ouput)
-    final_output = decoded_ouput.split('[/GENERATED OUTCOME]:')
-    final_output = final_output[1].split('|end|')
-    print(len(final_output))
+# lora_config = LoraConfig(
+#     r=8,
+#     lora_alpha=16,
+#     target_modules=["q_proj", "v_proj"],
+#     lora_dropout=0.05,
+#     bias="none",
+#     task_type="CAUSAL_LM"
+# )
+
+# def def_model():
+#     torch.cuda.empty_cache()
+#     tokenizer = AutoTokenizer.from_pretrained("SmolLM2/SmolTokenizer")
+#     base_model = AutoModelForCausalLM.from_pretrained(
+#         "HuggingFaceTB/SmolLM2-360M-Instruct",
+#         dtype = torch.bfloat16,
+#         device_map = "cuda"
+#         )
+#     model = PeftModel.from_pretrained(base_model, "prompt_classifier_Smol/checkpoint-2673")
+
+#     model.to("cuda")
+
+#     model.eval()
+
+#     model=torch.compile(model)
+#     torch.cuda.empty_cache()
+
+#     return model, tokenizer
+
+
+# async def model_output(userin : str, model, tokenizer): #running script WITH check
+#     torch.cuda.empty_cache()
+#     inputs = tokenizer(userin, return_tensors="pt", padding=True).to("cuda")
+
+#     with torch.no_grad():
+#         outputs = model.generate(
+#             **inputs, 
+#             max_new_tokens = 256,
+#             num_beams=2,
+#             num_return_sequences=1,
+#             return_dict_in_generate=True,
+#             output_scores=True,
+#             do_sample=True,
+#             top_p = .9,
+#             #top_k = 40,
+#             # pad_token_id=tokenizer.eos_token_id,
+#             # eos_token_id=tokenizer.eos_token_id,
+#             repetition_penalty = 3.3,
+#             temperature = 2.15
+#             )
+#     decoded_ouput = tokenizer.decode(outputs[0][0], skip_special_tokens = True)
+#     print(decoded_ouput)
+#     final_output = decoded_ouput.split('[/GENERATED OUTCOME]:')
+#     final_output = final_output[1].split('|end|')
+#     print(len(final_output))
     
-    torch.cuda.empty_cache()
+#     torch.cuda.empty_cache()
 
-    return final_output[0]
+#     return final_output[0]
 
-async def model_output_check(userin : str, model, tokenizer): #Running check script
-    torch.cuda.empty_cache()
-    inputs = tokenizer(userin, return_tensors="pt", padding=True).to("cuda")
+# async def model_output_check(userin : str, model, tokenizer): #Running check script
+#     torch.cuda.empty_cache()
+#     inputs = tokenizer(userin, return_tensors="pt", padding=True).to("cuda")
 
-    with torch.no_grad():
-        outputs = model.generate(
-            **inputs, 
-            max_new_tokens = 256,
-            num_beams=2,
-            num_return_sequences=1,
-            return_dict_in_generate=True,
-            output_scores=True,
-            do_sample=True,
-            #top_p = .65,
-            top_k = 20,
-            # pad_token_id=tokenizer.eos_token_id,
-            # eos_token_id=tokenizer.eos_token_id,
-            repetition_penalty = 3.3,
-            temperature = 1.75
-            )
-    decoded_ouput = tokenizer.decode(outputs[0][0], skip_special_tokens = True)
-    print(decoded_ouput)
-    final_output = decoded_ouput.split('[/GENERATED OUTCOME]:')
-    final_output = final_output[1].split('|end|')
+#     with torch.no_grad():
+#         outputs = model.generate(
+#             **inputs, 
+#             max_new_tokens = 256,
+#             num_beams=2,
+#             num_return_sequences=1,
+#             return_dict_in_generate=True,
+#             output_scores=True,
+#             do_sample=True,
+#             top_p = .65,
+#             #top_k = 40,
+#             # pad_token_id=tokenizer.eos_token_id,
+#             # eos_token_id=tokenizer.eos_token_id,
+#             repetition_penalty = 3.3,
+#             temperature = 1.75
+#             )
+#     decoded_ouput = tokenizer.decode(outputs[0][0], skip_special_tokens = True)
+#     print(decoded_ouput)
+#     final_output = decoded_ouput.split('[/GENERATED CHECK]:')
+#     final_output = final_output[1].split('|end|')
+#     print(len(final_output))
     
-    torch.cuda.empty_cache()
+#     torch.cuda.empty_cache()
 
     
-    return final_output[0]
+#     return final_output[0]
 
 
-async def final_prompt(prompt : str, vb, seed : int, turn_num : int):
+# async def final_prompt(prompt : str, vb, seed : int, turn_num : int):
 
-    similarities = await vb.best_result(0.0,'all-MiniLM-L6-v2', prompt, seed)
+#     similarities = await vb.best_result(0.0,'all-MiniLM-L6-v2', prompt, seed)
 
 
-    extra_info = ""
+#     extra_info = ""
 
-    initial_confidence = 0.0
+#     initial_confidence = 0.0
 
-    for item in similarities:
-        name, entry, confidence = item
-        text = entry['text']
+#     for item in similarities:
+#         name, entry, confidence = item
+#         text = entry['text']
 
-        userin_list = prompt.split(' ')
-        text_split = text.split(' ')
+#         userin_list = prompt.split(' ')
+#         text_split = text.split(' ')
 
-        is_in = False
+#         is_in = False
 
-        for item in userin_list:
-            if item not in text_split:
-                continue
-            else:
-                is_in = True
+#         for item in userin_list:
+#             if item not in text_split:
+#                 continue
+#             else:
+#                 is_in = True
 
-        if is_in == False:
-            continue
+#         if is_in == False:
+#             continue
 
-        if confidence > initial_confidence and (name != "SESSION"):
-            print(name)
-            initial_confidence = confidence
-            extra_info = f"{extra_info} {name} {entry['text']},"
+#         if confidence > initial_confidence and (name != "SESSION"):
+#             print(name)
+#             initial_confidence = confidence
+#             extra_info = f"{extra_info} {name} {entry['text']},"
 
-        elif ((confidence > initial_confidence) and (name == "SESSION")) or (turn_num != 0):
-            print(name)
-            initial_confidence = confidence
-            extra_info = f"{extra_info} {name} {entry['text']},"
+#         elif ((confidence > initial_confidence) and (name == "SESSION")) or (turn_num != 0):
+#             print(name)
+#             initial_confidence = confidence
+#             extra_info = f"{extra_info} {name} {entry['text']},"
 
-    final_input = f"|user|: [/EXTRA INFO]: {extra_info} {prompt}"
-    print(final_input)
+#     final_input = f"|user|: [/EXTRA INFO]: {extra_info} {prompt}"
+#     print(final_input)
 
-    return final_input
+#     return final_input
 
 
 #'all-MiniLM-L6-v2' 
+class player:
+
+    def __init__(self, Might, Agility, Presence, Wisdom, Spirit, hp, campaign_dict):
+        r'''
+        Character creation \
+        parameters: The attribute scores for each player. Needed campaign dict because the original campaigns dicts determine skills for players. \
+        
+        To use: \
+        Initialize class to create player \
+        run get_skills function to get player skills \
+        Don't need getters due to class attributes \
+        run change_ability to change abilities \
+        run level_up to level up character, each automatically starts at 1 \
+        run add_item to add items
+        '''
+        self.attributes = {
+            'Might': Might,
+            'Agility': Agility,
+            'Presence': Presence,
+            'Wisdom': Wisdom,
+            'Spirit': Spirit
+        }
+        self.level = 1
+        self.hp = hp
+        self.inventory = []
+        self.skills = []
+        self.data = campaign_dict
+
+    def get_skills(self):
+
+        self.skills = []
+
+        for attr_name, attr_value in self.attributes.items():
+        # Check if this attribute exists in the main abilities data
+            if attr_name in self.data:
+                
+                # Get the list of skills for this attribute
+                skills_list = self.data[attr_name].get("skills", [])
+                
+                # Check each skill in that list
+                for skill in skills_list:
+                    # If the character's score meets or exceeds the threshold...
+                    if attr_value >= skill["threshold"]:
+                        # ...add the skill name to the list.
+                        self.skills.append(skill["name"])
+
+    def change_ability(self, ability_dict , amount):
+        for ability, change in ability_dict.items():
+            if ability == 'Might':
+                self.attributes['Might'] += change
+            elif ability == 'Agility':
+                self.attributes['Agility'] += change
+            elif ability == 'Presence':
+                self.attributes['Presence'] += change
+            elif ability == 'Wisdom':
+                self.attributes['Wisdom'] += change
+            elif ability == 'Spirit':
+                self.attributes['Spirit'] += change
+
+        print(f"Changed {ability} by {ability_dict[ability]} based on roll of {amount}")
+
+    
+
+    def level_up(self, hp_roll):
+        self.level += 1
+        self.hp += hp_roll
+
+    def add_item(self, item):
+        self.inventory.append(item)
 
 
-class DungeonMaster:
 
-    check = False
+class campaign:
 
     def __init__(self):
-        self.turn_num = 0
+        r'''
+        Run create_dm to make the vector database instance so we can add user data \
+        get the seed from it so we can decide what campaign to do, and also where to store the information (if we do at all) \
+        We will need the user input \
+        We will need the roll result \
+        And we will return all the other information I think. \
         
-        self.vb = None
-        
-    @classmethod
-    async def create_dm(cls, username=None):
-        try:
-            loop = asyncio.get_running_loop()
-        except RuntimeError:
-            loop = asyncio.new_event_loop()
-            asyncio.set_event_loop(loop)
-            
-        instance = cls()
+        Flow works as follows: \
+        use the turn_num to get the index of scene_and_options \
+        from scene_and_options you get the description and options of the scene \
+        have the player choose a choice from the options given \
+        Pop the user input into user_choice along with the given options \
+        You will get the option info and choice index from user_choice \
+        Use that to get the roll needed from option_info[1] and option_info[3] \
+        Roll \
+        Use the result of the roll, the turn_num, and the choice_index to get the success, outcome_description, and narration from the success or failure \
+        Use that change the players abilities in the player class \
+        rinse and repeat
+        '''
 
-        instance.model, instance.tokenizer = def_model()
+        self.turn_num = 0
+
+    async def create_dm(cls):
+        r'''
+        returns seed, \
+        adds session \
+        returns the scene information \
+        defines the turn_number \
+        return instance with these items'''
+    
+        instance = cls()
 
         instance.vb = vector_database.get_from_db()
         await instance.vb.connect()
@@ -206,105 +291,117 @@ class DungeonMaster:
         print("Seed: ", instance.seed)
         await instance.vb.add_session('all-MiniLM-L6-v2', "start of session", instance.seed)
 
-        # Get character data if username provided, otherwise use default
-        if username:
-            char_data = await instance.vb.get_character(username)
-            if char_data and len(char_data) > 0:
-                char = char_data[0]
-                # Format player description using character data
-                instance.player = f"[/PLAYER]: A {char['race']} {char['cla']}"
-                if char['subclass']:
-                    instance.player += f" ({char['subclass']})"
-                instance.player += f" named {char['name']}"
-                if char['backstory']:
-                    instance.player += f". {char['backstory']}"
-            else:
-                instance.player = "[/PLAYER]: A wandering adventurer seeking their destiny"
-        else:
-            instance.player = "[/PLAYER]: A wandering adventurer seeking their destiny"
-
         instance.player_says = None
-        
+
+        instance.scene = instance.vb.find_scene()
         instance.roll_number = 0
 
         instance.check = None #If false, check required, else generate outcome
 
-        instance.scene_num = 0
-
-        instance.scene = instance.vb.find_scene(instance.scene_num)
-
         return instance
     
-    @classmethod
-    async def create_backend(cls):
+
+    def create_campaign_from_file(instance, seed):
+        r'''
+        Needs the seed to decide the campaign to roll with \
+        sets the campaign information'''
+
+        campaign_num = seed % 5 #set back to instance.seed and then remove seed from parameters
+
+        match campaign_num:
+
+            case 0:
+                with open('Datasets\\echoes_of_the_force.json', 'r') as file:
+                    instance.campaign = json.load(file)
+            case 1:
+                with open('Datasets\\the_last_ember_of_balance.json', 'r') as file:
+                    instance.campaign = json.load(file)
+            case 2:
+                with open('Datasets\\the_shattered_crown_of_elarion.json', 'r') as file:
+                    instance.campaign = json.load(file)
+            case 3:
+                with open('Datasets\\the_shattered_hourglass.json', 'r') as file:
+                    instance.campaign = json.load(file)
+            case 4:
+                with open('Datasets\\echoes_of_the_ember_king_v2.json', 'r') as file:
+                    instance.campaign = json.load(file)
+
+    def get_campaign(self):
+        r'''
+        converts the campaign data into usable data for the scenes \
+        different due to there being different items within the given jsons'''
+
+        self.scene_and_options = []
+
+        for entry in self.campaign['scenes']:
+            options = []
+            for choice in entry['choices']:
+                options.append(choice)
+            self.scene_and_options.append((entry['description'], options))
+
+    def get_turn_info(self):
+        r'''
+        makes the turn info for the given turn. Has no return statement'''
+        self.next_scene_description = self.campaign[self.turn_num][0]
+        self.options = []
+        i = 0
+        for item in self.campaign[self.turn_num][1]:
+            i += 1
+            self.options.append(item['option'])
+
+    def get_option_info(self, choice_index):
+        r'''
+        parameters: choice_index which helps to specify the exact scene we are getting information from \
+        returns: the choice description, the ability check required, the dc (minimum) for said choice, and the dice required'''
+
+        choice = self.campaign['scenes'][self.turn_num]['choices'][choice_index-1]
+        ability_check = choice['ability']
+        dc = choice['dc']
+        dice = choice['dice']
+        
+
+        return choice, ability_check, dc, dice
+    
+    def user_choice(self, options, userin):
+        r'''
+        parameters: the options for the given scene, user input \
+        returns: option info from get_option_info, and the choice_index which is needed for deciding how to move forward with such a choice'''
+
         try:
-            loop = asyncio.get_running_loop()
-        except RuntimeError:
-            loop = asyncio.new_event_loop()
-            asyncio.set_event_loop(loop)
-            
-        instance = cls()
 
-        instance.bvb = vector_database.use_vector_db()
-        await instance.bvb.connect()
+            for item in options:
 
-        return instance
-        
+                if userin in item['option']:
 
-    async def model_output(instance, userin : str):
+                    choice_index = options.index(item)
 
-        print("running check script")
+                elif userin.isdigit() and 1 <= int(userin) <= len(options):
+                    choice_index = int(userin) - 1
 
-        if instance.turn_num % 3 == 0:
-            instance.scene_num += 1
-            instance.scene = instance.vb.find_scene(instance.scene_num)
+        except Exception as e:
+            print(e)
+            return "Error"
 
-        # Use the instance's scene and player data
-        prompt = f"{instance.scene} {instance.player} [/ACTION]: {userin}"
 
-        final_input = await final_prompt(prompt, instance.vb, instance.seed, instance.turn_num)
+        option_info = self.get_option_info(self.turn_num, choice_index)
 
-        final_input = f"{final_input} |end|\n|assistant|: [/GENERATED OUTCOME]:"
-
-        print("final input: ", final_input, "\n--------------\n")
-
-        modelOut = await model_output_check(final_input, instance.model, instance.tokenizer)
-
-        await instance.vb.add_session('all-MiniLM-L6-v2', str(f"|user| {prompt}"), instance.seed)
-
-        await instance.vb.add_session('all-MiniLM-L6-v2', str(f"{modelOut}"), instance.seed)
-
-        instance.check = modelOut
-
-        instance.turn_num += 1
-
-        return modelOut
+        return option_info, choice_index
     
+    def get_success_or_failure(self, choice_index, roll_result):
+        r'''
+        parameters: the choice index, and the users roll result \
+        returns: the result of thier roll on the choice given the dc, the full choice incase that is needed, and the narration that comes with it
+        '''
+
+        choice, ability_check, dc, dice = self.get_option_info(self.turn_num, choice_index)
+
+        if roll_result >= dc:
+            return "success", choice['success'], choice['success']['narration']
+        else:
+            return "failure", choice['failure'], choice['failure']['narration']
     
-    async def model_output_check(instance, userin : str, pass_fail):
 
-        print("running script WITH check")
 
-        # Use the instance's scene instead of hardcoded one
-        prompt = f"{instance.scene} [/ACTION]: {userin} [/CHECK]: {instance.check} [/PASS/FAIL]: {pass_fail}"
-
-        
-
-        final_input = await final_prompt(prompt, instance.vb, instance.seed, instance.turn_num)
-
-        final_input = f"{final_input}  |end|\n|assistant|: [/GENERATED OUTCOME]:"
-
-        print("Final input: ", final_input, "\n------------\n")
-
-        modelOut = await model_output(final_input, instance.model, instance.tokenizer)
-
-        await instance.vb.add_session('all-MiniLM-L6-v2', str(f"|user| {prompt}"), instance.seed)
-
-        await instance.vb.add_session('all-MiniLM-L6-v2', str(f"{modelOut}"), instance.seed)
-
-        instance.turn_num +=1 
-
-        return modelOut
 
 
     async def add_user_data(instance, name, username, password):
@@ -320,5 +417,164 @@ class DungeonMaster:
         print("From backend: ", result)
 
         return result
+
+
+
+
+
+def mock_campaign():
+    r'''
+    used for mock campaign and debugging'''
+
+    print("RUNNING MOCK CAMPAIGN")
+
+    mock_campaign = campaign()
+
+    mock_campaign.create_campaign_from_file(23)
+
+
+    mock_campaign.get_campaign()
+
+    # for description, options in mock_campaign.scene_and_options:
+    #     print("DESCRIPTION: ", description)
+    #     for item in options:
+    #         print(f"Option: {item['option']}")
+
+    player1 = player(12, 12, 12, 12, 12, 12, mock_campaign.campaign)
+
+    turn_num = 0
+
+    for description, options in mock_campaign.scene_and_options:
+
+        print(f"{description}")
+
+        for i in range(len(options)):
+
+            print(f"Option {i+1}. {options[i]['option']}")
+        
+        print("\n---------\n")
+
+        
+        userin = input("What will you do?: ")
+
+        if userin.lower() in ['exit', 'quit']:
+            break
+
+        option_info, choice_index = mock_campaign.user_choice(options, userin)
+
+        print("\n---------\n")
+
+        roll_prompt = input(f'Roll for {option_info[1]} (d{option_info[3]}), would you like to roll (y/N): ')
+
+        if roll_prompt.lower() == 'y':
+            user_roll = random.randint(1, int(option_info[3].replace('1d', '')))
+            print(f"you rolled: {user_roll}")
+        else:
+            break
+
+        print("\n---------\n")
+
+        success, outcome_description, narration = mock_campaign.get_success_or_failure( turn_num, choice_index, user_roll)
+
+        print(f"\n{narration}\n\n")
+
+        player1.change_ability(outcome_description['ability_change'], random.randint(1, 20))
+
+
+
+#While the output of success is not failure, keep going
+
+
+#For the front-end:
+
+
+
+# class DungeonMaster:
+
+#     check = False
+
+#     def __init__(self):
+#         self.turn_num = 0
+        
+#         self.vb = None
+        
+#     @classmethod
+#     async def create_dm(cls):
+        
+#         instance = cls()
+
+#         instance.model, instance.tokenizer = def_model()
+
+#         instance.vb = vector_database.get_from_db()
+#         await instance.vb.connect()
+#         instance.seed = await instance.vb.get_session_id() + 1
+#         print("Seed: ", instance.seed)
+#         await instance.vb.add_session('all-MiniLM-L6-v2', "start of session", instance.seed)
+
+#         instance.player_says = None
+
+#         instance.scene = instance.vb.find_scene()
+#         instance.roll_number = 0
+
+#         instance.check = None #If false, check required, else generate outcome
+
+#         return instance
+    
+#     @classmethod
+#     async def create_backend(cls, player1 : player, player2 = None, player3 = None, player4 = None):
+#         instance = cls()
+
+#         instance.bvb = vector_database.use_vector_db()
+#         await instance.bvb.connect()
+
+#         instance.player1 = player1
+#         instance.player2 = player2
+#         instance.player3 = player3
+#         instance.player4 = player4
+
+#         return instance
+        
+
+#     async def model_output(instance, userin : str, player):
+
+
+
+#     async def add_user_data(instance, name, username, password):
+
+#         await instance.bvb.add_user_data(name, username, password)
+
+#         return "added data"
+    
+#     async def check_creds(instance, username, password):
+
+#         result = await instance.bvb.check_user_data(username, password)
+
+#         print("From backend: ", result)
+
+#         return result
+    
+#     def load_campaign(instance):
+
+#         campaign_num = instance.seed % 5
+
+#         match campaign_num:
+
+#             case 0:
+#                 with open('Datasets\echoes_of_the_force.json', 'r') as file:
+#                     instance.campaign = json.load(file)
+#             case 1:
+#                 with open('Datasets\the_last_ember_of_balance.json', 'r') as file:
+#                     instance.campaign = json.load(file)
+#             case 2:
+#                 with open('Datasets\the_shattered_crown_of_elarion.json', 'r') as file:
+#                     instance.campaign = json.load(file)
+#             case 3:
+#                 with open('Datasets\the_shattered_hourglass.json', 'r') as file:
+#                     instance.campaign = json.load(file)
+#             case 4:
+#                 with open('Datasets\echoes_of_the_ember_king_v2.json', 'r') as file:
+#                     instance.campaign = json.load(file)
+
+
 
     

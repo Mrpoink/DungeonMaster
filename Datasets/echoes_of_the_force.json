@@ -1,0 +1,2090 @@
+{
+  "meta": {
+    "title": "Echoes of the Force",
+    "version": "1.0",
+    "notes": "Star Wars–inspired adventure set post-Clone Wars. Player is a Force-adept with amnesia. Includes Force alignment tracking and familiar cameos via holocrons and references. Abilities 0–30 (sum 120), skill thresholds 10/20/25, multiple endings."
+  },
+  "abilities": {
+    "Intellect": {
+      "skills": [
+        {
+          "name": "Arcana",
+          "threshold": 10
+        },
+        {
+          "name": "Investigation",
+          "threshold": 20
+        },
+        {
+          "name": "Engineering",
+          "threshold": 25
+        }
+      ]
+    },
+    "Might": {
+      "skills": [
+        {
+          "name": "Athletics",
+          "threshold": 10
+        },
+        {
+          "name": "Brawling",
+          "threshold": 20
+        },
+        {
+          "name": "Endurance",
+          "threshold": 25
+        }
+      ]
+    },
+    "Agility": {
+      "skills": [
+        {
+          "name": "Stealth",
+          "threshold": 10
+        },
+        {
+          "name": "Acrobatics",
+          "threshold": 20
+        },
+        {
+          "name": "Sleight of Hand",
+          "threshold": 25
+        }
+      ]
+    },
+    "Presence": {
+      "skills": [
+        {
+          "name": "Persuasion",
+          "threshold": 10
+        },
+        {
+          "name": "Deception",
+          "threshold": 20
+        },
+        {
+          "name": "Performance",
+          "threshold": 25
+        }
+      ]
+    },
+    "Wisdom": {
+      "skills": [
+        {
+          "name": "Insight",
+          "threshold": 10
+        },
+        {
+          "name": "Survival",
+          "threshold": 20
+        },
+        {
+          "name": "Medicine",
+          "threshold": 25
+        }
+      ]
+    },
+    "Spirit": {
+      "skills": [
+        {
+          "name": "Faith",
+          "threshold": 10
+        },
+        {
+          "name": "Willpower",
+          "threshold": 20
+        },
+        {
+          "name": "Attunement",
+          "threshold": 25
+        }
+      ]
+    }
+  },
+  "rules": {
+    "dice": "1d20",
+    "check": "total = d20 + floor(ability/5); success if total >= dc",
+    "sum_of_abilities": 120,
+    "win_condition": "Reach a positive ending with all abilities > 0",
+    "lose_condition": "Any ability <= 0 routes to 'ending_fallen'"
+  },
+  "alignment": {
+    "name": "force_alignment",
+    "start": 0,
+    "light_threshold": 5,
+    "dark_threshold": -5
+  },
+  "acts": {
+    "I": "Awakening in the Stars",
+    "II": "Sands of Narsuun Prime",
+    "III": "Shadows of the Force",
+    "IV": "Balance or Dominion"
+  },
+  "scenes": [
+    {
+      "id": "stasis_wake",
+      "act": "I",
+      "title": "Cold Start",
+      "description": "You wake in a cracked stasis pod aboard the derelict freighter Ardent Whisper. R9-D7 chirps in panic.",
+      "background": "Cold starlight spills through cracked durasteel. Distant alarms loop like a memory that won’t shut off. Panels flicker; cables sway like roots searching for ground.",
+      "choices": [
+        {
+          "option": "Calm the droid and assess damage",
+          "ability": "Wisdom",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "corridor_breach",
+            "narration": "R9 settles; you hear hull creaks and a failing power loop.",
+            "ability_change": {
+              "Wisdom": -1,
+              "Intellect": 1
+            }
+          },
+          "failure": {
+            "next": "corridor_breach",
+            "narration": "You miss a beat; alarms grow louder.",
+            "ability_change": {
+              "Wisdom": -2
+            }
+          },
+          "force_change": 1
+        },
+        {
+          "option": "Force the pod open and move",
+          "ability": "Might",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "corridor_breach",
+            "narration": "You rip a panel free; cold air floods your lungs.",
+            "ability_change": {
+              "Might": -1
+            }
+          },
+          "failure": {
+            "next": "corridor_breach",
+            "narration": "Metal bites your palms; you push through.",
+            "ability_change": {
+              "Might": -2
+            }
+          },
+          "force_change": 0
+        }
+      ]
+    },
+    {
+      "id": "corridor_breach",
+      "act": "I",
+      "title": "Ruptured Corridor",
+      "description": "A hull breach yawns ahead. Magnetic boots struggle. A salvage skiff docks clumsily nearby.",
+      "background": "Cold starlight spills through cracked durasteel. Distant alarms loop like a memory that won’t shut off. Panels flicker; cables sway like roots searching for ground.",
+      "choices": [
+        {
+          "option": "Leap the gap with a timed sprint",
+          "ability": "Agility",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "salvager_meet",
+            "narration": "You catch a rung; R9 rockets after you.",
+            "ability_change": {
+              "Agility": -1
+            }
+          },
+          "failure": {
+            "next": "salvager_meet",
+            "narration": "You bounce off bulkhead plating; bruised pride.",
+            "ability_change": {
+              "Agility": -2
+            }
+          },
+          "force_change": 0
+        },
+        {
+          "option": "Mag-clamp a ladder across",
+          "ability": "Intellect",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "salvager_meet",
+            "narration": "A shaky but usable bridge clicks in.",
+            "ability_change": {
+              "Intellect": -1,
+              "Might": 1
+            }
+          },
+          "failure": {
+            "next": "salvager_meet",
+            "narration": "The ladder shifts; you improvise.",
+            "ability_change": {
+              "Intellect": -2
+            }
+          },
+          "force_change": 0
+        }
+      ]
+    },
+    {
+      "id": "salvager_meet",
+      "act": "I",
+      "title": "Captain Kael",
+      "description": "A weathered smuggler hauls you aboard. 'Name’s Kael. You look like trouble.'",
+      "background": "Cold starlight spills through cracked durasteel. Distant alarms loop like a memory that won’t shut off. Panels flicker; cables sway like roots searching for ground. Fuel lines hiss softly; droids trade beeps like gossip.",
+      "choices": [
+        {
+          "option": "Be honest and ask for passage",
+          "ability": "Presence",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "engine_room",
+            "narration": "He shrugs: 'Fine. Pay me in something other than credits.'",
+            "ability_change": {
+              "Presence": -1,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "engine_room",
+            "narration": "He squints: 'We’ll see.'",
+            "ability_change": {
+              "Presence": -2
+            }
+          },
+          "force_change": 1
+        },
+        {
+          "option": "Bluff that you’re Republic intel (Deception)",
+          "ability": "Presence",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "engine_room",
+            "narration": "He laughs: 'Republic? That museum’s closed.'",
+            "ability_change": {
+              "Presence": -2,
+              "Intellect": 1
+            }
+          },
+          "failure": {
+            "next": "engine_room",
+            "narration": "He narrows his eyes; trust drops a notch.",
+            "ability_change": {
+              "Presence": -3
+            }
+          },
+          "force_change": -1,
+          "gate": {
+            "skill": "Deception",
+            "min": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "engine_room",
+      "act": "I",
+      "title": "Engine Room Puzzle",
+      "description": "Kael’s ship sputters. A cracked manifold and a misaligned motivator hum out of phase.",
+      "background": "Cold starlight spills through cracked durasteel. Distant alarms loop like a memory that won’t shut off. Panels flicker; cables sway like roots searching for ground.",
+      "choices": [
+        {
+          "option": "Realign the motivator by feel (Attunement)",
+          "ability": "Spirit",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "escape_burn",
+            "narration": "The hum locks; lights warm to steady amber.",
+            "ability_change": {
+              "Spirit": -1,
+              "Intellect": 1
+            }
+          },
+          "failure": {
+            "next": "escape_burn",
+            "narration": "Feedback stings; you ground it with breath.",
+            "ability_change": {
+              "Spirit": -2
+            }
+          },
+          "force_change": 1,
+          "gate": {
+            "skill": "Attunement",
+            "min": 25
+          }
+        },
+        {
+          "option": "Patch the manifold with scrap and sealant",
+          "ability": "Intellect",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "escape_burn",
+            "narration": "A serviceable fix; Kael whistles, impressed.",
+            "ability_change": {
+              "Intellect": -1
+            }
+          },
+          "failure": {
+            "next": "escape_burn",
+            "narration": "Sealant blobs and you rework it under pressure.",
+            "ability_change": {
+              "Intellect": -2
+            }
+          },
+          "force_change": 0
+        }
+      ]
+    },
+    {
+      "id": "escape_burn",
+      "act": "I",
+      "title": "Hard Burn",
+      "description": "TIE sensor pings flash across the scopes. Kael snarls and punches it.",
+      "background": "Cold starlight spills through cracked durasteel. Distant alarms loop like a memory that won’t shut off. Panels flicker; cables sway like roots searching for ground. Fuel lines hiss softly; droids trade beeps like gossip.",
+      "choices": [
+        {
+          "option": "Strap in and guide the jump vector",
+          "ability": "Wisdom",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "hyperspace",
+            "narration": "You spot a micro-window between pings.",
+            "ability_change": {
+              "Wisdom": -1
+            }
+          },
+          "failure": {
+            "next": "hyperspace",
+            "narration": "You nearly pick a gravity well; corrected.",
+            "ability_change": {
+              "Wisdom": -2
+            }
+          },
+          "force_change": 1
+        },
+        {
+          "option": "Man the turret to keep them honest",
+          "ability": "Might",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "hyperspace",
+            "narration": "Your bursts clip a TIE; they back off.",
+            "ability_change": {
+              "Might": -1
+            }
+          },
+          "failure": {
+            "next": "hyperspace",
+            "narration": "Glancing hit shakes the deck.",
+            "ability_change": {
+              "Might": -2
+            }
+          },
+          "force_change": 0
+        }
+      ]
+    },
+    {
+      "id": "hyperspace",
+      "act": "I",
+      "title": "Blue Tunnel",
+      "description": "Starlines smear. You feel something call from a world of dunes: Narsuun Prime.",
+      "background": "Cold starlight spills through cracked durasteel. Distant alarms loop like a memory that won’t shut off. Panels flicker; cables sway like roots searching for ground. Fuel lines hiss softly; droids trade beeps like gossip.",
+      "choices": [
+        {
+          "option": "Meditate on the echo",
+          "ability": "Spirit",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "narsuun_orbit",
+            "narration": "A memory of a robed figure by a sunken door.",
+            "ability_change": {
+              "Spirit": -1
+            }
+          },
+          "failure": {
+            "next": "narsuun_orbit",
+            "narration": "The vision fuzzes; intent remains.",
+            "ability_change": {
+              "Spirit": -2
+            }
+          },
+          "force_change": 1
+        },
+        {
+          "option": "Chart a safe re-entry with Kael",
+          "ability": "Intellect",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "narsuun_orbit",
+            "narration": "You calculate a steep but quiet approach.",
+            "ability_change": {
+              "Intellect": -1
+            }
+          },
+          "failure": {
+            "next": "narsuun_orbit",
+            "narration": "You’ll skim a sensor grid; risky.",
+            "ability_change": {
+              "Intellect": -2
+            }
+          },
+          "force_change": 0
+        }
+      ]
+    },
+    {
+      "id": "narsuun_orbit",
+      "act": "II",
+      "title": "Dust World",
+      "description": "Narsuun Prime swells in the viewport—one great scar of canyon cut by wind and time.",
+      "background": "Heat ghosts rise from dunes. Scrappers barter in whispers; stormtrooper patrols click like metronomes. Sand ticks against armor plates like rain. Fuel lines hiss softly; droids trade beeps like gossip.",
+      "choices": [
+        {
+          "option": "Skim low to avoid patrols",
+          "ability": "Agility",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "market_neon",
+            "narration": "Sand sprays; sensors stay quiet.",
+            "ability_change": {
+              "Agility": -2
+            }
+          },
+          "failure": {
+            "next": "market_neon",
+            "narration": "A sputter draws a distant ping.",
+            "ability_change": {
+              "Agility": -3
+            }
+          },
+          "force_change": 0
+        },
+        {
+          "option": "Pose as a scrap hauler",
+          "ability": "Presence",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "market_neon",
+            "narration": "Kael’s transponder sells it.",
+            "ability_change": {
+              "Presence": -2
+            }
+          },
+          "failure": {
+            "next": "market_neon",
+            "narration": "An Imperial query queues; time shortens.",
+            "ability_change": {
+              "Presence": -3
+            }
+          },
+          "force_change": 0
+        }
+      ]
+    },
+    {
+      "id": "market_neon",
+      "act": "II",
+      "title": "Neon Bazaar",
+      "description": "Under tarps and neon, Jawas haggle with Trandoshans. R9-D7 whistles at a Holocron shell on a blanket.",
+      "background": "Heat ghosts rise from dunes. Scrappers barter in whispers; stormtrooper patrols click like metronomes. Spice steam, ozone, and fried nuna mingle in the air.",
+      "choices": [
+        {
+          "option": "Bargain fairly for the shell (Persuasion)",
+          "ability": "Presence",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "clone_hideout",
+            "narration": "Trader warms to you; slips a clue: old clone trooper nearby.",
+            "ability_change": {
+              "Presence": -2,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "clone_hideout",
+            "narration": "They roll their eyes; price spikes.",
+            "ability_change": {
+              "Presence": -3
+            }
+          },
+          "force_change": 1,
+          "gate": {
+            "skill": "Persuasion",
+            "min": 10
+          }
+        },
+        {
+          "option": "Swipe the shell when the trader blinks (Sleight of Hand)",
+          "ability": "Agility",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "clone_hideout",
+            "narration": "R9 provides a perfect beep distraction.",
+            "ability_change": {
+              "Agility": -2,
+              "Intellect": 1
+            }
+          },
+          "failure": {
+            "next": "clone_hideout",
+            "narration": "A shout; you melt into the crowd.",
+            "ability_change": {
+              "Agility": -3
+            }
+          },
+          "force_change": -1,
+          "gate": {
+            "skill": "Sleight of Hand",
+            "min": 25
+          }
+        }
+      ]
+    },
+    {
+      "id": "clone_hideout",
+      "act": "II",
+      "title": "Old Soldier",
+      "description": "In a shuttered cantina, a scarred clone—CT-89 ‘Marlow’—cleans a DC-15. 'I fought for ideals. What do you fight for?'",
+      "background": "Heat ghosts rise from dunes. Scrappers barter in whispers; stormtrooper patrols click like metronomes. Spice steam, ozone, and fried nuna mingle in the air.",
+      "choices": [
+        {
+          "option": "Say: to protect people who can’t fight back",
+          "ability": "Presence",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "ruin_approach",
+            "narration": "He nods slow. 'Then you’ll need this map.'",
+            "ability_change": {
+              "Presence": -2,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "ruin_approach",
+            "narration": "He sighs; gives you a partial map anyway.",
+            "ability_change": {
+              "Presence": -3
+            }
+          },
+          "force_change": 1
+        },
+        {
+          "option": "Say: to stop the Empire, whatever it takes",
+          "ability": "Spirit",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "ruin_approach",
+            "narration": "A hard glint in his eye mirrors yours.",
+            "ability_change": {
+              "Spirit": -2,
+              "Might": 1
+            }
+          },
+          "failure": {
+            "next": "ruin_approach",
+            "narration": "He frowns but doesn’t argue.",
+            "ability_change": {
+              "Spirit": -3
+            }
+          },
+          "force_change": -1
+        }
+      ]
+    },
+    {
+      "id": "ruin_approach",
+      "act": "II",
+      "title": "Canyon Run",
+      "description": "You ride a rented skiff into the great scar. Stormtrooper dust prints cross ahead.",
+      "background": "Heat ghosts rise from dunes. Scrappers barter in whispers; stormtrooper patrols click like metronomes. Sand ticks against armor plates like rain.",
+      "choices": [
+        {
+          "option": "Outrace the patrols along the ridge",
+          "ability": "Agility",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "sandstorm",
+            "narration": "The skiff hums; your friend whoops in the wind.",
+            "ability_change": {
+              "Agility": -3
+            }
+          },
+          "failure": {
+            "next": "sandstorm",
+            "narration": "A skid gouges the hull.",
+            "ability_change": {
+              "Agility": -4
+            }
+          },
+          "force_change": 0
+        },
+        {
+          "option": "Hide in the lee of rocks and wait",
+          "ability": "Wisdom",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "sandstorm",
+            "narration": "The patrol passes; your patience pays.",
+            "ability_change": {
+              "Wisdom": -2
+            }
+          },
+          "failure": {
+            "next": "sandstorm",
+            "narration": "A trooper lingers; tension pricks.",
+            "ability_change": {
+              "Wisdom": -3
+            }
+          },
+          "force_change": 0
+        }
+      ]
+    },
+    {
+      "id": "sandstorm",
+      "act": "II",
+      "title": "Wall of Sand",
+      "description": "A storm boils up, swallowing the canyon mouth.",
+      "background": "Heat ghosts rise from dunes. Scrappers barter in whispers; stormtrooper patrols click like metronomes. Sand ticks against armor plates like rain.",
+      "choices": [
+        {
+          "option": "Pilot by instruments while blind",
+          "ability": "Intellect",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "sunken_door",
+            "narration": "Your improvised filters do the job.",
+            "ability_change": {
+              "Intellect": -2
+            }
+          },
+          "failure": {
+            "next": "sunken_door",
+            "narration": "A microcrash rattles teeth.",
+            "ability_change": {
+              "Intellect": -3
+            }
+          },
+          "force_change": 0
+        },
+        {
+          "option": "Trust the Force to feel the eddies",
+          "ability": "Spirit",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "sunken_door",
+            "narration": "You curve through quiet pockets of wind.",
+            "ability_change": {
+              "Spirit": -3
+            }
+          },
+          "failure": {
+            "next": "sunken_door",
+            "narration": "A buffeting gust tests your balance.",
+            "ability_change": {
+              "Spirit": -4
+            }
+          },
+          "force_change": 1
+        }
+      ]
+    },
+    {
+      "id": "sunken_door",
+      "act": "II",
+      "title": "Sunken Door",
+      "description": "Half-buried in sand: an ancient door with a Jedi sigil. R9 projects the Holocron shell; it hums faintly.",
+      "background": "Heat ghosts rise from dunes. Scrappers barter in whispers; stormtrooper patrols click like metronomes. Blue holo-lights paint dust motes into constellations.",
+      "choices": [
+        {
+          "option": "Decode the entry pattern (Arcana)",
+          "ability": "Intellect",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "antechamber",
+            "narration": "The sigils align into a quiet chord.",
+            "ability_change": {
+              "Intellect": -2
+            }
+          },
+          "failure": {
+            "next": "antechamber",
+            "narration": "A glyph sputters; you brute-force the last step.",
+            "ability_change": {
+              "Intellect": -3
+            }
+          },
+          "force_change": 0,
+          "gate": {
+            "skill": "Arcana",
+            "min": 10
+          }
+        },
+        {
+          "option": "Force the door with raw power",
+          "ability": "Might",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "antechamber",
+            "narration": "Stone grinds; dust avalanches.",
+            "ability_change": {
+              "Might": -3
+            }
+          },
+          "failure": {
+            "next": "antechamber",
+            "narration": "Your shoulders burn; the door yields anyway.",
+            "ability_change": {
+              "Might": -4
+            }
+          },
+          "force_change": -1
+        }
+      ]
+    },
+    {
+      "id": "antechamber",
+      "act": "II",
+      "title": "Temple Antechamber",
+      "description": "Blue hololamps flicker alive. Dust turns to stars in the beams.",
+      "background": "Heat ghosts rise from dunes. Scrappers barter in whispers; stormtrooper patrols click like metronomes. Blue holo-lights paint dust motes into constellations.",
+      "choices": [
+        {
+          "option": "Move with reverence and minimal touch",
+          "ability": "Wisdom",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "memory_hall",
+            "narration": "The air warms; you feel welcome.",
+            "ability_change": {
+              "Wisdom": -2,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "memory_hall",
+            "narration": "A lamp flares, then calms.",
+            "ability_change": {
+              "Wisdom": -3
+            }
+          },
+          "force_change": 1
+        },
+        {
+          "option": "Hurry toward the strongest signal",
+          "ability": "Agility",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "memory_hall",
+            "narration": "You thread fallen pillars fast.",
+            "ability_change": {
+              "Agility": -3
+            }
+          },
+          "failure": {
+            "next": "memory_hall",
+            "narration": "You clip a pedestal; R9 warbles in alarm.",
+            "ability_change": {
+              "Agility": -4
+            }
+          },
+          "force_change": 0
+        }
+      ]
+    },
+    {
+      "id": "memory_hall",
+      "act": "II",
+      "title": "Hall of Echoes",
+      "description": "Holopanels bloom with recordings—younglings sparring, a cloaked Master teaching in riddles.",
+      "background": "Heat ghosts rise from dunes. Scrappers barter in whispers; stormtrooper patrols click like metronomes. Blue holo-lights paint dust motes into constellations.",
+      "choices": [
+        {
+          "option": "Study the forms and copy a kata",
+          "ability": "Intellect",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "yoda_holocron",
+            "narration": "Your body remembers; mind follows.",
+            "ability_change": {
+              "Intellect": -2,
+              "Might": 1
+            }
+          },
+          "failure": {
+            "next": "yoda_holocron",
+            "narration": "An old routine, newly clumsy.",
+            "ability_change": {
+              "Intellect": -3
+            }
+          },
+          "force_change": 0
+        },
+        {
+          "option": "Bow to the Masters and ask for guidance",
+          "ability": "Presence",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "yoda_holocron",
+            "narration": "The panels brighten like smiles.",
+            "ability_change": {
+              "Presence": -3,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "yoda_holocron",
+            "narration": "For a moment, silence; then a door hums open.",
+            "ability_change": {
+              "Presence": -4
+            }
+          },
+          "force_change": 1
+        }
+      ]
+    },
+    {
+      "id": "yoda_holocron",
+      "act": "II",
+      "title": "Holocron of Master Yoda",
+      "description": "A small green figure flickers. 'Clear, your path is not. But kind, you may choose to be.'",
+      "background": "Heat ghosts rise from dunes. Scrappers barter in whispers; stormtrooper patrols click like metronomes. Blue holo-lights paint dust motes into constellations.",
+      "choices": [
+        {
+          "option": "Affirm: I will protect life first",
+          "ability": "Spirit",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "imperial_arrival",
+            "narration": "The holocron glows warmer. 'Good, that is.'",
+            "ability_change": {
+              "Spirit": -3,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "imperial_arrival",
+            "narration": "Your voice wavers; the holocron hums anyway.",
+            "ability_change": {
+              "Spirit": -4
+            }
+          },
+          "force_change": 1
+        },
+        {
+          "option": "Affirm: I will end threats decisively",
+          "ability": "Spirit",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "imperial_arrival",
+            "narration": "'Hmm.' The glow cools.",
+            "ability_change": {
+              "Spirit": -3,
+              "Might": 1
+            }
+          },
+          "failure": {
+            "next": "imperial_arrival",
+            "narration": "Resolve hardens; the room chills.",
+            "ability_change": {
+              "Spirit": -4
+            }
+          },
+          "force_change": -1
+        }
+      ]
+    },
+    {
+      "id": "imperial_arrival",
+      "act": "II",
+      "title": "Imperial Interruption",
+      "description": "Kael crackles over comms: 'Inquisitor landing at your coordinates. Make it quick!'",
+      "background": "Heat ghosts rise from dunes. Scrappers barter in whispers; stormtrooper patrols click like metronomes. Blue holo-lights paint dust motes into constellations. Fuel lines hiss softly; droids trade beeps like gossip.",
+      "choices": [
+        {
+          "option": "Rig the entry to slow pursuers (Engineering)",
+          "ability": "Intellect",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "hidden_stair",
+            "narration": "Collapsible braces prime with a soft chirp.",
+            "ability_change": {
+              "Intellect": -2
+            }
+          },
+          "failure": {
+            "next": "hidden_stair",
+            "narration": "A brace jams half-right; good enough.",
+            "ability_change": {
+              "Intellect": -3
+            }
+          },
+          "force_change": 0,
+          "gate": {
+            "skill": "Engineering",
+            "min": 25
+          }
+        },
+        {
+          "option": "Urge Kael to lift off and draw fire",
+          "ability": "Presence",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "hidden_stair",
+            "narration": "He curses but trusts you. 'Owe me for paint!'",
+            "ability_change": {
+              "Presence": -2
+            }
+          },
+          "failure": {
+            "next": "hidden_stair",
+            "narration": "He stalls a moment too long; shields spark.",
+            "ability_change": {
+              "Presence": -3
+            }
+          },
+          "force_change": 0
+        }
+      ]
+    },
+    {
+      "id": "hidden_stair",
+      "act": "III",
+      "title": "Hidden Stair",
+      "description": "A narrow stair winds down into colder dark. The Force grows loud.",
+      "background": "Ancient stone tastes of iron and dust. The Force murmurs from behind walls and within your ribs. Blue holo-lights paint dust motes into constellations.",
+      "choices": [
+        {
+          "option": "Breathe and follow the current",
+          "ability": "Wisdom",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "trial_mirror",
+            "narration": "The right turns find you.",
+            "ability_change": {
+              "Wisdom": -3
+            }
+          },
+          "failure": {
+            "next": "trial_mirror",
+            "narration": "A loop tests your patience, then yields.",
+            "ability_change": {
+              "Wisdom": -4
+            }
+          },
+          "force_change": 0
+        },
+        {
+          "option": "Hurry while the trap still resets",
+          "ability": "Agility",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "trial_mirror",
+            "narration": "You beat a grate’s cycle by a heartbeat.",
+            "ability_change": {
+              "Agility": -3
+            }
+          },
+          "failure": {
+            "next": "trial_mirror",
+            "narration": "A scrape; you’re fine.",
+            "ability_change": {
+              "Agility": -4
+            }
+          },
+          "force_change": 0
+        }
+      ]
+    },
+    {
+      "id": "trial_mirror",
+      "act": "III",
+      "title": "Mirror Trial",
+      "description": "Polished stone shows not your face but a masked figure with your stance.",
+      "background": "Ancient stone tastes of iron and dust. The Force murmurs from behind walls and within your ribs. Blue holo-lights paint dust motes into constellations.",
+      "choices": [
+        {
+          "option": "Lower your saber; offer peace",
+          "ability": "Presence",
+          "dc": 17,
+          "dice": "1d20",
+          "success": {
+            "next": "trial_weights",
+            "narration": "The mask tilts, then fades.",
+            "ability_change": {
+              "Presence": -3,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "trial_weights",
+            "narration": "The mask laughs; you pass through cold.",
+            "ability_change": {
+              "Presence": -4
+            }
+          },
+          "force_change": 1
+        },
+        {
+          "option": "Challenge the shadow to improve together",
+          "ability": "Might",
+          "dc": 17,
+          "dice": "1d20",
+          "success": {
+            "next": "trial_weights",
+            "narration": "Your strikes echo and resolve into a shared rhythm.",
+            "ability_change": {
+              "Might": -3
+            }
+          },
+          "failure": {
+            "next": "trial_weights",
+            "narration": "Arms burn; lesson lands late.",
+            "ability_change": {
+              "Might": -4
+            }
+          },
+          "force_change": 0
+        }
+      ]
+    },
+    {
+      "id": "trial_weights",
+      "act": "III",
+      "title": "Weights of Choice",
+      "description": "Two doors: one labeled Mercy, one labeled Victory.",
+      "background": "Ancient stone tastes of iron and dust. The Force murmurs from behind walls and within your ribs. Blue holo-lights paint dust motes into constellations.",
+      "choices": [
+        {
+          "option": "Open Mercy",
+          "ability": "Wisdom",
+          "dc": 17,
+          "dice": "1d20",
+          "success": {
+            "next": "vault_memory",
+            "narration": "The door is light to your touch.",
+            "ability_change": {
+              "Wisdom": -3
+            }
+          },
+          "failure": {
+            "next": "vault_memory",
+            "narration": "It sticks; you persist kindly.",
+            "ability_change": {
+              "Wisdom": -4
+            }
+          },
+          "force_change": 1
+        },
+        {
+          "option": "Open Victory",
+          "ability": "Spirit",
+          "dc": 17,
+          "dice": "1d20",
+          "success": {
+            "next": "vault_memory",
+            "narration": "The door groans and yields.",
+            "ability_change": {
+              "Spirit": -3
+            }
+          },
+          "failure": {
+            "next": "vault_memory",
+            "narration": "It opens; air turns cold.",
+            "ability_change": {
+              "Spirit": -4
+            }
+          },
+          "force_change": -1
+        }
+      ]
+    },
+    {
+      "id": "vault_memory",
+      "act": "III",
+      "title": "Vault of Memory",
+      "description": "A hololog plays: your Master arguing with an Inquisitor. 'Power is clarity,' the Inquisitor insists.",
+      "background": "Ancient stone tastes of iron and dust. The Force murmurs from behind walls and within your ribs. Blue holo-lights paint dust motes into constellations.",
+      "choices": [
+        {
+          "option": "Reject the Inquisitor’s creed aloud",
+          "ability": "Presence",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "kael_sos",
+            "narration": "Your voice steadies your heart.",
+            "ability_change": {
+              "Presence": -3,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "kael_sos",
+            "narration": "Silence answers; you still know your truth.",
+            "ability_change": {
+              "Presence": -4
+            }
+          },
+          "force_change": 1
+        },
+        {
+          "option": "Admit the allure and vow control",
+          "ability": "Spirit",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "kael_sos",
+            "narration": "You cage your hunger with a choice.",
+            "ability_change": {
+              "Spirit": -3,
+              "Intellect": 1
+            }
+          },
+          "failure": {
+            "next": "kael_sos",
+            "narration": "A tremor rides your breath.",
+            "ability_change": {
+              "Spirit": -4
+            }
+          },
+          "force_change": -1
+        }
+      ]
+    },
+    {
+      "id": "kael_sos",
+      "act": "III",
+      "title": "Kael’s Distress",
+      "description": "Comms crackle: 'I can’t shake them forever!' R9 squeals; a TIE locks tone.",
+      "background": "Ancient stone tastes of iron and dust. The Force murmurs from behind walls and within your ribs. Fuel lines hiss softly; droids trade beeps like gossip.",
+      "choices": [
+        {
+          "option": "Sprint to the surface to help",
+          "ability": "Agility",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "surface_scramble",
+            "narration": "You run the stair like a spiral of light.",
+            "ability_change": {
+              "Agility": -3
+            }
+          },
+          "failure": {
+            "next": "surface_scramble",
+            "narration": "You miss a step; ankle protests.",
+            "ability_change": {
+              "Agility": -4
+            }
+          },
+          "force_change": 0
+        },
+        {
+          "option": "Re-route temple power to scramble sensors",
+          "ability": "Intellect",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "surface_scramble",
+            "narration": "Panels pulse; targeting reticles blink out.",
+            "ability_change": {
+              "Intellect": -3
+            }
+          },
+          "failure": {
+            "next": "surface_scramble",
+            "narration": "A fuse pops; half-effective.",
+            "ability_change": {
+              "Intellect": -4
+            }
+          },
+          "force_change": 0
+        }
+      ]
+    },
+    {
+      "id": "surface_scramble",
+      "act": "III",
+      "title": "Surface Scramble",
+      "description": "The sandstorm thins. Kael dives; a shuttle with black wings descends—the Inquisitor.",
+      "background": "Ancient stone tastes of iron and dust. The Force murmurs from behind walls and within your ribs. Sand ticks against armor plates like rain. Fuel lines hiss softly; droids trade beeps like gossip.",
+      "choices": [
+        {
+          "option": "Wave Kael off—keep civilians safe (Light)",
+          "ability": "Presence",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "inquisitor_duel",
+            "narration": "He peels away; you draw the danger to yourself.",
+            "ability_change": {
+              "Presence": -3,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "inquisitor_duel",
+            "narration": "He hesitates; you shout and he trusts.",
+            "ability_change": {
+              "Presence": -4
+            }
+          },
+          "force_change": 1
+        },
+        {
+          "option": "Bait the Inquisitor into the canyon (Grey)",
+          "ability": "Wisdom",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "inquisitor_duel",
+            "narration": "You choose ground; advantage is yours.",
+            "ability_change": {
+              "Wisdom": -3
+            }
+          },
+          "failure": {
+            "next": "inquisitor_duel",
+            "narration": "A dust devil spoils part of the plan.",
+            "ability_change": {
+              "Wisdom": -4
+            }
+          },
+          "force_change": 0
+        }
+      ]
+    },
+    {
+      "id": "inquisitor_duel",
+      "act": "III",
+      "title": "Duel in the Dust",
+      "description": "A red blade hisses alive. 'Your master failed you,' the Inquisitor says.",
+      "background": "Ancient stone tastes of iron and dust. The Force murmurs from behind walls and within your ribs. Sand ticks against armor plates like rain.",
+      "choices": [
+        {
+          "option": "Hold defense, protect, and wait for openings",
+          "ability": "Spirit",
+          "dc": 19,
+          "dice": "1d20",
+          "success": {
+            "next": "after_duel",
+            "narration": "You are a wall that moves when needed.",
+            "ability_change": {
+              "Spirit": -4
+            }
+          },
+          "failure": {
+            "next": "after_duel",
+            "narration": "You tire; defense still holds.",
+            "ability_change": {
+              "Spirit": -5
+            }
+          },
+          "force_change": 1
+        },
+        {
+          "option": "Strike hard to end this quickly",
+          "ability": "Might",
+          "dc": 19,
+          "dice": "1d20",
+          "success": {
+            "next": "after_duel",
+            "narration": "A furious exchange drives them back.",
+            "ability_change": {
+              "Might": -4
+            }
+          },
+          "failure": {
+            "next": "after_duel",
+            "narration": "You overextend; regain footing.",
+            "ability_change": {
+              "Might": -5
+            }
+          },
+          "force_change": -1
+        }
+      ]
+    },
+    {
+      "id": "after_duel",
+      "act": "III",
+      "title": "Echoes Settling",
+      "description": "The Inquisitor falls or flees; either way, the dunes stop ringing.",
+      "background": "Ancient stone tastes of iron and dust. The Force murmurs from behind walls and within your ribs. Sand ticks against armor plates like rain.",
+      "choices": [
+        {
+          "option": "Spare the fallen and secure their saber",
+          "ability": "Wisdom",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "final_path",
+            "narration": "Mercy seeds futures you may never see.",
+            "ability_change": {
+              "Wisdom": -3,
+              "Presence": 1
+            }
+          },
+          "failure": {
+            "next": "final_path",
+            "narration": "You settle for restraint alone.",
+            "ability_change": {
+              "Wisdom": -4
+            }
+          },
+          "force_change": 1
+        },
+        {
+          "option": "Finish them to end the threat",
+          "ability": "Spirit",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "final_path",
+            "narration": "Silence now; consequences later.",
+            "ability_change": {
+              "Spirit": -3
+            }
+          },
+          "failure": {
+            "next": "final_path",
+            "narration": "The deed hardens something inside.",
+            "ability_change": {
+              "Spirit": -4
+            }
+          },
+          "force_change": -1
+        }
+      ]
+    },
+    {
+      "id": "final_path",
+      "act": "IV",
+      "title": "Under Twin Moons",
+      "description": "The temple heart calls one last time. R9 whistles a hopeful chord.",
+      "background": "Twin moons hang unblinking. Every heartbeat echoes like a saber ignition. Sand ticks against armor plates like rain. Blue holo-lights paint dust motes into constellations.",
+      "choices": [
+        {
+          "option": "Walk with Kael and R9—no one left behind",
+          "ability": "Presence",
+          "dc": 19,
+          "dice": "1d20",
+          "success": {
+            "next": "heart_chamber",
+            "narration": "Your steps find a shared rhythm.",
+            "ability_change": {
+              "Presence": -3,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "heart_chamber",
+            "narration": "You wait for Kael to catch up; patience.",
+            "ability_change": {
+              "Presence": -4
+            }
+          },
+          "force_change": 1
+        },
+        {
+          "option": "Go alone to spare them danger",
+          "ability": "Wisdom",
+          "dc": 19,
+          "dice": "1d20",
+          "success": {
+            "next": "heart_chamber",
+            "narration": "You carry your fear kindly.",
+            "ability_change": {
+              "Wisdom": -3
+            }
+          },
+          "failure": {
+            "next": "heart_chamber",
+            "narration": "Loneliness scratches but clarifies.",
+            "ability_change": {
+              "Wisdom": -4
+            }
+          },
+          "force_change": 0
+        }
+      ]
+    },
+    {
+      "id": "heart_chamber",
+      "act": "IV",
+      "title": "Heart of the Enclave",
+      "description": "A circular dais rises. A holoprojector uplinks to a fractured network. A recording of Kenobi’s warning flickers: 'Avoid the Temple. Trust in the Force.'",
+      "background": "Twin moons hang unblinking. Every heartbeat echoes like a saber ignition. Blue holo-lights paint dust motes into constellations.",
+      "choices": [
+        {
+          "option": "Sync the holonet to broadcast a beacon (Light)",
+          "ability": "Intellect",
+          "dc": 20,
+          "dice": "1d20",
+          "success": {
+            "next": "endings_branch",
+            "narration": "Scattered allies will hear and gather.",
+            "ability_change": {
+              "Intellect": -4
+            }
+          },
+          "failure": {
+            "next": "endings_branch",
+            "narration": "Partial link; enough hope leaks through.",
+            "ability_change": {
+              "Intellect": -5
+            }
+          },
+          "force_change": 1
+        },
+        {
+          "option": "Lock the enclave and keep its power secret (Grey)",
+          "ability": "Wisdom",
+          "dc": 20,
+          "dice": "1d20",
+          "success": {
+            "next": "endings_branch",
+            "narration": "Knowledge guarded is knowledge preserved.",
+            "ability_change": {
+              "Wisdom": -4
+            }
+          },
+          "failure": {
+            "next": "endings_branch",
+            "narration": "You preserve a cracked core.",
+            "ability_change": {
+              "Wisdom": -5
+            }
+          },
+          "force_change": 0
+        },
+        {
+          "option": "Bind the network to your command (Dark)",
+          "ability": "Spirit",
+          "dc": 20,
+          "dice": "1d20",
+          "success": {
+            "next": "endings_branch",
+            "narration": "A thousand faint circuits answer one will—yours.",
+            "ability_change": {
+              "Spirit": -5
+            }
+          },
+          "failure": {
+            "next": "endings_branch",
+            "narration": "It resists; you force compliance.",
+            "ability_change": {
+              "Spirit": -5
+            }
+          },
+          "force_change": -1
+        }
+      ]
+    },
+    {
+      "id": "endings_branch",
+      "act": "IV",
+      "title": "The Force Decides",
+      "description": "The Holocron shell glows. Yoda’s image returns: 'Choose, you always do.' Kael watches, jaw tight; R9 beeps a question.",
+      "background": "Twin moons hang unblinking. Every heartbeat echoes like a saber ignition. Blue holo-lights paint dust motes into constellations.",
+      "choices": [
+        {
+          "option": "Speak hope and mercy",
+          "ability": "Presence",
+          "dc": 20,
+          "dice": "1d20",
+          "success": {
+            "next": "ending_light",
+            "narration": "Your words become a path others can walk.",
+            "ability_change": {
+              "Presence": -4,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "ending_balance",
+            "narration": "The words stumble; intent remains.",
+            "ability_change": {
+              "Presence": -5
+            }
+          },
+          "force_change": 1
+        },
+        {
+          "option": "Speak balance and responsibility",
+          "ability": "Intellect",
+          "dc": 20,
+          "dice": "1d20",
+          "success": {
+            "next": "ending_balance",
+            "narration": "Precision becomes compassion with edges.",
+            "ability_change": {
+              "Intellect": -4
+            }
+          },
+          "failure": {
+            "next": "ending_light",
+            "narration": "Your logic softens into kindness anyway.",
+            "ability_change": {
+              "Intellect": -5
+            }
+          },
+          "force_change": 0
+        },
+        {
+          "option": "Speak dominion and certainty",
+          "ability": "Spirit",
+          "dc": 20,
+          "dice": "1d20",
+          "success": {
+            "next": "ending_dark",
+            "narration": "The chamber bows to your command.",
+            "ability_change": {
+              "Spirit": -5
+            }
+          },
+          "failure": {
+            "next": "ending_balance",
+            "narration": "Not all spirits bend; some simply wait.",
+            "ability_change": {
+              "Spirit": -5
+            }
+          },
+          "force_change": -1
+        }
+      ]
+    },
+    {
+      "id": "ending_light",
+      "act": "IV",
+      "title": "Ending: Mercy and Renewal",
+      "description": "A quiet rebellion grows from your signal. Marlow trains villagers to defend themselves; Kael laughs easier; R9 learns a happy trill.",
+      "background": "Twin moons hang unblinking. Every heartbeat echoes like a saber ignition. Spice steam, ozone, and fried nuna mingle in the air. Sand ticks against armor plates like rain. Fuel lines hiss softly; droids trade beeps like gossip.",
+      "choices": [
+        {
+          "option": "Breathe and begin again",
+          "ability": "Wisdom",
+          "dc": 0,
+          "dice": "1d20",
+          "success": {
+            "next": "END",
+            "narration": "The Light is a practice.",
+            "ability_change": {
+              "Wisdom": 0
+            }
+          },
+          "failure": {
+            "next": "END",
+            "narration": "",
+            "ability_change": {
+              "Wisdom": 0
+            }
+          },
+          "force_change": 0
+        }
+      ]
+    },
+    {
+      "id": "ending_balance",
+      "act": "IV",
+      "title": "Ending: Echo of Both Sides",
+      "description": "You keep the enclave’s secrets safe, sharing only what the galaxy can bear. Shadows shorten at noon, lengthen at dusk.",
+      "background": "Twin moons hang unblinking. Every heartbeat echoes like a saber ignition. Sand ticks against armor plates like rain. Blue holo-lights paint dust motes into constellations.",
+      "choices": [
+        {
+          "option": "Walk between with care",
+          "ability": "Presence",
+          "dc": 0,
+          "dice": "1d20",
+          "success": {
+            "next": "END",
+            "narration": "The middle path still has milestones.",
+            "ability_change": {
+              "Presence": 0
+            }
+          },
+          "failure": {
+            "next": "END",
+            "narration": "",
+            "ability_change": {
+              "Presence": 0
+            }
+          },
+          "force_change": 0
+        }
+      ]
+    },
+    {
+      "id": "ending_dark",
+      "act": "IV",
+      "title": "Ending: Dominion and Silence",
+      "description": "The network obeys. Patrol routes change at your whim. The galaxy holds its breath.",
+      "background": "Twin moons hang unblinking. Every heartbeat echoes like a saber ignition. Blue holo-lights paint dust motes into constellations. Fuel lines hiss softly; droids trade beeps like gossip.",
+      "choices": [
+        {
+          "option": "Rule the echoes you awakened",
+          "ability": "Spirit",
+          "dc": 0,
+          "dice": "1d20",
+          "success": {
+            "next": "END",
+            "narration": "Power answers power, for now.",
+            "ability_change": {
+              "Spirit": 0
+            }
+          },
+          "failure": {
+            "next": "END",
+            "narration": "",
+            "ability_change": {
+              "Spirit": 0
+            }
+          },
+          "force_change": 0
+        }
+      ]
+    },
+    {
+      "id": "ending_fallen",
+      "act": "IV",
+      "title": "Ending: Fallen to Silence",
+      "description": "Strength without wisdom led you into a quiet that devours. Somewhere, a droid waits for you to wake again.",
+      "background": "Twin moons hang unblinking. Every heartbeat echoes like a saber ignition. Panels flicker; cables sway like roots searching for ground. Sand ticks against armor plates like rain.",
+      "choices": [
+        {
+          "option": "Fade to the hum of hyperdrive",
+          "ability": "Spirit",
+          "dc": 0,
+          "dice": "1d20",
+          "success": {
+            "next": "END",
+            "narration": "A lesson, held for next time.",
+            "ability_change": {
+              "Spirit": 0
+            }
+          },
+          "failure": {
+            "next": "END",
+            "narration": "",
+            "ability_change": {
+              "Spirit": 0
+            }
+          },
+          "force_change": 0
+        }
+      ]
+    },
+    {
+      "id": "junkfield",
+      "act": "II",
+      "title": "Junkfield Detour",
+      "description": "A field of wrecked walkers offers parts and pitfalls. Jawas watch with glittering eyes.",
+      "background": "Heat ghosts rise from dunes. Scrappers barter in whispers; stormtrooper patrols click like metronomes. Spice steam, ozone, and fried nuna mingle in the air. Sand ticks against armor plates like rain.",
+      "choices": [
+        {
+          "option": "Scavenge respectfully and barter",
+          "ability": "Presence",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "ruin_approach",
+            "narration": "You make friends and find a power cell.",
+            "ability_change": {
+              "Presence": -2,
+              "Intellect": 1
+            }
+          },
+          "failure": {
+            "next": "ruin_approach",
+            "narration": "You haggle poorly; no harm done.",
+            "ability_change": {
+              "Presence": -3
+            }
+          },
+          "force_change": 1
+        },
+        {
+          "option": "Rush and grab the shiniest bits",
+          "ability": "Agility",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "ruin_approach",
+            "narration": "You snag a stabilizer before it collapses.",
+            "ability_change": {
+              "Agility": -2
+            }
+          },
+          "failure": {
+            "next": "ruin_approach",
+            "narration": "A crash draws attention.",
+            "ability_change": {
+              "Agility": -3
+            }
+          },
+          "force_change": 0
+        }
+      ]
+    },
+    {
+      "id": "echo_refuge",
+      "act": "III",
+      "title": "Refuge of Echoes",
+      "description": "An alcove shelters inscriptions of padawans long gone. R9 beeps softly.",
+      "background": "Ancient stone tastes of iron and dust. The Force murmurs from behind walls and within your ribs. Blue holo-lights paint dust motes into constellations.",
+      "choices": [
+        {
+          "option": "Rest and center",
+          "ability": "Wisdom",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "kael_sos",
+            "narration": "Breath steadies; purpose returns.",
+            "ability_change": {
+              "Wisdom": -2,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "kael_sos",
+            "narration": "Restless but better than nothing.",
+            "ability_change": {
+              "Wisdom": -3
+            }
+          },
+          "force_change": 1
+        },
+        {
+          "option": "Study the carvings for tactics (Investigation)",
+          "ability": "Intellect",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "kael_sos",
+            "narration": "You note a clever ambush pattern.",
+            "ability_change": {
+              "Intellect": -2,
+              "Agility": 1
+            }
+          },
+          "failure": {
+            "next": "kael_sos",
+            "narration": "Dust hides the best bits; you try anyway.",
+            "ability_change": {
+              "Intellect": -3
+            }
+          },
+          "force_change": 0,
+          "gate": {
+            "skill": "Investigation",
+            "min": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "market_exit",
+      "act": "II",
+      "title": "Bazaar Backdoor",
+      "description": "Curtains of bead-strings hide a service alley out of the neon tangle.",
+      "background": "Heat ghosts rise from dunes. Scrappers barter in whispers; stormtrooper patrols click like metronomes. Spice steam, ozone, and fried nuna mingle in the air.",
+      "choices": [
+        {
+          "option": "Slip through to the junkfield",
+          "ability": "Agility",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "junkfield",
+            "narration": "You thread traders and crates.",
+            "ability_change": {
+              "Agility": -2
+            }
+          },
+          "failure": {
+            "next": "junkfield",
+            "narration": "A crate bumps your hip; keep moving.",
+            "ability_change": {
+              "Agility": -3
+            }
+          },
+          "force_change": 0
+        }
+      ]
+    },
+    {
+      "id": "clone_supplies",
+      "act": "II",
+      "title": "Marlow’s Cache",
+      "description": "CT-89 gestures to a crate: rations, a cloak, and a power coupler stamped with Republic sigils.",
+      "background": "Heat ghosts rise from dunes. Scrappers barter in whispers; stormtrooper patrols click like metronomes. Spice steam, ozone, and fried nuna mingle in the air.",
+      "choices": [
+        {
+          "option": "Accept with gratitude",
+          "ability": "Presence",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "junkfield",
+            "narration": "He grins. 'Don’t die stupid.'",
+            "ability_change": {
+              "Presence": -2,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "junkfield",
+            "narration": "You nod awkwardly; still helpful.",
+            "ability_change": {
+              "Presence": -3
+            }
+          },
+          "force_change": 1
+        },
+        {
+          "option": "Insist others need it more",
+          "ability": "Spirit",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "ruin_approach",
+            "narration": "He respects your resolve.",
+            "ability_change": {
+              "Spirit": -2
+            }
+          },
+          "failure": {
+            "next": "ruin_approach",
+            "narration": "He pockets the coupler for later.",
+            "ability_change": {
+              "Spirit": -3
+            }
+          },
+          "force_change": 1
+        }
+      ]
+    },
+    {
+      "id": "r9_choice",
+      "act": "IV",
+      "title": "R9’s Question",
+      "description": "R9 projects little hearts and a map. Kael smirks. 'The droid thinks we should help the miners next.'",
+      "background": "Twin moons hang unblinking. Every heartbeat echoes like a saber ignition. Spice steam, ozone, and fried nuna mingle in the air. Fuel lines hiss softly; droids trade beeps like gossip.",
+      "choices": [
+        {
+          "option": "Promise to help after this (Light)",
+          "ability": "Presence",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "endings_branch",
+            "narration": "R9 records a cheerful chirp.",
+            "ability_change": {
+              "Presence": -3
+            }
+          },
+          "failure": {
+            "next": "endings_branch",
+            "narration": "R9 believes you anyway.",
+            "ability_change": {
+              "Presence": -4
+            }
+          },
+          "force_change": 1
+        },
+        {
+          "option": "Say: we fix our ship first (Grey)",
+          "ability": "Intellect",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "endings_branch",
+            "narration": "Practical. Kael approves.",
+            "ability_change": {
+              "Intellect": -3
+            }
+          },
+          "failure": {
+            "next": "endings_branch",
+            "narration": "You’ll need parts either way.",
+            "ability_change": {
+              "Intellect": -4
+            }
+          },
+          "force_change": 0
+        }
+      ]
+    },
+    {
+      "id": "cave_bypass",
+      "act": "II",
+      "title": "Smuggler’s Bypass",
+      "description": "Kael reveals a cramped tunnel used by runners to avoid checkpoints.",
+      "background": "Heat ghosts rise from dunes. Scrappers barter in whispers; stormtrooper patrols click like metronomes. Sand ticks against armor plates like rain.",
+      "choices": [
+        {
+          "option": "Crawl through quietly (Stealth)",
+          "ability": "Agility",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "sunken_door",
+            "narration": "Sand muffles your passage.",
+            "ability_change": {
+              "Agility": -2
+            }
+          },
+          "failure": {
+            "next": "sunken_door",
+            "narration": "A sneeze echoes; no one hears.",
+            "ability_change": {
+              "Agility": -3
+            }
+          },
+          "force_change": 0,
+          "gate": {
+            "skill": "Stealth",
+            "min": 10
+          }
+        },
+        {
+          "option": "Distract with a decoy charge",
+          "ability": "Intellect",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "sunken_door",
+            "narration": "A pop-bang draws patrols away.",
+            "ability_change": {
+              "Intellect": -2
+            }
+          },
+          "failure": {
+            "next": "sunken_door",
+            "narration": "It fizzles but still helps.",
+            "ability_change": {
+              "Intellect": -3
+            }
+          },
+          "force_change": 0
+        }
+      ]
+    },
+    {
+      "id": "vision_crossroads",
+      "act": "III",
+      "title": "Crossroads Vision",
+      "description": "You see two versions of your future: a teacher with laughing younglings, and a lone blade in shadow.",
+      "background": "Ancient stone tastes of iron and dust. The Force murmurs from behind walls and within your ribs. Blue holo-lights paint dust motes into constellations.",
+      "choices": [
+        {
+          "option": "Reach toward the teacher",
+          "ability": "Presence",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "echo_refuge",
+            "narration": "Warmth pools behind your sternum.",
+            "ability_change": {
+              "Presence": -3,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "echo_refuge",
+            "narration": "Even doubt teaches.",
+            "ability_change": {
+              "Presence": -4
+            }
+          },
+          "force_change": 1
+        },
+        {
+          "option": "Reach toward the blade",
+          "ability": "Spirit",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "echo_refuge",
+            "narration": "Focus sharpens like frost.",
+            "ability_change": {
+              "Spirit": -3,
+              "Might": 1
+            }
+          },
+          "failure": {
+            "next": "echo_refuge",
+            "narration": "Resolve tightens; air cools.",
+            "ability_change": {
+              "Spirit": -4
+            }
+          },
+          "force_change": -1
+        }
+      ]
+    },
+    {
+      "id": "alley_hint",
+      "act": "II",
+      "title": "Trader’s Wink",
+      "description": "A scarfed vendor nods toward a bead curtain and vanishes into the crowd.",
+      "background": "Heat ghosts rise from dunes. Scrappers barter in whispers; stormtrooper patrols click like metronomes. Spice steam, ozone, and fried nuna mingle in the air.",
+      "choices": [
+        {
+          "option": "Follow to the back alley",
+          "ability": "Wisdom",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "market_exit",
+            "narration": "You trust the hint.",
+            "ability_change": {
+              "Wisdom": -1
+            }
+          },
+          "failure": {
+            "next": "market_exit",
+            "narration": "You shrug and go anyway.",
+            "ability_change": {
+              "Wisdom": -1
+            }
+          },
+          "force_change": 0
+        }
+      ]
+    }
+  ]
+}

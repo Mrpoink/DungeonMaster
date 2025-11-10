@@ -1,0 +1,2072 @@
+{
+  "meta": {
+    "title": "The Shattered Hourglass",
+    "version": "1.0",
+    "notes": "Hogwarts mystery with time distortions. Familiar names included as cameos. Abilities 0–30 (sum 120). Hidden skill-gated options. Multiple endings."
+  },
+  "abilities": {
+    "Intellect": {
+      "skills": [
+        {
+          "name": "Arcana",
+          "threshold": 10
+        },
+        {
+          "name": "Investigation",
+          "threshold": 20
+        },
+        {
+          "name": "Engineering",
+          "threshold": 25
+        }
+      ]
+    },
+    "Might": {
+      "skills": [
+        {
+          "name": "Athletics",
+          "threshold": 10
+        },
+        {
+          "name": "Brawling",
+          "threshold": 20
+        },
+        {
+          "name": "Endurance",
+          "threshold": 25
+        }
+      ]
+    },
+    "Agility": {
+      "skills": [
+        {
+          "name": "Stealth",
+          "threshold": 10
+        },
+        {
+          "name": "Acrobatics",
+          "threshold": 20
+        },
+        {
+          "name": "Sleight of Hand",
+          "threshold": 25
+        }
+      ]
+    },
+    "Presence": {
+      "skills": [
+        {
+          "name": "Persuasion",
+          "threshold": 10
+        },
+        {
+          "name": "Deception",
+          "threshold": 20
+        },
+        {
+          "name": "Performance",
+          "threshold": 25
+        }
+      ]
+    },
+    "Wisdom": {
+      "skills": [
+        {
+          "name": "Insight",
+          "threshold": 10
+        },
+        {
+          "name": "Survival",
+          "threshold": 20
+        },
+        {
+          "name": "Medicine",
+          "threshold": 25
+        }
+      ]
+    },
+    "Spirit": {
+      "skills": [
+        {
+          "name": "Faith",
+          "threshold": 10
+        },
+        {
+          "name": "Willpower",
+          "threshold": 20
+        },
+        {
+          "name": "Attunement",
+          "threshold": 25
+        }
+      ]
+    }
+  },
+  "rules": {
+    "dice": "1d20",
+    "check": "total = d20 + floor(ability/5); success if total >= dc",
+    "sum_of_abilities": 120,
+    "win_condition": "Reach a positive ending with all abilities > 0",
+    "lose_condition": "Any ability <= 0 → 'ending_loop' or fail branch"
+  },
+  "acts": {
+    "I": "The Distorted Day",
+    "II": "Secrets Beneath the Castle",
+    "III": "The Timekeeper’s Labyrinth",
+    "IV": "The Hourglass Shatters"
+  },
+  "scenes": [
+    {
+      "id": "great_hall_glitch",
+      "act": "I",
+      "title": "Breakfast Backwards",
+      "description": "In the Great Hall, rain patters upward and a few students repeat the same spoonful of porridge twice. Headmistress McGonagall calls for calm.",
+      "background": "Candles sputter in drafty corridors; portraits trade worried glances as hourglasses shed sand upward.",
+      "choices": [
+        {
+          "option": "Appeal to McGonagall for permission to investigate",
+          "ability": "Presence",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "grand_staircase",
+            "narration": "Her gaze is stern but trusting: 'Use your head before your wand.'",
+            "ability_change": {
+              "Presence": -1,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "grand_staircase",
+            "narration": "She thins her lips: 'Stay clear of staff-only areas.'",
+            "ability_change": {
+              "Presence": -2
+            }
+          }
+        },
+        {
+          "option": "Analyze the anomaly pattern among the hourglasses",
+          "ability": "Intellect",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "grand_staircase",
+            "narration": "You chart the reversals—Gryffindor’s sand ticks odd minutes.",
+            "ability_change": {
+              "Intellect": -1,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "grand_staircase",
+            "narration": "The pattern eludes you as the ceiling clouds roll backward.",
+            "ability_change": {
+              "Intellect": -2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "grand_staircase",
+      "act": "I",
+      "title": "Stairs that Think",
+      "description": "The moving staircases pause, then lurch in odd sequences; steps flicker like bad memory.",
+      "background": "Candles sputter in drafty corridors; portraits trade worried glances as hourglasses shed sand upward.",
+      "choices": [
+        {
+          "option": "Dash across before the shift",
+          "ability": "Agility",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "fat_lady",
+            "narration": "You time your steps; the staircase carries you true.",
+            "ability_change": {
+              "Agility": -1
+            }
+          },
+          "failure": {
+            "next": "filch_encounter",
+            "narration": "A rattle of chains; you grab a banister just in time.",
+            "ability_change": {
+              "Agility": -2,
+              "Might": -1
+            }
+          }
+        },
+        {
+          "option": "Mark rotations and predict their logic",
+          "ability": "Intellect",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "fat_lady",
+            "narration": "Your quick sketch reveals a safe landing at the fifth turn.",
+            "ability_change": {
+              "Intellect": -1
+            }
+          },
+          "failure": {
+            "next": "filch_encounter",
+            "narration": "A miscalculation strands you at a dead-end balcony.",
+            "ability_change": {
+              "Intellect": -2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "fat_lady",
+      "act": "I",
+      "title": "The Fat Lady’s Worry",
+      "description": "The Fat Lady’s portrait trembles in her frame. 'Someone keeps asking for the password before they arrive,' she whispers.",
+      "background": "Candles sputter in drafty corridors; portraits trade worried glances as hourglasses shed sand upward. The fire crackles in familiar rhythms—off by a heartbeat.",
+      "choices": [
+        {
+          "option": "Soothe the portrait’s nerves",
+          "ability": "Presence",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "common_room_clue",
+            "narration": "She settles: 'Look to the old clock by the hearth.'",
+            "ability_change": {
+              "Presence": -1,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "common_room_clue",
+            "narration": "She sniffs: 'Come back with better manners.'",
+            "ability_change": {
+              "Presence": -2
+            }
+          }
+        },
+        {
+          "option": "Examine the portrait hinges and canvas edges",
+          "ability": "Intellect",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "common_room_clue",
+            "narration": "A faint glittering dust—Time-Turner residue?",
+            "ability_change": {
+              "Intellect": -1,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "common_room_clue",
+            "narration": "Only ordinary varnish under your nails.",
+            "ability_change": {
+              "Intellect": -2
+            }
+          }
+        },
+        {
+          "option": "Slip past quietly when she peeks away (Stealth)",
+          "ability": "Agility",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "common_room_clue",
+            "narration": "You slide in as the frame swings; no alarm raised.",
+            "ability_change": {
+              "Agility": -1
+            }
+          },
+          "failure": {
+            "next": "common_room_clue",
+            "narration": "She tuts loudly; everyone turns.",
+            "ability_change": {
+              "Agility": -2
+            }
+          },
+          "gate": {
+            "skill": "Stealth",
+            "min": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "common_room_clue",
+      "act": "I",
+      "title": "A Hearth Out of Step",
+      "description": "Your House common room feels almost right, except the clock by the hearth clicks twice at once.",
+      "background": "Candles sputter in drafty corridors; portraits trade worried glances as hourglasses shed sand upward. The air ticks; shadows stretch a fraction too slow. The fire crackles in familiar rhythms—off by a heartbeat.",
+      "choices": [
+        {
+          "option": "Tune your senses to the tick (Attunement)",
+          "ability": "Spirit",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "library_entrance",
+            "narration": "For a moment, the ticks align and point toward the library.",
+            "ability_change": {
+              "Spirit": -1,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "library_entrance",
+            "narration": "The tick splits again; you lean on will alone.",
+            "ability_change": {
+              "Spirit": -2
+            }
+          },
+          "gate": {
+            "skill": "Attunement",
+            "min": 25
+          }
+        },
+        {
+          "option": "Question your roommates about oddities",
+          "ability": "Presence",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "library_entrance",
+            "narration": "A friend swears they saw tomorrow’s sunrise. Library whispers follow.",
+            "ability_change": {
+              "Presence": -1,
+              "Intellect": 1
+            }
+          },
+          "failure": {
+            "next": "library_entrance",
+            "narration": "Murmurs and shrugs; no one wants to look foolish.",
+            "ability_change": {
+              "Presence": -2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "library_entrance",
+      "act": "I",
+      "title": "To the Library, Twice",
+      "description": "Madam Pince looks the same and not—she is in two places at once for a blink. 'Be quick,' she says, both voices overlapping.",
+      "background": "Candles sputter in drafty corridors; portraits trade worried glances as hourglasses shed sand upward. Dust hangs like fog; books murmur when your back is turned.",
+      "choices": [
+        {
+          "option": "Request Restricted Section access (Persuasion)",
+          "ability": "Presence",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "restricted_section",
+            "narration": "Your sincerity wins a grudging nod and a stamped slip.",
+            "ability_change": {
+              "Presence": -1,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "stacks_a",
+            "narration": "She waves you to the ordinary stacks only.",
+            "ability_change": {
+              "Presence": -2
+            }
+          },
+          "gate": {
+            "skill": "Persuasion",
+            "min": 10
+          }
+        },
+        {
+          "option": "Note the doubled shadow and follow it",
+          "ability": "Wisdom",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "stacks_b",
+            "narration": "It leads toward Charms tomes with broken clasps.",
+            "ability_change": {
+              "Wisdom": -1
+            }
+          },
+          "failure": {
+            "next": "stacks_a",
+            "narration": "It dissipates among Divination periodicals.",
+            "ability_change": {
+              "Wisdom": -2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "stacks_a",
+      "act": "I",
+      "title": "Stacks A: Overdue Whispers",
+      "description": "Shelves breathe dust; the ink in some spines crawls backward into the bottles.",
+      "background": "Candles sputter in drafty corridors; portraits trade worried glances as hourglasses shed sand upward. Dust hangs like fog; books murmur when your back is turned.",
+      "choices": [
+        {
+          "option": "Search logically through catalog runes",
+          "ability": "Intellect",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "stacks_b",
+            "narration": "Cross-references point toward temporal hexes.",
+            "ability_change": {
+              "Intellect": -1
+            }
+          },
+          "failure": {
+            "next": "pince_warning",
+            "narration": "Runes blur as if shy; you misfile your own note.",
+            "ability_change": {
+              "Intellect": -2
+            }
+          }
+        },
+        {
+          "option": "Hide from Pince’s patrol behind rolling ladders",
+          "ability": "Agility",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "stacks_b",
+            "narration": "You slide under a cart as she glides past.",
+            "ability_change": {
+              "Agility": -1
+            }
+          },
+          "failure": {
+            "next": "pince_warning",
+            "narration": "Your shoe squeaks; she frowns deeply.",
+            "ability_change": {
+              "Agility": -2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "stacks_b",
+      "act": "I",
+      "title": "Stacks B: Charms That Remember",
+      "description": "Charms books hum like beehives. Flitwick’s tidy annotations mention 'chronal resonance'.",
+      "background": "Candles sputter in drafty corridors; portraits trade worried glances as hourglasses shed sand upward. Dust hangs like fog; books murmur when your back is turned.",
+      "choices": [
+        {
+          "option": "Annotate a counter-charm sequence",
+          "ability": "Intellect",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "pince_warning",
+            "narration": "You copy a clear pattern that could anchor time.",
+            "ability_change": {
+              "Intellect": -1,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "pince_warning",
+            "narration": "Your pen blotches; you lose a line to smudged ink.",
+            "ability_change": {
+              "Intellect": -2
+            }
+          }
+        },
+        {
+          "option": "Balance along the ladder rails to a high shelf",
+          "ability": "Agility",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "pince_warning",
+            "narration": "The topmost tome falls neatly into your arms.",
+            "ability_change": {
+              "Agility": -1
+            }
+          },
+          "failure": {
+            "next": "pince_warning",
+            "narration": "You wobble; the shelf thumps ominously.",
+            "ability_change": {
+              "Agility": -2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "restricted_section",
+      "act": "I",
+      "title": "Restricted: The Sighing Chains",
+      "description": "Chains on grim tomes rattle to a rhythm you don’t hear. A portrait of Phineas Nigellus narrows his eyes.",
+      "background": "Candles sputter in drafty corridors; portraits trade worried glances as hourglasses shed sand upward. Dust hangs like fog; books murmur when your back is turned.",
+      "choices": [
+        {
+          "option": "Decipher an old Ministry memo on Time-Turners (Arcana)",
+          "ability": "Intellect",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "hourglass_hint",
+            "narration": "You glean procedures for safe containment.",
+            "ability_change": {
+              "Intellect": -2,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "hourglass_hint",
+            "narration": "Jargon tangles; you only catch warnings.",
+            "ability_change": {
+              "Intellect": -3
+            }
+          },
+          "gate": {
+            "skill": "Arcana",
+            "min": 10
+          }
+        },
+        {
+          "option": "Distract the portrait with clever flattery (Deception)",
+          "ability": "Presence",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "hourglass_hint",
+            "narration": "Flattered, he sniffs but divulges a hidden note.",
+            "ability_change": {
+              "Presence": -2,
+              "Intellect": 1
+            }
+          },
+          "failure": {
+            "next": "hourglass_hint",
+            "narration": "He calls you transparent and looks away.",
+            "ability_change": {
+              "Presence": -3
+            }
+          },
+          "gate": {
+            "skill": "Deception",
+            "min": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "pince_warning",
+      "act": "I",
+      "title": "'Mind the Rules'",
+      "description": "Madam Pince glides by like a disapproving swan. 'Treat the books with respect—time has been unkind enough.'",
+      "background": "Candles sputter in drafty corridors; portraits trade worried glances as hourglasses shed sand upward. Dust hangs like fog; books murmur when your back is turned.",
+      "choices": [
+        {
+          "option": "Promise care and ask for guidance",
+          "ability": "Presence",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "hourglass_hint",
+            "narration": "She softens: 'Clocktower records, if you must.'",
+            "ability_change": {
+              "Presence": -1,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "hourglass_hint",
+            "narration": "Her frown deepens; you move on quickly.",
+            "ability_change": {
+              "Presence": -2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "hourglass_hint",
+      "act": "I",
+      "title": "Gathering Sand",
+      "description": "You piece together rumors: an experimental hourglass in the old clocktower once stabilized misfired spells.",
+      "background": "Candles sputter in drafty corridors; portraits trade worried glances as hourglasses shed sand upward. The air ticks; shadows stretch a fraction too slow.",
+      "choices": [
+        {
+          "option": "Commit the counter-charm pattern to memory",
+          "ability": "Spirit",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "filch_encounter",
+            "narration": "The rhythm settles under your skin like a heartbeat.",
+            "ability_change": {
+              "Spirit": -1,
+              "Intellect": 1
+            }
+          },
+          "failure": {
+            "next": "filch_encounter",
+            "narration": "The rhythm stutters; you catch only the cadence.",
+            "ability_change": {
+              "Spirit": -2
+            }
+          }
+        },
+        {
+          "option": "Sketch a route to the tower avoiding staff areas",
+          "ability": "Wisdom",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "filch_encounter",
+            "narration": "You map a discreet night path past armor stands.",
+            "ability_change": {
+              "Wisdom": -1,
+              "Agility": 1
+            }
+          },
+          "failure": {
+            "next": "filch_encounter",
+            "narration": "Your map is messy; you’ll improvise.",
+            "ability_change": {
+              "Wisdom": -2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "filch_encounter",
+      "act": "I",
+      "title": "Filch & Mrs Norris",
+      "description": "Argus Filch prowls with Mrs Norris, eyes gleaming. 'Out of bounds?' he rasps.",
+      "background": "Candles sputter in drafty corridors; portraits trade worried glances as hourglasses shed sand upward.",
+      "choices": [
+        {
+          "option": "Talk your way out with prefect-ish confidence",
+          "ability": "Presence",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "infirmary",
+            "narration": "Filch squints: 'Off you go, then—keep your nose clean.'",
+            "ability_change": {
+              "Presence": -1
+            }
+          },
+          "failure": {
+            "next": "armor_corridor",
+            "narration": "'Detention,' he growls. You bolt when his shoe squeaks.",
+            "ability_change": {
+              "Presence": -2,
+              "Agility": -1
+            }
+          }
+        },
+        {
+          "option": "Slip behind a suit of armor",
+          "ability": "Agility",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "armor_corridor",
+            "narration": "You vanish as Mrs Norris blinks slow approval.",
+            "ability_change": {
+              "Agility": -1
+            }
+          },
+          "failure": {
+            "next": "infirmary",
+            "narration": "A visor clangs; Filch herds you toward Pomfrey.",
+            "ability_change": {
+              "Agility": -2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "infirmary",
+      "act": "II",
+      "title": "Madam Pomfrey’s Concern",
+      "description": "The Hospital Wing glows warm. 'You look peaky,' Madam Pomfrey says, handing you a steaming vial.",
+      "background": "Stone smells of rain and ink; the castle’s bones creak with remembered footsteps. The ward smells of dittany and clean linen; quiet courage hums.",
+      "choices": [
+        {
+          "option": "Accept the tonic and ask about time-sick students",
+          "ability": "Wisdom",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "armor_corridor",
+            "narration": "She nods: 'Two lost an afternoon. Be careful in the clocktower.'",
+            "ability_change": {
+              "Wisdom": -1,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "armor_corridor",
+            "narration": "She tuts and waves you away to rest.",
+            "ability_change": {
+              "Wisdom": -2
+            }
+          }
+        },
+        {
+          "option": "Examine the vial’s shimmer for chronal traces",
+          "ability": "Intellect",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "armor_corridor",
+            "narration": "A micro-glitter: stabilization essence.",
+            "ability_change": {
+              "Intellect": -1
+            }
+          },
+          "failure": {
+            "next": "armor_corridor",
+            "narration": "It’s just restorative—nothing temporal.",
+            "ability_change": {
+              "Intellect": -2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "armor_corridor",
+      "act": "II",
+      "title": "Corridor of Watching Armor",
+      "description": "Helmets track your footsteps. One suit salutes a moment before you pass it.",
+      "background": "Stone smells of rain and ink; the castle’s bones creak with remembered footsteps. The air ticks; shadows stretch a fraction too slow.",
+      "choices": [
+        {
+          "option": "Sprint between waxed floor patches",
+          "ability": "Agility",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "clocktower_base",
+            "narration": "You glide like a silent charm.",
+            "ability_change": {
+              "Agility": -1
+            }
+          },
+          "failure": {
+            "next": "clocktower_base",
+            "narration": "A skid bumps your shoulder.",
+            "ability_change": {
+              "Agility": -2,
+              "Might": -1
+            }
+          }
+        },
+        {
+          "option": "Calm the armor with a respectful bow",
+          "ability": "Presence",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "clocktower_base",
+            "narration": "Metal hands relax; a panel slides aside.",
+            "ability_change": {
+              "Presence": -1,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "clocktower_base",
+            "narration": "The visor fogs with resentment.",
+            "ability_change": {
+              "Presence": -2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "clocktower_base",
+      "act": "II",
+      "title": "Base of the Clocktower",
+      "description": "Gears groan above. The door is barred with a charm that smells like ozone.",
+      "background": "Stone smells of rain and ink; the castle’s bones creak with remembered footsteps. The air ticks; shadows stretch a fraction too slow.",
+      "choices": [
+        {
+          "option": "Counter the locking charm (Arcana)",
+          "ability": "Intellect",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "clocktower_mezz",
+            "narration": "The sigil unwinds with a sigh.",
+            "ability_change": {
+              "Intellect": -2
+            }
+          },
+          "failure": {
+            "next": "clocktower_mezz",
+            "narration": "The charm spits; your fingers tingle.",
+            "ability_change": {
+              "Intellect": -3
+            }
+          },
+          "gate": {
+            "skill": "Arcana",
+            "min": 10
+          }
+        },
+        {
+          "option": "Brace and lift the physical bar",
+          "ability": "Might",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "clocktower_mezz",
+            "narration": "Muscles and grit prevail.",
+            "ability_change": {
+              "Might": -2
+            }
+          },
+          "failure": {
+            "next": "clocktower_mezz",
+            "narration": "The bar scrapes like a scream; your arms ache.",
+            "ability_change": {
+              "Might": -3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "clocktower_mezz",
+      "act": "II",
+      "title": "Mezzanine of Echoes",
+      "description": "You catch your own footstep arriving before you lift your foot. A faint laugh: Peeves.",
+      "background": "Stone smells of rain and ink; the castle’s bones creak with remembered footsteps. The air ticks; shadows stretch a fraction too slow.",
+      "choices": [
+        {
+          "option": "Out-trick Peeves with a riddle and a dare",
+          "ability": "Presence",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "clocktower_gantry",
+            "narration": "He cackles and shoves a lever into place for you.",
+            "ability_change": {
+              "Presence": -2,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "clocktower_gantry",
+            "narration": "Peeves pelts you with chalk; you cough and push on.",
+            "ability_change": {
+              "Presence": -3
+            }
+          }
+        },
+        {
+          "option": "Time your movements to the gear rhythm",
+          "ability": "Wisdom",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "clocktower_gantry",
+            "narration": "You step when the world blinks; platforms align.",
+            "ability_change": {
+              "Wisdom": -2
+            }
+          },
+          "failure": {
+            "next": "clocktower_gantry",
+            "narration": "You misstep; a gear teeth-kiss clips your sleeve.",
+            "ability_change": {
+              "Wisdom": -3,
+              "Agility": -1
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "clocktower_gantry",
+      "act": "II",
+      "title": "Gantry Over the Pendulum",
+      "description": "A colossal pendulum scythes, sometimes twice in the same swing.",
+      "background": "Stone smells of rain and ink; the castle’s bones creak with remembered footsteps. The air ticks; shadows stretch a fraction too slow.",
+      "choices": [
+        {
+          "option": "Leap between sweeps",
+          "ability": "Agility",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "dumbledore_portrait",
+            "narration": "Your feet touch metal only where it will be.",
+            "ability_change": {
+              "Agility": -2
+            }
+          },
+          "failure": {
+            "next": "dumbledore_portrait",
+            "narration": "A near miss rattles your bones.",
+            "ability_change": {
+              "Agility": -3,
+              "Spirit": -1
+            }
+          }
+        },
+        {
+          "option": "Wedge a stop with a pry bar",
+          "ability": "Might",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "dumbledore_portrait",
+            "narration": "The pendulum shudders and slows.",
+            "ability_change": {
+              "Might": -2
+            }
+          },
+          "failure": {
+            "next": "dumbledore_portrait",
+            "narration": "The bar skitters away with a clang.",
+            "ability_change": {
+              "Might": -3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "dumbledore_portrait",
+      "act": "II",
+      "title": "Portrait of Albus Dumbledore",
+      "description": "Dumbledore’s painted eyes twinkle with concern. 'Time dislikes fuss. What you need is harmony.'",
+      "background": "Stone smells of rain and ink; the castle’s bones creak with remembered footsteps. Dust hangs like fog; books murmur when your back is turned. The air ticks; shadows stretch a fraction too slow.",
+      "choices": [
+        {
+          "option": "Ask for wise counsel",
+          "ability": "Presence",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "hogsmeade_wink",
+            "narration": "'Seek what sings between ticks,' he says, nodding toward Hogsmeade.",
+            "ability_change": {
+              "Presence": -2,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "hogsmeade_wink",
+            "narration": "He smiles sadly and changes the subject.",
+            "ability_change": {
+              "Presence": -3
+            }
+          }
+        },
+        {
+          "option": "Analyze the pigments for temporal residue",
+          "ability": "Intellect",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "hogsmeade_wink",
+            "narration": "Faint residue hums in the blue—someone moved the portrait recently.",
+            "ability_change": {
+              "Intellect": -2
+            }
+          },
+          "failure": {
+            "next": "hogsmeade_wink",
+            "narration": "No measurable trace; only exquisite paint.",
+            "ability_change": {
+              "Intellect": -3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "hogsmeade_wink",
+      "act": "II",
+      "title": "On the Hogsmeade Path",
+      "description": "Wind scrapes frost from fence posts; storefront lights flicker in the wrong order.",
+      "background": "Stone smells of rain and ink; the castle’s bones creak with remembered footsteps. Branches knit overhead; moonlight slips between leaves like silver secrets.",
+      "choices": [
+        {
+          "option": "Keep a steady pace, eyes on distant lights",
+          "ability": "Wisdom",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "three_broomsticks",
+            "narration": "Your breath finds a rhythm that the path accepts.",
+            "ability_change": {
+              "Wisdom": -1
+            }
+          },
+          "failure": {
+            "next": "three_broomsticks",
+            "narration": "You hesitate at a fork, losing time.",
+            "ability_change": {
+              "Wisdom": -2
+            }
+          }
+        },
+        {
+          "option": "Jog to warm up and beat the chill",
+          "ability": "Might",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "three_broomsticks",
+            "narration": "Blood warms courage.",
+            "ability_change": {
+              "Might": -1
+            }
+          },
+          "failure": {
+            "next": "three_broomsticks",
+            "narration": "A stitch nags your side.",
+            "ability_change": {
+              "Might": -2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "three_broomsticks",
+      "act": "II",
+      "title": "The Three Broomsticks",
+      "description": "Madam Rosmerta serves something hot. Conversations skip—laughter arrives late.",
+      "background": "Stone smells of rain and ink; the castle’s bones creak with remembered footsteps.",
+      "choices": [
+        {
+          "option": "Charm the room for gossip (Performance)",
+          "ability": "Presence",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "hogs_head",
+            "narration": "You carry a tune; gossip flows about an old hourglass sale.",
+            "ability_change": {
+              "Presence": -2,
+              "Intellect": 1
+            }
+          },
+          "failure": {
+            "next": "hogs_head",
+            "narration": "Your voice cracks adorably; fewer tongues wag.",
+            "ability_change": {
+              "Presence": -3
+            }
+          },
+          "gate": {
+            "skill": "Performance",
+            "min": 25
+          }
+        },
+        {
+          "option": "Quietly eavesdrop from a corner",
+          "ability": "Agility",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "hogs_head",
+            "narration": "You piece together talk of the Hog's Head and a 'clock-mad collector'.",
+            "ability_change": {
+              "Agility": -1,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "hogs_head",
+            "narration": "A chair scrape draws eyes your way.",
+            "ability_change": {
+              "Agility": -2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "hogs_head",
+      "act": "II",
+      "title": "The Hog’s Head",
+      "description": "A gruff nod from Aberforth. The goat sneeze happens twice. 'If you’re chasing time, be sure it isn’t chasing you.'",
+      "background": "Stone smells of rain and ink; the castle’s bones creak with remembered footsteps.",
+      "choices": [
+        {
+          "option": "Press for details with firm politeness",
+          "ability": "Presence",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "forbidden_forest_edge",
+            "narration": "He grunts a direction toward the Forbidden Forest.",
+            "ability_change": {
+              "Presence": -2,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "forbidden_forest_edge",
+            "narration": "He shrugs you off; you glean only the forest clue.",
+            "ability_change": {
+              "Presence": -3
+            }
+          }
+        },
+        {
+          "option": "Notice a scratched symbol on the bar",
+          "ability": "Intellect",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "forbidden_forest_edge",
+            "narration": "It matches Flitwick’s notes—resonance anchor.",
+            "ability_change": {
+              "Intellect": -2
+            }
+          },
+          "failure": {
+            "next": "forbidden_forest_edge",
+            "narration": "Only an old knot in the wood.",
+            "ability_change": {
+              "Intellect": -3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "forbidden_forest_edge",
+      "act": "III",
+      "title": "Forest Edge",
+      "description": "Hagrid meets you at the treeline with a lantern. 'Forest’s actin’ strange. Mind yerself.'",
+      "background": "Below the castle, gears of time grind softly; echoes arrive before their sounds. Branches knit overhead; moonlight slips between leaves like silver secrets.",
+      "choices": [
+        {
+          "option": "Ask Hagrid for safe paths",
+          "ability": "Presence",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "forest_runes",
+            "narration": "He points out landmarks that don’t usually move.",
+            "ability_change": {
+              "Presence": -1,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "forest_runes",
+            "narration": "He fusses; you plunge in with scant advice.",
+            "ability_change": {
+              "Presence": -2
+            }
+          }
+        },
+        {
+          "option": "Read moon and wind to choose the way",
+          "ability": "Wisdom",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "forest_runes",
+            "narration": "The forest relaxes around your steps.",
+            "ability_change": {
+              "Wisdom": -1
+            }
+          },
+          "failure": {
+            "next": "forest_runes",
+            "narration": "Branches argue; your cloak snags.",
+            "ability_change": {
+              "Wisdom": -2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "forest_runes",
+      "act": "III",
+      "title": "Runes Among the Roots",
+      "description": "Time-twisted runes glow faintly on tree roots; some inscriptions read forward and backward at once.",
+      "background": "Below the castle, gears of time grind softly; echoes arrive before their sounds. Branches knit overhead; moonlight slips between leaves like silver secrets.",
+      "choices": [
+        {
+          "option": "Decode the reversible syntax",
+          "ability": "Intellect",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "undercroft_door",
+            "narration": "You translate: 'Anchor below.'",
+            "ability_change": {
+              "Intellect": -2,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "undercroft_door",
+            "narration": "Meaning wriggles away; only impressions remain.",
+            "ability_change": {
+              "Intellect": -3
+            }
+          }
+        },
+        {
+          "option": "Trace the pattern by feel (Attunement)",
+          "ability": "Spirit",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "undercroft_door",
+            "narration": "A pulse answers in your bones, pointing downhill.",
+            "ability_change": {
+              "Spirit": -3
+            }
+          },
+          "failure": {
+            "next": "undercroft_door",
+            "narration": "The pulse stutters; you press on anyway.",
+            "ability_change": {
+              "Spirit": -4
+            }
+          },
+          "gate": {
+            "skill": "Attunement",
+            "min": 25
+          }
+        }
+      ]
+    },
+    {
+      "id": "undercroft_door",
+      "act": "III",
+      "title": "Hidden Undercroft",
+      "description": "A stone door half-buried in roots. Carved above: an hourglass with one broken bulb.",
+      "background": "Below the castle, gears of time grind softly; echoes arrive before their sounds. Branches knit overhead; moonlight slips between leaves like silver secrets. The air ticks; shadows stretch a fraction too slow.",
+      "choices": [
+        {
+          "option": "Lift and clear the door with leverage",
+          "ability": "Might",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "undercroft_hall",
+            "narration": "Roots pop; the slab yawns inward.",
+            "ability_change": {
+              "Might": -3
+            }
+          },
+          "failure": {
+            "next": "undercroft_hall",
+            "narration": "Your shoulders burn; the gap is mean.",
+            "ability_change": {
+              "Might": -4
+            }
+          }
+        },
+        {
+          "option": "Find the concealed latch",
+          "ability": "Intellect",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "undercroft_hall",
+            "narration": "A pressure-stone clicks; roots unknit.",
+            "ability_change": {
+              "Intellect": -2
+            }
+          },
+          "failure": {
+            "next": "undercroft_hall",
+            "narration": "You fumble; a thorn pricks deep.",
+            "ability_change": {
+              "Intellect": -3,
+              "Agility": -1
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "undercroft_hall",
+      "act": "III",
+      "title": "The Timekeeper’s Undercroft",
+      "description": "A corridor of arches opens on rooms that are versions of themselves from different days.",
+      "background": "Below the castle, gears of time grind softly; echoes arrive before their sounds. The air ticks; shadows stretch a fraction too slow.",
+      "choices": [
+        {
+          "option": "Move on the beats that feel 'right'",
+          "ability": "Wisdom",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "memory_chamber",
+            "narration": "You sync to the castle’s pulse.",
+            "ability_change": {
+              "Wisdom": -2
+            }
+          },
+          "failure": {
+            "next": "memory_chamber",
+            "narration": "Your timing slips; you get jostled by yesterday.",
+            "ability_change": {
+              "Wisdom": -3,
+              "Spirit": -1
+            }
+          }
+        },
+        {
+          "option": "Sprint through before rooms reconfigure",
+          "ability": "Agility",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "memory_chamber",
+            "narration": "You blur between possibles.",
+            "ability_change": {
+              "Agility": -3
+            }
+          },
+          "failure": {
+            "next": "memory_chamber",
+            "narration": "A doorframe nearly edits your sleeve out of existence.",
+            "ability_change": {
+              "Agility": -4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "memory_chamber",
+      "act": "III",
+      "title": "Chamber of Borrowed Memories",
+      "description": "Glass vials of memories float. Nearly Headless Nick drifts in, worried: 'Some students are forgetting themselves.'",
+      "background": "Below the castle, gears of time grind softly; echoes arrive before their sounds. Dust hangs like fog; books murmur when your back is turned. The air ticks; shadows stretch a fraction too slow.",
+      "choices": [
+        {
+          "option": "Ask Nick for testimonies and patterns",
+          "ability": "Presence",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "echo_cellar",
+            "narration": "He recalls odd gaps around the clocktower steps.",
+            "ability_change": {
+              "Presence": -2,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "echo_cellar",
+            "narration": "He dithers; you glean only a vague unease.",
+            "ability_change": {
+              "Presence": -3
+            }
+          }
+        },
+        {
+          "option": "Examine memory vials for distortion signatures",
+          "ability": "Intellect",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "echo_cellar",
+            "narration": "Two vials hum alike—tower and forest link.",
+            "ability_change": {
+              "Intellect": -2,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "echo_cellar",
+            "narration": "The vials blur; your eyes ache.",
+            "ability_change": {
+              "Intellect": -3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "echo_cellar",
+      "act": "III",
+      "title": "Echo Cellar",
+      "description": "Footprints of different sizes overlay each other in dust, all yours.",
+      "background": "Below the castle, gears of time grind softly; echoes arrive before their sounds. The air ticks; shadows stretch a fraction too slow.",
+      "choices": [
+        {
+          "option": "Refuse the echo—center your will",
+          "ability": "Spirit",
+          "dc": 17,
+          "dice": "1d20",
+          "success": {
+            "next": "gear_gallery",
+            "narration": "Your timeline firms; echoes quiet.",
+            "ability_change": {
+              "Spirit": -3
+            }
+          },
+          "failure": {
+            "next": "gear_gallery",
+            "narration": "Doubt gnaws; footsteps overlap again.",
+            "ability_change": {
+              "Spirit": -4
+            }
+          }
+        },
+        {
+          "option": "Map the footprints’ sequence logically",
+          "ability": "Intellect",
+          "dc": 17,
+          "dice": "1d20",
+          "success": {
+            "next": "gear_gallery",
+            "narration": "A spiral path reveals a hidden stair.",
+            "ability_change": {
+              "Intellect": -2
+            }
+          },
+          "failure": {
+            "next": "gear_gallery",
+            "narration": "The pattern loops; you go the long way round.",
+            "ability_change": {
+              "Intellect": -3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "gear_gallery",
+      "act": "III",
+      "title": "Gallery of Broken Gears",
+      "description": "Great gears lie in alcoves like fossilized moons; some turn backward.",
+      "background": "Below the castle, gears of time grind softly; echoes arrive before their sounds. The air ticks; shadows stretch a fraction too slow.",
+      "choices": [
+        {
+          "option": "Leap gear to gear",
+          "ability": "Agility",
+          "dc": 17,
+          "dice": "1d20",
+          "success": {
+            "next": "baron_crossing",
+            "narration": "You keep your balance on teeth and spokes.",
+            "ability_change": {
+              "Agility": -3
+            }
+          },
+          "failure": {
+            "next": "baron_crossing",
+            "narration": "A slip bruises more than pride.",
+            "ability_change": {
+              "Agility": -4,
+              "Might": -1
+            }
+          }
+        },
+        {
+          "option": "Brace a jammed axle with a spike (Engineering)",
+          "ability": "Intellect",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "baron_crossing",
+            "narration": "Your quick rig steadies the gallery.",
+            "ability_change": {
+              "Intellect": -2,
+              "Might": 1
+            }
+          },
+          "failure": {
+            "next": "baron_crossing",
+            "narration": "The spike skitters; you dive aside.",
+            "ability_change": {
+              "Intellect": -3,
+              "Agility": -1
+            }
+          },
+          "gate": {
+            "skill": "Engineering",
+            "min": 25
+          }
+        }
+      ]
+    },
+    {
+      "id": "baron_crossing",
+      "act": "III",
+      "title": "The Bloody Baron’s Bridge",
+      "description": "The Bloody Baron bars your way. 'The past is a chain,' he hisses.",
+      "background": "Below the castle, gears of time grind softly; echoes arrive before their sounds. The air ticks; shadows stretch a fraction too slow.",
+      "choices": [
+        {
+          "option": "Stand your ground with quiet respect",
+          "ability": "Presence",
+          "dc": 17,
+          "dice": "1d20",
+          "success": {
+            "next": "labyrinth_gate",
+            "narration": "He tilts his head and lets you pass in cold approval.",
+            "ability_change": {
+              "Presence": -3,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "labyrinth_gate",
+            "narration": "He glides through you; chills rattle your teeth.",
+            "ability_change": {
+              "Presence": -4
+            }
+          }
+        },
+        {
+          "option": "Pierce the ghost’s argument with insight",
+          "ability": "Wisdom",
+          "dc": 17,
+          "dice": "1d20",
+          "success": {
+            "next": "labyrinth_gate",
+            "narration": "You speak of mercy for the living; his chains ring softly.",
+            "ability_change": {
+              "Wisdom": -3
+            }
+          },
+          "failure": {
+            "next": "labyrinth_gate",
+            "narration": "Your words fall flat; the chains do not move.",
+            "ability_change": {
+              "Wisdom": -4,
+              "Spirit": -1
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "labyrinth_gate",
+      "act": "III",
+      "title": "Gate to the Timekeeper’s Labyrinth",
+      "description": "An arch of numbered stones counts wrong. Beyond is a humming maze.",
+      "background": "Below the castle, gears of time grind softly; echoes arrive before their sounds. The air ticks; shadows stretch a fraction too slow.",
+      "choices": [
+        {
+          "option": "Enter on the count that 'feels' right (Attunement)",
+          "ability": "Spirit",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "labyrinth_turns",
+            "narration": "The arch warms; the wrong numbers fade.",
+            "ability_change": {
+              "Spirit": -3
+            }
+          },
+          "failure": {
+            "next": "labyrinth_turns",
+            "narration": "You slip sideways into a confusing loop.",
+            "ability_change": {
+              "Spirit": -4
+            }
+          },
+          "gate": {
+            "skill": "Attunement",
+            "min": 25
+          }
+        },
+        {
+          "option": "Compute a modular sequence to match the pattern",
+          "ability": "Intellect",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "labyrinth_turns",
+            "narration": "Your math hums in tune with the arch.",
+            "ability_change": {
+              "Intellect": -3
+            }
+          },
+          "failure": {
+            "next": "labyrinth_turns",
+            "narration": "The sequence jumps; you adjust too late.",
+            "ability_change": {
+              "Intellect": -4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "labyrinth_turns",
+      "act": "III",
+      "title": "Turns that Remember",
+      "description": "Corridors rewind or skip ahead. Your shadow sometimes walks off without you.",
+      "background": "Below the castle, gears of time grind softly; echoes arrive before their sounds. The air ticks; shadows stretch a fraction too slow.",
+      "choices": [
+        {
+          "option": "Chase your shadow to learn the loop",
+          "ability": "Agility",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "heart_of_clock",
+            "narration": "You catch it at a junction and fold it back to your heels.",
+            "ability_change": {
+              "Agility": -3
+            }
+          },
+          "failure": {
+            "next": "heart_of_clock",
+            "narration": "You tire and the shadow slips laughing.",
+            "ability_change": {
+              "Agility": -4,
+              "Spirit": -1
+            }
+          }
+        },
+        {
+          "option": "Hold position, breathe, and wait for alignment",
+          "ability": "Wisdom",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "heart_of_clock",
+            "narration": "The maze comes to you like a trained thestral.",
+            "ability_change": {
+              "Wisdom": -3
+            }
+          },
+          "failure": {
+            "next": "heart_of_clock",
+            "narration": "Patience frays; the corridor jitters.",
+            "ability_change": {
+              "Wisdom": -4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "heart_of_clock",
+      "act": "IV",
+      "title": "Heart of the Clock",
+      "description": "A vast hourglass, cracked, bleeds glittering sand into midair. Your own older self flickers inside the glass, watching you.",
+      "background": "Every breath tastes metallic as the clocktower heart beats out of rhythm. The air ticks; shadows stretch a fraction too slow.",
+      "choices": [
+        {
+          "option": "Reach out with calm will to stabilize the flow",
+          "ability": "Spirit",
+          "dc": 19,
+          "dice": "1d20",
+          "success": {
+            "next": "mirror_self",
+            "narration": "The sand hums; the crack slows its creep.",
+            "ability_change": {
+              "Spirit": -3
+            }
+          },
+          "failure": {
+            "next": "mirror_self",
+            "narration": "The hum falters; the crack widens a hair.",
+            "ability_change": {
+              "Spirit": -4
+            }
+          }
+        },
+        {
+          "option": "Recite the counter-charm perfectly",
+          "ability": "Intellect",
+          "dc": 19,
+          "dice": "1d20",
+          "success": {
+            "next": "mirror_self",
+            "narration": "The charm wraps the hourglass in clear glyphs.",
+            "ability_change": {
+              "Intellect": -3,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "mirror_self",
+            "narration": "A syllable wobbles; the glyphs stutter.",
+            "ability_change": {
+              "Intellect": -4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "mirror_self",
+      "act": "IV",
+      "title": "The Mirror of Yourself",
+      "description": "Your future self steps out of the glass. 'We can only save one of us,' they say, voice like a ticking locket.",
+      "background": "Every breath tastes metallic as the clocktower heart beats out of rhythm. The air ticks; shadows stretch a fraction too slow.",
+      "choices": [
+        {
+          "option": "Argue for the present you (Persuasion)",
+          "ability": "Presence",
+          "dc": 19,
+          "dice": "1d20",
+          "success": {
+            "next": "four_trials",
+            "narration": "Future-you nods: 'Then do better than I did.'",
+            "ability_change": {
+              "Presence": -3,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "four_trials",
+            "narration": "They smirk: 'You’re not ready.'",
+            "ability_change": {
+              "Presence": -4
+            }
+          },
+          "gate": {
+            "skill": "Persuasion",
+            "min": 10
+          }
+        },
+        {
+          "option": "Refuse the dilemma; propose a third path",
+          "ability": "Intellect",
+          "dc": 19,
+          "dice": "1d20",
+          "success": {
+            "next": "four_trials",
+            "narration": "Paradox becomes possibility for a breath.",
+            "ability_change": {
+              "Intellect": -3
+            }
+          },
+          "failure": {
+            "next": "four_trials",
+            "narration": "Logic snarls; you both wince.",
+            "ability_change": {
+              "Intellect": -4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "four_trials",
+      "act": "IV",
+      "title": "Four Trials of the Hour",
+      "description": "Four pedestals light up: Mind, Body, Heart, Soul. Each demands proof.",
+      "background": "Every breath tastes metallic as the clocktower heart beats out of rhythm. The air ticks; shadows stretch a fraction too slow.",
+      "choices": [
+        {
+          "option": "Mind: Solve the rotating sigils",
+          "ability": "Intellect",
+          "dc": 19,
+          "dice": "1d20",
+          "success": {
+            "next": "binding_rite",
+            "narration": "They click into a quiet constellation.",
+            "ability_change": {
+              "Intellect": -3
+            }
+          },
+          "failure": {
+            "next": "binding_rite",
+            "narration": "They spin faster; sweat beads.",
+            "ability_change": {
+              "Intellect": -4
+            }
+          }
+        },
+        {
+          "option": "Body: Hold the pendulum at the apex",
+          "ability": "Might",
+          "dc": 19,
+          "dice": "1d20",
+          "success": {
+            "next": "binding_rite",
+            "narration": "Your muscles sing and obey.",
+            "ability_change": {
+              "Might": -3
+            }
+          },
+          "failure": {
+            "next": "binding_rite",
+            "narration": "Your grip slips; sparks jump.",
+            "ability_change": {
+              "Might": -4
+            }
+          }
+        },
+        {
+          "option": "Heart: Speak for those lost to time",
+          "ability": "Presence",
+          "dc": 19,
+          "dice": "1d20",
+          "success": {
+            "next": "binding_rite",
+            "narration": "Portraits lean in to listen—and to help.",
+            "ability_change": {
+              "Presence": -3,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "binding_rite",
+            "narration": "Your throat tightens; words come late.",
+            "ability_change": {
+              "Presence": -4
+            }
+          }
+        },
+        {
+          "option": "Soul: Let the hour sing through you (Willpower)",
+          "ability": "Spirit",
+          "dc": 19,
+          "dice": "1d20",
+          "success": {
+            "next": "binding_rite",
+            "narration": "You become a steady bell against the storm.",
+            "ability_change": {
+              "Spirit": -3
+            }
+          },
+          "failure": {
+            "next": "binding_rite",
+            "narration": "The note wavers; resolve costs you.",
+            "ability_change": {
+              "Spirit": -4
+            }
+          },
+          "gate": {
+            "skill": "Willpower",
+            "min": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "binding_rite",
+      "act": "IV",
+      "title": "Binding or Reset",
+      "description": "Glyphs circle the hourglass. Dumbledore’s portrait watches gravely from a nearby frame.",
+      "background": "Every breath tastes metallic as the clocktower heart beats out of rhythm. The air ticks; shadows stretch a fraction too slow.",
+      "choices": [
+        {
+          "option": "Bind the crack with rune-law",
+          "ability": "Intellect",
+          "dc": 20,
+          "dice": "1d20",
+          "success": {
+            "next": "endings_branch",
+            "narration": "The glyph-chain cinches tight.",
+            "ability_change": {
+              "Intellect": -4
+            }
+          },
+          "failure": {
+            "next": "endings_branch",
+            "narration": "A link slips; you push harder next step.",
+            "ability_change": {
+              "Intellect": -5,
+              "Spirit": -1
+            }
+          }
+        },
+        {
+          "option": "Reset the flow to a safer past",
+          "ability": "Spirit",
+          "dc": 20,
+          "dice": "1d20",
+          "success": {
+            "next": "endings_branch",
+            "narration": "Sand melts into golden mist and reforms steadily.",
+            "ability_change": {
+              "Spirit": -4
+            }
+          },
+          "failure": {
+            "next": "endings_branch",
+            "narration": "Your chest hollows with the pull of time.",
+            "ability_change": {
+              "Spirit": -5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "endings_branch",
+      "act": "IV",
+      "title": "The Choice Echoes",
+      "description": "Portraits gather: McGonagall, Flitwick, and even Phineas Nigellus. The castle waits for your final proof.",
+      "background": "Every breath tastes metallic as the clocktower heart beats out of rhythm. The air ticks; shadows stretch a fraction too slow.",
+      "choices": [
+        {
+          "option": "Proclaim hope and unity for the school",
+          "ability": "Presence",
+          "dc": 20,
+          "dice": "1d20",
+          "success": {
+            "next": "ending_restored",
+            "narration": "A cheer rises in every frame; the gears ease.",
+            "ability_change": {
+              "Presence": -4,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "ending_fractured",
+            "narration": "Your words land in mismatched seconds.",
+            "ability_change": {
+              "Presence": -5
+            }
+          }
+        },
+        {
+          "option": "Demonstrate precise control with a final charm",
+          "ability": "Intellect",
+          "dc": 20,
+          "dice": "1d20",
+          "success": {
+            "next": "ending_restored",
+            "narration": "The hands of every clock align to the same soft tick.",
+            "ability_change": {
+              "Intellect": -4
+            }
+          },
+          "failure": {
+            "next": "ending_fractured",
+            "narration": "A tremor ripples; some clocks refuse to agree.",
+            "ability_change": {
+              "Intellect": -5
+            }
+          }
+        },
+        {
+          "option": "Offer your own future to seal the breach",
+          "ability": "Spirit",
+          "dc": 20,
+          "dice": "1d20",
+          "success": {
+            "next": "ending_loop",
+            "narration": "Time accepts your devotion like a vow.",
+            "ability_change": {
+              "Spirit": -5
+            }
+          },
+          "failure": {
+            "next": "ending_fractured",
+            "narration": "Time hesitates, unconvinced by half-measures.",
+            "ability_change": {
+              "Spirit": -5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "ending_restored",
+      "act": "IV",
+      "title": "Ending: The Restored Timeline",
+      "description": "Dawn over Hogwarts feels fresh and whole. McGonagall’s smile is tired and proud. The castle hums in one voice.",
+      "background": "Every breath tastes metallic as the clocktower heart beats out of rhythm.",
+      "choices": [
+        {
+          "option": "Exhale and watch the sun strike the lake",
+          "ability": "Wisdom",
+          "dc": 0,
+          "dice": "1d20",
+          "success": {
+            "next": "END",
+            "narration": "A quiet triumph settles in your bones.",
+            "ability_change": {
+              "Wisdom": 0
+            }
+          },
+          "failure": {
+            "next": "END",
+            "narration": "",
+            "ability_change": {
+              "Wisdom": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "ending_fractured",
+      "act": "IV",
+      "title": "Ending: The Fractured Reality",
+      "description": "The castle is safe, but the portraits remember two versions of you. Some corridors greet you a heartbeat too early.",
+      "background": "Every breath tastes metallic as the clocktower heart beats out of rhythm. The air ticks; shadows stretch a fraction too slow.",
+      "choices": [
+        {
+          "option": "Accept the strangeness with grace",
+          "ability": "Spirit",
+          "dc": 0,
+          "dice": "1d20",
+          "success": {
+            "next": "END",
+            "narration": "You make peace with the double-echo of your footsteps.",
+            "ability_change": {
+              "Spirit": 0
+            }
+          },
+          "failure": {
+            "next": "END",
+            "narration": "",
+            "ability_change": {
+              "Spirit": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "ending_loop",
+      "act": "IV",
+      "title": "Ending: The Eternal Loop",
+      "description": "The hourglass resets. You are there when the candles first light, and there when they fade—always almost ready to begin again.",
+      "background": "Every breath tastes metallic as the clocktower heart beats out of rhythm. The air ticks; shadows stretch a fraction too slow.",
+      "choices": [
+        {
+          "option": "Hold onto a single unbroken memory",
+          "ability": "Presence",
+          "dc": 0,
+          "dice": "1d20",
+          "success": {
+            "next": "END",
+            "narration": "A smile from a friend becomes your north star.",
+            "ability_change": {
+              "Presence": 0
+            }
+          },
+          "failure": {
+            "next": "END",
+            "narration": "",
+            "ability_change": {
+              "Presence": 0
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

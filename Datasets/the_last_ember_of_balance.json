@@ -1,0 +1,2047 @@
+{
+  "meta": {
+    "title": "The Last Ember of Balance",
+    "version": "1.0",
+    "notes": "Avatar-inspired adventure. Classical era tone, mystical and introspective. Player is the Avatar, traveling with a trusted friend and Appa. Abilities 0–30 (sum 120), skill thresholds 10/20/25. Multiple endings."
+  },
+  "abilities": {
+    "Intellect": {
+      "skills": [
+        {
+          "name": "Arcana",
+          "threshold": 10
+        },
+        {
+          "name": "Investigation",
+          "threshold": 20
+        },
+        {
+          "name": "Engineering",
+          "threshold": 25
+        }
+      ]
+    },
+    "Might": {
+      "skills": [
+        {
+          "name": "Athletics",
+          "threshold": 10
+        },
+        {
+          "name": "Brawling",
+          "threshold": 20
+        },
+        {
+          "name": "Endurance",
+          "threshold": 25
+        }
+      ]
+    },
+    "Agility": {
+      "skills": [
+        {
+          "name": "Stealth",
+          "threshold": 10
+        },
+        {
+          "name": "Acrobatics",
+          "threshold": 20
+        },
+        {
+          "name": "Sleight of Hand",
+          "threshold": 25
+        }
+      ]
+    },
+    "Presence": {
+      "skills": [
+        {
+          "name": "Persuasion",
+          "threshold": 10
+        },
+        {
+          "name": "Deception",
+          "threshold": 20
+        },
+        {
+          "name": "Performance",
+          "threshold": 25
+        }
+      ]
+    },
+    "Wisdom": {
+      "skills": [
+        {
+          "name": "Insight",
+          "threshold": 10
+        },
+        {
+          "name": "Survival",
+          "threshold": 20
+        },
+        {
+          "name": "Medicine",
+          "threshold": 25
+        }
+      ]
+    },
+    "Spirit": {
+      "skills": [
+        {
+          "name": "Faith",
+          "threshold": 10
+        },
+        {
+          "name": "Willpower",
+          "threshold": 20
+        },
+        {
+          "name": "Attunement",
+          "threshold": 25
+        }
+      ]
+    }
+  },
+  "rules": {
+    "dice": "1d20",
+    "check": "total = d20 + floor(ability/5); success if total >= dc",
+    "sum_of_abilities": 120,
+    "win_condition": "Reach a positive ending with all abilities > 0",
+    "lose_condition": "Any ability <= 0 leads to 'ending_frozen' (fail)"
+  },
+  "acts": {
+    "I": "Snow Over the Southern Sea",
+    "II": "Veil Between Winds",
+    "III": "Steps Through the Spirit World",
+    "IV": "The Fourfold Breath"
+  },
+  "scenes": [
+    {
+      "id": "southern_ice",
+      "act": "I",
+      "title": "Auroras on the Tide",
+      "description": "Your friend nudges you awake on Appa’s saddle. Below, a fishing village lights a signal fire twice—once in the present, once a breath behind.",
+      "background": "Sea-ice groans under distant auroras; the wind tastes of salt and old stories. Frost smokes from Appa's breath as he rumbles low and friendly. Cookfires paint small suns in the night; laughter hides worry.",
+      "choices": [
+        {
+          "option": "Guide Appa down through the crosswinds",
+          "ability": "Wisdom",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "village_meet",
+            "narration": "You read the gusts and land soft as a feather.",
+            "ability_change": {
+              "Wisdom": -1,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "village_meet",
+            "narration": "A downdraft jostles you; Appa grunts and corrects.",
+            "ability_change": {
+              "Wisdom": -2
+            }
+          }
+        },
+        {
+          "option": "Lean into the harness and keep steady",
+          "ability": "Might",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "village_meet",
+            "narration": "Your strength steadies the reins; Appa rumbles approval.",
+            "ability_change": {
+              "Might": -1
+            }
+          },
+          "failure": {
+            "next": "village_meet",
+            "narration": "A strap bites your palm; you manage.",
+            "ability_change": {
+              "Might": -2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "village_meet",
+      "act": "I",
+      "title": "Village of Two Shadows",
+      "description": "Fisherfolk describe nets catching yesterday’s fish and tomorrow’s foam. An elder asks the Avatar for help.",
+      "background": "Sea-ice groans under distant auroras; the wind tastes of salt and old stories. Frost smokes from Appa's breath as he rumbles low and friendly. Cookfires paint small suns in the night; laughter hides worry.",
+      "choices": [
+        {
+          "option": "Listen deeply to the elder’s tale",
+          "ability": "Presence",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "shore_rift",
+            "narration": "Their relief is a warmth against the cold.",
+            "ability_change": {
+              "Presence": -1,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "shore_rift",
+            "narration": "They sense hurry in you and worry more.",
+            "ability_change": {
+              "Presence": -2
+            }
+          }
+        },
+        {
+          "option": "Inspect the beach for unusual tides",
+          "ability": "Intellect",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "shore_rift",
+            "narration": "You chart a tide of spirit-light refracting in the surf.",
+            "ability_change": {
+              "Intellect": -1,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "shore_rift",
+            "narration": "Only salt, kelp, and gull-temper remain.",
+            "ability_change": {
+              "Intellect": -2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "shore_rift",
+      "act": "I",
+      "title": "Rift on the Shore",
+      "description": "Where waves break, a glassy seam hangs over wet stones. Small fish flicker through and come out different sizes.",
+      "background": "Sea-ice groans under distant auroras; the wind tastes of salt and old stories. Frost smokes from Appa's breath as he rumbles low and friendly. The air smells like lightning and plums; colors taste like notes of a flute.",
+      "choices": [
+        {
+          "option": "Sense the rift’s rhythm (Attunement)",
+          "ability": "Spirit",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "friend_choice",
+            "narration": "It pulses with fear, then curiosity. It knows you.",
+            "ability_change": {
+              "Spirit": -1,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "friend_choice",
+            "narration": "It stutters; your heartbeat speeds in sympathy.",
+            "ability_change": {
+              "Spirit": -2
+            }
+          },
+          "gate": {
+            "skill": "Attunement",
+            "min": 25
+          }
+        },
+        {
+          "option": "Test with a driftwood probe",
+          "ability": "Intellect",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "friend_choice",
+            "narration": "The wood ages into drift-polished bone in a blink.",
+            "ability_change": {
+              "Intellect": -1,
+              "Presence": 1
+            }
+          },
+          "failure": {
+            "next": "friend_choice",
+            "narration": "Your notes smear with sea-spray; uncertain.",
+            "ability_change": {
+              "Intellect": -2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "friend_choice",
+      "act": "I",
+      "title": "Divide the Work",
+      "description": "Your friend rolls their shoulders: 'You take the spirits, I’ll handle people? Or the other way around?'",
+      "background": "Sea-ice groans under distant auroras; the wind tastes of salt and old stories. Cookfires paint small suns in the night; laughter hides worry.",
+      "choices": [
+        {
+          "option": "You: spirits; Friend: villagers",
+          "ability": "Wisdom",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "spirit_islet",
+            "narration": "They grin: 'Go be mysterious. I’ll fetch tea and calm folks.'",
+            "ability_change": {
+              "Wisdom": -1,
+              "Presence": 1
+            }
+          },
+          "failure": {
+            "next": "spirit_islet",
+            "narration": "You hesitate; your friend improvises anyway.",
+            "ability_change": {
+              "Wisdom": -2
+            }
+          }
+        },
+        {
+          "option": "You: villagers; Friend: spirits",
+          "ability": "Presence",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "crowd_calm",
+            "narration": "You steady the crowd while your friend steps toward the seam.",
+            "ability_change": {
+              "Presence": -1,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "crowd_calm",
+            "narration": "Your voice cracks in the wind; faces tense.",
+            "ability_change": {
+              "Presence": -2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "crowd_calm",
+      "act": "I",
+      "title": "Calm at the Fireline",
+      "description": "Children whisper that the moon blinked. The elder asks if Appa bites.",
+      "background": "Sea-ice groans under distant auroras; the wind tastes of salt and old stories. Frost smokes from Appa's breath as he rumbles low and friendly. Cookfires paint small suns in the night; laughter hides worry.",
+      "choices": [
+        {
+          "option": "Reassure with humor and warmth",
+          "ability": "Presence",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "friend_signal",
+            "narration": "Laughter thawed; even the elder chuckles.",
+            "ability_change": {
+              "Presence": -1
+            }
+          },
+          "failure": {
+            "next": "friend_signal",
+            "narration": "Some smiles come late; fear lingers.",
+            "ability_change": {
+              "Presence": -2
+            }
+          }
+        },
+        {
+          "option": "Organize a safe perimeter and tasks",
+          "ability": "Intellect",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "friend_signal",
+            "narration": "Structure gives courage; lanterns mark a circle.",
+            "ability_change": {
+              "Intellect": -1,
+              "Might": 1
+            }
+          },
+          "failure": {
+            "next": "friend_signal",
+            "narration": "Plans muddle in the wind; you adjust on the fly.",
+            "ability_change": {
+              "Intellect": -2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "spirit_islet",
+      "act": "I",
+      "title": "A Seal of Moonlight",
+      "description": "On a nearby islet, a shy otter-seal spirit peeks between ripples, whiskers bright with stars.",
+      "background": "Sea-ice groans under distant auroras; the wind tastes of salt and old stories. Frost smokes from Appa's breath as he rumbles low and friendly. The air smells like lightning and plums; colors taste like notes of a flute.",
+      "choices": [
+        {
+          "option": "Bow and offer food gently",
+          "ability": "Wisdom",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "friend_signal",
+            "narration": "It chirrs and noses your palm; trust kindles.",
+            "ability_change": {
+              "Wisdom": -1,
+              "Presence": 1
+            }
+          },
+          "failure": {
+            "next": "friend_signal",
+            "narration": "It vanishes with a splash; patience, perhaps.",
+            "ability_change": {
+              "Wisdom": -2
+            }
+          }
+        },
+        {
+          "option": "Hum a steady note to match the tide",
+          "ability": "Spirit",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "friend_signal",
+            "narration": "The seam smooths for a heartbeat; the spirit listens.",
+            "ability_change": {
+              "Spirit": -1
+            }
+          },
+          "failure": {
+            "next": "friend_signal",
+            "narration": "Your note wavers; the seam ripples.",
+            "ability_change": {
+              "Spirit": -2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "friend_signal",
+      "act": "I",
+      "title": "Friend’s Signal",
+      "description": "Your friend waves from the seam, holding a lantern that burns blue twice.",
+      "background": "Sea-ice groans under distant auroras; the wind tastes of salt and old stories. Frost smokes from Appa's breath as he rumbles low and friendly. The air smells like lightning and plums; colors taste like notes of a flute.",
+      "choices": [
+        {
+          "option": "Join them at the seam’s edge",
+          "ability": "Agility",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "ice_step",
+            "narration": "You skip wet rocks sure-footed.",
+            "ability_change": {
+              "Agility": -1
+            }
+          },
+          "failure": {
+            "next": "ice_step",
+            "narration": "A slip soaks your boot; you laugh it off.",
+            "ability_change": {
+              "Agility": -2
+            }
+          }
+        },
+        {
+          "option": "Call Appa to anchor the rope",
+          "ability": "Might",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "ice_step",
+            "narration": "Appa pulls; the rope sings taut.",
+            "ability_change": {
+              "Might": -1
+            }
+          },
+          "failure": {
+            "next": "ice_step",
+            "narration": "The knot bites; Appa huffs but holds.",
+            "ability_change": {
+              "Might": -2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "ice_step",
+      "act": "I",
+      "title": "Step Between",
+      "description": "You and your friend step together; for a blink you are children, then elders, then yourselves again.",
+      "background": "Sea-ice groans under distant auroras; the wind tastes of salt and old stories. Frost smokes from Appa's breath as he rumbles low and friendly. The air smells like lightning and plums; colors taste like notes of a flute.",
+      "choices": [
+        {
+          "option": "Hold onto who you are (Willpower)",
+          "ability": "Spirit",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "seal_blessing",
+            "narration": "Your breath becomes a lighthouse; the seam eases.",
+            "ability_change": {
+              "Spirit": -2
+            }
+          },
+          "failure": {
+            "next": "seal_blessing",
+            "narration": "Dizziness takes a toll; you center slowly.",
+            "ability_change": {
+              "Spirit": -3
+            }
+          },
+          "gate": {
+            "skill": "Willpower",
+            "min": 20
+          }
+        },
+        {
+          "option": "Name the people you love, out loud",
+          "ability": "Presence",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "seal_blessing",
+            "narration": "Names thread you to the now.",
+            "ability_change": {
+              "Presence": -2,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "seal_blessing",
+            "narration": "Words tangle; your friend squeezes your hand.",
+            "ability_change": {
+              "Presence": -3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "seal_blessing",
+      "act": "I",
+      "title": "Blessing of the Otter-Seal",
+      "description": "The spirit bobs, then splashes a crescent of silver over you and Appa.",
+      "background": "Sea-ice groans under distant auroras; the wind tastes of salt and old stories. Frost smokes from Appa's breath as he rumbles low and friendly. The air smells like lightning and plums; colors taste like notes of a flute.",
+      "choices": [
+        {
+          "option": "Accept the blessing with gratitude",
+          "ability": "Wisdom",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "set_out",
+            "narration": "The water feels like a promise kept.",
+            "ability_change": {
+              "Wisdom": -1,
+              "Spirit": 2
+            }
+          },
+          "failure": {
+            "next": "set_out",
+            "narration": "You shiver; gratitude still warms.",
+            "ability_change": {
+              "Wisdom": -1,
+              "Spirit": 1
+            }
+          }
+        },
+        {
+          "option": "Ask for guidance to the source",
+          "ability": "Presence",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "set_out",
+            "narration": "It points a whisker toward a canyon far inland.",
+            "ability_change": {
+              "Presence": -1,
+              "Intellect": 1
+            }
+          },
+          "failure": {
+            "next": "set_out",
+            "narration": "It only blinks; you trust your path.",
+            "ability_change": {
+              "Presence": -2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "set_out",
+      "act": "I",
+      "title": "Northward on the Wind",
+      "description": "Appa bellows happily. You and your friend nestle under furs as stars wheel above.",
+      "background": "Sea-ice groans under distant auroras; the wind tastes of salt and old stories. Frost smokes from Appa's breath as he rumbles low and friendly.",
+      "choices": [
+        {
+          "option": "Chart a course by stars and memory",
+          "ability": "Intellect",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "canyon_gate",
+            "narration": "Constellations nudge you toward the canyon.",
+            "ability_change": {
+              "Intellect": -1,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "canyon_gate",
+            "narration": "Clouds smudge patterns; you rely on instinct.",
+            "ability_change": {
+              "Intellect": -2
+            }
+          }
+        },
+        {
+          "option": "Doze in turns to keep watch",
+          "ability": "Might",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "canyon_gate",
+            "narration": "You wake clear-headed at dawn.",
+            "ability_change": {
+              "Might": -1,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "canyon_gate",
+            "narration": "You wake stiff; the sunrise helps.",
+            "ability_change": {
+              "Might": -2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "canyon_gate",
+      "act": "II",
+      "title": "Gate of the Split Canyon",
+      "description": "A canyon splits the land like a page torn corner to corner. Wind runs both directions.",
+      "background": "Stormlight flickers on canyon walls; every echo sounds like a memory learning to speak. Sand hisses like soft rain; stone remembers footfalls.",
+      "choices": [
+        {
+          "option": "Listen for the heart of the wind",
+          "ability": "Wisdom",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "canyon_walk",
+            "narration": "Two rhythms become one path in your mind.",
+            "ability_change": {
+              "Wisdom": -2
+            }
+          },
+          "failure": {
+            "next": "canyon_walk",
+            "narration": "The song won't settle; you commit anyway.",
+            "ability_change": {
+              "Wisdom": -3
+            }
+          }
+        },
+        {
+          "option": "Slide down on sand like water",
+          "ability": "Agility",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "canyon_walk",
+            "narration": "You surf the slope; your friend whoops.",
+            "ability_change": {
+              "Agility": -2
+            }
+          },
+          "failure": {
+            "next": "canyon_walk",
+            "narration": "Sand finds your boots; you cough and grin.",
+            "ability_change": {
+              "Agility": -3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "canyon_walk",
+      "act": "II",
+      "title": "Footprints that Argue",
+      "description": "Your footprints point two ways at once. A fox spirit watches from a ledge.",
+      "background": "Stormlight flickers on canyon walls; every echo sounds like a memory learning to speak. Sand hisses like soft rain; stone remembers footfalls. The air smells like lightning and plums; colors taste like notes of a flute.",
+      "choices": [
+        {
+          "option": "Offer food and respect to the fox",
+          "ability": "Wisdom",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "whisper_bridge",
+            "narration": "It trots ahead, tail lantern-bright.",
+            "ability_change": {
+              "Wisdom": -2,
+              "Presence": 1
+            }
+          },
+          "failure": {
+            "next": "whisper_bridge",
+            "narration": "It sneezes and vanishes; perhaps later.",
+            "ability_change": {
+              "Wisdom": -3
+            }
+          }
+        },
+        {
+          "option": "Trace the eddies and pick the safer trail",
+          "ability": "Intellect",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "whisper_bridge",
+            "narration": "Small stones reveal a pattern of safer steps.",
+            "ability_change": {
+              "Intellect": -2
+            }
+          },
+          "failure": {
+            "next": "whisper_bridge",
+            "narration": "You second-guess; pace slows.",
+            "ability_change": {
+              "Intellect": -3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "whisper_bridge",
+      "act": "II",
+      "title": "Bridge of Whispers",
+      "description": "A rope bridge mutters in many voices: your own, your friend’s, strangers’.",
+      "background": "Stormlight flickers on canyon walls; every echo sounds like a memory learning to speak. Sand hisses like soft rain; stone remembers footfalls. The air smells like lightning and plums; colors taste like notes of a flute.",
+      "choices": [
+        {
+          "option": "Cross hand over hand, steady",
+          "ability": "Might",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "cave_lintel",
+            "narration": "Your grip is a promise.",
+            "ability_change": {
+              "Might": -2
+            }
+          },
+          "failure": {
+            "next": "cave_lintel",
+            "narration": "Ropes burn your palms; you hiss and continue.",
+            "ability_change": {
+              "Might": -3
+            }
+          }
+        },
+        {
+          "option": "Match the murmurs with your breath (Attunement)",
+          "ability": "Spirit",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "cave_lintel",
+            "narration": "The voices braid into a single hum; the bridge steadies.",
+            "ability_change": {
+              "Spirit": -2,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "cave_lintel",
+            "narration": "Discord scrapes your spine; you make it across anyway.",
+            "ability_change": {
+              "Spirit": -3
+            }
+          },
+          "gate": {
+            "skill": "Attunement",
+            "min": 25
+          }
+        }
+      ]
+    },
+    {
+      "id": "cave_lintel",
+      "act": "II",
+      "title": "Lintel of Names",
+      "description": "At the canyon’s heart, a cave mouth bears four symbols: wave, flame, stone, wind.",
+      "background": "Stormlight flickers on canyon walls; every echo sounds like a memory learning to speak. Sand hisses like soft rain; stone remembers footfalls. Thin air rings like a bell; prayer flags write poems to the sky.",
+      "choices": [
+        {
+          "option": "Examine the order of symbols",
+          "ability": "Intellect",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "temple_entry",
+            "narration": "You spot scuff marks in the wind rune: entry code.",
+            "ability_change": {
+              "Intellect": -2
+            }
+          },
+          "failure": {
+            "next": "temple_entry",
+            "narration": "Dust sneezes happen twice; you learn little.",
+            "ability_change": {
+              "Intellect": -3
+            }
+          }
+        },
+        {
+          "option": "Press the stone and push",
+          "ability": "Might",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "temple_entry",
+            "narration": "The lintel lifts with a groan.",
+            "ability_change": {
+              "Might": -2
+            }
+          },
+          "failure": {
+            "next": "temple_entry",
+            "narration": "It sticks; your shoulders will remember.",
+            "ability_change": {
+              "Might": -3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "temple_entry",
+      "act": "II",
+      "title": "Temple of Turning Steps",
+      "description": "Inside, steps spiral up and down at the same time. Candles burn sideways.",
+      "background": "Stormlight flickers on canyon walls; every echo sounds like a memory learning to speak. Thin air rings like a bell; prayer flags write poems to the sky. The air smells like lightning and plums; colors taste like notes of a flute.",
+      "choices": [
+        {
+          "option": "Time your steps to the sideways flame",
+          "ability": "Wisdom",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "four_chambers",
+            "narration": "You move when the candle exhales.",
+            "ability_change": {
+              "Wisdom": -2
+            }
+          },
+          "failure": {
+            "next": "four_chambers",
+            "narration": "Ash flicks your cheek; you blink and adjust.",
+            "ability_change": {
+              "Wisdom": -3
+            }
+          }
+        },
+        {
+          "option": "Cartwheel between platforms (Acrobatics)",
+          "ability": "Agility",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "four_chambers",
+            "narration": "Your body remembers joy; you land grinning.",
+            "ability_change": {
+              "Agility": -3
+            }
+          },
+          "failure": {
+            "next": "four_chambers",
+            "narration": "A knee twinges; you laugh it off.",
+            "ability_change": {
+              "Agility": -4
+            }
+          },
+          "gate": {
+            "skill": "Acrobatics",
+            "min": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "four_chambers",
+      "act": "II",
+      "title": "Four Doors, Four Questions",
+      "description": "Four doors breathe gently: Water, Fire, Earth, Air. Each asks a different part of you.",
+      "background": "Stormlight flickers on canyon walls; every echo sounds like a memory learning to speak. Thin air rings like a bell; prayer flags write poems to the sky. The air smells like lightning and plums; colors taste like notes of a flute.",
+      "choices": [
+        {
+          "option": "Water: soften and listen",
+          "ability": "Presence",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "water_room",
+            "narration": "A pool opens its surface like an ear.",
+            "ability_change": {
+              "Presence": -2,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "water_room",
+            "narration": "Ripples answer slowly; you persist.",
+            "ability_change": {
+              "Presence": -3
+            }
+          }
+        },
+        {
+          "option": "Fire: kindle your courage",
+          "ability": "Spirit",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "fire_room",
+            "narration": "A coal winks; your breath becomes a bellows.",
+            "ability_change": {
+              "Spirit": -3
+            }
+          },
+          "failure": {
+            "next": "fire_room",
+            "narration": "Heat nips; you steady anyway.",
+            "ability_change": {
+              "Spirit": -4
+            }
+          }
+        },
+        {
+          "option": "Earth: anchor without stubbornness",
+          "ability": "Might",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "earth_room",
+            "narration": "Your stance finds the mountain in your bones.",
+            "ability_change": {
+              "Might": -3
+            }
+          },
+          "failure": {
+            "next": "earth_room",
+            "narration": "Pebbles rattle; you reset your feet.",
+            "ability_change": {
+              "Might": -4
+            }
+          }
+        },
+        {
+          "option": "Air: move without clinging",
+          "ability": "Agility",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "air_room",
+            "narration": "You step where the draft invites.",
+            "ability_change": {
+              "Agility": -3
+            }
+          },
+          "failure": {
+            "next": "air_room",
+            "narration": "You overthink; then you flow.",
+            "ability_change": {
+              "Agility": -4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "water_room",
+      "act": "II",
+      "title": "Room of Water’s Memory",
+      "description": "Images skim the pool: times you could have spoken kinder.",
+      "background": "Stormlight flickers on canyon walls; every echo sounds like a memory learning to speak. Thin air rings like a bell; prayer flags write poems to the sky. The air smells like lightning and plums; colors taste like notes of a flute.",
+      "choices": [
+        {
+          "option": "Own your past and forgive yourself",
+          "ability": "Wisdom",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "central_stair",
+            "narration": "Guilt loosens; compassion strengthens resolve.",
+            "ability_change": {
+              "Wisdom": -3,
+              "Presence": 1
+            }
+          },
+          "failure": {
+            "next": "central_stair",
+            "narration": "A tightness remains, but you keep going.",
+            "ability_change": {
+              "Wisdom": -4
+            }
+          }
+        },
+        {
+          "option": "Promise better and mean it (Performance)",
+          "ability": "Presence",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "central_stair",
+            "narration": "Your vow rings true in the water.",
+            "ability_change": {
+              "Presence": -3,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "central_stair",
+            "narration": "Words feel thin; resolve survives.",
+            "ability_change": {
+              "Presence": -4
+            }
+          },
+          "gate": {
+            "skill": "Performance",
+            "min": 25
+          }
+        }
+      ]
+    },
+    {
+      "id": "fire_room",
+      "act": "II",
+      "title": "Room of Fire’s Patience",
+      "description": "Flames ask for purpose. Why do you seek balance?",
+      "background": "Stormlight flickers on canyon walls; every echo sounds like a memory learning to speak. Thin air rings like a bell; prayer flags write poems to the sky. The air smells like lightning and plums; colors taste like notes of a flute.",
+      "choices": [
+        {
+          "option": "Speak for the small and the voiceless",
+          "ability": "Presence",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "central_stair",
+            "narration": "The fire bows; you feel taller inside.",
+            "ability_change": {
+              "Presence": -3,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "central_stair",
+            "narration": "Sparks question you; you answer later.",
+            "ability_change": {
+              "Presence": -4
+            }
+          }
+        },
+        {
+          "option": "Stand your ground inside the heat (Endurance)",
+          "ability": "Might",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "central_stair",
+            "narration": "Sweat stings; you do not flinch.",
+            "ability_change": {
+              "Might": -3,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "central_stair",
+            "narration": "The heat bites; pride steadies you.",
+            "ability_change": {
+              "Might": -4
+            }
+          },
+          "gate": {
+            "skill": "Endurance",
+            "min": 25
+          }
+        }
+      ]
+    },
+    {
+      "id": "earth_room",
+      "act": "II",
+      "title": "Room of Earth’s Listening",
+      "description": "Stone hums in your feet; it remembers who stood here and why.",
+      "background": "Stormlight flickers on canyon walls; every echo sounds like a memory learning to speak. Thin air rings like a bell; prayer flags write poems to the sky. The air smells like lightning and plums; colors taste like notes of a flute.",
+      "choices": [
+        {
+          "option": "Sense fault lines and stand kindly",
+          "ability": "Wisdom",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "central_stair",
+            "narration": "The room approves with a low purr.",
+            "ability_change": {
+              "Wisdom": -3
+            }
+          },
+          "failure": {
+            "next": "central_stair",
+            "narration": "A pebble scolds; you smile and adjust.",
+            "ability_change": {
+              "Wisdom": -4
+            }
+          }
+        },
+        {
+          "option": "Lift a pillar just enough, not more",
+          "ability": "Might",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "central_stair",
+            "narration": "Strength tuned by care is beautiful.",
+            "ability_change": {
+              "Might": -3
+            }
+          },
+          "failure": {
+            "next": "central_stair",
+            "narration": "Your hands ache; the pillar nods anyway.",
+            "ability_change": {
+              "Might": -4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "air_room",
+      "act": "II",
+      "title": "Room of Air’s Laughter",
+      "description": "Air tugs your sleeve, inviting you to let go of trying too hard.",
+      "background": "Stormlight flickers on canyon walls; every echo sounds like a memory learning to speak. Thin air rings like a bell; prayer flags write poems to the sky. The air smells like lightning and plums; colors taste like notes of a flute.",
+      "choices": [
+        {
+          "option": "Play—skip stones of wind",
+          "ability": "Agility",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "central_stair",
+            "narration": "You giggle; the room feels lighter.",
+            "ability_change": {
+              "Agility": -3,
+              "Presence": 1
+            }
+          },
+          "failure": {
+            "next": "central_stair",
+            "narration": "You trip and bow dramatically.",
+            "ability_change": {
+              "Agility": -4
+            }
+          }
+        },
+        {
+          "option": "Breathe until breath breathes you",
+          "ability": "Spirit",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "central_stair",
+            "narration": "Inhale, exhale, vanish, return.",
+            "ability_change": {
+              "Spirit": -3
+            }
+          },
+          "failure": {
+            "next": "central_stair",
+            "narration": "Thoughts chatter; you thank them and continue.",
+            "ability_change": {
+              "Spirit": -4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "central_stair",
+      "act": "II",
+      "title": "Stair to the Veil",
+      "description": "The steps vibrate like a plucked string. Appa snorts softly outside.",
+      "background": "Stormlight flickers on canyon walls; every echo sounds like a memory learning to speak. Thin air rings like a bell; prayer flags write poems to the sky. The air smells like lightning and plums; colors taste like notes of a flute.",
+      "choices": [
+        {
+          "option": "Call to Appa for courage",
+          "ability": "Presence",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "veil_edge",
+            "narration": "He bellows; your friend pats your shoulder.",
+            "ability_change": {
+              "Presence": -2,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "veil_edge",
+            "narration": "Your voice echoes twice; Appa answers once.",
+            "ability_change": {
+              "Presence": -3
+            }
+          }
+        },
+        {
+          "option": "Focus your center for the crossing",
+          "ability": "Spirit",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "veil_edge",
+            "narration": "Your heartbeat and the stair’s note match.",
+            "ability_change": {
+              "Spirit": -3
+            }
+          },
+          "failure": {
+            "next": "veil_edge",
+            "narration": "You find the note late but firm.",
+            "ability_change": {
+              "Spirit": -4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "veil_edge",
+      "act": "III",
+      "title": "Edge of the Veil",
+      "description": "The world thins. Colors lean toward music.",
+      "background": "The Spirit World breathes in colors your eyes nearly remember; time drifts like petals. Leaves sign with the wind; small spirits peep from bark and root. The air smells like lightning and plums; colors taste like notes of a flute.",
+      "choices": [
+        {
+          "option": "Step through hand-in-hand with your friend",
+          "ability": "Presence",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "spirit_forest",
+            "narration": "Your bond threads you safely across.",
+            "ability_change": {
+              "Presence": -3,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "spirit_forest",
+            "narration": "Fingers slip then clasp again; lesson learned.",
+            "ability_change": {
+              "Presence": -4
+            }
+          }
+        },
+        {
+          "option": "Go first to anchor the way",
+          "ability": "Wisdom",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "spirit_forest",
+            "narration": "You become a lantern to follow.",
+            "ability_change": {
+              "Wisdom": -3
+            }
+          },
+          "failure": {
+            "next": "spirit_forest",
+            "narration": "You wobble, then hold.",
+            "ability_change": {
+              "Wisdom": -4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "spirit_forest",
+      "act": "III",
+      "title": "Forest of Returning Paths",
+      "description": "Trees grow in spirals; paths return you gently to where you need to be.",
+      "background": "The Spirit World breathes in colors your eyes nearly remember; time drifts like petals. Leaves sign with the wind; small spirits peep from bark and root. The air smells like lightning and plums; colors taste like notes of a flute.",
+      "choices": [
+        {
+          "option": "Ask a fox spirit for the straight path",
+          "ability": "Presence",
+          "dc": 17,
+          "dice": "1d20",
+          "success": {
+            "next": "river_of_remembering",
+            "narration": "It bows and trots ahead.",
+            "ability_change": {
+              "Presence": -3
+            }
+          },
+          "failure": {
+            "next": "river_of_remembering",
+            "narration": "It yawns and vanishes; perhaps more patience.",
+            "ability_change": {
+              "Presence": -4
+            }
+          }
+        },
+        {
+          "option": "Sense the current beneath the ground",
+          "ability": "Wisdom",
+          "dc": 17,
+          "dice": "1d20",
+          "success": {
+            "next": "river_of_remembering",
+            "narration": "You find the river by listening with your feet.",
+            "ability_change": {
+              "Wisdom": -3
+            }
+          },
+          "failure": {
+            "next": "river_of_remembering",
+            "narration": "The ground hums too many songs at once.",
+            "ability_change": {
+              "Wisdom": -4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "river_of_remembering",
+      "act": "III",
+      "title": "River of Remembering",
+      "description": "Water flows both ways at once. Reflections show who you’ve been kind to.",
+      "background": "The Spirit World breathes in colors your eyes nearly remember; time drifts like petals. Leaves sign with the wind; small spirits peep from bark and root. The air smells like lightning and plums; colors taste like notes of a flute.",
+      "choices": [
+        {
+          "option": "Thank those reflections aloud",
+          "ability": "Presence",
+          "dc": 17,
+          "dice": "1d20",
+          "success": {
+            "next": "spirit_bridge",
+            "narration": "The water brightens and grows warm.",
+            "ability_change": {
+              "Presence": -3,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "spirit_bridge",
+            "narration": "Your voice trembles; the river listens anyway.",
+            "ability_change": {
+              "Presence": -4
+            }
+          }
+        },
+        {
+          "option": "Wade carefully and keep your breath steady",
+          "ability": "Might",
+          "dc": 17,
+          "dice": "1d20",
+          "success": {
+            "next": "spirit_bridge",
+            "narration": "Cold bites, but you are steady as a rock.",
+            "ability_change": {
+              "Might": -3
+            }
+          },
+          "failure": {
+            "next": "spirit_bridge",
+            "narration": "A stumble chills your bones.",
+            "ability_change": {
+              "Might": -4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "spirit_bridge",
+      "act": "III",
+      "title": "Bridge of Light Reeds",
+      "description": "Thin reeds weave themselves into steps at your approach.",
+      "background": "The Spirit World breathes in colors your eyes nearly remember; time drifts like petals. Leaves sign with the wind; small spirits peep from bark and root. The air smells like lightning and plums; colors taste like notes of a flute.",
+      "choices": [
+        {
+          "option": "Skip across with trust (Acrobatics)",
+          "ability": "Agility",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "mirror_lake",
+            "narration": "You and your friend move like a duet.",
+            "ability_change": {
+              "Agility": -3
+            }
+          },
+          "failure": {
+            "next": "mirror_lake",
+            "narration": "One reed squeals; you recover with a grin.",
+            "ability_change": {
+              "Agility": -4
+            }
+          },
+          "gate": {
+            "skill": "Acrobatics",
+            "min": 20
+          }
+        },
+        {
+          "option": "Harmonize your steps to the reeds' song (Attunement)",
+          "ability": "Spirit",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "mirror_lake",
+            "narration": "The bridge thickens under your feet.",
+            "ability_change": {
+              "Spirit": -3
+            }
+          },
+          "failure": {
+            "next": "mirror_lake",
+            "narration": "The song thins; you hurry, hearts loud.",
+            "ability_change": {
+              "Spirit": -4
+            }
+          },
+          "gate": {
+            "skill": "Attunement",
+            "min": 25
+          }
+        }
+      ]
+    },
+    {
+      "id": "mirror_lake",
+      "act": "III",
+      "title": "Lake of Honest Sky",
+      "description": "A still lake shows not your face but your possibilities.",
+      "background": "The Spirit World breathes in colors your eyes nearly remember; time drifts like petals. Leaves sign with the wind; small spirits peep from bark and root. The air smells like lightning and plums; colors taste like notes of a flute.",
+      "choices": [
+        {
+          "option": "Bow to each possibility and let it go",
+          "ability": "Wisdom",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "sky_steps",
+            "narration": "The lake smiles, if a lake can smile.",
+            "ability_change": {
+              "Wisdom": -3,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "sky_steps",
+            "narration": "A stubborn image lingers; you breathe it away.",
+            "ability_change": {
+              "Wisdom": -4
+            }
+          }
+        },
+        {
+          "option": "Reach for the one that helps your friend now",
+          "ability": "Presence",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "sky_steps",
+            "narration": "A path appears where none stood.",
+            "ability_change": {
+              "Presence": -3
+            }
+          },
+          "failure": {
+            "next": "sky_steps",
+            "narration": "The lake waits; you learn to wait too.",
+            "ability_change": {
+              "Presence": -4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "sky_steps",
+      "act": "III",
+      "title": "Steps into the Sky",
+      "description": "Invisible steps rise into warm air tinged with plum and thunder.",
+      "background": "The Spirit World breathes in colors your eyes nearly remember; time drifts like petals. Thin air rings like a bell; prayer flags write poems to the sky. The air smells like lightning and plums; colors taste like notes of a flute.",
+      "choices": [
+        {
+          "option": "Climb with playful grace",
+          "ability": "Agility",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "spirit_peak",
+            "narration": "You laugh at nothing; the steps laugh back.",
+            "ability_change": {
+              "Agility": -3
+            }
+          },
+          "failure": {
+            "next": "spirit_peak",
+            "narration": "A gust jostles you; balance returns.",
+            "ability_change": {
+              "Agility": -4
+            }
+          }
+        },
+        {
+          "option": "Climb with slow patience",
+          "ability": "Might",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "spirit_peak",
+            "narration": "Each step is a ceremony; your friend matches you.",
+            "ability_change": {
+              "Might": -3
+            }
+          },
+          "failure": {
+            "next": "spirit_peak",
+            "narration": "Legs burn; heart stays kind.",
+            "ability_change": {
+              "Might": -4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "spirit_peak",
+      "act": "III",
+      "title": "Peak Where Winds Meet",
+      "description": "Four small shrines ring a platform of cloud-stone. A great spirit sleeps beneath.",
+      "background": "The Spirit World breathes in colors your eyes nearly remember; time drifts like petals. Thin air rings like a bell; prayer flags write poems to the sky. The air smells like lightning and plums; colors taste like notes of a flute.",
+      "choices": [
+        {
+          "option": "Offer thanks at each shrine",
+          "ability": "Presence",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "heart_spirit",
+            "narration": "Incense curls into animals that nod.",
+            "ability_change": {
+              "Presence": -3,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "heart_spirit",
+            "narration": "Ash smudges your fingers; effort matters.",
+            "ability_change": {
+              "Presence": -4
+            }
+          }
+        },
+        {
+          "option": "Meditate until the world blinks with you",
+          "ability": "Spirit",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "heart_spirit",
+            "narration": "Breath becomes wind; wind becomes breath.",
+            "ability_change": {
+              "Spirit": -3
+            }
+          },
+          "failure": {
+            "next": "heart_spirit",
+            "narration": "Thoughts fidget; you smile and try again.",
+            "ability_change": {
+              "Spirit": -4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "heart_spirit",
+      "act": "IV",
+      "title": "The Heart Spirit Wakes",
+      "description": "A vast turtle-lion spirit opens an eye the size of a moon. Time hiccups once, then waits.",
+      "background": "All four winds meet and hold their breath; the world waits for your next heartbeat. Thin air rings like a bell; prayer flags write poems to the sky. The air smells like lightning and plums; colors taste like notes of a flute.",
+      "choices": [
+        {
+          "option": "Ask what it needs, not what you want",
+          "ability": "Wisdom",
+          "dc": 19,
+          "dice": "1d20",
+          "success": {
+            "next": "four_trials_avatar",
+            "narration": "Its whiskers tremble: 'Balance asks listening.'",
+            "ability_change": {
+              "Wisdom": -3
+            }
+          },
+          "failure": {
+            "next": "four_trials_avatar",
+            "narration": "It yawns, testing your patience.",
+            "ability_change": {
+              "Wisdom": -4
+            }
+          }
+        },
+        {
+          "option": "State your purpose with steady courage",
+          "ability": "Presence",
+          "dc": 19,
+          "dice": "1d20",
+          "success": {
+            "next": "four_trials_avatar",
+            "narration": "'Your voice is young and true,' it rumbles.",
+            "ability_change": {
+              "Presence": -3,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "four_trials_avatar",
+            "narration": "Echoes of doubt return from the clouds.",
+            "ability_change": {
+              "Presence": -4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "four_trials_avatar",
+      "act": "IV",
+      "title": "Trials of the Fourfold Breath",
+      "description": "Four breaths circle you: Soften (Water), Kindle (Fire), Hold (Earth), Let Go (Air).",
+      "background": "All four winds meet and hold their breath; the world waits for your next heartbeat. Thin air rings like a bell; prayer flags write poems to the sky. The air smells like lightning and plums; colors taste like notes of a flute.",
+      "choices": [
+        {
+          "option": "Soften what is rigid (Water)",
+          "ability": "Presence",
+          "dc": 19,
+          "dice": "1d20",
+          "success": {
+            "next": "avatar_state_gate",
+            "narration": "A frozen wave flows again.",
+            "ability_change": {
+              "Presence": -3
+            }
+          },
+          "failure": {
+            "next": "avatar_state_gate",
+            "narration": "It creaks; you coax, learning patience.",
+            "ability_change": {
+              "Presence": -4
+            }
+          }
+        },
+        {
+          "option": "Kindle what is dim (Fire)",
+          "ability": "Spirit",
+          "dc": 19,
+          "dice": "1d20",
+          "success": {
+            "next": "avatar_state_gate",
+            "narration": "A small flame stands tall without burning.",
+            "ability_change": {
+              "Spirit": -3
+            }
+          },
+          "failure": {
+            "next": "avatar_state_gate",
+            "narration": "Smoke stings; you blink and continue.",
+            "ability_change": {
+              "Spirit": -4
+            }
+          }
+        },
+        {
+          "option": "Hold what is precious (Earth)",
+          "ability": "Might",
+          "dc": 19,
+          "dice": "1d20",
+          "success": {
+            "next": "avatar_state_gate",
+            "narration": "You lift just enough, no more.",
+            "ability_change": {
+              "Might": -3
+            }
+          },
+          "failure": {
+            "next": "avatar_state_gate",
+            "narration": "Your grip trembles, then steadies.",
+            "ability_change": {
+              "Might": -4
+            }
+          }
+        },
+        {
+          "option": "Let go of what clings (Air)",
+          "ability": "Agility",
+          "dc": 19,
+          "dice": "1d20",
+          "success": {
+            "next": "avatar_state_gate",
+            "narration": "You laugh and the wind joins.",
+            "ability_change": {
+              "Agility": -3
+            }
+          },
+          "failure": {
+            "next": "avatar_state_gate",
+            "narration": "A snag releases; you bow to it.",
+            "ability_change": {
+              "Agility": -4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "avatar_state_gate",
+      "act": "IV",
+      "title": "Gate to the Avatar State",
+      "description": "The shrines glow together. The spirit nods toward a circle of wind and light.",
+      "background": "All four winds meet and hold their breath; the world waits for your next heartbeat. Thin air rings like a bell; prayer flags write poems to the sky. The air smells like lightning and plums; colors taste like notes of a flute.",
+      "choices": [
+        {
+          "option": "Enter gently, with humility",
+          "ability": "Wisdom",
+          "dc": 20,
+          "dice": "1d20",
+          "success": {
+            "next": "final_confront",
+            "narration": "The power welcomes rather than overwhelms.",
+            "ability_change": {
+              "Wisdom": -4,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "final_confront",
+            "narration": "It takes effort to keep balance as power arrives.",
+            "ability_change": {
+              "Wisdom": -5,
+              "Spirit": -1
+            }
+          }
+        },
+        {
+          "option": "Enter fiercely, with purpose",
+          "ability": "Spirit",
+          "dc": 20,
+          "dice": "1d20",
+          "success": {
+            "next": "final_confront",
+            "narration": "Power answers power; the circle sings.",
+            "ability_change": {
+              "Spirit": -4
+            }
+          },
+          "failure": {
+            "next": "final_confront",
+            "narration": "A flare nips at your edges; you are still you.",
+            "ability_change": {
+              "Spirit": -5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "final_confront",
+      "act": "IV",
+      "title": "The Knot in the Wind",
+      "description": "The canyon’s rift spins at the center of the sky. Your past missteps and future fears whisper like a crowded room.",
+      "background": "All four winds meet and hold their breath; the world waits for your next heartbeat. Sand hisses like soft rain; stone remembers footfalls. Thin air rings like a bell; prayer flags write poems to the sky. The air smells like lightning and plums; colors taste like notes of a flute.",
+      "choices": [
+        {
+          "option": "Unknot the wind with precise motion (Intellect)",
+          "ability": "Intellect",
+          "dc": 20,
+          "dice": "1d20",
+          "success": {
+            "next": "endings_branch",
+            "narration": "Forms align; the knot loosens.",
+            "ability_change": {
+              "Intellect": -4
+            }
+          },
+          "failure": {
+            "next": "endings_branch",
+            "narration": "A slip; you recover with care next step.",
+            "ability_change": {
+              "Intellect": -5,
+              "Wisdom": -1
+            }
+          }
+        },
+        {
+          "option": "Hold still until the wind remembers itself (Willpower)",
+          "ability": "Spirit",
+          "dc": 20,
+          "dice": "1d20",
+          "success": {
+            "next": "endings_branch",
+            "narration": "Stillness teaches the storm its shape.",
+            "ability_change": {
+              "Spirit": -4
+            }
+          },
+          "failure": {
+            "next": "endings_branch",
+            "narration": "Stillness costs you; breath returns slow.",
+            "ability_change": {
+              "Spirit": -5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "endings_branch",
+      "act": "IV",
+      "title": "Breath After the Storm",
+      "description": "Appa circles once. Your friend grips your arm, eyes bright. The world listens for your choice.",
+      "background": "All four winds meet and hold their breath; the world waits for your next heartbeat. Sand hisses like soft rain; stone remembers footfalls. Thin air rings like a bell; prayer flags write poems to the sky. The air smells like lightning and plums; colors taste like notes of a flute.",
+      "choices": [
+        {
+          "option": "Restore balance and step back",
+          "ability": "Presence",
+          "dc": 20,
+          "dice": "1d20",
+          "success": {
+            "next": "ending_harmony",
+            "narration": "You offer the world to itself and it accepts.",
+            "ability_change": {
+              "Presence": -4,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "ending_tilt",
+            "narration": "Your words come a heartbeat too late; small eddies remain.",
+            "ability_change": {
+              "Presence": -5
+            }
+          }
+        },
+        {
+          "option": "Reshape the flow toward compassion",
+          "ability": "Wisdom",
+          "dc": 20,
+          "dice": "1d20",
+          "success": {
+            "next": "ending_compassion",
+            "narration": "The rift becomes a gentler seam; learning can pass.",
+            "ability_change": {
+              "Wisdom": -4
+            }
+          },
+          "failure": {
+            "next": "ending_tilt",
+            "narration": "Intent wobbles; not all will agree.",
+            "ability_change": {
+              "Wisdom": -5
+            }
+          }
+        },
+        {
+          "option": "Bind the rift tight and pay the cost",
+          "ability": "Spirit",
+          "dc": 20,
+          "dice": "1d20",
+          "success": {
+            "next": "ending_cost",
+            "narration": "You offer a piece of your flame to seal it.",
+            "ability_change": {
+              "Spirit": -5
+            }
+          },
+          "failure": {
+            "next": "ending_tilt",
+            "narration": "The seal holds for now, imperfectly.",
+            "ability_change": {
+              "Spirit": -5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "ending_harmony",
+      "act": "IV",
+      "title": "Ending: Harmony on the Wind",
+      "description": "Villagers find their nets full of the present. Fox spirits nap in sun patches. Appa sneezes and everyone laughs.",
+      "background": "All four winds meet and hold their breath; the world waits for your next heartbeat. Frost smokes from Appa's breath as he rumbles low and friendly. Cookfires paint small suns in the night; laughter hides worry.",
+      "choices": [
+        {
+          "option": "Share tea with your friend and breathe",
+          "ability": "Wisdom",
+          "dc": 0,
+          "dice": "1d20",
+          "success": {
+            "next": "END",
+            "narration": "Warmth in hands, warmth in hearts.",
+            "ability_change": {
+              "Wisdom": 0
+            }
+          },
+          "failure": {
+            "next": "END",
+            "narration": "",
+            "ability_change": {
+              "Wisdom": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "ending_compassion",
+      "act": "IV",
+      "title": "Ending: The Gentle Seam",
+      "description": "The rift softens into a passage used with care. Stories and small spirits cross; both worlds grow kinder.",
+      "background": "All four winds meet and hold their breath; the world waits for your next heartbeat. Frost smokes from Appa's breath as he rumbles low and friendly. The air smells like lightning and plums; colors taste like notes of a flute.",
+      "choices": [
+        {
+          "option": "Promise to visit and learn",
+          "ability": "Presence",
+          "dc": 0,
+          "dice": "1d20",
+          "success": {
+            "next": "END",
+            "narration": "The otter-seal spirit splashes a tiny crown of water.",
+            "ability_change": {
+              "Presence": 0
+            }
+          },
+          "failure": {
+            "next": "END",
+            "narration": "",
+            "ability_change": {
+              "Presence": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "ending_cost",
+      "act": "IV",
+      "title": "Ending: The Offered Flame",
+      "description": "Balance returns, but you feel a quiet place inside that needs time to regrow. Your friend squeezes your hand. Appa nuzzles your shoulder.",
+      "background": "All four winds meet and hold their breath; the world waits for your next heartbeat. Thin air rings like a bell; prayer flags write poems to the sky. The air smells like lightning and plums; colors taste like notes of a flute.",
+      "choices": [
+        {
+          "option": "Rest and listen to the wind",
+          "ability": "Spirit",
+          "dc": 0,
+          "dice": "1d20",
+          "success": {
+            "next": "END",
+            "narration": "It says: thank you.",
+            "ability_change": {
+              "Spirit": 0
+            }
+          },
+          "failure": {
+            "next": "END",
+            "narration": "",
+            "ability_change": {
+              "Spirit": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "ending_tilt",
+      "act": "IV",
+      "title": "Ending: A Slight Tilt",
+      "description": "The world is mostly right, but shadows run a step late on certain days. You have more work ahead.",
+      "background": "All four winds meet and hold their breath; the world waits for your next heartbeat. Frost smokes from Appa's breath as he rumbles low and friendly. Sand hisses like soft rain; stone remembers footfalls.",
+      "choices": [
+        {
+          "option": "Smile, eat, train, try again",
+          "ability": "Might",
+          "dc": 0,
+          "dice": "1d20",
+          "success": {
+            "next": "END",
+            "narration": "Balance is a verb.",
+            "ability_change": {
+              "Might": 0
+            }
+          },
+          "failure": {
+            "next": "END",
+            "narration": "",
+            "ability_change": {
+              "Might": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "ending_frozen",
+      "act": "IV",
+      "title": "Ending: Frozen Breath",
+      "description": "Power without balance freezes into fear. The world waits for your next lifetime.",
+      "background": "All four winds meet and hold their breath; the world waits for your next heartbeat. Frost smokes from Appa's breath as he rumbles low and friendly. The air smells like lightning and plums; colors taste like notes of a flute.",
+      "choices": [
+        {
+          "option": "Let the lesson sink in",
+          "ability": "Wisdom",
+          "dc": 0,
+          "dice": "1d20",
+          "success": {
+            "next": "END",
+            "narration": "You bow to the truth you found too late.",
+            "ability_change": {
+              "Wisdom": 0
+            }
+          },
+          "failure": {
+            "next": "END",
+            "narration": "",
+            "ability_change": {
+              "Wisdom": 0
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
