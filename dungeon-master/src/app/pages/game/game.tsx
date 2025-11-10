@@ -12,14 +12,69 @@ type ConversationItem = {
     text: string;
 };
 
+interface OptionsProps {
+    options: string[];
+    onOptionClick: (option: string) => void;
+}
+
+function Options({ options, onOptionClick }: OptionsProps) {
+    if (!options || options.length === 0) {
+        return null;
+    }
+
+    return (
+        <div className="options-container" style={{
+            position: 'absolute',
+            bottom: '150px', // Adjust as needed
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: '80%',
+            maxWidth: '600px',
+            backgroundColor: 'rgba(0, 0, 0, 0.7)',
+            padding: '15px',
+            borderRadius: '8px',
+            border: '1px solid #4a4a4a',
+            color: '#fff',
+            boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+            zIndex: 10,
+        }}>
+            <h3 style={{ textAlign: 'center', marginBottom: '10px' }}>Choose your action:</h3>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                {options.map((option, index) => (
+                    <li key={index} className="option-item" onClick={() => onOptionClick(option)} style={{
+                        padding: '10px',
+                        borderBottom: '1px solid #4a4a4a',
+                        cursor: 'pointer',
+                        transition: 'background-color 0.3s'
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'}
+                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                    >
+                        {`${index + 1}. ${option}`}
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
+}
+
+
 export default function Game() {
   const router = useRouter()
   const [sides, setSides] = useState<number>(20);
   const [activeDice, setActiveDice] = useState("d20");
   const [DMmessage, setDMmessage] = useState("Connecting...");
   const [scene, setScene] = useState('');
+  const [options, setOptions] = useState<string[]>([]);
   const [username, setUsername] = useState('');
   const [characterData, setCharacterData] = useState(null);
+  const [pendingAction, setPendingAction] = useState<{
+    description: string;
+    action: string;
+    ability: string;
+    dc: number;
+    dice: string;
+  } | null>(null);
 
   const [userin, setUserin] = useState('');
   const [conversation, setConversation] = useState<ConversationItem[]>([
@@ -35,14 +90,86 @@ export default function Game() {
     setActiveDice(dice);
   }
 
-  const handleSend = async () => {
-        if (!userin.trim() || isLoading) return;
+  const handleOptionClick = async (option: string) => {
+    if (isLoading) return;
+    setIsLoading(true);
+    setConversation(prev => [...prev, { sender: username || 'User', text: option }]);
 
-        const userMessage = userin.trim();
+    try {
+        const payload = { message: option, username: username, step: 'get_roll_info' };
+        const response = await fetch('http://localhost:1068/userin', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+        });
+        const result = await response.json();
+
+        if (result.requires_roll) {
+            setPendingAction({
+                description: result.description,
+                action: option,
+                ability: result.ability,
+                dc: result.dc,
+                dice: result.dice,
+            });
+            setConversation(prev => [...prev, { sender: 'DM', text: `You need to make a ${result.ability} check. Roll a ${result.dice}!` }]);
+            setOptions([]); // Hide options while waiting for a roll
+        } else {
+            // Handle actions that don't require a roll (if any)
+            setConversation(prev => [...prev, { sender: 'DM', text: result.message }]);
+            setScene(result.scene || '');
+            setOptions(result.options || []);
+        }
+    } catch (error) {
+        console.error("Error during action selection:", error);
+        setConversation(prev => [...prev, { sender: 'DM', text: "Something went wrong. Please try again." }]);
+    } finally {
+        setIsLoading(false);
+    }
+  };
+
+  const handleRoll = async (rollResult: number) => {
+    if (!pendingAction || isLoading) return;
+
+    setIsLoading(true);
+    setConversation(prev => [...prev, { sender: 'User', text: `(Rolled a ${rollResult} for ${pendingAction.ability})` }]);
+
+    try {
+        const payload = {
+            message: pendingAction.action,
+            username: username,
+            roll: rollResult,
+            step: 'get_outcome',
+            description: pendingAction.description
+        };
+        const response = await fetch('http://localhost:1068/userin', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+        });
+        const result = await response.json();
+
+        setConversation(prev => [...prev, { sender: 'DM', text: result.message }]);
+        setScene(result.scene || '');
+        setOptions(result.options || []);
+        setPendingAction(null); // Reset pending action
+
+    } catch (error) {
+        console.error("Error during roll submission:", error);
+        setConversation(prev => [...prev, { sender: 'DM', text: "The DM seems confused by your roll. Try again." }]);
+    } finally {
+        setIsLoading(false);
+    }
+  };
+
+  const handleSend = async (message?: string) => {
+        const userMessage = message || userin.trim();
+        if (!userMessage || isLoading) return;
+
         setUserin('');
         setIsLoading(true);
 
-        setConversation(prev => [...prev, { sender: username || username, text: userMessage }]);
+        setConversation(prev => [...prev, { sender: username || 'User', text: userMessage }]);
         
         try {
             const payload = {
@@ -67,7 +194,8 @@ export default function Game() {
             
             setConversation(prev => [...prev, { sender: 'DM', text: result.message || "The DM responds, 'Silence falls over the area...'" }]);
             setScene(result.scene || '');
-      setDMmessage(result.message);
+            setOptions(result.options || []);
+            setDMmessage(result.message);
     } catch (error) {
       console.error("Something went wrong with fetch dm message, line 81", error);
       setDMmessage("Error: could not fetch python response, something went wrong, line 82");
@@ -83,7 +211,8 @@ export default function Game() {
 
       setDMmessage(data.dm_text);
       setScene("Scene: " + data.scene || '');
-      setConversation(prev => [...prev, {sender : 'DM', text : data.dm_text}]);
+      setOptions(data.options || []);
+      setConversation([{sender : 'DM', text : data.dm_text}]); // Start conversation with DM message
     } catch (error) {
       console.error("Something went wrong with fetch dm message, line 81", error);
       setDMmessage("Error: could not fetch python response, something went wrong, line 82");
@@ -160,7 +289,7 @@ export default function Game() {
               onSetActiveDice={handleActiveSelect}
             />
           </div>
-          <main className="game-box">
+          <main className="game-box" style={{ position: 'relative' }}>
             <img src={Background.src} alt="" />
             <div className={`message-display-toggle ${isHistoryOpen ? 'full-history' : 'latest-message'}`} onClick={() => setIsHistoryOpen(!isHistoryOpen)}>
             {isHistoryOpen ? (
@@ -178,18 +307,18 @@ export default function Game() {
               </p>
             )}
           </div>
+          <Options options={options} onOptionClick={handleOptionClick} />
             <div className="game">
               <GameManager 
               userin={userin}
               setUserin={setUserin}
-              handleSend={handleSend}
+              handleSend={() => handleSend()}
               isLoading={isLoading}          />
               <div className="player-actions">
                 <Roll 
-                  sides={sides} 
-                  command={userin}
-                  onRollClick={handleSend}
-                  setConversation={setConversation}
+                  sides={pendingAction ? parseInt(pendingAction.dice.replace('1d', '')) : sides} 
+                  onRollClick={handleRoll}
+                  disabled={!pendingAction}
                 />
               </div>
             </div>

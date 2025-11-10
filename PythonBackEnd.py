@@ -1,9 +1,5 @@
-from transformers import AutoTokenizer, AutoModelForCausalLM, Trainer, TrainingArguments, BitsAndBytesConfig, DataCollatorForLanguageModeling
 from datasets import load_dataset, Dataset
 import warnings
-from peft import get_peft_model, LoraConfig, prepare_model_for_kbit_training, PeftModel
-import torch
-import asyncio
 import json
 import evaluate
 import random
@@ -20,164 +16,6 @@ metric = evaluate.load('accuracy')
 
 warnings.filterwarnings("ignore", category=UserWarning, module="peft.peft_model")
 
-
-
-# def section_string(initial : str, beginning : str, ending : str):
-#     first_section = initial.split(beginning)
-#     final = first_section[1].split(ending)
-
-#     return final[0]
-
-# def remove_parts(initial : str):
-#     sections = initial.split("[")
-#     if "|" in sections[0]:
-#         sections = sections[0].split("|")
-#     final = sections[0]
-
-#     return final
-
-
-# bnb_config = BitsAndBytesConfig(
-#     load_in_4bit=True,
-#     bnb_4bit_quant_type="nf4",
-#     bnb_4bit_compute_dtype=torch.bfloat16
-# )
-
-# lora_config = LoraConfig(
-#     r=8,
-#     lora_alpha=16,
-#     target_modules=["q_proj", "v_proj"],
-#     lora_dropout=0.05,
-#     bias="none",
-#     task_type="CAUSAL_LM"
-# )
-
-# def def_model():
-#     torch.cuda.empty_cache()
-#     tokenizer = AutoTokenizer.from_pretrained("SmolLM2/SmolTokenizer")
-#     base_model = AutoModelForCausalLM.from_pretrained(
-#         "HuggingFaceTB/SmolLM2-360M-Instruct",
-#         dtype = torch.bfloat16,
-#         device_map = "cuda"
-#         )
-#     model = PeftModel.from_pretrained(base_model, "prompt_classifier_Smol/checkpoint-2673")
-
-#     model.to("cuda")
-
-#     model.eval()
-
-#     model=torch.compile(model)
-#     torch.cuda.empty_cache()
-
-#     return model, tokenizer
-
-
-# async def model_output(userin : str, model, tokenizer): #running script WITH check
-#     torch.cuda.empty_cache()
-#     inputs = tokenizer(userin, return_tensors="pt", padding=True).to("cuda")
-
-#     with torch.no_grad():
-#         outputs = model.generate(
-#             **inputs, 
-#             max_new_tokens = 256,
-#             num_beams=2,
-#             num_return_sequences=1,
-#             return_dict_in_generate=True,
-#             output_scores=True,
-#             do_sample=True,
-#             top_p = .9,
-#             #top_k = 40,
-#             # pad_token_id=tokenizer.eos_token_id,
-#             # eos_token_id=tokenizer.eos_token_id,
-#             repetition_penalty = 3.3,
-#             temperature = 2.15
-#             )
-#     decoded_ouput = tokenizer.decode(outputs[0][0], skip_special_tokens = True)
-#     print(decoded_ouput)
-#     final_output = decoded_ouput.split('[/GENERATED OUTCOME]:')
-#     final_output = final_output[1].split('|end|')
-#     print(len(final_output))
-    
-#     torch.cuda.empty_cache()
-
-#     return final_output[0]
-
-# async def model_output_check(userin : str, model, tokenizer): #Running check script
-#     torch.cuda.empty_cache()
-#     inputs = tokenizer(userin, return_tensors="pt", padding=True).to("cuda")
-
-#     with torch.no_grad():
-#         outputs = model.generate(
-#             **inputs, 
-#             max_new_tokens = 256,
-#             num_beams=2,
-#             num_return_sequences=1,
-#             return_dict_in_generate=True,
-#             output_scores=True,
-#             do_sample=True,
-#             top_p = .65,
-#             #top_k = 40,
-#             # pad_token_id=tokenizer.eos_token_id,
-#             # eos_token_id=tokenizer.eos_token_id,
-#             repetition_penalty = 3.3,
-#             temperature = 1.75
-#             )
-#     decoded_ouput = tokenizer.decode(outputs[0][0], skip_special_tokens = True)
-#     print(decoded_ouput)
-#     final_output = decoded_ouput.split('[/GENERATED CHECK]:')
-#     final_output = final_output[1].split('|end|')
-#     print(len(final_output))
-    
-#     torch.cuda.empty_cache()
-
-    
-#     return final_output[0]
-
-
-# async def final_prompt(prompt : str, vb, seed : int, turn_num : int):
-
-#     similarities = await vb.best_result(0.0,'all-MiniLM-L6-v2', prompt, seed)
-
-
-#     extra_info = ""
-
-#     initial_confidence = 0.0
-
-#     for item in similarities:
-#         name, entry, confidence = item
-#         text = entry['text']
-
-#         userin_list = prompt.split(' ')
-#         text_split = text.split(' ')
-
-#         is_in = False
-
-#         for item in userin_list:
-#             if item not in text_split:
-#                 continue
-#             else:
-#                 is_in = True
-
-#         if is_in == False:
-#             continue
-
-#         if confidence > initial_confidence and (name != "SESSION"):
-#             print(name)
-#             initial_confidence = confidence
-#             extra_info = f"{extra_info} {name} {entry['text']},"
-
-#         elif ((confidence > initial_confidence) and (name == "SESSION")) or (turn_num != 0):
-#             print(name)
-#             initial_confidence = confidence
-#             extra_info = f"{extra_info} {name} {entry['text']},"
-
-#     final_input = f"|user|: [/EXTRA INFO]: {extra_info} {prompt}"
-#     print(final_input)
-
-#     return final_input
-
-
-#'all-MiniLM-L6-v2' 
 class player:
 
     def __init__(self, Might, Agility, Presence, Wisdom, Spirit, hp, campaign_dict):
@@ -263,6 +101,7 @@ class campaign:
         Flow works as follows: \
         use the turn_num to get the index of scene_and_options \
         from scene_and_options you get the description and options of the scene \
+        you can use get_background to get the background field for each scene \
         have the player choose a choice from the options given \
         Pop the user input into user_choice along with the given options \
         You will get the option info and choice index from user_choice \
@@ -275,6 +114,7 @@ class campaign:
 
         self.turn_num = 0
 
+    @classmethod
     async def create_dm(cls):
         r'''
         returns seed, \
@@ -292,8 +132,7 @@ class campaign:
         await instance.vb.add_session('all-MiniLM-L6-v2', "start of session", instance.seed)
 
         instance.player_says = None
-
-        instance.scene = instance.vb.find_scene()
+        
         instance.roll_number = 0
 
         instance.check = None #If false, check required, else generate outcome
@@ -311,21 +150,31 @@ class campaign:
         match campaign_num:
 
             case 0:
-                with open('Datasets\\echoes_of_the_force.json', 'r') as file:
+                with open('Datasets/echoes_of_the_force.json', 'r') as file:
                     instance.campaign = json.load(file)
             case 1:
-                with open('Datasets\\the_last_ember_of_balance.json', 'r') as file:
+                with open('Datasets/the_last_ember_of_balance.json', 'r') as file:
                     instance.campaign = json.load(file)
             case 2:
-                with open('Datasets\\the_shattered_crown_of_elarion.json', 'r') as file:
+                with open('Datasets/the_shattered_crown_of_elarion.json', 'r') as file:
                     instance.campaign = json.load(file)
             case 3:
-                with open('Datasets\\the_shattered_hourglass.json', 'r') as file:
+                with open('Datasets/the_shattered_hourglass.json', 'r') as file:
                     instance.campaign = json.load(file)
             case 4:
-                with open('Datasets\\echoes_of_the_ember_king_v2.json', 'r') as file:
+                with open('Datasets/echoes_of_the_ember_king_v2.json', 'r') as file:
                     instance.campaign = json.load(file)
-
+                    
+    def get_background(self):
+        r'''
+        parameters: choice_index which helps to specify the exact scene we are getting information from \
+        returns: the background information of the specified scene'''
+        scenes = self.campaign['scenes'][self.turn_num]
+        
+        return scenes['background']
+        
+        
+        
     def get_campaign(self):
         r'''
         converts the campaign data into usable data for the scenes \
@@ -349,12 +198,12 @@ class campaign:
             i += 1
             self.options.append(item['option'])
 
-    def get_option_info(self, choice_index):
+    def get_option_info(self, turn_num, choice_index):
         r'''
         parameters: choice_index which helps to specify the exact scene we are getting information from \
         returns: the choice description, the ability check required, the dc (minimum) for said choice, and the dice required'''
 
-        choice = self.campaign['scenes'][self.turn_num]['choices'][choice_index-1]
+        choice = self.campaign['scenes'][turn_num]['choices'][choice_index]
         ability_check = choice['ability']
         dc = choice['dc']
         dice = choice['dice']
@@ -367,38 +216,40 @@ class campaign:
         parameters: the options for the given scene, user input \
         returns: option info from get_option_info, and the choice_index which is needed for deciding how to move forward with such a choice'''
 
+        choice_index = -1
         try:
-
-            for item in options:
-
-                if userin in item['option']:
-
-                    choice_index = options.index(item)
-
-                elif userin.isdigit() and 1 <= int(userin) <= len(options):
-                    choice_index = int(userin) - 1
+            if userin.isdigit() and 1 <= int(userin) <= len(options):
+                choice_index = int(userin) - 1
+            else:
+                for i, item in enumerate(options):
+                    if userin.lower() in item['option'].lower():
+                        choice_index = i
+                        break
+        
+            if choice_index == -1:
+                return "Error", -1
 
         except Exception as e:
             print(e)
-            return "Error"
+            return "Error", -1
 
 
         option_info = self.get_option_info(self.turn_num, choice_index)
 
         return option_info, choice_index
     
-    def get_success_or_failure(self, choice_index, roll_result):
+    def get_success_or_failure(self, turn_num, choice_index, roll_result):
         r'''
         parameters: the choice index, and the users roll result \
         returns: the result of thier roll on the choice given the dc, the full choice incase that is needed, and the narration that comes with it
         '''
 
-        choice, ability_check, dc, dice = self.get_option_info(self.turn_num, choice_index)
+        choice, ability_check, dc, dice = self.get_option_info(turn_num, choice_index)
 
         if roll_result >= dc:
-            return "success", choice['success'], choice['success']['narration']
+            return "success", choice['success'], choice['success'].get('narration')
         else:
-            return "failure", choice['failure'], choice['failure']['narration']
+            return "failure", choice['failure'], choice['failure'].get('narration')
     
 
 
@@ -406,13 +257,13 @@ class campaign:
 
     async def add_user_data(instance, name, username, password):
 
-        await instance.bvb.add_user_data(name, username, password)
+        await instance.vb.add_user_data(name, username, password)
 
         return "added data"
     
     async def check_creds(instance, username, password):
 
-        result = await instance.bvb.check_user_data(username, password)
+        result = await instance.vb.check_user_data(username, password)
 
         print("From backend: ", result)
 
@@ -443,6 +294,8 @@ def mock_campaign():
     player1 = player(12, 12, 12, 12, 12, 12, mock_campaign.campaign)
 
     turn_num = 0
+    
+    print(mock_campaign.get_background())
 
     for description, options in mock_campaign.scene_and_options:
 
@@ -482,99 +335,3 @@ def mock_campaign():
 
 
 
-#While the output of success is not failure, keep going
-
-
-#For the front-end:
-
-
-
-# class DungeonMaster:
-
-#     check = False
-
-#     def __init__(self):
-#         self.turn_num = 0
-        
-#         self.vb = None
-        
-#     @classmethod
-#     async def create_dm(cls):
-        
-#         instance = cls()
-
-#         instance.model, instance.tokenizer = def_model()
-
-#         instance.vb = vector_database.get_from_db()
-#         await instance.vb.connect()
-#         instance.seed = await instance.vb.get_session_id() + 1
-#         print("Seed: ", instance.seed)
-#         await instance.vb.add_session('all-MiniLM-L6-v2', "start of session", instance.seed)
-
-#         instance.player_says = None
-
-#         instance.scene = instance.vb.find_scene()
-#         instance.roll_number = 0
-
-#         instance.check = None #If false, check required, else generate outcome
-
-#         return instance
-    
-#     @classmethod
-#     async def create_backend(cls, player1 : player, player2 = None, player3 = None, player4 = None):
-#         instance = cls()
-
-#         instance.bvb = vector_database.use_vector_db()
-#         await instance.bvb.connect()
-
-#         instance.player1 = player1
-#         instance.player2 = player2
-#         instance.player3 = player3
-#         instance.player4 = player4
-
-#         return instance
-        
-
-#     async def model_output(instance, userin : str, player):
-
-
-
-#     async def add_user_data(instance, name, username, password):
-
-#         await instance.bvb.add_user_data(name, username, password)
-
-#         return "added data"
-    
-#     async def check_creds(instance, username, password):
-
-#         result = await instance.bvb.check_user_data(username, password)
-
-#         print("From backend: ", result)
-
-#         return result
-    
-#     def load_campaign(instance):
-
-#         campaign_num = instance.seed % 5
-
-#         match campaign_num:
-
-#             case 0:
-#                 with open('Datasets\echoes_of_the_force.json', 'r') as file:
-#                     instance.campaign = json.load(file)
-#             case 1:
-#                 with open('Datasets\the_last_ember_of_balance.json', 'r') as file:
-#                     instance.campaign = json.load(file)
-#             case 2:
-#                 with open('Datasets\the_shattered_crown_of_elarion.json', 'r') as file:
-#                     instance.campaign = json.load(file)
-#             case 3:
-#                 with open('Datasets\the_shattered_hourglass.json', 'r') as file:
-#                     instance.campaign = json.load(file)
-#             case 4:
-#                 with open('Datasets\echoes_of_the_ember_king_v2.json', 'r') as file:
-#                     instance.campaign = json.load(file)
-
-
-
-    

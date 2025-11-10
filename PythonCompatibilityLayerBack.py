@@ -4,6 +4,7 @@ import PythonBackEnd
 import asyncio
 import traceback
 import nest_asyncio
+import random
 
 app = Flask(__name__)
 CORS(app)
@@ -15,76 +16,36 @@ nest_asyncio.apply()
 loop = asyncio.new_event_loop()
 asyncio.set_event_loop(loop)
 
+game_instance = None
+player_character = None
+
 def initialize_app(username=None):
-    return loop.run_until_complete(async_initialize(username))
+    global game_instance
+    game_instance = loop.run_until_complete(async_initialize(username))
 
 async def async_initialize(username=None):
-    model = await PythonBackEnd.DungeonMaster.create_dm(username)
-    backend = await PythonBackEnd.DungeonMaster.create_backend()
-    return model, backend
+    instance = await PythonBackEnd.campaign.create_dm()
+    PythonBackEnd.campaign.create_campaign_from_file(instance, instance.seed)
+    instance.get_campaign()
+    return instance
 
 # Initially create with no username - will be updated when user logs in
 try:
-    model, backend = initialize_app()
+    initialize_app()
 except Exception as e:
     print("Error initializing: ", e)
     raise
 
 # Add function to reinitialize DM with character data when user logs in
 def reinitialize_dm(username):
-    global model, backend
+    global game_instance
     try:
-        model, backend = initialize_app(username)
+        initialize_app(username)
         return True
     except Exception as e:
         print("Error reinitializing DM:", e)
         return False
 
-
-turn_num = 0
-
-class userin:
-
-    def __init__(self):
-        self.userin = ""
-        self.check = None
-
-    def set_userin(self, input):
-        self.userin = input
-
-    def get_userin(self):
-        try:
-            int(self.userin)
-            print(True)
-            self.check=True
-            return self.userin
-        except ValueError:
-            print(False)
-            self.check=False
-            return self.userin
-
-        # model_out = loop.run_until_complete(model.model_output(self.userin))
-        # return model_out if self.userin != "" else "Roll for Initiative"
-
-    def get_scene(self):
-        return model.scene
-
-    def roll(self, roll):
-        print(roll)
-        if roll == True:
-            print(True)
-        else:
-            print(False)
-        return loop.run_until_complete(model.model_output_check(self.userin, roll))
-
-    def send_userin(self):
-        if self.check == True:
-            roll = True if int(self.userin) > 11 else False
-            return loop.run_until_complete(model.model_output_check(self.userin, roll))
-        else:
-            result = loop.run_until_complete(model.model_output(self.userin))
-            return result if self.userin != "" else "Roll for Initiative"
-    
 class userData:
 
     def set_info(self, name, username, password):
@@ -101,101 +62,108 @@ class userData:
     def get_password(self):
         return self.password
     
-    def get_scene(self):
-        return model.get_scene()
-    
     async def add_user_data_to_db(self):
-
-        return loop.run_until_complete(backend.add_user_data(self.name, self.username, self.password))
+        return await game_instance.add_user_data(self.name, self.username, self.password)
     
     @staticmethod
     async def check_credentials(username, password):
-
         print(username, password)
-
-        result = loop.run_until_complete(backend.check_creds(username, password))
-
+        result = await game_instance.check_creds(username, password)
         print("From userData class: ", result)
-
         return result
-
-    
-userInput = userin()
 
 lock = False
 
 @app.route("/userin", methods=['POST'])
 def process_message():
-    global lock, model, backend
+    global lock, game_instance, player_character
     if not lock:
         try:
-            data = request.get_json()
-            if not data:
-                return jsonify({'message': 'No data received'}), 400
-
-            message = data.get('message')
-            if not message:
-                return jsonify({'message': 'No message provided'}), 400
-
-            username = data.get('username')
-            if not username:
-                return jsonify({'message': 'No username provided'}), 400
-
-            userInput.set_userin(message)
-            
-            try:
-                # Check if we have a valid model instance
-                if not model:
-                    model, backend = initialize_app(username)
-                # Check if we need to reinitialize with character data
-                elif hasattr(model, 'player') and model.player == "[/PLAYER]: A wandering adventurer seeking their destiny":
-                    print(f"Reinitializing model for user: {username}")
-                    model, backend = initialize_app(username)
-            except Exception as reinit_error:
-                print(f"Error reinitializing model: {reinit_error}")
-                traceback.print_exc()
-            
             lock = True
+            data = request.get_json()
+            message = data.get('message')
+            username = data.get('username')
+            step = data.get('step')
+
+            if not game_instance:
+                reinitialize_dm(username)
+
+            if not player_character:
+                player_character = PythonBackEnd.player(10, 10, 10, 10, 10, 20, game_instance.campaign)
+
+            description, options = game_instance.scene_and_options[game_instance.turn_num]
             
-            userinput = userInput.get_userin()
-            print(f"Python received from {username}: {userinput}")
-            model_output = userInput.send_userin()
+            if step == 'get_roll_info':
+                option_info, choice_index = game_instance.user_choice(options, message)
+                if option_info == "Error":
+                    return jsonify({'message': "Invalid choice. Please try again."}), 400
+                
+                choice, ability_check, dc, dice = option_info
+                return jsonify({
+                    'description' : f"{description}",
+                    'requires_roll': True,
+                    'ability': ability_check,
+                    'dc': dc,
+                    'dice': dice
+                })
+
+            elif step == 'get_outcome':
+                roll = data.get('roll')
+                description = data.get('description')
+                option_info, choice_index = game_instance.user_choice(options, message)
+                
+                success, outcome_description, narration = game_instance.get_success_or_failure(game_instance.turn_num, choice_index, roll)
+
+                if 'ability_change' in outcome_description:
+                    player_character.change_ability(outcome_description['ability_change'], roll)
+
+                game_instance.turn_num += 1
+
+                if game_instance.turn_num >= len(game_instance.scene_and_options):
+                    return jsonify({
+                        'message': f"{description}\n\n{narration}",
+                        'scene': "The campaign has ended.",
+                        'options': []
+                    })
+
+                next_description, next_options = game_instance.scene_and_options[game_instance.turn_num]
+                
+                return jsonify({
+                    'message': f"{narration}\n\n{next_description}\n",
+                    'scene': game_instance.get_background(),
+                    'options': [opt['option'] for opt in next_options]
+                })
 
         except Exception as e:
             print(f"Error processing message: {str(e)}")
             traceback.print_exc()
-            lock = False
             return jsonify({'message': f'Error processing message: {str(e)}'}), 500
-        
         finally:
             lock = False
-
-        return jsonify({
-            'message': model_output,
-            'scene': userInput.get_scene(),
-            'username': username
-        })
     else:
         return jsonify({'message': 'DM is typing, please wait...'})
 
 @app.route("/DMout", methods=['GET'])
 def output_message():
-    global lock
+    global game_instance
     try:
-        lock = False
-        scene = userInput.get_scene()
-        initial_message = scene
+        if not game_instance:
+            initialize_app()
+        
+        game_instance.turn_num = 0
+        description, options = game_instance.scene_and_options[game_instance.turn_num]
 
-        lock = False
         return jsonify({
-            "dm_text": initial_message,
+            "dm_text": description,
             "status": "ready",
-            "message": initial_message,
-            "scene": scene
+            "message": description,
+            "scene": game_instance.get_background(),
+            "options": [opt['option'] for opt in options]
         }), 200
     
     except Exception as e:
         print(e)
+        return jsonify({"error": "Failed to load campaign start.", "details": str(e)}), 500
 
 @app.route("/userData", methods=['POST'])
 def process_userdata():
@@ -203,38 +171,15 @@ def process_userdata():
         data = request.get_json()
         user_data = userData()
         user_data.set_info(data.get('name'), data.get('username'), data.get('password'))
-        print(user_data.get_username(), user_data.get_name(), user_data.get_password())
-
+        
         result = loop.run_until_complete(user_data.add_user_data_to_db())
 
         return jsonify({"userData" : data, "status" : "ready", "message" : result}), 200
 
     except Exception as e:
-        print("Error receiving userData, Line 106", e)
+        print("Error receiving userData", e)
         traceback.print_exc()
         return jsonify({"error": "Failed to save user data.", "details": str(e)}), 500
-
-
-@app.route("/roll", methods=['POST'])
-def process_roll():
-    global lock
-    print(f"Lock is: {lock}")
-    if not lock:
-        try:
-            data = request.get_json()
-            model_output = userInput.roll(data.get('command'))
-
-            response_text = f"{model_output}"
-
-            return jsonify({
-                'message':response_text
-            })
-        
-        except Exception as e:
-            return jsonify({'message': 'Something went wrong, error output on line 15'})
-    else:
-        return jsonify({'message': 'DM is typing, please wait...'})
-    
 
 @app.route("/credentials", methods=['POST', 'OPTIONS'])
 def check_creds():
@@ -245,16 +190,13 @@ def check_creds():
         username = data.get('username')
         user_creds = loop.run_until_complete(userData.check_credentials(username, data.get('password')))
 
-        print(user_creds)
-
-        # If login successful, reinitialize DM with character data
         if isinstance(user_creds, bool) and user_creds:
             reinitialize_dm(username)
 
         return jsonify({"userCreds" : data, "status":"ready", "message" : user_creds}), 200
     
     except Exception as e:
-        print("Error receiving userCreds, Line 124", e)
+        print("Error receiving userCreds", e)
         traceback.print_exc()
         return jsonify({"error" : "Failed to retrieve user credentials", "details" : str(e)}), 500
     
@@ -266,7 +208,7 @@ def get_character_data():
         if not username:
             return jsonify({"error": "Username is required"}), 400
 
-        character_data = loop.run_until_complete(model.vb.get_character(username))
+        character_data = loop.run_until_complete(game_instance.vb.get_character(username))
         return jsonify({"characterData": character_data}), 200
     except Exception as e:
         print("Error fetching character data:", e)
@@ -279,8 +221,7 @@ def process_characters():
         data = request.get_json()
         username = data.get('username')
         
-        # Store character data in database
-        success, message = loop.run_until_complete(backend.bvb.add_user_character(
+        success, message = loop.run_until_complete(game_instance.vb.add_user_character(
             username=username,
             name=data.get('name'),
             race=data.get('race'),
