@@ -181,6 +181,18 @@ warnings.filterwarnings("ignore", category=UserWarning, module="peft.peft_model"
 class player:
 
     def __init__(self, Might, Agility, Presence, Wisdom, Spirit, hp, campaign_dict):
+        r'''
+        Character creation \
+        parameters: The attribute scores for each player. Needed campaign dict because the original campaigns dicts determine skills for players. \
+        
+        To use: \
+        Initialize class to create player \
+        run get_skills function to get player skills \
+        Don't need getters due to class attributes \
+        run change_ability to change abilities \
+        run level_up to level up character, each automatically starts at 1 \
+        run add_item to add items
+        '''
         self.attributes = {
             'Might': Might,
             'Agility': Agility,
@@ -408,75 +420,65 @@ class campaign:
 
 
 
-print("RUNNING MOCK CAMPAIGN")
 
 
-#This means that we get the following data from the json in this format:
-#data['scenes'] gives us a list of scenes
-#within data['scenes'][i] we have to follow the following scheme for information
-#id gives us id, act gives us the act, title gives us the title
-#description gives us the scene description. 
-#choices then becomes a list
-#option, ability, dc, dice, and success/failure are keys
+def mock_campaign():
+    r'''
+    used for mock campaign and debugging'''
 
-#campaign has methods for:
-#creating campaign data from the file
-#getting turn information
-#getting option information
+    print("RUNNING MOCK CAMPAIGN")
 
-#So for the mock, we need to start with the mock player
+    mock_campaign = campaign()
 
-mock_campaign = campaign()
-
-mock_campaign.create_campaign_from_file(23)
+    mock_campaign.create_campaign_from_file(23)
 
 
-mock_campaign.get_campaign()
+    mock_campaign.get_campaign()
 
-# for description, options in mock_campaign.scene_and_options:
-#     print("DESCRIPTION: ", description)
-#     for item in options:
-#         print(f"Option: {item['option']}")
+    # for description, options in mock_campaign.scene_and_options:
+    #     print("DESCRIPTION: ", description)
+    #     for item in options:
+    #         print(f"Option: {item['option']}")
 
-player1 = player(12, 12, 12, 12, 12, 12, mock_campaign.campaign)
+    player1 = player(12, 12, 12, 12, 12, 12, mock_campaign.campaign)
 
-turn_num = 0
+    turn_num = 0
 
-for description, options in mock_campaign.scene_and_options:
+    for description, options in mock_campaign.scene_and_options:
 
-    print(f"{description}")
+        print(f"{description}")
 
-    for i in range(len(options)):
+        for i in range(len(options)):
 
-        print(f"Option {i+1}. {options[i]['option']}")
-    
-    print("\n---------\n")
+            print(f"Option {i+1}. {options[i]['option']}")
+        
+        print("\n---------\n")
 
-    
-    userin = input("What will you do?: ")
+        
+        userin = input("What will you do?: ")
 
-    if userin.lower() in ['exit', 'quit']:
-        break
+        if userin.lower() in ['exit', 'quit']:
+            break
 
-    option_info, choice_index = mock_campaign.user_choice(options, userin)
+        option_info, choice_index = mock_campaign.user_choice(options, userin)
 
-    print("\n---------\n")
+        print("\n---------\n")
 
-    roll_prompt = input(f'Roll for {option_info[1]} (d{option_info[3]}), would you like to roll (y/N): ')
+        roll_prompt = input(f'Roll for {option_info[1]} (d{option_info[3]}), would you like to roll (y/N): ')
 
-    if roll_prompt.lower() == 'y':
-        user_roll = random.randint(1, int(option_info[3].replace('1d', '')))
-        print(f"you rolled: {user_roll}")
-    else:
-        break
+        if roll_prompt.lower() == 'y':
+            user_roll = random.randint(1, int(option_info[3].replace('1d', '')))
+            print(f"you rolled: {user_roll}")
+        else:
+            break
 
-    print("\n---------\n")
+        print("\n---------\n")
 
-    success, outcome_description, narration = mock_campaign.get_success_or_failure( turn_num, choice_index, user_roll)
+        success, outcome_description, narration = mock_campaign.get_success_or_failure( turn_num, choice_index, user_roll)
 
-    print(f"\n{narration}\n\n")
+        print(f"\n{narration}\n\n")
 
-    player1.change_ability(outcome_description['ability_change'], random.randint(1, 20))
+        player1.change_ability(outcome_description['ability_change'], random.randint(1, 20))
 
 
 
