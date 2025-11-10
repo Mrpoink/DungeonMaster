@@ -1,0 +1,2187 @@
+{
+  "meta": {
+    "title": "The Shattered Crown of Elarion",
+    "version": "1.0",
+    "notes": "LOTR-inspired epic. Classic hopeful tone, lyrical narration with verses in plain text. Familiar places and figures as references. Abilities 0–30 (sum 120), skill thresholds 10/20/25. Shadow corruption meter with multiple endings."
+  },
+  "abilities": {
+    "Intellect": {
+      "skills": [
+        {
+          "name": "Lore",
+          "threshold": 10
+        },
+        {
+          "name": "Investigation",
+          "threshold": 20
+        },
+        {
+          "name": "Engineering",
+          "threshold": 25
+        }
+      ]
+    },
+    "Might": {
+      "skills": [
+        {
+          "name": "Athletics",
+          "threshold": 10
+        },
+        {
+          "name": "Brawling",
+          "threshold": 20
+        },
+        {
+          "name": "Endurance",
+          "threshold": 25
+        }
+      ]
+    },
+    "Agility": {
+      "skills": [
+        {
+          "name": "Stealth",
+          "threshold": 10
+        },
+        {
+          "name": "Acrobatics",
+          "threshold": 20
+        },
+        {
+          "name": "Sleight of Hand",
+          "threshold": 25
+        }
+      ]
+    },
+    "Presence": {
+      "skills": [
+        {
+          "name": "Persuasion",
+          "threshold": 10
+        },
+        {
+          "name": "Deception",
+          "threshold": 20
+        },
+        {
+          "name": "Performance",
+          "threshold": 25
+        }
+      ]
+    },
+    "Wisdom": {
+      "skills": [
+        {
+          "name": "Insight",
+          "threshold": 10
+        },
+        {
+          "name": "Survival",
+          "threshold": 20
+        },
+        {
+          "name": "Medicine",
+          "threshold": 25
+        }
+      ]
+    },
+    "Spirit": {
+      "skills": [
+        {
+          "name": "Faith",
+          "threshold": 10
+        },
+        {
+          "name": "Willpower",
+          "threshold": 20
+        },
+        {
+          "name": "Attunement",
+          "threshold": 25
+        }
+      ]
+    }
+  },
+  "rules": {
+    "dice": "1d20",
+    "check": "total = d20 + floor(ability/5); success if total >= dc",
+    "sum_of_abilities": 120,
+    "win_condition": "Reach a positive ending with all abilities > 0",
+    "lose_condition": "Any ability <= 0 routes to 'ending_shadow_claimed'"
+  },
+  "shadow": {
+    "name": "shadow",
+    "start": 0,
+    "light_threshold": -5,
+    "dark_threshold": 5
+  },
+  "acts": {
+    "I": "The Call Beneath the Hill",
+    "II": "Through Wild and Ruin",
+    "III": "The Crown of Elarion",
+    "IV": "Light Against Shadow"
+  },
+  "scenes": [
+    {
+      "id": "hill_shard",
+      "act": "I",
+      "title": "Shard Beneath the Hill",
+      "description": "In a rabbit-scratched hollow you find a thin crescent of silver that glows as if remembering dawn. Elaria later sings: 'Bright was the brow of Elarion's crown, star-set and sorrow-spun.'",
+      "background": "Green hills breathe bread-warm air; larks stitch sunlight into the morning as hedgerows whisper of older days. Ale and pipe-smoke mingle with apple blossom; laughter carries over low fences.",
+      "choices": [
+        {
+          "option": "Show the shard to your kindly neighbor",
+          "ability": "Presence",
+          "dc": 11,
+          "dice": "1d20",
+          "success": {
+            "next": "bree_greenway",
+            "narration": "They gasp and press a meat pie on you 'for the road'. Hope tastes like gravy.",
+            "ability_change": {
+              "Presence": -1,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "bree_greenway",
+            "narration": "They tut about old junk; you keep your wonder quiet.",
+            "ability_change": {
+              "Presence": -2
+            }
+          },
+          "shadow_change": -1
+        },
+        {
+          "option": "Hide it and study it by lamplight (Lore)",
+          "ability": "Intellect",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "bree_greenway",
+            "narration": "You trace faint runes: 'Elen... arion...'",
+            "ability_change": {
+              "Intellect": -1,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "bree_greenway",
+            "narration": "Your notes smudge; the glow persists anyway.",
+            "ability_change": {
+              "Intellect": -2
+            }
+          },
+          "shadow_change": 0,
+          "gate": {
+            "skill": "Lore",
+            "min": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "bree_greenway",
+      "act": "I",
+      "title": "Road to Bree",
+      "description": "You set out with a small pack, the shard wrapped in cloth. The Greenway smells of rain and horses.",
+      "background": "Green hills breathe bread-warm air; larks stitch sunlight into the morning as hedgerows whisper of older days. Ale and pipe-smoke mingle with apple blossom; laughter carries over low fences.",
+      "choices": [
+        {
+          "option": "Walk light-foot with cheerful song",
+          "ability": "Presence",
+          "dc": 11,
+          "dice": "1d20",
+          "success": {
+            "next": "prancing_pony",
+            "narration": "A cart-driver smiles and offers a ride.",
+            "ability_change": {
+              "Presence": -1,
+              "Agility": 1
+            }
+          },
+          "failure": {
+            "next": "prancing_pony",
+            "narration": "Your tune goes thin; you hum anyway.",
+            "ability_change": {
+              "Presence": -2
+            }
+          },
+          "shadow_change": -1
+        },
+        {
+          "option": "Keep a weather-eye for trouble",
+          "ability": "Wisdom",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "prancing_pony",
+            "narration": "You spot muddy prints and give them wide berth.",
+            "ability_change": {
+              "Wisdom": -1
+            }
+          },
+          "failure": {
+            "next": "prancing_pony",
+            "narration": "You miss a turning and circle back, wiser.",
+            "ability_change": {
+              "Wisdom": -2
+            }
+          },
+          "shadow_change": 0
+        }
+      ]
+    },
+    {
+      "id": "prancing_pony",
+      "act": "I",
+      "title": "The Prancing Pony",
+      "description": "At Bree, buttered light spills from The Prancing Pony. Thalen the Ranger watches from the corner; Durin’s Kin boasts of a pickaxe that splits boulders like bread.",
+      "background": "Green hills breathe bread-warm air; larks stitch sunlight into the morning as hedgerows whisper of older days. Ale and pipe-smoke mingle with apple blossom; laughter carries over low fences.",
+      "choices": [
+        {
+          "option": "Introduce yourself plainly",
+          "ability": "Presence",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "fellowship_form",
+            "narration": "Thalen nods; trust begins with simple words.",
+            "ability_change": {
+              "Presence": -1,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "fellowship_form",
+            "narration": "Thalen arches a brow; patience yet.",
+            "ability_change": {
+              "Presence": -2
+            }
+          },
+          "shadow_change": -1
+        },
+        {
+          "option": "Share the shard’s glow under the table",
+          "ability": "Intellect",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "fellowship_form",
+            "narration": "Elaria’s eyes widen; Maedren murmurs of old songs.",
+            "ability_change": {
+              "Intellect": -1,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "fellowship_form",
+            "narration": "A patron squints; you snuff the light.",
+            "ability_change": {
+              "Intellect": -2
+            }
+          },
+          "shadow_change": 0
+        }
+      ]
+    },
+    {
+      "id": "fellowship_form",
+      "act": "I",
+      "title": "Company of Chance",
+      "description": "By firelight you speak of roads east. Maedren the Grey recites softly: 'Roads are made by feet and deeds; stars are found by hearts that heed.'",
+      "background": "Green hills breathe bread-warm air; larks stitch sunlight into the morning as hedgerows whisper of older days. Ale and pipe-smoke mingle with apple blossom; laughter carries over low fences.",
+      "choices": [
+        {
+          "option": "Plead for guidance from Maedren",
+          "ability": "Presence",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "greenway_watch",
+            "narration": "He smiles: 'We go together then.'",
+            "ability_change": {
+              "Presence": -1,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "greenway_watch",
+            "narration": "He strokes his beard: 'We shall see.'",
+            "ability_change": {
+              "Presence": -2
+            }
+          },
+          "shadow_change": -1
+        },
+        {
+          "option": "Map a cautious route to Rivendell",
+          "ability": "Intellect",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "greenway_watch",
+            "narration": "Thalen approves the prudent marks.",
+            "ability_change": {
+              "Intellect": -1,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "greenway_watch",
+            "narration": "You redraw twice; better now than later.",
+            "ability_change": {
+              "Intellect": -2
+            }
+          },
+          "shadow_change": 0
+        }
+      ]
+    },
+    {
+      "id": "greenway_watch",
+      "act": "I",
+      "title": "Watch on the Greenway",
+      "description": "Under a hedgerow, you share bread and speak of old kings while stars kindle.",
+      "background": "Green hills breathe bread-warm air; larks stitch sunlight into the morning as hedgerows whisper of older days. Ale and pipe-smoke mingle with apple blossom; laughter carries over low fences.",
+      "choices": [
+        {
+          "option": "Stand first watch with Thalen",
+          "ability": "Wisdom",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "troll_road",
+            "narration": "You hear foxes and far water; no harm comes.",
+            "ability_change": {
+              "Wisdom": -1
+            }
+          },
+          "failure": {
+            "next": "troll_road",
+            "narration": "Sleep tugs your eyes; Thalen covers with a nod.",
+            "ability_change": {
+              "Wisdom": -2
+            }
+          },
+          "shadow_change": 0
+        },
+        {
+          "option": "Tell a small joke to hearten the camp",
+          "ability": "Presence",
+          "dc": 11,
+          "dice": "1d20",
+          "success": {
+            "next": "troll_road",
+            "narration": "Even Durin’s Kin snorts into his beard.",
+            "ability_change": {
+              "Presence": -1
+            }
+          },
+          "failure": {
+            "next": "troll_road",
+            "narration": "Your timing stumbles; Elaria's smile steadies you.",
+            "ability_change": {
+              "Presence": -2
+            }
+          },
+          "shadow_change": -1
+        }
+      ]
+    },
+    {
+      "id": "troll_road",
+      "act": "I",
+      "title": "Old Troll Road",
+      "description": "By a toppled stone, bones lie cracked. A smell of damp leather and old anger lingers.",
+      "background": "Green hills breathe bread-warm air; larks stitch sunlight into the morning as hedgerows whisper of older days. Thistles grip fallen banners; the wind knows old names.",
+      "choices": [
+        {
+          "option": "Sneak past the lair (Stealth)",
+          "ability": "Agility",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "weary_bridge",
+            "narration": "You pass like dew that never fell.",
+            "ability_change": {
+              "Agility": -1
+            }
+          },
+          "failure": {
+            "next": "weary_bridge",
+            "narration": "A pebble skitters; the dark grumbles, but sleeps.",
+            "ability_change": {
+              "Agility": -2
+            }
+          },
+          "shadow_change": 0,
+          "gate": {
+            "skill": "Stealth",
+            "min": 10
+          }
+        },
+        {
+          "option": "Set a simple warding charm from Maedren’s kit",
+          "ability": "Spirit",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "weary_bridge",
+            "narration": "Lantern-light feels braver; shadows step back.",
+            "ability_change": {
+              "Spirit": -1
+            }
+          },
+          "failure": {
+            "next": "weary_bridge",
+            "narration": "The charm flickers; your courage holds steady.",
+            "ability_change": {
+              "Spirit": -2
+            }
+          },
+          "shadow_change": 0
+        }
+      ]
+    },
+    {
+      "id": "weary_bridge",
+      "act": "I",
+      "title": "Weary Bridge at Twilight",
+      "description": "A cracked bridge crosses a brown river. Elaria sings a walking verse about stones that remember gentle feet.",
+      "background": "Green hills breathe bread-warm air; larks stitch sunlight into the morning as hedgerows whisper of older days. Thistles grip fallen banners; the wind knows old names.",
+      "choices": [
+        {
+          "option": "Test each flagstone methodically",
+          "ability": "Intellect",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "eastward_turn",
+            "narration": "You mark safe stones with chalk.",
+            "ability_change": {
+              "Intellect": -1,
+              "Agility": 1
+            }
+          },
+          "failure": {
+            "next": "eastward_turn",
+            "narration": "Your foot dips; Durin’s Kin hauls you back.",
+            "ability_change": {
+              "Intellect": -2
+            }
+          },
+          "shadow_change": 0
+        },
+        {
+          "option": "Leap the wider gaps with a laugh",
+          "ability": "Agility",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "eastward_turn",
+            "narration": "Your light step heartens the others.",
+            "ability_change": {
+              "Agility": -1,
+              "Presence": 1
+            }
+          },
+          "failure": {
+            "next": "eastward_turn",
+            "narration": "A scrape kisses your knee; onward still.",
+            "ability_change": {
+              "Agility": -2
+            }
+          },
+          "shadow_change": 0
+        }
+      ]
+    },
+    {
+      "id": "eastward_turn",
+      "act": "I",
+      "title": "Turning East",
+      "description": "At a crossroads cairn, Thalen points toward the Last Homely House. 'If Elrond cannot help, none can.'",
+      "background": "Green hills breathe bread-warm air; larks stitch sunlight into the morning as hedgerows whisper of older days. Harp strings seem to hang in the air; starlight feels close enough to touch.",
+      "choices": [
+        {
+          "option": "Agree and cheer the pace",
+          "ability": "Presence",
+          "dc": 11,
+          "dice": "1d20",
+          "success": {
+            "next": "rivendell_gate",
+            "narration": "Spirits lift; feet find a lighter rhythm.",
+            "ability_change": {
+              "Presence": -1
+            }
+          },
+          "failure": {
+            "next": "rivendell_gate",
+            "narration": "Weariness yawns, but hope keeps time.",
+            "ability_change": {
+              "Presence": -2
+            }
+          },
+          "shadow_change": -1
+        },
+        {
+          "option": "Study the cairn’s carvings (Lore)",
+          "ability": "Intellect",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "rivendell_gate",
+            "narration": "Old Tengwar names: 'Beren... Lúthien...' Courage rises like a blush.",
+            "ability_change": {
+              "Intellect": -1,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "rivendell_gate",
+            "narration": "Dust hides a line; you catch enough.",
+            "ability_change": {
+              "Intellect": -2
+            }
+          },
+          "shadow_change": 0,
+          "gate": {
+            "skill": "Lore",
+            "min": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "rivendell_gate",
+      "act": "I",
+      "title": "Rivendell’s Falling Water",
+      "description": "Rivendell opens like a secret kept kindly. Harps speak softly as rivers do.",
+      "background": "Green hills breathe bread-warm air; larks stitch sunlight into the morning as hedgerows whisper of older days. Harp strings seem to hang in the air; starlight feels close enough to touch.",
+      "choices": [
+        {
+          "option": "Request counsel from Elrond’s folk",
+          "ability": "Presence",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "elven_council",
+            "narration": "Warm bread, wiser words; rest for sore feet.",
+            "ability_change": {
+              "Presence": -1,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "elven_council",
+            "narration": "A courteous bow returns a courteous wait.",
+            "ability_change": {
+              "Presence": -2
+            }
+          },
+          "shadow_change": 0
+        },
+        {
+          "option": "Study the shard with elven lorekeepers (Lore)",
+          "ability": "Intellect",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "elven_council",
+            "narration": "You learn of Elarion’s crown, shattered in sorrow, seeking those who choose hope.",
+            "ability_change": {
+              "Intellect": -2,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "elven_council",
+            "narration": "You lose yourself in marginalia; still useful.",
+            "ability_change": {
+              "Intellect": -3
+            }
+          },
+          "shadow_change": 0,
+          "gate": {
+            "skill": "Lore",
+            "min": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "elven_council",
+      "act": "I",
+      "title": "Counsel beneath Carven Beams",
+      "description": "Banners drift with painted histories. Maedren recites: 'Not all bright things are brittle; some bend like branches and endure.'",
+      "background": "Green hills breathe bread-warm air; larks stitch sunlight into the morning as hedgerows whisper of older days. Harp strings seem to hang in the air; starlight feels close enough to touch.",
+      "choices": [
+        {
+          "option": "Pledge to carry the shard toward Lothlórien",
+          "ability": "Spirit",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "eregon_ruins",
+            "narration": "Elvish eyes shine; blessings travel with you.",
+            "ability_change": {
+              "Spirit": -1,
+              "Presence": 1
+            }
+          },
+          "failure": {
+            "next": "eregon_ruins",
+            "narration": "A hush falls; your vow still stands.",
+            "ability_change": {
+              "Spirit": -2
+            }
+          },
+          "shadow_change": -1
+        },
+        {
+          "option": "Ask for more swords and gear",
+          "ability": "Might",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "eregon_ruins",
+            "narration": "Durin’s Kin claps your shoulder; packs grow sensible.",
+            "ability_change": {
+              "Might": -1
+            }
+          },
+          "failure": {
+            "next": "eregon_ruins",
+            "narration": "You get what you need, not what you want.",
+            "ability_change": {
+              "Might": -2
+            }
+          },
+          "shadow_change": 0
+        }
+      ]
+    },
+    {
+      "id": "eregon_ruins",
+      "act": "II",
+      "title": "Ruins of Eregion",
+      "description": "Broken forges sleep under nettles. Rings are only stories here—mostly.",
+      "background": "Old roads remember boot and hoof; barrows and broken watchtowers brood over windy heaths. Thistles grip fallen banners; the wind knows old names.",
+      "choices": [
+        {
+          "option": "Pick through the forges for clues",
+          "ability": "Intellect",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "hollin_wind",
+            "narration": "You find a stamping of the crown’s star-mark.",
+            "ability_change": {
+              "Intellect": -2
+            }
+          },
+          "failure": {
+            "next": "hollin_wind",
+            "narration": "Scraps only; a tale half-told.",
+            "ability_change": {
+              "Intellect": -3
+            }
+          },
+          "shadow_change": 0
+        },
+        {
+          "option": "Keep watch while others search",
+          "ability": "Wisdom",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "hollin_wind",
+            "narration": "You spot a pale wolf and it chooses another path.",
+            "ability_change": {
+              "Wisdom": -2
+            }
+          },
+          "failure": {
+            "next": "hollin_wind",
+            "narration": "Wind plays tricks; no harm done.",
+            "ability_change": {
+              "Wisdom": -3
+            }
+          },
+          "shadow_change": 0
+        }
+      ]
+    },
+    {
+      "id": "hollin_wind",
+      "act": "II",
+      "title": "Wind of Hollin",
+      "description": "Grass bows in long waves. Elaria hums: 'Go light, go true; where stars were strewn, we follow you.'",
+      "background": "Old roads remember boot and hoof; barrows and broken watchtowers brood over windy heaths. Thistles grip fallen banners; the wind knows old names.",
+      "choices": [
+        {
+          "option": "Set a steady marching rhythm",
+          "ability": "Presence",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "westgate_moria",
+            "narration": "Boots and hearts keep time together.",
+            "ability_change": {
+              "Presence": -2
+            }
+          },
+          "failure": {
+            "next": "westgate_moria",
+            "narration": "A blister complains; spirits do not.",
+            "ability_change": {
+              "Presence": -3
+            }
+          },
+          "shadow_change": -1
+        },
+        {
+          "option": "Scout ahead for safer ground",
+          "ability": "Agility",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "westgate_moria",
+            "narration": "You find a deer track that kisses dry stone.",
+            "ability_change": {
+              "Agility": -2
+            }
+          },
+          "failure": {
+            "next": "westgate_moria",
+            "narration": "A bramble snags your sleeve; a reminder to slow.",
+            "ability_change": {
+              "Agility": -3
+            }
+          },
+          "shadow_change": 0
+        }
+      ]
+    },
+    {
+      "id": "westgate_moria",
+      "act": "II",
+      "title": "West-gate of Moria",
+      "description": "Moon-letters bloom on stone. The door waits for the right word like a riddle with ears.",
+      "background": "Old roads remember boot and hoof; barrows and broken watchtowers brood over windy heaths. Stone smells of iron and memory; far hammers dream under the earth.",
+      "choices": [
+        {
+          "option": "Recall the tale of 'friend' (Lore)",
+          "ability": "Intellect",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "moria_halls",
+            "narration": "Elaria smiles; 'Mellon.' The doors sigh aside.",
+            "ability_change": {
+              "Intellect": -2,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "moria_halls",
+            "narration": "The word sticks; Maedren coughs and tries again.",
+            "ability_change": {
+              "Intellect": -3
+            }
+          },
+          "shadow_change": 0,
+          "gate": {
+            "skill": "Lore",
+            "min": 10
+          }
+        },
+        {
+          "option": "Brace the door with dwarven craft",
+          "ability": "Might",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "moria_halls",
+            "narration": "Stone respects strength spoken kindly.",
+            "ability_change": {
+              "Might": -2
+            }
+          },
+          "failure": {
+            "next": "moria_halls",
+            "narration": "Your shoulders complain; the door yields late.",
+            "ability_change": {
+              "Might": -3
+            }
+          },
+          "shadow_change": 0
+        }
+      ]
+    },
+    {
+      "id": "moria_halls",
+      "act": "II",
+      "title": "Halls Under the Mountain",
+      "description": "Pillars like forest trunks; quiet like a held breath. Your lamp writes small suns on the floor.",
+      "background": "Old roads remember boot and hoof; barrows and broken watchtowers brood over windy heaths. Stone smells of iron and memory; far hammers dream under the earth.",
+      "choices": [
+        {
+          "option": "Mark the path with chalk and string",
+          "ability": "Intellect",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "bridge_of_echos",
+            "narration": "Your trail sings a soft line through the dark.",
+            "ability_change": {
+              "Intellect": -2
+            }
+          },
+          "failure": {
+            "next": "bridge_of_echos",
+            "narration": "Twine catches; Elaria frees it with a smile.",
+            "ability_change": {
+              "Intellect": -3
+            }
+          },
+          "shadow_change": 0
+        },
+        {
+          "option": "Carry more load to spare your friends",
+          "ability": "Might",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "bridge_of_echos",
+            "narration": "Weight teaches you patience; others walk easier.",
+            "ability_change": {
+              "Might": -2,
+              "Presence": 1
+            }
+          },
+          "failure": {
+            "next": "bridge_of_echos",
+            "narration": "Your back protests; pride keeps pace.",
+            "ability_change": {
+              "Might": -3
+            }
+          },
+          "shadow_change": -1
+        }
+      ]
+    },
+    {
+      "id": "bridge_of_echos",
+      "act": "II",
+      "title": "Bridge of Echoes",
+      "description": "Across a narrow span, your footfalls return like other feet not here.",
+      "background": "Old roads remember boot and hoof; barrows and broken watchtowers brood over windy heaths. Stone smells of iron and memory; far hammers dream under the earth.",
+      "choices": [
+        {
+          "option": "Creep low and slow (Stealth)",
+          "ability": "Agility",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "drum_alarm",
+            "narration": "Even echoes whisper approval.",
+            "ability_change": {
+              "Agility": -2
+            }
+          },
+          "failure": {
+            "next": "drum_alarm",
+            "narration": "A buckle chimes; rocks answer.",
+            "ability_change": {
+              "Agility": -3
+            }
+          },
+          "shadow_change": 0,
+          "gate": {
+            "skill": "Stealth",
+            "min": 10
+          }
+        },
+        {
+          "option": "Speak a blessing against falling",
+          "ability": "Spirit",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "drum_alarm",
+            "narration": "A quiet courage tucks under your ribs.",
+            "ability_change": {
+              "Spirit": -2
+            }
+          },
+          "failure": {
+            "next": "drum_alarm",
+            "narration": "The prayer stumbles; you cross anyway.",
+            "ability_change": {
+              "Spirit": -3
+            }
+          },
+          "shadow_change": 0
+        }
+      ]
+    },
+    {
+      "id": "drum_alarm",
+      "act": "II",
+      "title": "Doom, Doom (Far Drums)",
+      "description": "Somewhere, drums begin. Durin’s Kin grins tightly. 'Best get moving.'",
+      "background": "Old roads remember boot and hoof; barrows and broken watchtowers brood over windy heaths. Stone smells of iron and memory; far hammers dream under the earth.",
+      "choices": [
+        {
+          "option": "Set a brisk, orderly retreat",
+          "ability": "Presence",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "dimrill_dale",
+            "narration": "No panic; only purpose.",
+            "ability_change": {
+              "Presence": -3,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "dimrill_dale",
+            "narration": "A stumble costs a moment; you keep form.",
+            "ability_change": {
+              "Presence": -4
+            }
+          },
+          "shadow_change": 0
+        },
+        {
+          "option": "Bear down and carry who needs it",
+          "ability": "Might",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "dimrill_dale",
+            "narration": "You shoulder weight that would shame a pony.",
+            "ability_change": {
+              "Might": -3
+            }
+          },
+          "failure": {
+            "next": "dimrill_dale",
+            "narration": "Breath rasps; heart burns bright.",
+            "ability_change": {
+              "Might": -4
+            }
+          },
+          "shadow_change": 0
+        }
+      ]
+    },
+    {
+      "id": "dimrill_dale",
+      "act": "II",
+      "title": "Dimrill Dale: Breath of Day",
+      "description": "Daylight breaks like bread shared among friends. Elaria sings of sunlight on helm and hair.",
+      "background": "Old roads remember boot and hoof; barrows and broken watchtowers brood over windy heaths.",
+      "choices": [
+        {
+          "option": "Let laughter return, a little",
+          "ability": "Presence",
+          "dc": 12,
+          "dice": "1d20",
+          "success": {
+            "next": "lorien_edge",
+            "narration": "Shadows shrink when joy remembers itself.",
+            "ability_change": {
+              "Presence": -2
+            }
+          },
+          "failure": {
+            "next": "lorien_edge",
+            "narration": "A tired chuckle warms the air.",
+            "ability_change": {
+              "Presence": -3
+            }
+          },
+          "shadow_change": -1
+        },
+        {
+          "option": "Scan the dale for danger",
+          "ability": "Wisdom",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "lorien_edge",
+            "narration": "You notice safe hollows and a deer path east.",
+            "ability_change": {
+              "Wisdom": -2
+            }
+          },
+          "failure": {
+            "next": "lorien_edge",
+            "narration": "A hawk’s cry startles you into a smile.",
+            "ability_change": {
+              "Wisdom": -3
+            }
+          },
+          "shadow_change": 0
+        }
+      ]
+    },
+    {
+      "id": "lorien_edge",
+      "act": "II",
+      "title": "Edge of Lothlórien",
+      "description": "Golden leaves hold their own sunlight. Time seems to speak more slowly here.",
+      "background": "Old roads remember boot and hoof; barrows and broken watchtowers brood over windy heaths. Harp strings seem to hang in the air; starlight feels close enough to touch.",
+      "choices": [
+        {
+          "option": "Ask leave to enter and rest",
+          "ability": "Presence",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "galadhrim_glade",
+            "narration": "Voices like clear water answer welcome.",
+            "ability_change": {
+              "Presence": -2,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "galadhrim_glade",
+            "narration": "Protocol tangles; patience unties it.",
+            "ability_change": {
+              "Presence": -3
+            }
+          },
+          "shadow_change": -1
+        },
+        {
+          "option": "Walk softly and match your breath to the trees",
+          "ability": "Wisdom",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "galadhrim_glade",
+            "narration": "Your heartbeat learns a gentler drum.",
+            "ability_change": {
+              "Wisdom": -2
+            }
+          },
+          "failure": {
+            "next": "galadhrim_glade",
+            "narration": "Feet remember stones; leaves forgive them.",
+            "ability_change": {
+              "Wisdom": -3
+            }
+          },
+          "shadow_change": 0
+        }
+      ]
+    },
+    {
+      "id": "galadhrim_glade",
+      "act": "II",
+      "title": "Glade of the Galadhrim",
+      "description": "In a high flet, song falls like rain. A simple verse drifts: 'We mend what breaks with golden thread; we keep what’s kind and fair.'",
+      "background": "Old roads remember boot and hoof; barrows and broken watchtowers brood over windy heaths. Harp strings seem to hang in the air; starlight feels close enough to touch.",
+      "choices": [
+        {
+          "option": "Share your small walking song",
+          "ability": "Presence",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "gift_of_lorien",
+            "narration": "Elves smile; harmony finds you.",
+            "ability_change": {
+              "Presence": -2
+            }
+          },
+          "failure": {
+            "next": "gift_of_lorien",
+            "narration": "Your voice wobbles; courage steadies it.",
+            "ability_change": {
+              "Presence": -3
+            }
+          },
+          "shadow_change": -1
+        },
+        {
+          "option": "Meditate with Elaria beneath the mallorn",
+          "ability": "Spirit",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "gift_of_lorien",
+            "narration": "The shard warms in your palm, like a bird learning trust.",
+            "ability_change": {
+              "Spirit": -2,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "gift_of_lorien",
+            "narration": "Thoughts rustle; peace lands anyway.",
+            "ability_change": {
+              "Spirit": -3
+            }
+          },
+          "shadow_change": 0
+        }
+      ]
+    },
+    {
+      "id": "gift_of_lorien",
+      "act": "II",
+      "title": "Gifts and Guiding Light",
+      "description": "You receive cloaks, lembas, and a phial of captured starlight. A whisper of Galadriel’s name moves like wind through leaves.",
+      "background": "Old roads remember boot and hoof; barrows and broken watchtowers brood over windy heaths. Harp strings seem to hang in the air; starlight feels close enough to touch.",
+      "choices": [
+        {
+          "option": "Thank your hosts with humble heart",
+          "ability": "Presence",
+          "dc": 13,
+          "dice": "1d20",
+          "success": {
+            "next": "anduin_boats",
+            "narration": "Gratitude sweetens even hard bread.",
+            "ability_change": {
+              "Presence": -2
+            }
+          },
+          "failure": {
+            "next": "anduin_boats",
+            "narration": "Words feel small; truth does not.",
+            "ability_change": {
+              "Presence": -3
+            }
+          },
+          "shadow_change": -1
+        },
+        {
+          "option": "Ask after tales of Elarion’s crown (Lore)",
+          "ability": "Intellect",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "anduin_boats",
+            "narration": "Legends speak of Dorthonion’s ruins holding the last bright piece.",
+            "ability_change": {
+              "Intellect": -2,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "anduin_boats",
+            "narration": "An old tale lacks a last verse; your road will write it.",
+            "ability_change": {
+              "Intellect": -3
+            }
+          },
+          "shadow_change": 0,
+          "gate": {
+            "skill": "Lore",
+            "min": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "anduin_boats",
+      "act": "II",
+      "title": "Down the Anduin",
+      "description": "Boats nose the current. Oars whisper; swans make smaller rivers on the larger one.",
+      "background": "Old roads remember boot and hoof; barrows and broken watchtowers brood over windy heaths.",
+      "choices": [
+        {
+          "option": "Keep a steady stroke and song",
+          "ability": "Agility",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "east_bank_fork",
+            "narration": "The river accepts you as kin.",
+            "ability_change": {
+              "Agility": -2
+            }
+          },
+          "failure": {
+            "next": "east_bank_fork",
+            "narration": "An eddy spins you once; laughter returns.",
+            "ability_change": {
+              "Agility": -3
+            }
+          },
+          "shadow_change": -1
+        },
+        {
+          "option": "Study the banks for a hidden mooring",
+          "ability": "Wisdom",
+          "dc": 14,
+          "dice": "1d20",
+          "success": {
+            "next": "east_bank_fork",
+            "narration": "You spot a willow that points to a safe cove.",
+            "ability_change": {
+              "Wisdom": -2
+            }
+          },
+          "failure": {
+            "next": "east_bank_fork",
+            "narration": "You choose a decent landing nonetheless.",
+            "ability_change": {
+              "Wisdom": -3
+            }
+          },
+          "shadow_change": 0
+        }
+      ]
+    },
+    {
+      "id": "east_bank_fork",
+      "act": "II",
+      "title": "Forking of Paths",
+      "description": "To the east, lands grow harsh; to the north, ruins brood under pines. The shard warms faintly toward the north.",
+      "background": "Old roads remember boot and hoof; barrows and broken watchtowers brood over windy heaths. Thistles grip fallen banners; the wind knows old names.",
+      "choices": [
+        {
+          "option": "Follow the shard’s pull to the north",
+          "ability": "Spirit",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "dorthonion_border",
+            "narration": "Trust becomes compass; compass becomes road.",
+            "ability_change": {
+              "Spirit": -2
+            }
+          },
+          "failure": {
+            "next": "dorthonion_border",
+            "narration": "Doubt pricks; you still turn north.",
+            "ability_change": {
+              "Spirit": -3
+            }
+          },
+          "shadow_change": 0
+        },
+        {
+          "option": "Skirt east to avoid orc-patrolled woods",
+          "ability": "Wisdom",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "rohan_plain",
+            "narration": "Prudence walks beside you like an old friend.",
+            "ability_change": {
+              "Wisdom": -2
+            }
+          },
+          "failure": {
+            "next": "rohan_plain",
+            "narration": "You save strength; time will judge you kindly.",
+            "ability_change": {
+              "Wisdom": -3
+            }
+          },
+          "shadow_change": 0
+        }
+      ]
+    },
+    {
+      "id": "rohan_plain",
+      "act": "II",
+      "title": "Plain of Rohan",
+      "description": "Wind combs the tall grass. You dream of horses like arrows of sunlight.",
+      "background": "Old roads remember boot and hoof; barrows and broken watchtowers brood over windy heaths.",
+      "choices": [
+        {
+          "option": "Keep low and make speed",
+          "ability": "Agility",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "dorthonion_border",
+            "narration": "Cloud-shadows race you and lose.",
+            "ability_change": {
+              "Agility": -3
+            }
+          },
+          "failure": {
+            "next": "dorthonion_border",
+            "narration": "A gopher hole swears at your ankle.",
+            "ability_change": {
+              "Agility": -4
+            }
+          },
+          "shadow_change": 0
+        },
+        {
+          "option": "Forage wisely and rest well",
+          "ability": "Wisdom",
+          "dc": 15,
+          "dice": "1d20",
+          "success": {
+            "next": "dorthonion_border",
+            "narration": "Lembas and roots, a feast to tired feet.",
+            "ability_change": {
+              "Wisdom": -3
+            }
+          },
+          "failure": {
+            "next": "dorthonion_border",
+            "narration": "You misjudge a thistle; laughter mends it.",
+            "ability_change": {
+              "Wisdom": -4
+            }
+          },
+          "shadow_change": 0
+        }
+      ]
+    },
+    {
+      "id": "dorthonion_border",
+      "act": "III",
+      "title": "Border of Dorthonion",
+      "description": "Pines hold shadows like breath. Old banners fray to threads. The shard hums low.",
+      "background": "Moon-silver glows on leaves; rivers speak in twilight tongues and stone halls echo with unspent songs. Thistles grip fallen banners; the wind knows old names.",
+      "choices": [
+        {
+          "option": "Light a small lantern and cover it well",
+          "ability": "Wisdom",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "watcher_ridge",
+            "narration": "Enough to comfort, not to call.",
+            "ability_change": {
+              "Wisdom": -3
+            }
+          },
+          "failure": {
+            "next": "watcher_ridge",
+            "narration": "Moths dance; courage keeps them company.",
+            "ability_change": {
+              "Wisdom": -4
+            }
+          },
+          "shadow_change": 0
+        },
+        {
+          "option": "Move like a leaf in wind (Stealth)",
+          "ability": "Agility",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "watcher_ridge",
+            "narration": "Owls ignore you as kin.",
+            "ability_change": {
+              "Agility": -3
+            }
+          },
+          "failure": {
+            "next": "watcher_ridge",
+            "narration": "A twig snaps; only the stars hear.",
+            "ability_change": {
+              "Agility": -4
+            }
+          },
+          "shadow_change": 0,
+          "gate": {
+            "skill": "Stealth",
+            "min": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "watcher_ridge",
+      "act": "III",
+      "title": "Ridge of the Watcher",
+      "description": "A shadow crouches on a far tor. Elaria whispers: 'Not all eyes sleep.'",
+      "background": "Moon-silver glows on leaves; rivers speak in twilight tongues and stone halls echo with unspent songs. Thistles grip fallen banners; the wind knows old names.",
+      "choices": [
+        {
+          "option": "Observe patiently until the wind turns",
+          "ability": "Wisdom",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "ruined_gate",
+            "narration": "You see the watcher tire and shift away.",
+            "ability_change": {
+              "Wisdom": -3
+            }
+          },
+          "failure": {
+            "next": "ruined_gate",
+            "narration": "Cold creeps in; resolve warms fingers.",
+            "ability_change": {
+              "Wisdom": -4
+            }
+          },
+          "shadow_change": 0
+        },
+        {
+          "option": "Feign a fox call to cover your move",
+          "ability": "Presence",
+          "dc": 16,
+          "dice": "1d20",
+          "success": {
+            "next": "ruined_gate",
+            "narration": "A clever sound; even Durin’s Kin smirks.",
+            "ability_change": {
+              "Presence": -3
+            }
+          },
+          "failure": {
+            "next": "ruined_gate",
+            "narration": "It comes out like a coughing duck. Still works.",
+            "ability_change": {
+              "Presence": -4
+            }
+          },
+          "shadow_change": 0
+        }
+      ]
+    },
+    {
+      "id": "ruined_gate",
+      "act": "III",
+      "title": "Gate of Fallen Kings",
+      "description": "Two kneeling statues hold a broken lintel. The shard hums louder, eager as a hound.",
+      "background": "Moon-silver glows on leaves; rivers speak in twilight tongues and stone halls echo with unspent songs. Thistles grip fallen banners; the wind knows old names.",
+      "choices": [
+        {
+          "option": "Lift the fallen stones with care",
+          "ability": "Might",
+          "dc": 17,
+          "dice": "1d20",
+          "success": {
+            "next": "hollow_court",
+            "narration": "Muscle and mercy together move mountains.",
+            "ability_change": {
+              "Might": -3
+            }
+          },
+          "failure": {
+            "next": "hollow_court",
+            "narration": "Stone scrapes; you hold steady anyway.",
+            "ability_change": {
+              "Might": -4
+            }
+          },
+          "shadow_change": 0
+        },
+        {
+          "option": "Find the hidden release carved with leaves (Lore)",
+          "ability": "Intellect",
+          "dc": 17,
+          "dice": "1d20",
+          "success": {
+            "next": "hollow_court",
+            "narration": "Your fingers find a fern rune that sighs open.",
+            "ability_change": {
+              "Intellect": -3
+            }
+          },
+          "failure": {
+            "next": "hollow_court",
+            "narration": "The rune hides; you pry with a knife in the end.",
+            "ability_change": {
+              "Intellect": -4
+            }
+          },
+          "shadow_change": 0,
+          "gate": {
+            "skill": "Lore",
+            "min": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "hollow_court",
+      "act": "III",
+      "title": "Hollow Court of Elarion",
+      "description": "A courtyard like a cupped hand. In its palm, a dais. In its heart, a song almost heard: 'Star of the West, bright against night...'",
+      "background": "Moon-silver glows on leaves; rivers speak in twilight tongues and stone halls echo with unspent songs. Thistles grip fallen banners; the wind knows old names.",
+      "choices": [
+        {
+          "option": "Answer the song with a line of your own",
+          "ability": "Presence",
+          "dc": 17,
+          "dice": "1d20",
+          "success": {
+            "next": "whisper_vault",
+            "narration": "Your voice makes a bridge the wind can cross.",
+            "ability_change": {
+              "Presence": -3,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "whisper_vault",
+            "narration": "Shy words still count; doors care for courage.",
+            "ability_change": {
+              "Presence": -4
+            }
+          },
+          "shadow_change": -1
+        },
+        {
+          "option": "Hold the shard aloft and breathe",
+          "ability": "Spirit",
+          "dc": 17,
+          "dice": "1d20",
+          "success": {
+            "next": "whisper_vault",
+            "narration": "Light peels from silver like dawn from mountains.",
+            "ability_change": {
+              "Spirit": -3
+            }
+          },
+          "failure": {
+            "next": "whisper_vault",
+            "narration": "It flickers; your will stays true.",
+            "ability_change": {
+              "Spirit": -4
+            }
+          },
+          "shadow_change": 0
+        }
+      ]
+    },
+    {
+      "id": "whisper_vault",
+      "act": "III",
+      "title": "Vault of Whispers",
+      "description": "Stone remembers voices. One speaks: 'Will you bear light for others, little one?' Another: 'Or will you keep it for yourself?'",
+      "background": "Moon-silver glows on leaves; rivers speak in twilight tongues and stone halls echo with unspent songs. Thistles grip fallen banners; the wind knows old names.",
+      "choices": [
+        {
+          "option": "Swear to bear for others",
+          "ability": "Wisdom",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "echo_maia",
+            "narration": "Warmth answers like bread fresh from oven.",
+            "ability_change": {
+              "Wisdom": -3
+            }
+          },
+          "failure": {
+            "next": "echo_maia",
+            "narration": "Silence tests you; you pass by standing still.",
+            "ability_change": {
+              "Wisdom": -4
+            }
+          },
+          "shadow_change": -1
+        },
+        {
+          "option": "Claim you will keep it safe alone",
+          "ability": "Spirit",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "echo_maia",
+            "narration": "The vault chills; the shard grows brighter in your fist.",
+            "ability_change": {
+              "Spirit": -3
+            }
+          },
+          "failure": {
+            "next": "echo_maia",
+            "narration": "Your voice echoes with iron edges.",
+            "ability_change": {
+              "Spirit": -4
+            }
+          },
+          "shadow_change": 1
+        }
+      ]
+    },
+    {
+      "id": "echo_maia",
+      "act": "III",
+      "title": "Echo of a Fallen Maia",
+      "description": "A figure of ash and star-fragments uncoils from the dark. 'Power is mercy properly spent,' it purrs.",
+      "background": "Moon-silver glows on leaves; rivers speak in twilight tongues and stone halls echo with unspent songs. Thistles grip fallen banners; the wind knows old names.",
+      "choices": [
+        {
+          "option": "Answer with pity, not anger",
+          "ability": "Presence",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "crown_chamber",
+            "narration": "Its edges blur; it almost remembers kindness.",
+            "ability_change": {
+              "Presence": -3,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "crown_chamber",
+            "narration": "You keep your temper and your way.",
+            "ability_change": {
+              "Presence": -4
+            }
+          },
+          "shadow_change": -1
+        },
+        {
+          "option": "Stand unyielding and dare it nearer",
+          "ability": "Might",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "crown_chamber",
+            "narration": "It recoils at the strength that serves love.",
+            "ability_change": {
+              "Might": -3
+            }
+          },
+          "failure": {
+            "next": "crown_chamber",
+            "narration": "It presses close; your friends step in.",
+            "ability_change": {
+              "Might": -4
+            }
+          },
+          "shadow_change": 0
+        }
+      ]
+    },
+    {
+      "id": "crown_chamber",
+      "act": "III",
+      "title": "Chamber of the Crown",
+      "description": "On a table of black glass lies the circlet, broken: a half-crown and three bright shards.",
+      "background": "Moon-silver glows on leaves; rivers speak in twilight tongues and stone halls echo with unspent songs. Thistles grip fallen banners; the wind knows old names.",
+      "choices": [
+        {
+          "option": "Place your shard among its kin",
+          "ability": "Spirit",
+          "dc": 19,
+          "dice": "1d20",
+          "success": {
+            "next": "crown_awakens",
+            "narration": "Light threads silver to silver; a low chord fills the room.",
+            "ability_change": {
+              "Spirit": -4
+            }
+          },
+          "failure": {
+            "next": "crown_awakens",
+            "narration": "You fumble; Elaria steadies your hands.",
+            "ability_change": {
+              "Spirit": -5
+            }
+          },
+          "shadow_change": 0
+        },
+        {
+          "option": "Examine the setting for a safer bind (Engineering)",
+          "ability": "Intellect",
+          "dc": 19,
+          "dice": "1d20",
+          "success": {
+            "next": "crown_awakens",
+            "narration": "You brace tiny clasps; craft courts wonder.",
+            "ability_change": {
+              "Intellect": -4
+            }
+          },
+          "failure": {
+            "next": "crown_awakens",
+            "narration": "Clasp bites your thumb; the work holds.",
+            "ability_change": {
+              "Intellect": -5
+            }
+          },
+          "shadow_change": 0,
+          "gate": {
+            "skill": "Engineering",
+            "min": 25
+          }
+        }
+      ]
+    },
+    {
+      "id": "crown_awakens",
+      "act": "III",
+      "title": "When the Crown Breathes",
+      "description": "Silver brightens the dark. Verse rises of its own accord: 'O star of hope, return and stay; make night forget its teeth.'",
+      "background": "Moon-silver glows on leaves; rivers speak in twilight tongues and stone halls echo with unspent songs. Thistles grip fallen banners; the wind knows old names.",
+      "choices": [
+        {
+          "option": "Humble yourself before the light",
+          "ability": "Wisdom",
+          "dc": 19,
+          "dice": "1d20",
+          "success": {
+            "next": "storm_from_east",
+            "narration": "You feel smaller and somehow more true.",
+            "ability_change": {
+              "Wisdom": -4
+            }
+          },
+          "failure": {
+            "next": "storm_from_east",
+            "narration": "You bow too fast; the light forgives.",
+            "ability_change": {
+              "Wisdom": -5
+            }
+          },
+          "shadow_change": -1
+        },
+        {
+          "option": "Reach for its strength to keep",
+          "ability": "Spirit",
+          "dc": 19,
+          "dice": "1d20",
+          "success": {
+            "next": "storm_from_east",
+            "narration": "The light answers your will like a hound eager to please.",
+            "ability_change": {
+              "Spirit": -4
+            }
+          },
+          "failure": {
+            "next": "storm_from_east",
+            "narration": "It strains your bones; you do not let go.",
+            "ability_change": {
+              "Spirit": -5
+            }
+          },
+          "shadow_change": 1
+        }
+      ]
+    },
+    {
+      "id": "storm_from_east",
+      "act": "III",
+      "title": "Storm from the East",
+      "description": "Over the pines, a stain of ash-laden cloud gathers. Orc horns bark like sick laughter.",
+      "background": "Moon-silver glows on leaves; rivers speak in twilight tongues and stone halls echo with unspent songs. Ash rides the breeze; even silence looks westward.",
+      "choices": [
+        {
+          "option": "Lead the company to higher ground",
+          "ability": "Presence",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "fir_path",
+            "narration": "Your voice is a rope everyone can hold.",
+            "ability_change": {
+              "Presence": -3,
+              "Wisdom": 1
+            }
+          },
+          "failure": {
+            "next": "fir_path",
+            "narration": "Feet slide; hearts grip.",
+            "ability_change": {
+              "Presence": -4
+            }
+          },
+          "shadow_change": 0
+        },
+        {
+          "option": "Scout a hidden goat-track",
+          "ability": "Agility",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "fir_path",
+            "narration": "You find a path thin as a blade and twice as useful.",
+            "ability_change": {
+              "Agility": -3
+            }
+          },
+          "failure": {
+            "next": "fir_path",
+            "narration": "A slip scars your palm; lesson learned.",
+            "ability_change": {
+              "Agility": -4
+            }
+          },
+          "shadow_change": 0
+        }
+      ]
+    },
+    {
+      "id": "fir_path",
+      "act": "IV",
+      "title": "Path of the Fir-trees",
+      "description": "Snow-dust frets the needles. You can see far: west to hope, east to hunger.",
+      "background": "Mountains hold their breath; the East smolders low and far, like a thought no one wants to think. Thistles grip fallen banners; the wind knows old names.",
+      "choices": [
+        {
+          "option": "Share lembas and a joke",
+          "ability": "Presence",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "last_watch",
+            "narration": "Warmth returns to tired faces.",
+            "ability_change": {
+              "Presence": -3
+            }
+          },
+          "failure": {
+            "next": "last_watch",
+            "narration": "Even a weak joke is a roof against rain.",
+            "ability_change": {
+              "Presence": -4
+            }
+          },
+          "shadow_change": -1
+        },
+        {
+          "option": "Walk the line with quiet vigilance",
+          "ability": "Wisdom",
+          "dc": 18,
+          "dice": "1d20",
+          "success": {
+            "next": "last_watch",
+            "narration": "You catch a glint of helms below and plan accordingly.",
+            "ability_change": {
+              "Wisdom": -3
+            }
+          },
+          "failure": {
+            "next": "last_watch",
+            "narration": "The cold nips; patience bites back.",
+            "ability_change": {
+              "Wisdom": -4
+            }
+          },
+          "shadow_change": 0
+        }
+      ]
+    },
+    {
+      "id": "last_watch",
+      "act": "IV",
+      "title": "The Last Watch before Dawn",
+      "description": "Maedren murmurs: 'Courage is not the loud thing. It is tea shared when swords are close.'",
+      "background": "Mountains hold their breath; the East smolders low and far, like a thought no one wants to think.",
+      "choices": [
+        {
+          "option": "Keep companions close and calm",
+          "ability": "Presence",
+          "dc": 19,
+          "dice": "1d20",
+          "success": {
+            "next": "threshold_choice",
+            "narration": "Breath syncs; fear goes somewhere else for a while.",
+            "ability_change": {
+              "Presence": -4
+            }
+          },
+          "failure": {
+            "next": "threshold_choice",
+            "narration": "A shiver passes through; you bring it to heel.",
+            "ability_change": {
+              "Presence": -5
+            }
+          },
+          "shadow_change": -1
+        },
+        {
+          "option": "Sharpen blades and spirit together",
+          "ability": "Might",
+          "dc": 19,
+          "dice": "1d20",
+          "success": {
+            "next": "threshold_choice",
+            "narration": "Steel sings low; so do hearts.",
+            "ability_change": {
+              "Might": -4
+            }
+          },
+          "failure": {
+            "next": "threshold_choice",
+            "narration": "A nick bites your thumb; you smile anyway.",
+            "ability_change": {
+              "Might": -5
+            }
+          },
+          "shadow_change": 0
+        }
+      ]
+    },
+    {
+      "id": "threshold_choice",
+      "act": "IV",
+      "title": "Threshold of Choice",
+      "description": "The Crown, mended but not whole, lies in your hands. Three paths open like doors made of song.",
+      "background": "Mountains hold their breath; the East smolders low and far, like a thought no one wants to think. Thistles grip fallen banners; the wind knows old names.",
+      "choices": [
+        {
+          "option": "Reforge fully and return it to the West (Light)",
+          "ability": "Wisdom",
+          "dc": 20,
+          "dice": "1d20",
+          "success": {
+            "next": "endings_branch",
+            "narration": "You will not keep what was meant to be shared.",
+            "ability_change": {
+              "Wisdom": -4,
+              "Spirit": 1
+            }
+          },
+          "failure": {
+            "next": "endings_branch",
+            "narration": "Your resolve stumbles, then stands taller.",
+            "ability_change": {
+              "Wisdom": -5
+            }
+          },
+          "shadow_change": -1
+        },
+        {
+          "option": "Break it to deny it to all (Withstand)",
+          "ability": "Intellect",
+          "dc": 20,
+          "dice": "1d20",
+          "success": {
+            "next": "endings_branch",
+            "narration": "Hard wisdom denies temptation a throne.",
+            "ability_change": {
+              "Intellect": -4
+            }
+          },
+          "failure": {
+            "next": "endings_branch",
+            "narration": "Your hands shake and then are still.",
+            "ability_change": {
+              "Intellect": -5
+            }
+          },
+          "shadow_change": 0
+        },
+        {
+          "option": "Claim the Crown’s light for yourself (Shadow)",
+          "ability": "Spirit",
+          "dc": 20,
+          "dice": "1d20",
+          "success": {
+            "next": "endings_branch",
+            "narration": "Power roots in you like a winter sun.",
+            "ability_change": {
+              "Spirit": -5
+            }
+          },
+          "failure": {
+            "next": "endings_branch",
+            "narration": "The light argues; your will wins for now.",
+            "ability_change": {
+              "Spirit": -5
+            }
+          },
+          "shadow_change": 1
+        }
+      ]
+    },
+    {
+      "id": "endings_branch",
+      "act": "IV",
+      "title": "Song at the Edge of the World",
+      "description": "A final verse gathers unbidden: 'Give back the light, and it will grow; break what tempts, and night will go; keep it close, and shadows know.'",
+      "background": "Mountains hold their breath; the East smolders low and far, like a thought no one wants to think.",
+      "choices": [
+        {
+          "option": "Speak hope and friendship",
+          "ability": "Presence",
+          "dc": 20,
+          "dice": "1d20",
+          "success": {
+            "next": "ending_light_restored",
+            "narration": "Your words become a bridge others cross gladly.",
+            "ability_change": {
+              "Presence": -4
+            }
+          },
+          "failure": {
+            "next": "ending_shadow_withstood",
+            "narration": "Your words falter; hearts still listen.",
+            "ability_change": {
+              "Presence": -5
+            }
+          },
+          "shadow_change": -1
+        },
+        {
+          "option": "Speak hard truth and sacrifice",
+          "ability": "Intellect",
+          "dc": 20,
+          "dice": "1d20",
+          "success": {
+            "next": "ending_shadow_withstood",
+            "narration": "Wisdom walks with sorrow; both bow to courage.",
+            "ability_change": {
+              "Intellect": -4
+            }
+          },
+          "failure": {
+            "next": "ending_light_restored",
+            "narration": "Even in sacrifice you find a gentler path.",
+            "ability_change": {
+              "Intellect": -5
+            }
+          },
+          "shadow_change": 0
+        },
+        {
+          "option": "Speak dominion and solitary will",
+          "ability": "Spirit",
+          "dc": 20,
+          "dice": "1d20",
+          "success": {
+            "next": "ending_shadow_claimed",
+            "narration": "Silence kneels; stars avert their eyes.",
+            "ability_change": {
+              "Spirit": -5
+            }
+          },
+          "failure": {
+            "next": "ending_shadow_withstood",
+            "narration": "Some lights refuse to kneel; they wait.",
+            "ability_change": {
+              "Spirit": -5
+            }
+          },
+          "shadow_change": 1
+        }
+      ]
+    },
+    {
+      "id": "ending_light_restored",
+      "act": "IV",
+      "title": "Ending: The Light Restored",
+      "description": "At Rivendell, Elrond smiles sadly as white gulls cry far away. The Crown’s light rides West on a swan-ship. Elaria sings a glad song of home and harvest.",
+      "background": "Mountains hold their breath; the East smolders low and far, like a thought no one wants to think. Harp strings seem to hang in the air; starlight feels close enough to touch.",
+      "choices": [
+        {
+          "option": "Walk the gardens with your friends",
+          "ability": "Wisdom",
+          "dc": 0,
+          "dice": "1d20",
+          "success": {
+            "next": "grey_havens",
+            "narration": "Leaves applaud soft as hands at a hearth.",
+            "ability_change": {
+              "Wisdom": 0
+            }
+          },
+          "failure": {
+            "next": "grey_havens",
+            "narration": "Peace holds like a well-mended cloak.",
+            "ability_change": {
+              "Wisdom": 0
+            }
+          },
+          "shadow_change": 0
+        }
+      ]
+    },
+    {
+      "id": "ending_shadow_withstood",
+      "act": "IV",
+      "title": "Ending: The Shadow Withstood",
+      "description": "On a high tor, you break the Crown. Its light leaps like a freed bird and is gone. 'Some gifts are to be refused,' Maedren says, eyes bright with tears.",
+      "background": "Mountains hold their breath; the East smolders low and far, like a thought no one wants to think. Thistles grip fallen banners; the wind knows old names.",
+      "choices": [
+        {
+          "option": "Sit quietly until stars rise",
+          "ability": "Presence",
+          "dc": 0,
+          "dice": "1d20",
+          "success": {
+            "next": "grey_havens",
+            "narration": "Grief and pride learn each other’s names.",
+            "ability_change": {
+              "Presence": 0
+            }
+          },
+          "failure": {
+            "next": "grey_havens",
+            "narration": "You listen to the wind finish its thought.",
+            "ability_change": {
+              "Presence": 0
+            }
+          },
+          "shadow_change": 0
+        }
+      ]
+    },
+    {
+      "id": "ending_shadow_claimed",
+      "act": "IV",
+      "title": "Ending: The Shadow Claimed",
+      "description": "You wear the light and the light wears you; friends become counsels, counsels become chains. The East grows quiet when you look its way.",
+      "background": "Mountains hold their breath; the East smolders low and far, like a thought no one wants to think. Ash rides the breeze; even silence looks westward.",
+      "choices": [
+        {
+          "option": "Stand alone on the ridge",
+          "ability": "Spirit",
+          "dc": 0,
+          "dice": "1d20",
+          "success": {
+            "next": "END",
+            "narration": "Victory tastes like iron. Winter watches.",
+            "ability_change": {
+              "Spirit": 0
+            }
+          },
+          "failure": {
+            "next": "END",
+            "narration": "",
+            "ability_change": {
+              "Spirit": 0
+            }
+          },
+          "shadow_change": 0
+        }
+      ]
+    },
+    {
+      "id": "grey_havens",
+      "act": "IV",
+      "title": "Coda: The Grey Havens",
+      "description": "At the Havens, white ships breathe like sleeping whales. You choose shore and seasons, tea and tilled earth, letters and long walks. Songs remember you kindly.",
+      "background": "Mountains hold their breath; the East smolders low and far, like a thought no one wants to think.",
+      "choices": [
+        {
+          "option": "Return home the long way, with many stories",
+          "ability": "Presence",
+          "dc": 0,
+          "dice": "1d20",
+          "success": {
+            "next": "END",
+            "narration": "The road keeps a space for your footsteps.",
+            "ability_change": {
+              "Presence": 0
+            }
+          },
+          "failure": {
+            "next": "END",
+            "narration": "",
+            "ability_change": {
+              "Presence": 0
+            }
+          },
+          "shadow_change": 0
+        }
+      ]
+    }
+  ]
+}
