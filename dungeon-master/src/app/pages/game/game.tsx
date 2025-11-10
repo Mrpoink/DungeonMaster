@@ -1,11 +1,12 @@
 'use client'
-import { useState, useEffect, SetStateAction } from "react";
+import { useState, useEffect } from "react";
 import Background from "@/app/components/assets/mainBackground.jpg";
 import Dice from "@/app/components/dice/dice";
 import Roll from "@/app/components/dice/roll";
 import Party from "@/app/components/party/party";
 import GameManager from "@/app/components/gameManager/gameManager";
 import { useRouter } from "next/navigation";
+import {AbilityBars} from "@/app/components/abilities/abilities";
 
 type ConversationItem = {
     sender: 'User' | 'DM' | string;
@@ -195,7 +196,8 @@ export default function Game() {
             </div>
           </main>
           <div className="party-box">
-            <Party />
+            {/* <Party /> */}
+            <AbilityBars/>
           </div>
         </div>
     </div>
