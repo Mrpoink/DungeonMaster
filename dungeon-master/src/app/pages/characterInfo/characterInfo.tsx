@@ -1,8 +1,7 @@
 'use client'
 
 import { BottomNav } from "@/app/components/nav/nav";
-import { useState } from "react";
-import Character from "@/app/components/character/characterType";
+import { useState, useEffect, Dispatch, SetStateAction } from "react";
 import { DEFAULT_CHARACTER } from "@/app/components/character/defaultCharacter";
 import { BiPencil } from "react-icons/bi";
 import { FaCheck } from "react-icons/fa";
@@ -10,11 +9,55 @@ import { IoClose } from "react-icons/io5";
 import { MdBook } from 'react-icons/md';
 import {CharacterIcon} from "@/app/components/character/characterIcon";
 import SelectIcon from "@/app/components/character/characterIcon";
+import Character from "@/app/components/character/characterType";
 
+const skill_map ={
+    INTELLECT: ['Arcana', 'Investigation', 'Engineering'],
+    MIGHT: ['Athletics', 'Brawling', 'Endurance'],
+    AGILITY: ['Stealth', 'Acrobatics', 'Sleight of Hand'],
+    PRESENCE: ['Persuasion', 'Deception', 'Performance'],
+    WISDOM: ['Insight', 'Survival', 'Medicine'],
+    SPIRIT: ['Faith', 'Willpower', 'Attunement']
+}
+    
+const all_skills = Object.values(skill_map).flat();
+const thresholds = { lvl1: 10, lvl2: 20, lvl3:25 }
+const maxScore = 120;
 
+const updateProficiencies = (currentStats: { [x: string]: number; }, setCharacterData: Dispatch<SetStateAction<Character>>) =>{
+    let skillsToGrant: { [key: string]: boolean } = {};
 
+    (Object.keys(skill_map) as (keyof typeof skill_map)[]).forEach((abilityKey) => {
+        const score = currentStats[abilityKey] || 0;
+        const governedSkills = skill_map[abilityKey];
 
-// --- HELPER COMPONENTS ---
+        let skillsGranted = 0;
+
+        if (score >= thresholds.lvl3){
+            skillsGranted = 3;
+        } else if (score >= thresholds.lvl2){
+            skillsGranted = 2;
+        } else if (score >= thresholds.lvl1){
+            skillsGranted = 1;
+        }
+        governedSkills.forEach((skill: string, index: number) => {
+            skillsToGrant[skill] = index < skillsGranted;
+        });
+    });
+
+    setCharacterData((prevCharacter) => {
+        const newSkillsState = {
+            ...prevCharacter.skills,
+            ...skillsToGrant
+        };
+        return {
+            ...prevCharacter,
+            skills: newSkillsState
+        };
+    });
+    
+}
+
 const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
     <input 
         className="edit-input"
@@ -22,33 +65,30 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
     />
 );
 
-const AbilityScore = ({ name, score }: { name: string, score: number }) => {
-    const modifier = Math.floor((score - 10) / 2);
-    const modString = modifier >= 0 ? `+${modifier}` : modifier.toString();
-
+const AbilityScore = ({ name, score }: { name: string; score: number }) => {
     return (
-        <div className="ability-score-display">
-            <span className="ability-label">{name.substring(0, 3)}</span>
-            <div className="relative mt-1">
-                <span className="ability-score">{score}</span>
-                <span className="ability-mod">
-                    {modString}
-                </span>
+        <div className="flex flex-col items-center justify-center p-3 bg-gray-700/70 rounded-xl border border-gray-600 shadow-md ability-score-display">
+            <span className="text-xs uppercase font-bold text-yellow-400 mb-1 ability-label">{name.substring(0, 3)}</span>
+            <div className="relative mt-1 flex flex-col items-center">
+                <span className="text-3xl font-extrabold text-white ability-score">{score}</span>
             </div>
         </div>
     );
 };
 
-
  // --- MAIN COMPONENT ---
  export default function CharacterInfo() {
     const [characterData, setCharacterData] = useState(DEFAULT_CHARACTER);
+
+    useEffect(() => {
+        updateProficiencies(characterData.stats, setCharacterData);
+    }, [characterData.stats]);
+
 
     // --- EDITING STATES ---
     const [isEditingName, setIsEditingName] = useState(false);
     const [isEditingBasic, setIsEditingBasic] = useState(false);
     const [isEditingStats, setIsEditingStats] = useState(false);
-    const [isEditingSkills, setIsEditingSkills] = useState(false);
     const [isEditingBackstory, setIsEditingBackstory] = useState(false);
 
     // Temporary form states
@@ -57,10 +97,12 @@ const AbilityScore = ({ name, score }: { name: string, score: number }) => {
     const [tempClass, setTempClass] = useState(characterData.class);
     const [tempSubclass, setTempSubclass] = useState(characterData.subclass);
     const [tempStats, setTempStats] = useState(characterData.stats);
-    const [tempSkills, setTempSkills] = useState(characterData.skills);
     const [tempBackstory, setTempBackstory] = useState(characterData.backstory);
     const [tempIcon, setTempIcon] = useState(0);
 
+    const [validationMessage, setValidationMessage] = useState('')
+    const totalScore = Object.values(tempStats).reduce((sum,score) => sum + (Number(score) || 0), 0)
+    const pointsRemaining = maxScore-totalScore
 
     // --- SAVE HANDLERS ---
     const handleSaveName = () => {
@@ -69,25 +111,31 @@ const AbilityScore = ({ name, score }: { name: string, score: number }) => {
     };
 
     const handleSaveBasic = () => {
-        setCharacterData(prev => ({ ...prev, icon: tempIcon }));
-        setCharacterData(prev => ({ ...prev, race: tempRace }));
-        setCharacterData(prev => ({ ...prev, class: tempClass }));
-        setCharacterData(prev => ({ ...prev, subclass: tempSubclass }));
+        setCharacterData(prev => ({ 
+            ...prev, 
+            icon: tempIcon,
+            race: tempRace,
+            class: tempClass,
+            subclass: tempSubclass
+         }));
         setIsEditingBasic(false);
     }
 
     const handleSaveStats = () => {
+        setValidationMessage('');
         const savedStats = Object.fromEntries(
-            Object.entries(tempStats).map(([key, value]) => [key, parseInt(value as any) || 0])
-        ) as Character['stats'];
+            Object.entries(tempStats).map(([key, value]) => [key, Number(value) || 0])
+        );
+        const newTotalScore = Object.values(savedStats).reduce((sum,score) => sum + (Number(score) || 0), 0);
+         if (newTotalScore > maxScore){
+            setValidationMessage('Total ability score (${newTotalScore}) cannot exceed maxium limit of (${maxScore}).');
+            return;
+         }
+
         setCharacterData(prev => ({ ...prev, stats: savedStats }));
         setIsEditingStats(false);
     };
 
-    const handleSaveSkills = () => {
-        setCharacterData(prev => ({ ...prev, skills: tempSkills }));
-        setIsEditingSkills(false);
-    };
     
     const handleSaveBackstory = () => {
         setCharacterData(prev => ({ ...prev, backstory: tempBackstory }));
@@ -201,32 +249,38 @@ const AbilityScore = ({ name, score }: { name: string, score: number }) => {
                         <h3 className="heading-text">Edit Ability Scores</h3>
                         <div className="edit-controls">
                             <button onClick={handleSaveStats} className="edit-save-btn"><FaCheck className="w-5 h-5" /></button>
-                            <button onClick={() => setIsEditingStats(false)} className="edit-cancel-btn"><IoClose className="w-5 h-5" /></button>
+                            <button onClick={() => {setIsEditingStats(false); setValidationMessage('')}} className="edit-cancel-btn"><IoClose className="w-5 h-5" /></button>
                         </div>
+                    </div>
+                    {validationMessage && (
+                        <div className="p-3 mb-4 text-sm font-medium text-red-100 bg-red-800/70 rounded-lg">
+                            {validationMessage}
+                        </div>
+                    )}
+                    <div className="mb-4 p-3 bg-gray-700 rounded-lg flex justify-between items-center text-sm font-semibold">
+                        <span className="text-gray-300">Total Score: <span className="text-yellow-400">{totalScore}</span> / {maxScore}</span>
+                        <span className={`font-bold ${pointsRemaining >= 0 ? 'text-green-400' : 'text-red-400'}`}>
+                            {pointsRemaining >= 0 ? `Remaining: ${pointsRemaining}` : `Over Limit: ${Math.abs(pointsRemaining)}`}
+                        </span>
                     </div>
                     <div className="ability-scores-grid">
                         {Object.entries(tempStats).map(([name, score]) => {
-                            const modifier = Math.floor((parseInt(score as any) || 0) - 10) / 2;
-                            const modString = modifier >= 0 ? `+${modifier}` : modifier.toString();
-                            
                             return (
                                 <div key={name} className="flex flex-col items-start">
-                                    <label className="text-sm uppercase font-medium text-gray-400 mb-1">{name} ({modString})</label>
+                                    <label className="text-sm uppercase font-medium text-gray-400 mb-1">{name}</label>
                                     <EditInput
+                                        name={name}
                                         type="number"
                                         min="1"
                                         max="30"
                                         value={score}
                                         onChange={(e) => {
                                           const { name, value } = e.target;
-  
-                                          // Convert the string value to a number using Number()
                                           const newValue = Number(value); 
   
-
                                           setTempStats(prev => ({ 
                                           ...prev, 
-                                          [name]: newValue // newValue is now guaranteed to be a 'number'
+                                          [name]: newValue
                                           }));
 
                                         }}
@@ -244,7 +298,10 @@ const AbilityScore = ({ name, score }: { name: string, score: number }) => {
                 <div className="heading-with-edit border-b border-gray-700 pb-2">
                     <h3 className="heading-text">ABILITY SCORES</h3>
                     <button 
-                        onClick={() => {setTempStats(characterData.stats); setIsEditingStats(true);}}
+                        onClick={() => {
+                            setTempStats(characterData.stats); 
+                            setIsEditingStats(true);
+                        }}
                         className="edit-button"
                         title="Edit Stats"
                     >
@@ -253,7 +310,7 @@ const AbilityScore = ({ name, score }: { name: string, score: number }) => {
                 </div>
                 <div className="ability-scores-grid">
                     {Object.entries(characterData.stats).map(([name, score]) => (
-                        <AbilityScore key={name} name={name} score={score as number} />
+                        <AbilityScore key={name} name={name} score={score} />
                     ))}
                 </div>
             </div>
@@ -261,35 +318,6 @@ const AbilityScore = ({ name, score }: { name: string, score: number }) => {
     };
 
     const renderSkills = () => {
-        if (isEditingSkills) {
-            return (
-                <div className="content-block">
-                    <div className="heading-with-edit">
-                        <h3 className="heading-text">Edit Skills</h3>
-                        <div className="edit-controls">
-                            <button onClick={handleSaveSkills} className="edit-save-btn"><FaCheck className="w-5 h-5" /></button>
-                            <button onClick={() => setIsEditingSkills(false)} className="edit-cancel-btn"><IoClose className="w-5 h-5" /></button>
-                        </div>
-                    </div>
-                    <div className="skills-grid">
-                        {Object.entries(tempSkills).map(([skillName, isProficient]) => (
-                            <div key={skillName} className="flex items-center space-x-3">
-                                <label className="relative inline-flex items-center cursor-pointer">
-                                    <input 
-                                        type="checkbox" 
-                                        checked={isProficient} 
-                                        onChange={(e) => setTempSkills(prev => ({ ...prev, [skillName]: e.target.checked }))}
-                                        className="sr-only peer"
-                                    />
-                                    <div className="w-9 h-5 bg-gray-600 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-yellow-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-yellow-500"></div>
-                                </label>
-                                <span className="text-sm text-gray-200">{skillName.split(' ')[0]}</span>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            );
-        }
 
         return (
             <div className="content-block relative">
@@ -297,24 +325,21 @@ const AbilityScore = ({ name, score }: { name: string, score: number }) => {
                     <h3 className="heading-text">
                         SKILLS
                     </h3>
-                    <button 
-                        onClick={() => {setTempSkills(characterData.skills); setIsEditingSkills(true);}}
-                        className="edit-button"
-                        title="Edit Skills"
-                    >
-                        <BiPencil className="w-4 h-4" />
-                    </button>
+                    
                 </div>
                 <div className="skills-grid">
-                    {Object.entries(characterData.skills).map(([skillName, isProficient]) => (
-                        <div 
-                            key={skillName} 
-                            className={`skill-item ${isProficient ? 'skill-proficient' : 'skill-not-proficient'}`}
-                        >
-                            <div className="skill-indicator"></div>
-                            <span>{skillName}</span>
-                        </div>
-                    ))}
+                    {all_skills.map((skillName) => {
+                        const isProficient = !!characterData.skills[skillName];
+                        return (
+                            <div 
+                                key={skillName} 
+                                className={`skill-item ${isProficient ? 'skill-proficient' : 'skill-not-proficient'}`}
+                            >
+                                <div className="skill-indicator"></div>
+                                <span>{skillName}</span>
+                            </div>
+                        )
+                    })}
                 </div>
             </div>
         );
@@ -400,12 +425,12 @@ const AbilityScore = ({ name, score }: { name: string, score: number }) => {
                                     race: characterData.race,
                                     class: characterData.class,
                                     subclass: characterData.subclass,
-                                    str: characterData.stats.STRENGTH,
-                                    dex: characterData.stats.DEXTERITY,
-                                    con: characterData.stats.CONSTITUTION,
-                                    int: characterData.stats.INTELLIGENCE,
-                                    wis: characterData.stats.WISDOM,
-                                    cha: characterData.stats.CHARISMA,
+                                    might: characterData.stats.MIGHT,
+                                    agility: characterData.stats.AGILITY,
+                                    spirit: characterData.stats.SPIRIT,
+                                    intellect: characterData.stats.INTELLECT,
+                                    wisdom: characterData.stats.WISDOM,
+                                    presence: characterData.stats.PRESENCE,
                                     backstory: characterData.backstory
                                 };
 

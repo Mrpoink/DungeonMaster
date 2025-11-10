@@ -58,12 +58,12 @@ export default function CharacterCreation() {
             const characterData = {
                 username,
                 ...character,
-                str: character.stats.STRENGTH,
-                dex: character.stats.DEXTERITY,
-                con: character.stats.CONSTITUTION,
-                int: character.stats.INTELLIGENCE,
-                wis: character.stats.WISDOM,
-                cha: character.stats.CHARISMA
+                Might: character.stats.MIGHT,
+                Agility: character.stats.AGILITY,
+                Spirit: character.stats.SPIRIT,
+                Intellect: character.stats.INTELLECT,
+                Wisdom: character.stats.WISDOM,
+                Presence: character.stats.PRESENCE
             };
 
             const response = await fetch('http://localhost:1068/characters', {
@@ -148,7 +148,7 @@ export default function CharacterCreation() {
                                 value={value}
                                 onChange={handleChange}
                                 min="1"
-                                max="20"
+                                max="30"
                             />
                         </div>
                     ))}
