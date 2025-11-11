@@ -274,38 +274,60 @@ export default function Game() {
     <div className="root-container">
         <div className="game-master-box">
           <header>
-            <h1>Dungeon Master:</h1>      
+            <h1>QuestWeaver:</h1>      
           </header>
           <div className="exit-game-button">
             <button onClick={()=>router.back()}>
               Leave Experience
             </button>
           </div>
-          <div className="scene-box">
-            <p className="scene-box-p">
-              {scene || 'The scene is about to unfold...'}
-            </p>
-          </div>
         </div>
         <div className="main-session-box">
-          <div className="dice-box">
-            <div>
-              <Dice 
-                onDiceSelect={handleDiceSelect} 
-                activeDice={activeDice} 
-                onSetActiveDice={handleActiveSelect}
-              />
+            <div className="dice-box" style={{
+              position: 'absolute',
+              top: '50%',
+              left: '20px',
+              transform: 'translateY(-50%)',
+              backgroundColor: 'rgba(0, 0, 0, 0.7)',
+              padding: '15px',
+              borderRadius: '8px',
+              border: '1px solid #4a4a4a',
+              boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+              zIndex: 10,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '10px'
+            }}>
+              <div>
+                <Dice 
+                  onDiceSelect={handleDiceSelect} 
+                  activeDice={activeDice} 
+                  onSetActiveDice={handleActiveSelect}
+                />
+              </div>
+              <div>
+                <Roll 
+                  sides={pendingAction ? parseInt(pendingAction.dice.replace('1d', '')) : sides} 
+                  onRollClick={handleRoll}
+                  disabled={!pendingAction}
+                />
+              </div>
             </div>
-            <div>
-              <Roll 
-                sides={pendingAction ? parseInt(pendingAction.dice.replace('1d', '')) : sides} 
-                onRollClick={handleRoll}
-                disabled={!pendingAction}
-              />
-            </div>
-          </div>
           <main className="game-box" style={{ position: 'relative' }}>
-            <img src={Background.src} alt="" />
+            <img src={Background.src} alt="" style={{ filter: 'brightness(0.7)' }} />
+            <div className="scene-box" style={{
+              position: 'absolute',
+              top: '20px',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              width: '80%',
+              maxWidth: '800px',
+            }}>
+              <p className="scene-box-p">
+                {scene || 'The scene is about to unfold...'}
+              </p>
+            </div>
             <div className={`message-display-toggle ${isHistoryOpen ? 'full-history' : 'latest-message'}`} onClick={() => setIsHistoryOpen(!isHistoryOpen)}>
             {isHistoryOpen ? (
               <div className="full-conversation-log">

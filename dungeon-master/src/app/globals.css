@@ -18,6 +18,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: serif;
 }
 html{
   max-width: 100vw;
@@ -27,7 +28,7 @@ body {
   color: var(--foreground);
   text-align: center;
   justify-content: center;
-  font-family: 'Inter styles';
+  font-family: serif;
 }
 .start-buttons{
   margin: 1em;
@@ -47,14 +48,14 @@ header {
   padding-top: 0;
 }
 h1 {
-  font-family: 'Cinzel Decorative';
+  font-family: serif;
   font-size: xx-large;
   font-weight: bold;
   text-align: center;
   justify-content: center;
 }
 button {
-  font-family: 'EB Garamond';
+  font-family: serif;
   border-radius: 25px;
   text-align: center;
   background-color: var(--background);
@@ -96,7 +97,9 @@ button {
     font-size: small;
     margin-left: 2.5rem;
     background-color: #000;
-    opacity: 0.5;
+    opacity: 0.9;
+    color: #fff;
+    border: 1px solid #4a4a4a;
   }
 }
 .game-box {
@@ -175,6 +178,7 @@ input::selection {
   white-space: normal;
   overflow-wrap: break-word;
   max-width: 100%;
+  color: darkgray
 }
 .full-conversation-log {
   max-height: 60vh;
@@ -188,7 +192,8 @@ input::selection {
   line-height: 1.4;
 }
 .full-conversation-log .dm-text {
-  color: #FBBF24; 
+  color: darkgray; /* Lighter grey for better readability */
+  margin-bottom: 8px;
 }
 .full-conversation-log .user-text {
   color: #D1D5DB;
@@ -309,7 +314,7 @@ input::selection {
   flex-direction: column;
   height: 100vh;
   padding: 1rem;
-  font-family: Inter, sans-serif;
+  font-family: serif;
   overflow: hidden;
 }
 
