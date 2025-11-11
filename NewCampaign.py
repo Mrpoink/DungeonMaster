@@ -134,7 +134,7 @@ def change_ability(player, ability_dict , amount):
         elif ability == 'Spirit':
             player.attributes['Spirit'] += change
 
-    print(f"Changed {ability} by {ability_dict[ability]} based on roll of {amount}")
+    # print(f"Changed {ability} by {ability_dict[ability]} based on roll of {amount}")
 
 
 def run_campaign(campaign, first_prompt, campaign_index=0):

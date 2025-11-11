@@ -40,7 +40,6 @@ export default function AbilityProgressBar( {name, score}:{name: string, score: 
 }
 
 export function AbilityBars({ characterData }: { characterData: any }) {
-    // Default values in case characterData is null or missing attributes
     const stats = {
         intellect: characterData?.int ?? 10,
         might: characterData?.str ?? 10,
