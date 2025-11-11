@@ -387,7 +387,7 @@ class get_from_db:
                 where={'user': username}
             )
             # The result from find_many is already a list of character objects (dictionaries)
-            return characters
+            return characters[-1]
         except Exception as e:
             print(f"Error fetching characters for user {username}: {e}")
             return []
@@ -405,7 +405,7 @@ class get_from_db:
 
             print("Character data from db: ", character_data)
 
-            return character_data
+            return character_data[-1]
         except Exception as e:
             print(f"Error fetching character for user {username}: {e}")
             return None
@@ -420,7 +420,7 @@ class get_from_db:
         try:
             character = await self.db.userchar.find_first(
                 where={'user': username},
-                order={'id': 'asc'} # Get the first character created if there are multiple
+                order={'id': 'desc'} # Get the first character created if there are multiple
             )
 
             if character:

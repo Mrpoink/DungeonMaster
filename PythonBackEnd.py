@@ -54,7 +54,7 @@ class player:
         
         await instance.vb.connect()
         
-        player_data = await instance.vb.get_player_data(username)[0]
+        player_data = await instance.vb.get_player_data(username)[-1]
         
         instance.attributes = {
             'Might': player_data.get('str', None),
@@ -200,23 +200,22 @@ class campaign:
         Needs the seed to decide the campaign to roll with \
         sets the campaign information'''
 
-        campaign_num = seed % 5 #set back to instance.seed and then remove seed from parameters
 
-        match campaign_num:
+        match seed:
 
-            case 0:
+            case 1:
                 with open('Datasets/echoes_of_the_force.json', 'r') as file:
                     instance.campaign = json.load(file)
-            case 1:
+            case 2:
                 with open('Datasets/the_last_ember_of_balance.json', 'r') as file:
                     instance.campaign = json.load(file)
-            case 2:
+            case 3:
                 with open('Datasets/the_shattered_crown_of_elarion.json', 'r') as file:
                     instance.campaign = json.load(file)
-            case 3:
+            case 4:
                 with open('Datasets/the_shattered_hourglass.json', 'r') as file:
                     instance.campaign = json.load(file)
-            case 4:
+            case 5:
                 with open('Datasets/echoes_of_the_ember_king_v2.json', 'r') as file:
                     instance.campaign = json.load(file)
                     

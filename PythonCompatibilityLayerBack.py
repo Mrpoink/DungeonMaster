@@ -16,25 +16,33 @@ nest_asyncio.apply()
 loop = asyncio.new_event_loop()
 asyncio.set_event_loop(loop)
 
+# Add a lock for database operations
+db_lock = asyncio.Lock()
+
 game_instance = None
 player_character = None
 
+# Helper function to run coroutines safely with a lock
+async def run_safely(coro):
+    async with db_lock:
+        return await coro
+
 def initialize_app(username=None):
     global game_instance
-    game_instance = loop.run_until_complete(async_initialize(username))
+    game_instance = loop.run_until_complete(run_safely(async_initialize(username)))
 
 async def async_initialize(username=None):
     instance = await PythonBackEnd.campaign.create_dm()
-    PythonBackEnd.campaign.create_campaign_from_file(instance, instance.seed)
-    instance.get_campaign()
+    # PythonBackEnd.campaign.create_campaign_from_file(instance, instance.seed)
+    # instance.get_campaign()
     return instance
 
 # Initially create with no username - will be updated when user logs in
-try:
-    initialize_app()
-except Exception as e:
-    print("Error initializing: ", e)
-    raise
+# try:
+#     initialize_app()
+# except Exception as e:
+#     print("Error initializing: ", e)
+#     raise
 
 # Add function to reinitialize DM with character data when user logs in
 def reinitialize_dm(username):
@@ -44,7 +52,7 @@ def reinitialize_dm(username):
         initialize_app(username)
         
         # Load character data and create the player object
-        char_attributes = loop.run_until_complete(game_instance.vb.get_character_attributes(username))
+        char_attributes = loop.run_until_complete(run_safely(game_instance.vb.get_character_attributes(username)))
         if char_attributes:
             player_character = PythonBackEnd.player(campaign_dict=game_instance.campaign)
             player_character.attributes = {
@@ -108,7 +116,7 @@ def process_message():
 
             if not player_character:
                 # Synchronously run the async function to get character attributes
-                char_attributes = loop.run_until_complete(game_instance.vb.get_character_attributes(username))
+                char_attributes = loop.run_until_complete(run_safely(game_instance.vb.get_character_attributes(username)))
                 if char_attributes:
                     # Use a temporary dictionary for attributes to avoid modifying the class-level one
                     temp_attributes = {
@@ -152,11 +160,11 @@ def process_message():
                 if 'ability_change' in outcome_description:
                     player_character.change_ability(outcome_description['ability_change'], roll)
                     # Synchronously run the async function to update stats
-                    loop.run_until_complete(game_instance.vb.update_character_stats(username, player_character.attributes))
+                    loop.run_until_complete(run_safely(game_instance.vb.update_character_stats(username, player_character.attributes)))
                     
                     for ability, change in outcome_description['ability_change'].items():
-                        print(type(game_instance.scene_and_options[len(game_instance.scene_and_options)-1][1]))
-                        if player_character.attributes.get(ability, 0) < 1:
+                        print(player_character.attributes.get(ability))
+                        if player_character.attributes.get(ability) < 1:
                             return jsonify({
                                 'message': f"{game_instance.scene_and_options[len(game_instance.scene_and_options)-1][0]}",
                                 'scene': "Game Over",
@@ -175,13 +183,13 @@ def process_message():
                 next_description, next_options = game_instance.scene_and_options[game_instance.turn_num]
                 
                 # Fetch the latest character data to send back to the frontend
-                updated_character_data = loop.run_until_complete(game_instance.vb.get_character(username))
+                updated_character_data = loop.run_until_complete(run_safely(game_instance.vb.get_character(username)))
 
                 return jsonify({
                     'message': f"{narration}\n\n{next_description}",
                     'scene': game_instance.get_background(),
                     'options': [opt['option'] for opt in next_options],
-                    'characterData': updated_character_data[0] if updated_character_data else None
+                    'characterData': updated_character_data if updated_character_data else None
                 })
 
         except Exception as e:
@@ -192,6 +200,27 @@ def process_message():
             lock = False
     else:
         return jsonify({'message': 'DM is typing, please wait...'})
+    
+@app.route("/seed", methods=['POST'])
+def use_campaign():
+    global game_instance
+    try:
+        data = request.get_json()
+        seed = data.get('seed')
+
+        game_instance = loop.run_until_complete(run_safely(async_initialize()))
+        game_instance.seed = seed
+        PythonBackEnd.campaign.create_campaign_from_file(game_instance, seed)
+        game_instance.get_campaign()
+
+        return jsonify({
+            "status": "ready",
+            "message": f"Campaign with seed {seed} loaded."
+        }), 200
+
+    except Exception as e:
+        print(e)
+        return jsonify({"error": "Failed to load campaign.", "details": str(e)}), 500
 
 @app.route("/DMout", methods=['GET'])
 def output_message():
@@ -217,6 +246,8 @@ def output_message():
 
 @app.route("/userData", methods=['POST'])
 def process_userdata():
+    if game_instance is None:
+        initialize_app()
     try:
         data = request.get_json()
         user_data = userData()
@@ -236,9 +267,13 @@ def check_creds():
     if request.method == 'OPTIONS':
         return '', 200
     try:
+        global game_instance
+        if game_instance is None:
+            initialize_app()
+            
         data = request.get_json()
         username = data.get('username')
-        user_creds = loop.run_until_complete(userData.check_credentials(username, data.get('password')))
+        user_creds = loop.run_until_complete(run_safely(userData.check_credentials(username, data.get('password'))))
 
         if isinstance(user_creds, bool) and user_creds:
             reinitialize_dm(username)
@@ -258,10 +293,10 @@ def get_character_data():
         if not username:
             return jsonify({"error": "Username is required"}), 400
 
-        character_data = loop.run_until_complete(game_instance.vb.get_character(username))
+        character_data = loop.run_until_complete(run_safely(game_instance.vb.get_character(username)))
         
-        # Return the first character object directly, or null if none is found
-        response_data = character_data[0] if character_data else None
+        # Return the character object directly, or null if none is found
+        response_data = character_data if character_data else None
         
         return jsonify({"characterData": response_data}), 200
     except Exception as e:
@@ -277,7 +312,7 @@ def process_characters():
         
         print(data)
         
-        success, message = loop.run_until_complete(game_instance.bvb.add_user_character(
+        success, message = loop.run_until_complete(run_safely(game_instance.bvb.add_user_character(
             username=username,
             name=data.get('name'),
             race=data.get('race'),
@@ -290,7 +325,7 @@ def process_characters():
             wisdom=data.get('wis'),
             charisma=data.get('cha'),
             backstory=data.get('backstory')
-        ))
+        )))
         
         if not success:
             return jsonify({

@@ -84,7 +84,7 @@ button {
   }
 }
 .exit-game-button{
-  float: left;
+  position : absolute;
   top: 10px;
   button {
     padding: 1em;
@@ -157,7 +157,8 @@ input::selection {
   align-items: center;
 }
 .message-display-toggle.full-history {
-  height: auto;
+  height: 200px;
+  overflow-y: auto;
   max-height: 70vh;
   align-items: flex-start;
 }
@@ -263,7 +264,7 @@ input::selection {
   position: relative;
   flex-grow: 1;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 
@@ -299,14 +300,63 @@ input::selection {
 }
 
 .root-container {
-  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
   background-color: #111827;
   color: white;
   padding: 1rem;
   font-family: Inter, sans-serif;
+  overflow: hidden; /* Prevents scrolling on the main container */
 }
+
+.game-master-box {
+  flex-shrink: 0; /* Prevents this box from shrinking */
+  position : relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.main-session-box {
+  display: flex;
+  flex-grow: 1; /* Allows this box to fill available space */
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch; /* Stretches children to fill height */
+  overflow: hidden; /* Prevents internal scrolling if content is too large */
+}
+
+.dice-box, .party-box {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.game-box {
+  flex-grow: 1;
+  position: relative;
+  display: flex; /* Changed to flex to better control children */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  border-radius: 0.75rem;
+  overflow: hidden;
+  height: 100%; /* Ensure it takes full height of its parent */
+}
+
+.game-box img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
 @media (min-width: 640px) {
-  .root-container { padding: 2rem; }
+  .root-container { padding: 1rem; }
 }
 .scene-box{
   background-color: rgba(0, 0, 0, 0.7);
@@ -318,11 +368,14 @@ input::selection {
   max-width: 800px;
   min-height: 50px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  text-align: center
+  text-align: center;
+  justify-content: center;
 }
 .scene-box-p{
   margin: 0;
   font-size: 1rem;
   line-height: 1.5;
-  font-family: serif
+  font-family: serif;
+  justify-content: center;
+  display: flex;
 }

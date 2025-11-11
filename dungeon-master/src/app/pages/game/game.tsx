@@ -93,7 +93,7 @@ export default function Game() {
   const handleOptionClick = async (option: string) => {
     if (isLoading) return;
     setIsLoading(true);
-    setConversation(prev => [...prev, { sender: username || 'User', text: option }]);
+    setConversation(prev => [...prev, { sender: characterData?.name || 'User', text: option }]);
 
     try {
         const payload = { message: option, username: username, step: 'get_roll_info' };
@@ -132,7 +132,7 @@ export default function Game() {
     if (!pendingAction || isLoading) return;
 
     setIsLoading(true);
-    setConversation(prev => [...prev, { sender: 'User', text: `(Rolled a ${rollResult} for ${pendingAction.ability})` }]);
+    setConversation(prev => [...prev, { sender: characterData?.name || 'User', text: `(Rolled a ${rollResult} for ${pendingAction.ability})` }]);
 
     try {
         const payload = {
@@ -316,11 +316,11 @@ export default function Game() {
           </div>
           <Options options={options} onOptionClick={handleOptionClick} />
             <div className="game">
-              <GameManager 
+              {/* <GameManager 
               userin={userin}
               setUserin={setUserin}
               handleSend={() => handleSend()}
-              isLoading={isLoading}          />
+              isLoading={isLoading}          /> */}
               <div className="player-actions">
               </div>
             </div>
