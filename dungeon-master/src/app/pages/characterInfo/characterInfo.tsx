@@ -221,7 +221,7 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
                     </button>
                 </div>
                 <div className="basic-info-grid">
-                    <div className="basicInfo-icon">
+                    <div className="basicInfo-icon-div">
                         <CharacterIcon id={tempIcon}/>
                     </div>
                     <p className="basicInfo-text">
@@ -404,16 +404,16 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
                     {renderHeader()}
                 </header>
                 <div className="main-grid">
-                    <div className="lg:col-span-1 space-y-8">
+                    <div className="space-y-8 lg:col-span-1 lg:order-1">
                         {renderBasic()}
                     </div>
-                    <div className="lg:col-span-1 space-y-8">
+                    <div className="space-y-8 lg:col-span-2 lg:order-4">
                         {renderStats()}
                     </div>
-                    <div className="lg:col-span-2 space-y-8">
+                    <div className="space-y-8 lg:col-span-2 lg:order-2">
                         {renderSkills()}
                     </div>
-                    <div className="lg:col-span-2 space-y-8">
+                    <div className="space-y-8 lg:col-span-1 lg:order-3">
                         {renderBackstory()}
                     </div>
                 </div>
