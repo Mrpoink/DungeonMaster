@@ -26,6 +26,7 @@
     display: flex; /* Use flex to easily center the button inside */
     justify-content: center;
     width: 100%;
+    flex-direction: column;
   }
   #roll-dice-button, #enter-button {
     border-radius: 25px;
@@ -52,6 +53,6 @@
   align-items: center;
   justify-content: flex-start;
   padding: auto;
-  width: 200px;
+  width: 100px;
   z-index: 10;
 }

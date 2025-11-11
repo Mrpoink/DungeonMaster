@@ -4,7 +4,34 @@ import Nav from "@/app/components/nav/nav";
 import {BottomNav} from "@/app/components/nav/nav";
 
 export default function Home() {
-const router = useRouter()
+  const router = useRouter();
+
+  const handleJoinGame = async (campaignId: number) => {
+    try {
+      const response = await fetch('http://localhost:1068/seed', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ seed: campaignId }),
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error("Error setting seed:", response.status, errorText);
+        // Optionally, display an error message to the user
+        return;
+      }
+
+      // If you expect a JSON response on success, you can process it here:
+      // const data = await response.json();
+      // console.log("Seed set successfully:", data);
+
+      router.push('./game');
+    } catch (error) {
+      console.error("Error setting seed:", error);
+    }
+  };
 
   return (
     <div className="lobby">
@@ -16,15 +43,15 @@ const router = useRouter()
           <div className="start-buttons-container">
             <div id="game-sessions-div">
               <div className="game-session" id="game-sessions-left-div">
-                <button className="left-game-session-buttons" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
-                <button className="left-game-session-buttons" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
+                <button className="left-game-session-buttons" type='button' onClick={() => handleJoinGame(1)}>Echoes of the Force</button>
+                <button className="left-game-session-buttons" type='button' onClick={() => handleJoinGame(2)}>The Last Ember of Balance</button>
               </div>
               <div className="game-session" id="game-sessions-mid-div">
-                <button className="mid-game-session-button" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
+                <button className="mid-game-session-button" type='button' onClick={() => handleJoinGame(3)}>The Shattered Crown of Elarion</button>
               </div>
               <div className="game-session" id="game-sessions-right-div">
-                <button className="right-game-session-buttons" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
-                <button className="right-game-session-buttons" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
+                <button className="right-game-session-buttons" type='button' onClick={() => handleJoinGame(4)}>The Shattered Hourglass</button>
+                <button className="right-game-session-buttons" type='button' onClick={() => handleJoinGame(5)}>Echoes of the Ember King</button>
               </div>
             </div>
           </div>
