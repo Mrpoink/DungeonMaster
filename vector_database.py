@@ -141,35 +141,22 @@ class use_vector_db:
         
     async def add_user_character(self, username, name, race, char_class, subclass, strength, dexterity, constitution, intelligence, wisdom, charisma, backstory):
         try:
-            # First, check if user exists
-            user_check = await self.db.userdata.find_first(
-                where={
-                    "username": username
-                }
-            )
-            
-            if not user_check:
-                return False, f"User {username} not found"
-            
-            # Create the character data according to schema
-            character_data = {
-                "user": username,
-                "name": name,
-                "race": race,
-                "cla": char_class,
-                "subclass": subclass or "",  # Handle optional subclass
-                "str": int(float(strength)),
-                "dex": int(float(dexterity)),
-                "con": int(float(constitution)),
-                "int": int(float(intelligence)),
-                "wis": int(float(wisdom)),
-                "cha": int(float(charisma)),
-                "backstory": backstory or ""  # Handle optional backstory
-            }
-            
-            # Create the character using Prisma's generated client
-            await self.db.userchar.create(
-                data=character_data
+            # The raw SQL query to insert a new character.
+            # Note that column names are enclosed in double quotes to preserve casing.
+            await self.db.execute_raw(
+                'INSERT INTO "USERCHAR" ("user", "name", "race", "cla", "subclass", "str", "dex", "con", "int", "wis", "cha", "backstory") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)',
+                username,
+                name,
+                race,
+                char_class,
+                subclass or "",
+                int(float(strength)),
+                int(float(dexterity)),
+                int(float(constitution)),
+                int(float(intelligence)),
+                int(float(wisdom)),
+                int(float(charisma)),
+                backstory or ""
             )
             
             print(f"Successfully created character {name} for user {username}")
@@ -178,15 +165,22 @@ class use_vector_db:
         except ValueError as e:
             print(f"Invalid data format: {e}")
             return False, "Invalid stat values. Please ensure all stats are numbers."
-        except Exception as e:
+        except RawQueryError as e:
             error_msg = str(e)
             print(f"Failed to add user character data: {error_msg}")
-            if "Foreign key constraint failed" in error_msg:
+            # Check for specific database constraint violations in the error message
+            if 'violates foreign key constraint' in error_msg:
                 return False, f"User {username} does not exist. Please create an account first."
-            elif "Unique constraint failed" in error_msg:
-                return False, f"A character named {name} already exists. Please choose a different name."
+            elif 'violates unique constraint' in error_msg:
+                # This assumes there's a unique constraint on the character name per user
+                return False, f"A character named {name} already exists for this user. Please choose a different name."
             else:
                 return False, f"Database error: {error_msg}"
+        except Exception as e:
+            # Catch any other unexpected errors
+            error_msg = str(e)
+            print(f"An unexpected error occurred: {error_msg}")
+            return False, f"An unexpected error occurred: {error_msg}"
 
     
 

@@ -420,17 +420,17 @@ const AbilityScore = ({ name, score }: { name: string; score: number }) => {
                                 }
 
                                 const characterDataToSend = {
-                                    username,
+                                    username: username,
                                     name: characterData.name,
                                     race: characterData.race,
                                     class: characterData.class,
-                                    subclass: characterData.subclass,
-                                    might: characterData.stats.MIGHT,
-                                    agility: characterData.stats.AGILITY,
-                                    spirit: characterData.stats.SPIRIT,
-                                    intellect: characterData.stats.INTELLECT,
-                                    wisdom: characterData.stats.WISDOM,
-                                    presence: characterData.stats.PRESENCE,
+                                    sub: characterData.subclass,
+                                    str: characterData.stats.MIGHT,
+                                    dex: characterData.stats.AGILITY,
+                                    con: characterData.stats.PRESENCE,
+                                    int: characterData.stats.INTELLECT,
+                                    wis: characterData.stats.WISDOM,
+                                    cha: characterData.stats.SPIRIT,
                                     backstory: characterData.backstory
                                 };
 

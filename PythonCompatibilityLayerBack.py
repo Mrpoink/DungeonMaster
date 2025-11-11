@@ -221,7 +221,9 @@ def process_characters():
         data = request.get_json()
         username = data.get('username')
         
-        success, message = loop.run_until_complete(game_instance.vb.add_user_character(
+        print(data)
+        
+        success, message = loop.run_until_complete(game_instance.bvb.add_user_character(
             username=username,
             name=data.get('name'),
             race=data.get('race'),

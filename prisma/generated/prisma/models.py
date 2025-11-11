@@ -1643,6 +1643,7 @@ class USERCHAR(bases.BaseUSERCHAR):
     id: _int
     user: _str
     username: Optional['models.USERDATA'] = None
+    name: _str
     race: _str
     cla: _str
     subclass: _str
@@ -3629,6 +3630,14 @@ _USERCHAR_fields: Dict['types.USERCHARKeys', PartialModelField] = OrderedDict(
             'optional': True,
             'type': 'models.USERDATA',
             'is_relational': True,
+            'documentation': None,
+        }),
+        ('name', {
+            'name': 'name',
+            'is_list': False,
+            'optional': False,
+            'type': '_str',
+            'is_relational': False,
             'documentation': None,
         }),
         ('race', {
