@@ -15,18 +15,12 @@ const availableIcons = [
 
 export function CharacterIcon({ id }: { id: number }) {
     switch (id) {
-        case 1:
-            return <GiPlagueDoctorProfile />;
-        case 2:
-            return <GiAquarium />;
-        case 3:
-            return <GiRabbit />;
-        case 4:
-            return <GiArrowed />;
-        case 5:
-            return <GiAstronautHelmet />;
-        default:
-            return <CgProfile />;
+        case 1: return <GiPlagueDoctorProfile />;
+        case 2: return <GiAquarium />;
+        case 3: return <GiRabbit />;
+        case 4: return <GiArrowed />;
+        case 5: return <GiAstronautHelmet />;
+        default: return <CgProfile />;
     }
 }
 

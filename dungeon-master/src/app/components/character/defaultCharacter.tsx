@@ -15,27 +15,27 @@ export const DEFAULT_CHARACTER: Character = {
         PRESENCE: 15,
     },
     skills: {
-        "Arcana": false,
+        "Arcana": true,
         "Investigation": false, 
         "Engineering": false, 
 
-        "Athletics": false,
+        "Athletics": true,
         "Brawling": false,
         "Endurance": false,
 
-        "Stealth": false, 
+        "Stealth": true, 
         "Acrobatics": false,
         "Sleight of Hand": false, 
 
-        "Persuasion": false, 
+        "Persuasion": true, 
         "Deception": false, 
         "Performance": false, 
 
-        "Insight": false, 
+        "Insight": true, 
         "Survival": false,
         "Medicine": false, 
 
-        "Faith": false, 
+        "Faith": true, 
         "Willpower": false, 
         "Attunement": false, 
 

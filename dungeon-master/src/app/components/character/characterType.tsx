@@ -1,7 +1,5 @@
 'use client'
 
-
-
 export default interface Character{
     name: string;
     race: string;
