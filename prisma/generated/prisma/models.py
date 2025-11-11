@@ -1641,11 +1641,7 @@ class USERCHAR(bases.BaseUSERCHAR):
     """Represents a USERCHAR record"""
 
     id: _int
-    user: _str
-    username: Optional['models.USERDATA'] = None
-    name: _str
     race: _str
-    cla: _str
     subclass: _str
     str: _int
     dex: _int
@@ -1654,6 +1650,10 @@ class USERCHAR(bases.BaseUSERCHAR):
     wis: _int
     cha: _int
     backstory: _str
+    cla: _str
+    name: _str
+    user: _str
+    username: Optional['models.USERDATA'] = None
 
     # take *args and **kwargs so that other metaclasses can define arguments
     def __init_subclass__(
@@ -3616,40 +3616,8 @@ _USERCHAR_fields: Dict['types.USERCHARKeys', PartialModelField] = OrderedDict(
             'is_relational': False,
             'documentation': None,
         }),
-        ('user', {
-            'name': 'user',
-            'is_list': False,
-            'optional': False,
-            'type': '_str',
-            'is_relational': False,
-            'documentation': None,
-        }),
-        ('username', {
-            'name': 'username',
-            'is_list': False,
-            'optional': True,
-            'type': 'models.USERDATA',
-            'is_relational': True,
-            'documentation': None,
-        }),
-        ('name', {
-            'name': 'name',
-            'is_list': False,
-            'optional': False,
-            'type': '_str',
-            'is_relational': False,
-            'documentation': None,
-        }),
         ('race', {
             'name': 'race',
-            'is_list': False,
-            'optional': False,
-            'type': '_str',
-            'is_relational': False,
-            'documentation': None,
-        }),
-        ('cla', {
-            'name': 'cla',
             'is_list': False,
             'optional': False,
             'type': '_str',
@@ -3718,6 +3686,38 @@ _USERCHAR_fields: Dict['types.USERCHARKeys', PartialModelField] = OrderedDict(
             'optional': False,
             'type': '_str',
             'is_relational': False,
+            'documentation': None,
+        }),
+        ('cla', {
+            'name': 'cla',
+            'is_list': False,
+            'optional': False,
+            'type': '_str',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('name', {
+            'name': 'name',
+            'is_list': False,
+            'optional': False,
+            'type': '_str',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('user', {
+            'name': 'user',
+            'is_list': False,
+            'optional': False,
+            'type': '_str',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('username', {
+            'name': 'username',
+            'is_list': False,
+            'optional': True,
+            'type': 'models.USERDATA',
+            'is_relational': True,
             'documentation': None,
         }),
     ],

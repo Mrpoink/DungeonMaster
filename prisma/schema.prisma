@@ -260,10 +260,10 @@ model Spell {
 }
 
 model USERDATA {
-  id            Int   @id @default(autoincrement())
-  name          String
-  username      String @unique
-  password      String
+  id         Int        @id @default(autoincrement())
+  name       String
+  username   String     @unique
+  password   String
   characters USERCHAR[]
 }
 
@@ -274,18 +274,18 @@ model STORYVECTOR {
 }
 
 model USERCHAR {
-  id            Int   @id @default(autoincrement())
-  user          String
-  username      USERDATA  @relation(fields: [user], references: [username])
-  name          String
-  race          String
-  cla         String
-  subclass      String
-  str           Int
-  dex           Int
-  con           Int
-  int           Int
-  wis           Int
-  cha           Int
-  backstory     String
+  id        Int      @id @default(autoincrement())
+  race      String
+  subclass  String
+  str       Int
+  dex       Int
+  con       Int
+  int       Int
+  wis       Int
+  cha       Int
+  backstory String
+  cla       String
+  name      String
+  user      String
+  username  USERDATA @relation(fields: [user], references: [username])
 }

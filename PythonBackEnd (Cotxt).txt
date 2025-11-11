@@ -37,7 +37,7 @@ class player:
             'Presence': None,
             'Wisdom': None,
             'Spirit': None,
-            'Intellect': None
+            'Intelligence': None
         }
         self.level = 1
         self.inventory = []
@@ -51,10 +51,8 @@ class player:
         '''
         instance = cls()
         instance.vb = vector_database.get_from_db()
-        instance.bvb = vector_database.use_vector_db()
         
         await instance.vb.connect()
-        await instance.bvb.connect()
         
         player_data = await instance.vb.get_player_data(username)[-1]
         
@@ -64,7 +62,7 @@ class player:
             'Presence': player_data.get('cha', None),
             'Wisdom': player_data.get('wis', None),
             'Spirit': player_data.get('con', None),
-            'Intellect': player_data.get('int', None)
+            'Intelligence': player_data.get('int', None)
         }
         
         print(instance.attributes)
@@ -104,11 +102,10 @@ class player:
                 self.attributes['Wisdom'] += change
             elif ability == 'Spirit':
                 self.attributes['Spirit'] += change
-            elif ability == 'Intellect':
-                self.attributes['Intellect'] += change
+            elif ability == 'Intelligence':
+                self.attributes['Intelligence'] += change
 
         print(f"Changed {ability} by {ability_dict[ability]} based on roll of {amount}")
-        print(f"New {ability} score: {self.attributes[ability]}")
                 
     
     async def save_player_attr(self, username):
@@ -128,7 +125,7 @@ class player:
             'Presence': player_data.get('cha', None),
             'Wisdom': player_data.get('wis', None),
             'Spirit': player_data.get('con', None),
-            'Intellect': player_data.get('int', None)
+            'Intelligence': player_data.get('int', None)
         }
         
         print("Successfully retrieved player attributes from database.")
@@ -146,7 +143,7 @@ class player:
 
 class campaign:
 
-    def __init__(self, username=None):
+    def __init__(self):
         r'''
         Run create_dm to make the vector database instance so we can add user data \
         get the seed from it so we can decide what campaign to do, and also where to store the information (if we do at all) \
@@ -167,13 +164,11 @@ class campaign:
         Use that change the players abilities in the player class \
         rinse and repeat
         '''
-        self.username = username
-        self.player = None
-        self.game_end = False
+
         self.turn_num = 0
 
     @classmethod
-    async def create_dm(cls, username=None):
+    async def create_dm(cls):
         r'''
         returns seed, \
         adds session \
@@ -181,15 +176,15 @@ class campaign:
         defines the turn_number \
         return instance with these items'''
     
-        instance = cls(username)
+        instance = cls()
 
         instance.vb = vector_database.get_from_db()
         instance.bvb = vector_database.use_vector_db()
         await instance.vb.connect()
         await instance.bvb.connect()
-        instance.session_seed = await instance.vb.get_session_id() + 1
-        print("Seed: ", instance.session_seed)
-        await instance.vb.add_session('all-MiniLM-L6-v2', "start of session", instance.session_seed)
+        instance.seed = await instance.vb.get_session_id() + 1
+        print("Seed: ", instance.seed)
+        await instance.vb.add_session('all-MiniLM-L6-v2', "start of session", instance.seed)
 
         instance.player_says = None
         
@@ -200,33 +195,29 @@ class campaign:
         return instance
     
 
-    def create_campaign_from_file(self, seed):
+    def create_campaign_from_file(instance, seed):
         r'''
         Needs the seed to decide the campaign to roll with \
         sets the campaign information'''
-        
-        print("Creating campaign from file with seed:", seed)
-        
-        self.seed = seed
 
 
         match seed:
 
             case 1:
                 with open('Datasets/echoes_of_the_force.json', 'r') as file:
-                    self.campaign = json.load(file)
+                    instance.campaign = json.load(file)
             case 2:
                 with open('Datasets/the_last_ember_of_balance.json', 'r') as file:
-                    self.campaign = json.load(file)
+                    instance.campaign = json.load(file)
             case 3:
                 with open('Datasets/the_shattered_crown_of_elarion.json', 'r') as file:
-                    self.campaign = json.load(file)
+                    instance.campaign = json.load(file)
             case 4:
                 with open('Datasets/the_shattered_hourglass.json', 'r') as file:
-                    self.campaign = json.load(file)
+                    instance.campaign = json.load(file)
             case 5:
                 with open('Datasets/echoes_of_the_ember_king_v2.json', 'r') as file:
-                    self.campaign = json.load(file)
+                    instance.campaign = json.load(file)
                     
     def get_background(self):
         r'''
@@ -238,7 +229,6 @@ class campaign:
         
         
         
-
     def get_campaign(self):
         r'''
         converts the campaign data into usable data for the scenes \
@@ -332,6 +322,8 @@ class campaign:
         print("From backend: ", result)
 
         return result
+
+
 
 
 

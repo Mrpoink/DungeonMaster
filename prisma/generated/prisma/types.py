@@ -30417,9 +30417,7 @@ class USERCHAROptionalCreateInput(TypedDict, total=False):
 
 class USERCHARCreateInput(USERCHAROptionalCreateInput):
     """Required arguments to the USERCHAR create method"""
-    name: _str
     race: _str
-    cla: _str
     subclass: _str
     str: _int
     dex: _int
@@ -30428,6 +30426,8 @@ class USERCHARCreateInput(USERCHAROptionalCreateInput):
     wis: _int
     cha: _int
     backstory: _str
+    cla: _str
+    name: _str
 
 
 # TODO: remove this in favour of without explicit relations
@@ -30441,9 +30441,7 @@ class USERCHAROptionalCreateWithoutRelationsInput(TypedDict, total=False):
 
 class USERCHARCreateWithoutRelationsInput(USERCHAROptionalCreateWithoutRelationsInput):
     """Required arguments to the USERCHAR create method, without relations"""
-    name: _str
     race: _str
-    cla: _str
     subclass: _str
     str: _int
     dex: _int
@@ -30452,6 +30450,8 @@ class USERCHARCreateWithoutRelationsInput(USERCHAROptionalCreateWithoutRelations
     wis: _int
     cha: _int
     backstory: _str
+    cla: _str
+    name: _str
 
 class USERCHARConnectOrCreateWithoutRelationsInput(TypedDict):
     create: 'USERCHARCreateWithoutRelationsInput'
@@ -30482,10 +30482,7 @@ USERCHARWhereUniqueInput = _USERCHARWhereUnique_id_Input
 class USERCHARUpdateInput(TypedDict, total=False):
     """Optional arguments for updating a record"""
     id: Union[AtomicIntInput, _int]
-    username: 'USERDATAUpdateOneWithoutRelationsInput'
-    name: _str
     race: _str
-    cla: _str
     subclass: _str
     str: Union[AtomicIntInput, _int]
     dex: Union[AtomicIntInput, _int]
@@ -30494,14 +30491,15 @@ class USERCHARUpdateInput(TypedDict, total=False):
     wis: Union[AtomicIntInput, _int]
     cha: Union[AtomicIntInput, _int]
     backstory: _str
+    cla: _str
+    name: _str
+    username: 'USERDATAUpdateOneWithoutRelationsInput'
 
 
 class USERCHARUpdateManyMutationInput(TypedDict, total=False):
     """Arguments for updating many records"""
     id: Union[AtomicIntInput, _int]
-    name: _str
     race: _str
-    cla: _str
     subclass: _str
     str: Union[AtomicIntInput, _int]
     dex: Union[AtomicIntInput, _int]
@@ -30510,6 +30508,8 @@ class USERCHARUpdateManyMutationInput(TypedDict, total=False):
     wis: Union[AtomicIntInput, _int]
     cha: Union[AtomicIntInput, _int]
     backstory: _str
+    cla: _str
+    name: _str
 
 
 class USERCHARUpdateManyWithoutRelationsInput(TypedDict, total=False):
@@ -30552,34 +30552,10 @@ _USERCHAR_id_OrderByInput = TypedDict(
     total=True
 )
 
-_USERCHAR_user_OrderByInput = TypedDict(
-    '_USERCHAR_user_OrderByInput',
-    {
-        'user': 'SortOrder',
-    },
-    total=True
-)
-
-_USERCHAR_name_OrderByInput = TypedDict(
-    '_USERCHAR_name_OrderByInput',
-    {
-        'name': 'SortOrder',
-    },
-    total=True
-)
-
 _USERCHAR_race_OrderByInput = TypedDict(
     '_USERCHAR_race_OrderByInput',
     {
         'race': 'SortOrder',
-    },
-    total=True
-)
-
-_USERCHAR_cla_OrderByInput = TypedDict(
-    '_USERCHAR_cla_OrderByInput',
-    {
-        'cla': 'SortOrder',
     },
     total=True
 )
@@ -30648,6 +30624,30 @@ _USERCHAR_backstory_OrderByInput = TypedDict(
     total=True
 )
 
+_USERCHAR_cla_OrderByInput = TypedDict(
+    '_USERCHAR_cla_OrderByInput',
+    {
+        'cla': 'SortOrder',
+    },
+    total=True
+)
+
+_USERCHAR_name_OrderByInput = TypedDict(
+    '_USERCHAR_name_OrderByInput',
+    {
+        'name': 'SortOrder',
+    },
+    total=True
+)
+
+_USERCHAR_user_OrderByInput = TypedDict(
+    '_USERCHAR_user_OrderByInput',
+    {
+        'user': 'SortOrder',
+    },
+    total=True
+)
+
 _USERCHAR_RelevanceInner = TypedDict(
     '_USERCHAR_RelevanceInner',
     {
@@ -30668,10 +30668,7 @@ _USERCHAR_RelevanceOrderByInput = TypedDict(
 
 USERCHAROrderByInput = Union[
     '_USERCHAR_id_OrderByInput',
-    '_USERCHAR_user_OrderByInput',
-    '_USERCHAR_name_OrderByInput',
     '_USERCHAR_race_OrderByInput',
-    '_USERCHAR_cla_OrderByInput',
     '_USERCHAR_subclass_OrderByInput',
     '_USERCHAR_str_OrderByInput',
     '_USERCHAR_dex_OrderByInput',
@@ -30680,6 +30677,9 @@ USERCHAROrderByInput = Union[
     '_USERCHAR_wis_OrderByInput',
     '_USERCHAR_cha_OrderByInput',
     '_USERCHAR_backstory_OrderByInput',
+    '_USERCHAR_cla_OrderByInput',
+    '_USERCHAR_name_OrderByInput',
+    '_USERCHAR_user_OrderByInput',
     '_USERCHAR_RelevanceOrderByInput',
 ]
 
@@ -32147,11 +32147,7 @@ FindFirstUSERCHARArgs = FindManyUSERCHARArgsFromUSERCHAR
 class USERCHARWhereInput(TypedDict, total=False):
     """USERCHAR arguments for searching"""
     id: Union[_int, 'types.IntFilter']
-    user: Union[_str, 'types.StringFilter']
-    username: 'USERDATARelationFilter'
-    name: Union[_str, 'types.StringFilter']
     race: Union[_str, 'types.StringFilter']
-    cla: Union[_str, 'types.StringFilter']
     subclass: Union[_str, 'types.StringFilter']
     str: Union[_int, 'types.IntFilter']
     dex: Union[_int, 'types.IntFilter']
@@ -32160,6 +32156,10 @@ class USERCHARWhereInput(TypedDict, total=False):
     wis: Union[_int, 'types.IntFilter']
     cha: Union[_int, 'types.IntFilter']
     backstory: Union[_str, 'types.StringFilter']
+    cla: Union[_str, 'types.StringFilter']
+    name: Union[_str, 'types.StringFilter']
+    user: Union[_str, 'types.StringFilter']
+    username: 'USERDATARelationFilter'
 
     # should be noted that AND and NOT should be Union['USERCHARWhereInputRecursive1', List['USERCHARWhereInputRecursive1']]
     # but this causes mypy to hang :/
@@ -32171,11 +32171,7 @@ class USERCHARWhereInput(TypedDict, total=False):
 class USERCHARWhereInputRecursive1(TypedDict, total=False):
     """USERCHAR arguments for searching"""
     id: Union[_int, 'types.IntFilter']
-    user: Union[_str, 'types.StringFilter']
-    username: 'USERDATARelationFilter'
-    name: Union[_str, 'types.StringFilter']
     race: Union[_str, 'types.StringFilter']
-    cla: Union[_str, 'types.StringFilter']
     subclass: Union[_str, 'types.StringFilter']
     str: Union[_int, 'types.IntFilter']
     dex: Union[_int, 'types.IntFilter']
@@ -32184,6 +32180,10 @@ class USERCHARWhereInputRecursive1(TypedDict, total=False):
     wis: Union[_int, 'types.IntFilter']
     cha: Union[_int, 'types.IntFilter']
     backstory: Union[_str, 'types.StringFilter']
+    cla: Union[_str, 'types.StringFilter']
+    name: Union[_str, 'types.StringFilter']
+    user: Union[_str, 'types.StringFilter']
+    username: 'USERDATARelationFilter'
 
     # should be noted that AND and NOT should be Union['USERCHARWhereInputRecursive2', List['USERCHARWhereInputRecursive2']]
     # but this causes mypy to hang :/
@@ -32195,11 +32195,7 @@ class USERCHARWhereInputRecursive1(TypedDict, total=False):
 class USERCHARWhereInputRecursive2(TypedDict, total=False):
     """USERCHAR arguments for searching"""
     id: Union[_int, 'types.IntFilter']
-    user: Union[_str, 'types.StringFilter']
-    username: 'USERDATARelationFilter'
-    name: Union[_str, 'types.StringFilter']
     race: Union[_str, 'types.StringFilter']
-    cla: Union[_str, 'types.StringFilter']
     subclass: Union[_str, 'types.StringFilter']
     str: Union[_int, 'types.IntFilter']
     dex: Union[_int, 'types.IntFilter']
@@ -32208,6 +32204,10 @@ class USERCHARWhereInputRecursive2(TypedDict, total=False):
     wis: Union[_int, 'types.IntFilter']
     cha: Union[_int, 'types.IntFilter']
     backstory: Union[_str, 'types.StringFilter']
+    cla: Union[_str, 'types.StringFilter']
+    name: Union[_str, 'types.StringFilter']
+    user: Union[_str, 'types.StringFilter']
+    username: 'USERDATARelationFilter'
 
     # should be noted that AND and NOT should be Union['USERCHARWhereInputRecursive3', List['USERCHARWhereInputRecursive3']]
     # but this causes mypy to hang :/
@@ -32219,11 +32219,7 @@ class USERCHARWhereInputRecursive2(TypedDict, total=False):
 class USERCHARWhereInputRecursive3(TypedDict, total=False):
     """USERCHAR arguments for searching"""
     id: Union[_int, 'types.IntFilter']
-    user: Union[_str, 'types.StringFilter']
-    username: 'USERDATARelationFilter'
-    name: Union[_str, 'types.StringFilter']
     race: Union[_str, 'types.StringFilter']
-    cla: Union[_str, 'types.StringFilter']
     subclass: Union[_str, 'types.StringFilter']
     str: Union[_int, 'types.IntFilter']
     dex: Union[_int, 'types.IntFilter']
@@ -32232,6 +32228,10 @@ class USERCHARWhereInputRecursive3(TypedDict, total=False):
     wis: Union[_int, 'types.IntFilter']
     cha: Union[_int, 'types.IntFilter']
     backstory: Union[_str, 'types.StringFilter']
+    cla: Union[_str, 'types.StringFilter']
+    name: Union[_str, 'types.StringFilter']
+    user: Union[_str, 'types.StringFilter']
+    username: 'USERDATARelationFilter'
 
     # should be noted that AND and NOT should be Union['USERCHARWhereInputRecursive4', List['USERCHARWhereInputRecursive4']]
     # but this causes mypy to hang :/
@@ -32243,11 +32243,7 @@ class USERCHARWhereInputRecursive3(TypedDict, total=False):
 class USERCHARWhereInputRecursive4(TypedDict, total=False):
     """USERCHAR arguments for searching"""
     id: Union[_int, 'types.IntFilter']
-    user: Union[_str, 'types.StringFilter']
-    username: 'USERDATARelationFilter'
-    name: Union[_str, 'types.StringFilter']
     race: Union[_str, 'types.StringFilter']
-    cla: Union[_str, 'types.StringFilter']
     subclass: Union[_str, 'types.StringFilter']
     str: Union[_int, 'types.IntFilter']
     dex: Union[_int, 'types.IntFilter']
@@ -32256,6 +32252,10 @@ class USERCHARWhereInputRecursive4(TypedDict, total=False):
     wis: Union[_int, 'types.IntFilter']
     cha: Union[_int, 'types.IntFilter']
     backstory: Union[_str, 'types.StringFilter']
+    cla: Union[_str, 'types.StringFilter']
+    name: Union[_str, 'types.StringFilter']
+    user: Union[_str, 'types.StringFilter']
+    username: 'USERDATARelationFilter'
 
 
 
@@ -32267,10 +32267,7 @@ class USERCHARWhereInputRecursive4(TypedDict, total=False):
 class USERCHARScalarWhereWithAggregatesInput(TypedDict, total=False):
     """USERCHAR arguments for searching"""
     id: Union[_int, 'types.IntWithAggregatesFilter']
-    user: Union[_str, 'types.StringWithAggregatesFilter']
-    name: Union[_str, 'types.StringWithAggregatesFilter']
     race: Union[_str, 'types.StringWithAggregatesFilter']
-    cla: Union[_str, 'types.StringWithAggregatesFilter']
     subclass: Union[_str, 'types.StringWithAggregatesFilter']
     str: Union[_int, 'types.IntWithAggregatesFilter']
     dex: Union[_int, 'types.IntWithAggregatesFilter']
@@ -32279,6 +32276,9 @@ class USERCHARScalarWhereWithAggregatesInput(TypedDict, total=False):
     wis: Union[_int, 'types.IntWithAggregatesFilter']
     cha: Union[_int, 'types.IntWithAggregatesFilter']
     backstory: Union[_str, 'types.StringWithAggregatesFilter']
+    cla: Union[_str, 'types.StringWithAggregatesFilter']
+    name: Union[_str, 'types.StringWithAggregatesFilter']
+    user: Union[_str, 'types.StringWithAggregatesFilter']
 
     AND: List['USERCHARScalarWhereWithAggregatesInputRecursive1']
     OR: List['USERCHARScalarWhereWithAggregatesInputRecursive1']
@@ -32288,10 +32288,7 @@ class USERCHARScalarWhereWithAggregatesInput(TypedDict, total=False):
 class USERCHARScalarWhereWithAggregatesInputRecursive1(TypedDict, total=False):
     """USERCHAR arguments for searching"""
     id: Union[_int, 'types.IntWithAggregatesFilter']
-    user: Union[_str, 'types.StringWithAggregatesFilter']
-    name: Union[_str, 'types.StringWithAggregatesFilter']
     race: Union[_str, 'types.StringWithAggregatesFilter']
-    cla: Union[_str, 'types.StringWithAggregatesFilter']
     subclass: Union[_str, 'types.StringWithAggregatesFilter']
     str: Union[_int, 'types.IntWithAggregatesFilter']
     dex: Union[_int, 'types.IntWithAggregatesFilter']
@@ -32300,6 +32297,9 @@ class USERCHARScalarWhereWithAggregatesInputRecursive1(TypedDict, total=False):
     wis: Union[_int, 'types.IntWithAggregatesFilter']
     cha: Union[_int, 'types.IntWithAggregatesFilter']
     backstory: Union[_str, 'types.StringWithAggregatesFilter']
+    cla: Union[_str, 'types.StringWithAggregatesFilter']
+    name: Union[_str, 'types.StringWithAggregatesFilter']
+    user: Union[_str, 'types.StringWithAggregatesFilter']
 
     AND: List['USERCHARScalarWhereWithAggregatesInputRecursive2']
     OR: List['USERCHARScalarWhereWithAggregatesInputRecursive2']
@@ -32309,10 +32309,7 @@ class USERCHARScalarWhereWithAggregatesInputRecursive1(TypedDict, total=False):
 class USERCHARScalarWhereWithAggregatesInputRecursive2(TypedDict, total=False):
     """USERCHAR arguments for searching"""
     id: Union[_int, 'types.IntWithAggregatesFilter']
-    user: Union[_str, 'types.StringWithAggregatesFilter']
-    name: Union[_str, 'types.StringWithAggregatesFilter']
     race: Union[_str, 'types.StringWithAggregatesFilter']
-    cla: Union[_str, 'types.StringWithAggregatesFilter']
     subclass: Union[_str, 'types.StringWithAggregatesFilter']
     str: Union[_int, 'types.IntWithAggregatesFilter']
     dex: Union[_int, 'types.IntWithAggregatesFilter']
@@ -32321,6 +32318,9 @@ class USERCHARScalarWhereWithAggregatesInputRecursive2(TypedDict, total=False):
     wis: Union[_int, 'types.IntWithAggregatesFilter']
     cha: Union[_int, 'types.IntWithAggregatesFilter']
     backstory: Union[_str, 'types.StringWithAggregatesFilter']
+    cla: Union[_str, 'types.StringWithAggregatesFilter']
+    name: Union[_str, 'types.StringWithAggregatesFilter']
+    user: Union[_str, 'types.StringWithAggregatesFilter']
 
     AND: List['USERCHARScalarWhereWithAggregatesInputRecursive3']
     OR: List['USERCHARScalarWhereWithAggregatesInputRecursive3']
@@ -32330,10 +32330,7 @@ class USERCHARScalarWhereWithAggregatesInputRecursive2(TypedDict, total=False):
 class USERCHARScalarWhereWithAggregatesInputRecursive3(TypedDict, total=False):
     """USERCHAR arguments for searching"""
     id: Union[_int, 'types.IntWithAggregatesFilter']
-    user: Union[_str, 'types.StringWithAggregatesFilter']
-    name: Union[_str, 'types.StringWithAggregatesFilter']
     race: Union[_str, 'types.StringWithAggregatesFilter']
-    cla: Union[_str, 'types.StringWithAggregatesFilter']
     subclass: Union[_str, 'types.StringWithAggregatesFilter']
     str: Union[_int, 'types.IntWithAggregatesFilter']
     dex: Union[_int, 'types.IntWithAggregatesFilter']
@@ -32342,6 +32339,9 @@ class USERCHARScalarWhereWithAggregatesInputRecursive3(TypedDict, total=False):
     wis: Union[_int, 'types.IntWithAggregatesFilter']
     cha: Union[_int, 'types.IntWithAggregatesFilter']
     backstory: Union[_str, 'types.StringWithAggregatesFilter']
+    cla: Union[_str, 'types.StringWithAggregatesFilter']
+    name: Union[_str, 'types.StringWithAggregatesFilter']
+    user: Union[_str, 'types.StringWithAggregatesFilter']
 
     AND: List['USERCHARScalarWhereWithAggregatesInputRecursive4']
     OR: List['USERCHARScalarWhereWithAggregatesInputRecursive4']
@@ -32351,10 +32351,7 @@ class USERCHARScalarWhereWithAggregatesInputRecursive3(TypedDict, total=False):
 class USERCHARScalarWhereWithAggregatesInputRecursive4(TypedDict, total=False):
     """USERCHAR arguments for searching"""
     id: Union[_int, 'types.IntWithAggregatesFilter']
-    user: Union[_str, 'types.StringWithAggregatesFilter']
-    name: Union[_str, 'types.StringWithAggregatesFilter']
     race: Union[_str, 'types.StringWithAggregatesFilter']
-    cla: Union[_str, 'types.StringWithAggregatesFilter']
     subclass: Union[_str, 'types.StringWithAggregatesFilter']
     str: Union[_int, 'types.IntWithAggregatesFilter']
     dex: Union[_int, 'types.IntWithAggregatesFilter']
@@ -32363,15 +32360,15 @@ class USERCHARScalarWhereWithAggregatesInputRecursive4(TypedDict, total=False):
     wis: Union[_int, 'types.IntWithAggregatesFilter']
     cha: Union[_int, 'types.IntWithAggregatesFilter']
     backstory: Union[_str, 'types.StringWithAggregatesFilter']
+    cla: Union[_str, 'types.StringWithAggregatesFilter']
+    name: Union[_str, 'types.StringWithAggregatesFilter']
+    user: Union[_str, 'types.StringWithAggregatesFilter']
 
 
 
 class USERCHARGroupByOutput(TypedDict, total=False):
     id: _int
-    user: _str
-    name: _str
     race: _str
-    cla: _str
     subclass: _str
     str: _int
     dex: _int
@@ -32380,6 +32377,9 @@ class USERCHARGroupByOutput(TypedDict, total=False):
     wis: _int
     cha: _int
     backstory: _str
+    cla: _str
+    name: _str
+    user: _str
     _sum: 'USERCHARSumAggregateOutput'
     _avg: 'USERCHARAvgAggregateOutput'
     _min: 'USERCHARMinAggregateOutput'
@@ -32412,10 +32412,7 @@ class USERCHARSumAggregateOutput(TypedDict, total=False):
 class USERCHARScalarAggregateOutput(TypedDict, total=False):
     """USERCHAR output including scalar fields"""
     id: _int
-    user: _str
-    name: _str
     race: _str
-    cla: _str
     subclass: _str
     str: _int
     dex: _int
@@ -32424,6 +32421,9 @@ class USERCHARScalarAggregateOutput(TypedDict, total=False):
     wis: _int
     cha: _int
     backstory: _str
+    cla: _str
+    name: _str
+    user: _str
 
 
 USERCHARMinAggregateOutput = USERCHARScalarAggregateOutput
@@ -32433,10 +32433,7 @@ USERCHARMaxAggregateOutput = USERCHARScalarAggregateOutput
 class USERCHARMaxAggregateInput(TypedDict, total=False):
     """USERCHAR input for aggregating by max"""
     id: bool
-    user: bool
-    name: bool
     race: bool
-    cla: bool
     subclass: bool
     str: bool
     dex: bool
@@ -32445,15 +32442,15 @@ class USERCHARMaxAggregateInput(TypedDict, total=False):
     wis: bool
     cha: bool
     backstory: bool
+    cla: bool
+    name: bool
+    user: bool
 
 
 class USERCHARMinAggregateInput(TypedDict, total=False):
     """USERCHAR input for aggregating by min"""
     id: bool
-    user: bool
-    name: bool
     race: bool
-    cla: bool
     subclass: bool
     str: bool
     dex: bool
@@ -32462,6 +32459,9 @@ class USERCHARMinAggregateInput(TypedDict, total=False):
     wis: bool
     cha: bool
     backstory: bool
+    cla: bool
+    name: bool
+    user: bool
 
 
 class USERCHARNumberAggregateInput(TypedDict, total=False):
@@ -32483,10 +32483,7 @@ USERCHARCountAggregateInput = TypedDict(
     'USERCHARCountAggregateInput',
     {
         'id': bool,
-        'user': bool,
-        'name': bool,
         'race': bool,
-        'cla': bool,
         'subclass': bool,
         'str': bool,
         'dex': bool,
@@ -32495,6 +32492,9 @@ USERCHARCountAggregateInput = TypedDict(
         'wis': bool,
         'cha': bool,
         'backstory': bool,
+        'cla': bool,
+        'name': bool,
+        'user': bool,
         '_all': bool,
     },
     total=False,
@@ -32504,10 +32504,7 @@ USERCHARCountAggregateOutput = TypedDict(
     'USERCHARCountAggregateOutput',
     {
         'id': int,
-        'user': int,
-        'name': int,
         'race': int,
-        'cla': int,
         'subclass': int,
         'str': int,
         'dex': int,
@@ -32516,6 +32513,9 @@ USERCHARCountAggregateOutput = TypedDict(
         'wis': int,
         'cha': int,
         'backstory': int,
+        'cla': int,
+        'name': int,
+        'user': int,
         '_all': int,
     },
     total=False,
@@ -32524,11 +32524,7 @@ USERCHARCountAggregateOutput = TypedDict(
 
 USERCHARKeys = Literal[
     'id',
-    'user',
-    'username',
-    'name',
     'race',
-    'cla',
     'subclass',
     'str',
     'dex',
@@ -32537,13 +32533,14 @@ USERCHARKeys = Literal[
     'wis',
     'cha',
     'backstory',
+    'cla',
+    'name',
+    'user',
+    'username',
 ]
 USERCHARScalarFieldKeys = Literal[
     'id',
-    'user',
-    'name',
     'race',
-    'cla',
     'subclass',
     'str',
     'dex',
@@ -32552,6 +32549,9 @@ USERCHARScalarFieldKeys = Literal[
     'wis',
     'cha',
     'backstory',
+    'cla',
+    'name',
+    'user',
 ]
 USERCHARScalarFieldKeysT = TypeVar('USERCHARScalarFieldKeysT', bound=USERCHARScalarFieldKeys)
 

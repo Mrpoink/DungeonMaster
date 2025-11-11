@@ -13512,7 +13512,7 @@ class USERCHARActions(Generic[_PrismaModelT]):
         -------
         ```py
         user = await USERCHAR.prisma().query_first(
-            'SELECT * FROM USERCHAR WHERE user = $1',
+            'SELECT * FROM USERCHAR WHERE race = $1',
             'bjcdajabfa',
         )
         ```
@@ -13552,18 +13552,18 @@ class USERCHARActions(Generic[_PrismaModelT]):
         userchar = await USERCHAR.prisma().create(
             data={
                 # data to create a USERCHAR record
-                'user': 'bchhceeeff',
-                'name': 'bbgaifhdaa',
-                'race': 'dgbcdaegb',
-                'cla': 'beagfbbjig',
-                'subclass': 'beicihhijb',
-                'str': 566623296,
-                'dex': 229119865,
-                'con': 1750011070,
-                'int': 410943775,
-                'wis': 909024364,
-                'cha': 755610165,
-                'backstory': 'biacbiieja',
+                'race': 'bchhceeeff',
+                'subclass': 'bbgaifhdaa',
+                'str': 361230461,
+                'dex': 1406511986,
+                'con': 1482877891,
+                'int': 566623296,
+                'wis': 229119865,
+                'cha': 1750011070,
+                'backstory': 'ebajedhhf',
+                'cla': 'jajacedge',
+                'name': 'hffgbabgf',
+                'user': 'biacbiieja',
             },
         )
         ```
@@ -13618,33 +13618,33 @@ class USERCHARActions(Generic[_PrismaModelT]):
             data=[
                 {
                     # data to create a USERCHAR record
-                    'user': 'cjejbgbff',
-                    'name': 'fgeahddae',
-                    'race': 'diageigcf',
-                    'cla': 'badagbgeha',
-                    'subclass': 'ibgebbjch',
-                    'str': 1084099844,
-                    'dex': 1079702253,
-                    'con': 755750178,
-                    'int': 1128680371,
-                    'wis': 259061104,
-                    'cha': 1115738345,
-                    'backstory': 'bdadhibhec',
+                    'race': 'cjejbgbff',
+                    'subclass': 'fgeahddae',
+                    'str': 380648625,
+                    'dex': 1030616470,
+                    'con': 816411927,
+                    'int': 1084099844,
+                    'wis': 1079702253,
+                    'cha': 755750178,
+                    'backstory': 'bbcigiadhb',
+                    'cla': 'cfjagbbae',
+                    'name': 'bbbfhdidef',
+                    'user': 'bdadhibhec',
                 },
                 {
                     # data to create a USERCHAR record
-                    'user': 'bfhdjaiejf',
-                    'name': 'bbjfijjadg',
-                    'race': 'hdjacbehh',
-                    'cla': 'bhcccbeaba',
-                    'subclass': 'bcgjbdgjdj',
-                    'str': 573178504,
-                    'dex': 1440265249,
-                    'con': 1185738822,
-                    'int': 1694224903,
-                    'wis': 1906360116,
-                    'cha': 1911255389,
-                    'backstory': 'begcgchdi',
+                    'race': 'bfhdjaiejf',
+                    'subclass': 'bbjfijjadg',
+                    'str': 739021477,
+                    'dex': 1722214010,
+                    'con': 1269136939,
+                    'int': 573178504,
+                    'wis': 1440265249,
+                    'cha': 1185738822,
+                    'backstory': 'bgjeccejad',
+                    'cla': 'bjagdgabbg',
+                    'name': 'bjbbcffdij',
+                    'user': 'begcgchdi',
                 },
             ],
             skip_duplicates=True,
@@ -13863,11 +13863,11 @@ class USERCHARActions(Generic[_PrismaModelT]):
         # find the first 10 USERCHAR records
         userchars = await USERCHAR.prisma().find_many(take=10)
 
-        # find the first 5 USERCHAR records ordered by the name field
+        # find the first 5 USERCHAR records ordered by the subclass field
         userchars = await USERCHAR.prisma().find_many(
             take=5,
             order={
-                'name': 'desc',
+                'subclass': 'desc',
             },
         )
         ```
@@ -13928,11 +13928,11 @@ class USERCHARActions(Generic[_PrismaModelT]):
         Example
         -------
         ```py
-        # find the second USERCHAR record ordered by the race field
+        # find the second USERCHAR record ordered by the str field
         userchar = await USERCHAR.prisma().find_first(
             skip=1,
             order={
-                'race': 'desc',
+                'str': 'desc',
             },
         )
         ```
@@ -13996,11 +13996,11 @@ class USERCHARActions(Generic[_PrismaModelT]):
         Example
         -------
         ```py
-        # find the second USERCHAR record ordered by the cla field
+        # find the second USERCHAR record ordered by the dex field
         userchar = await USERCHAR.prisma().find_first_or_raise(
             skip=1,
             order={
-                'cla': 'desc',
+                'dex': 'desc',
             },
         )
         ```
@@ -14115,32 +14115,32 @@ class USERCHARActions(Generic[_PrismaModelT]):
             data={
                 'create': {
                     'id': 647166719,
-                    'user': 'bfhdjaiejf',
-                    'name': 'bbjfijjadg',
-                    'race': 'hdjacbehh',
-                    'cla': 'bhcccbeaba',
-                    'subclass': 'bcgjbdgjdj',
-                    'str': 573178504,
-                    'dex': 1440265249,
-                    'con': 1185738822,
-                    'int': 1694224903,
-                    'wis': 1906360116,
-                    'cha': 1911255389,
-                    'backstory': 'begcgchdi',
+                    'race': 'bfhdjaiejf',
+                    'subclass': 'bbjfijjadg',
+                    'str': 739021477,
+                    'dex': 1722214010,
+                    'con': 1269136939,
+                    'int': 573178504,
+                    'wis': 1440265249,
+                    'cha': 1185738822,
+                    'backstory': 'bgjeccejad',
+                    'cla': 'bjagdgabbg',
+                    'name': 'bjbbcffdij',
+                    'user': 'begcgchdi',
                 },
                 'update': {
-                    'user': 'bfhdjaiejf',
-                    'name': 'bbjfijjadg',
-                    'race': 'hdjacbehh',
-                    'cla': 'bhcccbeaba',
-                    'subclass': 'bcgjbdgjdj',
-                    'str': 573178504,
-                    'dex': 1440265249,
-                    'con': 1185738822,
-                    'int': 1694224903,
-                    'wis': 1906360116,
-                    'cha': 1911255389,
-                    'backstory': 'begcgchdi',
+                    'race': 'bfhdjaiejf',
+                    'subclass': 'bbjfijjadg',
+                    'str': 739021477,
+                    'dex': 1722214010,
+                    'con': 1269136939,
+                    'int': 573178504,
+                    'wis': 1440265249,
+                    'cha': 1185738822,
+                    'backstory': 'bgjeccejad',
+                    'cla': 'bjagdgabbg',
+                    'name': 'bjbbcffdij',
+                    'user': 'begcgchdi',
                 },
             },
         )
@@ -14188,7 +14188,7 @@ class USERCHARActions(Generic[_PrismaModelT]):
         # update all USERCHAR records
         total = await USERCHAR.prisma().update_many(
             data={
-                'subclass': 'dfhaijeie'
+                'con': 357089484
             },
             where={}
         )
@@ -14252,7 +14252,7 @@ class USERCHARActions(Generic[_PrismaModelT]):
         results = await USERCHAR.prisma().count(
             select={
                 '_all': True,
-                'str': True,
+                'int': True,
             },
         )
         ```
@@ -14319,7 +14319,7 @@ class USERCHARActions(Generic[_PrismaModelT]):
         results = await USERCHAR.prisma().count(
             select={
                 '_all': True,
-                'dex': True,
+                'wis': True,
             },
         )
         ```
@@ -14459,10 +14459,10 @@ class USERCHARActions(Generic[_PrismaModelT]):
         Example
         -------
         ```py
-        # group USERCHAR records by con values
+        # group USERCHAR records by cha values
         # and count how many records are in each group
         results = await USERCHAR.prisma().group_by(
-            ['con'],
+            ['cha'],
             count=True,
         )
         ```

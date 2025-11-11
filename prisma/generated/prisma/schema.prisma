@@ -275,11 +275,7 @@ model STORYVECTOR {
 
 model USERCHAR {
   id        Int      @id @default(autoincrement())
-  user      String
-  username  USERDATA @relation(fields: [user], references: [username])
-  name      String
   race      String
-  cla       String
   subclass  String
   str       Int
   dex       Int
@@ -288,4 +284,8 @@ model USERCHAR {
   wis       Int
   cha       Int
   backstory String
+  cla       String
+  name      String
+  user      String
+  username  USERDATA @relation(fields: [user], references: [username])
 }

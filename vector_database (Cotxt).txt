@@ -139,7 +139,7 @@ class use_vector_db:
         except RawQueryError:
             return False, "Name already exists"
         
-    async def add_user_character(self, username, name, race, char_class, subclass, strength, dexterity, constitution, Intellect, wisdom, charisma, backstory):
+    async def add_user_character(self, username, name, race, char_class, subclass, strength, dexterity, constitution, intelligence, wisdom, charisma, backstory):
         try:
             # The raw SQL query to insert a new character.
             # Note that column names are enclosed in double quotes to preserve casing.
@@ -153,7 +153,7 @@ class use_vector_db:
                 int(float(strength)),
                 int(float(dexterity)),
                 int(float(constitution)),
-                int(float(Intellect)),
+                int(float(intelligence)),
                 int(float(wisdom)),
                 int(float(charisma)),
                 backstory or ""
@@ -343,21 +343,20 @@ class get_from_db:
             # This assumes a user might have multiple characters, but we'll update the first one found.
             # For a more robust system, a character ID would be better.
             character_to_update = await self.db.userchar.find_first(
-                where={'user': username},
-                order={'id': 'desc'}
+                where={'user': username}
             )
 
             if not character_to_update:
                 return False, f"No character found for user {username}."
             
-            print(f"int check : {stats_dict.get('Intellect')}")
+            print(f"int check : {stats_dict.get('Intelligence')}")
 
             # Prepare the data for the update operation
             update_data = {
                 'str': stats_dict.get('Might'),
                 'dex': stats_dict.get('Agility'),
                 'con': stats_dict.get('Spirit'),
-                'int': stats_dict.get('Intellect'),
+                'int': stats_dict.get('Intelligence'),
                 'wis': stats_dict.get('Wisdom'),
                 'cha': stats_dict.get('Presence')
             }
@@ -375,17 +374,38 @@ class get_from_db:
             print(f"Failed to update character stats for user {username}: {error_msg}")
             return False, f"Database error: {error_msg}"
 
+    async def get_characters_for_user(self, username: str):
+        """
+        Retrieves all characters for a given user and returns them as a list.
+        """
+        if not username:
+            return []
+        
+        await self.db.connect()
+        try:
+            characters = await self.db.userchar.find_many(
+                where={'user': username}
+            )
+            # The result from find_many is already a list of character objects (dictionaries)
+            return characters[-1]
+        except Exception as e:
+            print(f"Error fetching characters for user {username}: {e}")
+            return []
+        finally:
+            if self.db.is_connected():
+                await self.db.disconnect()
+
     async def get_character(self, username):
         try:
             character_data = await self.db.query_raw('' \
             'SELECT T2.* FROM "USERDATA" AS T1 ' \
             'INNER JOIN "USERCHAR" AS T2 ON T1."username" = T2."user"' \
-            'WHERE T1."username" = $1 ORDER BY T2."id" DESC LIMIT 1',
+            'WHERE T1."username" = $1',
             username)
 
-            print("Character data from db: ", character_data[0])
+            print("Character data from db: ", character_data)
 
-            return character_data[0]
+            return character_data[-1]
         except Exception as e:
             print(f"Error fetching character for user {username}: {e}")
             return None
@@ -409,15 +429,11 @@ class get_from_db:
                     'Might': character.str,
                     'Agility': character.dex,
                     'Presence': character.cha,
-                    'Intellect': character.int,
+                    'Intelligence': character.int,
                     'Wisdom': character.wis,
                     'Spirit': character.con,
                     'hp': 20 # Default HP, can be loaded from db if added to schema
                 }
-                
-                for key, value in attributes.items():
-                    print(f"{key}: {value}")
-                
                 return attributes
             else:
                 print(f"No character found for user {username}.")
