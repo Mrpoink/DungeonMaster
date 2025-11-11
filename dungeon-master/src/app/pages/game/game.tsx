@@ -130,7 +130,7 @@ export default function Game() {
         } else {
             // Handle actions that don't require a roll (if any)
             setConversation(prev => [...prev, { sender: 'DM', text: result.message }]);
-            setScene(result.scene || '');
+            setScene('Background: ' + (result.scene || ''));
             setOptions(result.options || []);
         }
     } catch (error) {
@@ -163,7 +163,7 @@ export default function Game() {
         const result = await response.json();
 
         setConversation(prev => [...prev, { sender: 'DM', text: result.message }]);
-        setScene(result.scene || '');
+        setScene('Background: ' + (result.scene || ''));
         setOptions(result.options || []);
         setPendingAction(null); // Reset pending action
 
@@ -211,7 +211,7 @@ export default function Game() {
             const result = await response.json();
             
             setConversation(prev => [...prev, { sender: 'DM', text: result.message || "The DM responds, 'Silence falls over the area...'" }]);
-            setScene(result.scene || '');
+            setScene('Background: ' + (result.scene || ''));
             setOptions(result.options || []);
             setDMmessage(result.message);
     } catch (error) {
@@ -228,7 +228,7 @@ export default function Game() {
       const data = await response.json();
 
       setDMmessage(data.dm_text);
-      setScene("Scene: " + data.scene || '');
+      setScene("Background: " + data.scene || '');
       setOptions(data.options || []);
       setConversation([{sender : 'DM', text : data.dm_text}]); // Start conversation with DM message
       
