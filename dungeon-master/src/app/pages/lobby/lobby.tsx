@@ -37,7 +37,7 @@ export default function Home() {
   return (
     <div className="lobby">
       <header>
-        <Nav />
+        <Nav title="QuestWeaver"/>
       </header>
       <main>
         <div>

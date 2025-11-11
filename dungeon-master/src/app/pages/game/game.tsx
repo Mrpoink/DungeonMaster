@@ -1,4 +1,5 @@
 'use client'
+import Nav from "@/app/components/nav/nav";
 import { useState, useEffect } from "react";
 import Background from "@/app/components/assets/mainBackground.jpg";
 import StarWars from "@/app/components/assets/star_wars.png";
@@ -35,11 +36,11 @@ function Options({ options, onOptionClick }: OptionsProps) {
             transform: 'translateX(-50%)',
             width: '80%',
             maxWidth: '600px',
-            backgroundColor: 'rgba(0, 0, 0, 0.7)',
+            backgroundColor: 'rgba(246, 233, 201, 0.9)',
             padding: '15px',
             borderRadius: '8px',
-            border: '1px solid #4a4a4a',
-            color: '#fff',
+            border: '1px solid #6b4a2e',
+            color: '#6b4a2e',
             boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
             zIndex: 10,
         }}>
@@ -48,11 +49,11 @@ function Options({ options, onOptionClick }: OptionsProps) {
                 {options.map((option, index) => (
                     <li key={index} className="option-item" onClick={() => onOptionClick(option)} style={{
                         padding: '10px',
-                        borderBottom: '1px solid #4a4a4a',
+                        borderBottom: '1px solid #6b4a2e',
                         cursor: 'pointer',
                         transition: 'background-color 0.3s'
                     }}
-                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'}
+                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(107, 74, 46, 0.1)'}
                     onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                     >
                         {`${index + 1}. ${option}`}
@@ -124,7 +125,7 @@ export default function Game() {
                 dc: result.dc,
                 dice: result.dice,
             });
-            setConversation(prev => [...prev, { sender: 'DM', text: `You need to make a ${result.ability} check. Roll a ${result.dice}!` }]);
+            setConversation(prev => [...prev, { sender: 'DM', text: `You need to make a ${result.ability} check. Roll ${result.dice}` }]);
             setOptions([]); // Hide options while waiting for a roll
         } else {
             // Handle actions that don't require a roll (if any)
@@ -301,16 +302,7 @@ export default function Game() {
 
   return (
     <div className="root-container">
-        <div className="game-master-box">
-          <header>
-            <h1>QuestWeaver:</h1>      
-          </header>
-          <div className="exit-game-button">
-            <button onClick={()=>router.back()}>
-              Leave Experience
-            </button>
-          </div>
-        </div>
+        <Nav title="QuestWeaver" showLeaveButton={true} />
         <div className="main-session-box">
             <div className="dice-box" style={{
               position: 'absolute',
@@ -357,18 +349,24 @@ export default function Game() {
                 {scene || 'The scene is about to unfold...'}
               </p>
             </div>
-            <div className={`message-display-toggle ${isHistoryOpen ? 'full-history' : 'latest-message'}`} onClick={() => setIsHistoryOpen(!isHistoryOpen)}>
+            <div className={`message-display-toggle ${isHistoryOpen ? 'full-history' : 'latest-message'}`} 
+                 style={{
+                    backgroundColor: 'rgba(246, 233, 201, 0.9)',
+                    color: '#6b4a2e',
+                    border: '1px solid #6b4a2e'
+                 }}
+                 onClick={() => setIsHistoryOpen(!isHistoryOpen)}>
             {isHistoryOpen ? (
               <div className="full-conversation-log">
                 {conversation.map((item, index) => (
                   <p key={index} className={item.sender === 'User' ? 'user-text' : 'dm-text'}>
-                    **{item.sender}:** {item.text}
+                    <strong>{item.sender}</strong> {item.text}
                   </p>
                 ))}
               </div>
             ) : (
               <p className={latestMessage.sender === 'User' ? 'user-text' : 'dm-text'}>
-                **{latestMessage.sender}:** {latestMessage.text}
+                <strong>{latestMessage.sender}</strong> {latestMessage.text}
                 <span className="click-prompt">(Click to see history)</span>
               </p>
             )}
@@ -379,25 +377,23 @@ export default function Game() {
               top: '20px',
               right: '20px',
               width: '280px',
-              backgroundColor: 'rgba(0, 0, 0, 0.7)',
+              backgroundColor: 'rgba(246, 233, 201, 0.9)',
               padding: '15px',
               borderRadius: '8px',
-              border: '1px solid #4a4a4a',
-              color: '#fff',
+              border: '1px solid #6b4a2e',
+              color: '#6b4a2e',
               boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
               zIndex: 10,
             }}>
               <AbilityBars characterData={characterData} />
               <div className="skills-box" style={{
                 marginTop: '20px',
-                maxHeight: '300px',
-                overflowY: 'auto',
                 paddingRight: '10px'
               }}>
                 <h2 style={{ textAlign: 'center', marginBottom: '10px' }}>Skills</h2>
                 <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                   {(skills || []).map((skill, index) => (
-                    <li key={index} style={{ padding: '5px 0', borderBottom: '1px solid #333' }}>{skill}</li>
+                    <li key={index} style={{ padding: '5px 0', borderBottom: '1px solid #6b4a2e' }}>{skill}</li>
                   ))}
                 </ul>
               </div>

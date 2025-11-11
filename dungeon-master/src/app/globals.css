@@ -178,7 +178,6 @@ input::selection {
   white-space: normal;
   overflow-wrap: break-word;
   max-width: 100%;
-  color: darkgray
 }
 .full-conversation-log {
   max-height: 60vh;
@@ -192,11 +191,11 @@ input::selection {
   line-height: 1.4;
 }
 .full-conversation-log .dm-text {
-  color: darkgray; /* Lighter grey for better readability */
+  color: #6b4a2e; /* Lighter grey for better readability */
   margin-bottom: 8px;
 }
 .full-conversation-log .user-text {
-  color: #D1D5DB;
+  color: #6b4a2e;
 }
 .latest-message {
   display: flex;
@@ -208,7 +207,7 @@ input::selection {
 .click-prompt {
   display: block;
   font-size: 0.75rem;
-  color: #9CA3AF;
+  color: #6b4a2e;
   margin-top: 5px;
   text-align: center;
   opacity: 0.7;
@@ -342,6 +341,13 @@ input::selection {
     justify-content: center;
 }
 
+.dice-box {
+    background-color: rgba(246, 233, 201, 0.9) !important;
+    color: #6b4a2e !important;
+    border: 1px solid #6b4a2e !important;
+}
+
+
 .game-box {
   flex-grow: 1;
   position: relative;
@@ -367,12 +373,12 @@ input::selection {
   .root-container { padding: 1rem; }
 }
 .scene-box{
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(246, 233, 201, 0.9);
   padding: 15px;
   margin: 10px auto;
   border-radius: 8px;
-  border: 1px solid #4a4a4a;
-  color: #fff;
+  border: 1px solid #6b4a2e;
+  color: #6b4a2e;
   max-width: 800px;
   min-height: 50px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);

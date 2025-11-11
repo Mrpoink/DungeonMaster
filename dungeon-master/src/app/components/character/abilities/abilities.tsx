@@ -18,14 +18,14 @@ export default function AbilityProgressBar( {name, score}:{name: string, score: 
     const percentage = (currentScore / maxAbilityScore) * 100;
 
     const getColor = (percent: number) => {
-        if (percent > 66) return 'bg-yellow-500'; // High scores
-        if (percent > 33) return 'bg-yellow-600/70'; // Mid scores
-        return 'bg-gray-500'; // Low scores
+        if (percent > 66) return 'bg-green-600'; // High scores
+        if (percent > 33) return 'bg-yellow-500'; // Mid scores
+        return 'bg-red-600'; // Low scores
     };
 
     return (
-        <div className="flex flex-col items-start p-3 bg-gray-700/70 rounded-xl border border-gray-600 shadow-md">
-            <span className="text-xs uppercase font-bold text-yellow-400 mb-2 ability-label">{name}</span>
+        <div className="flex flex-col items-start p-3 bg-[#E2D7B7] rounded-xl border border-[#E2D7B7] shadow-md">
+            <span className="text-xs uppercase font-bold text-[#6B4A2E] mb-2 ability-label">{name}</span>
             <div className="w-full relative h-6 bg-gray-600 rounded-full overflow-hidden">
                 <div 
                     className={`h-full ${getColor(percentage)} transition-all duration-500 ease-out`}
