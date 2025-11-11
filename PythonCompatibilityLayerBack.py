@@ -38,9 +38,27 @@ except Exception as e:
 
 # Add function to reinitialize DM with character data when user logs in
 def reinitialize_dm(username):
-    global game_instance
+    global game_instance, player_character
     try:
+        # Initialize the campaign instance
         initialize_app(username)
+        
+        # Load character data and create the player object
+        char_attributes = loop.run_until_complete(game_instance.vb.get_character_attributes(username))
+        if char_attributes:
+            player_character = PythonBackEnd.player(campaign_dict=game_instance.campaign)
+            player_character.attributes = {
+                'Might': char_attributes.get('Might'),
+                'Agility': char_attributes.get('Agility'),
+                'Presence': char_attributes.get('Presence'),
+                'Wisdom': char_attributes.get('Wisdom'),
+                'Spirit': char_attributes.get('Spirit'),
+                'Intelligence': char_attributes.get('Intelligence')
+            }
+        else:
+            # Fallback if no character is found
+            player_character = None
+        
         return True
     except Exception as e:
         print("Error reinitializing DM:", e)
@@ -76,7 +94,7 @@ lock = False
 
 @app.route("/userin", methods=['POST'])
 def process_message():
-    global lock, game_instance, player_character
+    global lock, game_instance, player_character, loop
     if not lock:
         try:
             lock = True
@@ -89,14 +107,32 @@ def process_message():
                 reinitialize_dm(username)
 
             if not player_character:
-                player_character = PythonBackEnd.player(10, 10, 10, 10, 10, 20, game_instance.campaign)
+                # Synchronously run the async function to get character attributes
+                char_attributes = loop.run_until_complete(game_instance.vb.get_character_attributes(username))
+                if char_attributes:
+                    # Use a temporary dictionary for attributes to avoid modifying the class-level one
+                    temp_attributes = {
+                        'Might': char_attributes.get('Might'),
+                        'Agility': char_attributes.get('Agility'),
+                        'Presence': char_attributes.get('Presence'),
+                        'Wisdom': char_attributes.get('Wisdom'),
+                        'Spirit': char_attributes.get('Spirit'),
+                        'Intelligence': char_attributes.get('Intelligence')
+                    }
+                    player_character = PythonBackEnd.player(campaign_dict=game_instance.campaign)
+                    player_character.attributes = temp_attributes
+                else:
+                    # Fallback to a default character if none is found
+                    player_character = PythonBackEnd.player(campaign_dict=game_instance.campaign)
+                    player_character.attributes = {'Might': 10, 'Agility': 10, 'Presence': 10, 'Wisdom': 10, 'Spirit': 10, 'Intelligence': 10}
+
 
             description, options = game_instance.scene_and_options[game_instance.turn_num]
             
             if step == 'get_roll_info':
                 option_info, choice_index = game_instance.user_choice(options, message)
                 if option_info == "Error":
-                    return jsonify({'message': "Invalid choice. Please try again."}), 400
+                    return jsonify({'message': "Good-bye"}), 400
                 
                 choice, ability_check, dc, dice = option_info
                 return jsonify({
@@ -109,29 +145,43 @@ def process_message():
 
             elif step == 'get_outcome':
                 roll = data.get('roll')
-                description = data.get('description')
                 option_info, choice_index = game_instance.user_choice(options, message)
                 
                 success, outcome_description, narration = game_instance.get_success_or_failure(game_instance.turn_num, choice_index, roll)
 
                 if 'ability_change' in outcome_description:
                     player_character.change_ability(outcome_description['ability_change'], roll)
+                    # Synchronously run the async function to update stats
+                    loop.run_until_complete(game_instance.vb.update_character_stats(username, player_character.attributes))
+                    
+                    for ability, change in outcome_description['ability_change'].items():
+                        print(type(game_instance.scene_and_options[len(game_instance.scene_and_options)-1][1]))
+                        if player_character.attributes.get(ability, 0) < 1:
+                            return jsonify({
+                                'message': f"{game_instance.scene_and_options[len(game_instance.scene_and_options)-1][0]}",
+                                'scene': "Game Over",
+                                'options': [opt['option'] for opt in game_instance.scene_and_options[len(game_instance.scene_and_options)-1][1]]
+                            })
 
                 game_instance.turn_num += 1
 
                 if game_instance.turn_num >= len(game_instance.scene_and_options):
                     return jsonify({
-                        'message': f"{description}\n\n{narration}",
+                        'message': f"{narration}\n\nEnd of campaign.",
                         'scene': "The campaign has ended.",
                         'options': []
                     })
 
                 next_description, next_options = game_instance.scene_and_options[game_instance.turn_num]
                 
+                # Fetch the latest character data to send back to the frontend
+                updated_character_data = loop.run_until_complete(game_instance.vb.get_character(username))
+
                 return jsonify({
-                    'message': f"{narration}\n\n{next_description}\n",
+                    'message': f"{narration}\n\n{next_description}",
                     'scene': game_instance.get_background(),
-                    'options': [opt['option'] for opt in next_options]
+                    'options': [opt['option'] for opt in next_options],
+                    'characterData': updated_character_data[0] if updated_character_data else None
                 })
 
         except Exception as e:
@@ -209,7 +259,11 @@ def get_character_data():
             return jsonify({"error": "Username is required"}), 400
 
         character_data = loop.run_until_complete(game_instance.vb.get_character(username))
-        return jsonify({"characterData": character_data}), 200
+        
+        # Return the first character object directly, or null if none is found
+        response_data = character_data[0] if character_data else None
+        
+        return jsonify({"characterData": response_data}), 200
     except Exception as e:
         print("Error fetching character data:", e)
         traceback.print_exc()

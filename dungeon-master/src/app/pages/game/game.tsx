@@ -154,6 +154,11 @@ export default function Game() {
         setOptions(result.options || []);
         setPendingAction(null); // Reset pending action
 
+        // If the result contains updated character data, update the state
+        if (result.characterData) {
+            setCharacterData(result.characterData);
+        }
+
     } catch (error) {
         console.error("Error during roll submission:", error);
         setConversation(prev => [...prev, { sender: 'DM', text: "The DM seems confused by your roll. Try again." }]);
@@ -204,7 +209,7 @@ export default function Game() {
     setIsHistoryOpen(false);
   };
 
-  const fetchDMmessage = async () => {
+  const fetchDMmessage = async (username: string) => {
     try {
       const response = await fetch('http://localhost:1068/DMout');
       const data = await response.json();
@@ -213,6 +218,11 @@ export default function Game() {
       setScene("Scene: " + data.scene || '');
       setOptions(data.options || []);
       setConversation([{sender : 'DM', text : data.dm_text}]); // Start conversation with DM message
+      
+      // After getting the initial message, fetch the character data
+      if (username) {
+        fetchCharacterData(username);
+      }
     } catch (error) {
       console.error("Something went wrong with fetch dm message, line 81", error);
       setDMmessage("Error: could not fetch python response, something went wrong, line 82");
@@ -232,6 +242,7 @@ export default function Game() {
       if (!response.ok) throw new Error('Failed to fetch character data');
       
       const data = await response.json();
+      // The backend sends an array with one character, so we take the first element
       setCharacterData(data.characterData);
     } catch (error) {
       console.error('Error fetching character data:', error);
@@ -239,12 +250,13 @@ export default function Game() {
   };
 
   useEffect(() => {
-    fetchDMmessage();
-    // If we have a username (from localStorage or login), fetch character data
     const savedUsername = localStorage.getItem('username');
     if (savedUsername) {
       setUsername(savedUsername);
-      fetchCharacterData(savedUsername);
+      fetchDMmessage(savedUsername);
+    } else {
+        // Handle case where there is no saved username, maybe redirect to login
+        fetchDMmessage('');
     }
   }, []);
 
@@ -325,7 +337,7 @@ export default function Game() {
           </main>
           <div className="party-box">
             {/* <Party /> */}
-            <AbilityBars/>
+            <AbilityBars characterData={characterData} />
           </div>
         </div>
     </div>
