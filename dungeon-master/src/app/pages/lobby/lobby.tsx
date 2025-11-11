@@ -27,6 +27,7 @@ export default function Home() {
       // const data = await response.json();
       // console.log("Seed set successfully:", data);
 
+      localStorage.setItem('campaignId', campaignId.toString());
       router.push('./game');
     } catch (error) {
       console.error("Error setting seed:", error);

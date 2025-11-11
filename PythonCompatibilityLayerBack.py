@@ -101,6 +101,8 @@ async def process_message():
     username = data.get('username')
     await load_player_character(username)
     
+    print(f"GAME TURN NUMBER: {game.turn_num}")
+    
 
     if not game or not hasattr(game, 'player'):
         
@@ -123,7 +125,7 @@ async def process_message():
         if step == 'get_roll_info':
             option_info, choice_index = game.user_choice(options, message)
             if option_info == "Error":
-                return jsonify({'message': "Good-bye"}), 400
+                return jsonify({'message': "Good-bye", 'scene': 'You may try again'}), 400
             
             choice, ability_check, dc, dice = option_info
             return jsonify({
@@ -196,6 +198,7 @@ async def output_message():
     username = request.args.get('username')
     game_state = GameState.get_instance()
     game = game_state.get_game()
+    game.game_end = False
 
     if not game:
         await game_state.initialize_game(username)

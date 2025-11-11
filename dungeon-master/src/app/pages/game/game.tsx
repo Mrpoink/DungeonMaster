@@ -1,6 +1,11 @@
 'use client'
 import { useState, useEffect } from "react";
 import Background from "@/app/components/assets/mainBackground.jpg";
+import StarWars from "@/app/components/assets/star_wars.png";
+import Avatar from "@/app/components/assets/avatar.png";
+import LordOfRings from "@/app/components/assets/lord_of_rings.png";
+import HarryPotter from "@/app/components/assets/harry_potter.png";
+import Scenario1 from "@/app/components/assets/Scenario_1.png";
 import Dice from "@/app/components/dice/dice";
 import Roll from "@/app/components/dice/roll";
 import GameManager from "@/app/components/gameManager/gameManager";
@@ -82,7 +87,7 @@ export default function Game() {
     dc: number;
     dice: string;
   } | null>(null);
-
+  const [background, setBackground] = useState(Background);
   const [userin, setUserin] = useState('');
   const [conversation, setConversation] = useState<ConversationItem[]>([
       { sender: 'DM', text: DMmessage }
@@ -259,6 +264,30 @@ export default function Game() {
 
   useEffect(() => {
     const savedUsername = localStorage.getItem('username');
+    const campaignId = localStorage.getItem('campaignId');
+
+    if (campaignId) {
+      switch (campaignId) {
+        case '1':
+          setBackground(StarWars);
+          break;
+        case '2':
+          setBackground(Avatar);
+          break;
+        case '3':
+          setBackground(LordOfRings);
+          break;
+        case '4':
+          setBackground(HarryPotter);
+          break;
+        case '5':
+          setBackground(Scenario1);
+          break;
+        default:
+          setBackground(Background);
+      }
+    }
+
     if (savedUsername) {
       setUsername(savedUsername);
       fetchDMmessage(savedUsername);
@@ -315,7 +344,7 @@ export default function Game() {
               </div>
             </div>
           <main className="game-box" style={{ position: 'relative' }}>
-            <img src={Background.src} alt="" style={{ filter: 'brightness(0.7)' }} />
+            <img src={background.src} alt="" style={{ filter: 'brightness(0.7)' }} />
             <div className="scene-box" style={{
               position: 'absolute',
               top: '20px',
