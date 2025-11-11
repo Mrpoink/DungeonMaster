@@ -16,15 +16,15 @@ const router = useRouter()
           <div className="start-buttons-container">
             <div id="game-sessions-div">
               <div className="game-session" id="game-sessions-left-div">
-                <button className="left-game-session-buttons" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
-                <button className="left-game-session-buttons" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
+                <button className="left-game-session-buttons" id="session1" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
+                <button className="left-game-session-buttons" id="session2" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
               </div>
               <div className="game-session" id="game-sessions-mid-div">
-                <button className="mid-game-session-button" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
+                <button className="mid-game-session-button" id="session3" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
               </div>
               <div className="game-session" id="game-sessions-right-div">
-                <button className="right-game-session-buttons" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
-                <button className="right-game-session-buttons" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
+                <button className="right-game-session-buttons" id="session4" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
+                <button className="right-game-session-buttons" id="session5" type='button' onClick={()=>router.push('./game')}>Join Game Session</button>
               </div>
             </div>
           </div>

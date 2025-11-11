@@ -12,14 +12,13 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  
+  font-family: 'Inter styles';
 }
 html{
   max-width: 100vw;
@@ -42,12 +41,14 @@ header {
   padding-top: 0;
 }
 h1 {
+  font-family: 'Cinzel Decorative';
   font-size: xx-large;
   font-weight: bold;
   text-align: center;
   justify-content: center;
 }
 button {
+  font-family: 'EB Garamond';
   border-radius: 25px;
   text-align: center;
   background-color: #111827;
@@ -69,9 +70,9 @@ button {
   top: 40vh;
 }
 .main {
-  background: url(./components/assets/mainBackground.jpg) no-repeat;
+  background: url(./components/assets/Login_Page.png) no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: cover;
   width: auto;
   height: 100vh;
   #landing-text {
