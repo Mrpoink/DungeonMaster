@@ -273,33 +273,28 @@ export default function Game() {
               Leave Experience
             </button>
           </div>
-          <div className="scene-box" style={{
-            backgroundColor: 'rgba(0, 0, 0, 0.7)',
-            padding: '15px',
-            margin: '10px auto',
-            borderRadius: '8px',
-            border: '1px solid #4a4a4a',
-            color: '#fff',
-            maxWidth: '800px',
-            minHeight: '50px',
-            boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
-            textAlign: 'center'
-          }}>
-            <p style={{
-              margin: 0,
-              fontSize: '1rem',
-              lineHeight: '1.5',
-              fontFamily: 'serif'
-            }}>{scene || 'The scene is about to unfold...'}</p>
+          <div className="scene-box">
+            <p className="scene-box-p">
+              {scene || 'The scene is about to unfold...'}
+            </p>
           </div>
         </div>
         <div className="main-session-box">
           <div className="dice-box">
-            <Dice 
-              onDiceSelect={handleDiceSelect} 
-              activeDice={activeDice} 
-              onSetActiveDice={handleActiveSelect}
-            />
+            <div>
+              <Dice 
+                onDiceSelect={handleDiceSelect} 
+                activeDice={activeDice} 
+                onSetActiveDice={handleActiveSelect}
+              />
+            </div>
+            <div>
+              <Roll 
+                sides={pendingAction ? parseInt(pendingAction.dice.replace('1d', '')) : sides} 
+                onRollClick={handleRoll}
+                disabled={!pendingAction}
+              />
+            </div>
           </div>
           <main className="game-box" style={{ position: 'relative' }}>
             <img src={Background.src} alt="" />
@@ -327,16 +322,10 @@ export default function Game() {
               handleSend={() => handleSend()}
               isLoading={isLoading}          />
               <div className="player-actions">
-                <Roll 
-                  sides={pendingAction ? parseInt(pendingAction.dice.replace('1d', '')) : sides} 
-                  onRollClick={handleRoll}
-                  disabled={!pendingAction}
-                />
               </div>
             </div>
           </main>
           <div className="party-box">
-            {/* <Party /> */}
             <AbilityBars characterData={characterData} />
           </div>
         </div>

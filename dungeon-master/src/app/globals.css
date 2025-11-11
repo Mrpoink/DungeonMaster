@@ -259,6 +259,8 @@ input::selection {
 }
 .main-session-box {
   display: flex;
+  position: relative;
+  flex-grow: 1;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -304,4 +306,22 @@ input::selection {
 }
 @media (min-width: 640px) {
   .root-container { padding: 2rem; }
+}
+.scene-box{
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 15px;
+  margin: 10px auto;
+  border-radius: 8px;
+  border: 1px solid #4a4a4a;
+  color: #fff;
+  max-width: 800px;
+  min-height: 50px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  text-align: center
+}
+.scene-box-p{
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-family: serif
 }
