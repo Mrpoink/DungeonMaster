@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import Background from "@/app/components/assets/mainBackground.jpg";
 import Dice from "@/app/components/dice/dice";
 import Roll from "@/app/components/dice/roll";
-import Party from "@/app/components/party/party";
 import GameManager from "@/app/components/gameManager/gameManager";
 import { useRouter } from "next/navigation";
 import {AbilityBars} from "@/app/components/abilities/abilities";

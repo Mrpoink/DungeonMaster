@@ -2,16 +2,14 @@
 
 import { BottomNav } from "@/app/components/nav/nav";
 import { useState, useEffect, Dispatch, SetStateAction } from "react";
-import { DEFAULT_CHARACTER } from "@/app/components/character/defaultCharacter";
+import { DEFAULT_CHARACTER, raceOptions } from "@/app/components/character/defaultCharacter";
 import { BiPencil } from "react-icons/bi";
 import { FaCheck } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
-import {CharacterIcon} from "@/app/components/character/characterIcon";
-import { raceOptions } from "@/app/components/character/defaultCharacter";
+import {CharacterIcon } from "@/app/components/character/characterIcon";
 import SelectIcon from "@/app/components/character/characterIcon";
 import Character from "@/app/components/character/characterType";
-import { InformationIcon } from "@/app/components/abilities/descriptions";
-import { skill_map } from "@/app/components/abilities/descriptions";
+import { InformationIcon, skill_map } from "@/app/components/abilities/descriptions";
 import { AbilityScore } from "@/app/components/abilities/abilities";
 
     
@@ -177,7 +175,12 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
                     </div>
                     <div>
                         <label className="text-sm text-gray-400 block mb-1">Select your Icon</label>
-                        <SelectIcon onIconSelect={setTempIcon} currentIconId={tempIcon}/>
+                        <div>
+                            <SelectIcon
+                                onIconSelect={setTempIcon} 
+                                currentIconId={tempIcon}
+                            />
+                        </div>
                     </div>
                     <div>
                         <label className="text-sm text-gray-400 block mb-1">Character Race</label>
