@@ -17,7 +17,6 @@ const router = useRouter()
             <em>What action will you take?</em>
           </div>
           <div className="start-buttons-container">
-            
             <button className="start-buttons" type='button' onClick={()=>router.push('./pages/credentials')}>Login</button>
             <button className="start-buttons" type='button' onClick={()=>router.push('./pages/lobby')}>Quick Start</button>
           </div>

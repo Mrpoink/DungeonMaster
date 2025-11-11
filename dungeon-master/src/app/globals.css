@@ -6,8 +6,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #111827;
-  --foreground: white;
+  --background: #f6e9c9;
+  --foreground: #6b4a2e;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -18,7 +18,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Inter styles';
 }
 html{
   max-width: 100vw;
@@ -26,15 +25,22 @@ html{
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
   text-align: center;
   justify-content: center;
+  font-family: 'Inter styles';
 }
 .start-buttons{
-  border: 2px solid #111827;
   margin: 1em;
   padding: 1em;
   opacity: .8;
+  box-shadow: var(--foreground);
+}
+.start-buttons-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 header {
   padding: 2em;
@@ -51,7 +57,7 @@ button {
   font-family: 'EB Garamond';
   border-radius: 25px;
   text-align: center;
-  background-color: #111827;
+  background-color: var(--background);
   cursor: pointer;
   display: inline-block;
   padding: 10px;
@@ -64,7 +70,6 @@ button {
   display: inline;
   text-align: center;
   justify-content: center;
-  color: white;
   opacity: .7;
   position: relative;
   top: 40vh;
@@ -78,7 +83,7 @@ button {
   #landing-text {
     display: inline-block;
     padding: 1em;
-    background-color: rgba(112, 123, 140, 0.37);
+    background-color: var(--background);
     width: fit-content;
     border-radius: 1.5rem;
   }
@@ -222,7 +227,7 @@ input::selection {
   max-width: 200px;
 }
 
-.member {
+/* .member {
   float: right;
   position: relative;
   right: 10vw;
@@ -258,7 +263,7 @@ input::selection {
     cursor: pointer;
     transform: scale(1.15);
   }
-}
+} */
 .main-session-box {
   display: flex;
   position: relative;
@@ -303,11 +308,9 @@ input::selection {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background-color: #111827;
-  color: white;
   padding: 1rem;
   font-family: Inter, sans-serif;
-  overflow: hidden; /* Prevents scrolling on the main container */
+  overflow: hidden;
 }
 
 .game-master-box {

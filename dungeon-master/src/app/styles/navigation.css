@@ -1,11 +1,14 @@
 .navbar {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
+    text-align: center;
     padding: 1em 2em;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: var(--background);
+    opacity: 0.9;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 25px;
     button {
       background-color: transparent;
       border: none;
