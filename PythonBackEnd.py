@@ -67,26 +67,36 @@ class player:
             'Intellect': player_data.get('int', None)
         }
         
+        instance.skills = instance.get_skills()
+        
         print(instance.attributes)
         
 
-    def get_skills(self):
+    def get_skills(self, attribute_dict=None):
 
         self.skills = []
 
-        for attr_name, attr_value in self.attributes.items():
-        # Check if this attribute exists in the main abilities data
-            if attr_name in self.data:
+        attributes_to_use = attribute_dict if attribute_dict is not None else self.attributes
+        
+        #'abilities': {'Intellect': {'skills': [{'name': 'Arcana', 'threshold': 10}, {'name': 'Investigation', 'threshold': 20}, {'name': 'Engineering', 'threshold': 25}]}, 'Might': {'skills': [{'name': 'Athletics', 'threshold': 10}, {'name': 'Brawling', 'threshold': 20}, {'name': 'Endurance', 'threshold': 25}]}
+
+        for attr_name, attr_value in attributes_to_use.items():
+            # Check if this attribute exists in the main abilities data
+            print(f"Checking attribute: {attr_name} with value: {attr_value}")
+            if attr_name in self.data['abilities'].keys():
                 
                 # Get the list of skills for this attribute
-                skills_list = self.data[attr_name].get("skills", [])
+                skills_list = self.data['abilities'][attr_name].get("skills", [])
                 
                 # Check each skill in that list
                 for skill in skills_list:
                     # If the character's score meets or exceeds the threshold...
-                    if attr_value >= skill["threshold"]:
+                    if attr_value is not None and attr_value >= skill["threshold"]:
+                        print(f"Adding skill: {skill['name']} for attribute: {attr_name}")
                         # ...add the skill name to the list.
                         self.skills.append(skill["name"])
+                        
+        return self.skills
 
     def change_ability(self, ability_dict , amount):
         for ability, change in ability_dict.items():

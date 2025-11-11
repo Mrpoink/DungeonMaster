@@ -59,6 +59,12 @@ function Options({ options, onOptionClick }: OptionsProps) {
 }
 
 
+type Character = {
+    name: string;
+    // Add other character properties here as needed
+    [key: string]: any; 
+};
+
 export default function Game() {
   const router = useRouter()
   const [sides, setSides] = useState<number>(20);
@@ -67,7 +73,8 @@ export default function Game() {
   const [scene, setScene] = useState('');
   const [options, setOptions] = useState<string[]>([]);
   const [username, setUsername] = useState('');
-  const [characterData, setCharacterData] = useState(null);
+  const [characterData, setCharacterData] = useState<Character | null>(null);
+  const [skills, setSkills] = useState<string[]>([]);
   const [pendingAction, setPendingAction] = useState<{
     description: string;
     action: string;
@@ -244,6 +251,7 @@ export default function Game() {
       const data = await response.json();
       // The backend sends an array with one character, so we take the first element
       setCharacterData(data.characterData);
+      setSkills(data.skills || []);
     } catch (error) {
       console.error('Error fetching character data:', error);
     }
@@ -315,6 +323,34 @@ export default function Game() {
             )}
           </div>
           <Options options={options} onOptionClick={handleOptionClick} />
+            <div className="party-box" style={{
+              position: 'absolute',
+              top: '20px',
+              right: '20px',
+              width: '280px',
+              backgroundColor: 'rgba(0, 0, 0, 0.7)',
+              padding: '15px',
+              borderRadius: '8px',
+              border: '1px solid #4a4a4a',
+              color: '#fff',
+              boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+              zIndex: 10,
+            }}>
+              <AbilityBars characterData={characterData} />
+              <div className="skills-box" style={{
+                marginTop: '20px',
+                maxHeight: '300px',
+                overflowY: 'auto',
+                paddingRight: '10px'
+              }}>
+                <h2 style={{ textAlign: 'center', marginBottom: '10px' }}>Skills</h2>
+                <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                  {(skills || []).map((skill, index) => (
+                    <li key={index} style={{ padding: '5px 0', borderBottom: '1px solid #333' }}>{skill}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
             <div className="game">
               {/* <GameManager 
               userin={userin}
@@ -325,9 +361,6 @@ export default function Game() {
               </div>
             </div>
           </main>
-          <div className="party-box">
-            <AbilityBars characterData={characterData} />
-          </div>
         </div>
     </div>
   )

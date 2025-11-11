@@ -40,7 +40,7 @@ async def load_campaign(seed):
         game.get_campaign()
         print(f"Campaign with seed {seed} loaded.")
 
-async def load_player_character(username):
+async def load_player_character(username, campaign_data=None):
     game_state = GameState.get_instance()
     game = game_state.get_game()
     if not game:
@@ -50,7 +50,9 @@ async def load_player_character(username):
     try:
         char_attributes = await game.vb.get_character_attributes(username)
         if char_attributes:
-            player_character = PythonBackEnd.player(campaign_dict=game)
+            # Use provided campaign_data or fall back to game.campaign
+            data_for_skills = campaign_data if campaign_data is not None else game.campaign
+            player_character = PythonBackEnd.player(campaign_dict=data_for_skills)
             player_character.attributes = {
                 'Might': char_attributes.get('Might'),
                 'Agility': char_attributes.get('Agility'),
@@ -60,6 +62,8 @@ async def load_player_character(username):
                 'Intellect': char_attributes.get('Intellect')
             }
             game.player = player_character
+            game.player_skills = player_character.get_skills(player_character.attributes)
+            print(f"Loaded character for user: {username} with skills: {game.player_skills}")
         else:
             print(f"No character found for user: {username}")
             game.player = None
@@ -250,8 +254,9 @@ async def get_character_data():
         await game_state.initialize_game(username)
         game = game_state.get_game()
     
+    await load_player_character(username)
     character_data = await game.vb.get_character(username)
-    return jsonify({"characterData": character_data})
+    return jsonify({"characterData": character_data, "skills": game.player_skills})
 
 @app.route("/characters", methods=['POST'])
 async def process_characters():

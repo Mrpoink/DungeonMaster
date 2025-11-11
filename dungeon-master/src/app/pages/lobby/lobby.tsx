@@ -43,15 +43,15 @@ export default function Home() {
           <div className="start-buttons-container">
             <div id="game-sessions-div">
               <div className="game-session" id="game-sessions-left-div">
-                <button className="left-game-session-buttons" id="session1" type='button' onClick={() => handleJoinGame(1)}>Echoes of the Force</button>
-                <button className="left-game-session-buttons" id="session2" type='button' onClick={() => handleJoinGame(2)}>The Last Ember of Balance</button>
+                <button className="left-game-session-buttons" id="session2" type='button' onClick={() => handleJoinGame(1)}>Echoes of the Force</button>
+                <button className="left-game-session-buttons" id="session3" type='button' onClick={() => handleJoinGame(2)}>The Last Ember of Balance</button>
               </div>
               <div className="game-session" id="game-sessions-mid-div">
-                <button className="mid-game-session-button" id="session3" type='button' onClick={() => handleJoinGame(3)}>The Shattered Crown of Elarion</button>
+                <button className="mid-game-session-button" id="session5" type='button' onClick={() => handleJoinGame(3)}>The Shattered Crown of Elarion</button>
               </div>
               <div className="game-session" id="game-sessions-right-div">
                 <button className="right-game-session-buttons" id="session4" type='button' onClick={() => handleJoinGame(4)}>The Shattered Hourglass</button>
-                <button className="right-game-session-buttons" id="session5" type='button' onClick={() => handleJoinGame(5)}>Echoes of the Ember King</button>
+                <button className="right-game-session-buttons" id="session1" type='button' onClick={() => handleJoinGame(5)}>Echoes of the Ember King</button>
               </div>
             </div>
           </div>
