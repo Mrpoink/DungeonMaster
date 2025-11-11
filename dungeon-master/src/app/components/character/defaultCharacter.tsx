@@ -42,3 +42,15 @@ export const DEFAULT_CHARACTER: Character = {
     },
     backstory: "He was a super cool hero or something"
 };
+
+export const raceOptions = [
+    'Human',
+    'Elf',
+    'Dwarf',
+    'Halfling',
+    'Dragonborn',
+    'Gnome',
+    'Tiefling',
+    'Half-Elf',
+    'Half-Orc'
+]

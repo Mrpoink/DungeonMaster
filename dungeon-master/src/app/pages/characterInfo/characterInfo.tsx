@@ -7,6 +7,7 @@ import { BiPencil } from "react-icons/bi";
 import { FaCheck } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import {CharacterIcon} from "@/app/components/character/characterIcon";
+import { raceOptions } from "@/app/components/character/defaultCharacter";
 import SelectIcon from "@/app/components/character/characterIcon";
 import Character from "@/app/components/character/characterType";
 import { InformationIcon } from "@/app/components/abilities/descriptions";
@@ -180,7 +181,17 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
                     </div>
                     <div>
                         <label className="text-sm text-gray-400 block mb-1">Character Race</label>
-                        <EditInput value={tempRace} onChange={(e) => setTempRace(e.target.value)} />
+                        <div className="race-button-container">
+                            {raceOptions.map((race) => (
+                                <button
+                                    key={race}
+                                    onClick={() => setTempRace(race)}
+                                    className={`race-button ${tempRace === race ? 'race-selected' : ''}`}
+                                >
+                                    {race}
+                                </button>
+                            ))}
+                        </div>
                     </div>
                     <div>
                         <label className="text-sm text-gray-400 block mb-1">Character Class</label>

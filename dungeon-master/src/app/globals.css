@@ -738,11 +738,6 @@ input::selection {
   outline: none;
   transition: all 0.2s;
 }
-/* .edit-input:focus {
-ring: 2px;
-ring-color: #F59E0B;
-} */
-
 .edit-controls {
   display: flex;
   gap: 0.5rem; /* gap-2 */
@@ -943,4 +938,39 @@ ring-color: #F59E0B;
       color: #aaa
     }
   }
+}
+
+.race-button {
+  /* Base Appearance */
+  padding: 8px 16px; /* px-4 py-2 */
+  font-size: 0.875rem; /* text-sm */
+  border-radius: 9999px; /* rounded-full (Adjusted for better fit/look if needed, though 'rounded' is fine too) */
+  transition: all 150ms ease-in-out; /* transition duration-150 ease-in-out */
+  text-align: center;
+  
+  /* Default Colors (unselected) */
+  background-color: #1f2937; /* bg-gray-800 */
+  color: #9ca3af; /* text-gray-400 */
+  border: 1px solid #374151; /* border border-gray-700 */
+}
+
+.race-button:not(.race-selected):hover {
+  border-color: #f59e0b; /* hover:border-yellow-500 */
+  color: #fcd34d; /* hover:text-yellow-400 */
+}
+
+.race-button.race-selected {
+  background-color: #374151; /* bg-gray-700 */
+  color: #fcd34d; /* text-yellow-400 */
+
+  border: 1px solid rgba(44, 108, 187, 0.7);
+  box-shadow: rgba(44, 108, 187, 0.7) 0 4px 6px -1px, rgba(44, 108, 187, 0.5) 0 2px 4px -2px;
+}
+
+.race-button-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 0.5rem;
 }
