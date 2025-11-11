@@ -18,7 +18,7 @@ warnings.filterwarnings("ignore", category=UserWarning, module="peft.peft_model"
 
 class player:
 
-    def __init__(self, Might, Agility, Presence, Wisdom, Spirit, hp, campaign_dict):
+    def __init__(self, campaign_dict):
         r'''
         Character creation \
         parameters: The attribute scores for each player. Needed campaign dict because the original campaigns dicts determine skills for players. \
@@ -32,17 +32,41 @@ class player:
         run add_item to add items
         '''
         self.attributes = {
-            'Might': Might,
-            'Agility': Agility,
-            'Presence': Presence,
-            'Wisdom': Wisdom,
-            'Spirit': Spirit
+            'Might': None,
+            'Agility': None,
+            'Presence': None,
+            'Wisdom': None,
+            'Spirit': None,
+            'Intelligence': None
         }
         self.level = 1
-        self.hp = hp
         self.inventory = []
         self.skills = []
         self.data = campaign_dict
+        
+    @classmethod    
+    async def load_player(cls, username):
+        r'''
+        Load player data from database using username
+        '''
+        instance = cls()
+        instance.vb = vector_database.get_from_db()
+        
+        await instance.vb.connect()
+        
+        player_data = await instance.vb.get_player_data(username)[0]
+        
+        instance.attributes = {
+            'Might': player_data.get('str', None),
+            'Agility': player_data.get('dex', None),
+            'Presence': player_data.get('cha', None),
+            'Wisdom': player_data.get('wis', None),
+            'Spirit': player_data.get('con', None),
+            'Intelligence': player_data.get('int', None)
+        }
+        
+        print(instance.attributes)
+        
 
     def get_skills(self):
 
@@ -64,6 +88,10 @@ class player:
 
     def change_ability(self, ability_dict , amount):
         for ability, change in ability_dict.items():
+            # Ensure the attribute exists before trying to modify it
+            if self.attributes.get(ability) is None:
+                self.attributes[ability] = 0
+            
             if ability == 'Might':
                 self.attributes['Might'] += change
             elif ability == 'Agility':
@@ -74,8 +102,33 @@ class player:
                 self.attributes['Wisdom'] += change
             elif ability == 'Spirit':
                 self.attributes['Spirit'] += change
+            elif ability == 'Intelligence':
+                self.attributes['Intelligence'] += change
 
         print(f"Changed {ability} by {ability_dict[ability]} based on roll of {amount}")
+                
+    
+    async def save_player_attr(self, username):
+        await self.vb.update_player_stats(
+            username,
+            self.attributes
+        )
+        
+        print("Successfully saved player attributes to database.")
+        
+    async def get_player_attr(self, username):
+        player_data = await self.vb.get_character_attributes(username)
+        
+        self.attributes = {
+            'Might': player_data.get('str', None),
+            'Agility': player_data.get('dex', None),
+            'Presence': player_data.get('cha', None),
+            'Wisdom': player_data.get('wis', None),
+            'Spirit': player_data.get('con', None),
+            'Intelligence': player_data.get('int', None)
+        }
+        
+        print("Successfully retrieved player attributes from database.")
 
     
 

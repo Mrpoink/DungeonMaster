@@ -39,32 +39,42 @@ export default function AbilityProgressBar( {name, score}:{name: string, score: 
     );
 }
 
-export function AbilityBars(){
+export function AbilityBars({ characterData }: { characterData: any }) {
+    // Default values in case characterData is null or missing attributes
+    const stats = {
+        intellect: characterData?.int ?? 10,
+        might: characterData?.str ?? 10,
+        agility: characterData?.dex ?? 10,
+        presence: characterData?.cha ?? 10,
+        wisdom: characterData?.wis ?? 10,
+        spirit: characterData?.con ?? 10,
+    };
+
     return(
         <div>
             <AbilityProgressBar 
               name={'INTELLECT'} 
-              score={10}
+              score={stats.intellect}
             />
             <AbilityProgressBar 
               name={'MIGHT'} 
-              score={15}
+              score={stats.might}
             />
             <AbilityProgressBar 
               name={'AGILITY'} 
-              score={20}
+              score={stats.agility}
             />
             <AbilityProgressBar 
               name={'PRESENCE'} 
-              score={20}
+              score={stats.presence}
             />
             <AbilityProgressBar 
               name={'WISDOM'} 
-              score={20}
+              score={stats.wisdom}
             />
             <AbilityProgressBar 
               name={'SPIRIT'} 
-              score={20}
+              score={stats.spirit}
             />
         </div>
     )

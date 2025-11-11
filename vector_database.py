@@ -181,9 +181,6 @@ class use_vector_db:
             error_msg = str(e)
             print(f"An unexpected error occurred: {error_msg}")
             return False, f"An unexpected error occurred: {error_msg}"
-
-    
-
         
 class get_from_db:
 
@@ -333,36 +330,116 @@ class get_from_db:
 
         return session_number[0]['max']
     
-    def find_scene(self, num_turns):
-        scenes = [
-            "The party is outside the doors of the Dungeon of Secrets",
-            "The party is inside the hallways of the Dungeon of Secrets, torches flicker on the walls",
-            "The party is in a large chamber with high ceilings, the sound of dripping water echoes through the room",
-            "The party enters a dimly lit room filled with ancient statues and mysterious inscriptions on the walls",
-            "The party is in a room where the air feels sticky and damp, with a faint smell of mold and decay",
-            "The party finds themselves in a cavernous space where the walls glisten with moisture, and the sound of distant dripping water reverberates",
-            "The party steps into a grand hall adorned with faded tapestries and broken chandeliers, the atmosphere thick with dust and neglect",
-            "The party enters a shadowy chamber where the walls are lined with ancient bookshelves, their contents long forgotten",
-            "The party is in a narrow corridor where the walls are slick with moisture, and the air is heavy with the scent of mildew",
-            "The party finds themselves in a vast underground lake, the water dark and still, reflecting the faint light from above",
-            "The party steps into a cavern filled with bioluminescent fungi, casting an eerie glow on the damp walls",
-            "The party enters a chamber where the walls are covered in strange, pulsating growths, and the air is thick with an unsettling energy",
-            "The party is in a labyrinthine network of tunnels, the walls slick with moisture and the air filled with the sound of dripping water",
-            "The party finds themselves in a vast underground cavern, the walls shimmering with mineral deposits and the air cool and damp",
-            "The party steps into a dimly lit chamber where the walls are adorned with ancient murals, their colors faded by time and moisture"
-        ]
+    async def update_character_stats(self, username: str, stats_dict: dict):
+        """
+        Updates the stats for a user's character in the database.
+        """
+        if not username or not stats_dict:
+            print("Update failed: Username or stats dictionary not provided.")
+            return False, "Username or stats dictionary not provided."
 
-        return scenes[num_turns]
-    
+        try:
+            # Find the specific character to update.
+            # This assumes a user might have multiple characters, but we'll update the first one found.
+            # For a more robust system, a character ID would be better.
+            character_to_update = await self.db.userchar.find_first(
+                where={'user': username}
+            )
+
+            if not character_to_update:
+                return False, f"No character found for user {username}."
+            
+            print(f"int check : {stats_dict.get('Intelligence')}")
+
+            # Prepare the data for the update operation
+            update_data = {
+                'str': stats_dict.get('Might'),
+                'dex': stats_dict.get('Agility'),
+                'con': stats_dict.get('Spirit'),
+                'int': stats_dict.get('Intelligence'),
+                'wis': stats_dict.get('Wisdom'),
+                'cha': stats_dict.get('Presence')
+            }
+
+            await self.db.userchar.update(
+                where={'id': character_to_update.id},
+                data=update_data
+            )
+            
+            print(f"Successfully updated stats for character {character_to_update.name} (user: {username})")
+            return True, "Character stats updated successfully."
+
+        except Exception as e:
+            error_msg = str(e)
+            print(f"Failed to update character stats for user {username}: {error_msg}")
+            return False, f"Database error: {error_msg}"
+
+    async def get_characters_for_user(self, username: str):
+        """
+        Retrieves all characters for a given user and returns them as a list.
+        """
+        if not username:
+            return []
+        
+        await self.db.connect()
+        try:
+            characters = await self.db.userchar.find_many(
+                where={'user': username}
+            )
+            # The result from find_many is already a list of character objects (dictionaries)
+            return characters
+        except Exception as e:
+            print(f"Error fetching characters for user {username}: {e}")
+            return []
+        finally:
+            if self.db.is_connected():
+                await self.db.disconnect()
+
     async def get_character(self, username):
+        try:
+            character_data = await self.db.query_raw('' \
+            'SELECT T2.* FROM "USERDATA" AS T1 ' \
+            'INNER JOIN "USERCHAR" AS T2 ON T1."username" = T2."user"' \
+            'WHERE T1."username" = $1',
+            username)
 
-        character_data = await self.db.query_raw('' \
-        'SELECT T2.* FROM "USERDATA" AS T1 ' \
-        'INNER JOIN "USERCHAR" AS T2 ON T1."username" = T2."user"' \
-        'WHERE T1."username" = $1',
-        username)
+            print("Character data from db: ", character_data)
 
-        print("Character data from db: ", character_data)
+            return character_data
+        except Exception as e:
+            print(f"Error fetching character for user {username}: {e}")
+            return None
+    
+    async def get_character_attributes(self, username: str) -> dict | None:
+        """
+        Retrieves attributes for a user's character and returns them as a dictionary.
+        """
+        if not username:
+            return None
 
-        return character_data
+        try:
+            character = await self.db.userchar.find_first(
+                where={'user': username},
+                order={'id': 'asc'} # Get the first character created if there are multiple
+            )
+
+            if character:
+                # Map database fields to the player class attribute names
+                attributes = {
+                    'Might': character.str,
+                    'Agility': character.dex,
+                    'Presence': character.cha,
+                    'Intelligence': character.int,
+                    'Wisdom': character.wis,
+                    'Spirit': character.con,
+                    'hp': 20 # Default HP, can be loaded from db if added to schema
+                }
+                return attributes
+            else:
+                print(f"No character found for user {username}.")
+                return None
+
+        except Exception as e:
+            print(f"Error fetching character attributes for user {username}: {e}")
+            return None
 
