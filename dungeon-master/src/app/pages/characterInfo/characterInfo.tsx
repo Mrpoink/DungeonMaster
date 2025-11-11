@@ -9,8 +9,8 @@ import { IoClose } from "react-icons/io5";
 import {CharacterIcon } from "@/app/components/character/characterIcon";
 import SelectIcon from "@/app/components/character/characterIcon";
 import Character from "@/app/components/character/characterType";
-import { InformationIcon, skill_map } from "@/app/components/abilities/descriptions";
-import { AbilityScore } from "@/app/components/abilities/abilities";
+import { InformationIcon, skill_map } from "@/app/components/character/abilities/descriptions";
+import { AbilityScore } from "@/app/components/character/abilities/abilities";
 
     
 const all_skills = Object.values(skill_map).flat();
@@ -132,14 +132,14 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
             return (
                 <div className="space-y-4">
                     <div className="heading-with-edit border-none pb-0 mb-4">
-                        <h2 className="text-2xl font-bold text-white">Change Name</h2>
+                        <h2 className="text-2xl font-bold">Change Name</h2>
                         <div className="edit-controls">
                             <button onClick={handleSaveName} className="edit-save-btn"><FaCheck className="w-5 h-5" /></button>
                             <button onClick={() => setIsEditingName(false)} className="edit-cancel-btn"><IoClose className="w-5 h-5" /></button>
                         </div>
                     </div>
                     <div>
-                        <label className="text-sm text-gray-400 block mb-1">Character Name</label>
+                        <label className="text-sm block mb-1">Character Name</label>
                         <EditInput value={tempName} onChange={(e) => setTempName(e.target.value)} />
                     </div>
                 </div>
@@ -174,7 +174,7 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
                         </div>
                     </div>
                     <div>
-                        <label className="text-sm text-gray-400 block mb-1">Select your Icon</label>
+                        <label className="text-sm block mb-1">Select your Icon</label>
                         <div>
                             <SelectIcon
                                 onIconSelect={setTempIcon} 
@@ -183,7 +183,7 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
                         </div>
                     </div>
                     <div>
-                        <label className="text-sm text-gray-400 block mb-1">Character Race</label>
+                        <label className="text-sm block mb-1">Character Race</label>
                         <div className="race-button-container">
                             {raceOptions.map((race) => (
                                 <button
@@ -197,11 +197,11 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
                         </div>
                     </div>
                     <div>
-                        <label className="text-sm text-gray-400 block mb-1">Character Class</label>
+                        <label className="text-sm block mb-1">Character Class</label>
                         <EditInput value={tempClass} onChange={(e) => setTempClass(e.target.value)} />
                     </div>
                     <div>
-                        <label className="text-sm text-gray-400 block mb-1">Character Subclass</label>
+                        <label className="text-sm block mb-1">Character Subclass</label>
                         <EditInput value={tempSubclass} onChange={(e) => setTempSubclass(e.target.value)} />
                     </div>
                 </div>
@@ -210,7 +210,7 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
 
         return (
             <div className="content-block relative">
-                <div className="heading-with-edit border-b border-gray-700 pb-2">
+                <div className="heading-with-edit border-b pb-2">
                     <h3 className="heading-text">BASIC INFO</h3>
                     <button 
                         onClick={() => { setIsEditingBasic(true);}}
@@ -255,8 +255,8 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
                             {validationMessage}
                         </div>
                     )}
-                    <div className="mb-4 p-3 bg-gray-700 rounded-lg flex justify-between items-center text-sm font-semibold">
-                        <span className="text-gray-300">Total Score: <span className="text-yellow-400">{totalScore}</span> / {maxScore}</span>
+                    <div className="mb-4 p-3 rounded-lg flex justify-between items-center text-sm font-semibold">
+                        <span>Total Score: <span className="text-green-400">{totalScore}</span> / {maxScore}</span>
                         <span className={`font-bold ${pointsRemaining >= 0 ? 'text-green-400' : 'text-red-400'}`}>
                             {pointsRemaining >= 0 ? `Remaining: ${pointsRemaining}` : `Over Limit: ${Math.abs(pointsRemaining)}`}
                         </span>
@@ -265,7 +265,7 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
                         {Object.entries(tempStats).map(([name, score]) => {
                             return (
                                 <div key={name} className="flex flex-col items-start">
-                                    <label className="text-sm uppercase font-medium text-gray-400 mb-1">
+                                    <label className="text-sm uppercase font-medium mb-1">
                                         <div>
                                             {name}
                                             <InformationIcon name={name}/>
@@ -298,7 +298,7 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
 
         return (
             <div className="content-block relative">
-                <div className="heading-with-edit border-b border-gray-700 pb-2">
+                <div className="heading-with-edit border-b pb-2">
                     <h3 className="heading-text">ABILITY SCORES</h3>
                     <button 
                         onClick={() => {
@@ -329,7 +329,7 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
 
         return (
             <div className="content-block relative">
-                <div className="heading-with-edit border-b border-gray-700 pb-2">
+                <div className="heading-with-edit border-b pb-2">
                     <h3 className="heading-text">
                         SKILLS
                     </h3>
@@ -378,7 +378,7 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
 
         return (
             <div className="content-block p-6 relative">
-                <div className="heading-with-edit border-b border-gray-700 pb-2">
+                <div className="heading-with-edit border-b pb-2">
                     <h3 className="heading-text">
                         BACKSTORY
                     </h3>

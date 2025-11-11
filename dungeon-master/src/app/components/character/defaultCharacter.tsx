@@ -1,7 +1,5 @@
 'use client'
 import Character from './characterType';
-import { CgProfile } from "react-icons/cg";
-import { GiAquarium, GiArrowed, GiAstronautHelmet, GiPlagueDoctorProfile, GiRabbit } from "react-icons/gi"
 
 export const DEFAULT_CHARACTER: Character = {
     name: "Default Hero",

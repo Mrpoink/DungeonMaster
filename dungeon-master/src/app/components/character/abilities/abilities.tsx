@@ -4,7 +4,7 @@ import React from 'react';
 export const AbilityScore = ({ name, score }: { name: string; score: number }) => {
   return (
       <div className="flex flex-col items-center justify-center p-3 bg-gray-700/70 rounded-xl border border-gray-600 shadow-md ability-score-display">
-          <span className="text-xs uppercase font-bold text-yellow-400 mb-1 ability-label">{name.substring(0, 3)}</span>
+          <span className="text-xs uppercase font-bold mb-1 ability-label">{name}</span>
           <div className="relative mt-1 flex flex-col items-center">
               <span className="text-3xl font-extrabold text-white ability-score">{score}</span>
           </div>

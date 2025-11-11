@@ -79,7 +79,7 @@ export function InformationIcon({name}: {name:string}){
     return(
         <div style={{ position: 'relative', display: 'inline-block' }}>
             <IoInformationCircle 
-                className="w-4 h-4 text-gray-400 hover:text-white transition cursor-help"
+                className="w-4 h-4 hover:text-white transition cursor-help"
                 onClick={handleOpenPopup}
                 style={{cursor:'pointer'}}
             />
@@ -92,7 +92,7 @@ export function InformationIcon({name}: {name:string}){
                             className="information-close"
                         />
                         
-                        <h3 style={{ marginTop: 0 }}>{name}</h3>
+                        <h3>{name}</h3>
                         {descriptionElement}
                     </div>
                 </div>

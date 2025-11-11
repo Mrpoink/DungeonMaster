@@ -5,7 +5,7 @@ import Dice from "@/app/components/dice/dice";
 import Roll from "@/app/components/dice/roll";
 import GameManager from "@/app/components/gameManager/gameManager";
 import { useRouter } from "next/navigation";
-import {AbilityBars} from "@/app/components/abilities/abilities";
+import {AbilityBars} from "@/app/components/character/abilities/abilities";
 
 type ConversationItem = {
     sender: 'User' | 'DM' | string;

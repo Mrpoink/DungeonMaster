@@ -16,7 +16,7 @@
   .sheet-header {
     margin-bottom: 2rem; /* mb-8 */
     padding-bottom: 1rem; /* pb-4 */
-    border-bottom: 1px solid rgba(75, 85, 99, 0.5); /* border-b border-gray-600/50 */
+    border-bottom: 1px solid var(--foreground);
   }
   .char-name {
     font-size: 3rem; /* text-5xl */
@@ -39,10 +39,10 @@
   }        
   
   .content-block {
-    background-color: rgba(31, 41, 55, 0.25); /* bg-gray-800/40 */
-    padding: 1rem; /* p-4 */
-    border-radius: 0.75rem; /* rounded-xl */
-    border: 1px solid var(--foreground); /* border border-gray-700/50 */
+    background-color: var(--background);
+    padding: 1rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--foreground);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   }
   
@@ -61,7 +61,7 @@
     justify-content: center;
     border-top-width: 4px;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1); /* shadow-lg */
-    background-color: rgba(31, 41, 55, 0.6); /* bg-gray-800/60 */
+    background-color: #a99881;
   }
   .stat-card-icon {
     width: 2rem; height: 2rem; /* w-8 h-8 */
@@ -90,10 +90,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgba(17, 24, 39, 0.4); /* bg-gray-900/40 */
+    background-color: #a99881;
     padding: 0.75rem; /* p-3 */
     border-radius: 0.5rem; /* rounded-lg */
-    border: 1px solid rgba(55, 65, 81, 0.5); /* border border-gray-700/50 */
+    border: 1px solid var(--foreground);
     backdrop-filter: blur(3px); /* backdrop-blur-sm */
     transition: transform 0.2s;
     min-width: 70px;
@@ -118,7 +118,7 @@
     font-size: 0.875rem; /* text-sm */
     font-weight: 700; /* font-bold */
     color: #4ADE80; /* text-green-400 */
-    background-color: rgba(17, 24, 39, 0.7); /* bg-gray-900/70 */
+    background-color: var(--foreground);
     border-radius: 9999px; /* rounded-full */
     padding-left: 0.25rem; /* px-1 */
     padding-right: 0.25rem; /* px-1 */
@@ -147,14 +147,14 @@
     border-width: 2px; /* border-2 */
   }
   .skill-proficient {
-    color: #FDE047; /* text-yellow-200 */
+    color: #059649;
   }
   .skill-proficient .skill-indicator {
-    border-color: #FBBF24; /* border-yellow-400 */
-    background-color: #FBBF24; /* bg-yellow-400 */
+    border-color: #059649;
+    background-color: green;
   }
   .skill-not-proficient .skill-indicator {
-    border-color: #6B7280; /* border-gray-500 */
+    border-color: var(--foreground);
     background-color: transparent;
   }
   
@@ -171,7 +171,7 @@
   .edit-input {
     width: 100%;
     padding: 0.5rem;
-    background-color: rgba(55, 65, 81, 0.7);
+    background-color: #cca95c;
     border: 1px solid #4B5563;
     border-radius: 0.5rem;
     color: #FDE047;
@@ -290,13 +290,11 @@
     }
   }
   
-  .icon-button{
+  .icon-button, .race-button{
     background-color: var(--background);
     border: 1px solid var(--foreground);
-  }
-  .race-button{
-    background-color: var(--background);
-    border: 1px solid var(--foreground);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+
   }
   
   .race-button:not(.race-selected):hover, .icon-button:not(.icon-selected):hover {
