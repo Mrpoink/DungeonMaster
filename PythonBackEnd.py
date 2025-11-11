@@ -126,7 +126,9 @@ class campaign:
         instance = cls()
 
         instance.vb = vector_database.get_from_db()
+        instance.bvb = vector_database.use_vector_db()
         await instance.vb.connect()
+        await instance.bvb.connect()
         instance.seed = await instance.vb.get_session_id() + 1
         print("Seed: ", instance.seed)
         await instance.vb.add_session('all-MiniLM-L6-v2', "start of session", instance.seed)
@@ -257,13 +259,13 @@ class campaign:
 
     async def add_user_data(instance, name, username, password):
 
-        await instance.vb.add_user_data(name, username, password)
+        await instance.bvb.add_user_data(name, username, password)
 
         return "added data"
     
     async def check_creds(instance, username, password):
 
-        result = await instance.vb.check_user_data(username, password)
+        result = await instance.bvb.check_user_data(username, password)
 
         print("From backend: ", result)
 

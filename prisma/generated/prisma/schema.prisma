@@ -277,6 +277,7 @@ model USERCHAR {
   id        Int      @id @default(autoincrement())
   user      String
   username  USERDATA @relation(fields: [user], references: [username])
+  name      String
   race      String
   cla       String
   subclass  String
