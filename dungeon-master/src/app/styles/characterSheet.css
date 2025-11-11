@@ -80,9 +80,6 @@
     font-weight: 800; /* font-extrabold */
     color: white;
   }
-  .basic-info-icon{
-
-  }
   .basic-info-grid{
     display: flex;
     flex-direction: row;
