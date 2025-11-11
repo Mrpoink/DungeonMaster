@@ -1,0 +1,49 @@
+.dice {
+    float: left;
+    position: relative;
+    left: 10vw;
+    top: -10vh;
+    z-index: 1;
+    img {
+      width: 3em;
+      margin-bottom: 10px;
+      border: 2px solid #111827;
+      border-radius: 25%;
+    }
+    img:hover {
+      border: 2px solid blue;
+      transform: scale(1.15);
+      cursor: pointer;
+    }
+    .active-dice {
+      margin-bottom: 10px;
+      border: 2px solid #FBBF24;
+    }
+    .active-dice:hover {
+      border: 2px solid #FBBF24;
+      cursor: pointer;
+    }
+  }
+  .roll-container{
+    position: absolute;
+    top: -130px;
+    left: 2px;
+  }
+  #roll-dice-button, #enter-button {
+    border-radius: 25px;
+    text-align: center;
+    color: red;
+    cursor: pointer;
+    display: inline-block;
+    padding: 10px;
+    transition: all 250ms;
+    border: 0;
+    touch-action: manipulation;
+    font-weight: 700;
+    box-shadow: red 0 -25px 18px -14px inset, rgba(187, 84, 44, 0.7) 0 1px 1px, rgba(187, 84, 44, 0.7) 0 1px 2px, rgba(187, 84, 44, 0.7) 0 2px 4px, rgba(187, 84, 44, 0.7) 0 2px 8px, rgba(187, 84, 44, 0.7) 0 4px 16px;
+  }
+  #roll-dice-button:hover, #enter-button:hover {
+    color: red;
+    box-shadow: red 0 -25px 18px -14px inset, rgba(187, 84, 44, 0.7) 0 1px 2px, rgba(187, 84, 44, 0.7) 0 2px 4px, rgba(187, 84, 44, 0.7) 0 4px 8px, rgba(187, 84, 44, 0.7) 0 8px 16px, rgba(187, 84, 44, 0.7) 0 16px 32px;
+    transform: scale(1.15) rotate(-3deg);
+  }
