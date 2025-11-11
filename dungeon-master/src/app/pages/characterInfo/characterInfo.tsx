@@ -6,19 +6,13 @@ import { DEFAULT_CHARACTER } from "@/app/components/character/defaultCharacter";
 import { BiPencil } from "react-icons/bi";
 import { FaCheck } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
-import { MdBook } from 'react-icons/md';
 import {CharacterIcon} from "@/app/components/character/characterIcon";
 import SelectIcon from "@/app/components/character/characterIcon";
 import Character from "@/app/components/character/characterType";
+import { InformationIcon } from "@/app/components/abilities/descriptions";
+import { skill_map } from "@/app/components/abilities/descriptions";
+import { AbilityScore } from "@/app/components/abilities/abilities";
 
-const skill_map ={
-    INTELLECT: ['Arcana', 'Investigation', 'Engineering'],
-    MIGHT: ['Athletics', 'Brawling', 'Endurance'],
-    AGILITY: ['Stealth', 'Acrobatics', 'Sleight of Hand'],
-    PRESENCE: ['Persuasion', 'Deception', 'Performance'],
-    WISDOM: ['Insight', 'Survival', 'Medicine'],
-    SPIRIT: ['Faith', 'Willpower', 'Attunement']
-}
     
 const all_skills = Object.values(skill_map).flat();
 const thresholds = { lvl1: 10, lvl2: 20, lvl3:25 }
@@ -64,17 +58,6 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
         {...props}
     />
 );
-
-const AbilityScore = ({ name, score }: { name: string; score: number }) => {
-    return (
-        <div className="flex flex-col items-center justify-center p-3 bg-gray-700/70 rounded-xl border border-gray-600 shadow-md ability-score-display">
-            <span className="text-xs uppercase font-bold text-yellow-400 mb-1 ability-label">{name.substring(0, 3)}</span>
-            <div className="relative mt-1 flex flex-col items-center">
-                <span className="text-3xl font-extrabold text-white ability-score">{score}</span>
-            </div>
-        </div>
-    );
-};
 
  // --- MAIN COMPONENT ---
  export default function CharacterInfo() {
@@ -141,6 +124,7 @@ const AbilityScore = ({ name, score }: { name: string; score: number }) => {
         setCharacterData(prev => ({ ...prev, backstory: tempBackstory }));
         setIsEditingBackstory(false);
     };
+
 
 
     // --- RENDER FUNCTIONS ---
@@ -267,7 +251,12 @@ const AbilityScore = ({ name, score }: { name: string; score: number }) => {
                         {Object.entries(tempStats).map(([name, score]) => {
                             return (
                                 <div key={name} className="flex flex-col items-start">
-                                    <label className="text-sm uppercase font-medium text-gray-400 mb-1">{name}</label>
+                                    <label className="text-sm uppercase font-medium text-gray-400 mb-1">
+                                        <div>
+                                            {name}
+                                            <InformationIcon name={name}/>
+                                        </div>
+                                    </label>
                                     <EditInput
                                         name={name}
                                         type="number"
@@ -310,7 +299,12 @@ const AbilityScore = ({ name, score }: { name: string; score: number }) => {
                 </div>
                 <div className="ability-scores-grid">
                     {Object.entries(characterData.stats).map(([name, score]) => (
-                        <AbilityScore key={name} name={name} score={score} />
+                        <div key={name}>
+                            <div>
+                                <InformationIcon name={name} />
+                            </div>
+                            <AbilityScore name={name} score={score} />
+                        </div>
                     ))}
                 </div>
             </div>
@@ -335,8 +329,9 @@ const AbilityScore = ({ name, score }: { name: string; score: number }) => {
                                 key={skillName} 
                                 className={`skill-item ${isProficient ? 'skill-proficient' : 'skill-not-proficient'}`}
                             >
-                                <div className="skill-indicator"></div>
+                            <div className="skill-indicator"></div>
                                 <span>{skillName}</span>
+                                <InformationIcon name={skillName} />
                             </div>
                         )
                     })}
@@ -351,7 +346,7 @@ const AbilityScore = ({ name, score }: { name: string; score: number }) => {
                 <div className="content-block p-6">
                     <div className="heading-with-edit">
                         <h3 className="heading-text">
-                            <MdBook className="w-5 h-5 mr-2" /> Edit Backstory
+                            Edit Backstory
                         </h3>
                         <div className="edit-controls">
                             <button onClick={handleSaveBackstory} className="edit-save-btn"><FaCheck className="w-5 h-5" /></button>

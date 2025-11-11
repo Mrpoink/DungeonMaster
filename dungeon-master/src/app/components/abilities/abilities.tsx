@@ -1,6 +1,16 @@
 'use client'
 import React from 'react';
-import Character from '../character/characterType';
+
+export const AbilityScore = ({ name, score }: { name: string; score: number }) => {
+  return (
+      <div className="flex flex-col items-center justify-center p-3 bg-gray-700/70 rounded-xl border border-gray-600 shadow-md ability-score-display">
+          <span className="text-xs uppercase font-bold text-yellow-400 mb-1 ability-label">{name.substring(0, 3)}</span>
+          <div className="relative mt-1 flex flex-col items-center">
+              <span className="text-3xl font-extrabold text-white ability-score">{score}</span>
+          </div>
+      </div>
+  );
+};
 
 export default function AbilityProgressBar( {name, score}:{name: string, score: number} ) {
     const maxAbilityScore = 30;
@@ -56,6 +66,6 @@ export function AbilityBars(){
               name={'SPIRIT'} 
               score={20}
             />
-          </div>
+        </div>
     )
 }
