@@ -2420,21 +2420,29 @@ class FindManySpellArgsFromCHARACTERVECTORRecursive4(TypedDict, total=False):
 class USERDATAIncludeFromCHARACTERVECTOR(TypedDict, total=False):
     """Relational arguments for CHARACTERVECTOR"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromCHARACTERVECTORRecursive1']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromCHARACTERVECTORRecursive1']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromCHARACTERVECTORRecursive1']
 
 
 class USERDATAIncludeFromCHARACTERVECTORRecursive1(TypedDict, total=False):
     """Relational arguments for CHARACTERVECTOR"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromCHARACTERVECTORRecursive2']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromCHARACTERVECTORRecursive2']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromCHARACTERVECTORRecursive2']
 
 
 class USERDATAIncludeFromCHARACTERVECTORRecursive2(TypedDict, total=False):
     """Relational arguments for CHARACTERVECTOR"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromCHARACTERVECTORRecursive3']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromCHARACTERVECTORRecursive3']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromCHARACTERVECTORRecursive3']
 
 
 class USERDATAIncludeFromCHARACTERVECTORRecursive3(TypedDict, total=False):
     """Relational arguments for CHARACTERVECTOR"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromCHARACTERVECTORRecursive4']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromCHARACTERVECTORRecursive4']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromCHARACTERVECTORRecursive4']
 
 
 class USERDATAIncludeFromCHARACTERVECTORRecursive4(TypedDict, total=False):
@@ -2725,6 +2733,333 @@ class FindManyUSERCHARArgsFromCHARACTERVECTORRecursive4(TypedDict, total=False):
     where: 'USERCHARWhereInput'
     cursor: 'USERCHARWhereUniqueInput'
     distinct: List['USERCHARScalarFieldKeys']
+    
+    
+
+class USERCHARCHANGEIncludeFromCHARACTERVECTOR(TypedDict, total=False):
+    """Relational arguments for CHARACTERVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromCHARACTERVECTORRecursive1']
+    campaign: Union[bool, 'CampaignSessionArgsFromCHARACTERVECTORRecursive1']
+
+
+class USERCHARCHANGEIncludeFromCHARACTERVECTORRecursive1(TypedDict, total=False):
+    """Relational arguments for CHARACTERVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromCHARACTERVECTORRecursive2']
+    campaign: Union[bool, 'CampaignSessionArgsFromCHARACTERVECTORRecursive2']
+
+
+class USERCHARCHANGEIncludeFromCHARACTERVECTORRecursive2(TypedDict, total=False):
+    """Relational arguments for CHARACTERVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromCHARACTERVECTORRecursive3']
+    campaign: Union[bool, 'CampaignSessionArgsFromCHARACTERVECTORRecursive3']
+
+
+class USERCHARCHANGEIncludeFromCHARACTERVECTORRecursive3(TypedDict, total=False):
+    """Relational arguments for CHARACTERVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromCHARACTERVECTORRecursive4']
+    campaign: Union[bool, 'CampaignSessionArgsFromCHARACTERVECTORRecursive4']
+
+
+class USERCHARCHANGEIncludeFromCHARACTERVECTORRecursive4(TypedDict, total=False):
+    """Relational arguments for CHARACTERVECTOR"""
+
+    
+
+class USERCHARCHANGEArgsFromCHARACTERVECTOR(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive1'
+
+
+class USERCHARCHANGEArgsFromCHARACTERVECTORRecursive1(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive2'
+
+
+class USERCHARCHANGEArgsFromCHARACTERVECTORRecursive2(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive3'
+
+
+class USERCHARCHANGEArgsFromCHARACTERVECTORRecursive3(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive4'
+
+
+class USERCHARCHANGEArgsFromCHARACTERVECTORRecursive4(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    
+    
+
+class FindManyUSERCHARCHANGEArgsFromCHARACTERVECTOR(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive1'
+
+
+class FindManyUSERCHARCHANGEArgsFromCHARACTERVECTORRecursive1(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive2'
+
+
+class FindManyUSERCHARCHANGEArgsFromCHARACTERVECTORRecursive2(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive3'
+
+
+class FindManyUSERCHARCHANGEArgsFromCHARACTERVECTORRecursive3(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive4'
+
+
+class FindManyUSERCHARCHANGEArgsFromCHARACTERVECTORRecursive4(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    
+    
+
+class CampaignSessionIncludeFromCHARACTERVECTOR(TypedDict, total=False):
+    """Relational arguments for CHARACTERVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromCHARACTERVECTORRecursive1']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromCHARACTERVECTORRecursive1']
+    scenes: Union[bool, 'FindManySceneArgsFromCHARACTERVECTORRecursive1']
+
+
+class CampaignSessionIncludeFromCHARACTERVECTORRecursive1(TypedDict, total=False):
+    """Relational arguments for CHARACTERVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromCHARACTERVECTORRecursive2']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromCHARACTERVECTORRecursive2']
+    scenes: Union[bool, 'FindManySceneArgsFromCHARACTERVECTORRecursive2']
+
+
+class CampaignSessionIncludeFromCHARACTERVECTORRecursive2(TypedDict, total=False):
+    """Relational arguments for CHARACTERVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromCHARACTERVECTORRecursive3']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromCHARACTERVECTORRecursive3']
+    scenes: Union[bool, 'FindManySceneArgsFromCHARACTERVECTORRecursive3']
+
+
+class CampaignSessionIncludeFromCHARACTERVECTORRecursive3(TypedDict, total=False):
+    """Relational arguments for CHARACTERVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromCHARACTERVECTORRecursive4']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromCHARACTERVECTORRecursive4']
+    scenes: Union[bool, 'FindManySceneArgsFromCHARACTERVECTORRecursive4']
+
+
+class CampaignSessionIncludeFromCHARACTERVECTORRecursive4(TypedDict, total=False):
+    """Relational arguments for CHARACTERVECTOR"""
+
+    
+
+class CampaignSessionArgsFromCHARACTERVECTOR(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive1'
+
+
+class CampaignSessionArgsFromCHARACTERVECTORRecursive1(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive2'
+
+
+class CampaignSessionArgsFromCHARACTERVECTORRecursive2(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive3'
+
+
+class CampaignSessionArgsFromCHARACTERVECTORRecursive3(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive4'
+
+
+class CampaignSessionArgsFromCHARACTERVECTORRecursive4(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    
+    
+
+class FindManyCampaignSessionArgsFromCHARACTERVECTOR(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive1'
+
+
+class FindManyCampaignSessionArgsFromCHARACTERVECTORRecursive1(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive2'
+
+
+class FindManyCampaignSessionArgsFromCHARACTERVECTORRecursive2(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive3'
+
+
+class FindManyCampaignSessionArgsFromCHARACTERVECTORRecursive3(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive4'
+
+
+class FindManyCampaignSessionArgsFromCHARACTERVECTORRecursive4(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    
+    
+
+class SceneIncludeFromCHARACTERVECTOR(TypedDict, total=False):
+    """Relational arguments for CHARACTERVECTOR"""
+    campaign: Union[bool, 'CampaignSessionArgsFromCHARACTERVECTORRecursive1']
+
+
+class SceneIncludeFromCHARACTERVECTORRecursive1(TypedDict, total=False):
+    """Relational arguments for CHARACTERVECTOR"""
+    campaign: Union[bool, 'CampaignSessionArgsFromCHARACTERVECTORRecursive2']
+
+
+class SceneIncludeFromCHARACTERVECTORRecursive2(TypedDict, total=False):
+    """Relational arguments for CHARACTERVECTOR"""
+    campaign: Union[bool, 'CampaignSessionArgsFromCHARACTERVECTORRecursive3']
+
+
+class SceneIncludeFromCHARACTERVECTORRecursive3(TypedDict, total=False):
+    """Relational arguments for CHARACTERVECTOR"""
+    campaign: Union[bool, 'CampaignSessionArgsFromCHARACTERVECTORRecursive4']
+
+
+class SceneIncludeFromCHARACTERVECTORRecursive4(TypedDict, total=False):
+    """Relational arguments for CHARACTERVECTOR"""
+
+    
+
+class SceneArgsFromCHARACTERVECTOR(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    include: 'SceneIncludeFromSceneRecursive1'
+
+
+class SceneArgsFromCHARACTERVECTORRecursive1(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    include: 'SceneIncludeFromSceneRecursive2'
+
+
+class SceneArgsFromCHARACTERVECTORRecursive2(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    include: 'SceneIncludeFromSceneRecursive3'
+
+
+class SceneArgsFromCHARACTERVECTORRecursive3(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    include: 'SceneIncludeFromSceneRecursive4'
+
+
+class SceneArgsFromCHARACTERVECTORRecursive4(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    
+    
+
+class FindManySceneArgsFromCHARACTERVECTOR(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive1'
+
+
+class FindManySceneArgsFromCHARACTERVECTORRecursive1(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive2'
+
+
+class FindManySceneArgsFromCHARACTERVECTORRecursive2(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive3'
+
+
+class FindManySceneArgsFromCHARACTERVECTORRecursive3(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive4'
+
+
+class FindManySceneArgsFromCHARACTERVECTORRecursive4(TypedDict, total=False):
+    """Arguments for CHARACTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
     
 
 
@@ -4283,21 +4618,29 @@ class FindManySpellArgsFromClassesRecursive4(TypedDict, total=False):
 class USERDATAIncludeFromClasses(TypedDict, total=False):
     """Relational arguments for Classes"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromClassesRecursive1']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromClassesRecursive1']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromClassesRecursive1']
 
 
 class USERDATAIncludeFromClassesRecursive1(TypedDict, total=False):
     """Relational arguments for Classes"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromClassesRecursive2']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromClassesRecursive2']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromClassesRecursive2']
 
 
 class USERDATAIncludeFromClassesRecursive2(TypedDict, total=False):
     """Relational arguments for Classes"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromClassesRecursive3']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromClassesRecursive3']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromClassesRecursive3']
 
 
 class USERDATAIncludeFromClassesRecursive3(TypedDict, total=False):
     """Relational arguments for Classes"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromClassesRecursive4']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromClassesRecursive4']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromClassesRecursive4']
 
 
 class USERDATAIncludeFromClassesRecursive4(TypedDict, total=False):
@@ -4588,6 +4931,333 @@ class FindManyUSERCHARArgsFromClassesRecursive4(TypedDict, total=False):
     where: 'USERCHARWhereInput'
     cursor: 'USERCHARWhereUniqueInput'
     distinct: List['USERCHARScalarFieldKeys']
+    
+    
+
+class USERCHARCHANGEIncludeFromClasses(TypedDict, total=False):
+    """Relational arguments for Classes"""
+    username: Union[bool, 'USERDATAArgsFromClassesRecursive1']
+    campaign: Union[bool, 'CampaignSessionArgsFromClassesRecursive1']
+
+
+class USERCHARCHANGEIncludeFromClassesRecursive1(TypedDict, total=False):
+    """Relational arguments for Classes"""
+    username: Union[bool, 'USERDATAArgsFromClassesRecursive2']
+    campaign: Union[bool, 'CampaignSessionArgsFromClassesRecursive2']
+
+
+class USERCHARCHANGEIncludeFromClassesRecursive2(TypedDict, total=False):
+    """Relational arguments for Classes"""
+    username: Union[bool, 'USERDATAArgsFromClassesRecursive3']
+    campaign: Union[bool, 'CampaignSessionArgsFromClassesRecursive3']
+
+
+class USERCHARCHANGEIncludeFromClassesRecursive3(TypedDict, total=False):
+    """Relational arguments for Classes"""
+    username: Union[bool, 'USERDATAArgsFromClassesRecursive4']
+    campaign: Union[bool, 'CampaignSessionArgsFromClassesRecursive4']
+
+
+class USERCHARCHANGEIncludeFromClassesRecursive4(TypedDict, total=False):
+    """Relational arguments for Classes"""
+
+    
+
+class USERCHARCHANGEArgsFromClasses(TypedDict, total=False):
+    """Arguments for Classes"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive1'
+
+
+class USERCHARCHANGEArgsFromClassesRecursive1(TypedDict, total=False):
+    """Arguments for Classes"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive2'
+
+
+class USERCHARCHANGEArgsFromClassesRecursive2(TypedDict, total=False):
+    """Arguments for Classes"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive3'
+
+
+class USERCHARCHANGEArgsFromClassesRecursive3(TypedDict, total=False):
+    """Arguments for Classes"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive4'
+
+
+class USERCHARCHANGEArgsFromClassesRecursive4(TypedDict, total=False):
+    """Arguments for Classes"""
+    
+    
+
+class FindManyUSERCHARCHANGEArgsFromClasses(TypedDict, total=False):
+    """Arguments for Classes"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive1'
+
+
+class FindManyUSERCHARCHANGEArgsFromClassesRecursive1(TypedDict, total=False):
+    """Arguments for Classes"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive2'
+
+
+class FindManyUSERCHARCHANGEArgsFromClassesRecursive2(TypedDict, total=False):
+    """Arguments for Classes"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive3'
+
+
+class FindManyUSERCHARCHANGEArgsFromClassesRecursive3(TypedDict, total=False):
+    """Arguments for Classes"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive4'
+
+
+class FindManyUSERCHARCHANGEArgsFromClassesRecursive4(TypedDict, total=False):
+    """Arguments for Classes"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    
+    
+
+class CampaignSessionIncludeFromClasses(TypedDict, total=False):
+    """Relational arguments for Classes"""
+    username: Union[bool, 'USERDATAArgsFromClassesRecursive1']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromClassesRecursive1']
+    scenes: Union[bool, 'FindManySceneArgsFromClassesRecursive1']
+
+
+class CampaignSessionIncludeFromClassesRecursive1(TypedDict, total=False):
+    """Relational arguments for Classes"""
+    username: Union[bool, 'USERDATAArgsFromClassesRecursive2']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromClassesRecursive2']
+    scenes: Union[bool, 'FindManySceneArgsFromClassesRecursive2']
+
+
+class CampaignSessionIncludeFromClassesRecursive2(TypedDict, total=False):
+    """Relational arguments for Classes"""
+    username: Union[bool, 'USERDATAArgsFromClassesRecursive3']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromClassesRecursive3']
+    scenes: Union[bool, 'FindManySceneArgsFromClassesRecursive3']
+
+
+class CampaignSessionIncludeFromClassesRecursive3(TypedDict, total=False):
+    """Relational arguments for Classes"""
+    username: Union[bool, 'USERDATAArgsFromClassesRecursive4']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromClassesRecursive4']
+    scenes: Union[bool, 'FindManySceneArgsFromClassesRecursive4']
+
+
+class CampaignSessionIncludeFromClassesRecursive4(TypedDict, total=False):
+    """Relational arguments for Classes"""
+
+    
+
+class CampaignSessionArgsFromClasses(TypedDict, total=False):
+    """Arguments for Classes"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive1'
+
+
+class CampaignSessionArgsFromClassesRecursive1(TypedDict, total=False):
+    """Arguments for Classes"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive2'
+
+
+class CampaignSessionArgsFromClassesRecursive2(TypedDict, total=False):
+    """Arguments for Classes"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive3'
+
+
+class CampaignSessionArgsFromClassesRecursive3(TypedDict, total=False):
+    """Arguments for Classes"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive4'
+
+
+class CampaignSessionArgsFromClassesRecursive4(TypedDict, total=False):
+    """Arguments for Classes"""
+    
+    
+
+class FindManyCampaignSessionArgsFromClasses(TypedDict, total=False):
+    """Arguments for Classes"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive1'
+
+
+class FindManyCampaignSessionArgsFromClassesRecursive1(TypedDict, total=False):
+    """Arguments for Classes"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive2'
+
+
+class FindManyCampaignSessionArgsFromClassesRecursive2(TypedDict, total=False):
+    """Arguments for Classes"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive3'
+
+
+class FindManyCampaignSessionArgsFromClassesRecursive3(TypedDict, total=False):
+    """Arguments for Classes"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive4'
+
+
+class FindManyCampaignSessionArgsFromClassesRecursive4(TypedDict, total=False):
+    """Arguments for Classes"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    
+    
+
+class SceneIncludeFromClasses(TypedDict, total=False):
+    """Relational arguments for Classes"""
+    campaign: Union[bool, 'CampaignSessionArgsFromClassesRecursive1']
+
+
+class SceneIncludeFromClassesRecursive1(TypedDict, total=False):
+    """Relational arguments for Classes"""
+    campaign: Union[bool, 'CampaignSessionArgsFromClassesRecursive2']
+
+
+class SceneIncludeFromClassesRecursive2(TypedDict, total=False):
+    """Relational arguments for Classes"""
+    campaign: Union[bool, 'CampaignSessionArgsFromClassesRecursive3']
+
+
+class SceneIncludeFromClassesRecursive3(TypedDict, total=False):
+    """Relational arguments for Classes"""
+    campaign: Union[bool, 'CampaignSessionArgsFromClassesRecursive4']
+
+
+class SceneIncludeFromClassesRecursive4(TypedDict, total=False):
+    """Relational arguments for Classes"""
+
+    
+
+class SceneArgsFromClasses(TypedDict, total=False):
+    """Arguments for Classes"""
+    include: 'SceneIncludeFromSceneRecursive1'
+
+
+class SceneArgsFromClassesRecursive1(TypedDict, total=False):
+    """Arguments for Classes"""
+    include: 'SceneIncludeFromSceneRecursive2'
+
+
+class SceneArgsFromClassesRecursive2(TypedDict, total=False):
+    """Arguments for Classes"""
+    include: 'SceneIncludeFromSceneRecursive3'
+
+
+class SceneArgsFromClassesRecursive3(TypedDict, total=False):
+    """Arguments for Classes"""
+    include: 'SceneIncludeFromSceneRecursive4'
+
+
+class SceneArgsFromClassesRecursive4(TypedDict, total=False):
+    """Arguments for Classes"""
+    
+    
+
+class FindManySceneArgsFromClasses(TypedDict, total=False):
+    """Arguments for Classes"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive1'
+
+
+class FindManySceneArgsFromClassesRecursive1(TypedDict, total=False):
+    """Arguments for Classes"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive2'
+
+
+class FindManySceneArgsFromClassesRecursive2(TypedDict, total=False):
+    """Arguments for Classes"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive3'
+
+
+class FindManySceneArgsFromClassesRecursive3(TypedDict, total=False):
+    """Arguments for Classes"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive4'
+
+
+class FindManySceneArgsFromClassesRecursive4(TypedDict, total=False):
+    """Arguments for Classes"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
     
 
 
@@ -6213,21 +6883,29 @@ class FindManySpellArgsFromGeneralEquipmentRecursive4(TypedDict, total=False):
 class USERDATAIncludeFromGeneralEquipment(TypedDict, total=False):
     """Relational arguments for GeneralEquipment"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromGeneralEquipmentRecursive1']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromGeneralEquipmentRecursive1']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromGeneralEquipmentRecursive1']
 
 
 class USERDATAIncludeFromGeneralEquipmentRecursive1(TypedDict, total=False):
     """Relational arguments for GeneralEquipment"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromGeneralEquipmentRecursive2']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromGeneralEquipmentRecursive2']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromGeneralEquipmentRecursive2']
 
 
 class USERDATAIncludeFromGeneralEquipmentRecursive2(TypedDict, total=False):
     """Relational arguments for GeneralEquipment"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromGeneralEquipmentRecursive3']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromGeneralEquipmentRecursive3']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromGeneralEquipmentRecursive3']
 
 
 class USERDATAIncludeFromGeneralEquipmentRecursive3(TypedDict, total=False):
     """Relational arguments for GeneralEquipment"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromGeneralEquipmentRecursive4']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromGeneralEquipmentRecursive4']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromGeneralEquipmentRecursive4']
 
 
 class USERDATAIncludeFromGeneralEquipmentRecursive4(TypedDict, total=False):
@@ -6518,6 +7196,333 @@ class FindManyUSERCHARArgsFromGeneralEquipmentRecursive4(TypedDict, total=False)
     where: 'USERCHARWhereInput'
     cursor: 'USERCHARWhereUniqueInput'
     distinct: List['USERCHARScalarFieldKeys']
+    
+    
+
+class USERCHARCHANGEIncludeFromGeneralEquipment(TypedDict, total=False):
+    """Relational arguments for GeneralEquipment"""
+    username: Union[bool, 'USERDATAArgsFromGeneralEquipmentRecursive1']
+    campaign: Union[bool, 'CampaignSessionArgsFromGeneralEquipmentRecursive1']
+
+
+class USERCHARCHANGEIncludeFromGeneralEquipmentRecursive1(TypedDict, total=False):
+    """Relational arguments for GeneralEquipment"""
+    username: Union[bool, 'USERDATAArgsFromGeneralEquipmentRecursive2']
+    campaign: Union[bool, 'CampaignSessionArgsFromGeneralEquipmentRecursive2']
+
+
+class USERCHARCHANGEIncludeFromGeneralEquipmentRecursive2(TypedDict, total=False):
+    """Relational arguments for GeneralEquipment"""
+    username: Union[bool, 'USERDATAArgsFromGeneralEquipmentRecursive3']
+    campaign: Union[bool, 'CampaignSessionArgsFromGeneralEquipmentRecursive3']
+
+
+class USERCHARCHANGEIncludeFromGeneralEquipmentRecursive3(TypedDict, total=False):
+    """Relational arguments for GeneralEquipment"""
+    username: Union[bool, 'USERDATAArgsFromGeneralEquipmentRecursive4']
+    campaign: Union[bool, 'CampaignSessionArgsFromGeneralEquipmentRecursive4']
+
+
+class USERCHARCHANGEIncludeFromGeneralEquipmentRecursive4(TypedDict, total=False):
+    """Relational arguments for GeneralEquipment"""
+
+    
+
+class USERCHARCHANGEArgsFromGeneralEquipment(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive1'
+
+
+class USERCHARCHANGEArgsFromGeneralEquipmentRecursive1(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive2'
+
+
+class USERCHARCHANGEArgsFromGeneralEquipmentRecursive2(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive3'
+
+
+class USERCHARCHANGEArgsFromGeneralEquipmentRecursive3(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive4'
+
+
+class USERCHARCHANGEArgsFromGeneralEquipmentRecursive4(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    
+    
+
+class FindManyUSERCHARCHANGEArgsFromGeneralEquipment(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive1'
+
+
+class FindManyUSERCHARCHANGEArgsFromGeneralEquipmentRecursive1(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive2'
+
+
+class FindManyUSERCHARCHANGEArgsFromGeneralEquipmentRecursive2(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive3'
+
+
+class FindManyUSERCHARCHANGEArgsFromGeneralEquipmentRecursive3(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive4'
+
+
+class FindManyUSERCHARCHANGEArgsFromGeneralEquipmentRecursive4(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    
+    
+
+class CampaignSessionIncludeFromGeneralEquipment(TypedDict, total=False):
+    """Relational arguments for GeneralEquipment"""
+    username: Union[bool, 'USERDATAArgsFromGeneralEquipmentRecursive1']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromGeneralEquipmentRecursive1']
+    scenes: Union[bool, 'FindManySceneArgsFromGeneralEquipmentRecursive1']
+
+
+class CampaignSessionIncludeFromGeneralEquipmentRecursive1(TypedDict, total=False):
+    """Relational arguments for GeneralEquipment"""
+    username: Union[bool, 'USERDATAArgsFromGeneralEquipmentRecursive2']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromGeneralEquipmentRecursive2']
+    scenes: Union[bool, 'FindManySceneArgsFromGeneralEquipmentRecursive2']
+
+
+class CampaignSessionIncludeFromGeneralEquipmentRecursive2(TypedDict, total=False):
+    """Relational arguments for GeneralEquipment"""
+    username: Union[bool, 'USERDATAArgsFromGeneralEquipmentRecursive3']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromGeneralEquipmentRecursive3']
+    scenes: Union[bool, 'FindManySceneArgsFromGeneralEquipmentRecursive3']
+
+
+class CampaignSessionIncludeFromGeneralEquipmentRecursive3(TypedDict, total=False):
+    """Relational arguments for GeneralEquipment"""
+    username: Union[bool, 'USERDATAArgsFromGeneralEquipmentRecursive4']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromGeneralEquipmentRecursive4']
+    scenes: Union[bool, 'FindManySceneArgsFromGeneralEquipmentRecursive4']
+
+
+class CampaignSessionIncludeFromGeneralEquipmentRecursive4(TypedDict, total=False):
+    """Relational arguments for GeneralEquipment"""
+
+    
+
+class CampaignSessionArgsFromGeneralEquipment(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive1'
+
+
+class CampaignSessionArgsFromGeneralEquipmentRecursive1(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive2'
+
+
+class CampaignSessionArgsFromGeneralEquipmentRecursive2(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive3'
+
+
+class CampaignSessionArgsFromGeneralEquipmentRecursive3(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive4'
+
+
+class CampaignSessionArgsFromGeneralEquipmentRecursive4(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    
+    
+
+class FindManyCampaignSessionArgsFromGeneralEquipment(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive1'
+
+
+class FindManyCampaignSessionArgsFromGeneralEquipmentRecursive1(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive2'
+
+
+class FindManyCampaignSessionArgsFromGeneralEquipmentRecursive2(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive3'
+
+
+class FindManyCampaignSessionArgsFromGeneralEquipmentRecursive3(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive4'
+
+
+class FindManyCampaignSessionArgsFromGeneralEquipmentRecursive4(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    
+    
+
+class SceneIncludeFromGeneralEquipment(TypedDict, total=False):
+    """Relational arguments for GeneralEquipment"""
+    campaign: Union[bool, 'CampaignSessionArgsFromGeneralEquipmentRecursive1']
+
+
+class SceneIncludeFromGeneralEquipmentRecursive1(TypedDict, total=False):
+    """Relational arguments for GeneralEquipment"""
+    campaign: Union[bool, 'CampaignSessionArgsFromGeneralEquipmentRecursive2']
+
+
+class SceneIncludeFromGeneralEquipmentRecursive2(TypedDict, total=False):
+    """Relational arguments for GeneralEquipment"""
+    campaign: Union[bool, 'CampaignSessionArgsFromGeneralEquipmentRecursive3']
+
+
+class SceneIncludeFromGeneralEquipmentRecursive3(TypedDict, total=False):
+    """Relational arguments for GeneralEquipment"""
+    campaign: Union[bool, 'CampaignSessionArgsFromGeneralEquipmentRecursive4']
+
+
+class SceneIncludeFromGeneralEquipmentRecursive4(TypedDict, total=False):
+    """Relational arguments for GeneralEquipment"""
+
+    
+
+class SceneArgsFromGeneralEquipment(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    include: 'SceneIncludeFromSceneRecursive1'
+
+
+class SceneArgsFromGeneralEquipmentRecursive1(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    include: 'SceneIncludeFromSceneRecursive2'
+
+
+class SceneArgsFromGeneralEquipmentRecursive2(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    include: 'SceneIncludeFromSceneRecursive3'
+
+
+class SceneArgsFromGeneralEquipmentRecursive3(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    include: 'SceneIncludeFromSceneRecursive4'
+
+
+class SceneArgsFromGeneralEquipmentRecursive4(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    
+    
+
+class FindManySceneArgsFromGeneralEquipment(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive1'
+
+
+class FindManySceneArgsFromGeneralEquipmentRecursive1(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive2'
+
+
+class FindManySceneArgsFromGeneralEquipmentRecursive2(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive3'
+
+
+class FindManySceneArgsFromGeneralEquipmentRecursive3(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive4'
+
+
+class FindManySceneArgsFromGeneralEquipmentRecursive4(TypedDict, total=False):
+    """Arguments for GeneralEquipment"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
     
 
 
@@ -8034,21 +9039,29 @@ class FindManySpellArgsFromITEMSVECTORRecursive4(TypedDict, total=False):
 class USERDATAIncludeFromITEMSVECTOR(TypedDict, total=False):
     """Relational arguments for ITEMSVECTOR"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromITEMSVECTORRecursive1']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromITEMSVECTORRecursive1']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromITEMSVECTORRecursive1']
 
 
 class USERDATAIncludeFromITEMSVECTORRecursive1(TypedDict, total=False):
     """Relational arguments for ITEMSVECTOR"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromITEMSVECTORRecursive2']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromITEMSVECTORRecursive2']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromITEMSVECTORRecursive2']
 
 
 class USERDATAIncludeFromITEMSVECTORRecursive2(TypedDict, total=False):
     """Relational arguments for ITEMSVECTOR"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromITEMSVECTORRecursive3']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromITEMSVECTORRecursive3']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromITEMSVECTORRecursive3']
 
 
 class USERDATAIncludeFromITEMSVECTORRecursive3(TypedDict, total=False):
     """Relational arguments for ITEMSVECTOR"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromITEMSVECTORRecursive4']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromITEMSVECTORRecursive4']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromITEMSVECTORRecursive4']
 
 
 class USERDATAIncludeFromITEMSVECTORRecursive4(TypedDict, total=False):
@@ -8339,6 +9352,333 @@ class FindManyUSERCHARArgsFromITEMSVECTORRecursive4(TypedDict, total=False):
     where: 'USERCHARWhereInput'
     cursor: 'USERCHARWhereUniqueInput'
     distinct: List['USERCHARScalarFieldKeys']
+    
+    
+
+class USERCHARCHANGEIncludeFromITEMSVECTOR(TypedDict, total=False):
+    """Relational arguments for ITEMSVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromITEMSVECTORRecursive1']
+    campaign: Union[bool, 'CampaignSessionArgsFromITEMSVECTORRecursive1']
+
+
+class USERCHARCHANGEIncludeFromITEMSVECTORRecursive1(TypedDict, total=False):
+    """Relational arguments for ITEMSVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromITEMSVECTORRecursive2']
+    campaign: Union[bool, 'CampaignSessionArgsFromITEMSVECTORRecursive2']
+
+
+class USERCHARCHANGEIncludeFromITEMSVECTORRecursive2(TypedDict, total=False):
+    """Relational arguments for ITEMSVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromITEMSVECTORRecursive3']
+    campaign: Union[bool, 'CampaignSessionArgsFromITEMSVECTORRecursive3']
+
+
+class USERCHARCHANGEIncludeFromITEMSVECTORRecursive3(TypedDict, total=False):
+    """Relational arguments for ITEMSVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromITEMSVECTORRecursive4']
+    campaign: Union[bool, 'CampaignSessionArgsFromITEMSVECTORRecursive4']
+
+
+class USERCHARCHANGEIncludeFromITEMSVECTORRecursive4(TypedDict, total=False):
+    """Relational arguments for ITEMSVECTOR"""
+
+    
+
+class USERCHARCHANGEArgsFromITEMSVECTOR(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive1'
+
+
+class USERCHARCHANGEArgsFromITEMSVECTORRecursive1(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive2'
+
+
+class USERCHARCHANGEArgsFromITEMSVECTORRecursive2(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive3'
+
+
+class USERCHARCHANGEArgsFromITEMSVECTORRecursive3(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive4'
+
+
+class USERCHARCHANGEArgsFromITEMSVECTORRecursive4(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    
+    
+
+class FindManyUSERCHARCHANGEArgsFromITEMSVECTOR(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive1'
+
+
+class FindManyUSERCHARCHANGEArgsFromITEMSVECTORRecursive1(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive2'
+
+
+class FindManyUSERCHARCHANGEArgsFromITEMSVECTORRecursive2(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive3'
+
+
+class FindManyUSERCHARCHANGEArgsFromITEMSVECTORRecursive3(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive4'
+
+
+class FindManyUSERCHARCHANGEArgsFromITEMSVECTORRecursive4(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    
+    
+
+class CampaignSessionIncludeFromITEMSVECTOR(TypedDict, total=False):
+    """Relational arguments for ITEMSVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromITEMSVECTORRecursive1']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromITEMSVECTORRecursive1']
+    scenes: Union[bool, 'FindManySceneArgsFromITEMSVECTORRecursive1']
+
+
+class CampaignSessionIncludeFromITEMSVECTORRecursive1(TypedDict, total=False):
+    """Relational arguments for ITEMSVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromITEMSVECTORRecursive2']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromITEMSVECTORRecursive2']
+    scenes: Union[bool, 'FindManySceneArgsFromITEMSVECTORRecursive2']
+
+
+class CampaignSessionIncludeFromITEMSVECTORRecursive2(TypedDict, total=False):
+    """Relational arguments for ITEMSVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromITEMSVECTORRecursive3']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromITEMSVECTORRecursive3']
+    scenes: Union[bool, 'FindManySceneArgsFromITEMSVECTORRecursive3']
+
+
+class CampaignSessionIncludeFromITEMSVECTORRecursive3(TypedDict, total=False):
+    """Relational arguments for ITEMSVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromITEMSVECTORRecursive4']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromITEMSVECTORRecursive4']
+    scenes: Union[bool, 'FindManySceneArgsFromITEMSVECTORRecursive4']
+
+
+class CampaignSessionIncludeFromITEMSVECTORRecursive4(TypedDict, total=False):
+    """Relational arguments for ITEMSVECTOR"""
+
+    
+
+class CampaignSessionArgsFromITEMSVECTOR(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive1'
+
+
+class CampaignSessionArgsFromITEMSVECTORRecursive1(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive2'
+
+
+class CampaignSessionArgsFromITEMSVECTORRecursive2(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive3'
+
+
+class CampaignSessionArgsFromITEMSVECTORRecursive3(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive4'
+
+
+class CampaignSessionArgsFromITEMSVECTORRecursive4(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    
+    
+
+class FindManyCampaignSessionArgsFromITEMSVECTOR(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive1'
+
+
+class FindManyCampaignSessionArgsFromITEMSVECTORRecursive1(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive2'
+
+
+class FindManyCampaignSessionArgsFromITEMSVECTORRecursive2(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive3'
+
+
+class FindManyCampaignSessionArgsFromITEMSVECTORRecursive3(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive4'
+
+
+class FindManyCampaignSessionArgsFromITEMSVECTORRecursive4(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    
+    
+
+class SceneIncludeFromITEMSVECTOR(TypedDict, total=False):
+    """Relational arguments for ITEMSVECTOR"""
+    campaign: Union[bool, 'CampaignSessionArgsFromITEMSVECTORRecursive1']
+
+
+class SceneIncludeFromITEMSVECTORRecursive1(TypedDict, total=False):
+    """Relational arguments for ITEMSVECTOR"""
+    campaign: Union[bool, 'CampaignSessionArgsFromITEMSVECTORRecursive2']
+
+
+class SceneIncludeFromITEMSVECTORRecursive2(TypedDict, total=False):
+    """Relational arguments for ITEMSVECTOR"""
+    campaign: Union[bool, 'CampaignSessionArgsFromITEMSVECTORRecursive3']
+
+
+class SceneIncludeFromITEMSVECTORRecursive3(TypedDict, total=False):
+    """Relational arguments for ITEMSVECTOR"""
+    campaign: Union[bool, 'CampaignSessionArgsFromITEMSVECTORRecursive4']
+
+
+class SceneIncludeFromITEMSVECTORRecursive4(TypedDict, total=False):
+    """Relational arguments for ITEMSVECTOR"""
+
+    
+
+class SceneArgsFromITEMSVECTOR(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    include: 'SceneIncludeFromSceneRecursive1'
+
+
+class SceneArgsFromITEMSVECTORRecursive1(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    include: 'SceneIncludeFromSceneRecursive2'
+
+
+class SceneArgsFromITEMSVECTORRecursive2(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    include: 'SceneIncludeFromSceneRecursive3'
+
+
+class SceneArgsFromITEMSVECTORRecursive3(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    include: 'SceneIncludeFromSceneRecursive4'
+
+
+class SceneArgsFromITEMSVECTORRecursive4(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    
+    
+
+class FindManySceneArgsFromITEMSVECTOR(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive1'
+
+
+class FindManySceneArgsFromITEMSVECTORRecursive1(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive2'
+
+
+class FindManySceneArgsFromITEMSVECTORRecursive2(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive3'
+
+
+class FindManySceneArgsFromITEMSVECTORRecursive3(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive4'
+
+
+class FindManySceneArgsFromITEMSVECTORRecursive4(TypedDict, total=False):
+    """Arguments for ITEMSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
     
 
 
@@ -9819,21 +11159,29 @@ class FindManySpellArgsFromMONSTERVECTORRecursive4(TypedDict, total=False):
 class USERDATAIncludeFromMONSTERVECTOR(TypedDict, total=False):
     """Relational arguments for MONSTERVECTOR"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromMONSTERVECTORRecursive1']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromMONSTERVECTORRecursive1']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromMONSTERVECTORRecursive1']
 
 
 class USERDATAIncludeFromMONSTERVECTORRecursive1(TypedDict, total=False):
     """Relational arguments for MONSTERVECTOR"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromMONSTERVECTORRecursive2']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromMONSTERVECTORRecursive2']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromMONSTERVECTORRecursive2']
 
 
 class USERDATAIncludeFromMONSTERVECTORRecursive2(TypedDict, total=False):
     """Relational arguments for MONSTERVECTOR"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromMONSTERVECTORRecursive3']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromMONSTERVECTORRecursive3']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromMONSTERVECTORRecursive3']
 
 
 class USERDATAIncludeFromMONSTERVECTORRecursive3(TypedDict, total=False):
     """Relational arguments for MONSTERVECTOR"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromMONSTERVECTORRecursive4']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromMONSTERVECTORRecursive4']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromMONSTERVECTORRecursive4']
 
 
 class USERDATAIncludeFromMONSTERVECTORRecursive4(TypedDict, total=False):
@@ -10124,6 +11472,333 @@ class FindManyUSERCHARArgsFromMONSTERVECTORRecursive4(TypedDict, total=False):
     where: 'USERCHARWhereInput'
     cursor: 'USERCHARWhereUniqueInput'
     distinct: List['USERCHARScalarFieldKeys']
+    
+    
+
+class USERCHARCHANGEIncludeFromMONSTERVECTOR(TypedDict, total=False):
+    """Relational arguments for MONSTERVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromMONSTERVECTORRecursive1']
+    campaign: Union[bool, 'CampaignSessionArgsFromMONSTERVECTORRecursive1']
+
+
+class USERCHARCHANGEIncludeFromMONSTERVECTORRecursive1(TypedDict, total=False):
+    """Relational arguments for MONSTERVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromMONSTERVECTORRecursive2']
+    campaign: Union[bool, 'CampaignSessionArgsFromMONSTERVECTORRecursive2']
+
+
+class USERCHARCHANGEIncludeFromMONSTERVECTORRecursive2(TypedDict, total=False):
+    """Relational arguments for MONSTERVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromMONSTERVECTORRecursive3']
+    campaign: Union[bool, 'CampaignSessionArgsFromMONSTERVECTORRecursive3']
+
+
+class USERCHARCHANGEIncludeFromMONSTERVECTORRecursive3(TypedDict, total=False):
+    """Relational arguments for MONSTERVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromMONSTERVECTORRecursive4']
+    campaign: Union[bool, 'CampaignSessionArgsFromMONSTERVECTORRecursive4']
+
+
+class USERCHARCHANGEIncludeFromMONSTERVECTORRecursive4(TypedDict, total=False):
+    """Relational arguments for MONSTERVECTOR"""
+
+    
+
+class USERCHARCHANGEArgsFromMONSTERVECTOR(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive1'
+
+
+class USERCHARCHANGEArgsFromMONSTERVECTORRecursive1(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive2'
+
+
+class USERCHARCHANGEArgsFromMONSTERVECTORRecursive2(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive3'
+
+
+class USERCHARCHANGEArgsFromMONSTERVECTORRecursive3(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive4'
+
+
+class USERCHARCHANGEArgsFromMONSTERVECTORRecursive4(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    
+    
+
+class FindManyUSERCHARCHANGEArgsFromMONSTERVECTOR(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive1'
+
+
+class FindManyUSERCHARCHANGEArgsFromMONSTERVECTORRecursive1(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive2'
+
+
+class FindManyUSERCHARCHANGEArgsFromMONSTERVECTORRecursive2(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive3'
+
+
+class FindManyUSERCHARCHANGEArgsFromMONSTERVECTORRecursive3(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive4'
+
+
+class FindManyUSERCHARCHANGEArgsFromMONSTERVECTORRecursive4(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    
+    
+
+class CampaignSessionIncludeFromMONSTERVECTOR(TypedDict, total=False):
+    """Relational arguments for MONSTERVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromMONSTERVECTORRecursive1']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromMONSTERVECTORRecursive1']
+    scenes: Union[bool, 'FindManySceneArgsFromMONSTERVECTORRecursive1']
+
+
+class CampaignSessionIncludeFromMONSTERVECTORRecursive1(TypedDict, total=False):
+    """Relational arguments for MONSTERVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromMONSTERVECTORRecursive2']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromMONSTERVECTORRecursive2']
+    scenes: Union[bool, 'FindManySceneArgsFromMONSTERVECTORRecursive2']
+
+
+class CampaignSessionIncludeFromMONSTERVECTORRecursive2(TypedDict, total=False):
+    """Relational arguments for MONSTERVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromMONSTERVECTORRecursive3']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromMONSTERVECTORRecursive3']
+    scenes: Union[bool, 'FindManySceneArgsFromMONSTERVECTORRecursive3']
+
+
+class CampaignSessionIncludeFromMONSTERVECTORRecursive3(TypedDict, total=False):
+    """Relational arguments for MONSTERVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromMONSTERVECTORRecursive4']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromMONSTERVECTORRecursive4']
+    scenes: Union[bool, 'FindManySceneArgsFromMONSTERVECTORRecursive4']
+
+
+class CampaignSessionIncludeFromMONSTERVECTORRecursive4(TypedDict, total=False):
+    """Relational arguments for MONSTERVECTOR"""
+
+    
+
+class CampaignSessionArgsFromMONSTERVECTOR(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive1'
+
+
+class CampaignSessionArgsFromMONSTERVECTORRecursive1(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive2'
+
+
+class CampaignSessionArgsFromMONSTERVECTORRecursive2(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive3'
+
+
+class CampaignSessionArgsFromMONSTERVECTORRecursive3(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive4'
+
+
+class CampaignSessionArgsFromMONSTERVECTORRecursive4(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    
+    
+
+class FindManyCampaignSessionArgsFromMONSTERVECTOR(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive1'
+
+
+class FindManyCampaignSessionArgsFromMONSTERVECTORRecursive1(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive2'
+
+
+class FindManyCampaignSessionArgsFromMONSTERVECTORRecursive2(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive3'
+
+
+class FindManyCampaignSessionArgsFromMONSTERVECTORRecursive3(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive4'
+
+
+class FindManyCampaignSessionArgsFromMONSTERVECTORRecursive4(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    
+    
+
+class SceneIncludeFromMONSTERVECTOR(TypedDict, total=False):
+    """Relational arguments for MONSTERVECTOR"""
+    campaign: Union[bool, 'CampaignSessionArgsFromMONSTERVECTORRecursive1']
+
+
+class SceneIncludeFromMONSTERVECTORRecursive1(TypedDict, total=False):
+    """Relational arguments for MONSTERVECTOR"""
+    campaign: Union[bool, 'CampaignSessionArgsFromMONSTERVECTORRecursive2']
+
+
+class SceneIncludeFromMONSTERVECTORRecursive2(TypedDict, total=False):
+    """Relational arguments for MONSTERVECTOR"""
+    campaign: Union[bool, 'CampaignSessionArgsFromMONSTERVECTORRecursive3']
+
+
+class SceneIncludeFromMONSTERVECTORRecursive3(TypedDict, total=False):
+    """Relational arguments for MONSTERVECTOR"""
+    campaign: Union[bool, 'CampaignSessionArgsFromMONSTERVECTORRecursive4']
+
+
+class SceneIncludeFromMONSTERVECTORRecursive4(TypedDict, total=False):
+    """Relational arguments for MONSTERVECTOR"""
+
+    
+
+class SceneArgsFromMONSTERVECTOR(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    include: 'SceneIncludeFromSceneRecursive1'
+
+
+class SceneArgsFromMONSTERVECTORRecursive1(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    include: 'SceneIncludeFromSceneRecursive2'
+
+
+class SceneArgsFromMONSTERVECTORRecursive2(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    include: 'SceneIncludeFromSceneRecursive3'
+
+
+class SceneArgsFromMONSTERVECTORRecursive3(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    include: 'SceneIncludeFromSceneRecursive4'
+
+
+class SceneArgsFromMONSTERVECTORRecursive4(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    
+    
+
+class FindManySceneArgsFromMONSTERVECTOR(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive1'
+
+
+class FindManySceneArgsFromMONSTERVECTORRecursive1(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive2'
+
+
+class FindManySceneArgsFromMONSTERVECTORRecursive2(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive3'
+
+
+class FindManySceneArgsFromMONSTERVECTORRecursive3(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive4'
+
+
+class FindManySceneArgsFromMONSTERVECTORRecursive4(TypedDict, total=False):
+    """Arguments for MONSTERVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
     
 
 
@@ -12163,21 +13838,29 @@ class FindManySpellArgsFromMagicItemRecursive4(TypedDict, total=False):
 class USERDATAIncludeFromMagicItem(TypedDict, total=False):
     """Relational arguments for MagicItem"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromMagicItemRecursive1']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromMagicItemRecursive1']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromMagicItemRecursive1']
 
 
 class USERDATAIncludeFromMagicItemRecursive1(TypedDict, total=False):
     """Relational arguments for MagicItem"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromMagicItemRecursive2']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromMagicItemRecursive2']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromMagicItemRecursive2']
 
 
 class USERDATAIncludeFromMagicItemRecursive2(TypedDict, total=False):
     """Relational arguments for MagicItem"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromMagicItemRecursive3']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromMagicItemRecursive3']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromMagicItemRecursive3']
 
 
 class USERDATAIncludeFromMagicItemRecursive3(TypedDict, total=False):
     """Relational arguments for MagicItem"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromMagicItemRecursive4']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromMagicItemRecursive4']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromMagicItemRecursive4']
 
 
 class USERDATAIncludeFromMagicItemRecursive4(TypedDict, total=False):
@@ -12468,6 +14151,333 @@ class FindManyUSERCHARArgsFromMagicItemRecursive4(TypedDict, total=False):
     where: 'USERCHARWhereInput'
     cursor: 'USERCHARWhereUniqueInput'
     distinct: List['USERCHARScalarFieldKeys']
+    
+    
+
+class USERCHARCHANGEIncludeFromMagicItem(TypedDict, total=False):
+    """Relational arguments for MagicItem"""
+    username: Union[bool, 'USERDATAArgsFromMagicItemRecursive1']
+    campaign: Union[bool, 'CampaignSessionArgsFromMagicItemRecursive1']
+
+
+class USERCHARCHANGEIncludeFromMagicItemRecursive1(TypedDict, total=False):
+    """Relational arguments for MagicItem"""
+    username: Union[bool, 'USERDATAArgsFromMagicItemRecursive2']
+    campaign: Union[bool, 'CampaignSessionArgsFromMagicItemRecursive2']
+
+
+class USERCHARCHANGEIncludeFromMagicItemRecursive2(TypedDict, total=False):
+    """Relational arguments for MagicItem"""
+    username: Union[bool, 'USERDATAArgsFromMagicItemRecursive3']
+    campaign: Union[bool, 'CampaignSessionArgsFromMagicItemRecursive3']
+
+
+class USERCHARCHANGEIncludeFromMagicItemRecursive3(TypedDict, total=False):
+    """Relational arguments for MagicItem"""
+    username: Union[bool, 'USERDATAArgsFromMagicItemRecursive4']
+    campaign: Union[bool, 'CampaignSessionArgsFromMagicItemRecursive4']
+
+
+class USERCHARCHANGEIncludeFromMagicItemRecursive4(TypedDict, total=False):
+    """Relational arguments for MagicItem"""
+
+    
+
+class USERCHARCHANGEArgsFromMagicItem(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive1'
+
+
+class USERCHARCHANGEArgsFromMagicItemRecursive1(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive2'
+
+
+class USERCHARCHANGEArgsFromMagicItemRecursive2(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive3'
+
+
+class USERCHARCHANGEArgsFromMagicItemRecursive3(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive4'
+
+
+class USERCHARCHANGEArgsFromMagicItemRecursive4(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    
+    
+
+class FindManyUSERCHARCHANGEArgsFromMagicItem(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive1'
+
+
+class FindManyUSERCHARCHANGEArgsFromMagicItemRecursive1(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive2'
+
+
+class FindManyUSERCHARCHANGEArgsFromMagicItemRecursive2(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive3'
+
+
+class FindManyUSERCHARCHANGEArgsFromMagicItemRecursive3(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive4'
+
+
+class FindManyUSERCHARCHANGEArgsFromMagicItemRecursive4(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    
+    
+
+class CampaignSessionIncludeFromMagicItem(TypedDict, total=False):
+    """Relational arguments for MagicItem"""
+    username: Union[bool, 'USERDATAArgsFromMagicItemRecursive1']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromMagicItemRecursive1']
+    scenes: Union[bool, 'FindManySceneArgsFromMagicItemRecursive1']
+
+
+class CampaignSessionIncludeFromMagicItemRecursive1(TypedDict, total=False):
+    """Relational arguments for MagicItem"""
+    username: Union[bool, 'USERDATAArgsFromMagicItemRecursive2']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromMagicItemRecursive2']
+    scenes: Union[bool, 'FindManySceneArgsFromMagicItemRecursive2']
+
+
+class CampaignSessionIncludeFromMagicItemRecursive2(TypedDict, total=False):
+    """Relational arguments for MagicItem"""
+    username: Union[bool, 'USERDATAArgsFromMagicItemRecursive3']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromMagicItemRecursive3']
+    scenes: Union[bool, 'FindManySceneArgsFromMagicItemRecursive3']
+
+
+class CampaignSessionIncludeFromMagicItemRecursive3(TypedDict, total=False):
+    """Relational arguments for MagicItem"""
+    username: Union[bool, 'USERDATAArgsFromMagicItemRecursive4']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromMagicItemRecursive4']
+    scenes: Union[bool, 'FindManySceneArgsFromMagicItemRecursive4']
+
+
+class CampaignSessionIncludeFromMagicItemRecursive4(TypedDict, total=False):
+    """Relational arguments for MagicItem"""
+
+    
+
+class CampaignSessionArgsFromMagicItem(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive1'
+
+
+class CampaignSessionArgsFromMagicItemRecursive1(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive2'
+
+
+class CampaignSessionArgsFromMagicItemRecursive2(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive3'
+
+
+class CampaignSessionArgsFromMagicItemRecursive3(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive4'
+
+
+class CampaignSessionArgsFromMagicItemRecursive4(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    
+    
+
+class FindManyCampaignSessionArgsFromMagicItem(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive1'
+
+
+class FindManyCampaignSessionArgsFromMagicItemRecursive1(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive2'
+
+
+class FindManyCampaignSessionArgsFromMagicItemRecursive2(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive3'
+
+
+class FindManyCampaignSessionArgsFromMagicItemRecursive3(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive4'
+
+
+class FindManyCampaignSessionArgsFromMagicItemRecursive4(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    
+    
+
+class SceneIncludeFromMagicItem(TypedDict, total=False):
+    """Relational arguments for MagicItem"""
+    campaign: Union[bool, 'CampaignSessionArgsFromMagicItemRecursive1']
+
+
+class SceneIncludeFromMagicItemRecursive1(TypedDict, total=False):
+    """Relational arguments for MagicItem"""
+    campaign: Union[bool, 'CampaignSessionArgsFromMagicItemRecursive2']
+
+
+class SceneIncludeFromMagicItemRecursive2(TypedDict, total=False):
+    """Relational arguments for MagicItem"""
+    campaign: Union[bool, 'CampaignSessionArgsFromMagicItemRecursive3']
+
+
+class SceneIncludeFromMagicItemRecursive3(TypedDict, total=False):
+    """Relational arguments for MagicItem"""
+    campaign: Union[bool, 'CampaignSessionArgsFromMagicItemRecursive4']
+
+
+class SceneIncludeFromMagicItemRecursive4(TypedDict, total=False):
+    """Relational arguments for MagicItem"""
+
+    
+
+class SceneArgsFromMagicItem(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    include: 'SceneIncludeFromSceneRecursive1'
+
+
+class SceneArgsFromMagicItemRecursive1(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    include: 'SceneIncludeFromSceneRecursive2'
+
+
+class SceneArgsFromMagicItemRecursive2(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    include: 'SceneIncludeFromSceneRecursive3'
+
+
+class SceneArgsFromMagicItemRecursive3(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    include: 'SceneIncludeFromSceneRecursive4'
+
+
+class SceneArgsFromMagicItemRecursive4(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    
+    
+
+class FindManySceneArgsFromMagicItem(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive1'
+
+
+class FindManySceneArgsFromMagicItemRecursive1(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive2'
+
+
+class FindManySceneArgsFromMagicItemRecursive2(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive3'
+
+
+class FindManySceneArgsFromMagicItemRecursive3(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive4'
+
+
+class FindManySceneArgsFromMagicItemRecursive4(TypedDict, total=False):
+    """Arguments for MagicItem"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
     
 
 
@@ -16248,21 +18258,29 @@ class FindManySpellArgsFromMonsterRecursive4(TypedDict, total=False):
 class USERDATAIncludeFromMonster(TypedDict, total=False):
     """Relational arguments for Monster"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromMonsterRecursive1']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromMonsterRecursive1']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromMonsterRecursive1']
 
 
 class USERDATAIncludeFromMonsterRecursive1(TypedDict, total=False):
     """Relational arguments for Monster"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromMonsterRecursive2']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromMonsterRecursive2']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromMonsterRecursive2']
 
 
 class USERDATAIncludeFromMonsterRecursive2(TypedDict, total=False):
     """Relational arguments for Monster"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromMonsterRecursive3']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromMonsterRecursive3']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromMonsterRecursive3']
 
 
 class USERDATAIncludeFromMonsterRecursive3(TypedDict, total=False):
     """Relational arguments for Monster"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromMonsterRecursive4']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromMonsterRecursive4']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromMonsterRecursive4']
 
 
 class USERDATAIncludeFromMonsterRecursive4(TypedDict, total=False):
@@ -16553,6 +18571,333 @@ class FindManyUSERCHARArgsFromMonsterRecursive4(TypedDict, total=False):
     where: 'USERCHARWhereInput'
     cursor: 'USERCHARWhereUniqueInput'
     distinct: List['USERCHARScalarFieldKeys']
+    
+    
+
+class USERCHARCHANGEIncludeFromMonster(TypedDict, total=False):
+    """Relational arguments for Monster"""
+    username: Union[bool, 'USERDATAArgsFromMonsterRecursive1']
+    campaign: Union[bool, 'CampaignSessionArgsFromMonsterRecursive1']
+
+
+class USERCHARCHANGEIncludeFromMonsterRecursive1(TypedDict, total=False):
+    """Relational arguments for Monster"""
+    username: Union[bool, 'USERDATAArgsFromMonsterRecursive2']
+    campaign: Union[bool, 'CampaignSessionArgsFromMonsterRecursive2']
+
+
+class USERCHARCHANGEIncludeFromMonsterRecursive2(TypedDict, total=False):
+    """Relational arguments for Monster"""
+    username: Union[bool, 'USERDATAArgsFromMonsterRecursive3']
+    campaign: Union[bool, 'CampaignSessionArgsFromMonsterRecursive3']
+
+
+class USERCHARCHANGEIncludeFromMonsterRecursive3(TypedDict, total=False):
+    """Relational arguments for Monster"""
+    username: Union[bool, 'USERDATAArgsFromMonsterRecursive4']
+    campaign: Union[bool, 'CampaignSessionArgsFromMonsterRecursive4']
+
+
+class USERCHARCHANGEIncludeFromMonsterRecursive4(TypedDict, total=False):
+    """Relational arguments for Monster"""
+
+    
+
+class USERCHARCHANGEArgsFromMonster(TypedDict, total=False):
+    """Arguments for Monster"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive1'
+
+
+class USERCHARCHANGEArgsFromMonsterRecursive1(TypedDict, total=False):
+    """Arguments for Monster"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive2'
+
+
+class USERCHARCHANGEArgsFromMonsterRecursive2(TypedDict, total=False):
+    """Arguments for Monster"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive3'
+
+
+class USERCHARCHANGEArgsFromMonsterRecursive3(TypedDict, total=False):
+    """Arguments for Monster"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive4'
+
+
+class USERCHARCHANGEArgsFromMonsterRecursive4(TypedDict, total=False):
+    """Arguments for Monster"""
+    
+    
+
+class FindManyUSERCHARCHANGEArgsFromMonster(TypedDict, total=False):
+    """Arguments for Monster"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive1'
+
+
+class FindManyUSERCHARCHANGEArgsFromMonsterRecursive1(TypedDict, total=False):
+    """Arguments for Monster"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive2'
+
+
+class FindManyUSERCHARCHANGEArgsFromMonsterRecursive2(TypedDict, total=False):
+    """Arguments for Monster"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive3'
+
+
+class FindManyUSERCHARCHANGEArgsFromMonsterRecursive3(TypedDict, total=False):
+    """Arguments for Monster"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive4'
+
+
+class FindManyUSERCHARCHANGEArgsFromMonsterRecursive4(TypedDict, total=False):
+    """Arguments for Monster"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    
+    
+
+class CampaignSessionIncludeFromMonster(TypedDict, total=False):
+    """Relational arguments for Monster"""
+    username: Union[bool, 'USERDATAArgsFromMonsterRecursive1']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromMonsterRecursive1']
+    scenes: Union[bool, 'FindManySceneArgsFromMonsterRecursive1']
+
+
+class CampaignSessionIncludeFromMonsterRecursive1(TypedDict, total=False):
+    """Relational arguments for Monster"""
+    username: Union[bool, 'USERDATAArgsFromMonsterRecursive2']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromMonsterRecursive2']
+    scenes: Union[bool, 'FindManySceneArgsFromMonsterRecursive2']
+
+
+class CampaignSessionIncludeFromMonsterRecursive2(TypedDict, total=False):
+    """Relational arguments for Monster"""
+    username: Union[bool, 'USERDATAArgsFromMonsterRecursive3']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromMonsterRecursive3']
+    scenes: Union[bool, 'FindManySceneArgsFromMonsterRecursive3']
+
+
+class CampaignSessionIncludeFromMonsterRecursive3(TypedDict, total=False):
+    """Relational arguments for Monster"""
+    username: Union[bool, 'USERDATAArgsFromMonsterRecursive4']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromMonsterRecursive4']
+    scenes: Union[bool, 'FindManySceneArgsFromMonsterRecursive4']
+
+
+class CampaignSessionIncludeFromMonsterRecursive4(TypedDict, total=False):
+    """Relational arguments for Monster"""
+
+    
+
+class CampaignSessionArgsFromMonster(TypedDict, total=False):
+    """Arguments for Monster"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive1'
+
+
+class CampaignSessionArgsFromMonsterRecursive1(TypedDict, total=False):
+    """Arguments for Monster"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive2'
+
+
+class CampaignSessionArgsFromMonsterRecursive2(TypedDict, total=False):
+    """Arguments for Monster"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive3'
+
+
+class CampaignSessionArgsFromMonsterRecursive3(TypedDict, total=False):
+    """Arguments for Monster"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive4'
+
+
+class CampaignSessionArgsFromMonsterRecursive4(TypedDict, total=False):
+    """Arguments for Monster"""
+    
+    
+
+class FindManyCampaignSessionArgsFromMonster(TypedDict, total=False):
+    """Arguments for Monster"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive1'
+
+
+class FindManyCampaignSessionArgsFromMonsterRecursive1(TypedDict, total=False):
+    """Arguments for Monster"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive2'
+
+
+class FindManyCampaignSessionArgsFromMonsterRecursive2(TypedDict, total=False):
+    """Arguments for Monster"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive3'
+
+
+class FindManyCampaignSessionArgsFromMonsterRecursive3(TypedDict, total=False):
+    """Arguments for Monster"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive4'
+
+
+class FindManyCampaignSessionArgsFromMonsterRecursive4(TypedDict, total=False):
+    """Arguments for Monster"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    
+    
+
+class SceneIncludeFromMonster(TypedDict, total=False):
+    """Relational arguments for Monster"""
+    campaign: Union[bool, 'CampaignSessionArgsFromMonsterRecursive1']
+
+
+class SceneIncludeFromMonsterRecursive1(TypedDict, total=False):
+    """Relational arguments for Monster"""
+    campaign: Union[bool, 'CampaignSessionArgsFromMonsterRecursive2']
+
+
+class SceneIncludeFromMonsterRecursive2(TypedDict, total=False):
+    """Relational arguments for Monster"""
+    campaign: Union[bool, 'CampaignSessionArgsFromMonsterRecursive3']
+
+
+class SceneIncludeFromMonsterRecursive3(TypedDict, total=False):
+    """Relational arguments for Monster"""
+    campaign: Union[bool, 'CampaignSessionArgsFromMonsterRecursive4']
+
+
+class SceneIncludeFromMonsterRecursive4(TypedDict, total=False):
+    """Relational arguments for Monster"""
+
+    
+
+class SceneArgsFromMonster(TypedDict, total=False):
+    """Arguments for Monster"""
+    include: 'SceneIncludeFromSceneRecursive1'
+
+
+class SceneArgsFromMonsterRecursive1(TypedDict, total=False):
+    """Arguments for Monster"""
+    include: 'SceneIncludeFromSceneRecursive2'
+
+
+class SceneArgsFromMonsterRecursive2(TypedDict, total=False):
+    """Arguments for Monster"""
+    include: 'SceneIncludeFromSceneRecursive3'
+
+
+class SceneArgsFromMonsterRecursive3(TypedDict, total=False):
+    """Arguments for Monster"""
+    include: 'SceneIncludeFromSceneRecursive4'
+
+
+class SceneArgsFromMonsterRecursive4(TypedDict, total=False):
+    """Arguments for Monster"""
+    
+    
+
+class FindManySceneArgsFromMonster(TypedDict, total=False):
+    """Arguments for Monster"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive1'
+
+
+class FindManySceneArgsFromMonsterRecursive1(TypedDict, total=False):
+    """Arguments for Monster"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive2'
+
+
+class FindManySceneArgsFromMonsterRecursive2(TypedDict, total=False):
+    """Arguments for Monster"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive3'
+
+
+class FindManySceneArgsFromMonsterRecursive3(TypedDict, total=False):
+    """Arguments for Monster"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive4'
+
+
+class FindManySceneArgsFromMonsterRecursive4(TypedDict, total=False):
+    """Arguments for Monster"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
     
 
 
@@ -20138,21 +22483,29 @@ class FindManySpellArgsFromRaceRecursive4(TypedDict, total=False):
 class USERDATAIncludeFromRace(TypedDict, total=False):
     """Relational arguments for Race"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromRaceRecursive1']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromRaceRecursive1']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromRaceRecursive1']
 
 
 class USERDATAIncludeFromRaceRecursive1(TypedDict, total=False):
     """Relational arguments for Race"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromRaceRecursive2']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromRaceRecursive2']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromRaceRecursive2']
 
 
 class USERDATAIncludeFromRaceRecursive2(TypedDict, total=False):
     """Relational arguments for Race"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromRaceRecursive3']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromRaceRecursive3']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromRaceRecursive3']
 
 
 class USERDATAIncludeFromRaceRecursive3(TypedDict, total=False):
     """Relational arguments for Race"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromRaceRecursive4']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromRaceRecursive4']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromRaceRecursive4']
 
 
 class USERDATAIncludeFromRaceRecursive4(TypedDict, total=False):
@@ -20443,6 +22796,333 @@ class FindManyUSERCHARArgsFromRaceRecursive4(TypedDict, total=False):
     where: 'USERCHARWhereInput'
     cursor: 'USERCHARWhereUniqueInput'
     distinct: List['USERCHARScalarFieldKeys']
+    
+    
+
+class USERCHARCHANGEIncludeFromRace(TypedDict, total=False):
+    """Relational arguments for Race"""
+    username: Union[bool, 'USERDATAArgsFromRaceRecursive1']
+    campaign: Union[bool, 'CampaignSessionArgsFromRaceRecursive1']
+
+
+class USERCHARCHANGEIncludeFromRaceRecursive1(TypedDict, total=False):
+    """Relational arguments for Race"""
+    username: Union[bool, 'USERDATAArgsFromRaceRecursive2']
+    campaign: Union[bool, 'CampaignSessionArgsFromRaceRecursive2']
+
+
+class USERCHARCHANGEIncludeFromRaceRecursive2(TypedDict, total=False):
+    """Relational arguments for Race"""
+    username: Union[bool, 'USERDATAArgsFromRaceRecursive3']
+    campaign: Union[bool, 'CampaignSessionArgsFromRaceRecursive3']
+
+
+class USERCHARCHANGEIncludeFromRaceRecursive3(TypedDict, total=False):
+    """Relational arguments for Race"""
+    username: Union[bool, 'USERDATAArgsFromRaceRecursive4']
+    campaign: Union[bool, 'CampaignSessionArgsFromRaceRecursive4']
+
+
+class USERCHARCHANGEIncludeFromRaceRecursive4(TypedDict, total=False):
+    """Relational arguments for Race"""
+
+    
+
+class USERCHARCHANGEArgsFromRace(TypedDict, total=False):
+    """Arguments for Race"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive1'
+
+
+class USERCHARCHANGEArgsFromRaceRecursive1(TypedDict, total=False):
+    """Arguments for Race"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive2'
+
+
+class USERCHARCHANGEArgsFromRaceRecursive2(TypedDict, total=False):
+    """Arguments for Race"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive3'
+
+
+class USERCHARCHANGEArgsFromRaceRecursive3(TypedDict, total=False):
+    """Arguments for Race"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive4'
+
+
+class USERCHARCHANGEArgsFromRaceRecursive4(TypedDict, total=False):
+    """Arguments for Race"""
+    
+    
+
+class FindManyUSERCHARCHANGEArgsFromRace(TypedDict, total=False):
+    """Arguments for Race"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive1'
+
+
+class FindManyUSERCHARCHANGEArgsFromRaceRecursive1(TypedDict, total=False):
+    """Arguments for Race"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive2'
+
+
+class FindManyUSERCHARCHANGEArgsFromRaceRecursive2(TypedDict, total=False):
+    """Arguments for Race"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive3'
+
+
+class FindManyUSERCHARCHANGEArgsFromRaceRecursive3(TypedDict, total=False):
+    """Arguments for Race"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive4'
+
+
+class FindManyUSERCHARCHANGEArgsFromRaceRecursive4(TypedDict, total=False):
+    """Arguments for Race"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    
+    
+
+class CampaignSessionIncludeFromRace(TypedDict, total=False):
+    """Relational arguments for Race"""
+    username: Union[bool, 'USERDATAArgsFromRaceRecursive1']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromRaceRecursive1']
+    scenes: Union[bool, 'FindManySceneArgsFromRaceRecursive1']
+
+
+class CampaignSessionIncludeFromRaceRecursive1(TypedDict, total=False):
+    """Relational arguments for Race"""
+    username: Union[bool, 'USERDATAArgsFromRaceRecursive2']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromRaceRecursive2']
+    scenes: Union[bool, 'FindManySceneArgsFromRaceRecursive2']
+
+
+class CampaignSessionIncludeFromRaceRecursive2(TypedDict, total=False):
+    """Relational arguments for Race"""
+    username: Union[bool, 'USERDATAArgsFromRaceRecursive3']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromRaceRecursive3']
+    scenes: Union[bool, 'FindManySceneArgsFromRaceRecursive3']
+
+
+class CampaignSessionIncludeFromRaceRecursive3(TypedDict, total=False):
+    """Relational arguments for Race"""
+    username: Union[bool, 'USERDATAArgsFromRaceRecursive4']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromRaceRecursive4']
+    scenes: Union[bool, 'FindManySceneArgsFromRaceRecursive4']
+
+
+class CampaignSessionIncludeFromRaceRecursive4(TypedDict, total=False):
+    """Relational arguments for Race"""
+
+    
+
+class CampaignSessionArgsFromRace(TypedDict, total=False):
+    """Arguments for Race"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive1'
+
+
+class CampaignSessionArgsFromRaceRecursive1(TypedDict, total=False):
+    """Arguments for Race"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive2'
+
+
+class CampaignSessionArgsFromRaceRecursive2(TypedDict, total=False):
+    """Arguments for Race"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive3'
+
+
+class CampaignSessionArgsFromRaceRecursive3(TypedDict, total=False):
+    """Arguments for Race"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive4'
+
+
+class CampaignSessionArgsFromRaceRecursive4(TypedDict, total=False):
+    """Arguments for Race"""
+    
+    
+
+class FindManyCampaignSessionArgsFromRace(TypedDict, total=False):
+    """Arguments for Race"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive1'
+
+
+class FindManyCampaignSessionArgsFromRaceRecursive1(TypedDict, total=False):
+    """Arguments for Race"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive2'
+
+
+class FindManyCampaignSessionArgsFromRaceRecursive2(TypedDict, total=False):
+    """Arguments for Race"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive3'
+
+
+class FindManyCampaignSessionArgsFromRaceRecursive3(TypedDict, total=False):
+    """Arguments for Race"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive4'
+
+
+class FindManyCampaignSessionArgsFromRaceRecursive4(TypedDict, total=False):
+    """Arguments for Race"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    
+    
+
+class SceneIncludeFromRace(TypedDict, total=False):
+    """Relational arguments for Race"""
+    campaign: Union[bool, 'CampaignSessionArgsFromRaceRecursive1']
+
+
+class SceneIncludeFromRaceRecursive1(TypedDict, total=False):
+    """Relational arguments for Race"""
+    campaign: Union[bool, 'CampaignSessionArgsFromRaceRecursive2']
+
+
+class SceneIncludeFromRaceRecursive2(TypedDict, total=False):
+    """Relational arguments for Race"""
+    campaign: Union[bool, 'CampaignSessionArgsFromRaceRecursive3']
+
+
+class SceneIncludeFromRaceRecursive3(TypedDict, total=False):
+    """Relational arguments for Race"""
+    campaign: Union[bool, 'CampaignSessionArgsFromRaceRecursive4']
+
+
+class SceneIncludeFromRaceRecursive4(TypedDict, total=False):
+    """Relational arguments for Race"""
+
+    
+
+class SceneArgsFromRace(TypedDict, total=False):
+    """Arguments for Race"""
+    include: 'SceneIncludeFromSceneRecursive1'
+
+
+class SceneArgsFromRaceRecursive1(TypedDict, total=False):
+    """Arguments for Race"""
+    include: 'SceneIncludeFromSceneRecursive2'
+
+
+class SceneArgsFromRaceRecursive2(TypedDict, total=False):
+    """Arguments for Race"""
+    include: 'SceneIncludeFromSceneRecursive3'
+
+
+class SceneArgsFromRaceRecursive3(TypedDict, total=False):
+    """Arguments for Race"""
+    include: 'SceneIncludeFromSceneRecursive4'
+
+
+class SceneArgsFromRaceRecursive4(TypedDict, total=False):
+    """Arguments for Race"""
+    
+    
+
+class FindManySceneArgsFromRace(TypedDict, total=False):
+    """Arguments for Race"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive1'
+
+
+class FindManySceneArgsFromRaceRecursive1(TypedDict, total=False):
+    """Arguments for Race"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive2'
+
+
+class FindManySceneArgsFromRaceRecursive2(TypedDict, total=False):
+    """Arguments for Race"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive3'
+
+
+class FindManySceneArgsFromRaceRecursive3(TypedDict, total=False):
+    """Arguments for Race"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive4'
+
+
+class FindManySceneArgsFromRaceRecursive4(TypedDict, total=False):
+    """Arguments for Race"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
     
 
 
@@ -22098,21 +24778,29 @@ class FindManySpellArgsFromSESSIONRecursive4(TypedDict, total=False):
 class USERDATAIncludeFromSESSION(TypedDict, total=False):
     """Relational arguments for SESSION"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromSESSIONRecursive1']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSESSIONRecursive1']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromSESSIONRecursive1']
 
 
 class USERDATAIncludeFromSESSIONRecursive1(TypedDict, total=False):
     """Relational arguments for SESSION"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromSESSIONRecursive2']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSESSIONRecursive2']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromSESSIONRecursive2']
 
 
 class USERDATAIncludeFromSESSIONRecursive2(TypedDict, total=False):
     """Relational arguments for SESSION"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromSESSIONRecursive3']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSESSIONRecursive3']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromSESSIONRecursive3']
 
 
 class USERDATAIncludeFromSESSIONRecursive3(TypedDict, total=False):
     """Relational arguments for SESSION"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromSESSIONRecursive4']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSESSIONRecursive4']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromSESSIONRecursive4']
 
 
 class USERDATAIncludeFromSESSIONRecursive4(TypedDict, total=False):
@@ -22403,6 +25091,333 @@ class FindManyUSERCHARArgsFromSESSIONRecursive4(TypedDict, total=False):
     where: 'USERCHARWhereInput'
     cursor: 'USERCHARWhereUniqueInput'
     distinct: List['USERCHARScalarFieldKeys']
+    
+    
+
+class USERCHARCHANGEIncludeFromSESSION(TypedDict, total=False):
+    """Relational arguments for SESSION"""
+    username: Union[bool, 'USERDATAArgsFromSESSIONRecursive1']
+    campaign: Union[bool, 'CampaignSessionArgsFromSESSIONRecursive1']
+
+
+class USERCHARCHANGEIncludeFromSESSIONRecursive1(TypedDict, total=False):
+    """Relational arguments for SESSION"""
+    username: Union[bool, 'USERDATAArgsFromSESSIONRecursive2']
+    campaign: Union[bool, 'CampaignSessionArgsFromSESSIONRecursive2']
+
+
+class USERCHARCHANGEIncludeFromSESSIONRecursive2(TypedDict, total=False):
+    """Relational arguments for SESSION"""
+    username: Union[bool, 'USERDATAArgsFromSESSIONRecursive3']
+    campaign: Union[bool, 'CampaignSessionArgsFromSESSIONRecursive3']
+
+
+class USERCHARCHANGEIncludeFromSESSIONRecursive3(TypedDict, total=False):
+    """Relational arguments for SESSION"""
+    username: Union[bool, 'USERDATAArgsFromSESSIONRecursive4']
+    campaign: Union[bool, 'CampaignSessionArgsFromSESSIONRecursive4']
+
+
+class USERCHARCHANGEIncludeFromSESSIONRecursive4(TypedDict, total=False):
+    """Relational arguments for SESSION"""
+
+    
+
+class USERCHARCHANGEArgsFromSESSION(TypedDict, total=False):
+    """Arguments for SESSION"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive1'
+
+
+class USERCHARCHANGEArgsFromSESSIONRecursive1(TypedDict, total=False):
+    """Arguments for SESSION"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive2'
+
+
+class USERCHARCHANGEArgsFromSESSIONRecursive2(TypedDict, total=False):
+    """Arguments for SESSION"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive3'
+
+
+class USERCHARCHANGEArgsFromSESSIONRecursive3(TypedDict, total=False):
+    """Arguments for SESSION"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive4'
+
+
+class USERCHARCHANGEArgsFromSESSIONRecursive4(TypedDict, total=False):
+    """Arguments for SESSION"""
+    
+    
+
+class FindManyUSERCHARCHANGEArgsFromSESSION(TypedDict, total=False):
+    """Arguments for SESSION"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive1'
+
+
+class FindManyUSERCHARCHANGEArgsFromSESSIONRecursive1(TypedDict, total=False):
+    """Arguments for SESSION"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive2'
+
+
+class FindManyUSERCHARCHANGEArgsFromSESSIONRecursive2(TypedDict, total=False):
+    """Arguments for SESSION"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive3'
+
+
+class FindManyUSERCHARCHANGEArgsFromSESSIONRecursive3(TypedDict, total=False):
+    """Arguments for SESSION"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive4'
+
+
+class FindManyUSERCHARCHANGEArgsFromSESSIONRecursive4(TypedDict, total=False):
+    """Arguments for SESSION"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    
+    
+
+class CampaignSessionIncludeFromSESSION(TypedDict, total=False):
+    """Relational arguments for SESSION"""
+    username: Union[bool, 'USERDATAArgsFromSESSIONRecursive1']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSESSIONRecursive1']
+    scenes: Union[bool, 'FindManySceneArgsFromSESSIONRecursive1']
+
+
+class CampaignSessionIncludeFromSESSIONRecursive1(TypedDict, total=False):
+    """Relational arguments for SESSION"""
+    username: Union[bool, 'USERDATAArgsFromSESSIONRecursive2']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSESSIONRecursive2']
+    scenes: Union[bool, 'FindManySceneArgsFromSESSIONRecursive2']
+
+
+class CampaignSessionIncludeFromSESSIONRecursive2(TypedDict, total=False):
+    """Relational arguments for SESSION"""
+    username: Union[bool, 'USERDATAArgsFromSESSIONRecursive3']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSESSIONRecursive3']
+    scenes: Union[bool, 'FindManySceneArgsFromSESSIONRecursive3']
+
+
+class CampaignSessionIncludeFromSESSIONRecursive3(TypedDict, total=False):
+    """Relational arguments for SESSION"""
+    username: Union[bool, 'USERDATAArgsFromSESSIONRecursive4']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSESSIONRecursive4']
+    scenes: Union[bool, 'FindManySceneArgsFromSESSIONRecursive4']
+
+
+class CampaignSessionIncludeFromSESSIONRecursive4(TypedDict, total=False):
+    """Relational arguments for SESSION"""
+
+    
+
+class CampaignSessionArgsFromSESSION(TypedDict, total=False):
+    """Arguments for SESSION"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive1'
+
+
+class CampaignSessionArgsFromSESSIONRecursive1(TypedDict, total=False):
+    """Arguments for SESSION"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive2'
+
+
+class CampaignSessionArgsFromSESSIONRecursive2(TypedDict, total=False):
+    """Arguments for SESSION"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive3'
+
+
+class CampaignSessionArgsFromSESSIONRecursive3(TypedDict, total=False):
+    """Arguments for SESSION"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive4'
+
+
+class CampaignSessionArgsFromSESSIONRecursive4(TypedDict, total=False):
+    """Arguments for SESSION"""
+    
+    
+
+class FindManyCampaignSessionArgsFromSESSION(TypedDict, total=False):
+    """Arguments for SESSION"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive1'
+
+
+class FindManyCampaignSessionArgsFromSESSIONRecursive1(TypedDict, total=False):
+    """Arguments for SESSION"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive2'
+
+
+class FindManyCampaignSessionArgsFromSESSIONRecursive2(TypedDict, total=False):
+    """Arguments for SESSION"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive3'
+
+
+class FindManyCampaignSessionArgsFromSESSIONRecursive3(TypedDict, total=False):
+    """Arguments for SESSION"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive4'
+
+
+class FindManyCampaignSessionArgsFromSESSIONRecursive4(TypedDict, total=False):
+    """Arguments for SESSION"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    
+    
+
+class SceneIncludeFromSESSION(TypedDict, total=False):
+    """Relational arguments for SESSION"""
+    campaign: Union[bool, 'CampaignSessionArgsFromSESSIONRecursive1']
+
+
+class SceneIncludeFromSESSIONRecursive1(TypedDict, total=False):
+    """Relational arguments for SESSION"""
+    campaign: Union[bool, 'CampaignSessionArgsFromSESSIONRecursive2']
+
+
+class SceneIncludeFromSESSIONRecursive2(TypedDict, total=False):
+    """Relational arguments for SESSION"""
+    campaign: Union[bool, 'CampaignSessionArgsFromSESSIONRecursive3']
+
+
+class SceneIncludeFromSESSIONRecursive3(TypedDict, total=False):
+    """Relational arguments for SESSION"""
+    campaign: Union[bool, 'CampaignSessionArgsFromSESSIONRecursive4']
+
+
+class SceneIncludeFromSESSIONRecursive4(TypedDict, total=False):
+    """Relational arguments for SESSION"""
+
+    
+
+class SceneArgsFromSESSION(TypedDict, total=False):
+    """Arguments for SESSION"""
+    include: 'SceneIncludeFromSceneRecursive1'
+
+
+class SceneArgsFromSESSIONRecursive1(TypedDict, total=False):
+    """Arguments for SESSION"""
+    include: 'SceneIncludeFromSceneRecursive2'
+
+
+class SceneArgsFromSESSIONRecursive2(TypedDict, total=False):
+    """Arguments for SESSION"""
+    include: 'SceneIncludeFromSceneRecursive3'
+
+
+class SceneArgsFromSESSIONRecursive3(TypedDict, total=False):
+    """Arguments for SESSION"""
+    include: 'SceneIncludeFromSceneRecursive4'
+
+
+class SceneArgsFromSESSIONRecursive4(TypedDict, total=False):
+    """Arguments for SESSION"""
+    
+    
+
+class FindManySceneArgsFromSESSION(TypedDict, total=False):
+    """Arguments for SESSION"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive1'
+
+
+class FindManySceneArgsFromSESSIONRecursive1(TypedDict, total=False):
+    """Arguments for SESSION"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive2'
+
+
+class FindManySceneArgsFromSESSIONRecursive2(TypedDict, total=False):
+    """Arguments for SESSION"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive3'
+
+
+class FindManySceneArgsFromSESSIONRecursive3(TypedDict, total=False):
+    """Arguments for SESSION"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive4'
+
+
+class FindManySceneArgsFromSESSIONRecursive4(TypedDict, total=False):
+    """Arguments for SESSION"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
     
 
 
@@ -23904,21 +26919,29 @@ class FindManySpellArgsFromSPELLSVECTORRecursive4(TypedDict, total=False):
 class USERDATAIncludeFromSPELLSVECTOR(TypedDict, total=False):
     """Relational arguments for SPELLSVECTOR"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromSPELLSVECTORRecursive1']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSPELLSVECTORRecursive1']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromSPELLSVECTORRecursive1']
 
 
 class USERDATAIncludeFromSPELLSVECTORRecursive1(TypedDict, total=False):
     """Relational arguments for SPELLSVECTOR"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromSPELLSVECTORRecursive2']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSPELLSVECTORRecursive2']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromSPELLSVECTORRecursive2']
 
 
 class USERDATAIncludeFromSPELLSVECTORRecursive2(TypedDict, total=False):
     """Relational arguments for SPELLSVECTOR"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromSPELLSVECTORRecursive3']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSPELLSVECTORRecursive3']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromSPELLSVECTORRecursive3']
 
 
 class USERDATAIncludeFromSPELLSVECTORRecursive3(TypedDict, total=False):
     """Relational arguments for SPELLSVECTOR"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromSPELLSVECTORRecursive4']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSPELLSVECTORRecursive4']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromSPELLSVECTORRecursive4']
 
 
 class USERDATAIncludeFromSPELLSVECTORRecursive4(TypedDict, total=False):
@@ -24209,6 +27232,333 @@ class FindManyUSERCHARArgsFromSPELLSVECTORRecursive4(TypedDict, total=False):
     where: 'USERCHARWhereInput'
     cursor: 'USERCHARWhereUniqueInput'
     distinct: List['USERCHARScalarFieldKeys']
+    
+    
+
+class USERCHARCHANGEIncludeFromSPELLSVECTOR(TypedDict, total=False):
+    """Relational arguments for SPELLSVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromSPELLSVECTORRecursive1']
+    campaign: Union[bool, 'CampaignSessionArgsFromSPELLSVECTORRecursive1']
+
+
+class USERCHARCHANGEIncludeFromSPELLSVECTORRecursive1(TypedDict, total=False):
+    """Relational arguments for SPELLSVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromSPELLSVECTORRecursive2']
+    campaign: Union[bool, 'CampaignSessionArgsFromSPELLSVECTORRecursive2']
+
+
+class USERCHARCHANGEIncludeFromSPELLSVECTORRecursive2(TypedDict, total=False):
+    """Relational arguments for SPELLSVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromSPELLSVECTORRecursive3']
+    campaign: Union[bool, 'CampaignSessionArgsFromSPELLSVECTORRecursive3']
+
+
+class USERCHARCHANGEIncludeFromSPELLSVECTORRecursive3(TypedDict, total=False):
+    """Relational arguments for SPELLSVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromSPELLSVECTORRecursive4']
+    campaign: Union[bool, 'CampaignSessionArgsFromSPELLSVECTORRecursive4']
+
+
+class USERCHARCHANGEIncludeFromSPELLSVECTORRecursive4(TypedDict, total=False):
+    """Relational arguments for SPELLSVECTOR"""
+
+    
+
+class USERCHARCHANGEArgsFromSPELLSVECTOR(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive1'
+
+
+class USERCHARCHANGEArgsFromSPELLSVECTORRecursive1(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive2'
+
+
+class USERCHARCHANGEArgsFromSPELLSVECTORRecursive2(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive3'
+
+
+class USERCHARCHANGEArgsFromSPELLSVECTORRecursive3(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive4'
+
+
+class USERCHARCHANGEArgsFromSPELLSVECTORRecursive4(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    
+    
+
+class FindManyUSERCHARCHANGEArgsFromSPELLSVECTOR(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive1'
+
+
+class FindManyUSERCHARCHANGEArgsFromSPELLSVECTORRecursive1(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive2'
+
+
+class FindManyUSERCHARCHANGEArgsFromSPELLSVECTORRecursive2(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive3'
+
+
+class FindManyUSERCHARCHANGEArgsFromSPELLSVECTORRecursive3(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive4'
+
+
+class FindManyUSERCHARCHANGEArgsFromSPELLSVECTORRecursive4(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    
+    
+
+class CampaignSessionIncludeFromSPELLSVECTOR(TypedDict, total=False):
+    """Relational arguments for SPELLSVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromSPELLSVECTORRecursive1']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSPELLSVECTORRecursive1']
+    scenes: Union[bool, 'FindManySceneArgsFromSPELLSVECTORRecursive1']
+
+
+class CampaignSessionIncludeFromSPELLSVECTORRecursive1(TypedDict, total=False):
+    """Relational arguments for SPELLSVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromSPELLSVECTORRecursive2']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSPELLSVECTORRecursive2']
+    scenes: Union[bool, 'FindManySceneArgsFromSPELLSVECTORRecursive2']
+
+
+class CampaignSessionIncludeFromSPELLSVECTORRecursive2(TypedDict, total=False):
+    """Relational arguments for SPELLSVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromSPELLSVECTORRecursive3']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSPELLSVECTORRecursive3']
+    scenes: Union[bool, 'FindManySceneArgsFromSPELLSVECTORRecursive3']
+
+
+class CampaignSessionIncludeFromSPELLSVECTORRecursive3(TypedDict, total=False):
+    """Relational arguments for SPELLSVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromSPELLSVECTORRecursive4']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSPELLSVECTORRecursive4']
+    scenes: Union[bool, 'FindManySceneArgsFromSPELLSVECTORRecursive4']
+
+
+class CampaignSessionIncludeFromSPELLSVECTORRecursive4(TypedDict, total=False):
+    """Relational arguments for SPELLSVECTOR"""
+
+    
+
+class CampaignSessionArgsFromSPELLSVECTOR(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive1'
+
+
+class CampaignSessionArgsFromSPELLSVECTORRecursive1(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive2'
+
+
+class CampaignSessionArgsFromSPELLSVECTORRecursive2(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive3'
+
+
+class CampaignSessionArgsFromSPELLSVECTORRecursive3(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive4'
+
+
+class CampaignSessionArgsFromSPELLSVECTORRecursive4(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    
+    
+
+class FindManyCampaignSessionArgsFromSPELLSVECTOR(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive1'
+
+
+class FindManyCampaignSessionArgsFromSPELLSVECTORRecursive1(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive2'
+
+
+class FindManyCampaignSessionArgsFromSPELLSVECTORRecursive2(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive3'
+
+
+class FindManyCampaignSessionArgsFromSPELLSVECTORRecursive3(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive4'
+
+
+class FindManyCampaignSessionArgsFromSPELLSVECTORRecursive4(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    
+    
+
+class SceneIncludeFromSPELLSVECTOR(TypedDict, total=False):
+    """Relational arguments for SPELLSVECTOR"""
+    campaign: Union[bool, 'CampaignSessionArgsFromSPELLSVECTORRecursive1']
+
+
+class SceneIncludeFromSPELLSVECTORRecursive1(TypedDict, total=False):
+    """Relational arguments for SPELLSVECTOR"""
+    campaign: Union[bool, 'CampaignSessionArgsFromSPELLSVECTORRecursive2']
+
+
+class SceneIncludeFromSPELLSVECTORRecursive2(TypedDict, total=False):
+    """Relational arguments for SPELLSVECTOR"""
+    campaign: Union[bool, 'CampaignSessionArgsFromSPELLSVECTORRecursive3']
+
+
+class SceneIncludeFromSPELLSVECTORRecursive3(TypedDict, total=False):
+    """Relational arguments for SPELLSVECTOR"""
+    campaign: Union[bool, 'CampaignSessionArgsFromSPELLSVECTORRecursive4']
+
+
+class SceneIncludeFromSPELLSVECTORRecursive4(TypedDict, total=False):
+    """Relational arguments for SPELLSVECTOR"""
+
+    
+
+class SceneArgsFromSPELLSVECTOR(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    include: 'SceneIncludeFromSceneRecursive1'
+
+
+class SceneArgsFromSPELLSVECTORRecursive1(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    include: 'SceneIncludeFromSceneRecursive2'
+
+
+class SceneArgsFromSPELLSVECTORRecursive2(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    include: 'SceneIncludeFromSceneRecursive3'
+
+
+class SceneArgsFromSPELLSVECTORRecursive3(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    include: 'SceneIncludeFromSceneRecursive4'
+
+
+class SceneArgsFromSPELLSVECTORRecursive4(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    
+    
+
+class FindManySceneArgsFromSPELLSVECTOR(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive1'
+
+
+class FindManySceneArgsFromSPELLSVECTORRecursive1(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive2'
+
+
+class FindManySceneArgsFromSPELLSVECTORRecursive2(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive3'
+
+
+class FindManySceneArgsFromSPELLSVECTORRecursive3(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive4'
+
+
+class FindManySceneArgsFromSPELLSVECTORRecursive4(TypedDict, total=False):
+    """Arguments for SPELLSVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
     
 
 
@@ -25923,21 +29273,29 @@ class FindManySpellArgsFromSpellRecursive4(TypedDict, total=False):
 class USERDATAIncludeFromSpell(TypedDict, total=False):
     """Relational arguments for Spell"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromSpellRecursive1']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSpellRecursive1']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromSpellRecursive1']
 
 
 class USERDATAIncludeFromSpellRecursive1(TypedDict, total=False):
     """Relational arguments for Spell"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromSpellRecursive2']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSpellRecursive2']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromSpellRecursive2']
 
 
 class USERDATAIncludeFromSpellRecursive2(TypedDict, total=False):
     """Relational arguments for Spell"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromSpellRecursive3']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSpellRecursive3']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromSpellRecursive3']
 
 
 class USERDATAIncludeFromSpellRecursive3(TypedDict, total=False):
     """Relational arguments for Spell"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromSpellRecursive4']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSpellRecursive4']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromSpellRecursive4']
 
 
 class USERDATAIncludeFromSpellRecursive4(TypedDict, total=False):
@@ -26228,6 +29586,333 @@ class FindManyUSERCHARArgsFromSpellRecursive4(TypedDict, total=False):
     where: 'USERCHARWhereInput'
     cursor: 'USERCHARWhereUniqueInput'
     distinct: List['USERCHARScalarFieldKeys']
+    
+    
+
+class USERCHARCHANGEIncludeFromSpell(TypedDict, total=False):
+    """Relational arguments for Spell"""
+    username: Union[bool, 'USERDATAArgsFromSpellRecursive1']
+    campaign: Union[bool, 'CampaignSessionArgsFromSpellRecursive1']
+
+
+class USERCHARCHANGEIncludeFromSpellRecursive1(TypedDict, total=False):
+    """Relational arguments for Spell"""
+    username: Union[bool, 'USERDATAArgsFromSpellRecursive2']
+    campaign: Union[bool, 'CampaignSessionArgsFromSpellRecursive2']
+
+
+class USERCHARCHANGEIncludeFromSpellRecursive2(TypedDict, total=False):
+    """Relational arguments for Spell"""
+    username: Union[bool, 'USERDATAArgsFromSpellRecursive3']
+    campaign: Union[bool, 'CampaignSessionArgsFromSpellRecursive3']
+
+
+class USERCHARCHANGEIncludeFromSpellRecursive3(TypedDict, total=False):
+    """Relational arguments for Spell"""
+    username: Union[bool, 'USERDATAArgsFromSpellRecursive4']
+    campaign: Union[bool, 'CampaignSessionArgsFromSpellRecursive4']
+
+
+class USERCHARCHANGEIncludeFromSpellRecursive4(TypedDict, total=False):
+    """Relational arguments for Spell"""
+
+    
+
+class USERCHARCHANGEArgsFromSpell(TypedDict, total=False):
+    """Arguments for Spell"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive1'
+
+
+class USERCHARCHANGEArgsFromSpellRecursive1(TypedDict, total=False):
+    """Arguments for Spell"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive2'
+
+
+class USERCHARCHANGEArgsFromSpellRecursive2(TypedDict, total=False):
+    """Arguments for Spell"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive3'
+
+
+class USERCHARCHANGEArgsFromSpellRecursive3(TypedDict, total=False):
+    """Arguments for Spell"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive4'
+
+
+class USERCHARCHANGEArgsFromSpellRecursive4(TypedDict, total=False):
+    """Arguments for Spell"""
+    
+    
+
+class FindManyUSERCHARCHANGEArgsFromSpell(TypedDict, total=False):
+    """Arguments for Spell"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive1'
+
+
+class FindManyUSERCHARCHANGEArgsFromSpellRecursive1(TypedDict, total=False):
+    """Arguments for Spell"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive2'
+
+
+class FindManyUSERCHARCHANGEArgsFromSpellRecursive2(TypedDict, total=False):
+    """Arguments for Spell"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive3'
+
+
+class FindManyUSERCHARCHANGEArgsFromSpellRecursive3(TypedDict, total=False):
+    """Arguments for Spell"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive4'
+
+
+class FindManyUSERCHARCHANGEArgsFromSpellRecursive4(TypedDict, total=False):
+    """Arguments for Spell"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    
+    
+
+class CampaignSessionIncludeFromSpell(TypedDict, total=False):
+    """Relational arguments for Spell"""
+    username: Union[bool, 'USERDATAArgsFromSpellRecursive1']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSpellRecursive1']
+    scenes: Union[bool, 'FindManySceneArgsFromSpellRecursive1']
+
+
+class CampaignSessionIncludeFromSpellRecursive1(TypedDict, total=False):
+    """Relational arguments for Spell"""
+    username: Union[bool, 'USERDATAArgsFromSpellRecursive2']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSpellRecursive2']
+    scenes: Union[bool, 'FindManySceneArgsFromSpellRecursive2']
+
+
+class CampaignSessionIncludeFromSpellRecursive2(TypedDict, total=False):
+    """Relational arguments for Spell"""
+    username: Union[bool, 'USERDATAArgsFromSpellRecursive3']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSpellRecursive3']
+    scenes: Union[bool, 'FindManySceneArgsFromSpellRecursive3']
+
+
+class CampaignSessionIncludeFromSpellRecursive3(TypedDict, total=False):
+    """Relational arguments for Spell"""
+    username: Union[bool, 'USERDATAArgsFromSpellRecursive4']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSpellRecursive4']
+    scenes: Union[bool, 'FindManySceneArgsFromSpellRecursive4']
+
+
+class CampaignSessionIncludeFromSpellRecursive4(TypedDict, total=False):
+    """Relational arguments for Spell"""
+
+    
+
+class CampaignSessionArgsFromSpell(TypedDict, total=False):
+    """Arguments for Spell"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive1'
+
+
+class CampaignSessionArgsFromSpellRecursive1(TypedDict, total=False):
+    """Arguments for Spell"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive2'
+
+
+class CampaignSessionArgsFromSpellRecursive2(TypedDict, total=False):
+    """Arguments for Spell"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive3'
+
+
+class CampaignSessionArgsFromSpellRecursive3(TypedDict, total=False):
+    """Arguments for Spell"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive4'
+
+
+class CampaignSessionArgsFromSpellRecursive4(TypedDict, total=False):
+    """Arguments for Spell"""
+    
+    
+
+class FindManyCampaignSessionArgsFromSpell(TypedDict, total=False):
+    """Arguments for Spell"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive1'
+
+
+class FindManyCampaignSessionArgsFromSpellRecursive1(TypedDict, total=False):
+    """Arguments for Spell"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive2'
+
+
+class FindManyCampaignSessionArgsFromSpellRecursive2(TypedDict, total=False):
+    """Arguments for Spell"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive3'
+
+
+class FindManyCampaignSessionArgsFromSpellRecursive3(TypedDict, total=False):
+    """Arguments for Spell"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive4'
+
+
+class FindManyCampaignSessionArgsFromSpellRecursive4(TypedDict, total=False):
+    """Arguments for Spell"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    
+    
+
+class SceneIncludeFromSpell(TypedDict, total=False):
+    """Relational arguments for Spell"""
+    campaign: Union[bool, 'CampaignSessionArgsFromSpellRecursive1']
+
+
+class SceneIncludeFromSpellRecursive1(TypedDict, total=False):
+    """Relational arguments for Spell"""
+    campaign: Union[bool, 'CampaignSessionArgsFromSpellRecursive2']
+
+
+class SceneIncludeFromSpellRecursive2(TypedDict, total=False):
+    """Relational arguments for Spell"""
+    campaign: Union[bool, 'CampaignSessionArgsFromSpellRecursive3']
+
+
+class SceneIncludeFromSpellRecursive3(TypedDict, total=False):
+    """Relational arguments for Spell"""
+    campaign: Union[bool, 'CampaignSessionArgsFromSpellRecursive4']
+
+
+class SceneIncludeFromSpellRecursive4(TypedDict, total=False):
+    """Relational arguments for Spell"""
+
+    
+
+class SceneArgsFromSpell(TypedDict, total=False):
+    """Arguments for Spell"""
+    include: 'SceneIncludeFromSceneRecursive1'
+
+
+class SceneArgsFromSpellRecursive1(TypedDict, total=False):
+    """Arguments for Spell"""
+    include: 'SceneIncludeFromSceneRecursive2'
+
+
+class SceneArgsFromSpellRecursive2(TypedDict, total=False):
+    """Arguments for Spell"""
+    include: 'SceneIncludeFromSceneRecursive3'
+
+
+class SceneArgsFromSpellRecursive3(TypedDict, total=False):
+    """Arguments for Spell"""
+    include: 'SceneIncludeFromSceneRecursive4'
+
+
+class SceneArgsFromSpellRecursive4(TypedDict, total=False):
+    """Arguments for Spell"""
+    
+    
+
+class FindManySceneArgsFromSpell(TypedDict, total=False):
+    """Arguments for Spell"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive1'
+
+
+class FindManySceneArgsFromSpellRecursive1(TypedDict, total=False):
+    """Arguments for Spell"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive2'
+
+
+class FindManySceneArgsFromSpellRecursive2(TypedDict, total=False):
+    """Arguments for Spell"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive3'
+
+
+class FindManySceneArgsFromSpellRecursive3(TypedDict, total=False):
+    """Arguments for Spell"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive4'
+
+
+class FindManySceneArgsFromSpellRecursive4(TypedDict, total=False):
+    """Arguments for Spell"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
     
 
 
@@ -26758,6 +30443,8 @@ class USERDATAOptionalCreateInput(TypedDict, total=False):
     """Optional arguments to the USERDATA create method"""
     id: _int
     characters: 'USERCHARCreateManyNestedWithoutRelationsInput'
+    characters_change: 'USERCHARCHANGECreateManyNestedWithoutRelationsInput'
+    campaign_sessions: 'CampaignSessionCreateManyNestedWithoutRelationsInput'
 
 
 class USERDATACreateInput(USERDATAOptionalCreateInput):
@@ -26825,6 +30512,8 @@ class USERDATAUpdateInput(TypedDict, total=False):
     username: _str
     password: _str
     characters: 'USERCHARUpdateManyWithoutRelationsInput'
+    characters_change: 'USERCHARCHANGEUpdateManyWithoutRelationsInput'
+    campaign_sessions: 'CampaignSessionUpdateManyWithoutRelationsInput'
 
 
 class USERDATAUpdateManyMutationInput(TypedDict, total=False):
@@ -26954,6 +30643,8 @@ class USERDATAListRelationFilter(TypedDict, total=False):
 class USERDATAInclude(TypedDict, total=False):
     """USERDATA relational arguments"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromUSERDATA']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromUSERDATA']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromUSERDATA']
 
 
     
@@ -28072,21 +31763,29 @@ class FindManySpellArgsFromUSERDATARecursive4(TypedDict, total=False):
 class USERDATAIncludeFromUSERDATA(TypedDict, total=False):
     """Relational arguments for USERDATA"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromUSERDATARecursive1']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromUSERDATARecursive1']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromUSERDATARecursive1']
 
 
 class USERDATAIncludeFromUSERDATARecursive1(TypedDict, total=False):
     """Relational arguments for USERDATA"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromUSERDATARecursive2']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromUSERDATARecursive2']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromUSERDATARecursive2']
 
 
 class USERDATAIncludeFromUSERDATARecursive2(TypedDict, total=False):
     """Relational arguments for USERDATA"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromUSERDATARecursive3']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromUSERDATARecursive3']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromUSERDATARecursive3']
 
 
 class USERDATAIncludeFromUSERDATARecursive3(TypedDict, total=False):
     """Relational arguments for USERDATA"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromUSERDATARecursive4']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromUSERDATARecursive4']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromUSERDATARecursive4']
 
 
 class USERDATAIncludeFromUSERDATARecursive4(TypedDict, total=False):
@@ -28378,6 +32077,333 @@ class FindManyUSERCHARArgsFromUSERDATARecursive4(TypedDict, total=False):
     cursor: 'USERCHARWhereUniqueInput'
     distinct: List['USERCHARScalarFieldKeys']
     
+    
+
+class USERCHARCHANGEIncludeFromUSERDATA(TypedDict, total=False):
+    """Relational arguments for USERDATA"""
+    username: Union[bool, 'USERDATAArgsFromUSERDATARecursive1']
+    campaign: Union[bool, 'CampaignSessionArgsFromUSERDATARecursive1']
+
+
+class USERCHARCHANGEIncludeFromUSERDATARecursive1(TypedDict, total=False):
+    """Relational arguments for USERDATA"""
+    username: Union[bool, 'USERDATAArgsFromUSERDATARecursive2']
+    campaign: Union[bool, 'CampaignSessionArgsFromUSERDATARecursive2']
+
+
+class USERCHARCHANGEIncludeFromUSERDATARecursive2(TypedDict, total=False):
+    """Relational arguments for USERDATA"""
+    username: Union[bool, 'USERDATAArgsFromUSERDATARecursive3']
+    campaign: Union[bool, 'CampaignSessionArgsFromUSERDATARecursive3']
+
+
+class USERCHARCHANGEIncludeFromUSERDATARecursive3(TypedDict, total=False):
+    """Relational arguments for USERDATA"""
+    username: Union[bool, 'USERDATAArgsFromUSERDATARecursive4']
+    campaign: Union[bool, 'CampaignSessionArgsFromUSERDATARecursive4']
+
+
+class USERCHARCHANGEIncludeFromUSERDATARecursive4(TypedDict, total=False):
+    """Relational arguments for USERDATA"""
+
+    
+
+class USERCHARCHANGEArgsFromUSERDATA(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive1'
+
+
+class USERCHARCHANGEArgsFromUSERDATARecursive1(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive2'
+
+
+class USERCHARCHANGEArgsFromUSERDATARecursive2(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive3'
+
+
+class USERCHARCHANGEArgsFromUSERDATARecursive3(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive4'
+
+
+class USERCHARCHANGEArgsFromUSERDATARecursive4(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    
+    
+
+class FindManyUSERCHARCHANGEArgsFromUSERDATA(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive1'
+
+
+class FindManyUSERCHARCHANGEArgsFromUSERDATARecursive1(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive2'
+
+
+class FindManyUSERCHARCHANGEArgsFromUSERDATARecursive2(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive3'
+
+
+class FindManyUSERCHARCHANGEArgsFromUSERDATARecursive3(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive4'
+
+
+class FindManyUSERCHARCHANGEArgsFromUSERDATARecursive4(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    
+    
+
+class CampaignSessionIncludeFromUSERDATA(TypedDict, total=False):
+    """Relational arguments for USERDATA"""
+    username: Union[bool, 'USERDATAArgsFromUSERDATARecursive1']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromUSERDATARecursive1']
+    scenes: Union[bool, 'FindManySceneArgsFromUSERDATARecursive1']
+
+
+class CampaignSessionIncludeFromUSERDATARecursive1(TypedDict, total=False):
+    """Relational arguments for USERDATA"""
+    username: Union[bool, 'USERDATAArgsFromUSERDATARecursive2']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromUSERDATARecursive2']
+    scenes: Union[bool, 'FindManySceneArgsFromUSERDATARecursive2']
+
+
+class CampaignSessionIncludeFromUSERDATARecursive2(TypedDict, total=False):
+    """Relational arguments for USERDATA"""
+    username: Union[bool, 'USERDATAArgsFromUSERDATARecursive3']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromUSERDATARecursive3']
+    scenes: Union[bool, 'FindManySceneArgsFromUSERDATARecursive3']
+
+
+class CampaignSessionIncludeFromUSERDATARecursive3(TypedDict, total=False):
+    """Relational arguments for USERDATA"""
+    username: Union[bool, 'USERDATAArgsFromUSERDATARecursive4']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromUSERDATARecursive4']
+    scenes: Union[bool, 'FindManySceneArgsFromUSERDATARecursive4']
+
+
+class CampaignSessionIncludeFromUSERDATARecursive4(TypedDict, total=False):
+    """Relational arguments for USERDATA"""
+
+    
+
+class CampaignSessionArgsFromUSERDATA(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive1'
+
+
+class CampaignSessionArgsFromUSERDATARecursive1(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive2'
+
+
+class CampaignSessionArgsFromUSERDATARecursive2(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive3'
+
+
+class CampaignSessionArgsFromUSERDATARecursive3(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive4'
+
+
+class CampaignSessionArgsFromUSERDATARecursive4(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    
+    
+
+class FindManyCampaignSessionArgsFromUSERDATA(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive1'
+
+
+class FindManyCampaignSessionArgsFromUSERDATARecursive1(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive2'
+
+
+class FindManyCampaignSessionArgsFromUSERDATARecursive2(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive3'
+
+
+class FindManyCampaignSessionArgsFromUSERDATARecursive3(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive4'
+
+
+class FindManyCampaignSessionArgsFromUSERDATARecursive4(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    
+    
+
+class SceneIncludeFromUSERDATA(TypedDict, total=False):
+    """Relational arguments for USERDATA"""
+    campaign: Union[bool, 'CampaignSessionArgsFromUSERDATARecursive1']
+
+
+class SceneIncludeFromUSERDATARecursive1(TypedDict, total=False):
+    """Relational arguments for USERDATA"""
+    campaign: Union[bool, 'CampaignSessionArgsFromUSERDATARecursive2']
+
+
+class SceneIncludeFromUSERDATARecursive2(TypedDict, total=False):
+    """Relational arguments for USERDATA"""
+    campaign: Union[bool, 'CampaignSessionArgsFromUSERDATARecursive3']
+
+
+class SceneIncludeFromUSERDATARecursive3(TypedDict, total=False):
+    """Relational arguments for USERDATA"""
+    campaign: Union[bool, 'CampaignSessionArgsFromUSERDATARecursive4']
+
+
+class SceneIncludeFromUSERDATARecursive4(TypedDict, total=False):
+    """Relational arguments for USERDATA"""
+
+    
+
+class SceneArgsFromUSERDATA(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    include: 'SceneIncludeFromSceneRecursive1'
+
+
+class SceneArgsFromUSERDATARecursive1(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    include: 'SceneIncludeFromSceneRecursive2'
+
+
+class SceneArgsFromUSERDATARecursive2(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    include: 'SceneIncludeFromSceneRecursive3'
+
+
+class SceneArgsFromUSERDATARecursive3(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    include: 'SceneIncludeFromSceneRecursive4'
+
+
+class SceneArgsFromUSERDATARecursive4(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    
+    
+
+class FindManySceneArgsFromUSERDATA(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive1'
+
+
+class FindManySceneArgsFromUSERDATARecursive1(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive2'
+
+
+class FindManySceneArgsFromUSERDATARecursive2(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive3'
+
+
+class FindManySceneArgsFromUSERDATARecursive3(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive4'
+
+
+class FindManySceneArgsFromUSERDATARecursive4(TypedDict, total=False):
+    """Arguments for USERDATA"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    
 
 
 FindManyUSERDATAArgs = FindManyUSERDATAArgsFromUSERDATA
@@ -28393,6 +32419,8 @@ class USERDATAWhereInput(TypedDict, total=False):
     username: Union[_str, 'types.StringFilter']
     password: Union[_str, 'types.StringFilter']
     characters: 'USERCHARListRelationFilter'
+    characters_change: 'USERCHARCHANGEListRelationFilter'
+    campaign_sessions: 'CampaignSessionListRelationFilter'
 
     # should be noted that AND and NOT should be Union['USERDATAWhereInputRecursive1', List['USERDATAWhereInputRecursive1']]
     # but this causes mypy to hang :/
@@ -28408,6 +32436,8 @@ class USERDATAWhereInputRecursive1(TypedDict, total=False):
     username: Union[_str, 'types.StringFilter']
     password: Union[_str, 'types.StringFilter']
     characters: 'USERCHARListRelationFilter'
+    characters_change: 'USERCHARCHANGEListRelationFilter'
+    campaign_sessions: 'CampaignSessionListRelationFilter'
 
     # should be noted that AND and NOT should be Union['USERDATAWhereInputRecursive2', List['USERDATAWhereInputRecursive2']]
     # but this causes mypy to hang :/
@@ -28423,6 +32453,8 @@ class USERDATAWhereInputRecursive2(TypedDict, total=False):
     username: Union[_str, 'types.StringFilter']
     password: Union[_str, 'types.StringFilter']
     characters: 'USERCHARListRelationFilter'
+    characters_change: 'USERCHARCHANGEListRelationFilter'
+    campaign_sessions: 'CampaignSessionListRelationFilter'
 
     # should be noted that AND and NOT should be Union['USERDATAWhereInputRecursive3', List['USERDATAWhereInputRecursive3']]
     # but this causes mypy to hang :/
@@ -28438,6 +32470,8 @@ class USERDATAWhereInputRecursive3(TypedDict, total=False):
     username: Union[_str, 'types.StringFilter']
     password: Union[_str, 'types.StringFilter']
     characters: 'USERCHARListRelationFilter'
+    characters_change: 'USERCHARCHANGEListRelationFilter'
+    campaign_sessions: 'CampaignSessionListRelationFilter'
 
     # should be noted that AND and NOT should be Union['USERDATAWhereInputRecursive4', List['USERDATAWhereInputRecursive4']]
     # but this causes mypy to hang :/
@@ -28453,6 +32487,8 @@ class USERDATAWhereInputRecursive4(TypedDict, total=False):
     username: Union[_str, 'types.StringFilter']
     password: Union[_str, 'types.StringFilter']
     characters: 'USERCHARListRelationFilter'
+    characters_change: 'USERCHARCHANGEListRelationFilter'
+    campaign_sessions: 'CampaignSessionListRelationFilter'
 
 
 
@@ -28608,6 +32644,8 @@ USERDATAKeys = Literal[
     'username',
     'password',
     'characters',
+    'characters_change',
+    'campaign_sessions',
 ]
 USERDATAScalarFieldKeys = Literal[
     'id',
@@ -28619,6 +32657,8 @@ USERDATAScalarFieldKeysT = TypeVar('USERDATAScalarFieldKeysT', bound=USERDATASca
 
 USERDATARelationalFieldKeys = Literal[
         'characters',
+        'characters_change',
+        'campaign_sessions',
     ]
 
 # STORYVECTOR types
@@ -29901,21 +33941,29 @@ class FindManySpellArgsFromSTORYVECTORRecursive4(TypedDict, total=False):
 class USERDATAIncludeFromSTORYVECTOR(TypedDict, total=False):
     """Relational arguments for STORYVECTOR"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromSTORYVECTORRecursive1']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSTORYVECTORRecursive1']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromSTORYVECTORRecursive1']
 
 
 class USERDATAIncludeFromSTORYVECTORRecursive1(TypedDict, total=False):
     """Relational arguments for STORYVECTOR"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromSTORYVECTORRecursive2']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSTORYVECTORRecursive2']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromSTORYVECTORRecursive2']
 
 
 class USERDATAIncludeFromSTORYVECTORRecursive2(TypedDict, total=False):
     """Relational arguments for STORYVECTOR"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromSTORYVECTORRecursive3']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSTORYVECTORRecursive3']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromSTORYVECTORRecursive3']
 
 
 class USERDATAIncludeFromSTORYVECTORRecursive3(TypedDict, total=False):
     """Relational arguments for STORYVECTOR"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromSTORYVECTORRecursive4']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSTORYVECTORRecursive4']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromSTORYVECTORRecursive4']
 
 
 class USERDATAIncludeFromSTORYVECTORRecursive4(TypedDict, total=False):
@@ -30206,6 +34254,333 @@ class FindManyUSERCHARArgsFromSTORYVECTORRecursive4(TypedDict, total=False):
     where: 'USERCHARWhereInput'
     cursor: 'USERCHARWhereUniqueInput'
     distinct: List['USERCHARScalarFieldKeys']
+    
+    
+
+class USERCHARCHANGEIncludeFromSTORYVECTOR(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromSTORYVECTORRecursive1']
+    campaign: Union[bool, 'CampaignSessionArgsFromSTORYVECTORRecursive1']
+
+
+class USERCHARCHANGEIncludeFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromSTORYVECTORRecursive2']
+    campaign: Union[bool, 'CampaignSessionArgsFromSTORYVECTORRecursive2']
+
+
+class USERCHARCHANGEIncludeFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromSTORYVECTORRecursive3']
+    campaign: Union[bool, 'CampaignSessionArgsFromSTORYVECTORRecursive3']
+
+
+class USERCHARCHANGEIncludeFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromSTORYVECTORRecursive4']
+    campaign: Union[bool, 'CampaignSessionArgsFromSTORYVECTORRecursive4']
+
+
+class USERCHARCHANGEIncludeFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+    
+
+class USERCHARCHANGEArgsFromSTORYVECTOR(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive1'
+
+
+class USERCHARCHANGEArgsFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive2'
+
+
+class USERCHARCHANGEArgsFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive3'
+
+
+class USERCHARCHANGEArgsFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive4'
+
+
+class USERCHARCHANGEArgsFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    
+    
+
+class FindManyUSERCHARCHANGEArgsFromSTORYVECTOR(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive1'
+
+
+class FindManyUSERCHARCHANGEArgsFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive2'
+
+
+class FindManyUSERCHARCHANGEArgsFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive3'
+
+
+class FindManyUSERCHARCHANGEArgsFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive4'
+
+
+class FindManyUSERCHARCHANGEArgsFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    
+    
+
+class CampaignSessionIncludeFromSTORYVECTOR(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromSTORYVECTORRecursive1']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSTORYVECTORRecursive1']
+    scenes: Union[bool, 'FindManySceneArgsFromSTORYVECTORRecursive1']
+
+
+class CampaignSessionIncludeFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromSTORYVECTORRecursive2']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSTORYVECTORRecursive2']
+    scenes: Union[bool, 'FindManySceneArgsFromSTORYVECTORRecursive2']
+
+
+class CampaignSessionIncludeFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromSTORYVECTORRecursive3']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSTORYVECTORRecursive3']
+    scenes: Union[bool, 'FindManySceneArgsFromSTORYVECTORRecursive3']
+
+
+class CampaignSessionIncludeFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+    username: Union[bool, 'USERDATAArgsFromSTORYVECTORRecursive4']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSTORYVECTORRecursive4']
+    scenes: Union[bool, 'FindManySceneArgsFromSTORYVECTORRecursive4']
+
+
+class CampaignSessionIncludeFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+    
+
+class CampaignSessionArgsFromSTORYVECTOR(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive1'
+
+
+class CampaignSessionArgsFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive2'
+
+
+class CampaignSessionArgsFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive3'
+
+
+class CampaignSessionArgsFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive4'
+
+
+class CampaignSessionArgsFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    
+    
+
+class FindManyCampaignSessionArgsFromSTORYVECTOR(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive1'
+
+
+class FindManyCampaignSessionArgsFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive2'
+
+
+class FindManyCampaignSessionArgsFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive3'
+
+
+class FindManyCampaignSessionArgsFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive4'
+
+
+class FindManyCampaignSessionArgsFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    
+    
+
+class SceneIncludeFromSTORYVECTOR(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+    campaign: Union[bool, 'CampaignSessionArgsFromSTORYVECTORRecursive1']
+
+
+class SceneIncludeFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+    campaign: Union[bool, 'CampaignSessionArgsFromSTORYVECTORRecursive2']
+
+
+class SceneIncludeFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+    campaign: Union[bool, 'CampaignSessionArgsFromSTORYVECTORRecursive3']
+
+
+class SceneIncludeFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+    campaign: Union[bool, 'CampaignSessionArgsFromSTORYVECTORRecursive4']
+
+
+class SceneIncludeFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Relational arguments for STORYVECTOR"""
+
+    
+
+class SceneArgsFromSTORYVECTOR(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'SceneIncludeFromSceneRecursive1'
+
+
+class SceneArgsFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'SceneIncludeFromSceneRecursive2'
+
+
+class SceneArgsFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'SceneIncludeFromSceneRecursive3'
+
+
+class SceneArgsFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    include: 'SceneIncludeFromSceneRecursive4'
+
+
+class SceneArgsFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    
+    
+
+class FindManySceneArgsFromSTORYVECTOR(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive1'
+
+
+class FindManySceneArgsFromSTORYVECTORRecursive1(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive2'
+
+
+class FindManySceneArgsFromSTORYVECTORRecursive2(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive3'
+
+
+class FindManySceneArgsFromSTORYVECTORRecursive3(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive4'
+
+
+class FindManySceneArgsFromSTORYVECTORRecursive4(TypedDict, total=False):
+    """Arguments for STORYVECTOR"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
     
 
 
@@ -31830,21 +36205,29 @@ class FindManySpellArgsFromUSERCHARRecursive4(TypedDict, total=False):
 class USERDATAIncludeFromUSERCHAR(TypedDict, total=False):
     """Relational arguments for USERCHAR"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromUSERCHARRecursive1']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromUSERCHARRecursive1']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromUSERCHARRecursive1']
 
 
 class USERDATAIncludeFromUSERCHARRecursive1(TypedDict, total=False):
     """Relational arguments for USERCHAR"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromUSERCHARRecursive2']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromUSERCHARRecursive2']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromUSERCHARRecursive2']
 
 
 class USERDATAIncludeFromUSERCHARRecursive2(TypedDict, total=False):
     """Relational arguments for USERCHAR"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromUSERCHARRecursive3']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromUSERCHARRecursive3']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromUSERCHARRecursive3']
 
 
 class USERDATAIncludeFromUSERCHARRecursive3(TypedDict, total=False):
     """Relational arguments for USERCHAR"""
     characters: Union[bool, 'FindManyUSERCHARArgsFromUSERCHARRecursive4']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromUSERCHARRecursive4']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromUSERCHARRecursive4']
 
 
 class USERDATAIncludeFromUSERCHARRecursive4(TypedDict, total=False):
@@ -32135,6 +36518,333 @@ class FindManyUSERCHARArgsFromUSERCHARRecursive4(TypedDict, total=False):
     where: 'USERCHARWhereInput'
     cursor: 'USERCHARWhereUniqueInput'
     distinct: List['USERCHARScalarFieldKeys']
+    
+    
+
+class USERCHARCHANGEIncludeFromUSERCHAR(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+    username: Union[bool, 'USERDATAArgsFromUSERCHARRecursive1']
+    campaign: Union[bool, 'CampaignSessionArgsFromUSERCHARRecursive1']
+
+
+class USERCHARCHANGEIncludeFromUSERCHARRecursive1(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+    username: Union[bool, 'USERDATAArgsFromUSERCHARRecursive2']
+    campaign: Union[bool, 'CampaignSessionArgsFromUSERCHARRecursive2']
+
+
+class USERCHARCHANGEIncludeFromUSERCHARRecursive2(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+    username: Union[bool, 'USERDATAArgsFromUSERCHARRecursive3']
+    campaign: Union[bool, 'CampaignSessionArgsFromUSERCHARRecursive3']
+
+
+class USERCHARCHANGEIncludeFromUSERCHARRecursive3(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+    username: Union[bool, 'USERDATAArgsFromUSERCHARRecursive4']
+    campaign: Union[bool, 'CampaignSessionArgsFromUSERCHARRecursive4']
+
+
+class USERCHARCHANGEIncludeFromUSERCHARRecursive4(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+    
+
+class USERCHARCHANGEArgsFromUSERCHAR(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive1'
+
+
+class USERCHARCHANGEArgsFromUSERCHARRecursive1(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive2'
+
+
+class USERCHARCHANGEArgsFromUSERCHARRecursive2(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive3'
+
+
+class USERCHARCHANGEArgsFromUSERCHARRecursive3(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive4'
+
+
+class USERCHARCHANGEArgsFromUSERCHARRecursive4(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    
+    
+
+class FindManyUSERCHARCHANGEArgsFromUSERCHAR(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive1'
+
+
+class FindManyUSERCHARCHANGEArgsFromUSERCHARRecursive1(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive2'
+
+
+class FindManyUSERCHARCHANGEArgsFromUSERCHARRecursive2(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive3'
+
+
+class FindManyUSERCHARCHANGEArgsFromUSERCHARRecursive3(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive4'
+
+
+class FindManyUSERCHARCHANGEArgsFromUSERCHARRecursive4(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    
+    
+
+class CampaignSessionIncludeFromUSERCHAR(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+    username: Union[bool, 'USERDATAArgsFromUSERCHARRecursive1']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromUSERCHARRecursive1']
+    scenes: Union[bool, 'FindManySceneArgsFromUSERCHARRecursive1']
+
+
+class CampaignSessionIncludeFromUSERCHARRecursive1(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+    username: Union[bool, 'USERDATAArgsFromUSERCHARRecursive2']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromUSERCHARRecursive2']
+    scenes: Union[bool, 'FindManySceneArgsFromUSERCHARRecursive2']
+
+
+class CampaignSessionIncludeFromUSERCHARRecursive2(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+    username: Union[bool, 'USERDATAArgsFromUSERCHARRecursive3']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromUSERCHARRecursive3']
+    scenes: Union[bool, 'FindManySceneArgsFromUSERCHARRecursive3']
+
+
+class CampaignSessionIncludeFromUSERCHARRecursive3(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+    username: Union[bool, 'USERDATAArgsFromUSERCHARRecursive4']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromUSERCHARRecursive4']
+    scenes: Union[bool, 'FindManySceneArgsFromUSERCHARRecursive4']
+
+
+class CampaignSessionIncludeFromUSERCHARRecursive4(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+    
+
+class CampaignSessionArgsFromUSERCHAR(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive1'
+
+
+class CampaignSessionArgsFromUSERCHARRecursive1(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive2'
+
+
+class CampaignSessionArgsFromUSERCHARRecursive2(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive3'
+
+
+class CampaignSessionArgsFromUSERCHARRecursive3(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive4'
+
+
+class CampaignSessionArgsFromUSERCHARRecursive4(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    
+    
+
+class FindManyCampaignSessionArgsFromUSERCHAR(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive1'
+
+
+class FindManyCampaignSessionArgsFromUSERCHARRecursive1(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive2'
+
+
+class FindManyCampaignSessionArgsFromUSERCHARRecursive2(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive3'
+
+
+class FindManyCampaignSessionArgsFromUSERCHARRecursive3(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive4'
+
+
+class FindManyCampaignSessionArgsFromUSERCHARRecursive4(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    
+    
+
+class SceneIncludeFromUSERCHAR(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+    campaign: Union[bool, 'CampaignSessionArgsFromUSERCHARRecursive1']
+
+
+class SceneIncludeFromUSERCHARRecursive1(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+    campaign: Union[bool, 'CampaignSessionArgsFromUSERCHARRecursive2']
+
+
+class SceneIncludeFromUSERCHARRecursive2(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+    campaign: Union[bool, 'CampaignSessionArgsFromUSERCHARRecursive3']
+
+
+class SceneIncludeFromUSERCHARRecursive3(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+    campaign: Union[bool, 'CampaignSessionArgsFromUSERCHARRecursive4']
+
+
+class SceneIncludeFromUSERCHARRecursive4(TypedDict, total=False):
+    """Relational arguments for USERCHAR"""
+
+    
+
+class SceneArgsFromUSERCHAR(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'SceneIncludeFromSceneRecursive1'
+
+
+class SceneArgsFromUSERCHARRecursive1(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'SceneIncludeFromSceneRecursive2'
+
+
+class SceneArgsFromUSERCHARRecursive2(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'SceneIncludeFromSceneRecursive3'
+
+
+class SceneArgsFromUSERCHARRecursive3(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    include: 'SceneIncludeFromSceneRecursive4'
+
+
+class SceneArgsFromUSERCHARRecursive4(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    
+    
+
+class FindManySceneArgsFromUSERCHAR(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive1'
+
+
+class FindManySceneArgsFromUSERCHARRecursive1(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive2'
+
+
+class FindManySceneArgsFromUSERCHARRecursive2(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive3'
+
+
+class FindManySceneArgsFromUSERCHARRecursive3(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive4'
+
+
+class FindManySceneArgsFromUSERCHARRecursive4(TypedDict, total=False):
+    """Arguments for USERCHAR"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
     
 
 
@@ -32557,6 +37267,7063 @@ USERCHARScalarFieldKeysT = TypeVar('USERCHARScalarFieldKeysT', bound=USERCHARSca
 
 USERCHARRelationalFieldKeys = Literal[
         'username',
+    ]
+
+# USERCHARCHANGE types
+
+class USERCHARCHANGEOptionalCreateInput(TypedDict, total=False):
+    """Optional arguments to the USERCHARCHANGE create method"""
+    id: _int
+    user: _str
+    username: 'USERDATACreateNestedWithoutRelationsInput'
+    campaignId: Optional[_int]
+    campaign: 'CampaignSessionCreateNestedWithoutRelationsInput'
+    current_health: Optional[_int]
+
+
+class USERCHARCHANGECreateInput(USERCHARCHANGEOptionalCreateInput):
+    """Required arguments to the USERCHARCHANGE create method"""
+    race: _str
+    subclass: _str
+    str: _int
+    dex: _int
+    con: _int
+    int: _int
+    wis: _int
+    cha: _int
+    backstory: _str
+    cla: _str
+    name: _str
+
+
+# TODO: remove this in favour of without explicit relations
+# e.g. PostCreateWithoutAuthorInput
+
+class USERCHARCHANGEOptionalCreateWithoutRelationsInput(TypedDict, total=False):
+    """Optional arguments to the USERCHARCHANGE create method, without relations"""
+    id: _int
+    user: _str
+    campaignId: Optional[_int]
+    current_health: Optional[_int]
+
+
+class USERCHARCHANGECreateWithoutRelationsInput(USERCHARCHANGEOptionalCreateWithoutRelationsInput):
+    """Required arguments to the USERCHARCHANGE create method, without relations"""
+    race: _str
+    subclass: _str
+    str: _int
+    dex: _int
+    con: _int
+    int: _int
+    wis: _int
+    cha: _int
+    backstory: _str
+    cla: _str
+    name: _str
+
+class USERCHARCHANGEConnectOrCreateWithoutRelationsInput(TypedDict):
+    create: 'USERCHARCHANGECreateWithoutRelationsInput'
+    where: 'USERCHARCHANGEWhereUniqueInput'
+
+class USERCHARCHANGECreateNestedWithoutRelationsInput(TypedDict, total=False):
+    create: 'USERCHARCHANGECreateWithoutRelationsInput'
+    connect: 'USERCHARCHANGEWhereUniqueInput'
+    connect_or_create: 'USERCHARCHANGEConnectOrCreateWithoutRelationsInput'
+
+
+class USERCHARCHANGECreateManyNestedWithoutRelationsInput(TypedDict, total=False):
+    create: Union['USERCHARCHANGECreateWithoutRelationsInput', List['USERCHARCHANGECreateWithoutRelationsInput']]
+    connect: Union['USERCHARCHANGEWhereUniqueInput', List['USERCHARCHANGEWhereUniqueInput']]
+    connect_or_create: Union['USERCHARCHANGEConnectOrCreateWithoutRelationsInput', List['USERCHARCHANGEConnectOrCreateWithoutRelationsInput']]
+
+_USERCHARCHANGEWhereUnique_id_Input = TypedDict(
+    '_USERCHARCHANGEWhereUnique_id_Input',
+    {
+        'id': '_int',
+    },
+    total=True
+)
+
+USERCHARCHANGEWhereUniqueInput = _USERCHARCHANGEWhereUnique_id_Input
+
+
+class USERCHARCHANGEUpdateInput(TypedDict, total=False):
+    """Optional arguments for updating a record"""
+    id: Union[AtomicIntInput, _int]
+    race: _str
+    subclass: _str
+    str: Union[AtomicIntInput, _int]
+    dex: Union[AtomicIntInput, _int]
+    con: Union[AtomicIntInput, _int]
+    int: Union[AtomicIntInput, _int]
+    wis: Union[AtomicIntInput, _int]
+    cha: Union[AtomicIntInput, _int]
+    backstory: _str
+    cla: _str
+    name: _str
+    username: 'USERDATAUpdateOneWithoutRelationsInput'
+    campaign: 'CampaignSessionUpdateOneWithoutRelationsInput'
+    current_health: Optional[Union[AtomicIntInput, _int]]
+
+
+class USERCHARCHANGEUpdateManyMutationInput(TypedDict, total=False):
+    """Arguments for updating many records"""
+    id: Union[AtomicIntInput, _int]
+    race: _str
+    subclass: _str
+    str: Union[AtomicIntInput, _int]
+    dex: Union[AtomicIntInput, _int]
+    con: Union[AtomicIntInput, _int]
+    int: Union[AtomicIntInput, _int]
+    wis: Union[AtomicIntInput, _int]
+    cha: Union[AtomicIntInput, _int]
+    backstory: _str
+    cla: _str
+    name: _str
+    current_health: Optional[Union[AtomicIntInput, _int]]
+
+
+class USERCHARCHANGEUpdateManyWithoutRelationsInput(TypedDict, total=False):
+    create: List['USERCHARCHANGECreateWithoutRelationsInput']
+    connect: List['USERCHARCHANGEWhereUniqueInput']
+    connect_or_create: List['USERCHARCHANGEConnectOrCreateWithoutRelationsInput']
+    set: List['USERCHARCHANGEWhereUniqueInput']
+    disconnect: List['USERCHARCHANGEWhereUniqueInput']
+    delete: List['USERCHARCHANGEWhereUniqueInput']
+
+    # TODO
+    # update: List['USERCHARCHANGEUpdateWithWhereUniqueWithoutRelationsInput']
+    # updateMany: List['USERCHARCHANGEUpdateManyWithWhereUniqueWithoutRelationsInput']
+    # deleteMany: List['USERCHARCHANGEScalarWhereInput']
+    # upsert: List['USERCHARCHANGEUpserteWithWhereUniqueWithoutRelationsInput']
+
+
+class USERCHARCHANGEUpdateOneWithoutRelationsInput(TypedDict, total=False):
+    create: 'USERCHARCHANGECreateWithoutRelationsInput'
+    connect: 'USERCHARCHANGEWhereUniqueInput'
+    connect_or_create: 'USERCHARCHANGEConnectOrCreateWithoutRelationsInput'
+    disconnect: bool
+    delete: bool
+
+    # TODO
+    # update: 'USERCHARCHANGEUpdateInput'
+    # upsert: 'USERCHARCHANGEUpsertWithoutRelationsInput'
+
+
+class USERCHARCHANGEUpsertInput(TypedDict):
+    create: 'USERCHARCHANGECreateInput'
+    update: 'USERCHARCHANGEUpdateInput'  # pyright: ignore[reportIncompatibleMethodOverride]
+
+
+_USERCHARCHANGE_id_OrderByInput = TypedDict(
+    '_USERCHARCHANGE_id_OrderByInput',
+    {
+        'id': 'SortOrder',
+    },
+    total=True
+)
+
+_USERCHARCHANGE_race_OrderByInput = TypedDict(
+    '_USERCHARCHANGE_race_OrderByInput',
+    {
+        'race': 'SortOrder',
+    },
+    total=True
+)
+
+_USERCHARCHANGE_subclass_OrderByInput = TypedDict(
+    '_USERCHARCHANGE_subclass_OrderByInput',
+    {
+        'subclass': 'SortOrder',
+    },
+    total=True
+)
+
+_USERCHARCHANGE_str_OrderByInput = TypedDict(
+    '_USERCHARCHANGE_str_OrderByInput',
+    {
+        'str': 'SortOrder',
+    },
+    total=True
+)
+
+_USERCHARCHANGE_dex_OrderByInput = TypedDict(
+    '_USERCHARCHANGE_dex_OrderByInput',
+    {
+        'dex': 'SortOrder',
+    },
+    total=True
+)
+
+_USERCHARCHANGE_con_OrderByInput = TypedDict(
+    '_USERCHARCHANGE_con_OrderByInput',
+    {
+        'con': 'SortOrder',
+    },
+    total=True
+)
+
+_USERCHARCHANGE_int_OrderByInput = TypedDict(
+    '_USERCHARCHANGE_int_OrderByInput',
+    {
+        'int': 'SortOrder',
+    },
+    total=True
+)
+
+_USERCHARCHANGE_wis_OrderByInput = TypedDict(
+    '_USERCHARCHANGE_wis_OrderByInput',
+    {
+        'wis': 'SortOrder',
+    },
+    total=True
+)
+
+_USERCHARCHANGE_cha_OrderByInput = TypedDict(
+    '_USERCHARCHANGE_cha_OrderByInput',
+    {
+        'cha': 'SortOrder',
+    },
+    total=True
+)
+
+_USERCHARCHANGE_backstory_OrderByInput = TypedDict(
+    '_USERCHARCHANGE_backstory_OrderByInput',
+    {
+        'backstory': 'SortOrder',
+    },
+    total=True
+)
+
+_USERCHARCHANGE_cla_OrderByInput = TypedDict(
+    '_USERCHARCHANGE_cla_OrderByInput',
+    {
+        'cla': 'SortOrder',
+    },
+    total=True
+)
+
+_USERCHARCHANGE_name_OrderByInput = TypedDict(
+    '_USERCHARCHANGE_name_OrderByInput',
+    {
+        'name': 'SortOrder',
+    },
+    total=True
+)
+
+_USERCHARCHANGE_user_OrderByInput = TypedDict(
+    '_USERCHARCHANGE_user_OrderByInput',
+    {
+        'user': 'SortOrder',
+    },
+    total=True
+)
+
+_USERCHARCHANGE_campaignId_OrderByInput = TypedDict(
+    '_USERCHARCHANGE_campaignId_OrderByInput',
+    {
+        'campaignId': 'SortOrder',
+    },
+    total=True
+)
+
+_USERCHARCHANGE_current_health_OrderByInput = TypedDict(
+    '_USERCHARCHANGE_current_health_OrderByInput',
+    {
+        'current_health': 'SortOrder',
+    },
+    total=True
+)
+
+_USERCHARCHANGE_RelevanceInner = TypedDict(
+    '_USERCHARCHANGE_RelevanceInner',
+    {
+        'fields': 'List[USERCHARCHANGEScalarFieldKeys]',
+        'search': 'str',
+        'sort': 'SortOrder',
+    },
+    total=True
+)
+
+_USERCHARCHANGE_RelevanceOrderByInput = TypedDict(
+    '_USERCHARCHANGE_RelevanceOrderByInput',
+    {
+        '_relevance': '_USERCHARCHANGE_RelevanceInner',
+    },
+    total=True
+)
+
+USERCHARCHANGEOrderByInput = Union[
+    '_USERCHARCHANGE_id_OrderByInput',
+    '_USERCHARCHANGE_race_OrderByInput',
+    '_USERCHARCHANGE_subclass_OrderByInput',
+    '_USERCHARCHANGE_str_OrderByInput',
+    '_USERCHARCHANGE_dex_OrderByInput',
+    '_USERCHARCHANGE_con_OrderByInput',
+    '_USERCHARCHANGE_int_OrderByInput',
+    '_USERCHARCHANGE_wis_OrderByInput',
+    '_USERCHARCHANGE_cha_OrderByInput',
+    '_USERCHARCHANGE_backstory_OrderByInput',
+    '_USERCHARCHANGE_cla_OrderByInput',
+    '_USERCHARCHANGE_name_OrderByInput',
+    '_USERCHARCHANGE_user_OrderByInput',
+    '_USERCHARCHANGE_campaignId_OrderByInput',
+    '_USERCHARCHANGE_current_health_OrderByInput',
+    '_USERCHARCHANGE_RelevanceOrderByInput',
+]
+
+
+
+# recursive USERCHARCHANGE types
+# TODO: cleanup these types
+
+
+# Dict[str, Any] is a mypy limitation
+# see https://github.com/RobertCraigie/prisma-client-py/issues/45
+# switch to pyright for improved types, see https://prisma-client-py.readthedocs.io/en/stable/reference/limitations/
+
+USERCHARCHANGERelationFilter = TypedDict(
+    'USERCHARCHANGERelationFilter',
+    {
+        'is': 'Dict[str, Any]',
+        'is_not': 'Dict[str, Any]',
+    },
+    total=False,
+)
+
+
+class USERCHARCHANGEListRelationFilter(TypedDict, total=False):
+    some: 'Dict[str, Any]'
+    none: 'Dict[str, Any]'
+    every: 'Dict[str, Any]'
+
+
+class USERCHARCHANGEInclude(TypedDict, total=False):
+    """USERCHARCHANGE relational arguments"""
+    username: Union[bool, 'USERDATAArgsFromUSERCHARCHANGE']
+    campaign: Union[bool, 'CampaignSessionArgsFromUSERCHARCHANGE']
+
+
+    
+
+class CHARACTERVECTORIncludeFromUSERCHARCHANGE(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class CHARACTERVECTORIncludeFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class CHARACTERVECTORIncludeFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class CHARACTERVECTORIncludeFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class CHARACTERVECTORIncludeFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+    
+
+class CHARACTERVECTORArgsFromUSERCHARCHANGE(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive1'
+
+
+class CHARACTERVECTORArgsFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive2'
+
+
+class CHARACTERVECTORArgsFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive3'
+
+
+class CHARACTERVECTORArgsFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive4'
+
+
+class CHARACTERVECTORArgsFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    
+    
+
+class FindManyCHARACTERVECTORArgsFromUSERCHARCHANGE(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['CHARACTERVECTOROrderByInput', List['CHARACTERVECTOROrderByInput']]
+    where: 'CHARACTERVECTORWhereInput'
+    cursor: 'CHARACTERVECTORWhereUniqueInput'
+    distinct: List['CHARACTERVECTORScalarFieldKeys']
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive1'
+
+
+class FindManyCHARACTERVECTORArgsFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['CHARACTERVECTOROrderByInput', List['CHARACTERVECTOROrderByInput']]
+    where: 'CHARACTERVECTORWhereInput'
+    cursor: 'CHARACTERVECTORWhereUniqueInput'
+    distinct: List['CHARACTERVECTORScalarFieldKeys']
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive2'
+
+
+class FindManyCHARACTERVECTORArgsFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['CHARACTERVECTOROrderByInput', List['CHARACTERVECTOROrderByInput']]
+    where: 'CHARACTERVECTORWhereInput'
+    cursor: 'CHARACTERVECTORWhereUniqueInput'
+    distinct: List['CHARACTERVECTORScalarFieldKeys']
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive3'
+
+
+class FindManyCHARACTERVECTORArgsFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['CHARACTERVECTOROrderByInput', List['CHARACTERVECTOROrderByInput']]
+    where: 'CHARACTERVECTORWhereInput'
+    cursor: 'CHARACTERVECTORWhereUniqueInput'
+    distinct: List['CHARACTERVECTORScalarFieldKeys']
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive4'
+
+
+class FindManyCHARACTERVECTORArgsFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['CHARACTERVECTOROrderByInput', List['CHARACTERVECTOROrderByInput']]
+    where: 'CHARACTERVECTORWhereInput'
+    cursor: 'CHARACTERVECTORWhereUniqueInput'
+    distinct: List['CHARACTERVECTORScalarFieldKeys']
+    
+    
+
+class ClassesIncludeFromUSERCHARCHANGE(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class ClassesIncludeFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class ClassesIncludeFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class ClassesIncludeFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class ClassesIncludeFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+    
+
+class ClassesArgsFromUSERCHARCHANGE(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'ClassesIncludeFromClassesRecursive1'
+
+
+class ClassesArgsFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'ClassesIncludeFromClassesRecursive2'
+
+
+class ClassesArgsFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'ClassesIncludeFromClassesRecursive3'
+
+
+class ClassesArgsFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'ClassesIncludeFromClassesRecursive4'
+
+
+class ClassesArgsFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    
+    
+
+class FindManyClassesArgsFromUSERCHARCHANGE(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['ClassesOrderByInput', List['ClassesOrderByInput']]
+    where: 'ClassesWhereInput'
+    cursor: 'ClassesWhereUniqueInput'
+    distinct: List['ClassesScalarFieldKeys']
+    include: 'ClassesIncludeFromClassesRecursive1'
+
+
+class FindManyClassesArgsFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['ClassesOrderByInput', List['ClassesOrderByInput']]
+    where: 'ClassesWhereInput'
+    cursor: 'ClassesWhereUniqueInput'
+    distinct: List['ClassesScalarFieldKeys']
+    include: 'ClassesIncludeFromClassesRecursive2'
+
+
+class FindManyClassesArgsFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['ClassesOrderByInput', List['ClassesOrderByInput']]
+    where: 'ClassesWhereInput'
+    cursor: 'ClassesWhereUniqueInput'
+    distinct: List['ClassesScalarFieldKeys']
+    include: 'ClassesIncludeFromClassesRecursive3'
+
+
+class FindManyClassesArgsFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['ClassesOrderByInput', List['ClassesOrderByInput']]
+    where: 'ClassesWhereInput'
+    cursor: 'ClassesWhereUniqueInput'
+    distinct: List['ClassesScalarFieldKeys']
+    include: 'ClassesIncludeFromClassesRecursive4'
+
+
+class FindManyClassesArgsFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['ClassesOrderByInput', List['ClassesOrderByInput']]
+    where: 'ClassesWhereInput'
+    cursor: 'ClassesWhereUniqueInput'
+    distinct: List['ClassesScalarFieldKeys']
+    
+    
+
+class GeneralEquipmentIncludeFromUSERCHARCHANGE(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class GeneralEquipmentIncludeFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class GeneralEquipmentIncludeFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class GeneralEquipmentIncludeFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class GeneralEquipmentIncludeFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+    
+
+class GeneralEquipmentArgsFromUSERCHARCHANGE(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive1'
+
+
+class GeneralEquipmentArgsFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive2'
+
+
+class GeneralEquipmentArgsFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive3'
+
+
+class GeneralEquipmentArgsFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive4'
+
+
+class GeneralEquipmentArgsFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    
+    
+
+class FindManyGeneralEquipmentArgsFromUSERCHARCHANGE(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['GeneralEquipmentOrderByInput', List['GeneralEquipmentOrderByInput']]
+    where: 'GeneralEquipmentWhereInput'
+    cursor: 'GeneralEquipmentWhereUniqueInput'
+    distinct: List['GeneralEquipmentScalarFieldKeys']
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive1'
+
+
+class FindManyGeneralEquipmentArgsFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['GeneralEquipmentOrderByInput', List['GeneralEquipmentOrderByInput']]
+    where: 'GeneralEquipmentWhereInput'
+    cursor: 'GeneralEquipmentWhereUniqueInput'
+    distinct: List['GeneralEquipmentScalarFieldKeys']
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive2'
+
+
+class FindManyGeneralEquipmentArgsFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['GeneralEquipmentOrderByInput', List['GeneralEquipmentOrderByInput']]
+    where: 'GeneralEquipmentWhereInput'
+    cursor: 'GeneralEquipmentWhereUniqueInput'
+    distinct: List['GeneralEquipmentScalarFieldKeys']
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive3'
+
+
+class FindManyGeneralEquipmentArgsFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['GeneralEquipmentOrderByInput', List['GeneralEquipmentOrderByInput']]
+    where: 'GeneralEquipmentWhereInput'
+    cursor: 'GeneralEquipmentWhereUniqueInput'
+    distinct: List['GeneralEquipmentScalarFieldKeys']
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive4'
+
+
+class FindManyGeneralEquipmentArgsFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['GeneralEquipmentOrderByInput', List['GeneralEquipmentOrderByInput']]
+    where: 'GeneralEquipmentWhereInput'
+    cursor: 'GeneralEquipmentWhereUniqueInput'
+    distinct: List['GeneralEquipmentScalarFieldKeys']
+    
+    
+
+class ITEMSVECTORIncludeFromUSERCHARCHANGE(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class ITEMSVECTORIncludeFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class ITEMSVECTORIncludeFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class ITEMSVECTORIncludeFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class ITEMSVECTORIncludeFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+    
+
+class ITEMSVECTORArgsFromUSERCHARCHANGE(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive1'
+
+
+class ITEMSVECTORArgsFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive2'
+
+
+class ITEMSVECTORArgsFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive3'
+
+
+class ITEMSVECTORArgsFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive4'
+
+
+class ITEMSVECTORArgsFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    
+    
+
+class FindManyITEMSVECTORArgsFromUSERCHARCHANGE(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['ITEMSVECTOROrderByInput', List['ITEMSVECTOROrderByInput']]
+    where: 'ITEMSVECTORWhereInput'
+    cursor: 'ITEMSVECTORWhereUniqueInput'
+    distinct: List['ITEMSVECTORScalarFieldKeys']
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive1'
+
+
+class FindManyITEMSVECTORArgsFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['ITEMSVECTOROrderByInput', List['ITEMSVECTOROrderByInput']]
+    where: 'ITEMSVECTORWhereInput'
+    cursor: 'ITEMSVECTORWhereUniqueInput'
+    distinct: List['ITEMSVECTORScalarFieldKeys']
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive2'
+
+
+class FindManyITEMSVECTORArgsFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['ITEMSVECTOROrderByInput', List['ITEMSVECTOROrderByInput']]
+    where: 'ITEMSVECTORWhereInput'
+    cursor: 'ITEMSVECTORWhereUniqueInput'
+    distinct: List['ITEMSVECTORScalarFieldKeys']
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive3'
+
+
+class FindManyITEMSVECTORArgsFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['ITEMSVECTOROrderByInput', List['ITEMSVECTOROrderByInput']]
+    where: 'ITEMSVECTORWhereInput'
+    cursor: 'ITEMSVECTORWhereUniqueInput'
+    distinct: List['ITEMSVECTORScalarFieldKeys']
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive4'
+
+
+class FindManyITEMSVECTORArgsFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['ITEMSVECTOROrderByInput', List['ITEMSVECTOROrderByInput']]
+    where: 'ITEMSVECTORWhereInput'
+    cursor: 'ITEMSVECTORWhereUniqueInput'
+    distinct: List['ITEMSVECTORScalarFieldKeys']
+    
+    
+
+class MONSTERVECTORIncludeFromUSERCHARCHANGE(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class MONSTERVECTORIncludeFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class MONSTERVECTORIncludeFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class MONSTERVECTORIncludeFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class MONSTERVECTORIncludeFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+    
+
+class MONSTERVECTORArgsFromUSERCHARCHANGE(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive1'
+
+
+class MONSTERVECTORArgsFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive2'
+
+
+class MONSTERVECTORArgsFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive3'
+
+
+class MONSTERVECTORArgsFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive4'
+
+
+class MONSTERVECTORArgsFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    
+    
+
+class FindManyMONSTERVECTORArgsFromUSERCHARCHANGE(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['MONSTERVECTOROrderByInput', List['MONSTERVECTOROrderByInput']]
+    where: 'MONSTERVECTORWhereInput'
+    cursor: 'MONSTERVECTORWhereUniqueInput'
+    distinct: List['MONSTERVECTORScalarFieldKeys']
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive1'
+
+
+class FindManyMONSTERVECTORArgsFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['MONSTERVECTOROrderByInput', List['MONSTERVECTOROrderByInput']]
+    where: 'MONSTERVECTORWhereInput'
+    cursor: 'MONSTERVECTORWhereUniqueInput'
+    distinct: List['MONSTERVECTORScalarFieldKeys']
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive2'
+
+
+class FindManyMONSTERVECTORArgsFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['MONSTERVECTOROrderByInput', List['MONSTERVECTOROrderByInput']]
+    where: 'MONSTERVECTORWhereInput'
+    cursor: 'MONSTERVECTORWhereUniqueInput'
+    distinct: List['MONSTERVECTORScalarFieldKeys']
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive3'
+
+
+class FindManyMONSTERVECTORArgsFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['MONSTERVECTOROrderByInput', List['MONSTERVECTOROrderByInput']]
+    where: 'MONSTERVECTORWhereInput'
+    cursor: 'MONSTERVECTORWhereUniqueInput'
+    distinct: List['MONSTERVECTORScalarFieldKeys']
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive4'
+
+
+class FindManyMONSTERVECTORArgsFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['MONSTERVECTOROrderByInput', List['MONSTERVECTOROrderByInput']]
+    where: 'MONSTERVECTORWhereInput'
+    cursor: 'MONSTERVECTORWhereUniqueInput'
+    distinct: List['MONSTERVECTORScalarFieldKeys']
+    
+    
+
+class MagicItemIncludeFromUSERCHARCHANGE(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class MagicItemIncludeFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class MagicItemIncludeFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class MagicItemIncludeFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class MagicItemIncludeFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+    
+
+class MagicItemArgsFromUSERCHARCHANGE(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'MagicItemIncludeFromMagicItemRecursive1'
+
+
+class MagicItemArgsFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'MagicItemIncludeFromMagicItemRecursive2'
+
+
+class MagicItemArgsFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'MagicItemIncludeFromMagicItemRecursive3'
+
+
+class MagicItemArgsFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'MagicItemIncludeFromMagicItemRecursive4'
+
+
+class MagicItemArgsFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    
+    
+
+class FindManyMagicItemArgsFromUSERCHARCHANGE(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['MagicItemOrderByInput', List['MagicItemOrderByInput']]
+    where: 'MagicItemWhereInput'
+    cursor: 'MagicItemWhereUniqueInput'
+    distinct: List['MagicItemScalarFieldKeys']
+    include: 'MagicItemIncludeFromMagicItemRecursive1'
+
+
+class FindManyMagicItemArgsFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['MagicItemOrderByInput', List['MagicItemOrderByInput']]
+    where: 'MagicItemWhereInput'
+    cursor: 'MagicItemWhereUniqueInput'
+    distinct: List['MagicItemScalarFieldKeys']
+    include: 'MagicItemIncludeFromMagicItemRecursive2'
+
+
+class FindManyMagicItemArgsFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['MagicItemOrderByInput', List['MagicItemOrderByInput']]
+    where: 'MagicItemWhereInput'
+    cursor: 'MagicItemWhereUniqueInput'
+    distinct: List['MagicItemScalarFieldKeys']
+    include: 'MagicItemIncludeFromMagicItemRecursive3'
+
+
+class FindManyMagicItemArgsFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['MagicItemOrderByInput', List['MagicItemOrderByInput']]
+    where: 'MagicItemWhereInput'
+    cursor: 'MagicItemWhereUniqueInput'
+    distinct: List['MagicItemScalarFieldKeys']
+    include: 'MagicItemIncludeFromMagicItemRecursive4'
+
+
+class FindManyMagicItemArgsFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['MagicItemOrderByInput', List['MagicItemOrderByInput']]
+    where: 'MagicItemWhereInput'
+    cursor: 'MagicItemWhereUniqueInput'
+    distinct: List['MagicItemScalarFieldKeys']
+    
+    
+
+class MonsterIncludeFromUSERCHARCHANGE(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class MonsterIncludeFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class MonsterIncludeFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class MonsterIncludeFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class MonsterIncludeFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+    
+
+class MonsterArgsFromUSERCHARCHANGE(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'MonsterIncludeFromMonsterRecursive1'
+
+
+class MonsterArgsFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'MonsterIncludeFromMonsterRecursive2'
+
+
+class MonsterArgsFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'MonsterIncludeFromMonsterRecursive3'
+
+
+class MonsterArgsFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'MonsterIncludeFromMonsterRecursive4'
+
+
+class MonsterArgsFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    
+    
+
+class FindManyMonsterArgsFromUSERCHARCHANGE(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['MonsterOrderByInput', List['MonsterOrderByInput']]
+    where: 'MonsterWhereInput'
+    cursor: 'MonsterWhereUniqueInput'
+    distinct: List['MonsterScalarFieldKeys']
+    include: 'MonsterIncludeFromMonsterRecursive1'
+
+
+class FindManyMonsterArgsFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['MonsterOrderByInput', List['MonsterOrderByInput']]
+    where: 'MonsterWhereInput'
+    cursor: 'MonsterWhereUniqueInput'
+    distinct: List['MonsterScalarFieldKeys']
+    include: 'MonsterIncludeFromMonsterRecursive2'
+
+
+class FindManyMonsterArgsFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['MonsterOrderByInput', List['MonsterOrderByInput']]
+    where: 'MonsterWhereInput'
+    cursor: 'MonsterWhereUniqueInput'
+    distinct: List['MonsterScalarFieldKeys']
+    include: 'MonsterIncludeFromMonsterRecursive3'
+
+
+class FindManyMonsterArgsFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['MonsterOrderByInput', List['MonsterOrderByInput']]
+    where: 'MonsterWhereInput'
+    cursor: 'MonsterWhereUniqueInput'
+    distinct: List['MonsterScalarFieldKeys']
+    include: 'MonsterIncludeFromMonsterRecursive4'
+
+
+class FindManyMonsterArgsFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['MonsterOrderByInput', List['MonsterOrderByInput']]
+    where: 'MonsterWhereInput'
+    cursor: 'MonsterWhereUniqueInput'
+    distinct: List['MonsterScalarFieldKeys']
+    
+    
+
+class RaceIncludeFromUSERCHARCHANGE(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class RaceIncludeFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class RaceIncludeFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class RaceIncludeFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class RaceIncludeFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+    
+
+class RaceArgsFromUSERCHARCHANGE(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'RaceIncludeFromRaceRecursive1'
+
+
+class RaceArgsFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'RaceIncludeFromRaceRecursive2'
+
+
+class RaceArgsFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'RaceIncludeFromRaceRecursive3'
+
+
+class RaceArgsFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'RaceIncludeFromRaceRecursive4'
+
+
+class RaceArgsFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    
+    
+
+class FindManyRaceArgsFromUSERCHARCHANGE(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['RaceOrderByInput', List['RaceOrderByInput']]
+    where: 'RaceWhereInput'
+    cursor: 'RaceWhereUniqueInput'
+    distinct: List['RaceScalarFieldKeys']
+    include: 'RaceIncludeFromRaceRecursive1'
+
+
+class FindManyRaceArgsFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['RaceOrderByInput', List['RaceOrderByInput']]
+    where: 'RaceWhereInput'
+    cursor: 'RaceWhereUniqueInput'
+    distinct: List['RaceScalarFieldKeys']
+    include: 'RaceIncludeFromRaceRecursive2'
+
+
+class FindManyRaceArgsFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['RaceOrderByInput', List['RaceOrderByInput']]
+    where: 'RaceWhereInput'
+    cursor: 'RaceWhereUniqueInput'
+    distinct: List['RaceScalarFieldKeys']
+    include: 'RaceIncludeFromRaceRecursive3'
+
+
+class FindManyRaceArgsFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['RaceOrderByInput', List['RaceOrderByInput']]
+    where: 'RaceWhereInput'
+    cursor: 'RaceWhereUniqueInput'
+    distinct: List['RaceScalarFieldKeys']
+    include: 'RaceIncludeFromRaceRecursive4'
+
+
+class FindManyRaceArgsFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['RaceOrderByInput', List['RaceOrderByInput']]
+    where: 'RaceWhereInput'
+    cursor: 'RaceWhereUniqueInput'
+    distinct: List['RaceScalarFieldKeys']
+    
+    
+
+class SESSIONIncludeFromUSERCHARCHANGE(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class SESSIONIncludeFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class SESSIONIncludeFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class SESSIONIncludeFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class SESSIONIncludeFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+    
+
+class SESSIONArgsFromUSERCHARCHANGE(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'SESSIONIncludeFromSESSIONRecursive1'
+
+
+class SESSIONArgsFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'SESSIONIncludeFromSESSIONRecursive2'
+
+
+class SESSIONArgsFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'SESSIONIncludeFromSESSIONRecursive3'
+
+
+class SESSIONArgsFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'SESSIONIncludeFromSESSIONRecursive4'
+
+
+class SESSIONArgsFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    
+    
+
+class FindManySESSIONArgsFromUSERCHARCHANGE(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['SESSIONOrderByInput', List['SESSIONOrderByInput']]
+    where: 'SESSIONWhereInput'
+    cursor: 'SESSIONWhereUniqueInput'
+    distinct: List['SESSIONScalarFieldKeys']
+    include: 'SESSIONIncludeFromSESSIONRecursive1'
+
+
+class FindManySESSIONArgsFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['SESSIONOrderByInput', List['SESSIONOrderByInput']]
+    where: 'SESSIONWhereInput'
+    cursor: 'SESSIONWhereUniqueInput'
+    distinct: List['SESSIONScalarFieldKeys']
+    include: 'SESSIONIncludeFromSESSIONRecursive2'
+
+
+class FindManySESSIONArgsFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['SESSIONOrderByInput', List['SESSIONOrderByInput']]
+    where: 'SESSIONWhereInput'
+    cursor: 'SESSIONWhereUniqueInput'
+    distinct: List['SESSIONScalarFieldKeys']
+    include: 'SESSIONIncludeFromSESSIONRecursive3'
+
+
+class FindManySESSIONArgsFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['SESSIONOrderByInput', List['SESSIONOrderByInput']]
+    where: 'SESSIONWhereInput'
+    cursor: 'SESSIONWhereUniqueInput'
+    distinct: List['SESSIONScalarFieldKeys']
+    include: 'SESSIONIncludeFromSESSIONRecursive4'
+
+
+class FindManySESSIONArgsFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['SESSIONOrderByInput', List['SESSIONOrderByInput']]
+    where: 'SESSIONWhereInput'
+    cursor: 'SESSIONWhereUniqueInput'
+    distinct: List['SESSIONScalarFieldKeys']
+    
+    
+
+class SPELLSVECTORIncludeFromUSERCHARCHANGE(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class SPELLSVECTORIncludeFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class SPELLSVECTORIncludeFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class SPELLSVECTORIncludeFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class SPELLSVECTORIncludeFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+    
+
+class SPELLSVECTORArgsFromUSERCHARCHANGE(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive1'
+
+
+class SPELLSVECTORArgsFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive2'
+
+
+class SPELLSVECTORArgsFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive3'
+
+
+class SPELLSVECTORArgsFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive4'
+
+
+class SPELLSVECTORArgsFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    
+    
+
+class FindManySPELLSVECTORArgsFromUSERCHARCHANGE(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['SPELLSVECTOROrderByInput', List['SPELLSVECTOROrderByInput']]
+    where: 'SPELLSVECTORWhereInput'
+    cursor: 'SPELLSVECTORWhereUniqueInput'
+    distinct: List['SPELLSVECTORScalarFieldKeys']
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive1'
+
+
+class FindManySPELLSVECTORArgsFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['SPELLSVECTOROrderByInput', List['SPELLSVECTOROrderByInput']]
+    where: 'SPELLSVECTORWhereInput'
+    cursor: 'SPELLSVECTORWhereUniqueInput'
+    distinct: List['SPELLSVECTORScalarFieldKeys']
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive2'
+
+
+class FindManySPELLSVECTORArgsFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['SPELLSVECTOROrderByInput', List['SPELLSVECTOROrderByInput']]
+    where: 'SPELLSVECTORWhereInput'
+    cursor: 'SPELLSVECTORWhereUniqueInput'
+    distinct: List['SPELLSVECTORScalarFieldKeys']
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive3'
+
+
+class FindManySPELLSVECTORArgsFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['SPELLSVECTOROrderByInput', List['SPELLSVECTOROrderByInput']]
+    where: 'SPELLSVECTORWhereInput'
+    cursor: 'SPELLSVECTORWhereUniqueInput'
+    distinct: List['SPELLSVECTORScalarFieldKeys']
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive4'
+
+
+class FindManySPELLSVECTORArgsFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['SPELLSVECTOROrderByInput', List['SPELLSVECTOROrderByInput']]
+    where: 'SPELLSVECTORWhereInput'
+    cursor: 'SPELLSVECTORWhereUniqueInput'
+    distinct: List['SPELLSVECTORScalarFieldKeys']
+    
+    
+
+class SpellIncludeFromUSERCHARCHANGE(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class SpellIncludeFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class SpellIncludeFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class SpellIncludeFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class SpellIncludeFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+    
+
+class SpellArgsFromUSERCHARCHANGE(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'SpellIncludeFromSpellRecursive1'
+
+
+class SpellArgsFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'SpellIncludeFromSpellRecursive2'
+
+
+class SpellArgsFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'SpellIncludeFromSpellRecursive3'
+
+
+class SpellArgsFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'SpellIncludeFromSpellRecursive4'
+
+
+class SpellArgsFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    
+    
+
+class FindManySpellArgsFromUSERCHARCHANGE(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['SpellOrderByInput', List['SpellOrderByInput']]
+    where: 'SpellWhereInput'
+    cursor: 'SpellWhereUniqueInput'
+    distinct: List['SpellScalarFieldKeys']
+    include: 'SpellIncludeFromSpellRecursive1'
+
+
+class FindManySpellArgsFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['SpellOrderByInput', List['SpellOrderByInput']]
+    where: 'SpellWhereInput'
+    cursor: 'SpellWhereUniqueInput'
+    distinct: List['SpellScalarFieldKeys']
+    include: 'SpellIncludeFromSpellRecursive2'
+
+
+class FindManySpellArgsFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['SpellOrderByInput', List['SpellOrderByInput']]
+    where: 'SpellWhereInput'
+    cursor: 'SpellWhereUniqueInput'
+    distinct: List['SpellScalarFieldKeys']
+    include: 'SpellIncludeFromSpellRecursive3'
+
+
+class FindManySpellArgsFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['SpellOrderByInput', List['SpellOrderByInput']]
+    where: 'SpellWhereInput'
+    cursor: 'SpellWhereUniqueInput'
+    distinct: List['SpellScalarFieldKeys']
+    include: 'SpellIncludeFromSpellRecursive4'
+
+
+class FindManySpellArgsFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['SpellOrderByInput', List['SpellOrderByInput']]
+    where: 'SpellWhereInput'
+    cursor: 'SpellWhereUniqueInput'
+    distinct: List['SpellScalarFieldKeys']
+    
+    
+
+class USERDATAIncludeFromUSERCHARCHANGE(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromUSERCHARCHANGERecursive1']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromUSERCHARCHANGERecursive1']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromUSERCHARCHANGERecursive1']
+
+
+class USERDATAIncludeFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromUSERCHARCHANGERecursive2']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromUSERCHARCHANGERecursive2']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromUSERCHARCHANGERecursive2']
+
+
+class USERDATAIncludeFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromUSERCHARCHANGERecursive3']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromUSERCHARCHANGERecursive3']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromUSERCHARCHANGERecursive3']
+
+
+class USERDATAIncludeFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromUSERCHARCHANGERecursive4']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromUSERCHARCHANGERecursive4']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromUSERCHARCHANGERecursive4']
+
+
+class USERDATAIncludeFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+    
+
+class USERDATAArgsFromUSERCHARCHANGE(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'USERDATAIncludeFromUSERDATARecursive1'
+
+
+class USERDATAArgsFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'USERDATAIncludeFromUSERDATARecursive2'
+
+
+class USERDATAArgsFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'USERDATAIncludeFromUSERDATARecursive3'
+
+
+class USERDATAArgsFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'USERDATAIncludeFromUSERDATARecursive4'
+
+
+class USERDATAArgsFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    
+    
+
+class FindManyUSERDATAArgsFromUSERCHARCHANGE(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['USERDATAOrderByInput', List['USERDATAOrderByInput']]
+    where: 'USERDATAWhereInput'
+    cursor: 'USERDATAWhereUniqueInput'
+    distinct: List['USERDATAScalarFieldKeys']
+    include: 'USERDATAIncludeFromUSERDATARecursive1'
+
+
+class FindManyUSERDATAArgsFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['USERDATAOrderByInput', List['USERDATAOrderByInput']]
+    where: 'USERDATAWhereInput'
+    cursor: 'USERDATAWhereUniqueInput'
+    distinct: List['USERDATAScalarFieldKeys']
+    include: 'USERDATAIncludeFromUSERDATARecursive2'
+
+
+class FindManyUSERDATAArgsFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['USERDATAOrderByInput', List['USERDATAOrderByInput']]
+    where: 'USERDATAWhereInput'
+    cursor: 'USERDATAWhereUniqueInput'
+    distinct: List['USERDATAScalarFieldKeys']
+    include: 'USERDATAIncludeFromUSERDATARecursive3'
+
+
+class FindManyUSERDATAArgsFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['USERDATAOrderByInput', List['USERDATAOrderByInput']]
+    where: 'USERDATAWhereInput'
+    cursor: 'USERDATAWhereUniqueInput'
+    distinct: List['USERDATAScalarFieldKeys']
+    include: 'USERDATAIncludeFromUSERDATARecursive4'
+
+
+class FindManyUSERDATAArgsFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['USERDATAOrderByInput', List['USERDATAOrderByInput']]
+    where: 'USERDATAWhereInput'
+    cursor: 'USERDATAWhereUniqueInput'
+    distinct: List['USERDATAScalarFieldKeys']
+    
+    
+
+class STORYVECTORIncludeFromUSERCHARCHANGE(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class STORYVECTORIncludeFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class STORYVECTORIncludeFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class STORYVECTORIncludeFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+
+class STORYVECTORIncludeFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+    
+
+class STORYVECTORArgsFromUSERCHARCHANGE(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive1'
+
+
+class STORYVECTORArgsFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive2'
+
+
+class STORYVECTORArgsFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive3'
+
+
+class STORYVECTORArgsFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive4'
+
+
+class STORYVECTORArgsFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    
+    
+
+class FindManySTORYVECTORArgsFromUSERCHARCHANGE(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive1'
+
+
+class FindManySTORYVECTORArgsFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive2'
+
+
+class FindManySTORYVECTORArgsFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive3'
+
+
+class FindManySTORYVECTORArgsFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive4'
+
+
+class FindManySTORYVECTORArgsFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    
+    
+
+class USERCHARIncludeFromUSERCHARCHANGE(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+    username: Union[bool, 'USERDATAArgsFromUSERCHARCHANGERecursive1']
+
+
+class USERCHARIncludeFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+    username: Union[bool, 'USERDATAArgsFromUSERCHARCHANGERecursive2']
+
+
+class USERCHARIncludeFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+    username: Union[bool, 'USERDATAArgsFromUSERCHARCHANGERecursive3']
+
+
+class USERCHARIncludeFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+    username: Union[bool, 'USERDATAArgsFromUSERCHARCHANGERecursive4']
+
+
+class USERCHARIncludeFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+    
+
+class USERCHARArgsFromUSERCHARCHANGE(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive1'
+
+
+class USERCHARArgsFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive2'
+
+
+class USERCHARArgsFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive3'
+
+
+class USERCHARArgsFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive4'
+
+
+class USERCHARArgsFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    
+    
+
+class FindManyUSERCHARArgsFromUSERCHARCHANGE(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive1'
+
+
+class FindManyUSERCHARArgsFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive2'
+
+
+class FindManyUSERCHARArgsFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive3'
+
+
+class FindManyUSERCHARArgsFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive4'
+
+
+class FindManyUSERCHARArgsFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    
+    
+
+class USERCHARCHANGEIncludeFromUSERCHARCHANGE(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+    username: Union[bool, 'USERDATAArgsFromUSERCHARCHANGERecursive1']
+    campaign: Union[bool, 'CampaignSessionArgsFromUSERCHARCHANGERecursive1']
+
+
+class USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+    username: Union[bool, 'USERDATAArgsFromUSERCHARCHANGERecursive2']
+    campaign: Union[bool, 'CampaignSessionArgsFromUSERCHARCHANGERecursive2']
+
+
+class USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+    username: Union[bool, 'USERDATAArgsFromUSERCHARCHANGERecursive3']
+    campaign: Union[bool, 'CampaignSessionArgsFromUSERCHARCHANGERecursive3']
+
+
+class USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+    username: Union[bool, 'USERDATAArgsFromUSERCHARCHANGERecursive4']
+    campaign: Union[bool, 'CampaignSessionArgsFromUSERCHARCHANGERecursive4']
+
+
+class USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+    
+
+class USERCHARCHANGEArgsFromUSERCHARCHANGE(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive1'
+
+
+class USERCHARCHANGEArgsFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive2'
+
+
+class USERCHARCHANGEArgsFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive3'
+
+
+class USERCHARCHANGEArgsFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive4'
+
+
+class USERCHARCHANGEArgsFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    
+    
+
+class FindManyUSERCHARCHANGEArgsFromUSERCHARCHANGE(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive1'
+
+
+class FindManyUSERCHARCHANGEArgsFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive2'
+
+
+class FindManyUSERCHARCHANGEArgsFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive3'
+
+
+class FindManyUSERCHARCHANGEArgsFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive4'
+
+
+class FindManyUSERCHARCHANGEArgsFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    
+    
+
+class CampaignSessionIncludeFromUSERCHARCHANGE(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+    username: Union[bool, 'USERDATAArgsFromUSERCHARCHANGERecursive1']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromUSERCHARCHANGERecursive1']
+    scenes: Union[bool, 'FindManySceneArgsFromUSERCHARCHANGERecursive1']
+
+
+class CampaignSessionIncludeFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+    username: Union[bool, 'USERDATAArgsFromUSERCHARCHANGERecursive2']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromUSERCHARCHANGERecursive2']
+    scenes: Union[bool, 'FindManySceneArgsFromUSERCHARCHANGERecursive2']
+
+
+class CampaignSessionIncludeFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+    username: Union[bool, 'USERDATAArgsFromUSERCHARCHANGERecursive3']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromUSERCHARCHANGERecursive3']
+    scenes: Union[bool, 'FindManySceneArgsFromUSERCHARCHANGERecursive3']
+
+
+class CampaignSessionIncludeFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+    username: Union[bool, 'USERDATAArgsFromUSERCHARCHANGERecursive4']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromUSERCHARCHANGERecursive4']
+    scenes: Union[bool, 'FindManySceneArgsFromUSERCHARCHANGERecursive4']
+
+
+class CampaignSessionIncludeFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+    
+
+class CampaignSessionArgsFromUSERCHARCHANGE(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive1'
+
+
+class CampaignSessionArgsFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive2'
+
+
+class CampaignSessionArgsFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive3'
+
+
+class CampaignSessionArgsFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive4'
+
+
+class CampaignSessionArgsFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    
+    
+
+class FindManyCampaignSessionArgsFromUSERCHARCHANGE(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive1'
+
+
+class FindManyCampaignSessionArgsFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive2'
+
+
+class FindManyCampaignSessionArgsFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive3'
+
+
+class FindManyCampaignSessionArgsFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive4'
+
+
+class FindManyCampaignSessionArgsFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    
+    
+
+class SceneIncludeFromUSERCHARCHANGE(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+    campaign: Union[bool, 'CampaignSessionArgsFromUSERCHARCHANGERecursive1']
+
+
+class SceneIncludeFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+    campaign: Union[bool, 'CampaignSessionArgsFromUSERCHARCHANGERecursive2']
+
+
+class SceneIncludeFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+    campaign: Union[bool, 'CampaignSessionArgsFromUSERCHARCHANGERecursive3']
+
+
+class SceneIncludeFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+    campaign: Union[bool, 'CampaignSessionArgsFromUSERCHARCHANGERecursive4']
+
+
+class SceneIncludeFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Relational arguments for USERCHARCHANGE"""
+
+    
+
+class SceneArgsFromUSERCHARCHANGE(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'SceneIncludeFromSceneRecursive1'
+
+
+class SceneArgsFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'SceneIncludeFromSceneRecursive2'
+
+
+class SceneArgsFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'SceneIncludeFromSceneRecursive3'
+
+
+class SceneArgsFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    include: 'SceneIncludeFromSceneRecursive4'
+
+
+class SceneArgsFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    
+    
+
+class FindManySceneArgsFromUSERCHARCHANGE(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive1'
+
+
+class FindManySceneArgsFromUSERCHARCHANGERecursive1(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive2'
+
+
+class FindManySceneArgsFromUSERCHARCHANGERecursive2(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive3'
+
+
+class FindManySceneArgsFromUSERCHARCHANGERecursive3(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive4'
+
+
+class FindManySceneArgsFromUSERCHARCHANGERecursive4(TypedDict, total=False):
+    """Arguments for USERCHARCHANGE"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    
+
+
+FindManyUSERCHARCHANGEArgs = FindManyUSERCHARCHANGEArgsFromUSERCHARCHANGE
+FindFirstUSERCHARCHANGEArgs = FindManyUSERCHARCHANGEArgsFromUSERCHARCHANGE
+
+
+    
+
+class USERCHARCHANGEWhereInput(TypedDict, total=False):
+    """USERCHARCHANGE arguments for searching"""
+    id: Union[_int, 'types.IntFilter']
+    race: Union[_str, 'types.StringFilter']
+    subclass: Union[_str, 'types.StringFilter']
+    str: Union[_int, 'types.IntFilter']
+    dex: Union[_int, 'types.IntFilter']
+    con: Union[_int, 'types.IntFilter']
+    int: Union[_int, 'types.IntFilter']
+    wis: Union[_int, 'types.IntFilter']
+    cha: Union[_int, 'types.IntFilter']
+    backstory: Union[_str, 'types.StringFilter']
+    cla: Union[_str, 'types.StringFilter']
+    name: Union[_str, 'types.StringFilter']
+    user: Union[_str, 'types.StringFilter']
+    username: 'USERDATARelationFilter'
+    campaignId: Union[None, _int, 'types.IntFilter']
+    campaign: 'CampaignSessionRelationFilter'
+    current_health: Union[None, _int, 'types.IntFilter']
+
+    # should be noted that AND and NOT should be Union['USERCHARCHANGEWhereInputRecursive1', List['USERCHARCHANGEWhereInputRecursive1']]
+    # but this causes mypy to hang :/
+    AND: List['USERCHARCHANGEWhereInputRecursive1']
+    OR: List['USERCHARCHANGEWhereInputRecursive1']
+    NOT: List['USERCHARCHANGEWhereInputRecursive1']
+
+
+class USERCHARCHANGEWhereInputRecursive1(TypedDict, total=False):
+    """USERCHARCHANGE arguments for searching"""
+    id: Union[_int, 'types.IntFilter']
+    race: Union[_str, 'types.StringFilter']
+    subclass: Union[_str, 'types.StringFilter']
+    str: Union[_int, 'types.IntFilter']
+    dex: Union[_int, 'types.IntFilter']
+    con: Union[_int, 'types.IntFilter']
+    int: Union[_int, 'types.IntFilter']
+    wis: Union[_int, 'types.IntFilter']
+    cha: Union[_int, 'types.IntFilter']
+    backstory: Union[_str, 'types.StringFilter']
+    cla: Union[_str, 'types.StringFilter']
+    name: Union[_str, 'types.StringFilter']
+    user: Union[_str, 'types.StringFilter']
+    username: 'USERDATARelationFilter'
+    campaignId: Union[None, _int, 'types.IntFilter']
+    campaign: 'CampaignSessionRelationFilter'
+    current_health: Union[None, _int, 'types.IntFilter']
+
+    # should be noted that AND and NOT should be Union['USERCHARCHANGEWhereInputRecursive2', List['USERCHARCHANGEWhereInputRecursive2']]
+    # but this causes mypy to hang :/
+    AND: List['USERCHARCHANGEWhereInputRecursive2']
+    OR: List['USERCHARCHANGEWhereInputRecursive2']
+    NOT: List['USERCHARCHANGEWhereInputRecursive2']
+
+
+class USERCHARCHANGEWhereInputRecursive2(TypedDict, total=False):
+    """USERCHARCHANGE arguments for searching"""
+    id: Union[_int, 'types.IntFilter']
+    race: Union[_str, 'types.StringFilter']
+    subclass: Union[_str, 'types.StringFilter']
+    str: Union[_int, 'types.IntFilter']
+    dex: Union[_int, 'types.IntFilter']
+    con: Union[_int, 'types.IntFilter']
+    int: Union[_int, 'types.IntFilter']
+    wis: Union[_int, 'types.IntFilter']
+    cha: Union[_int, 'types.IntFilter']
+    backstory: Union[_str, 'types.StringFilter']
+    cla: Union[_str, 'types.StringFilter']
+    name: Union[_str, 'types.StringFilter']
+    user: Union[_str, 'types.StringFilter']
+    username: 'USERDATARelationFilter'
+    campaignId: Union[None, _int, 'types.IntFilter']
+    campaign: 'CampaignSessionRelationFilter'
+    current_health: Union[None, _int, 'types.IntFilter']
+
+    # should be noted that AND and NOT should be Union['USERCHARCHANGEWhereInputRecursive3', List['USERCHARCHANGEWhereInputRecursive3']]
+    # but this causes mypy to hang :/
+    AND: List['USERCHARCHANGEWhereInputRecursive3']
+    OR: List['USERCHARCHANGEWhereInputRecursive3']
+    NOT: List['USERCHARCHANGEWhereInputRecursive3']
+
+
+class USERCHARCHANGEWhereInputRecursive3(TypedDict, total=False):
+    """USERCHARCHANGE arguments for searching"""
+    id: Union[_int, 'types.IntFilter']
+    race: Union[_str, 'types.StringFilter']
+    subclass: Union[_str, 'types.StringFilter']
+    str: Union[_int, 'types.IntFilter']
+    dex: Union[_int, 'types.IntFilter']
+    con: Union[_int, 'types.IntFilter']
+    int: Union[_int, 'types.IntFilter']
+    wis: Union[_int, 'types.IntFilter']
+    cha: Union[_int, 'types.IntFilter']
+    backstory: Union[_str, 'types.StringFilter']
+    cla: Union[_str, 'types.StringFilter']
+    name: Union[_str, 'types.StringFilter']
+    user: Union[_str, 'types.StringFilter']
+    username: 'USERDATARelationFilter'
+    campaignId: Union[None, _int, 'types.IntFilter']
+    campaign: 'CampaignSessionRelationFilter'
+    current_health: Union[None, _int, 'types.IntFilter']
+
+    # should be noted that AND and NOT should be Union['USERCHARCHANGEWhereInputRecursive4', List['USERCHARCHANGEWhereInputRecursive4']]
+    # but this causes mypy to hang :/
+    AND: List['USERCHARCHANGEWhereInputRecursive4']
+    OR: List['USERCHARCHANGEWhereInputRecursive4']
+    NOT: List['USERCHARCHANGEWhereInputRecursive4']
+
+
+class USERCHARCHANGEWhereInputRecursive4(TypedDict, total=False):
+    """USERCHARCHANGE arguments for searching"""
+    id: Union[_int, 'types.IntFilter']
+    race: Union[_str, 'types.StringFilter']
+    subclass: Union[_str, 'types.StringFilter']
+    str: Union[_int, 'types.IntFilter']
+    dex: Union[_int, 'types.IntFilter']
+    con: Union[_int, 'types.IntFilter']
+    int: Union[_int, 'types.IntFilter']
+    wis: Union[_int, 'types.IntFilter']
+    cha: Union[_int, 'types.IntFilter']
+    backstory: Union[_str, 'types.StringFilter']
+    cla: Union[_str, 'types.StringFilter']
+    name: Union[_str, 'types.StringFilter']
+    user: Union[_str, 'types.StringFilter']
+    username: 'USERDATARelationFilter'
+    campaignId: Union[None, _int, 'types.IntFilter']
+    campaign: 'CampaignSessionRelationFilter'
+    current_health: Union[None, _int, 'types.IntFilter']
+
+
+
+# aggregate USERCHARCHANGE types
+
+
+    
+
+class USERCHARCHANGEScalarWhereWithAggregatesInput(TypedDict, total=False):
+    """USERCHARCHANGE arguments for searching"""
+    id: Union[_int, 'types.IntWithAggregatesFilter']
+    race: Union[_str, 'types.StringWithAggregatesFilter']
+    subclass: Union[_str, 'types.StringWithAggregatesFilter']
+    str: Union[_int, 'types.IntWithAggregatesFilter']
+    dex: Union[_int, 'types.IntWithAggregatesFilter']
+    con: Union[_int, 'types.IntWithAggregatesFilter']
+    int: Union[_int, 'types.IntWithAggregatesFilter']
+    wis: Union[_int, 'types.IntWithAggregatesFilter']
+    cha: Union[_int, 'types.IntWithAggregatesFilter']
+    backstory: Union[_str, 'types.StringWithAggregatesFilter']
+    cla: Union[_str, 'types.StringWithAggregatesFilter']
+    name: Union[_str, 'types.StringWithAggregatesFilter']
+    user: Union[_str, 'types.StringWithAggregatesFilter']
+    campaignId: Union[_int, 'types.IntWithAggregatesFilter']
+    current_health: Union[_int, 'types.IntWithAggregatesFilter']
+
+    AND: List['USERCHARCHANGEScalarWhereWithAggregatesInputRecursive1']
+    OR: List['USERCHARCHANGEScalarWhereWithAggregatesInputRecursive1']
+    NOT: List['USERCHARCHANGEScalarWhereWithAggregatesInputRecursive1']
+
+
+class USERCHARCHANGEScalarWhereWithAggregatesInputRecursive1(TypedDict, total=False):
+    """USERCHARCHANGE arguments for searching"""
+    id: Union[_int, 'types.IntWithAggregatesFilter']
+    race: Union[_str, 'types.StringWithAggregatesFilter']
+    subclass: Union[_str, 'types.StringWithAggregatesFilter']
+    str: Union[_int, 'types.IntWithAggregatesFilter']
+    dex: Union[_int, 'types.IntWithAggregatesFilter']
+    con: Union[_int, 'types.IntWithAggregatesFilter']
+    int: Union[_int, 'types.IntWithAggregatesFilter']
+    wis: Union[_int, 'types.IntWithAggregatesFilter']
+    cha: Union[_int, 'types.IntWithAggregatesFilter']
+    backstory: Union[_str, 'types.StringWithAggregatesFilter']
+    cla: Union[_str, 'types.StringWithAggregatesFilter']
+    name: Union[_str, 'types.StringWithAggregatesFilter']
+    user: Union[_str, 'types.StringWithAggregatesFilter']
+    campaignId: Union[_int, 'types.IntWithAggregatesFilter']
+    current_health: Union[_int, 'types.IntWithAggregatesFilter']
+
+    AND: List['USERCHARCHANGEScalarWhereWithAggregatesInputRecursive2']
+    OR: List['USERCHARCHANGEScalarWhereWithAggregatesInputRecursive2']
+    NOT: List['USERCHARCHANGEScalarWhereWithAggregatesInputRecursive2']
+
+
+class USERCHARCHANGEScalarWhereWithAggregatesInputRecursive2(TypedDict, total=False):
+    """USERCHARCHANGE arguments for searching"""
+    id: Union[_int, 'types.IntWithAggregatesFilter']
+    race: Union[_str, 'types.StringWithAggregatesFilter']
+    subclass: Union[_str, 'types.StringWithAggregatesFilter']
+    str: Union[_int, 'types.IntWithAggregatesFilter']
+    dex: Union[_int, 'types.IntWithAggregatesFilter']
+    con: Union[_int, 'types.IntWithAggregatesFilter']
+    int: Union[_int, 'types.IntWithAggregatesFilter']
+    wis: Union[_int, 'types.IntWithAggregatesFilter']
+    cha: Union[_int, 'types.IntWithAggregatesFilter']
+    backstory: Union[_str, 'types.StringWithAggregatesFilter']
+    cla: Union[_str, 'types.StringWithAggregatesFilter']
+    name: Union[_str, 'types.StringWithAggregatesFilter']
+    user: Union[_str, 'types.StringWithAggregatesFilter']
+    campaignId: Union[_int, 'types.IntWithAggregatesFilter']
+    current_health: Union[_int, 'types.IntWithAggregatesFilter']
+
+    AND: List['USERCHARCHANGEScalarWhereWithAggregatesInputRecursive3']
+    OR: List['USERCHARCHANGEScalarWhereWithAggregatesInputRecursive3']
+    NOT: List['USERCHARCHANGEScalarWhereWithAggregatesInputRecursive3']
+
+
+class USERCHARCHANGEScalarWhereWithAggregatesInputRecursive3(TypedDict, total=False):
+    """USERCHARCHANGE arguments for searching"""
+    id: Union[_int, 'types.IntWithAggregatesFilter']
+    race: Union[_str, 'types.StringWithAggregatesFilter']
+    subclass: Union[_str, 'types.StringWithAggregatesFilter']
+    str: Union[_int, 'types.IntWithAggregatesFilter']
+    dex: Union[_int, 'types.IntWithAggregatesFilter']
+    con: Union[_int, 'types.IntWithAggregatesFilter']
+    int: Union[_int, 'types.IntWithAggregatesFilter']
+    wis: Union[_int, 'types.IntWithAggregatesFilter']
+    cha: Union[_int, 'types.IntWithAggregatesFilter']
+    backstory: Union[_str, 'types.StringWithAggregatesFilter']
+    cla: Union[_str, 'types.StringWithAggregatesFilter']
+    name: Union[_str, 'types.StringWithAggregatesFilter']
+    user: Union[_str, 'types.StringWithAggregatesFilter']
+    campaignId: Union[_int, 'types.IntWithAggregatesFilter']
+    current_health: Union[_int, 'types.IntWithAggregatesFilter']
+
+    AND: List['USERCHARCHANGEScalarWhereWithAggregatesInputRecursive4']
+    OR: List['USERCHARCHANGEScalarWhereWithAggregatesInputRecursive4']
+    NOT: List['USERCHARCHANGEScalarWhereWithAggregatesInputRecursive4']
+
+
+class USERCHARCHANGEScalarWhereWithAggregatesInputRecursive4(TypedDict, total=False):
+    """USERCHARCHANGE arguments for searching"""
+    id: Union[_int, 'types.IntWithAggregatesFilter']
+    race: Union[_str, 'types.StringWithAggregatesFilter']
+    subclass: Union[_str, 'types.StringWithAggregatesFilter']
+    str: Union[_int, 'types.IntWithAggregatesFilter']
+    dex: Union[_int, 'types.IntWithAggregatesFilter']
+    con: Union[_int, 'types.IntWithAggregatesFilter']
+    int: Union[_int, 'types.IntWithAggregatesFilter']
+    wis: Union[_int, 'types.IntWithAggregatesFilter']
+    cha: Union[_int, 'types.IntWithAggregatesFilter']
+    backstory: Union[_str, 'types.StringWithAggregatesFilter']
+    cla: Union[_str, 'types.StringWithAggregatesFilter']
+    name: Union[_str, 'types.StringWithAggregatesFilter']
+    user: Union[_str, 'types.StringWithAggregatesFilter']
+    campaignId: Union[_int, 'types.IntWithAggregatesFilter']
+    current_health: Union[_int, 'types.IntWithAggregatesFilter']
+
+
+
+class USERCHARCHANGEGroupByOutput(TypedDict, total=False):
+    id: _int
+    race: _str
+    subclass: _str
+    str: _int
+    dex: _int
+    con: _int
+    int: _int
+    wis: _int
+    cha: _int
+    backstory: _str
+    cla: _str
+    name: _str
+    user: _str
+    campaignId: _int
+    current_health: _int
+    _sum: 'USERCHARCHANGESumAggregateOutput'
+    _avg: 'USERCHARCHANGEAvgAggregateOutput'
+    _min: 'USERCHARCHANGEMinAggregateOutput'
+    _max: 'USERCHARCHANGEMaxAggregateOutput'
+    _count: 'USERCHARCHANGECountAggregateOutput'
+
+
+class USERCHARCHANGEAvgAggregateOutput(TypedDict, total=False):
+    """USERCHARCHANGE output for aggregating averages"""
+    id: float
+    str: float
+    dex: float
+    con: float
+    int: float
+    wis: float
+    cha: float
+    campaignId: float
+    current_health: float
+
+
+class USERCHARCHANGESumAggregateOutput(TypedDict, total=False):
+    """USERCHARCHANGE output for aggregating sums"""
+    id: _int
+    str: _int
+    dex: _int
+    con: _int
+    int: _int
+    wis: _int
+    cha: _int
+    campaignId: _int
+    current_health: _int
+
+
+class USERCHARCHANGEScalarAggregateOutput(TypedDict, total=False):
+    """USERCHARCHANGE output including scalar fields"""
+    id: _int
+    race: _str
+    subclass: _str
+    str: _int
+    dex: _int
+    con: _int
+    int: _int
+    wis: _int
+    cha: _int
+    backstory: _str
+    cla: _str
+    name: _str
+    user: _str
+    campaignId: _int
+    current_health: _int
+
+
+USERCHARCHANGEMinAggregateOutput = USERCHARCHANGEScalarAggregateOutput
+USERCHARCHANGEMaxAggregateOutput = USERCHARCHANGEScalarAggregateOutput
+
+
+class USERCHARCHANGEMaxAggregateInput(TypedDict, total=False):
+    """USERCHARCHANGE input for aggregating by max"""
+    id: bool
+    race: bool
+    subclass: bool
+    str: bool
+    dex: bool
+    con: bool
+    int: bool
+    wis: bool
+    cha: bool
+    backstory: bool
+    cla: bool
+    name: bool
+    user: bool
+    campaignId: bool
+    current_health: bool
+
+
+class USERCHARCHANGEMinAggregateInput(TypedDict, total=False):
+    """USERCHARCHANGE input for aggregating by min"""
+    id: bool
+    race: bool
+    subclass: bool
+    str: bool
+    dex: bool
+    con: bool
+    int: bool
+    wis: bool
+    cha: bool
+    backstory: bool
+    cla: bool
+    name: bool
+    user: bool
+    campaignId: bool
+    current_health: bool
+
+
+class USERCHARCHANGENumberAggregateInput(TypedDict, total=False):
+    """USERCHARCHANGE input for aggregating numbers"""
+    id: bool
+    str: bool
+    dex: bool
+    con: bool
+    int: bool
+    wis: bool
+    cha: bool
+    campaignId: bool
+    current_health: bool
+
+
+USERCHARCHANGEAvgAggregateInput = USERCHARCHANGENumberAggregateInput
+USERCHARCHANGESumAggregateInput = USERCHARCHANGENumberAggregateInput
+
+
+USERCHARCHANGECountAggregateInput = TypedDict(
+    'USERCHARCHANGECountAggregateInput',
+    {
+        'id': bool,
+        'race': bool,
+        'subclass': bool,
+        'str': bool,
+        'dex': bool,
+        'con': bool,
+        'int': bool,
+        'wis': bool,
+        'cha': bool,
+        'backstory': bool,
+        'cla': bool,
+        'name': bool,
+        'user': bool,
+        'campaignId': bool,
+        'current_health': bool,
+        '_all': bool,
+    },
+    total=False,
+)
+
+USERCHARCHANGECountAggregateOutput = TypedDict(
+    'USERCHARCHANGECountAggregateOutput',
+    {
+        'id': int,
+        'race': int,
+        'subclass': int,
+        'str': int,
+        'dex': int,
+        'con': int,
+        'int': int,
+        'wis': int,
+        'cha': int,
+        'backstory': int,
+        'cla': int,
+        'name': int,
+        'user': int,
+        'campaignId': int,
+        'current_health': int,
+        '_all': int,
+    },
+    total=False,
+)
+
+
+USERCHARCHANGEKeys = Literal[
+    'id',
+    'race',
+    'subclass',
+    'str',
+    'dex',
+    'con',
+    'int',
+    'wis',
+    'cha',
+    'backstory',
+    'cla',
+    'name',
+    'user',
+    'username',
+    'campaignId',
+    'campaign',
+    'current_health',
+]
+USERCHARCHANGEScalarFieldKeys = Literal[
+    'id',
+    'race',
+    'subclass',
+    'str',
+    'dex',
+    'con',
+    'int',
+    'wis',
+    'cha',
+    'backstory',
+    'cla',
+    'name',
+    'user',
+    'campaignId',
+    'current_health',
+]
+USERCHARCHANGEScalarFieldKeysT = TypeVar('USERCHARCHANGEScalarFieldKeysT', bound=USERCHARCHANGEScalarFieldKeys)
+
+USERCHARCHANGERelationalFieldKeys = Literal[
+        'username',
+        'campaign',
+    ]
+
+# CampaignSession types
+
+class CampaignSessionOptionalCreateInput(TypedDict, total=False):
+    """Optional arguments to the CampaignSession create method"""
+    id: _int
+    game_finished: _bool
+    user: _str
+    username: 'USERDATACreateNestedWithoutRelationsInput'
+    last_context: Optional[_str]
+    user_char_changes: 'USERCHARCHANGECreateManyNestedWithoutRelationsInput'
+    scenes: 'SceneCreateManyNestedWithoutRelationsInput'
+    current_scene_id: Optional[_int]
+
+
+class CampaignSessionCreateInput(CampaignSessionOptionalCreateInput):
+    """Required arguments to the CampaignSession create method"""
+    seed: _str
+
+
+# TODO: remove this in favour of without explicit relations
+# e.g. PostCreateWithoutAuthorInput
+
+class CampaignSessionOptionalCreateWithoutRelationsInput(TypedDict, total=False):
+    """Optional arguments to the CampaignSession create method, without relations"""
+    id: _int
+    game_finished: _bool
+    user: _str
+    last_context: Optional[_str]
+    current_scene_id: Optional[_int]
+
+
+class CampaignSessionCreateWithoutRelationsInput(CampaignSessionOptionalCreateWithoutRelationsInput):
+    """Required arguments to the CampaignSession create method, without relations"""
+    seed: _str
+
+class CampaignSessionConnectOrCreateWithoutRelationsInput(TypedDict):
+    create: 'CampaignSessionCreateWithoutRelationsInput'
+    where: 'CampaignSessionWhereUniqueInput'
+
+class CampaignSessionCreateNestedWithoutRelationsInput(TypedDict, total=False):
+    create: 'CampaignSessionCreateWithoutRelationsInput'
+    connect: 'CampaignSessionWhereUniqueInput'
+    connect_or_create: 'CampaignSessionConnectOrCreateWithoutRelationsInput'
+
+
+class CampaignSessionCreateManyNestedWithoutRelationsInput(TypedDict, total=False):
+    create: Union['CampaignSessionCreateWithoutRelationsInput', List['CampaignSessionCreateWithoutRelationsInput']]
+    connect: Union['CampaignSessionWhereUniqueInput', List['CampaignSessionWhereUniqueInput']]
+    connect_or_create: Union['CampaignSessionConnectOrCreateWithoutRelationsInput', List['CampaignSessionConnectOrCreateWithoutRelationsInput']]
+
+_CampaignSessionWhereUnique_id_Input = TypedDict(
+    '_CampaignSessionWhereUnique_id_Input',
+    {
+        'id': '_int',
+    },
+    total=True
+)
+
+_CampaignSessionCompoundseed_userKeyInner = TypedDict(
+    '_CampaignSessionCompoundseed_userKeyInner',
+    {
+        'seed': '_str',
+        'user': '_str',
+    },
+    total=True
+)
+
+_CampaignSessionCompoundseed_userKey = TypedDict(
+    '_CampaignSessionCompoundseed_userKey',
+    {
+        'seed_user': '_CampaignSessionCompoundseed_userKeyInner',
+    },
+    total=True
+)
+
+CampaignSessionWhereUniqueInput = Union[
+    '_CampaignSessionWhereUnique_id_Input',
+    '_CampaignSessionCompoundseed_userKey',
+]
+
+
+class CampaignSessionUpdateInput(TypedDict, total=False):
+    """Optional arguments for updating a record"""
+    id: Union[AtomicIntInput, _int]
+    seed: _str
+    game_finished: _bool
+    username: 'USERDATAUpdateOneWithoutRelationsInput'
+    last_context: Optional[_str]
+    user_char_changes: 'USERCHARCHANGEUpdateManyWithoutRelationsInput'
+    scenes: 'SceneUpdateManyWithoutRelationsInput'
+    current_scene_id: Optional[Union[AtomicIntInput, _int]]
+
+
+class CampaignSessionUpdateManyMutationInput(TypedDict, total=False):
+    """Arguments for updating many records"""
+    id: Union[AtomicIntInput, _int]
+    seed: _str
+    game_finished: _bool
+    last_context: Optional[_str]
+    current_scene_id: Optional[Union[AtomicIntInput, _int]]
+
+
+class CampaignSessionUpdateManyWithoutRelationsInput(TypedDict, total=False):
+    create: List['CampaignSessionCreateWithoutRelationsInput']
+    connect: List['CampaignSessionWhereUniqueInput']
+    connect_or_create: List['CampaignSessionConnectOrCreateWithoutRelationsInput']
+    set: List['CampaignSessionWhereUniqueInput']
+    disconnect: List['CampaignSessionWhereUniqueInput']
+    delete: List['CampaignSessionWhereUniqueInput']
+
+    # TODO
+    # update: List['CampaignSessionUpdateWithWhereUniqueWithoutRelationsInput']
+    # updateMany: List['CampaignSessionUpdateManyWithWhereUniqueWithoutRelationsInput']
+    # deleteMany: List['CampaignSessionScalarWhereInput']
+    # upsert: List['CampaignSessionUpserteWithWhereUniqueWithoutRelationsInput']
+
+
+class CampaignSessionUpdateOneWithoutRelationsInput(TypedDict, total=False):
+    create: 'CampaignSessionCreateWithoutRelationsInput'
+    connect: 'CampaignSessionWhereUniqueInput'
+    connect_or_create: 'CampaignSessionConnectOrCreateWithoutRelationsInput'
+    disconnect: bool
+    delete: bool
+
+    # TODO
+    # update: 'CampaignSessionUpdateInput'
+    # upsert: 'CampaignSessionUpsertWithoutRelationsInput'
+
+
+class CampaignSessionUpsertInput(TypedDict):
+    create: 'CampaignSessionCreateInput'
+    update: 'CampaignSessionUpdateInput'  # pyright: ignore[reportIncompatibleMethodOverride]
+
+
+_CampaignSession_id_OrderByInput = TypedDict(
+    '_CampaignSession_id_OrderByInput',
+    {
+        'id': 'SortOrder',
+    },
+    total=True
+)
+
+_CampaignSession_seed_OrderByInput = TypedDict(
+    '_CampaignSession_seed_OrderByInput',
+    {
+        'seed': 'SortOrder',
+    },
+    total=True
+)
+
+_CampaignSession_game_finished_OrderByInput = TypedDict(
+    '_CampaignSession_game_finished_OrderByInput',
+    {
+        'game_finished': 'SortOrder',
+    },
+    total=True
+)
+
+_CampaignSession_user_OrderByInput = TypedDict(
+    '_CampaignSession_user_OrderByInput',
+    {
+        'user': 'SortOrder',
+    },
+    total=True
+)
+
+_CampaignSession_last_context_OrderByInput = TypedDict(
+    '_CampaignSession_last_context_OrderByInput',
+    {
+        'last_context': 'SortOrder',
+    },
+    total=True
+)
+
+_CampaignSession_current_scene_id_OrderByInput = TypedDict(
+    '_CampaignSession_current_scene_id_OrderByInput',
+    {
+        'current_scene_id': 'SortOrder',
+    },
+    total=True
+)
+
+_CampaignSession_RelevanceInner = TypedDict(
+    '_CampaignSession_RelevanceInner',
+    {
+        'fields': 'List[CampaignSessionScalarFieldKeys]',
+        'search': 'str',
+        'sort': 'SortOrder',
+    },
+    total=True
+)
+
+_CampaignSession_RelevanceOrderByInput = TypedDict(
+    '_CampaignSession_RelevanceOrderByInput',
+    {
+        '_relevance': '_CampaignSession_RelevanceInner',
+    },
+    total=True
+)
+
+CampaignSessionOrderByInput = Union[
+    '_CampaignSession_id_OrderByInput',
+    '_CampaignSession_seed_OrderByInput',
+    '_CampaignSession_game_finished_OrderByInput',
+    '_CampaignSession_user_OrderByInput',
+    '_CampaignSession_last_context_OrderByInput',
+    '_CampaignSession_current_scene_id_OrderByInput',
+    '_CampaignSession_RelevanceOrderByInput',
+]
+
+
+
+# recursive CampaignSession types
+# TODO: cleanup these types
+
+
+# Dict[str, Any] is a mypy limitation
+# see https://github.com/RobertCraigie/prisma-client-py/issues/45
+# switch to pyright for improved types, see https://prisma-client-py.readthedocs.io/en/stable/reference/limitations/
+
+CampaignSessionRelationFilter = TypedDict(
+    'CampaignSessionRelationFilter',
+    {
+        'is': 'Dict[str, Any]',
+        'is_not': 'Dict[str, Any]',
+    },
+    total=False,
+)
+
+
+class CampaignSessionListRelationFilter(TypedDict, total=False):
+    some: 'Dict[str, Any]'
+    none: 'Dict[str, Any]'
+    every: 'Dict[str, Any]'
+
+
+class CampaignSessionInclude(TypedDict, total=False):
+    """CampaignSession relational arguments"""
+    username: Union[bool, 'USERDATAArgsFromCampaignSession']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromCampaignSession']
+    scenes: Union[bool, 'FindManySceneArgsFromCampaignSession']
+
+
+    
+
+class CHARACTERVECTORIncludeFromCampaignSession(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class CHARACTERVECTORIncludeFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class CHARACTERVECTORIncludeFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class CHARACTERVECTORIncludeFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class CHARACTERVECTORIncludeFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+    
+
+class CHARACTERVECTORArgsFromCampaignSession(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive1'
+
+
+class CHARACTERVECTORArgsFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive2'
+
+
+class CHARACTERVECTORArgsFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive3'
+
+
+class CHARACTERVECTORArgsFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive4'
+
+
+class CHARACTERVECTORArgsFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    
+    
+
+class FindManyCHARACTERVECTORArgsFromCampaignSession(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['CHARACTERVECTOROrderByInput', List['CHARACTERVECTOROrderByInput']]
+    where: 'CHARACTERVECTORWhereInput'
+    cursor: 'CHARACTERVECTORWhereUniqueInput'
+    distinct: List['CHARACTERVECTORScalarFieldKeys']
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive1'
+
+
+class FindManyCHARACTERVECTORArgsFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['CHARACTERVECTOROrderByInput', List['CHARACTERVECTOROrderByInput']]
+    where: 'CHARACTERVECTORWhereInput'
+    cursor: 'CHARACTERVECTORWhereUniqueInput'
+    distinct: List['CHARACTERVECTORScalarFieldKeys']
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive2'
+
+
+class FindManyCHARACTERVECTORArgsFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['CHARACTERVECTOROrderByInput', List['CHARACTERVECTOROrderByInput']]
+    where: 'CHARACTERVECTORWhereInput'
+    cursor: 'CHARACTERVECTORWhereUniqueInput'
+    distinct: List['CHARACTERVECTORScalarFieldKeys']
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive3'
+
+
+class FindManyCHARACTERVECTORArgsFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['CHARACTERVECTOROrderByInput', List['CHARACTERVECTOROrderByInput']]
+    where: 'CHARACTERVECTORWhereInput'
+    cursor: 'CHARACTERVECTORWhereUniqueInput'
+    distinct: List['CHARACTERVECTORScalarFieldKeys']
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive4'
+
+
+class FindManyCHARACTERVECTORArgsFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['CHARACTERVECTOROrderByInput', List['CHARACTERVECTOROrderByInput']]
+    where: 'CHARACTERVECTORWhereInput'
+    cursor: 'CHARACTERVECTORWhereUniqueInput'
+    distinct: List['CHARACTERVECTORScalarFieldKeys']
+    
+    
+
+class ClassesIncludeFromCampaignSession(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class ClassesIncludeFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class ClassesIncludeFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class ClassesIncludeFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class ClassesIncludeFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+    
+
+class ClassesArgsFromCampaignSession(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'ClassesIncludeFromClassesRecursive1'
+
+
+class ClassesArgsFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'ClassesIncludeFromClassesRecursive2'
+
+
+class ClassesArgsFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'ClassesIncludeFromClassesRecursive3'
+
+
+class ClassesArgsFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'ClassesIncludeFromClassesRecursive4'
+
+
+class ClassesArgsFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    
+    
+
+class FindManyClassesArgsFromCampaignSession(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['ClassesOrderByInput', List['ClassesOrderByInput']]
+    where: 'ClassesWhereInput'
+    cursor: 'ClassesWhereUniqueInput'
+    distinct: List['ClassesScalarFieldKeys']
+    include: 'ClassesIncludeFromClassesRecursive1'
+
+
+class FindManyClassesArgsFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['ClassesOrderByInput', List['ClassesOrderByInput']]
+    where: 'ClassesWhereInput'
+    cursor: 'ClassesWhereUniqueInput'
+    distinct: List['ClassesScalarFieldKeys']
+    include: 'ClassesIncludeFromClassesRecursive2'
+
+
+class FindManyClassesArgsFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['ClassesOrderByInput', List['ClassesOrderByInput']]
+    where: 'ClassesWhereInput'
+    cursor: 'ClassesWhereUniqueInput'
+    distinct: List['ClassesScalarFieldKeys']
+    include: 'ClassesIncludeFromClassesRecursive3'
+
+
+class FindManyClassesArgsFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['ClassesOrderByInput', List['ClassesOrderByInput']]
+    where: 'ClassesWhereInput'
+    cursor: 'ClassesWhereUniqueInput'
+    distinct: List['ClassesScalarFieldKeys']
+    include: 'ClassesIncludeFromClassesRecursive4'
+
+
+class FindManyClassesArgsFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['ClassesOrderByInput', List['ClassesOrderByInput']]
+    where: 'ClassesWhereInput'
+    cursor: 'ClassesWhereUniqueInput'
+    distinct: List['ClassesScalarFieldKeys']
+    
+    
+
+class GeneralEquipmentIncludeFromCampaignSession(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class GeneralEquipmentIncludeFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class GeneralEquipmentIncludeFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class GeneralEquipmentIncludeFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class GeneralEquipmentIncludeFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+    
+
+class GeneralEquipmentArgsFromCampaignSession(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive1'
+
+
+class GeneralEquipmentArgsFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive2'
+
+
+class GeneralEquipmentArgsFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive3'
+
+
+class GeneralEquipmentArgsFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive4'
+
+
+class GeneralEquipmentArgsFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    
+    
+
+class FindManyGeneralEquipmentArgsFromCampaignSession(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['GeneralEquipmentOrderByInput', List['GeneralEquipmentOrderByInput']]
+    where: 'GeneralEquipmentWhereInput'
+    cursor: 'GeneralEquipmentWhereUniqueInput'
+    distinct: List['GeneralEquipmentScalarFieldKeys']
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive1'
+
+
+class FindManyGeneralEquipmentArgsFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['GeneralEquipmentOrderByInput', List['GeneralEquipmentOrderByInput']]
+    where: 'GeneralEquipmentWhereInput'
+    cursor: 'GeneralEquipmentWhereUniqueInput'
+    distinct: List['GeneralEquipmentScalarFieldKeys']
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive2'
+
+
+class FindManyGeneralEquipmentArgsFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['GeneralEquipmentOrderByInput', List['GeneralEquipmentOrderByInput']]
+    where: 'GeneralEquipmentWhereInput'
+    cursor: 'GeneralEquipmentWhereUniqueInput'
+    distinct: List['GeneralEquipmentScalarFieldKeys']
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive3'
+
+
+class FindManyGeneralEquipmentArgsFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['GeneralEquipmentOrderByInput', List['GeneralEquipmentOrderByInput']]
+    where: 'GeneralEquipmentWhereInput'
+    cursor: 'GeneralEquipmentWhereUniqueInput'
+    distinct: List['GeneralEquipmentScalarFieldKeys']
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive4'
+
+
+class FindManyGeneralEquipmentArgsFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['GeneralEquipmentOrderByInput', List['GeneralEquipmentOrderByInput']]
+    where: 'GeneralEquipmentWhereInput'
+    cursor: 'GeneralEquipmentWhereUniqueInput'
+    distinct: List['GeneralEquipmentScalarFieldKeys']
+    
+    
+
+class ITEMSVECTORIncludeFromCampaignSession(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class ITEMSVECTORIncludeFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class ITEMSVECTORIncludeFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class ITEMSVECTORIncludeFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class ITEMSVECTORIncludeFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+    
+
+class ITEMSVECTORArgsFromCampaignSession(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive1'
+
+
+class ITEMSVECTORArgsFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive2'
+
+
+class ITEMSVECTORArgsFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive3'
+
+
+class ITEMSVECTORArgsFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive4'
+
+
+class ITEMSVECTORArgsFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    
+    
+
+class FindManyITEMSVECTORArgsFromCampaignSession(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['ITEMSVECTOROrderByInput', List['ITEMSVECTOROrderByInput']]
+    where: 'ITEMSVECTORWhereInput'
+    cursor: 'ITEMSVECTORWhereUniqueInput'
+    distinct: List['ITEMSVECTORScalarFieldKeys']
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive1'
+
+
+class FindManyITEMSVECTORArgsFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['ITEMSVECTOROrderByInput', List['ITEMSVECTOROrderByInput']]
+    where: 'ITEMSVECTORWhereInput'
+    cursor: 'ITEMSVECTORWhereUniqueInput'
+    distinct: List['ITEMSVECTORScalarFieldKeys']
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive2'
+
+
+class FindManyITEMSVECTORArgsFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['ITEMSVECTOROrderByInput', List['ITEMSVECTOROrderByInput']]
+    where: 'ITEMSVECTORWhereInput'
+    cursor: 'ITEMSVECTORWhereUniqueInput'
+    distinct: List['ITEMSVECTORScalarFieldKeys']
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive3'
+
+
+class FindManyITEMSVECTORArgsFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['ITEMSVECTOROrderByInput', List['ITEMSVECTOROrderByInput']]
+    where: 'ITEMSVECTORWhereInput'
+    cursor: 'ITEMSVECTORWhereUniqueInput'
+    distinct: List['ITEMSVECTORScalarFieldKeys']
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive4'
+
+
+class FindManyITEMSVECTORArgsFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['ITEMSVECTOROrderByInput', List['ITEMSVECTOROrderByInput']]
+    where: 'ITEMSVECTORWhereInput'
+    cursor: 'ITEMSVECTORWhereUniqueInput'
+    distinct: List['ITEMSVECTORScalarFieldKeys']
+    
+    
+
+class MONSTERVECTORIncludeFromCampaignSession(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class MONSTERVECTORIncludeFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class MONSTERVECTORIncludeFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class MONSTERVECTORIncludeFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class MONSTERVECTORIncludeFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+    
+
+class MONSTERVECTORArgsFromCampaignSession(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive1'
+
+
+class MONSTERVECTORArgsFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive2'
+
+
+class MONSTERVECTORArgsFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive3'
+
+
+class MONSTERVECTORArgsFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive4'
+
+
+class MONSTERVECTORArgsFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    
+    
+
+class FindManyMONSTERVECTORArgsFromCampaignSession(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['MONSTERVECTOROrderByInput', List['MONSTERVECTOROrderByInput']]
+    where: 'MONSTERVECTORWhereInput'
+    cursor: 'MONSTERVECTORWhereUniqueInput'
+    distinct: List['MONSTERVECTORScalarFieldKeys']
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive1'
+
+
+class FindManyMONSTERVECTORArgsFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['MONSTERVECTOROrderByInput', List['MONSTERVECTOROrderByInput']]
+    where: 'MONSTERVECTORWhereInput'
+    cursor: 'MONSTERVECTORWhereUniqueInput'
+    distinct: List['MONSTERVECTORScalarFieldKeys']
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive2'
+
+
+class FindManyMONSTERVECTORArgsFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['MONSTERVECTOROrderByInput', List['MONSTERVECTOROrderByInput']]
+    where: 'MONSTERVECTORWhereInput'
+    cursor: 'MONSTERVECTORWhereUniqueInput'
+    distinct: List['MONSTERVECTORScalarFieldKeys']
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive3'
+
+
+class FindManyMONSTERVECTORArgsFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['MONSTERVECTOROrderByInput', List['MONSTERVECTOROrderByInput']]
+    where: 'MONSTERVECTORWhereInput'
+    cursor: 'MONSTERVECTORWhereUniqueInput'
+    distinct: List['MONSTERVECTORScalarFieldKeys']
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive4'
+
+
+class FindManyMONSTERVECTORArgsFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['MONSTERVECTOROrderByInput', List['MONSTERVECTOROrderByInput']]
+    where: 'MONSTERVECTORWhereInput'
+    cursor: 'MONSTERVECTORWhereUniqueInput'
+    distinct: List['MONSTERVECTORScalarFieldKeys']
+    
+    
+
+class MagicItemIncludeFromCampaignSession(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class MagicItemIncludeFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class MagicItemIncludeFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class MagicItemIncludeFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class MagicItemIncludeFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+    
+
+class MagicItemArgsFromCampaignSession(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'MagicItemIncludeFromMagicItemRecursive1'
+
+
+class MagicItemArgsFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'MagicItemIncludeFromMagicItemRecursive2'
+
+
+class MagicItemArgsFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'MagicItemIncludeFromMagicItemRecursive3'
+
+
+class MagicItemArgsFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'MagicItemIncludeFromMagicItemRecursive4'
+
+
+class MagicItemArgsFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    
+    
+
+class FindManyMagicItemArgsFromCampaignSession(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['MagicItemOrderByInput', List['MagicItemOrderByInput']]
+    where: 'MagicItemWhereInput'
+    cursor: 'MagicItemWhereUniqueInput'
+    distinct: List['MagicItemScalarFieldKeys']
+    include: 'MagicItemIncludeFromMagicItemRecursive1'
+
+
+class FindManyMagicItemArgsFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['MagicItemOrderByInput', List['MagicItemOrderByInput']]
+    where: 'MagicItemWhereInput'
+    cursor: 'MagicItemWhereUniqueInput'
+    distinct: List['MagicItemScalarFieldKeys']
+    include: 'MagicItemIncludeFromMagicItemRecursive2'
+
+
+class FindManyMagicItemArgsFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['MagicItemOrderByInput', List['MagicItemOrderByInput']]
+    where: 'MagicItemWhereInput'
+    cursor: 'MagicItemWhereUniqueInput'
+    distinct: List['MagicItemScalarFieldKeys']
+    include: 'MagicItemIncludeFromMagicItemRecursive3'
+
+
+class FindManyMagicItemArgsFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['MagicItemOrderByInput', List['MagicItemOrderByInput']]
+    where: 'MagicItemWhereInput'
+    cursor: 'MagicItemWhereUniqueInput'
+    distinct: List['MagicItemScalarFieldKeys']
+    include: 'MagicItemIncludeFromMagicItemRecursive4'
+
+
+class FindManyMagicItemArgsFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['MagicItemOrderByInput', List['MagicItemOrderByInput']]
+    where: 'MagicItemWhereInput'
+    cursor: 'MagicItemWhereUniqueInput'
+    distinct: List['MagicItemScalarFieldKeys']
+    
+    
+
+class MonsterIncludeFromCampaignSession(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class MonsterIncludeFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class MonsterIncludeFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class MonsterIncludeFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class MonsterIncludeFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+    
+
+class MonsterArgsFromCampaignSession(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'MonsterIncludeFromMonsterRecursive1'
+
+
+class MonsterArgsFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'MonsterIncludeFromMonsterRecursive2'
+
+
+class MonsterArgsFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'MonsterIncludeFromMonsterRecursive3'
+
+
+class MonsterArgsFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'MonsterIncludeFromMonsterRecursive4'
+
+
+class MonsterArgsFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    
+    
+
+class FindManyMonsterArgsFromCampaignSession(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['MonsterOrderByInput', List['MonsterOrderByInput']]
+    where: 'MonsterWhereInput'
+    cursor: 'MonsterWhereUniqueInput'
+    distinct: List['MonsterScalarFieldKeys']
+    include: 'MonsterIncludeFromMonsterRecursive1'
+
+
+class FindManyMonsterArgsFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['MonsterOrderByInput', List['MonsterOrderByInput']]
+    where: 'MonsterWhereInput'
+    cursor: 'MonsterWhereUniqueInput'
+    distinct: List['MonsterScalarFieldKeys']
+    include: 'MonsterIncludeFromMonsterRecursive2'
+
+
+class FindManyMonsterArgsFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['MonsterOrderByInput', List['MonsterOrderByInput']]
+    where: 'MonsterWhereInput'
+    cursor: 'MonsterWhereUniqueInput'
+    distinct: List['MonsterScalarFieldKeys']
+    include: 'MonsterIncludeFromMonsterRecursive3'
+
+
+class FindManyMonsterArgsFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['MonsterOrderByInput', List['MonsterOrderByInput']]
+    where: 'MonsterWhereInput'
+    cursor: 'MonsterWhereUniqueInput'
+    distinct: List['MonsterScalarFieldKeys']
+    include: 'MonsterIncludeFromMonsterRecursive4'
+
+
+class FindManyMonsterArgsFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['MonsterOrderByInput', List['MonsterOrderByInput']]
+    where: 'MonsterWhereInput'
+    cursor: 'MonsterWhereUniqueInput'
+    distinct: List['MonsterScalarFieldKeys']
+    
+    
+
+class RaceIncludeFromCampaignSession(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class RaceIncludeFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class RaceIncludeFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class RaceIncludeFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class RaceIncludeFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+    
+
+class RaceArgsFromCampaignSession(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'RaceIncludeFromRaceRecursive1'
+
+
+class RaceArgsFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'RaceIncludeFromRaceRecursive2'
+
+
+class RaceArgsFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'RaceIncludeFromRaceRecursive3'
+
+
+class RaceArgsFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'RaceIncludeFromRaceRecursive4'
+
+
+class RaceArgsFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    
+    
+
+class FindManyRaceArgsFromCampaignSession(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['RaceOrderByInput', List['RaceOrderByInput']]
+    where: 'RaceWhereInput'
+    cursor: 'RaceWhereUniqueInput'
+    distinct: List['RaceScalarFieldKeys']
+    include: 'RaceIncludeFromRaceRecursive1'
+
+
+class FindManyRaceArgsFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['RaceOrderByInput', List['RaceOrderByInput']]
+    where: 'RaceWhereInput'
+    cursor: 'RaceWhereUniqueInput'
+    distinct: List['RaceScalarFieldKeys']
+    include: 'RaceIncludeFromRaceRecursive2'
+
+
+class FindManyRaceArgsFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['RaceOrderByInput', List['RaceOrderByInput']]
+    where: 'RaceWhereInput'
+    cursor: 'RaceWhereUniqueInput'
+    distinct: List['RaceScalarFieldKeys']
+    include: 'RaceIncludeFromRaceRecursive3'
+
+
+class FindManyRaceArgsFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['RaceOrderByInput', List['RaceOrderByInput']]
+    where: 'RaceWhereInput'
+    cursor: 'RaceWhereUniqueInput'
+    distinct: List['RaceScalarFieldKeys']
+    include: 'RaceIncludeFromRaceRecursive4'
+
+
+class FindManyRaceArgsFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['RaceOrderByInput', List['RaceOrderByInput']]
+    where: 'RaceWhereInput'
+    cursor: 'RaceWhereUniqueInput'
+    distinct: List['RaceScalarFieldKeys']
+    
+    
+
+class SESSIONIncludeFromCampaignSession(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class SESSIONIncludeFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class SESSIONIncludeFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class SESSIONIncludeFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class SESSIONIncludeFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+    
+
+class SESSIONArgsFromCampaignSession(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'SESSIONIncludeFromSESSIONRecursive1'
+
+
+class SESSIONArgsFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'SESSIONIncludeFromSESSIONRecursive2'
+
+
+class SESSIONArgsFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'SESSIONIncludeFromSESSIONRecursive3'
+
+
+class SESSIONArgsFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'SESSIONIncludeFromSESSIONRecursive4'
+
+
+class SESSIONArgsFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    
+    
+
+class FindManySESSIONArgsFromCampaignSession(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['SESSIONOrderByInput', List['SESSIONOrderByInput']]
+    where: 'SESSIONWhereInput'
+    cursor: 'SESSIONWhereUniqueInput'
+    distinct: List['SESSIONScalarFieldKeys']
+    include: 'SESSIONIncludeFromSESSIONRecursive1'
+
+
+class FindManySESSIONArgsFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['SESSIONOrderByInput', List['SESSIONOrderByInput']]
+    where: 'SESSIONWhereInput'
+    cursor: 'SESSIONWhereUniqueInput'
+    distinct: List['SESSIONScalarFieldKeys']
+    include: 'SESSIONIncludeFromSESSIONRecursive2'
+
+
+class FindManySESSIONArgsFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['SESSIONOrderByInput', List['SESSIONOrderByInput']]
+    where: 'SESSIONWhereInput'
+    cursor: 'SESSIONWhereUniqueInput'
+    distinct: List['SESSIONScalarFieldKeys']
+    include: 'SESSIONIncludeFromSESSIONRecursive3'
+
+
+class FindManySESSIONArgsFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['SESSIONOrderByInput', List['SESSIONOrderByInput']]
+    where: 'SESSIONWhereInput'
+    cursor: 'SESSIONWhereUniqueInput'
+    distinct: List['SESSIONScalarFieldKeys']
+    include: 'SESSIONIncludeFromSESSIONRecursive4'
+
+
+class FindManySESSIONArgsFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['SESSIONOrderByInput', List['SESSIONOrderByInput']]
+    where: 'SESSIONWhereInput'
+    cursor: 'SESSIONWhereUniqueInput'
+    distinct: List['SESSIONScalarFieldKeys']
+    
+    
+
+class SPELLSVECTORIncludeFromCampaignSession(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class SPELLSVECTORIncludeFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class SPELLSVECTORIncludeFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class SPELLSVECTORIncludeFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class SPELLSVECTORIncludeFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+    
+
+class SPELLSVECTORArgsFromCampaignSession(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive1'
+
+
+class SPELLSVECTORArgsFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive2'
+
+
+class SPELLSVECTORArgsFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive3'
+
+
+class SPELLSVECTORArgsFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive4'
+
+
+class SPELLSVECTORArgsFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    
+    
+
+class FindManySPELLSVECTORArgsFromCampaignSession(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['SPELLSVECTOROrderByInput', List['SPELLSVECTOROrderByInput']]
+    where: 'SPELLSVECTORWhereInput'
+    cursor: 'SPELLSVECTORWhereUniqueInput'
+    distinct: List['SPELLSVECTORScalarFieldKeys']
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive1'
+
+
+class FindManySPELLSVECTORArgsFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['SPELLSVECTOROrderByInput', List['SPELLSVECTOROrderByInput']]
+    where: 'SPELLSVECTORWhereInput'
+    cursor: 'SPELLSVECTORWhereUniqueInput'
+    distinct: List['SPELLSVECTORScalarFieldKeys']
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive2'
+
+
+class FindManySPELLSVECTORArgsFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['SPELLSVECTOROrderByInput', List['SPELLSVECTOROrderByInput']]
+    where: 'SPELLSVECTORWhereInput'
+    cursor: 'SPELLSVECTORWhereUniqueInput'
+    distinct: List['SPELLSVECTORScalarFieldKeys']
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive3'
+
+
+class FindManySPELLSVECTORArgsFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['SPELLSVECTOROrderByInput', List['SPELLSVECTOROrderByInput']]
+    where: 'SPELLSVECTORWhereInput'
+    cursor: 'SPELLSVECTORWhereUniqueInput'
+    distinct: List['SPELLSVECTORScalarFieldKeys']
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive4'
+
+
+class FindManySPELLSVECTORArgsFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['SPELLSVECTOROrderByInput', List['SPELLSVECTOROrderByInput']]
+    where: 'SPELLSVECTORWhereInput'
+    cursor: 'SPELLSVECTORWhereUniqueInput'
+    distinct: List['SPELLSVECTORScalarFieldKeys']
+    
+    
+
+class SpellIncludeFromCampaignSession(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class SpellIncludeFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class SpellIncludeFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class SpellIncludeFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class SpellIncludeFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+    
+
+class SpellArgsFromCampaignSession(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'SpellIncludeFromSpellRecursive1'
+
+
+class SpellArgsFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'SpellIncludeFromSpellRecursive2'
+
+
+class SpellArgsFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'SpellIncludeFromSpellRecursive3'
+
+
+class SpellArgsFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'SpellIncludeFromSpellRecursive4'
+
+
+class SpellArgsFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    
+    
+
+class FindManySpellArgsFromCampaignSession(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['SpellOrderByInput', List['SpellOrderByInput']]
+    where: 'SpellWhereInput'
+    cursor: 'SpellWhereUniqueInput'
+    distinct: List['SpellScalarFieldKeys']
+    include: 'SpellIncludeFromSpellRecursive1'
+
+
+class FindManySpellArgsFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['SpellOrderByInput', List['SpellOrderByInput']]
+    where: 'SpellWhereInput'
+    cursor: 'SpellWhereUniqueInput'
+    distinct: List['SpellScalarFieldKeys']
+    include: 'SpellIncludeFromSpellRecursive2'
+
+
+class FindManySpellArgsFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['SpellOrderByInput', List['SpellOrderByInput']]
+    where: 'SpellWhereInput'
+    cursor: 'SpellWhereUniqueInput'
+    distinct: List['SpellScalarFieldKeys']
+    include: 'SpellIncludeFromSpellRecursive3'
+
+
+class FindManySpellArgsFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['SpellOrderByInput', List['SpellOrderByInput']]
+    where: 'SpellWhereInput'
+    cursor: 'SpellWhereUniqueInput'
+    distinct: List['SpellScalarFieldKeys']
+    include: 'SpellIncludeFromSpellRecursive4'
+
+
+class FindManySpellArgsFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['SpellOrderByInput', List['SpellOrderByInput']]
+    where: 'SpellWhereInput'
+    cursor: 'SpellWhereUniqueInput'
+    distinct: List['SpellScalarFieldKeys']
+    
+    
+
+class USERDATAIncludeFromCampaignSession(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromCampaignSessionRecursive1']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromCampaignSessionRecursive1']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromCampaignSessionRecursive1']
+
+
+class USERDATAIncludeFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromCampaignSessionRecursive2']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromCampaignSessionRecursive2']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromCampaignSessionRecursive2']
+
+
+class USERDATAIncludeFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromCampaignSessionRecursive3']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromCampaignSessionRecursive3']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromCampaignSessionRecursive3']
+
+
+class USERDATAIncludeFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromCampaignSessionRecursive4']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromCampaignSessionRecursive4']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromCampaignSessionRecursive4']
+
+
+class USERDATAIncludeFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+    
+
+class USERDATAArgsFromCampaignSession(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'USERDATAIncludeFromUSERDATARecursive1'
+
+
+class USERDATAArgsFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'USERDATAIncludeFromUSERDATARecursive2'
+
+
+class USERDATAArgsFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'USERDATAIncludeFromUSERDATARecursive3'
+
+
+class USERDATAArgsFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'USERDATAIncludeFromUSERDATARecursive4'
+
+
+class USERDATAArgsFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    
+    
+
+class FindManyUSERDATAArgsFromCampaignSession(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['USERDATAOrderByInput', List['USERDATAOrderByInput']]
+    where: 'USERDATAWhereInput'
+    cursor: 'USERDATAWhereUniqueInput'
+    distinct: List['USERDATAScalarFieldKeys']
+    include: 'USERDATAIncludeFromUSERDATARecursive1'
+
+
+class FindManyUSERDATAArgsFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['USERDATAOrderByInput', List['USERDATAOrderByInput']]
+    where: 'USERDATAWhereInput'
+    cursor: 'USERDATAWhereUniqueInput'
+    distinct: List['USERDATAScalarFieldKeys']
+    include: 'USERDATAIncludeFromUSERDATARecursive2'
+
+
+class FindManyUSERDATAArgsFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['USERDATAOrderByInput', List['USERDATAOrderByInput']]
+    where: 'USERDATAWhereInput'
+    cursor: 'USERDATAWhereUniqueInput'
+    distinct: List['USERDATAScalarFieldKeys']
+    include: 'USERDATAIncludeFromUSERDATARecursive3'
+
+
+class FindManyUSERDATAArgsFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['USERDATAOrderByInput', List['USERDATAOrderByInput']]
+    where: 'USERDATAWhereInput'
+    cursor: 'USERDATAWhereUniqueInput'
+    distinct: List['USERDATAScalarFieldKeys']
+    include: 'USERDATAIncludeFromUSERDATARecursive4'
+
+
+class FindManyUSERDATAArgsFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['USERDATAOrderByInput', List['USERDATAOrderByInput']]
+    where: 'USERDATAWhereInput'
+    cursor: 'USERDATAWhereUniqueInput'
+    distinct: List['USERDATAScalarFieldKeys']
+    
+    
+
+class STORYVECTORIncludeFromCampaignSession(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class STORYVECTORIncludeFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class STORYVECTORIncludeFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class STORYVECTORIncludeFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+
+class STORYVECTORIncludeFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+    
+
+class STORYVECTORArgsFromCampaignSession(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive1'
+
+
+class STORYVECTORArgsFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive2'
+
+
+class STORYVECTORArgsFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive3'
+
+
+class STORYVECTORArgsFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive4'
+
+
+class STORYVECTORArgsFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    
+    
+
+class FindManySTORYVECTORArgsFromCampaignSession(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive1'
+
+
+class FindManySTORYVECTORArgsFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive2'
+
+
+class FindManySTORYVECTORArgsFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive3'
+
+
+class FindManySTORYVECTORArgsFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive4'
+
+
+class FindManySTORYVECTORArgsFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    
+    
+
+class USERCHARIncludeFromCampaignSession(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+    username: Union[bool, 'USERDATAArgsFromCampaignSessionRecursive1']
+
+
+class USERCHARIncludeFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+    username: Union[bool, 'USERDATAArgsFromCampaignSessionRecursive2']
+
+
+class USERCHARIncludeFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+    username: Union[bool, 'USERDATAArgsFromCampaignSessionRecursive3']
+
+
+class USERCHARIncludeFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+    username: Union[bool, 'USERDATAArgsFromCampaignSessionRecursive4']
+
+
+class USERCHARIncludeFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+    
+
+class USERCHARArgsFromCampaignSession(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive1'
+
+
+class USERCHARArgsFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive2'
+
+
+class USERCHARArgsFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive3'
+
+
+class USERCHARArgsFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive4'
+
+
+class USERCHARArgsFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    
+    
+
+class FindManyUSERCHARArgsFromCampaignSession(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive1'
+
+
+class FindManyUSERCHARArgsFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive2'
+
+
+class FindManyUSERCHARArgsFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive3'
+
+
+class FindManyUSERCHARArgsFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive4'
+
+
+class FindManyUSERCHARArgsFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    
+    
+
+class USERCHARCHANGEIncludeFromCampaignSession(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+    username: Union[bool, 'USERDATAArgsFromCampaignSessionRecursive1']
+    campaign: Union[bool, 'CampaignSessionArgsFromCampaignSessionRecursive1']
+
+
+class USERCHARCHANGEIncludeFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+    username: Union[bool, 'USERDATAArgsFromCampaignSessionRecursive2']
+    campaign: Union[bool, 'CampaignSessionArgsFromCampaignSessionRecursive2']
+
+
+class USERCHARCHANGEIncludeFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+    username: Union[bool, 'USERDATAArgsFromCampaignSessionRecursive3']
+    campaign: Union[bool, 'CampaignSessionArgsFromCampaignSessionRecursive3']
+
+
+class USERCHARCHANGEIncludeFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+    username: Union[bool, 'USERDATAArgsFromCampaignSessionRecursive4']
+    campaign: Union[bool, 'CampaignSessionArgsFromCampaignSessionRecursive4']
+
+
+class USERCHARCHANGEIncludeFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+    
+
+class USERCHARCHANGEArgsFromCampaignSession(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive1'
+
+
+class USERCHARCHANGEArgsFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive2'
+
+
+class USERCHARCHANGEArgsFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive3'
+
+
+class USERCHARCHANGEArgsFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive4'
+
+
+class USERCHARCHANGEArgsFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    
+    
+
+class FindManyUSERCHARCHANGEArgsFromCampaignSession(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive1'
+
+
+class FindManyUSERCHARCHANGEArgsFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive2'
+
+
+class FindManyUSERCHARCHANGEArgsFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive3'
+
+
+class FindManyUSERCHARCHANGEArgsFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive4'
+
+
+class FindManyUSERCHARCHANGEArgsFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    
+    
+
+class CampaignSessionIncludeFromCampaignSession(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+    username: Union[bool, 'USERDATAArgsFromCampaignSessionRecursive1']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromCampaignSessionRecursive1']
+    scenes: Union[bool, 'FindManySceneArgsFromCampaignSessionRecursive1']
+
+
+class CampaignSessionIncludeFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+    username: Union[bool, 'USERDATAArgsFromCampaignSessionRecursive2']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromCampaignSessionRecursive2']
+    scenes: Union[bool, 'FindManySceneArgsFromCampaignSessionRecursive2']
+
+
+class CampaignSessionIncludeFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+    username: Union[bool, 'USERDATAArgsFromCampaignSessionRecursive3']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromCampaignSessionRecursive3']
+    scenes: Union[bool, 'FindManySceneArgsFromCampaignSessionRecursive3']
+
+
+class CampaignSessionIncludeFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+    username: Union[bool, 'USERDATAArgsFromCampaignSessionRecursive4']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromCampaignSessionRecursive4']
+    scenes: Union[bool, 'FindManySceneArgsFromCampaignSessionRecursive4']
+
+
+class CampaignSessionIncludeFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+    
+
+class CampaignSessionArgsFromCampaignSession(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive1'
+
+
+class CampaignSessionArgsFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive2'
+
+
+class CampaignSessionArgsFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive3'
+
+
+class CampaignSessionArgsFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive4'
+
+
+class CampaignSessionArgsFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    
+    
+
+class FindManyCampaignSessionArgsFromCampaignSession(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive1'
+
+
+class FindManyCampaignSessionArgsFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive2'
+
+
+class FindManyCampaignSessionArgsFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive3'
+
+
+class FindManyCampaignSessionArgsFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive4'
+
+
+class FindManyCampaignSessionArgsFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    
+    
+
+class SceneIncludeFromCampaignSession(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+    campaign: Union[bool, 'CampaignSessionArgsFromCampaignSessionRecursive1']
+
+
+class SceneIncludeFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+    campaign: Union[bool, 'CampaignSessionArgsFromCampaignSessionRecursive2']
+
+
+class SceneIncludeFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+    campaign: Union[bool, 'CampaignSessionArgsFromCampaignSessionRecursive3']
+
+
+class SceneIncludeFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+    campaign: Union[bool, 'CampaignSessionArgsFromCampaignSessionRecursive4']
+
+
+class SceneIncludeFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Relational arguments for CampaignSession"""
+
+    
+
+class SceneArgsFromCampaignSession(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'SceneIncludeFromSceneRecursive1'
+
+
+class SceneArgsFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'SceneIncludeFromSceneRecursive2'
+
+
+class SceneArgsFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'SceneIncludeFromSceneRecursive3'
+
+
+class SceneArgsFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    include: 'SceneIncludeFromSceneRecursive4'
+
+
+class SceneArgsFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    
+    
+
+class FindManySceneArgsFromCampaignSession(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive1'
+
+
+class FindManySceneArgsFromCampaignSessionRecursive1(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive2'
+
+
+class FindManySceneArgsFromCampaignSessionRecursive2(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive3'
+
+
+class FindManySceneArgsFromCampaignSessionRecursive3(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive4'
+
+
+class FindManySceneArgsFromCampaignSessionRecursive4(TypedDict, total=False):
+    """Arguments for CampaignSession"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    
+
+
+FindManyCampaignSessionArgs = FindManyCampaignSessionArgsFromCampaignSession
+FindFirstCampaignSessionArgs = FindManyCampaignSessionArgsFromCampaignSession
+
+
+    
+
+class CampaignSessionWhereInput(TypedDict, total=False):
+    """CampaignSession arguments for searching"""
+    id: Union[_int, 'types.IntFilter']
+    seed: Union[_str, 'types.StringFilter']
+    game_finished: Union[_bool, 'types.BooleanFilter']
+    user: Union[_str, 'types.StringFilter']
+    username: 'USERDATARelationFilter'
+    last_context: Union[None, _str, 'types.StringFilter']
+    user_char_changes: 'USERCHARCHANGEListRelationFilter'
+    scenes: 'SceneListRelationFilter'
+    current_scene_id: Union[None, _int, 'types.IntFilter']
+
+    # should be noted that AND and NOT should be Union['CampaignSessionWhereInputRecursive1', List['CampaignSessionWhereInputRecursive1']]
+    # but this causes mypy to hang :/
+    AND: List['CampaignSessionWhereInputRecursive1']
+    OR: List['CampaignSessionWhereInputRecursive1']
+    NOT: List['CampaignSessionWhereInputRecursive1']
+
+
+class CampaignSessionWhereInputRecursive1(TypedDict, total=False):
+    """CampaignSession arguments for searching"""
+    id: Union[_int, 'types.IntFilter']
+    seed: Union[_str, 'types.StringFilter']
+    game_finished: Union[_bool, 'types.BooleanFilter']
+    user: Union[_str, 'types.StringFilter']
+    username: 'USERDATARelationFilter'
+    last_context: Union[None, _str, 'types.StringFilter']
+    user_char_changes: 'USERCHARCHANGEListRelationFilter'
+    scenes: 'SceneListRelationFilter'
+    current_scene_id: Union[None, _int, 'types.IntFilter']
+
+    # should be noted that AND and NOT should be Union['CampaignSessionWhereInputRecursive2', List['CampaignSessionWhereInputRecursive2']]
+    # but this causes mypy to hang :/
+    AND: List['CampaignSessionWhereInputRecursive2']
+    OR: List['CampaignSessionWhereInputRecursive2']
+    NOT: List['CampaignSessionWhereInputRecursive2']
+
+
+class CampaignSessionWhereInputRecursive2(TypedDict, total=False):
+    """CampaignSession arguments for searching"""
+    id: Union[_int, 'types.IntFilter']
+    seed: Union[_str, 'types.StringFilter']
+    game_finished: Union[_bool, 'types.BooleanFilter']
+    user: Union[_str, 'types.StringFilter']
+    username: 'USERDATARelationFilter'
+    last_context: Union[None, _str, 'types.StringFilter']
+    user_char_changes: 'USERCHARCHANGEListRelationFilter'
+    scenes: 'SceneListRelationFilter'
+    current_scene_id: Union[None, _int, 'types.IntFilter']
+
+    # should be noted that AND and NOT should be Union['CampaignSessionWhereInputRecursive3', List['CampaignSessionWhereInputRecursive3']]
+    # but this causes mypy to hang :/
+    AND: List['CampaignSessionWhereInputRecursive3']
+    OR: List['CampaignSessionWhereInputRecursive3']
+    NOT: List['CampaignSessionWhereInputRecursive3']
+
+
+class CampaignSessionWhereInputRecursive3(TypedDict, total=False):
+    """CampaignSession arguments for searching"""
+    id: Union[_int, 'types.IntFilter']
+    seed: Union[_str, 'types.StringFilter']
+    game_finished: Union[_bool, 'types.BooleanFilter']
+    user: Union[_str, 'types.StringFilter']
+    username: 'USERDATARelationFilter'
+    last_context: Union[None, _str, 'types.StringFilter']
+    user_char_changes: 'USERCHARCHANGEListRelationFilter'
+    scenes: 'SceneListRelationFilter'
+    current_scene_id: Union[None, _int, 'types.IntFilter']
+
+    # should be noted that AND and NOT should be Union['CampaignSessionWhereInputRecursive4', List['CampaignSessionWhereInputRecursive4']]
+    # but this causes mypy to hang :/
+    AND: List['CampaignSessionWhereInputRecursive4']
+    OR: List['CampaignSessionWhereInputRecursive4']
+    NOT: List['CampaignSessionWhereInputRecursive4']
+
+
+class CampaignSessionWhereInputRecursive4(TypedDict, total=False):
+    """CampaignSession arguments for searching"""
+    id: Union[_int, 'types.IntFilter']
+    seed: Union[_str, 'types.StringFilter']
+    game_finished: Union[_bool, 'types.BooleanFilter']
+    user: Union[_str, 'types.StringFilter']
+    username: 'USERDATARelationFilter'
+    last_context: Union[None, _str, 'types.StringFilter']
+    user_char_changes: 'USERCHARCHANGEListRelationFilter'
+    scenes: 'SceneListRelationFilter'
+    current_scene_id: Union[None, _int, 'types.IntFilter']
+
+
+
+# aggregate CampaignSession types
+
+
+    
+
+class CampaignSessionScalarWhereWithAggregatesInput(TypedDict, total=False):
+    """CampaignSession arguments for searching"""
+    id: Union[_int, 'types.IntWithAggregatesFilter']
+    seed: Union[_str, 'types.StringWithAggregatesFilter']
+    game_finished: Union[_bool, 'types.BooleanWithAggregatesFilter']
+    user: Union[_str, 'types.StringWithAggregatesFilter']
+    last_context: Union[_str, 'types.StringWithAggregatesFilter']
+    current_scene_id: Union[_int, 'types.IntWithAggregatesFilter']
+
+    AND: List['CampaignSessionScalarWhereWithAggregatesInputRecursive1']
+    OR: List['CampaignSessionScalarWhereWithAggregatesInputRecursive1']
+    NOT: List['CampaignSessionScalarWhereWithAggregatesInputRecursive1']
+
+
+class CampaignSessionScalarWhereWithAggregatesInputRecursive1(TypedDict, total=False):
+    """CampaignSession arguments for searching"""
+    id: Union[_int, 'types.IntWithAggregatesFilter']
+    seed: Union[_str, 'types.StringWithAggregatesFilter']
+    game_finished: Union[_bool, 'types.BooleanWithAggregatesFilter']
+    user: Union[_str, 'types.StringWithAggregatesFilter']
+    last_context: Union[_str, 'types.StringWithAggregatesFilter']
+    current_scene_id: Union[_int, 'types.IntWithAggregatesFilter']
+
+    AND: List['CampaignSessionScalarWhereWithAggregatesInputRecursive2']
+    OR: List['CampaignSessionScalarWhereWithAggregatesInputRecursive2']
+    NOT: List['CampaignSessionScalarWhereWithAggregatesInputRecursive2']
+
+
+class CampaignSessionScalarWhereWithAggregatesInputRecursive2(TypedDict, total=False):
+    """CampaignSession arguments for searching"""
+    id: Union[_int, 'types.IntWithAggregatesFilter']
+    seed: Union[_str, 'types.StringWithAggregatesFilter']
+    game_finished: Union[_bool, 'types.BooleanWithAggregatesFilter']
+    user: Union[_str, 'types.StringWithAggregatesFilter']
+    last_context: Union[_str, 'types.StringWithAggregatesFilter']
+    current_scene_id: Union[_int, 'types.IntWithAggregatesFilter']
+
+    AND: List['CampaignSessionScalarWhereWithAggregatesInputRecursive3']
+    OR: List['CampaignSessionScalarWhereWithAggregatesInputRecursive3']
+    NOT: List['CampaignSessionScalarWhereWithAggregatesInputRecursive3']
+
+
+class CampaignSessionScalarWhereWithAggregatesInputRecursive3(TypedDict, total=False):
+    """CampaignSession arguments for searching"""
+    id: Union[_int, 'types.IntWithAggregatesFilter']
+    seed: Union[_str, 'types.StringWithAggregatesFilter']
+    game_finished: Union[_bool, 'types.BooleanWithAggregatesFilter']
+    user: Union[_str, 'types.StringWithAggregatesFilter']
+    last_context: Union[_str, 'types.StringWithAggregatesFilter']
+    current_scene_id: Union[_int, 'types.IntWithAggregatesFilter']
+
+    AND: List['CampaignSessionScalarWhereWithAggregatesInputRecursive4']
+    OR: List['CampaignSessionScalarWhereWithAggregatesInputRecursive4']
+    NOT: List['CampaignSessionScalarWhereWithAggregatesInputRecursive4']
+
+
+class CampaignSessionScalarWhereWithAggregatesInputRecursive4(TypedDict, total=False):
+    """CampaignSession arguments for searching"""
+    id: Union[_int, 'types.IntWithAggregatesFilter']
+    seed: Union[_str, 'types.StringWithAggregatesFilter']
+    game_finished: Union[_bool, 'types.BooleanWithAggregatesFilter']
+    user: Union[_str, 'types.StringWithAggregatesFilter']
+    last_context: Union[_str, 'types.StringWithAggregatesFilter']
+    current_scene_id: Union[_int, 'types.IntWithAggregatesFilter']
+
+
+
+class CampaignSessionGroupByOutput(TypedDict, total=False):
+    id: _int
+    seed: _str
+    game_finished: _bool
+    user: _str
+    last_context: _str
+    current_scene_id: _int
+    _sum: 'CampaignSessionSumAggregateOutput'
+    _avg: 'CampaignSessionAvgAggregateOutput'
+    _min: 'CampaignSessionMinAggregateOutput'
+    _max: 'CampaignSessionMaxAggregateOutput'
+    _count: 'CampaignSessionCountAggregateOutput'
+
+
+class CampaignSessionAvgAggregateOutput(TypedDict, total=False):
+    """CampaignSession output for aggregating averages"""
+    id: float
+    current_scene_id: float
+
+
+class CampaignSessionSumAggregateOutput(TypedDict, total=False):
+    """CampaignSession output for aggregating sums"""
+    id: _int
+    current_scene_id: _int
+
+
+class CampaignSessionScalarAggregateOutput(TypedDict, total=False):
+    """CampaignSession output including scalar fields"""
+    id: _int
+    seed: _str
+    game_finished: _bool
+    user: _str
+    last_context: _str
+    current_scene_id: _int
+
+
+CampaignSessionMinAggregateOutput = CampaignSessionScalarAggregateOutput
+CampaignSessionMaxAggregateOutput = CampaignSessionScalarAggregateOutput
+
+
+class CampaignSessionMaxAggregateInput(TypedDict, total=False):
+    """CampaignSession input for aggregating by max"""
+    id: bool
+    seed: bool
+    game_finished: bool
+    user: bool
+    last_context: bool
+    current_scene_id: bool
+
+
+class CampaignSessionMinAggregateInput(TypedDict, total=False):
+    """CampaignSession input for aggregating by min"""
+    id: bool
+    seed: bool
+    game_finished: bool
+    user: bool
+    last_context: bool
+    current_scene_id: bool
+
+
+class CampaignSessionNumberAggregateInput(TypedDict, total=False):
+    """CampaignSession input for aggregating numbers"""
+    id: bool
+    current_scene_id: bool
+
+
+CampaignSessionAvgAggregateInput = CampaignSessionNumberAggregateInput
+CampaignSessionSumAggregateInput = CampaignSessionNumberAggregateInput
+
+
+CampaignSessionCountAggregateInput = TypedDict(
+    'CampaignSessionCountAggregateInput',
+    {
+        'id': bool,
+        'seed': bool,
+        'game_finished': bool,
+        'user': bool,
+        'last_context': bool,
+        'current_scene_id': bool,
+        '_all': bool,
+    },
+    total=False,
+)
+
+CampaignSessionCountAggregateOutput = TypedDict(
+    'CampaignSessionCountAggregateOutput',
+    {
+        'id': int,
+        'seed': int,
+        'game_finished': int,
+        'user': int,
+        'last_context': int,
+        'current_scene_id': int,
+        '_all': int,
+    },
+    total=False,
+)
+
+
+CampaignSessionKeys = Literal[
+    'id',
+    'seed',
+    'game_finished',
+    'user',
+    'username',
+    'last_context',
+    'user_char_changes',
+    'scenes',
+    'current_scene_id',
+]
+CampaignSessionScalarFieldKeys = Literal[
+    'id',
+    'seed',
+    'game_finished',
+    'user',
+    'last_context',
+    'current_scene_id',
+]
+CampaignSessionScalarFieldKeysT = TypeVar('CampaignSessionScalarFieldKeysT', bound=CampaignSessionScalarFieldKeys)
+
+CampaignSessionRelationalFieldKeys = Literal[
+        'username',
+        'user_char_changes',
+        'scenes',
+    ]
+
+# Scene types
+
+class SceneOptionalCreateInput(TypedDict, total=False):
+    """Optional arguments to the Scene create method"""
+    id: _int
+    campaignId: _int
+    campaign: 'CampaignSessionCreateNestedWithoutRelationsInput'
+    scene_context: Optional[_str]
+
+
+class SceneCreateInput(SceneOptionalCreateInput):
+    """Required arguments to the Scene create method"""
+    turn_num: _int
+
+
+# TODO: remove this in favour of without explicit relations
+# e.g. PostCreateWithoutAuthorInput
+
+class SceneOptionalCreateWithoutRelationsInput(TypedDict, total=False):
+    """Optional arguments to the Scene create method, without relations"""
+    id: _int
+    campaignId: _int
+    scene_context: Optional[_str]
+
+
+class SceneCreateWithoutRelationsInput(SceneOptionalCreateWithoutRelationsInput):
+    """Required arguments to the Scene create method, without relations"""
+    turn_num: _int
+
+class SceneConnectOrCreateWithoutRelationsInput(TypedDict):
+    create: 'SceneCreateWithoutRelationsInput'
+    where: 'SceneWhereUniqueInput'
+
+class SceneCreateNestedWithoutRelationsInput(TypedDict, total=False):
+    create: 'SceneCreateWithoutRelationsInput'
+    connect: 'SceneWhereUniqueInput'
+    connect_or_create: 'SceneConnectOrCreateWithoutRelationsInput'
+
+
+class SceneCreateManyNestedWithoutRelationsInput(TypedDict, total=False):
+    create: Union['SceneCreateWithoutRelationsInput', List['SceneCreateWithoutRelationsInput']]
+    connect: Union['SceneWhereUniqueInput', List['SceneWhereUniqueInput']]
+    connect_or_create: Union['SceneConnectOrCreateWithoutRelationsInput', List['SceneConnectOrCreateWithoutRelationsInput']]
+
+_SceneWhereUnique_id_Input = TypedDict(
+    '_SceneWhereUnique_id_Input',
+    {
+        'id': '_int',
+    },
+    total=True
+)
+
+SceneWhereUniqueInput = _SceneWhereUnique_id_Input
+
+
+class SceneUpdateInput(TypedDict, total=False):
+    """Optional arguments for updating a record"""
+    id: Union[AtomicIntInput, _int]
+    campaign: 'CampaignSessionUpdateOneWithoutRelationsInput'
+    turn_num: Union[AtomicIntInput, _int]
+    scene_context: Optional[_str]
+
+
+class SceneUpdateManyMutationInput(TypedDict, total=False):
+    """Arguments for updating many records"""
+    id: Union[AtomicIntInput, _int]
+    turn_num: Union[AtomicIntInput, _int]
+    scene_context: Optional[_str]
+
+
+class SceneUpdateManyWithoutRelationsInput(TypedDict, total=False):
+    create: List['SceneCreateWithoutRelationsInput']
+    connect: List['SceneWhereUniqueInput']
+    connect_or_create: List['SceneConnectOrCreateWithoutRelationsInput']
+    set: List['SceneWhereUniqueInput']
+    disconnect: List['SceneWhereUniqueInput']
+    delete: List['SceneWhereUniqueInput']
+
+    # TODO
+    # update: List['SceneUpdateWithWhereUniqueWithoutRelationsInput']
+    # updateMany: List['SceneUpdateManyWithWhereUniqueWithoutRelationsInput']
+    # deleteMany: List['SceneScalarWhereInput']
+    # upsert: List['SceneUpserteWithWhereUniqueWithoutRelationsInput']
+
+
+class SceneUpdateOneWithoutRelationsInput(TypedDict, total=False):
+    create: 'SceneCreateWithoutRelationsInput'
+    connect: 'SceneWhereUniqueInput'
+    connect_or_create: 'SceneConnectOrCreateWithoutRelationsInput'
+    disconnect: bool
+    delete: bool
+
+    # TODO
+    # update: 'SceneUpdateInput'
+    # upsert: 'SceneUpsertWithoutRelationsInput'
+
+
+class SceneUpsertInput(TypedDict):
+    create: 'SceneCreateInput'
+    update: 'SceneUpdateInput'  # pyright: ignore[reportIncompatibleMethodOverride]
+
+
+_Scene_id_OrderByInput = TypedDict(
+    '_Scene_id_OrderByInput',
+    {
+        'id': 'SortOrder',
+    },
+    total=True
+)
+
+_Scene_campaignId_OrderByInput = TypedDict(
+    '_Scene_campaignId_OrderByInput',
+    {
+        'campaignId': 'SortOrder',
+    },
+    total=True
+)
+
+_Scene_turn_num_OrderByInput = TypedDict(
+    '_Scene_turn_num_OrderByInput',
+    {
+        'turn_num': 'SortOrder',
+    },
+    total=True
+)
+
+_Scene_scene_context_OrderByInput = TypedDict(
+    '_Scene_scene_context_OrderByInput',
+    {
+        'scene_context': 'SortOrder',
+    },
+    total=True
+)
+
+_Scene_RelevanceInner = TypedDict(
+    '_Scene_RelevanceInner',
+    {
+        'fields': 'List[SceneScalarFieldKeys]',
+        'search': 'str',
+        'sort': 'SortOrder',
+    },
+    total=True
+)
+
+_Scene_RelevanceOrderByInput = TypedDict(
+    '_Scene_RelevanceOrderByInput',
+    {
+        '_relevance': '_Scene_RelevanceInner',
+    },
+    total=True
+)
+
+SceneOrderByInput = Union[
+    '_Scene_id_OrderByInput',
+    '_Scene_campaignId_OrderByInput',
+    '_Scene_turn_num_OrderByInput',
+    '_Scene_scene_context_OrderByInput',
+    '_Scene_RelevanceOrderByInput',
+]
+
+
+
+# recursive Scene types
+# TODO: cleanup these types
+
+
+# Dict[str, Any] is a mypy limitation
+# see https://github.com/RobertCraigie/prisma-client-py/issues/45
+# switch to pyright for improved types, see https://prisma-client-py.readthedocs.io/en/stable/reference/limitations/
+
+SceneRelationFilter = TypedDict(
+    'SceneRelationFilter',
+    {
+        'is': 'Dict[str, Any]',
+        'is_not': 'Dict[str, Any]',
+    },
+    total=False,
+)
+
+
+class SceneListRelationFilter(TypedDict, total=False):
+    some: 'Dict[str, Any]'
+    none: 'Dict[str, Any]'
+    every: 'Dict[str, Any]'
+
+
+class SceneInclude(TypedDict, total=False):
+    """Scene relational arguments"""
+    campaign: Union[bool, 'CampaignSessionArgsFromScene']
+
+
+    
+
+class CHARACTERVECTORIncludeFromScene(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class CHARACTERVECTORIncludeFromSceneRecursive1(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class CHARACTERVECTORIncludeFromSceneRecursive2(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class CHARACTERVECTORIncludeFromSceneRecursive3(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class CHARACTERVECTORIncludeFromSceneRecursive4(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+    
+
+class CHARACTERVECTORArgsFromScene(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive1'
+
+
+class CHARACTERVECTORArgsFromSceneRecursive1(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive2'
+
+
+class CHARACTERVECTORArgsFromSceneRecursive2(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive3'
+
+
+class CHARACTERVECTORArgsFromSceneRecursive3(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive4'
+
+
+class CHARACTERVECTORArgsFromSceneRecursive4(TypedDict, total=False):
+    """Arguments for Scene"""
+    
+    
+
+class FindManyCHARACTERVECTORArgsFromScene(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['CHARACTERVECTOROrderByInput', List['CHARACTERVECTOROrderByInput']]
+    where: 'CHARACTERVECTORWhereInput'
+    cursor: 'CHARACTERVECTORWhereUniqueInput'
+    distinct: List['CHARACTERVECTORScalarFieldKeys']
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive1'
+
+
+class FindManyCHARACTERVECTORArgsFromSceneRecursive1(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['CHARACTERVECTOROrderByInput', List['CHARACTERVECTOROrderByInput']]
+    where: 'CHARACTERVECTORWhereInput'
+    cursor: 'CHARACTERVECTORWhereUniqueInput'
+    distinct: List['CHARACTERVECTORScalarFieldKeys']
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive2'
+
+
+class FindManyCHARACTERVECTORArgsFromSceneRecursive2(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['CHARACTERVECTOROrderByInput', List['CHARACTERVECTOROrderByInput']]
+    where: 'CHARACTERVECTORWhereInput'
+    cursor: 'CHARACTERVECTORWhereUniqueInput'
+    distinct: List['CHARACTERVECTORScalarFieldKeys']
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive3'
+
+
+class FindManyCHARACTERVECTORArgsFromSceneRecursive3(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['CHARACTERVECTOROrderByInput', List['CHARACTERVECTOROrderByInput']]
+    where: 'CHARACTERVECTORWhereInput'
+    cursor: 'CHARACTERVECTORWhereUniqueInput'
+    distinct: List['CHARACTERVECTORScalarFieldKeys']
+    include: 'CHARACTERVECTORIncludeFromCHARACTERVECTORRecursive4'
+
+
+class FindManyCHARACTERVECTORArgsFromSceneRecursive4(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['CHARACTERVECTOROrderByInput', List['CHARACTERVECTOROrderByInput']]
+    where: 'CHARACTERVECTORWhereInput'
+    cursor: 'CHARACTERVECTORWhereUniqueInput'
+    distinct: List['CHARACTERVECTORScalarFieldKeys']
+    
+    
+
+class ClassesIncludeFromScene(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class ClassesIncludeFromSceneRecursive1(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class ClassesIncludeFromSceneRecursive2(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class ClassesIncludeFromSceneRecursive3(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class ClassesIncludeFromSceneRecursive4(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+    
+
+class ClassesArgsFromScene(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'ClassesIncludeFromClassesRecursive1'
+
+
+class ClassesArgsFromSceneRecursive1(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'ClassesIncludeFromClassesRecursive2'
+
+
+class ClassesArgsFromSceneRecursive2(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'ClassesIncludeFromClassesRecursive3'
+
+
+class ClassesArgsFromSceneRecursive3(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'ClassesIncludeFromClassesRecursive4'
+
+
+class ClassesArgsFromSceneRecursive4(TypedDict, total=False):
+    """Arguments for Scene"""
+    
+    
+
+class FindManyClassesArgsFromScene(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['ClassesOrderByInput', List['ClassesOrderByInput']]
+    where: 'ClassesWhereInput'
+    cursor: 'ClassesWhereUniqueInput'
+    distinct: List['ClassesScalarFieldKeys']
+    include: 'ClassesIncludeFromClassesRecursive1'
+
+
+class FindManyClassesArgsFromSceneRecursive1(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['ClassesOrderByInput', List['ClassesOrderByInput']]
+    where: 'ClassesWhereInput'
+    cursor: 'ClassesWhereUniqueInput'
+    distinct: List['ClassesScalarFieldKeys']
+    include: 'ClassesIncludeFromClassesRecursive2'
+
+
+class FindManyClassesArgsFromSceneRecursive2(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['ClassesOrderByInput', List['ClassesOrderByInput']]
+    where: 'ClassesWhereInput'
+    cursor: 'ClassesWhereUniqueInput'
+    distinct: List['ClassesScalarFieldKeys']
+    include: 'ClassesIncludeFromClassesRecursive3'
+
+
+class FindManyClassesArgsFromSceneRecursive3(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['ClassesOrderByInput', List['ClassesOrderByInput']]
+    where: 'ClassesWhereInput'
+    cursor: 'ClassesWhereUniqueInput'
+    distinct: List['ClassesScalarFieldKeys']
+    include: 'ClassesIncludeFromClassesRecursive4'
+
+
+class FindManyClassesArgsFromSceneRecursive4(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['ClassesOrderByInput', List['ClassesOrderByInput']]
+    where: 'ClassesWhereInput'
+    cursor: 'ClassesWhereUniqueInput'
+    distinct: List['ClassesScalarFieldKeys']
+    
+    
+
+class GeneralEquipmentIncludeFromScene(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class GeneralEquipmentIncludeFromSceneRecursive1(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class GeneralEquipmentIncludeFromSceneRecursive2(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class GeneralEquipmentIncludeFromSceneRecursive3(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class GeneralEquipmentIncludeFromSceneRecursive4(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+    
+
+class GeneralEquipmentArgsFromScene(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive1'
+
+
+class GeneralEquipmentArgsFromSceneRecursive1(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive2'
+
+
+class GeneralEquipmentArgsFromSceneRecursive2(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive3'
+
+
+class GeneralEquipmentArgsFromSceneRecursive3(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive4'
+
+
+class GeneralEquipmentArgsFromSceneRecursive4(TypedDict, total=False):
+    """Arguments for Scene"""
+    
+    
+
+class FindManyGeneralEquipmentArgsFromScene(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['GeneralEquipmentOrderByInput', List['GeneralEquipmentOrderByInput']]
+    where: 'GeneralEquipmentWhereInput'
+    cursor: 'GeneralEquipmentWhereUniqueInput'
+    distinct: List['GeneralEquipmentScalarFieldKeys']
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive1'
+
+
+class FindManyGeneralEquipmentArgsFromSceneRecursive1(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['GeneralEquipmentOrderByInput', List['GeneralEquipmentOrderByInput']]
+    where: 'GeneralEquipmentWhereInput'
+    cursor: 'GeneralEquipmentWhereUniqueInput'
+    distinct: List['GeneralEquipmentScalarFieldKeys']
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive2'
+
+
+class FindManyGeneralEquipmentArgsFromSceneRecursive2(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['GeneralEquipmentOrderByInput', List['GeneralEquipmentOrderByInput']]
+    where: 'GeneralEquipmentWhereInput'
+    cursor: 'GeneralEquipmentWhereUniqueInput'
+    distinct: List['GeneralEquipmentScalarFieldKeys']
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive3'
+
+
+class FindManyGeneralEquipmentArgsFromSceneRecursive3(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['GeneralEquipmentOrderByInput', List['GeneralEquipmentOrderByInput']]
+    where: 'GeneralEquipmentWhereInput'
+    cursor: 'GeneralEquipmentWhereUniqueInput'
+    distinct: List['GeneralEquipmentScalarFieldKeys']
+    include: 'GeneralEquipmentIncludeFromGeneralEquipmentRecursive4'
+
+
+class FindManyGeneralEquipmentArgsFromSceneRecursive4(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['GeneralEquipmentOrderByInput', List['GeneralEquipmentOrderByInput']]
+    where: 'GeneralEquipmentWhereInput'
+    cursor: 'GeneralEquipmentWhereUniqueInput'
+    distinct: List['GeneralEquipmentScalarFieldKeys']
+    
+    
+
+class ITEMSVECTORIncludeFromScene(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class ITEMSVECTORIncludeFromSceneRecursive1(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class ITEMSVECTORIncludeFromSceneRecursive2(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class ITEMSVECTORIncludeFromSceneRecursive3(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class ITEMSVECTORIncludeFromSceneRecursive4(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+    
+
+class ITEMSVECTORArgsFromScene(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive1'
+
+
+class ITEMSVECTORArgsFromSceneRecursive1(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive2'
+
+
+class ITEMSVECTORArgsFromSceneRecursive2(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive3'
+
+
+class ITEMSVECTORArgsFromSceneRecursive3(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive4'
+
+
+class ITEMSVECTORArgsFromSceneRecursive4(TypedDict, total=False):
+    """Arguments for Scene"""
+    
+    
+
+class FindManyITEMSVECTORArgsFromScene(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['ITEMSVECTOROrderByInput', List['ITEMSVECTOROrderByInput']]
+    where: 'ITEMSVECTORWhereInput'
+    cursor: 'ITEMSVECTORWhereUniqueInput'
+    distinct: List['ITEMSVECTORScalarFieldKeys']
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive1'
+
+
+class FindManyITEMSVECTORArgsFromSceneRecursive1(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['ITEMSVECTOROrderByInput', List['ITEMSVECTOROrderByInput']]
+    where: 'ITEMSVECTORWhereInput'
+    cursor: 'ITEMSVECTORWhereUniqueInput'
+    distinct: List['ITEMSVECTORScalarFieldKeys']
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive2'
+
+
+class FindManyITEMSVECTORArgsFromSceneRecursive2(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['ITEMSVECTOROrderByInput', List['ITEMSVECTOROrderByInput']]
+    where: 'ITEMSVECTORWhereInput'
+    cursor: 'ITEMSVECTORWhereUniqueInput'
+    distinct: List['ITEMSVECTORScalarFieldKeys']
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive3'
+
+
+class FindManyITEMSVECTORArgsFromSceneRecursive3(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['ITEMSVECTOROrderByInput', List['ITEMSVECTOROrderByInput']]
+    where: 'ITEMSVECTORWhereInput'
+    cursor: 'ITEMSVECTORWhereUniqueInput'
+    distinct: List['ITEMSVECTORScalarFieldKeys']
+    include: 'ITEMSVECTORIncludeFromITEMSVECTORRecursive4'
+
+
+class FindManyITEMSVECTORArgsFromSceneRecursive4(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['ITEMSVECTOROrderByInput', List['ITEMSVECTOROrderByInput']]
+    where: 'ITEMSVECTORWhereInput'
+    cursor: 'ITEMSVECTORWhereUniqueInput'
+    distinct: List['ITEMSVECTORScalarFieldKeys']
+    
+    
+
+class MONSTERVECTORIncludeFromScene(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class MONSTERVECTORIncludeFromSceneRecursive1(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class MONSTERVECTORIncludeFromSceneRecursive2(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class MONSTERVECTORIncludeFromSceneRecursive3(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class MONSTERVECTORIncludeFromSceneRecursive4(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+    
+
+class MONSTERVECTORArgsFromScene(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive1'
+
+
+class MONSTERVECTORArgsFromSceneRecursive1(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive2'
+
+
+class MONSTERVECTORArgsFromSceneRecursive2(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive3'
+
+
+class MONSTERVECTORArgsFromSceneRecursive3(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive4'
+
+
+class MONSTERVECTORArgsFromSceneRecursive4(TypedDict, total=False):
+    """Arguments for Scene"""
+    
+    
+
+class FindManyMONSTERVECTORArgsFromScene(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['MONSTERVECTOROrderByInput', List['MONSTERVECTOROrderByInput']]
+    where: 'MONSTERVECTORWhereInput'
+    cursor: 'MONSTERVECTORWhereUniqueInput'
+    distinct: List['MONSTERVECTORScalarFieldKeys']
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive1'
+
+
+class FindManyMONSTERVECTORArgsFromSceneRecursive1(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['MONSTERVECTOROrderByInput', List['MONSTERVECTOROrderByInput']]
+    where: 'MONSTERVECTORWhereInput'
+    cursor: 'MONSTERVECTORWhereUniqueInput'
+    distinct: List['MONSTERVECTORScalarFieldKeys']
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive2'
+
+
+class FindManyMONSTERVECTORArgsFromSceneRecursive2(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['MONSTERVECTOROrderByInput', List['MONSTERVECTOROrderByInput']]
+    where: 'MONSTERVECTORWhereInput'
+    cursor: 'MONSTERVECTORWhereUniqueInput'
+    distinct: List['MONSTERVECTORScalarFieldKeys']
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive3'
+
+
+class FindManyMONSTERVECTORArgsFromSceneRecursive3(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['MONSTERVECTOROrderByInput', List['MONSTERVECTOROrderByInput']]
+    where: 'MONSTERVECTORWhereInput'
+    cursor: 'MONSTERVECTORWhereUniqueInput'
+    distinct: List['MONSTERVECTORScalarFieldKeys']
+    include: 'MONSTERVECTORIncludeFromMONSTERVECTORRecursive4'
+
+
+class FindManyMONSTERVECTORArgsFromSceneRecursive4(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['MONSTERVECTOROrderByInput', List['MONSTERVECTOROrderByInput']]
+    where: 'MONSTERVECTORWhereInput'
+    cursor: 'MONSTERVECTORWhereUniqueInput'
+    distinct: List['MONSTERVECTORScalarFieldKeys']
+    
+    
+
+class MagicItemIncludeFromScene(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class MagicItemIncludeFromSceneRecursive1(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class MagicItemIncludeFromSceneRecursive2(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class MagicItemIncludeFromSceneRecursive3(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class MagicItemIncludeFromSceneRecursive4(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+    
+
+class MagicItemArgsFromScene(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'MagicItemIncludeFromMagicItemRecursive1'
+
+
+class MagicItemArgsFromSceneRecursive1(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'MagicItemIncludeFromMagicItemRecursive2'
+
+
+class MagicItemArgsFromSceneRecursive2(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'MagicItemIncludeFromMagicItemRecursive3'
+
+
+class MagicItemArgsFromSceneRecursive3(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'MagicItemIncludeFromMagicItemRecursive4'
+
+
+class MagicItemArgsFromSceneRecursive4(TypedDict, total=False):
+    """Arguments for Scene"""
+    
+    
+
+class FindManyMagicItemArgsFromScene(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['MagicItemOrderByInput', List['MagicItemOrderByInput']]
+    where: 'MagicItemWhereInput'
+    cursor: 'MagicItemWhereUniqueInput'
+    distinct: List['MagicItemScalarFieldKeys']
+    include: 'MagicItemIncludeFromMagicItemRecursive1'
+
+
+class FindManyMagicItemArgsFromSceneRecursive1(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['MagicItemOrderByInput', List['MagicItemOrderByInput']]
+    where: 'MagicItemWhereInput'
+    cursor: 'MagicItemWhereUniqueInput'
+    distinct: List['MagicItemScalarFieldKeys']
+    include: 'MagicItemIncludeFromMagicItemRecursive2'
+
+
+class FindManyMagicItemArgsFromSceneRecursive2(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['MagicItemOrderByInput', List['MagicItemOrderByInput']]
+    where: 'MagicItemWhereInput'
+    cursor: 'MagicItemWhereUniqueInput'
+    distinct: List['MagicItemScalarFieldKeys']
+    include: 'MagicItemIncludeFromMagicItemRecursive3'
+
+
+class FindManyMagicItemArgsFromSceneRecursive3(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['MagicItemOrderByInput', List['MagicItemOrderByInput']]
+    where: 'MagicItemWhereInput'
+    cursor: 'MagicItemWhereUniqueInput'
+    distinct: List['MagicItemScalarFieldKeys']
+    include: 'MagicItemIncludeFromMagicItemRecursive4'
+
+
+class FindManyMagicItemArgsFromSceneRecursive4(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['MagicItemOrderByInput', List['MagicItemOrderByInput']]
+    where: 'MagicItemWhereInput'
+    cursor: 'MagicItemWhereUniqueInput'
+    distinct: List['MagicItemScalarFieldKeys']
+    
+    
+
+class MonsterIncludeFromScene(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class MonsterIncludeFromSceneRecursive1(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class MonsterIncludeFromSceneRecursive2(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class MonsterIncludeFromSceneRecursive3(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class MonsterIncludeFromSceneRecursive4(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+    
+
+class MonsterArgsFromScene(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'MonsterIncludeFromMonsterRecursive1'
+
+
+class MonsterArgsFromSceneRecursive1(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'MonsterIncludeFromMonsterRecursive2'
+
+
+class MonsterArgsFromSceneRecursive2(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'MonsterIncludeFromMonsterRecursive3'
+
+
+class MonsterArgsFromSceneRecursive3(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'MonsterIncludeFromMonsterRecursive4'
+
+
+class MonsterArgsFromSceneRecursive4(TypedDict, total=False):
+    """Arguments for Scene"""
+    
+    
+
+class FindManyMonsterArgsFromScene(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['MonsterOrderByInput', List['MonsterOrderByInput']]
+    where: 'MonsterWhereInput'
+    cursor: 'MonsterWhereUniqueInput'
+    distinct: List['MonsterScalarFieldKeys']
+    include: 'MonsterIncludeFromMonsterRecursive1'
+
+
+class FindManyMonsterArgsFromSceneRecursive1(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['MonsterOrderByInput', List['MonsterOrderByInput']]
+    where: 'MonsterWhereInput'
+    cursor: 'MonsterWhereUniqueInput'
+    distinct: List['MonsterScalarFieldKeys']
+    include: 'MonsterIncludeFromMonsterRecursive2'
+
+
+class FindManyMonsterArgsFromSceneRecursive2(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['MonsterOrderByInput', List['MonsterOrderByInput']]
+    where: 'MonsterWhereInput'
+    cursor: 'MonsterWhereUniqueInput'
+    distinct: List['MonsterScalarFieldKeys']
+    include: 'MonsterIncludeFromMonsterRecursive3'
+
+
+class FindManyMonsterArgsFromSceneRecursive3(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['MonsterOrderByInput', List['MonsterOrderByInput']]
+    where: 'MonsterWhereInput'
+    cursor: 'MonsterWhereUniqueInput'
+    distinct: List['MonsterScalarFieldKeys']
+    include: 'MonsterIncludeFromMonsterRecursive4'
+
+
+class FindManyMonsterArgsFromSceneRecursive4(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['MonsterOrderByInput', List['MonsterOrderByInput']]
+    where: 'MonsterWhereInput'
+    cursor: 'MonsterWhereUniqueInput'
+    distinct: List['MonsterScalarFieldKeys']
+    
+    
+
+class RaceIncludeFromScene(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class RaceIncludeFromSceneRecursive1(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class RaceIncludeFromSceneRecursive2(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class RaceIncludeFromSceneRecursive3(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class RaceIncludeFromSceneRecursive4(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+    
+
+class RaceArgsFromScene(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'RaceIncludeFromRaceRecursive1'
+
+
+class RaceArgsFromSceneRecursive1(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'RaceIncludeFromRaceRecursive2'
+
+
+class RaceArgsFromSceneRecursive2(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'RaceIncludeFromRaceRecursive3'
+
+
+class RaceArgsFromSceneRecursive3(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'RaceIncludeFromRaceRecursive4'
+
+
+class RaceArgsFromSceneRecursive4(TypedDict, total=False):
+    """Arguments for Scene"""
+    
+    
+
+class FindManyRaceArgsFromScene(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['RaceOrderByInput', List['RaceOrderByInput']]
+    where: 'RaceWhereInput'
+    cursor: 'RaceWhereUniqueInput'
+    distinct: List['RaceScalarFieldKeys']
+    include: 'RaceIncludeFromRaceRecursive1'
+
+
+class FindManyRaceArgsFromSceneRecursive1(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['RaceOrderByInput', List['RaceOrderByInput']]
+    where: 'RaceWhereInput'
+    cursor: 'RaceWhereUniqueInput'
+    distinct: List['RaceScalarFieldKeys']
+    include: 'RaceIncludeFromRaceRecursive2'
+
+
+class FindManyRaceArgsFromSceneRecursive2(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['RaceOrderByInput', List['RaceOrderByInput']]
+    where: 'RaceWhereInput'
+    cursor: 'RaceWhereUniqueInput'
+    distinct: List['RaceScalarFieldKeys']
+    include: 'RaceIncludeFromRaceRecursive3'
+
+
+class FindManyRaceArgsFromSceneRecursive3(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['RaceOrderByInput', List['RaceOrderByInput']]
+    where: 'RaceWhereInput'
+    cursor: 'RaceWhereUniqueInput'
+    distinct: List['RaceScalarFieldKeys']
+    include: 'RaceIncludeFromRaceRecursive4'
+
+
+class FindManyRaceArgsFromSceneRecursive4(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['RaceOrderByInput', List['RaceOrderByInput']]
+    where: 'RaceWhereInput'
+    cursor: 'RaceWhereUniqueInput'
+    distinct: List['RaceScalarFieldKeys']
+    
+    
+
+class SESSIONIncludeFromScene(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class SESSIONIncludeFromSceneRecursive1(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class SESSIONIncludeFromSceneRecursive2(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class SESSIONIncludeFromSceneRecursive3(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class SESSIONIncludeFromSceneRecursive4(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+    
+
+class SESSIONArgsFromScene(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'SESSIONIncludeFromSESSIONRecursive1'
+
+
+class SESSIONArgsFromSceneRecursive1(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'SESSIONIncludeFromSESSIONRecursive2'
+
+
+class SESSIONArgsFromSceneRecursive2(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'SESSIONIncludeFromSESSIONRecursive3'
+
+
+class SESSIONArgsFromSceneRecursive3(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'SESSIONIncludeFromSESSIONRecursive4'
+
+
+class SESSIONArgsFromSceneRecursive4(TypedDict, total=False):
+    """Arguments for Scene"""
+    
+    
+
+class FindManySESSIONArgsFromScene(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['SESSIONOrderByInput', List['SESSIONOrderByInput']]
+    where: 'SESSIONWhereInput'
+    cursor: 'SESSIONWhereUniqueInput'
+    distinct: List['SESSIONScalarFieldKeys']
+    include: 'SESSIONIncludeFromSESSIONRecursive1'
+
+
+class FindManySESSIONArgsFromSceneRecursive1(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['SESSIONOrderByInput', List['SESSIONOrderByInput']]
+    where: 'SESSIONWhereInput'
+    cursor: 'SESSIONWhereUniqueInput'
+    distinct: List['SESSIONScalarFieldKeys']
+    include: 'SESSIONIncludeFromSESSIONRecursive2'
+
+
+class FindManySESSIONArgsFromSceneRecursive2(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['SESSIONOrderByInput', List['SESSIONOrderByInput']]
+    where: 'SESSIONWhereInput'
+    cursor: 'SESSIONWhereUniqueInput'
+    distinct: List['SESSIONScalarFieldKeys']
+    include: 'SESSIONIncludeFromSESSIONRecursive3'
+
+
+class FindManySESSIONArgsFromSceneRecursive3(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['SESSIONOrderByInput', List['SESSIONOrderByInput']]
+    where: 'SESSIONWhereInput'
+    cursor: 'SESSIONWhereUniqueInput'
+    distinct: List['SESSIONScalarFieldKeys']
+    include: 'SESSIONIncludeFromSESSIONRecursive4'
+
+
+class FindManySESSIONArgsFromSceneRecursive4(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['SESSIONOrderByInput', List['SESSIONOrderByInput']]
+    where: 'SESSIONWhereInput'
+    cursor: 'SESSIONWhereUniqueInput'
+    distinct: List['SESSIONScalarFieldKeys']
+    
+    
+
+class SPELLSVECTORIncludeFromScene(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class SPELLSVECTORIncludeFromSceneRecursive1(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class SPELLSVECTORIncludeFromSceneRecursive2(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class SPELLSVECTORIncludeFromSceneRecursive3(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class SPELLSVECTORIncludeFromSceneRecursive4(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+    
+
+class SPELLSVECTORArgsFromScene(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive1'
+
+
+class SPELLSVECTORArgsFromSceneRecursive1(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive2'
+
+
+class SPELLSVECTORArgsFromSceneRecursive2(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive3'
+
+
+class SPELLSVECTORArgsFromSceneRecursive3(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive4'
+
+
+class SPELLSVECTORArgsFromSceneRecursive4(TypedDict, total=False):
+    """Arguments for Scene"""
+    
+    
+
+class FindManySPELLSVECTORArgsFromScene(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['SPELLSVECTOROrderByInput', List['SPELLSVECTOROrderByInput']]
+    where: 'SPELLSVECTORWhereInput'
+    cursor: 'SPELLSVECTORWhereUniqueInput'
+    distinct: List['SPELLSVECTORScalarFieldKeys']
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive1'
+
+
+class FindManySPELLSVECTORArgsFromSceneRecursive1(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['SPELLSVECTOROrderByInput', List['SPELLSVECTOROrderByInput']]
+    where: 'SPELLSVECTORWhereInput'
+    cursor: 'SPELLSVECTORWhereUniqueInput'
+    distinct: List['SPELLSVECTORScalarFieldKeys']
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive2'
+
+
+class FindManySPELLSVECTORArgsFromSceneRecursive2(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['SPELLSVECTOROrderByInput', List['SPELLSVECTOROrderByInput']]
+    where: 'SPELLSVECTORWhereInput'
+    cursor: 'SPELLSVECTORWhereUniqueInput'
+    distinct: List['SPELLSVECTORScalarFieldKeys']
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive3'
+
+
+class FindManySPELLSVECTORArgsFromSceneRecursive3(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['SPELLSVECTOROrderByInput', List['SPELLSVECTOROrderByInput']]
+    where: 'SPELLSVECTORWhereInput'
+    cursor: 'SPELLSVECTORWhereUniqueInput'
+    distinct: List['SPELLSVECTORScalarFieldKeys']
+    include: 'SPELLSVECTORIncludeFromSPELLSVECTORRecursive4'
+
+
+class FindManySPELLSVECTORArgsFromSceneRecursive4(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['SPELLSVECTOROrderByInput', List['SPELLSVECTOROrderByInput']]
+    where: 'SPELLSVECTORWhereInput'
+    cursor: 'SPELLSVECTORWhereUniqueInput'
+    distinct: List['SPELLSVECTORScalarFieldKeys']
+    
+    
+
+class SpellIncludeFromScene(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class SpellIncludeFromSceneRecursive1(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class SpellIncludeFromSceneRecursive2(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class SpellIncludeFromSceneRecursive3(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class SpellIncludeFromSceneRecursive4(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+    
+
+class SpellArgsFromScene(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'SpellIncludeFromSpellRecursive1'
+
+
+class SpellArgsFromSceneRecursive1(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'SpellIncludeFromSpellRecursive2'
+
+
+class SpellArgsFromSceneRecursive2(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'SpellIncludeFromSpellRecursive3'
+
+
+class SpellArgsFromSceneRecursive3(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'SpellIncludeFromSpellRecursive4'
+
+
+class SpellArgsFromSceneRecursive4(TypedDict, total=False):
+    """Arguments for Scene"""
+    
+    
+
+class FindManySpellArgsFromScene(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['SpellOrderByInput', List['SpellOrderByInput']]
+    where: 'SpellWhereInput'
+    cursor: 'SpellWhereUniqueInput'
+    distinct: List['SpellScalarFieldKeys']
+    include: 'SpellIncludeFromSpellRecursive1'
+
+
+class FindManySpellArgsFromSceneRecursive1(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['SpellOrderByInput', List['SpellOrderByInput']]
+    where: 'SpellWhereInput'
+    cursor: 'SpellWhereUniqueInput'
+    distinct: List['SpellScalarFieldKeys']
+    include: 'SpellIncludeFromSpellRecursive2'
+
+
+class FindManySpellArgsFromSceneRecursive2(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['SpellOrderByInput', List['SpellOrderByInput']]
+    where: 'SpellWhereInput'
+    cursor: 'SpellWhereUniqueInput'
+    distinct: List['SpellScalarFieldKeys']
+    include: 'SpellIncludeFromSpellRecursive3'
+
+
+class FindManySpellArgsFromSceneRecursive3(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['SpellOrderByInput', List['SpellOrderByInput']]
+    where: 'SpellWhereInput'
+    cursor: 'SpellWhereUniqueInput'
+    distinct: List['SpellScalarFieldKeys']
+    include: 'SpellIncludeFromSpellRecursive4'
+
+
+class FindManySpellArgsFromSceneRecursive4(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['SpellOrderByInput', List['SpellOrderByInput']]
+    where: 'SpellWhereInput'
+    cursor: 'SpellWhereUniqueInput'
+    distinct: List['SpellScalarFieldKeys']
+    
+    
+
+class USERDATAIncludeFromScene(TypedDict, total=False):
+    """Relational arguments for Scene"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromSceneRecursive1']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSceneRecursive1']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromSceneRecursive1']
+
+
+class USERDATAIncludeFromSceneRecursive1(TypedDict, total=False):
+    """Relational arguments for Scene"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromSceneRecursive2']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSceneRecursive2']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromSceneRecursive2']
+
+
+class USERDATAIncludeFromSceneRecursive2(TypedDict, total=False):
+    """Relational arguments for Scene"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromSceneRecursive3']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSceneRecursive3']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromSceneRecursive3']
+
+
+class USERDATAIncludeFromSceneRecursive3(TypedDict, total=False):
+    """Relational arguments for Scene"""
+    characters: Union[bool, 'FindManyUSERCHARArgsFromSceneRecursive4']
+    characters_change: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSceneRecursive4']
+    campaign_sessions: Union[bool, 'FindManyCampaignSessionArgsFromSceneRecursive4']
+
+
+class USERDATAIncludeFromSceneRecursive4(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+    
+
+class USERDATAArgsFromScene(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'USERDATAIncludeFromUSERDATARecursive1'
+
+
+class USERDATAArgsFromSceneRecursive1(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'USERDATAIncludeFromUSERDATARecursive2'
+
+
+class USERDATAArgsFromSceneRecursive2(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'USERDATAIncludeFromUSERDATARecursive3'
+
+
+class USERDATAArgsFromSceneRecursive3(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'USERDATAIncludeFromUSERDATARecursive4'
+
+
+class USERDATAArgsFromSceneRecursive4(TypedDict, total=False):
+    """Arguments for Scene"""
+    
+    
+
+class FindManyUSERDATAArgsFromScene(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['USERDATAOrderByInput', List['USERDATAOrderByInput']]
+    where: 'USERDATAWhereInput'
+    cursor: 'USERDATAWhereUniqueInput'
+    distinct: List['USERDATAScalarFieldKeys']
+    include: 'USERDATAIncludeFromUSERDATARecursive1'
+
+
+class FindManyUSERDATAArgsFromSceneRecursive1(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['USERDATAOrderByInput', List['USERDATAOrderByInput']]
+    where: 'USERDATAWhereInput'
+    cursor: 'USERDATAWhereUniqueInput'
+    distinct: List['USERDATAScalarFieldKeys']
+    include: 'USERDATAIncludeFromUSERDATARecursive2'
+
+
+class FindManyUSERDATAArgsFromSceneRecursive2(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['USERDATAOrderByInput', List['USERDATAOrderByInput']]
+    where: 'USERDATAWhereInput'
+    cursor: 'USERDATAWhereUniqueInput'
+    distinct: List['USERDATAScalarFieldKeys']
+    include: 'USERDATAIncludeFromUSERDATARecursive3'
+
+
+class FindManyUSERDATAArgsFromSceneRecursive3(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['USERDATAOrderByInput', List['USERDATAOrderByInput']]
+    where: 'USERDATAWhereInput'
+    cursor: 'USERDATAWhereUniqueInput'
+    distinct: List['USERDATAScalarFieldKeys']
+    include: 'USERDATAIncludeFromUSERDATARecursive4'
+
+
+class FindManyUSERDATAArgsFromSceneRecursive4(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['USERDATAOrderByInput', List['USERDATAOrderByInput']]
+    where: 'USERDATAWhereInput'
+    cursor: 'USERDATAWhereUniqueInput'
+    distinct: List['USERDATAScalarFieldKeys']
+    
+    
+
+class STORYVECTORIncludeFromScene(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class STORYVECTORIncludeFromSceneRecursive1(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class STORYVECTORIncludeFromSceneRecursive2(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class STORYVECTORIncludeFromSceneRecursive3(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+
+class STORYVECTORIncludeFromSceneRecursive4(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+    
+
+class STORYVECTORArgsFromScene(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive1'
+
+
+class STORYVECTORArgsFromSceneRecursive1(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive2'
+
+
+class STORYVECTORArgsFromSceneRecursive2(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive3'
+
+
+class STORYVECTORArgsFromSceneRecursive3(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive4'
+
+
+class STORYVECTORArgsFromSceneRecursive4(TypedDict, total=False):
+    """Arguments for Scene"""
+    
+    
+
+class FindManySTORYVECTORArgsFromScene(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive1'
+
+
+class FindManySTORYVECTORArgsFromSceneRecursive1(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive2'
+
+
+class FindManySTORYVECTORArgsFromSceneRecursive2(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive3'
+
+
+class FindManySTORYVECTORArgsFromSceneRecursive3(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    include: 'STORYVECTORIncludeFromSTORYVECTORRecursive4'
+
+
+class FindManySTORYVECTORArgsFromSceneRecursive4(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['STORYVECTOROrderByInput', List['STORYVECTOROrderByInput']]
+    where: 'STORYVECTORWhereInput'
+    cursor: 'STORYVECTORWhereUniqueInput'
+    distinct: List['STORYVECTORScalarFieldKeys']
+    
+    
+
+class USERCHARIncludeFromScene(TypedDict, total=False):
+    """Relational arguments for Scene"""
+    username: Union[bool, 'USERDATAArgsFromSceneRecursive1']
+
+
+class USERCHARIncludeFromSceneRecursive1(TypedDict, total=False):
+    """Relational arguments for Scene"""
+    username: Union[bool, 'USERDATAArgsFromSceneRecursive2']
+
+
+class USERCHARIncludeFromSceneRecursive2(TypedDict, total=False):
+    """Relational arguments for Scene"""
+    username: Union[bool, 'USERDATAArgsFromSceneRecursive3']
+
+
+class USERCHARIncludeFromSceneRecursive3(TypedDict, total=False):
+    """Relational arguments for Scene"""
+    username: Union[bool, 'USERDATAArgsFromSceneRecursive4']
+
+
+class USERCHARIncludeFromSceneRecursive4(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+    
+
+class USERCHARArgsFromScene(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive1'
+
+
+class USERCHARArgsFromSceneRecursive1(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive2'
+
+
+class USERCHARArgsFromSceneRecursive2(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive3'
+
+
+class USERCHARArgsFromSceneRecursive3(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'USERCHARIncludeFromUSERCHARRecursive4'
+
+
+class USERCHARArgsFromSceneRecursive4(TypedDict, total=False):
+    """Arguments for Scene"""
+    
+    
+
+class FindManyUSERCHARArgsFromScene(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive1'
+
+
+class FindManyUSERCHARArgsFromSceneRecursive1(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive2'
+
+
+class FindManyUSERCHARArgsFromSceneRecursive2(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive3'
+
+
+class FindManyUSERCHARArgsFromSceneRecursive3(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    include: 'USERCHARIncludeFromUSERCHARRecursive4'
+
+
+class FindManyUSERCHARArgsFromSceneRecursive4(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['USERCHAROrderByInput', List['USERCHAROrderByInput']]
+    where: 'USERCHARWhereInput'
+    cursor: 'USERCHARWhereUniqueInput'
+    distinct: List['USERCHARScalarFieldKeys']
+    
+    
+
+class USERCHARCHANGEIncludeFromScene(TypedDict, total=False):
+    """Relational arguments for Scene"""
+    username: Union[bool, 'USERDATAArgsFromSceneRecursive1']
+    campaign: Union[bool, 'CampaignSessionArgsFromSceneRecursive1']
+
+
+class USERCHARCHANGEIncludeFromSceneRecursive1(TypedDict, total=False):
+    """Relational arguments for Scene"""
+    username: Union[bool, 'USERDATAArgsFromSceneRecursive2']
+    campaign: Union[bool, 'CampaignSessionArgsFromSceneRecursive2']
+
+
+class USERCHARCHANGEIncludeFromSceneRecursive2(TypedDict, total=False):
+    """Relational arguments for Scene"""
+    username: Union[bool, 'USERDATAArgsFromSceneRecursive3']
+    campaign: Union[bool, 'CampaignSessionArgsFromSceneRecursive3']
+
+
+class USERCHARCHANGEIncludeFromSceneRecursive3(TypedDict, total=False):
+    """Relational arguments for Scene"""
+    username: Union[bool, 'USERDATAArgsFromSceneRecursive4']
+    campaign: Union[bool, 'CampaignSessionArgsFromSceneRecursive4']
+
+
+class USERCHARCHANGEIncludeFromSceneRecursive4(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+    
+
+class USERCHARCHANGEArgsFromScene(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive1'
+
+
+class USERCHARCHANGEArgsFromSceneRecursive1(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive2'
+
+
+class USERCHARCHANGEArgsFromSceneRecursive2(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive3'
+
+
+class USERCHARCHANGEArgsFromSceneRecursive3(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive4'
+
+
+class USERCHARCHANGEArgsFromSceneRecursive4(TypedDict, total=False):
+    """Arguments for Scene"""
+    
+    
+
+class FindManyUSERCHARCHANGEArgsFromScene(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive1'
+
+
+class FindManyUSERCHARCHANGEArgsFromSceneRecursive1(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive2'
+
+
+class FindManyUSERCHARCHANGEArgsFromSceneRecursive2(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive3'
+
+
+class FindManyUSERCHARCHANGEArgsFromSceneRecursive3(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    include: 'USERCHARCHANGEIncludeFromUSERCHARCHANGERecursive4'
+
+
+class FindManyUSERCHARCHANGEArgsFromSceneRecursive4(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['USERCHARCHANGEOrderByInput', List['USERCHARCHANGEOrderByInput']]
+    where: 'USERCHARCHANGEWhereInput'
+    cursor: 'USERCHARCHANGEWhereUniqueInput'
+    distinct: List['USERCHARCHANGEScalarFieldKeys']
+    
+    
+
+class CampaignSessionIncludeFromScene(TypedDict, total=False):
+    """Relational arguments for Scene"""
+    username: Union[bool, 'USERDATAArgsFromSceneRecursive1']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSceneRecursive1']
+    scenes: Union[bool, 'FindManySceneArgsFromSceneRecursive1']
+
+
+class CampaignSessionIncludeFromSceneRecursive1(TypedDict, total=False):
+    """Relational arguments for Scene"""
+    username: Union[bool, 'USERDATAArgsFromSceneRecursive2']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSceneRecursive2']
+    scenes: Union[bool, 'FindManySceneArgsFromSceneRecursive2']
+
+
+class CampaignSessionIncludeFromSceneRecursive2(TypedDict, total=False):
+    """Relational arguments for Scene"""
+    username: Union[bool, 'USERDATAArgsFromSceneRecursive3']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSceneRecursive3']
+    scenes: Union[bool, 'FindManySceneArgsFromSceneRecursive3']
+
+
+class CampaignSessionIncludeFromSceneRecursive3(TypedDict, total=False):
+    """Relational arguments for Scene"""
+    username: Union[bool, 'USERDATAArgsFromSceneRecursive4']
+    user_char_changes: Union[bool, 'FindManyUSERCHARCHANGEArgsFromSceneRecursive4']
+    scenes: Union[bool, 'FindManySceneArgsFromSceneRecursive4']
+
+
+class CampaignSessionIncludeFromSceneRecursive4(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+    
+
+class CampaignSessionArgsFromScene(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive1'
+
+
+class CampaignSessionArgsFromSceneRecursive1(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive2'
+
+
+class CampaignSessionArgsFromSceneRecursive2(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive3'
+
+
+class CampaignSessionArgsFromSceneRecursive3(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive4'
+
+
+class CampaignSessionArgsFromSceneRecursive4(TypedDict, total=False):
+    """Arguments for Scene"""
+    
+    
+
+class FindManyCampaignSessionArgsFromScene(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive1'
+
+
+class FindManyCampaignSessionArgsFromSceneRecursive1(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive2'
+
+
+class FindManyCampaignSessionArgsFromSceneRecursive2(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive3'
+
+
+class FindManyCampaignSessionArgsFromSceneRecursive3(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    include: 'CampaignSessionIncludeFromCampaignSessionRecursive4'
+
+
+class FindManyCampaignSessionArgsFromSceneRecursive4(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['CampaignSessionOrderByInput', List['CampaignSessionOrderByInput']]
+    where: 'CampaignSessionWhereInput'
+    cursor: 'CampaignSessionWhereUniqueInput'
+    distinct: List['CampaignSessionScalarFieldKeys']
+    
+    
+
+class SceneIncludeFromScene(TypedDict, total=False):
+    """Relational arguments for Scene"""
+    campaign: Union[bool, 'CampaignSessionArgsFromSceneRecursive1']
+
+
+class SceneIncludeFromSceneRecursive1(TypedDict, total=False):
+    """Relational arguments for Scene"""
+    campaign: Union[bool, 'CampaignSessionArgsFromSceneRecursive2']
+
+
+class SceneIncludeFromSceneRecursive2(TypedDict, total=False):
+    """Relational arguments for Scene"""
+    campaign: Union[bool, 'CampaignSessionArgsFromSceneRecursive3']
+
+
+class SceneIncludeFromSceneRecursive3(TypedDict, total=False):
+    """Relational arguments for Scene"""
+    campaign: Union[bool, 'CampaignSessionArgsFromSceneRecursive4']
+
+
+class SceneIncludeFromSceneRecursive4(TypedDict, total=False):
+    """Relational arguments for Scene"""
+
+    
+
+class SceneArgsFromScene(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'SceneIncludeFromSceneRecursive1'
+
+
+class SceneArgsFromSceneRecursive1(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'SceneIncludeFromSceneRecursive2'
+
+
+class SceneArgsFromSceneRecursive2(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'SceneIncludeFromSceneRecursive3'
+
+
+class SceneArgsFromSceneRecursive3(TypedDict, total=False):
+    """Arguments for Scene"""
+    include: 'SceneIncludeFromSceneRecursive4'
+
+
+class SceneArgsFromSceneRecursive4(TypedDict, total=False):
+    """Arguments for Scene"""
+    
+    
+
+class FindManySceneArgsFromScene(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive1'
+
+
+class FindManySceneArgsFromSceneRecursive1(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive2'
+
+
+class FindManySceneArgsFromSceneRecursive2(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive3'
+
+
+class FindManySceneArgsFromSceneRecursive3(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    include: 'SceneIncludeFromSceneRecursive4'
+
+
+class FindManySceneArgsFromSceneRecursive4(TypedDict, total=False):
+    """Arguments for Scene"""
+    take: int
+    skip: int
+    order_by: Union['SceneOrderByInput', List['SceneOrderByInput']]
+    where: 'SceneWhereInput'
+    cursor: 'SceneWhereUniqueInput'
+    distinct: List['SceneScalarFieldKeys']
+    
+
+
+FindManySceneArgs = FindManySceneArgsFromScene
+FindFirstSceneArgs = FindManySceneArgsFromScene
+
+
+    
+
+class SceneWhereInput(TypedDict, total=False):
+    """Scene arguments for searching"""
+    id: Union[_int, 'types.IntFilter']
+    campaignId: Union[_int, 'types.IntFilter']
+    campaign: 'CampaignSessionRelationFilter'
+    turn_num: Union[_int, 'types.IntFilter']
+    scene_context: Union[None, _str, 'types.StringFilter']
+
+    # should be noted that AND and NOT should be Union['SceneWhereInputRecursive1', List['SceneWhereInputRecursive1']]
+    # but this causes mypy to hang :/
+    AND: List['SceneWhereInputRecursive1']
+    OR: List['SceneWhereInputRecursive1']
+    NOT: List['SceneWhereInputRecursive1']
+
+
+class SceneWhereInputRecursive1(TypedDict, total=False):
+    """Scene arguments for searching"""
+    id: Union[_int, 'types.IntFilter']
+    campaignId: Union[_int, 'types.IntFilter']
+    campaign: 'CampaignSessionRelationFilter'
+    turn_num: Union[_int, 'types.IntFilter']
+    scene_context: Union[None, _str, 'types.StringFilter']
+
+    # should be noted that AND and NOT should be Union['SceneWhereInputRecursive2', List['SceneWhereInputRecursive2']]
+    # but this causes mypy to hang :/
+    AND: List['SceneWhereInputRecursive2']
+    OR: List['SceneWhereInputRecursive2']
+    NOT: List['SceneWhereInputRecursive2']
+
+
+class SceneWhereInputRecursive2(TypedDict, total=False):
+    """Scene arguments for searching"""
+    id: Union[_int, 'types.IntFilter']
+    campaignId: Union[_int, 'types.IntFilter']
+    campaign: 'CampaignSessionRelationFilter'
+    turn_num: Union[_int, 'types.IntFilter']
+    scene_context: Union[None, _str, 'types.StringFilter']
+
+    # should be noted that AND and NOT should be Union['SceneWhereInputRecursive3', List['SceneWhereInputRecursive3']]
+    # but this causes mypy to hang :/
+    AND: List['SceneWhereInputRecursive3']
+    OR: List['SceneWhereInputRecursive3']
+    NOT: List['SceneWhereInputRecursive3']
+
+
+class SceneWhereInputRecursive3(TypedDict, total=False):
+    """Scene arguments for searching"""
+    id: Union[_int, 'types.IntFilter']
+    campaignId: Union[_int, 'types.IntFilter']
+    campaign: 'CampaignSessionRelationFilter'
+    turn_num: Union[_int, 'types.IntFilter']
+    scene_context: Union[None, _str, 'types.StringFilter']
+
+    # should be noted that AND and NOT should be Union['SceneWhereInputRecursive4', List['SceneWhereInputRecursive4']]
+    # but this causes mypy to hang :/
+    AND: List['SceneWhereInputRecursive4']
+    OR: List['SceneWhereInputRecursive4']
+    NOT: List['SceneWhereInputRecursive4']
+
+
+class SceneWhereInputRecursive4(TypedDict, total=False):
+    """Scene arguments for searching"""
+    id: Union[_int, 'types.IntFilter']
+    campaignId: Union[_int, 'types.IntFilter']
+    campaign: 'CampaignSessionRelationFilter'
+    turn_num: Union[_int, 'types.IntFilter']
+    scene_context: Union[None, _str, 'types.StringFilter']
+
+
+
+# aggregate Scene types
+
+
+    
+
+class SceneScalarWhereWithAggregatesInput(TypedDict, total=False):
+    """Scene arguments for searching"""
+    id: Union[_int, 'types.IntWithAggregatesFilter']
+    campaignId: Union[_int, 'types.IntWithAggregatesFilter']
+    turn_num: Union[_int, 'types.IntWithAggregatesFilter']
+    scene_context: Union[_str, 'types.StringWithAggregatesFilter']
+
+    AND: List['SceneScalarWhereWithAggregatesInputRecursive1']
+    OR: List['SceneScalarWhereWithAggregatesInputRecursive1']
+    NOT: List['SceneScalarWhereWithAggregatesInputRecursive1']
+
+
+class SceneScalarWhereWithAggregatesInputRecursive1(TypedDict, total=False):
+    """Scene arguments for searching"""
+    id: Union[_int, 'types.IntWithAggregatesFilter']
+    campaignId: Union[_int, 'types.IntWithAggregatesFilter']
+    turn_num: Union[_int, 'types.IntWithAggregatesFilter']
+    scene_context: Union[_str, 'types.StringWithAggregatesFilter']
+
+    AND: List['SceneScalarWhereWithAggregatesInputRecursive2']
+    OR: List['SceneScalarWhereWithAggregatesInputRecursive2']
+    NOT: List['SceneScalarWhereWithAggregatesInputRecursive2']
+
+
+class SceneScalarWhereWithAggregatesInputRecursive2(TypedDict, total=False):
+    """Scene arguments for searching"""
+    id: Union[_int, 'types.IntWithAggregatesFilter']
+    campaignId: Union[_int, 'types.IntWithAggregatesFilter']
+    turn_num: Union[_int, 'types.IntWithAggregatesFilter']
+    scene_context: Union[_str, 'types.StringWithAggregatesFilter']
+
+    AND: List['SceneScalarWhereWithAggregatesInputRecursive3']
+    OR: List['SceneScalarWhereWithAggregatesInputRecursive3']
+    NOT: List['SceneScalarWhereWithAggregatesInputRecursive3']
+
+
+class SceneScalarWhereWithAggregatesInputRecursive3(TypedDict, total=False):
+    """Scene arguments for searching"""
+    id: Union[_int, 'types.IntWithAggregatesFilter']
+    campaignId: Union[_int, 'types.IntWithAggregatesFilter']
+    turn_num: Union[_int, 'types.IntWithAggregatesFilter']
+    scene_context: Union[_str, 'types.StringWithAggregatesFilter']
+
+    AND: List['SceneScalarWhereWithAggregatesInputRecursive4']
+    OR: List['SceneScalarWhereWithAggregatesInputRecursive4']
+    NOT: List['SceneScalarWhereWithAggregatesInputRecursive4']
+
+
+class SceneScalarWhereWithAggregatesInputRecursive4(TypedDict, total=False):
+    """Scene arguments for searching"""
+    id: Union[_int, 'types.IntWithAggregatesFilter']
+    campaignId: Union[_int, 'types.IntWithAggregatesFilter']
+    turn_num: Union[_int, 'types.IntWithAggregatesFilter']
+    scene_context: Union[_str, 'types.StringWithAggregatesFilter']
+
+
+
+class SceneGroupByOutput(TypedDict, total=False):
+    id: _int
+    campaignId: _int
+    turn_num: _int
+    scene_context: _str
+    _sum: 'SceneSumAggregateOutput'
+    _avg: 'SceneAvgAggregateOutput'
+    _min: 'SceneMinAggregateOutput'
+    _max: 'SceneMaxAggregateOutput'
+    _count: 'SceneCountAggregateOutput'
+
+
+class SceneAvgAggregateOutput(TypedDict, total=False):
+    """Scene output for aggregating averages"""
+    id: float
+    campaignId: float
+    turn_num: float
+
+
+class SceneSumAggregateOutput(TypedDict, total=False):
+    """Scene output for aggregating sums"""
+    id: _int
+    campaignId: _int
+    turn_num: _int
+
+
+class SceneScalarAggregateOutput(TypedDict, total=False):
+    """Scene output including scalar fields"""
+    id: _int
+    campaignId: _int
+    turn_num: _int
+    scene_context: _str
+
+
+SceneMinAggregateOutput = SceneScalarAggregateOutput
+SceneMaxAggregateOutput = SceneScalarAggregateOutput
+
+
+class SceneMaxAggregateInput(TypedDict, total=False):
+    """Scene input for aggregating by max"""
+    id: bool
+    campaignId: bool
+    turn_num: bool
+    scene_context: bool
+
+
+class SceneMinAggregateInput(TypedDict, total=False):
+    """Scene input for aggregating by min"""
+    id: bool
+    campaignId: bool
+    turn_num: bool
+    scene_context: bool
+
+
+class SceneNumberAggregateInput(TypedDict, total=False):
+    """Scene input for aggregating numbers"""
+    id: bool
+    campaignId: bool
+    turn_num: bool
+
+
+SceneAvgAggregateInput = SceneNumberAggregateInput
+SceneSumAggregateInput = SceneNumberAggregateInput
+
+
+SceneCountAggregateInput = TypedDict(
+    'SceneCountAggregateInput',
+    {
+        'id': bool,
+        'campaignId': bool,
+        'turn_num': bool,
+        'scene_context': bool,
+        '_all': bool,
+    },
+    total=False,
+)
+
+SceneCountAggregateOutput = TypedDict(
+    'SceneCountAggregateOutput',
+    {
+        'id': int,
+        'campaignId': int,
+        'turn_num': int,
+        'scene_context': int,
+        '_all': int,
+    },
+    total=False,
+)
+
+
+SceneKeys = Literal[
+    'id',
+    'campaignId',
+    'campaign',
+    'turn_num',
+    'scene_context',
+]
+SceneScalarFieldKeys = Literal[
+    'id',
+    'campaignId',
+    'turn_num',
+    'scene_context',
+]
+SceneScalarFieldKeysT = TypeVar('SceneScalarFieldKeysT', bound=SceneScalarFieldKeys)
+
+SceneRelationalFieldKeys = Literal[
+        'campaign',
     ]
 
 

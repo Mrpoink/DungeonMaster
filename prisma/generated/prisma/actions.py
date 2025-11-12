@@ -14509,6 +14509,3140 @@ class USERCHARActions(Generic[_PrismaModelT]):
         return resp['data']['result']  # type: ignore[no-any-return]
 
 
+class USERCHARCHANGEActions(Generic[_PrismaModelT]):
+    __slots__ = (
+        '_client',
+        '_model',
+    )
+
+    def __init__(self, client: Prisma, model: Type[_PrismaModelT]) -> None:
+        self._client = client
+        self._model = model
+
+    async def query_raw(
+        self,
+        query: LiteralString,
+        *args: Any,
+    ) -> List[_PrismaModelT]:
+        """Execute a raw SQL query
+
+        Parameters
+        ----------
+        query
+            The raw SQL query string to be executed
+        *args
+            Parameters to be passed to the SQL query, these MUST be used over
+            string formatting to avoid an SQL injection vulnerability
+
+        Returns
+        -------
+        List[prisma.models.USERCHARCHANGE]
+            The records returned by the SQL query
+
+        Raises
+        ------
+        prisma_errors.RawQueryError
+            This could be due to invalid syntax, mismatched number of parameters or any other error
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        users = await USERCHARCHANGE.prisma().query_raw(
+            'SELECT * FROM USERCHARCHANGE WHERE id = $1',
+            612396821,
+        )
+        ```
+        """
+        return await self._client.query_raw(query, *args, model=self._model)
+
+    async def query_first(
+        self,
+        query: LiteralString,
+        *args: Any,
+    ) -> Optional[_PrismaModelT]:
+        """Execute a raw SQL query, returning the first result
+
+        Parameters
+        ----------
+        query
+            The raw SQL query string to be executed
+        *args
+            Parameters to be passed to the SQL query, these MUST be used over
+            string formatting to avoid an SQL injection vulnerability
+
+        Returns
+        -------
+        prisma.models.USERCHARCHANGE
+            The first record returned by the SQL query
+        None
+            The raw SQL query did not return any records
+
+        Raises
+        ------
+        prisma_errors.RawQueryError
+            This could be due to invalid syntax, mismatched number of parameters or any other error
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        user = await USERCHARCHANGE.prisma().query_first(
+            'SELECT * FROM USERCHARCHANGE WHERE race = $1',
+            'biaibdagac',
+        )
+        ```
+        """
+        return await self._client.query_first(query, *args, model=self._model)
+
+    async def create(
+        self,
+        data: types.USERCHARCHANGECreateInput,
+        include: Optional[types.USERCHARCHANGEInclude] = None
+    ) -> _PrismaModelT:
+        """Create a new USERCHARCHANGE record.
+
+        Parameters
+        ----------
+        data
+            USERCHARCHANGE record data
+        include
+            Specifies which relations should be loaded on the returned USERCHARCHANGE model
+
+        Returns
+        -------
+        prisma.models.USERCHARCHANGE
+            The created USERCHARCHANGE record
+
+        Raises
+        ------
+        prisma.errors.MissingRequiredValueError
+            Value is required but was not found
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # create a USERCHARCHANGE record from just the required fields
+        usercharchange = await USERCHARCHANGE.prisma().create(
+            data={
+                # data to create a USERCHARCHANGE record
+                'race': 'bbfbheibcd',
+                'subclass': 'hiagajie',
+                'str': 444983185,
+                'dex': 45610742,
+                'con': 769084151,
+                'int': 1334599012,
+                'wis': 1116761037,
+                'cha': 1172606082,
+                'backstory': 'ddaabegbb',
+                'cla': 'bhgibfgbbc',
+                'name': 'hbgcihef',
+                'user': 'ffhgghde',
+            },
+        )
+        ```
+        """
+        resp = await self._client._execute(
+            method='create',
+            model=self._model,
+            arguments={
+                'data': data,
+                'include': include,
+            },
+        )
+        return model_parse(self._model, resp['data']['result'])
+
+    async def create_many(
+        self,
+        data: List[types.USERCHARCHANGECreateWithoutRelationsInput],
+        *,
+        skip_duplicates: Optional[bool] = None,
+    ) -> int:
+        """Create multiple USERCHARCHANGE records at once.
+
+        This function is *not* available when using SQLite.
+
+        Parameters
+        ----------
+        data
+            List of USERCHARCHANGE record data
+        skip_duplicates
+            Boolean flag for ignoring unique constraint errors
+
+        Returns
+        -------
+        int
+            The total number of records created
+
+        Raises
+        ------
+        prisma.errors.UnsupportedDatabaseError
+            Attempting to query when using SQLite
+        prisma.errors.UniqueViolationError
+            A unique constraint check has failed, these can be ignored with the `skip_duplicates` argument
+        prisma.errors.MissingRequiredValueError
+            Value is required but was not found
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        total = await USERCHARCHANGE.prisma().create_many(
+            data=[
+                {
+                    # data to create a USERCHARCHANGE record
+                    'race': 'ibcadcejf',
+                    'subclass': 'bdcdfgccdg',
+                    'str': 43796357,
+                    'dex': 1345530330,
+                    'con': 1965387275,
+                    'int': 804873448,
+                    'wis': 1566496513,
+                    'cha': 850004390,
+                    'backstory': 'cbajdjjabf',
+                    'cla': 'bcicggedea',
+                    'name': 'cebcdadjh',
+                    'user': 'ehfigdgac',
+                },
+                {
+                    # data to create a USERCHARCHANGE record
+                    'race': 'bhbgccijjf',
+                    'subclass': 'bigjhdgbjc',
+                    'str': 1585341753,
+                    'dex': 29271934,
+                    'con': 1588192479,
+                    'int': 898405676,
+                    'wis': 777460725,
+                    'cha': 437894538,
+                    'backstory': 'djddecjhb',
+                    'cla': 'bgdicjhie',
+                    'name': 'ceibfcgij',
+                    'user': 'debhbfada',
+                },
+            ],
+            skip_duplicates=True,
+        )
+        ```
+        """
+        if skip_duplicates and self._client._active_provider in CREATE_MANY_SKIP_DUPLICATES_UNSUPPORTED:
+            raise errors.UnsupportedDatabaseError(self._client._active_provider, 'create_many_skip_duplicates')
+
+        resp = await self._client._execute(
+            method='create_many',
+            model=self._model,
+            arguments={
+                'data': data,
+                'skipDuplicates': skip_duplicates,
+            },
+            root_selection=['count'],
+        )
+        return int(resp['data']['result']['count'])
+
+    async def delete(
+        self,
+        where: types.USERCHARCHANGEWhereUniqueInput,
+        include: Optional[types.USERCHARCHANGEInclude] = None
+    ) -> Optional[_PrismaModelT]:
+        """Delete a single USERCHARCHANGE record.
+
+        Parameters
+        ----------
+        where
+            USERCHARCHANGE filter to select the record to be deleted, must be unique
+        include
+            Specifies which relations should be loaded on the returned USERCHARCHANGE model
+
+        Returns
+        -------
+        prisma.models.USERCHARCHANGE
+            The deleted USERCHARCHANGE record
+        None
+            Could not find a record to delete
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+        prisma.errors.MissingRequiredValueError
+            Value is required but was not found
+
+        Example
+        -------
+        ```py
+        usercharchange = await USERCHARCHANGE.prisma().delete(
+            where={
+                'id': 1692766423,
+            },
+        )
+        ```
+        """
+        try:
+            resp = await self._client._execute(
+                method='delete',
+                model=self._model,
+                arguments={
+                    'where': where,
+                    'include': include,
+                },
+            )
+        except errors.RecordNotFoundError:
+            return None
+
+        return model_parse(self._model, resp['data']['result'])
+
+    async def find_unique(
+        self,
+        where: types.USERCHARCHANGEWhereUniqueInput,
+        include: Optional[types.USERCHARCHANGEInclude] = None
+    ) -> Optional[_PrismaModelT]:
+        """Find a unique USERCHARCHANGE record.
+
+        Parameters
+        ----------
+        where
+            USERCHARCHANGE filter to find the record, must be unique
+        include
+            Specifies which relations should be loaded on the returned USERCHARCHANGE model
+
+        Returns
+        -------
+        prisma.models.USERCHARCHANGE
+            The found USERCHARCHANGE record
+        None
+            No record matching the given input could be found
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+        prisma.errors.MissingRequiredValueError
+            Value is required but was not found
+
+        Example
+        -------
+        ```py
+        usercharchange = await USERCHARCHANGE.prisma().find_unique(
+            where={
+                'id': 86662596,
+            },
+        )
+        ```
+        """
+        resp = await self._client._execute(
+            method='find_unique',
+            model=self._model,
+            arguments={
+                'where': where,
+                'include': include,
+            },
+        )
+        result = resp['data']['result']
+        if result is None:
+            return None
+        return model_parse(self._model, result)
+
+    async def find_unique_or_raise(
+        self,
+        where: types.USERCHARCHANGEWhereUniqueInput,
+        include: Optional[types.USERCHARCHANGEInclude] = None
+    ) -> _PrismaModelT:
+        """Find a unique USERCHARCHANGE record. Raises `RecordNotFoundError` if no record is found.
+
+        Parameters
+        ----------
+        where
+            USERCHARCHANGE filter to find the record, must be unique
+        include
+            Specifies which relations should be loaded on the returned USERCHARCHANGE model
+
+        Returns
+        -------
+        prisma.models.USERCHARCHANGE
+            The found USERCHARCHANGE record
+
+        Raises
+        ------
+        prisma.errors.RecordNotFoundError
+            No record was found
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+        prisma.errors.MissingRequiredValueError
+            Value is required but was not found
+
+        Example
+        -------
+        ```py
+        usercharchange = await USERCHARCHANGE.prisma().find_unique_or_raise(
+            where={
+                'id': 1697895597,
+            },
+        )
+        ```
+        """
+        resp = await self._client._execute(
+            method='find_unique_or_raise',
+            model=self._model,
+            arguments={
+                'where': where,
+                'include': include,
+            },
+        )
+        return model_parse(self._model, resp['data']['result'])
+
+    async def find_many(
+        self,
+        take: Optional[int] = None,
+        skip: Optional[int] = None,
+        where: Optional[types.USERCHARCHANGEWhereInput] = None,
+        cursor: Optional[types.USERCHARCHANGEWhereUniqueInput] = None,
+        include: Optional[types.USERCHARCHANGEInclude] = None,
+        order: Optional[Union[types.USERCHARCHANGEOrderByInput, List[types.USERCHARCHANGEOrderByInput]]] = None,
+        distinct: Optional[List[types.USERCHARCHANGEScalarFieldKeys]] = None,
+    ) -> List[_PrismaModelT]:
+        """Find multiple USERCHARCHANGE records.
+
+        An empty list is returned if no records could be found.
+
+        Parameters
+        ----------
+        take
+            Limit the maximum number of USERCHARCHANGE records returned
+        skip
+            Ignore the first N results
+        where
+            USERCHARCHANGE filter to select records
+        cursor
+            Specifies the position in the list to start returning results from, (typically an ID field)
+        include
+            Specifies which relations should be loaded on the returned USERCHARCHANGE model
+        order
+            Order the returned USERCHARCHANGE records by any field
+        distinct
+            Filter USERCHARCHANGE records by either a single distinct field or distinct combinations of fields
+
+        Returns
+        -------
+        List[prisma.models.USERCHARCHANGE]
+            The list of all USERCHARCHANGE records that could be found
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # find the first 10 USERCHARCHANGE records
+        usercharchanges = await USERCHARCHANGE.prisma().find_many(take=10)
+
+        # find the first 5 USERCHARCHANGE records ordered by the subclass field
+        usercharchanges = await USERCHARCHANGE.prisma().find_many(
+            take=5,
+            order={
+                'subclass': 'desc',
+            },
+        )
+        ```
+        """
+        resp = await self._client._execute(
+            method='find_many',
+            model=self._model,
+            arguments={
+                'take': take,
+                'skip': skip,
+                'where': where,
+                'order_by': order,
+                'cursor': cursor,
+                'include': include,
+                'distinct': distinct,
+            },
+        )
+        return [model_parse(self._model, r) for r in resp['data']['result']]
+
+    async def find_first(
+        self,
+        skip: Optional[int] = None,
+        where: Optional[types.USERCHARCHANGEWhereInput] = None,
+        cursor: Optional[types.USERCHARCHANGEWhereUniqueInput] = None,
+        include: Optional[types.USERCHARCHANGEInclude] = None,
+        order: Optional[Union[types.USERCHARCHANGEOrderByInput, List[types.USERCHARCHANGEOrderByInput]]] = None,
+        distinct: Optional[List[types.USERCHARCHANGEScalarFieldKeys]] = None,
+    ) -> Optional[_PrismaModelT]:
+        """Find a single USERCHARCHANGE record.
+
+        Parameters
+        ----------
+        skip
+            Ignore the first N records
+        where
+            USERCHARCHANGE filter to select the record
+        cursor
+            Specifies the position in the list to start returning results from, (typically an ID field)
+        include
+            Specifies which relations should be loaded on the returned USERCHARCHANGE model
+        order
+            Order the returned USERCHARCHANGE records by any field
+        distinct
+            Filter USERCHARCHANGE records by either a single distinct field or distinct combinations of fields
+
+        Returns
+        -------
+        prisma.models.USERCHARCHANGE
+            The first USERCHARCHANGE record found, matching the given arguments
+        None
+            No record could be found
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # find the second USERCHARCHANGE record ordered by the str field
+        usercharchange = await USERCHARCHANGE.prisma().find_first(
+            skip=1,
+            order={
+                'str': 'desc',
+            },
+        )
+        ```
+        """
+        resp = await self._client._execute(
+            method='find_first',
+            model=self._model,
+            arguments={
+                'skip': skip,
+                'where': where,
+                'order_by': order,
+                'cursor': cursor,
+                'include': include,
+                'distinct': distinct,
+            },
+        )
+        result = resp['data']['result']
+        if result is None:
+            return None
+
+        return model_parse(self._model, result)
+
+    async def find_first_or_raise(
+        self,
+        skip: Optional[int] = None,
+        where: Optional[types.USERCHARCHANGEWhereInput] = None,
+        cursor: Optional[types.USERCHARCHANGEWhereUniqueInput] = None,
+        include: Optional[types.USERCHARCHANGEInclude] = None,
+        order: Optional[Union[types.USERCHARCHANGEOrderByInput, List[types.USERCHARCHANGEOrderByInput]]] = None,
+        distinct: Optional[List[types.USERCHARCHANGEScalarFieldKeys]] = None,
+    ) -> _PrismaModelT:
+        """Find a single USERCHARCHANGE record. Raises `RecordNotFoundError` if no record was found.
+
+        Parameters
+        ----------
+        skip
+            Ignore the first N records
+        where
+            USERCHARCHANGE filter to select the record
+        cursor
+            Specifies the position in the list to start returning results from, (typically an ID field)
+        include
+            Specifies which relations should be loaded on the returned USERCHARCHANGE model
+        order
+            Order the returned USERCHARCHANGE records by any field
+        distinct
+            Filter USERCHARCHANGE records by either a single distinct field or distinct combinations of fields
+
+        Returns
+        -------
+        prisma.models.USERCHARCHANGE
+            The first USERCHARCHANGE record found, matching the given arguments
+
+        Raises
+        ------
+        prisma.errors.RecordNotFoundError
+            No record was found
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # find the second USERCHARCHANGE record ordered by the dex field
+        usercharchange = await USERCHARCHANGE.prisma().find_first_or_raise(
+            skip=1,
+            order={
+                'dex': 'desc',
+            },
+        )
+        ```
+        """
+        resp = await self._client._execute(
+            method='find_first_or_raise',
+            model=self._model,
+            arguments={
+                'skip': skip,
+                'where': where,
+                'order_by': order,
+                'cursor': cursor,
+                'include': include,
+                'distinct': distinct,
+            },
+        )
+        return model_parse(self._model, resp['data']['result'])
+
+    async def update(
+        self,
+        data: types.USERCHARCHANGEUpdateInput,
+        where: types.USERCHARCHANGEWhereUniqueInput,
+        include: Optional[types.USERCHARCHANGEInclude] = None
+    ) -> Optional[_PrismaModelT]:
+        """Update a single USERCHARCHANGE record.
+
+        Parameters
+        ----------
+        data
+            USERCHARCHANGE record data specifying what to update
+        where
+            USERCHARCHANGE filter to select the unique record to create / update
+        include
+            Specifies which relations should be loaded on the returned USERCHARCHANGE model
+
+        Returns
+        -------
+        prisma.models.USERCHARCHANGE
+            The updated USERCHARCHANGE record
+        None
+            No record could be found
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        usercharchange = await USERCHARCHANGE.prisma().update(
+            where={
+                'id': 1286370274,
+            },
+            data={
+                # data to update the USERCHARCHANGE record to
+            },
+        )
+        ```
+        """
+        try:
+            resp = await self._client._execute(
+                method='update',
+                model=self._model,
+                arguments={
+                    'data': data,
+                    'where': where,
+                    'include': include,
+                },
+            )
+        except errors.RecordNotFoundError:
+            return None
+
+        return model_parse(self._model, resp['data']['result'])
+
+    async def upsert(
+        self,
+        where: types.USERCHARCHANGEWhereUniqueInput,
+        data: types.USERCHARCHANGEUpsertInput,
+        include: Optional[types.USERCHARCHANGEInclude] = None,
+    ) -> _PrismaModelT:
+        """Updates an existing record or create a new one
+
+        Parameters
+        ----------
+        where
+            USERCHARCHANGE filter to select the unique record to create / update
+        data
+            Data specifying what fields to set on create and update
+        include
+            Specifies which relations should be loaded on the returned USERCHARCHANGE model
+
+        Returns
+        -------
+        prisma.models.USERCHARCHANGE
+            The created or updated USERCHARCHANGE record
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+        prisma.errors.MissingRequiredValueError
+            Value is required but was not found
+
+        Example
+        -------
+        ```py
+        usercharchange = await USERCHARCHANGE.prisma().upsert(
+            where={
+                'id': 864576371,
+            },
+            data={
+                'create': {
+                    'id': 864576371,
+                    'race': 'bhbgccijjf',
+                    'subclass': 'bigjhdgbjc',
+                    'str': 1585341753,
+                    'dex': 29271934,
+                    'con': 1588192479,
+                    'int': 898405676,
+                    'wis': 777460725,
+                    'cha': 437894538,
+                    'backstory': 'djddecjhb',
+                    'cla': 'bgdicjhie',
+                    'name': 'ceibfcgij',
+                    'user': 'debhbfada',
+                },
+                'update': {
+                    'race': 'bhbgccijjf',
+                    'subclass': 'bigjhdgbjc',
+                    'str': 1585341753,
+                    'dex': 29271934,
+                    'con': 1588192479,
+                    'int': 898405676,
+                    'wis': 777460725,
+                    'cha': 437894538,
+                    'backstory': 'djddecjhb',
+                    'cla': 'bgdicjhie',
+                    'name': 'ceibfcgij',
+                    'user': 'debhbfada',
+                },
+            },
+        )
+        ```
+        """
+        resp = await self._client._execute(
+            method='upsert',
+            model=self._model,
+            arguments={
+                'where': where,
+                'include': include,
+                'create': data.get('create'),
+                'update': data.get('update'),
+            },
+        )
+        return model_parse(self._model, resp['data']['result'])
+
+    async def update_many(
+        self,
+        data: types.USERCHARCHANGEUpdateManyMutationInput,
+        where: types.USERCHARCHANGEWhereInput,
+    ) -> int:
+        """Update multiple USERCHARCHANGE records
+
+        Parameters
+        ----------
+        data
+            USERCHARCHANGE data to update the selected USERCHARCHANGE records to
+        where
+            Filter to select the USERCHARCHANGE records to update
+
+        Returns
+        -------
+        int
+            The total number of USERCHARCHANGE records that were updated
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # update all USERCHARCHANGE records
+        total = await USERCHARCHANGE.prisma().update_many(
+            data={
+                'con': 491885104
+            },
+            where={}
+        )
+        ```
+        """
+        resp = await self._client._execute(
+            method='update_many',
+            model=self._model,
+            arguments={'data': data, 'where': where,},
+            root_selection=['count'],
+        )
+        return int(resp['data']['result']['count'])
+
+    @overload
+    async def count(
+        self,
+        select: None = None,
+        take: Optional[int] = None,
+        skip: Optional[int] = None,
+        where: Optional[types.USERCHARCHANGEWhereInput] = None,
+        cursor: Optional[types.USERCHARCHANGEWhereUniqueInput] = None,
+    ) -> int:
+        """Count the number of USERCHARCHANGE records present in the database
+
+        Parameters
+        ----------
+        select
+            Select the USERCHARCHANGE fields to be counted
+        take
+            Limit the maximum result
+        skip
+            Ignore the first N records
+        where
+            USERCHARCHANGE filter to find records
+        cursor
+            Specifies the position in the list to start counting results from, (typically an ID field)
+        order
+            This parameter is deprecated and will be removed in a future release
+
+        Returns
+        -------
+        int
+            The total number of records found, returned if `select` is not given
+
+        prisma.types.USERCHARCHANGECountAggregateOutput
+            Data returned when `select` is used, the fields present in this dictionary will
+            match the fields passed in the `select` argument
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # total: int
+        total = await USERCHARCHANGE.prisma().count()
+
+        # results: prisma.types.USERCHARCHANGECountAggregateOutput
+        results = await USERCHARCHANGE.prisma().count(
+            select={
+                '_all': True,
+                'int': True,
+            },
+        )
+        ```
+        """
+
+
+    @overload
+    async def count(
+        self,
+        select: types.USERCHARCHANGECountAggregateInput,
+        take: Optional[int] = None,
+        skip: Optional[int] = None,
+        where: Optional[types.USERCHARCHANGEWhereInput] = None,
+        cursor: Optional[types.USERCHARCHANGEWhereUniqueInput] = None,
+    ) -> types.USERCHARCHANGECountAggregateOutput:
+        ...
+
+    async def count(
+        self,
+        select: Optional[types.USERCHARCHANGECountAggregateInput] = None,
+        take: Optional[int] = None,
+        skip: Optional[int] = None,
+        where: Optional[types.USERCHARCHANGEWhereInput] = None,
+        cursor: Optional[types.USERCHARCHANGEWhereUniqueInput] = None,
+    ) -> Union[int, types.USERCHARCHANGECountAggregateOutput]:
+        """Count the number of USERCHARCHANGE records present in the database
+
+        Parameters
+        ----------
+        select
+            Select the USERCHARCHANGE fields to be counted
+        take
+            Limit the maximum result
+        skip
+            Ignore the first N records
+        where
+            USERCHARCHANGE filter to find records
+        cursor
+            Specifies the position in the list to start counting results from, (typically an ID field)
+        order
+            This parameter is deprecated and will be removed in a future release
+
+        Returns
+        -------
+        int
+            The total number of records found, returned if `select` is not given
+
+        prisma.types.USERCHARCHANGECountAggregateOutput
+            Data returned when `select` is used, the fields present in this dictionary will
+            match the fields passed in the `select` argument
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # total: int
+        total = await USERCHARCHANGE.prisma().count()
+
+        # results: prisma.types.USERCHARCHANGECountAggregateOutput
+        results = await USERCHARCHANGE.prisma().count(
+            select={
+                '_all': True,
+                'wis': True,
+            },
+        )
+        ```
+        """
+
+        # TODO: this selection building should be moved to the QueryBuilder
+        #
+        # note the distinction between checking for `not select` here and `select is None`
+        # later is to handle the case that the given select dictionary is empty, this
+        # is a limitation of our types.
+        if not select:
+            root_selection = ['_count { _all }']
+        else:
+
+            root_selection = [
+                '_count {{ {0} }}'.format(' '.join(k for k, v in select.items() if v is True))
+            ]
+
+        resp = await self._client._execute(
+            method='count',
+            model=self._model,
+            arguments={
+                'take': take,
+                'skip': skip,
+                'where': where,
+                'cursor': cursor,
+            },
+            root_selection=root_selection,
+        )
+
+        if select is None:
+            return cast(int, resp['data']['result']['_count']['_all'])
+        else:
+            return cast(types.USERCHARCHANGECountAggregateOutput, resp['data']['result']['_count'])
+
+    async def delete_many(
+        self,
+        where: Optional[types.USERCHARCHANGEWhereInput] = None
+    ) -> int:
+        """Delete multiple USERCHARCHANGE records.
+
+        Parameters
+        ----------
+        where
+            Optional USERCHARCHANGE filter to find the records to be deleted
+
+        Returns
+        -------
+        int
+            The total number of USERCHARCHANGE records that were deleted
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # delete all USERCHARCHANGE records
+        total = await USERCHARCHANGE.prisma().delete_many()
+        ```
+        """
+        resp = await self._client._execute(
+            method='delete_many',
+            model=self._model,
+            arguments={'where': where},
+            root_selection=['count'],
+        )
+        return int(resp['data']['result']['count'])
+
+    # TODO: make this easier to work with safely, currently output fields are typed as
+    #       not required, we should refactor the return type
+    # TODO: consider returning a Dict where the keys are a Tuple of the `by` selection
+    # TODO: statically type that the order argument is required when take or skip are present
+    async def group_by(
+        self,
+        by: List['types.USERCHARCHANGEScalarFieldKeys'],
+        *,
+        where: Optional['types.USERCHARCHANGEWhereInput'] = None,
+        take: Optional[int] = None,
+        skip: Optional[int] = None,
+        avg: Optional['types.USERCHARCHANGEAvgAggregateInput'] = None,
+        sum: Optional['types.USERCHARCHANGESumAggregateInput'] = None,
+        min: Optional['types.USERCHARCHANGEMinAggregateInput'] = None,
+        max: Optional['types.USERCHARCHANGEMaxAggregateInput'] = None,
+        having: Optional['types.USERCHARCHANGEScalarWhereWithAggregatesInput'] = None,
+        count: Optional[Union[bool, 'types.USERCHARCHANGECountAggregateInput']] = None,
+        order: Optional[Union[Mapping['types.USERCHARCHANGEScalarFieldKeys', 'types.SortOrder'], List[Mapping['types.USERCHARCHANGEScalarFieldKeys', 'types.SortOrder']]]] = None,
+    ) -> List['types.USERCHARCHANGEGroupByOutput']:
+        """Group USERCHARCHANGE records by one or more field values and perform aggregations
+        each group such as finding the average.
+
+        Parameters
+        ----------
+        by
+            List of scalar USERCHARCHANGE fields to group records by
+        where
+            USERCHARCHANGE filter to select records
+        take
+            Limit the maximum number of USERCHARCHANGE records returned
+        skip
+            Ignore the first N records
+        avg
+            Adds the average of all values of the specified fields to the `_avg` field
+            in the returned data.
+        sum
+            Adds the sum of all values of the specified fields to the `_sum` field
+            in the returned data.
+        min
+            Adds the smallest available value for the specified fields to the `_min` field
+            in the returned data.
+        max
+            Adds the largest available value for the specified fields to the `_max` field
+            in the returned data.
+        count
+            Adds a count of non-fields to the `_count` field in the returned data.
+        having
+            Allows you to filter groups by an aggregate value - for example only return
+            groups having an average age less than 50.
+        order
+            Lets you order the returned list by any property that is also present in `by`.
+            Only **one** field is allowed at a time.
+
+        Returns
+        -------
+        List[prisma.types.USERCHARCHANGEGroupByOutput]
+            A list of dictionaries representing the USERCHARCHANGE record,
+            this will also have additional fields present if aggregation arguments
+            are used (see the above parameters)
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # group USERCHARCHANGE records by cha values
+        # and count how many records are in each group
+        results = await USERCHARCHANGE.prisma().group_by(
+            ['cha'],
+            count=True,
+        )
+        ```
+        """
+        if order is None:
+            if take is not None:
+                raise TypeError('Missing argument: \'order\' which is required when \'take\' is present')
+
+            if skip is not None:
+                raise TypeError('Missing argument: \'order\' which is required when \'skip\' is present')
+
+        root_selection: List[str] = [*by]
+        if avg is not None:
+            root_selection.append(_select_fields('_avg', avg))
+
+        if min is not None:
+            root_selection.append(_select_fields('_min', min))
+
+        if sum is not None:
+            root_selection.append(_select_fields('_sum', sum))
+
+        if max is not None:
+            root_selection.append(_select_fields('_max', max))
+
+        if count is not None:
+            if count is True:
+                root_selection.append('_count { _all }')
+            elif isinstance(count, dict):
+                root_selection.append(_select_fields('_count', count))
+
+        resp = await self._client._execute(
+            method='group_by',
+            model=self._model,
+            arguments={
+                'by': by,
+                'take': take,
+                'skip': skip,
+                'where': where,
+                'having': having,
+                'orderBy': order,
+            },
+            root_selection=root_selection,
+        )
+        return resp['data']['result']  # type: ignore[no-any-return]
+
+
+class CampaignSessionActions(Generic[_PrismaModelT]):
+    __slots__ = (
+        '_client',
+        '_model',
+    )
+
+    def __init__(self, client: Prisma, model: Type[_PrismaModelT]) -> None:
+        self._client = client
+        self._model = model
+
+    async def query_raw(
+        self,
+        query: LiteralString,
+        *args: Any,
+    ) -> List[_PrismaModelT]:
+        """Execute a raw SQL query
+
+        Parameters
+        ----------
+        query
+            The raw SQL query string to be executed
+        *args
+            Parameters to be passed to the SQL query, these MUST be used over
+            string formatting to avoid an SQL injection vulnerability
+
+        Returns
+        -------
+        List[prisma.models.CampaignSession]
+            The records returned by the SQL query
+
+        Raises
+        ------
+        prisma_errors.RawQueryError
+            This could be due to invalid syntax, mismatched number of parameters or any other error
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        users = await CampaignSession.prisma().query_raw(
+            'SELECT * FROM CampaignSession WHERE id = $1',
+            392564393,
+        )
+        ```
+        """
+        return await self._client.query_raw(query, *args, model=self._model)
+
+    async def query_first(
+        self,
+        query: LiteralString,
+        *args: Any,
+    ) -> Optional[_PrismaModelT]:
+        """Execute a raw SQL query, returning the first result
+
+        Parameters
+        ----------
+        query
+            The raw SQL query string to be executed
+        *args
+            Parameters to be passed to the SQL query, these MUST be used over
+            string formatting to avoid an SQL injection vulnerability
+
+        Returns
+        -------
+        prisma.models.CampaignSession
+            The first record returned by the SQL query
+        None
+            The raw SQL query did not return any records
+
+        Raises
+        ------
+        prisma_errors.RawQueryError
+            This could be due to invalid syntax, mismatched number of parameters or any other error
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        user = await CampaignSession.prisma().query_first(
+            'SELECT * FROM CampaignSession WHERE seed = $1',
+            'bdbjcdegag',
+        )
+        ```
+        """
+        return await self._client.query_first(query, *args, model=self._model)
+
+    async def create(
+        self,
+        data: types.CampaignSessionCreateInput,
+        include: Optional[types.CampaignSessionInclude] = None
+    ) -> _PrismaModelT:
+        """Create a new CampaignSession record.
+
+        Parameters
+        ----------
+        data
+            CampaignSession record data
+        include
+            Specifies which relations should be loaded on the returned CampaignSession model
+
+        Returns
+        -------
+        prisma.models.CampaignSession
+            The created CampaignSession record
+
+        Raises
+        ------
+        prisma.errors.MissingRequiredValueError
+            Value is required but was not found
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # create a CampaignSession record from just the required fields
+        campaignsession = await CampaignSession.prisma().create(
+            data={
+                # data to create a CampaignSession record
+                'seed': 'hbchfebch',
+                'user': 'bcjjffegfc',
+            },
+        )
+        ```
+        """
+        resp = await self._client._execute(
+            method='create',
+            model=self._model,
+            arguments={
+                'data': data,
+                'include': include,
+            },
+        )
+        return model_parse(self._model, resp['data']['result'])
+
+    async def create_many(
+        self,
+        data: List[types.CampaignSessionCreateWithoutRelationsInput],
+        *,
+        skip_duplicates: Optional[bool] = None,
+    ) -> int:
+        """Create multiple CampaignSession records at once.
+
+        This function is *not* available when using SQLite.
+
+        Parameters
+        ----------
+        data
+            List of CampaignSession record data
+        skip_duplicates
+            Boolean flag for ignoring unique constraint errors
+
+        Returns
+        -------
+        int
+            The total number of records created
+
+        Raises
+        ------
+        prisma.errors.UnsupportedDatabaseError
+            Attempting to query when using SQLite
+        prisma.errors.UniqueViolationError
+            A unique constraint check has failed, these can be ignored with the `skip_duplicates` argument
+        prisma.errors.MissingRequiredValueError
+            Value is required but was not found
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        total = await CampaignSession.prisma().create_many(
+            data=[
+                {
+                    # data to create a CampaignSession record
+                    'seed': 'cahaeaicjd',
+                    'user': 'ibbjaacbi',
+                },
+                {
+                    # data to create a CampaignSession record
+                    'seed': 'djgacbcch',
+                    'user': 'geeeegace',
+                },
+            ],
+            skip_duplicates=True,
+        )
+        ```
+        """
+        if skip_duplicates and self._client._active_provider in CREATE_MANY_SKIP_DUPLICATES_UNSUPPORTED:
+            raise errors.UnsupportedDatabaseError(self._client._active_provider, 'create_many_skip_duplicates')
+
+        resp = await self._client._execute(
+            method='create_many',
+            model=self._model,
+            arguments={
+                'data': data,
+                'skipDuplicates': skip_duplicates,
+            },
+            root_selection=['count'],
+        )
+        return int(resp['data']['result']['count'])
+
+    async def delete(
+        self,
+        where: types.CampaignSessionWhereUniqueInput,
+        include: Optional[types.CampaignSessionInclude] = None
+    ) -> Optional[_PrismaModelT]:
+        """Delete a single CampaignSession record.
+
+        Parameters
+        ----------
+        where
+            CampaignSession filter to select the record to be deleted, must be unique
+        include
+            Specifies which relations should be loaded on the returned CampaignSession model
+
+        Returns
+        -------
+        prisma.models.CampaignSession
+            The deleted CampaignSession record
+        None
+            Could not find a record to delete
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+        prisma.errors.MissingRequiredValueError
+            Value is required but was not found
+
+        Example
+        -------
+        ```py
+        campaignsession = await CampaignSession.prisma().delete(
+            where={
+                'id': 116386273,
+            },
+        )
+        ```
+        """
+        try:
+            resp = await self._client._execute(
+                method='delete',
+                model=self._model,
+                arguments={
+                    'where': where,
+                    'include': include,
+                },
+            )
+        except errors.RecordNotFoundError:
+            return None
+
+        return model_parse(self._model, resp['data']['result'])
+
+    async def find_unique(
+        self,
+        where: types.CampaignSessionWhereUniqueInput,
+        include: Optional[types.CampaignSessionInclude] = None
+    ) -> Optional[_PrismaModelT]:
+        """Find a unique CampaignSession record.
+
+        Parameters
+        ----------
+        where
+            CampaignSession filter to find the record, must be unique
+        include
+            Specifies which relations should be loaded on the returned CampaignSession model
+
+        Returns
+        -------
+        prisma.models.CampaignSession
+            The found CampaignSession record
+        None
+            No record matching the given input could be found
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+        prisma.errors.MissingRequiredValueError
+            Value is required but was not found
+
+        Example
+        -------
+        ```py
+        campaignsession = await CampaignSession.prisma().find_unique(
+            where={
+                'id': 309285638,
+            },
+        )
+        ```
+        """
+        resp = await self._client._execute(
+            method='find_unique',
+            model=self._model,
+            arguments={
+                'where': where,
+                'include': include,
+            },
+        )
+        result = resp['data']['result']
+        if result is None:
+            return None
+        return model_parse(self._model, result)
+
+    async def find_unique_or_raise(
+        self,
+        where: types.CampaignSessionWhereUniqueInput,
+        include: Optional[types.CampaignSessionInclude] = None
+    ) -> _PrismaModelT:
+        """Find a unique CampaignSession record. Raises `RecordNotFoundError` if no record is found.
+
+        Parameters
+        ----------
+        where
+            CampaignSession filter to find the record, must be unique
+        include
+            Specifies which relations should be loaded on the returned CampaignSession model
+
+        Returns
+        -------
+        prisma.models.CampaignSession
+            The found CampaignSession record
+
+        Raises
+        ------
+        prisma.errors.RecordNotFoundError
+            No record was found
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+        prisma.errors.MissingRequiredValueError
+            Value is required but was not found
+
+        Example
+        -------
+        ```py
+        campaignsession = await CampaignSession.prisma().find_unique_or_raise(
+            where={
+                'id': 22437319,
+            },
+        )
+        ```
+        """
+        resp = await self._client._execute(
+            method='find_unique_or_raise',
+            model=self._model,
+            arguments={
+                'where': where,
+                'include': include,
+            },
+        )
+        return model_parse(self._model, resp['data']['result'])
+
+    async def find_many(
+        self,
+        take: Optional[int] = None,
+        skip: Optional[int] = None,
+        where: Optional[types.CampaignSessionWhereInput] = None,
+        cursor: Optional[types.CampaignSessionWhereUniqueInput] = None,
+        include: Optional[types.CampaignSessionInclude] = None,
+        order: Optional[Union[types.CampaignSessionOrderByInput, List[types.CampaignSessionOrderByInput]]] = None,
+        distinct: Optional[List[types.CampaignSessionScalarFieldKeys]] = None,
+    ) -> List[_PrismaModelT]:
+        """Find multiple CampaignSession records.
+
+        An empty list is returned if no records could be found.
+
+        Parameters
+        ----------
+        take
+            Limit the maximum number of CampaignSession records returned
+        skip
+            Ignore the first N results
+        where
+            CampaignSession filter to select records
+        cursor
+            Specifies the position in the list to start returning results from, (typically an ID field)
+        include
+            Specifies which relations should be loaded on the returned CampaignSession model
+        order
+            Order the returned CampaignSession records by any field
+        distinct
+            Filter CampaignSession records by either a single distinct field or distinct combinations of fields
+
+        Returns
+        -------
+        List[prisma.models.CampaignSession]
+            The list of all CampaignSession records that could be found
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # find the first 10 CampaignSession records
+        campaignsessions = await CampaignSession.prisma().find_many(take=10)
+
+        # find the first 5 CampaignSession records ordered by the game_finished field
+        campaignsessions = await CampaignSession.prisma().find_many(
+            take=5,
+            order={
+                'game_finished': 'desc',
+            },
+        )
+        ```
+        """
+        resp = await self._client._execute(
+            method='find_many',
+            model=self._model,
+            arguments={
+                'take': take,
+                'skip': skip,
+                'where': where,
+                'order_by': order,
+                'cursor': cursor,
+                'include': include,
+                'distinct': distinct,
+            },
+        )
+        return [model_parse(self._model, r) for r in resp['data']['result']]
+
+    async def find_first(
+        self,
+        skip: Optional[int] = None,
+        where: Optional[types.CampaignSessionWhereInput] = None,
+        cursor: Optional[types.CampaignSessionWhereUniqueInput] = None,
+        include: Optional[types.CampaignSessionInclude] = None,
+        order: Optional[Union[types.CampaignSessionOrderByInput, List[types.CampaignSessionOrderByInput]]] = None,
+        distinct: Optional[List[types.CampaignSessionScalarFieldKeys]] = None,
+    ) -> Optional[_PrismaModelT]:
+        """Find a single CampaignSession record.
+
+        Parameters
+        ----------
+        skip
+            Ignore the first N records
+        where
+            CampaignSession filter to select the record
+        cursor
+            Specifies the position in the list to start returning results from, (typically an ID field)
+        include
+            Specifies which relations should be loaded on the returned CampaignSession model
+        order
+            Order the returned CampaignSession records by any field
+        distinct
+            Filter CampaignSession records by either a single distinct field or distinct combinations of fields
+
+        Returns
+        -------
+        prisma.models.CampaignSession
+            The first CampaignSession record found, matching the given arguments
+        None
+            No record could be found
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # find the second CampaignSession record ordered by the user field
+        campaignsession = await CampaignSession.prisma().find_first(
+            skip=1,
+            order={
+                'user': 'desc',
+            },
+        )
+        ```
+        """
+        resp = await self._client._execute(
+            method='find_first',
+            model=self._model,
+            arguments={
+                'skip': skip,
+                'where': where,
+                'order_by': order,
+                'cursor': cursor,
+                'include': include,
+                'distinct': distinct,
+            },
+        )
+        result = resp['data']['result']
+        if result is None:
+            return None
+
+        return model_parse(self._model, result)
+
+    async def find_first_or_raise(
+        self,
+        skip: Optional[int] = None,
+        where: Optional[types.CampaignSessionWhereInput] = None,
+        cursor: Optional[types.CampaignSessionWhereUniqueInput] = None,
+        include: Optional[types.CampaignSessionInclude] = None,
+        order: Optional[Union[types.CampaignSessionOrderByInput, List[types.CampaignSessionOrderByInput]]] = None,
+        distinct: Optional[List[types.CampaignSessionScalarFieldKeys]] = None,
+    ) -> _PrismaModelT:
+        """Find a single CampaignSession record. Raises `RecordNotFoundError` if no record was found.
+
+        Parameters
+        ----------
+        skip
+            Ignore the first N records
+        where
+            CampaignSession filter to select the record
+        cursor
+            Specifies the position in the list to start returning results from, (typically an ID field)
+        include
+            Specifies which relations should be loaded on the returned CampaignSession model
+        order
+            Order the returned CampaignSession records by any field
+        distinct
+            Filter CampaignSession records by either a single distinct field or distinct combinations of fields
+
+        Returns
+        -------
+        prisma.models.CampaignSession
+            The first CampaignSession record found, matching the given arguments
+
+        Raises
+        ------
+        prisma.errors.RecordNotFoundError
+            No record was found
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # find the second CampaignSession record ordered by the last_context field
+        campaignsession = await CampaignSession.prisma().find_first_or_raise(
+            skip=1,
+            order={
+                'last_context': 'desc',
+            },
+        )
+        ```
+        """
+        resp = await self._client._execute(
+            method='find_first_or_raise',
+            model=self._model,
+            arguments={
+                'skip': skip,
+                'where': where,
+                'order_by': order,
+                'cursor': cursor,
+                'include': include,
+                'distinct': distinct,
+            },
+        )
+        return model_parse(self._model, resp['data']['result'])
+
+    async def update(
+        self,
+        data: types.CampaignSessionUpdateInput,
+        where: types.CampaignSessionWhereUniqueInput,
+        include: Optional[types.CampaignSessionInclude] = None
+    ) -> Optional[_PrismaModelT]:
+        """Update a single CampaignSession record.
+
+        Parameters
+        ----------
+        data
+            CampaignSession record data specifying what to update
+        where
+            CampaignSession filter to select the unique record to create / update
+        include
+            Specifies which relations should be loaded on the returned CampaignSession model
+
+        Returns
+        -------
+        prisma.models.CampaignSession
+            The updated CampaignSession record
+        None
+            No record could be found
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        campaignsession = await CampaignSession.prisma().update(
+            where={
+                'id': 1900199924,
+            },
+            data={
+                # data to update the CampaignSession record to
+            },
+        )
+        ```
+        """
+        try:
+            resp = await self._client._execute(
+                method='update',
+                model=self._model,
+                arguments={
+                    'data': data,
+                    'where': where,
+                    'include': include,
+                },
+            )
+        except errors.RecordNotFoundError:
+            return None
+
+        return model_parse(self._model, resp['data']['result'])
+
+    async def upsert(
+        self,
+        where: types.CampaignSessionWhereUniqueInput,
+        data: types.CampaignSessionUpsertInput,
+        include: Optional[types.CampaignSessionInclude] = None,
+    ) -> _PrismaModelT:
+        """Updates an existing record or create a new one
+
+        Parameters
+        ----------
+        where
+            CampaignSession filter to select the unique record to create / update
+        data
+            Data specifying what fields to set on create and update
+        include
+            Specifies which relations should be loaded on the returned CampaignSession model
+
+        Returns
+        -------
+        prisma.models.CampaignSession
+            The created or updated CampaignSession record
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+        prisma.errors.MissingRequiredValueError
+            Value is required but was not found
+
+        Example
+        -------
+        ```py
+        campaignsession = await CampaignSession.prisma().upsert(
+            where={
+                'id': 2057323293,
+            },
+            data={
+                'create': {
+                    'id': 2057323293,
+                    'seed': 'djgacbcch',
+                    'user': 'geeeegace',
+                },
+                'update': {
+                    'seed': 'djgacbcch',
+                    'user': 'geeeegace',
+                },
+            },
+        )
+        ```
+        """
+        resp = await self._client._execute(
+            method='upsert',
+            model=self._model,
+            arguments={
+                'where': where,
+                'include': include,
+                'create': data.get('create'),
+                'update': data.get('update'),
+            },
+        )
+        return model_parse(self._model, resp['data']['result'])
+
+    async def update_many(
+        self,
+        data: types.CampaignSessionUpdateManyMutationInput,
+        where: types.CampaignSessionWhereInput,
+    ) -> int:
+        """Update multiple CampaignSession records
+
+        Parameters
+        ----------
+        data
+            CampaignSession data to update the selected CampaignSession records to
+        where
+            Filter to select the CampaignSession records to update
+
+        Returns
+        -------
+        int
+            The total number of CampaignSession records that were updated
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # update all CampaignSession records
+        total = await CampaignSession.prisma().update_many(
+            data={
+                'current_scene_id': 1344117138
+            },
+            where={}
+        )
+        ```
+        """
+        resp = await self._client._execute(
+            method='update_many',
+            model=self._model,
+            arguments={'data': data, 'where': where,},
+            root_selection=['count'],
+        )
+        return int(resp['data']['result']['count'])
+
+    @overload
+    async def count(
+        self,
+        select: None = None,
+        take: Optional[int] = None,
+        skip: Optional[int] = None,
+        where: Optional[types.CampaignSessionWhereInput] = None,
+        cursor: Optional[types.CampaignSessionWhereUniqueInput] = None,
+    ) -> int:
+        """Count the number of CampaignSession records present in the database
+
+        Parameters
+        ----------
+        select
+            Select the CampaignSession fields to be counted
+        take
+            Limit the maximum result
+        skip
+            Ignore the first N records
+        where
+            CampaignSession filter to find records
+        cursor
+            Specifies the position in the list to start counting results from, (typically an ID field)
+        order
+            This parameter is deprecated and will be removed in a future release
+
+        Returns
+        -------
+        int
+            The total number of records found, returned if `select` is not given
+
+        prisma.types.CampaignSessionCountAggregateOutput
+            Data returned when `select` is used, the fields present in this dictionary will
+            match the fields passed in the `select` argument
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # total: int
+        total = await CampaignSession.prisma().count()
+
+        # results: prisma.types.CampaignSessionCountAggregateOutput
+        results = await CampaignSession.prisma().count(
+            select={
+                '_all': True,
+                'id': True,
+            },
+        )
+        ```
+        """
+
+
+    @overload
+    async def count(
+        self,
+        select: types.CampaignSessionCountAggregateInput,
+        take: Optional[int] = None,
+        skip: Optional[int] = None,
+        where: Optional[types.CampaignSessionWhereInput] = None,
+        cursor: Optional[types.CampaignSessionWhereUniqueInput] = None,
+    ) -> types.CampaignSessionCountAggregateOutput:
+        ...
+
+    async def count(
+        self,
+        select: Optional[types.CampaignSessionCountAggregateInput] = None,
+        take: Optional[int] = None,
+        skip: Optional[int] = None,
+        where: Optional[types.CampaignSessionWhereInput] = None,
+        cursor: Optional[types.CampaignSessionWhereUniqueInput] = None,
+    ) -> Union[int, types.CampaignSessionCountAggregateOutput]:
+        """Count the number of CampaignSession records present in the database
+
+        Parameters
+        ----------
+        select
+            Select the CampaignSession fields to be counted
+        take
+            Limit the maximum result
+        skip
+            Ignore the first N records
+        where
+            CampaignSession filter to find records
+        cursor
+            Specifies the position in the list to start counting results from, (typically an ID field)
+        order
+            This parameter is deprecated and will be removed in a future release
+
+        Returns
+        -------
+        int
+            The total number of records found, returned if `select` is not given
+
+        prisma.types.CampaignSessionCountAggregateOutput
+            Data returned when `select` is used, the fields present in this dictionary will
+            match the fields passed in the `select` argument
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # total: int
+        total = await CampaignSession.prisma().count()
+
+        # results: prisma.types.CampaignSessionCountAggregateOutput
+        results = await CampaignSession.prisma().count(
+            select={
+                '_all': True,
+                'seed': True,
+            },
+        )
+        ```
+        """
+
+        # TODO: this selection building should be moved to the QueryBuilder
+        #
+        # note the distinction between checking for `not select` here and `select is None`
+        # later is to handle the case that the given select dictionary is empty, this
+        # is a limitation of our types.
+        if not select:
+            root_selection = ['_count { _all }']
+        else:
+
+            root_selection = [
+                '_count {{ {0} }}'.format(' '.join(k for k, v in select.items() if v is True))
+            ]
+
+        resp = await self._client._execute(
+            method='count',
+            model=self._model,
+            arguments={
+                'take': take,
+                'skip': skip,
+                'where': where,
+                'cursor': cursor,
+            },
+            root_selection=root_selection,
+        )
+
+        if select is None:
+            return cast(int, resp['data']['result']['_count']['_all'])
+        else:
+            return cast(types.CampaignSessionCountAggregateOutput, resp['data']['result']['_count'])
+
+    async def delete_many(
+        self,
+        where: Optional[types.CampaignSessionWhereInput] = None
+    ) -> int:
+        """Delete multiple CampaignSession records.
+
+        Parameters
+        ----------
+        where
+            Optional CampaignSession filter to find the records to be deleted
+
+        Returns
+        -------
+        int
+            The total number of CampaignSession records that were deleted
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # delete all CampaignSession records
+        total = await CampaignSession.prisma().delete_many()
+        ```
+        """
+        resp = await self._client._execute(
+            method='delete_many',
+            model=self._model,
+            arguments={'where': where},
+            root_selection=['count'],
+        )
+        return int(resp['data']['result']['count'])
+
+    # TODO: make this easier to work with safely, currently output fields are typed as
+    #       not required, we should refactor the return type
+    # TODO: consider returning a Dict where the keys are a Tuple of the `by` selection
+    # TODO: statically type that the order argument is required when take or skip are present
+    async def group_by(
+        self,
+        by: List['types.CampaignSessionScalarFieldKeys'],
+        *,
+        where: Optional['types.CampaignSessionWhereInput'] = None,
+        take: Optional[int] = None,
+        skip: Optional[int] = None,
+        avg: Optional['types.CampaignSessionAvgAggregateInput'] = None,
+        sum: Optional['types.CampaignSessionSumAggregateInput'] = None,
+        min: Optional['types.CampaignSessionMinAggregateInput'] = None,
+        max: Optional['types.CampaignSessionMaxAggregateInput'] = None,
+        having: Optional['types.CampaignSessionScalarWhereWithAggregatesInput'] = None,
+        count: Optional[Union[bool, 'types.CampaignSessionCountAggregateInput']] = None,
+        order: Optional[Union[Mapping['types.CampaignSessionScalarFieldKeys', 'types.SortOrder'], List[Mapping['types.CampaignSessionScalarFieldKeys', 'types.SortOrder']]]] = None,
+    ) -> List['types.CampaignSessionGroupByOutput']:
+        """Group CampaignSession records by one or more field values and perform aggregations
+        each group such as finding the average.
+
+        Parameters
+        ----------
+        by
+            List of scalar CampaignSession fields to group records by
+        where
+            CampaignSession filter to select records
+        take
+            Limit the maximum number of CampaignSession records returned
+        skip
+            Ignore the first N records
+        avg
+            Adds the average of all values of the specified fields to the `_avg` field
+            in the returned data.
+        sum
+            Adds the sum of all values of the specified fields to the `_sum` field
+            in the returned data.
+        min
+            Adds the smallest available value for the specified fields to the `_min` field
+            in the returned data.
+        max
+            Adds the largest available value for the specified fields to the `_max` field
+            in the returned data.
+        count
+            Adds a count of non-fields to the `_count` field in the returned data.
+        having
+            Allows you to filter groups by an aggregate value - for example only return
+            groups having an average age less than 50.
+        order
+            Lets you order the returned list by any property that is also present in `by`.
+            Only **one** field is allowed at a time.
+
+        Returns
+        -------
+        List[prisma.types.CampaignSessionGroupByOutput]
+            A list of dictionaries representing the CampaignSession record,
+            this will also have additional fields present if aggregation arguments
+            are used (see the above parameters)
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # group CampaignSession records by game_finished values
+        # and count how many records are in each group
+        results = await CampaignSession.prisma().group_by(
+            ['game_finished'],
+            count=True,
+        )
+        ```
+        """
+        if order is None:
+            if take is not None:
+                raise TypeError('Missing argument: \'order\' which is required when \'take\' is present')
+
+            if skip is not None:
+                raise TypeError('Missing argument: \'order\' which is required when \'skip\' is present')
+
+        root_selection: List[str] = [*by]
+        if avg is not None:
+            root_selection.append(_select_fields('_avg', avg))
+
+        if min is not None:
+            root_selection.append(_select_fields('_min', min))
+
+        if sum is not None:
+            root_selection.append(_select_fields('_sum', sum))
+
+        if max is not None:
+            root_selection.append(_select_fields('_max', max))
+
+        if count is not None:
+            if count is True:
+                root_selection.append('_count { _all }')
+            elif isinstance(count, dict):
+                root_selection.append(_select_fields('_count', count))
+
+        resp = await self._client._execute(
+            method='group_by',
+            model=self._model,
+            arguments={
+                'by': by,
+                'take': take,
+                'skip': skip,
+                'where': where,
+                'having': having,
+                'orderBy': order,
+            },
+            root_selection=root_selection,
+        )
+        return resp['data']['result']  # type: ignore[no-any-return]
+
+
+class SceneActions(Generic[_PrismaModelT]):
+    __slots__ = (
+        '_client',
+        '_model',
+    )
+
+    def __init__(self, client: Prisma, model: Type[_PrismaModelT]) -> None:
+        self._client = client
+        self._model = model
+
+    async def query_raw(
+        self,
+        query: LiteralString,
+        *args: Any,
+    ) -> List[_PrismaModelT]:
+        """Execute a raw SQL query
+
+        Parameters
+        ----------
+        query
+            The raw SQL query string to be executed
+        *args
+            Parameters to be passed to the SQL query, these MUST be used over
+            string formatting to avoid an SQL injection vulnerability
+
+        Returns
+        -------
+        List[prisma.models.Scene]
+            The records returned by the SQL query
+
+        Raises
+        ------
+        prisma_errors.RawQueryError
+            This could be due to invalid syntax, mismatched number of parameters or any other error
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        users = await Scene.prisma().query_raw(
+            'SELECT * FROM Scene WHERE id = $1',
+            2052132707,
+        )
+        ```
+        """
+        return await self._client.query_raw(query, *args, model=self._model)
+
+    async def query_first(
+        self,
+        query: LiteralString,
+        *args: Any,
+    ) -> Optional[_PrismaModelT]:
+        """Execute a raw SQL query, returning the first result
+
+        Parameters
+        ----------
+        query
+            The raw SQL query string to be executed
+        *args
+            Parameters to be passed to the SQL query, these MUST be used over
+            string formatting to avoid an SQL injection vulnerability
+
+        Returns
+        -------
+        prisma.models.Scene
+            The first record returned by the SQL query
+        None
+            The raw SQL query did not return any records
+
+        Raises
+        ------
+        prisma_errors.RawQueryError
+            This could be due to invalid syntax, mismatched number of parameters or any other error
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        user = await Scene.prisma().query_first(
+            'SELECT * FROM Scene WHERE campaignId = $1',
+            1355147104,
+        )
+        ```
+        """
+        return await self._client.query_first(query, *args, model=self._model)
+
+    async def create(
+        self,
+        data: types.SceneCreateInput,
+        include: Optional[types.SceneInclude] = None
+    ) -> _PrismaModelT:
+        """Create a new Scene record.
+
+        Parameters
+        ----------
+        data
+            Scene record data
+        include
+            Specifies which relations should be loaded on the returned Scene model
+
+        Returns
+        -------
+        prisma.models.Scene
+            The created Scene record
+
+        Raises
+        ------
+        prisma.errors.MissingRequiredValueError
+            Value is required but was not found
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # create a Scene record from just the required fields
+        scene = await Scene.prisma().create(
+            data={
+                # data to create a Scene record
+                'campaignId': 84079641,
+                'turn_num': 754433246,
+            },
+        )
+        ```
+        """
+        resp = await self._client._execute(
+            method='create',
+            model=self._model,
+            arguments={
+                'data': data,
+                'include': include,
+            },
+        )
+        return model_parse(self._model, resp['data']['result'])
+
+    async def create_many(
+        self,
+        data: List[types.SceneCreateWithoutRelationsInput],
+        *,
+        skip_duplicates: Optional[bool] = None,
+    ) -> int:
+        """Create multiple Scene records at once.
+
+        This function is *not* available when using SQLite.
+
+        Parameters
+        ----------
+        data
+            List of Scene record data
+        skip_duplicates
+            Boolean flag for ignoring unique constraint errors
+
+        Returns
+        -------
+        int
+            The total number of records created
+
+        Raises
+        ------
+        prisma.errors.UnsupportedDatabaseError
+            Attempting to query when using SQLite
+        prisma.errors.UniqueViolationError
+            A unique constraint check has failed, these can be ignored with the `skip_duplicates` argument
+        prisma.errors.MissingRequiredValueError
+            Value is required but was not found
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        total = await Scene.prisma().create_many(
+            data=[
+                {
+                    # data to create a Scene record
+                    'campaignId': 314261183,
+                    'turn_num': 227678604,
+                },
+                {
+                    # data to create a Scene record
+                    'campaignId': 423999701,
+                    'turn_num': 180275434,
+                },
+            ],
+            skip_duplicates=True,
+        )
+        ```
+        """
+        if skip_duplicates and self._client._active_provider in CREATE_MANY_SKIP_DUPLICATES_UNSUPPORTED:
+            raise errors.UnsupportedDatabaseError(self._client._active_provider, 'create_many_skip_duplicates')
+
+        resp = await self._client._execute(
+            method='create_many',
+            model=self._model,
+            arguments={
+                'data': data,
+                'skipDuplicates': skip_duplicates,
+            },
+            root_selection=['count'],
+        )
+        return int(resp['data']['result']['count'])
+
+    async def delete(
+        self,
+        where: types.SceneWhereUniqueInput,
+        include: Optional[types.SceneInclude] = None
+    ) -> Optional[_PrismaModelT]:
+        """Delete a single Scene record.
+
+        Parameters
+        ----------
+        where
+            Scene filter to select the record to be deleted, must be unique
+        include
+            Specifies which relations should be loaded on the returned Scene model
+
+        Returns
+        -------
+        prisma.models.Scene
+            The deleted Scene record
+        None
+            Could not find a record to delete
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+        prisma.errors.MissingRequiredValueError
+            Value is required but was not found
+
+        Example
+        -------
+        ```py
+        scene = await Scene.prisma().delete(
+            where={
+                'id': 57608155,
+            },
+        )
+        ```
+        """
+        try:
+            resp = await self._client._execute(
+                method='delete',
+                model=self._model,
+                arguments={
+                    'where': where,
+                    'include': include,
+                },
+            )
+        except errors.RecordNotFoundError:
+            return None
+
+        return model_parse(self._model, resp['data']['result'])
+
+    async def find_unique(
+        self,
+        where: types.SceneWhereUniqueInput,
+        include: Optional[types.SceneInclude] = None
+    ) -> Optional[_PrismaModelT]:
+        """Find a unique Scene record.
+
+        Parameters
+        ----------
+        where
+            Scene filter to find the record, must be unique
+        include
+            Specifies which relations should be loaded on the returned Scene model
+
+        Returns
+        -------
+        prisma.models.Scene
+            The found Scene record
+        None
+            No record matching the given input could be found
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+        prisma.errors.MissingRequiredValueError
+            Value is required but was not found
+
+        Example
+        -------
+        ```py
+        scene = await Scene.prisma().find_unique(
+            where={
+                'id': 2030912120,
+            },
+        )
+        ```
+        """
+        resp = await self._client._execute(
+            method='find_unique',
+            model=self._model,
+            arguments={
+                'where': where,
+                'include': include,
+            },
+        )
+        result = resp['data']['result']
+        if result is None:
+            return None
+        return model_parse(self._model, result)
+
+    async def find_unique_or_raise(
+        self,
+        where: types.SceneWhereUniqueInput,
+        include: Optional[types.SceneInclude] = None
+    ) -> _PrismaModelT:
+        """Find a unique Scene record. Raises `RecordNotFoundError` if no record is found.
+
+        Parameters
+        ----------
+        where
+            Scene filter to find the record, must be unique
+        include
+            Specifies which relations should be loaded on the returned Scene model
+
+        Returns
+        -------
+        prisma.models.Scene
+            The found Scene record
+
+        Raises
+        ------
+        prisma.errors.RecordNotFoundError
+            No record was found
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+        prisma.errors.MissingRequiredValueError
+            Value is required but was not found
+
+        Example
+        -------
+        ```py
+        scene = await Scene.prisma().find_unique_or_raise(
+            where={
+                'id': 1974865233,
+            },
+        )
+        ```
+        """
+        resp = await self._client._execute(
+            method='find_unique_or_raise',
+            model=self._model,
+            arguments={
+                'where': where,
+                'include': include,
+            },
+        )
+        return model_parse(self._model, resp['data']['result'])
+
+    async def find_many(
+        self,
+        take: Optional[int] = None,
+        skip: Optional[int] = None,
+        where: Optional[types.SceneWhereInput] = None,
+        cursor: Optional[types.SceneWhereUniqueInput] = None,
+        include: Optional[types.SceneInclude] = None,
+        order: Optional[Union[types.SceneOrderByInput, List[types.SceneOrderByInput]]] = None,
+        distinct: Optional[List[types.SceneScalarFieldKeys]] = None,
+    ) -> List[_PrismaModelT]:
+        """Find multiple Scene records.
+
+        An empty list is returned if no records could be found.
+
+        Parameters
+        ----------
+        take
+            Limit the maximum number of Scene records returned
+        skip
+            Ignore the first N results
+        where
+            Scene filter to select records
+        cursor
+            Specifies the position in the list to start returning results from, (typically an ID field)
+        include
+            Specifies which relations should be loaded on the returned Scene model
+        order
+            Order the returned Scene records by any field
+        distinct
+            Filter Scene records by either a single distinct field or distinct combinations of fields
+
+        Returns
+        -------
+        List[prisma.models.Scene]
+            The list of all Scene records that could be found
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # find the first 10 Scene records
+        scenes = await Scene.prisma().find_many(take=10)
+
+        # find the first 5 Scene records ordered by the turn_num field
+        scenes = await Scene.prisma().find_many(
+            take=5,
+            order={
+                'turn_num': 'desc',
+            },
+        )
+        ```
+        """
+        resp = await self._client._execute(
+            method='find_many',
+            model=self._model,
+            arguments={
+                'take': take,
+                'skip': skip,
+                'where': where,
+                'order_by': order,
+                'cursor': cursor,
+                'include': include,
+                'distinct': distinct,
+            },
+        )
+        return [model_parse(self._model, r) for r in resp['data']['result']]
+
+    async def find_first(
+        self,
+        skip: Optional[int] = None,
+        where: Optional[types.SceneWhereInput] = None,
+        cursor: Optional[types.SceneWhereUniqueInput] = None,
+        include: Optional[types.SceneInclude] = None,
+        order: Optional[Union[types.SceneOrderByInput, List[types.SceneOrderByInput]]] = None,
+        distinct: Optional[List[types.SceneScalarFieldKeys]] = None,
+    ) -> Optional[_PrismaModelT]:
+        """Find a single Scene record.
+
+        Parameters
+        ----------
+        skip
+            Ignore the first N records
+        where
+            Scene filter to select the record
+        cursor
+            Specifies the position in the list to start returning results from, (typically an ID field)
+        include
+            Specifies which relations should be loaded on the returned Scene model
+        order
+            Order the returned Scene records by any field
+        distinct
+            Filter Scene records by either a single distinct field or distinct combinations of fields
+
+        Returns
+        -------
+        prisma.models.Scene
+            The first Scene record found, matching the given arguments
+        None
+            No record could be found
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # find the second Scene record ordered by the scene_context field
+        scene = await Scene.prisma().find_first(
+            skip=1,
+            order={
+                'scene_context': 'desc',
+            },
+        )
+        ```
+        """
+        resp = await self._client._execute(
+            method='find_first',
+            model=self._model,
+            arguments={
+                'skip': skip,
+                'where': where,
+                'order_by': order,
+                'cursor': cursor,
+                'include': include,
+                'distinct': distinct,
+            },
+        )
+        result = resp['data']['result']
+        if result is None:
+            return None
+
+        return model_parse(self._model, result)
+
+    async def find_first_or_raise(
+        self,
+        skip: Optional[int] = None,
+        where: Optional[types.SceneWhereInput] = None,
+        cursor: Optional[types.SceneWhereUniqueInput] = None,
+        include: Optional[types.SceneInclude] = None,
+        order: Optional[Union[types.SceneOrderByInput, List[types.SceneOrderByInput]]] = None,
+        distinct: Optional[List[types.SceneScalarFieldKeys]] = None,
+    ) -> _PrismaModelT:
+        """Find a single Scene record. Raises `RecordNotFoundError` if no record was found.
+
+        Parameters
+        ----------
+        skip
+            Ignore the first N records
+        where
+            Scene filter to select the record
+        cursor
+            Specifies the position in the list to start returning results from, (typically an ID field)
+        include
+            Specifies which relations should be loaded on the returned Scene model
+        order
+            Order the returned Scene records by any field
+        distinct
+            Filter Scene records by either a single distinct field or distinct combinations of fields
+
+        Returns
+        -------
+        prisma.models.Scene
+            The first Scene record found, matching the given arguments
+
+        Raises
+        ------
+        prisma.errors.RecordNotFoundError
+            No record was found
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # find the second Scene record ordered by the id field
+        scene = await Scene.prisma().find_first_or_raise(
+            skip=1,
+            order={
+                'id': 'desc',
+            },
+        )
+        ```
+        """
+        resp = await self._client._execute(
+            method='find_first_or_raise',
+            model=self._model,
+            arguments={
+                'skip': skip,
+                'where': where,
+                'order_by': order,
+                'cursor': cursor,
+                'include': include,
+                'distinct': distinct,
+            },
+        )
+        return model_parse(self._model, resp['data']['result'])
+
+    async def update(
+        self,
+        data: types.SceneUpdateInput,
+        where: types.SceneWhereUniqueInput,
+        include: Optional[types.SceneInclude] = None
+    ) -> Optional[_PrismaModelT]:
+        """Update a single Scene record.
+
+        Parameters
+        ----------
+        data
+            Scene record data specifying what to update
+        where
+            Scene filter to select the unique record to create / update
+        include
+            Specifies which relations should be loaded on the returned Scene model
+
+        Returns
+        -------
+        prisma.models.Scene
+            The updated Scene record
+        None
+            No record could be found
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        scene = await Scene.prisma().update(
+            where={
+                'id': 1949862326,
+            },
+            data={
+                # data to update the Scene record to
+            },
+        )
+        ```
+        """
+        try:
+            resp = await self._client._execute(
+                method='update',
+                model=self._model,
+                arguments={
+                    'data': data,
+                    'where': where,
+                    'include': include,
+                },
+            )
+        except errors.RecordNotFoundError:
+            return None
+
+        return model_parse(self._model, resp['data']['result'])
+
+    async def upsert(
+        self,
+        where: types.SceneWhereUniqueInput,
+        data: types.SceneUpsertInput,
+        include: Optional[types.SceneInclude] = None,
+    ) -> _PrismaModelT:
+        """Updates an existing record or create a new one
+
+        Parameters
+        ----------
+        where
+            Scene filter to select the unique record to create / update
+        data
+            Data specifying what fields to set on create and update
+        include
+            Specifies which relations should be loaded on the returned Scene model
+
+        Returns
+        -------
+        prisma.models.Scene
+            The created or updated Scene record
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+        prisma.errors.MissingRequiredValueError
+            Value is required but was not found
+
+        Example
+        -------
+        ```py
+        scene = await Scene.prisma().upsert(
+            where={
+                'id': 1858881207,
+            },
+            data={
+                'create': {
+                    'id': 1858881207,
+                    'campaignId': 423999701,
+                    'turn_num': 180275434,
+                },
+                'update': {
+                    'campaignId': 423999701,
+                    'turn_num': 180275434,
+                },
+            },
+        )
+        ```
+        """
+        resp = await self._client._execute(
+            method='upsert',
+            model=self._model,
+            arguments={
+                'where': where,
+                'include': include,
+                'create': data.get('create'),
+                'update': data.get('update'),
+            },
+        )
+        return model_parse(self._model, resp['data']['result'])
+
+    async def update_many(
+        self,
+        data: types.SceneUpdateManyMutationInput,
+        where: types.SceneWhereInput,
+    ) -> int:
+        """Update multiple Scene records
+
+        Parameters
+        ----------
+        data
+            Scene data to update the selected Scene records to
+        where
+            Filter to select the Scene records to update
+
+        Returns
+        -------
+        int
+            The total number of Scene records that were updated
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # update all Scene records
+        total = await Scene.prisma().update_many(
+            data={
+                'campaignId': 319819300
+            },
+            where={}
+        )
+        ```
+        """
+        resp = await self._client._execute(
+            method='update_many',
+            model=self._model,
+            arguments={'data': data, 'where': where,},
+            root_selection=['count'],
+        )
+        return int(resp['data']['result']['count'])
+
+    @overload
+    async def count(
+        self,
+        select: None = None,
+        take: Optional[int] = None,
+        skip: Optional[int] = None,
+        where: Optional[types.SceneWhereInput] = None,
+        cursor: Optional[types.SceneWhereUniqueInput] = None,
+    ) -> int:
+        """Count the number of Scene records present in the database
+
+        Parameters
+        ----------
+        select
+            Select the Scene fields to be counted
+        take
+            Limit the maximum result
+        skip
+            Ignore the first N records
+        where
+            Scene filter to find records
+        cursor
+            Specifies the position in the list to start counting results from, (typically an ID field)
+        order
+            This parameter is deprecated and will be removed in a future release
+
+        Returns
+        -------
+        int
+            The total number of records found, returned if `select` is not given
+
+        prisma.types.SceneCountAggregateOutput
+            Data returned when `select` is used, the fields present in this dictionary will
+            match the fields passed in the `select` argument
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # total: int
+        total = await Scene.prisma().count()
+
+        # results: prisma.types.SceneCountAggregateOutput
+        results = await Scene.prisma().count(
+            select={
+                '_all': True,
+                'turn_num': True,
+            },
+        )
+        ```
+        """
+
+
+    @overload
+    async def count(
+        self,
+        select: types.SceneCountAggregateInput,
+        take: Optional[int] = None,
+        skip: Optional[int] = None,
+        where: Optional[types.SceneWhereInput] = None,
+        cursor: Optional[types.SceneWhereUniqueInput] = None,
+    ) -> types.SceneCountAggregateOutput:
+        ...
+
+    async def count(
+        self,
+        select: Optional[types.SceneCountAggregateInput] = None,
+        take: Optional[int] = None,
+        skip: Optional[int] = None,
+        where: Optional[types.SceneWhereInput] = None,
+        cursor: Optional[types.SceneWhereUniqueInput] = None,
+    ) -> Union[int, types.SceneCountAggregateOutput]:
+        """Count the number of Scene records present in the database
+
+        Parameters
+        ----------
+        select
+            Select the Scene fields to be counted
+        take
+            Limit the maximum result
+        skip
+            Ignore the first N records
+        where
+            Scene filter to find records
+        cursor
+            Specifies the position in the list to start counting results from, (typically an ID field)
+        order
+            This parameter is deprecated and will be removed in a future release
+
+        Returns
+        -------
+        int
+            The total number of records found, returned if `select` is not given
+
+        prisma.types.SceneCountAggregateOutput
+            Data returned when `select` is used, the fields present in this dictionary will
+            match the fields passed in the `select` argument
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # total: int
+        total = await Scene.prisma().count()
+
+        # results: prisma.types.SceneCountAggregateOutput
+        results = await Scene.prisma().count(
+            select={
+                '_all': True,
+                'scene_context': True,
+            },
+        )
+        ```
+        """
+
+        # TODO: this selection building should be moved to the QueryBuilder
+        #
+        # note the distinction between checking for `not select` here and `select is None`
+        # later is to handle the case that the given select dictionary is empty, this
+        # is a limitation of our types.
+        if not select:
+            root_selection = ['_count { _all }']
+        else:
+
+            root_selection = [
+                '_count {{ {0} }}'.format(' '.join(k for k, v in select.items() if v is True))
+            ]
+
+        resp = await self._client._execute(
+            method='count',
+            model=self._model,
+            arguments={
+                'take': take,
+                'skip': skip,
+                'where': where,
+                'cursor': cursor,
+            },
+            root_selection=root_selection,
+        )
+
+        if select is None:
+            return cast(int, resp['data']['result']['_count']['_all'])
+        else:
+            return cast(types.SceneCountAggregateOutput, resp['data']['result']['_count'])
+
+    async def delete_many(
+        self,
+        where: Optional[types.SceneWhereInput] = None
+    ) -> int:
+        """Delete multiple Scene records.
+
+        Parameters
+        ----------
+        where
+            Optional Scene filter to find the records to be deleted
+
+        Returns
+        -------
+        int
+            The total number of Scene records that were deleted
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # delete all Scene records
+        total = await Scene.prisma().delete_many()
+        ```
+        """
+        resp = await self._client._execute(
+            method='delete_many',
+            model=self._model,
+            arguments={'where': where},
+            root_selection=['count'],
+        )
+        return int(resp['data']['result']['count'])
+
+    # TODO: make this easier to work with safely, currently output fields are typed as
+    #       not required, we should refactor the return type
+    # TODO: consider returning a Dict where the keys are a Tuple of the `by` selection
+    # TODO: statically type that the order argument is required when take or skip are present
+    async def group_by(
+        self,
+        by: List['types.SceneScalarFieldKeys'],
+        *,
+        where: Optional['types.SceneWhereInput'] = None,
+        take: Optional[int] = None,
+        skip: Optional[int] = None,
+        avg: Optional['types.SceneAvgAggregateInput'] = None,
+        sum: Optional['types.SceneSumAggregateInput'] = None,
+        min: Optional['types.SceneMinAggregateInput'] = None,
+        max: Optional['types.SceneMaxAggregateInput'] = None,
+        having: Optional['types.SceneScalarWhereWithAggregatesInput'] = None,
+        count: Optional[Union[bool, 'types.SceneCountAggregateInput']] = None,
+        order: Optional[Union[Mapping['types.SceneScalarFieldKeys', 'types.SortOrder'], List[Mapping['types.SceneScalarFieldKeys', 'types.SortOrder']]]] = None,
+    ) -> List['types.SceneGroupByOutput']:
+        """Group Scene records by one or more field values and perform aggregations
+        each group such as finding the average.
+
+        Parameters
+        ----------
+        by
+            List of scalar Scene fields to group records by
+        where
+            Scene filter to select records
+        take
+            Limit the maximum number of Scene records returned
+        skip
+            Ignore the first N records
+        avg
+            Adds the average of all values of the specified fields to the `_avg` field
+            in the returned data.
+        sum
+            Adds the sum of all values of the specified fields to the `_sum` field
+            in the returned data.
+        min
+            Adds the smallest available value for the specified fields to the `_min` field
+            in the returned data.
+        max
+            Adds the largest available value for the specified fields to the `_max` field
+            in the returned data.
+        count
+            Adds a count of non-fields to the `_count` field in the returned data.
+        having
+            Allows you to filter groups by an aggregate value - for example only return
+            groups having an average age less than 50.
+        order
+            Lets you order the returned list by any property that is also present in `by`.
+            Only **one** field is allowed at a time.
+
+        Returns
+        -------
+        List[prisma.types.SceneGroupByOutput]
+            A list of dictionaries representing the Scene record,
+            this will also have additional fields present if aggregation arguments
+            are used (see the above parameters)
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # group Scene records by id values
+        # and count how many records are in each group
+        results = await Scene.prisma().group_by(
+            ['id'],
+            count=True,
+        )
+        ```
+        """
+        if order is None:
+            if take is not None:
+                raise TypeError('Missing argument: \'order\' which is required when \'take\' is present')
+
+            if skip is not None:
+                raise TypeError('Missing argument: \'order\' which is required when \'skip\' is present')
+
+        root_selection: List[str] = [*by]
+        if avg is not None:
+            root_selection.append(_select_fields('_avg', avg))
+
+        if min is not None:
+            root_selection.append(_select_fields('_min', min))
+
+        if sum is not None:
+            root_selection.append(_select_fields('_sum', sum))
+
+        if max is not None:
+            root_selection.append(_select_fields('_max', max))
+
+        if count is not None:
+            if count is True:
+                root_selection.append('_count { _all }')
+            elif isinstance(count, dict):
+                root_selection.append(_select_fields('_count', count))
+
+        resp = await self._client._execute(
+            method='group_by',
+            model=self._model,
+            arguments={
+                'by': by,
+                'take': take,
+                'skip': skip,
+                'where': where,
+                'having': having,
+                'orderBy': order,
+            },
+            root_selection=root_selection,
+        )
+        return resp['data']['result']  # type: ignore[no-any-return]
+
+
 
 def _select_fields(root: str, select: Mapping[str, Any]) -> str:
     """Helper to build a GraphQL selection string

@@ -214,3 +214,33 @@ class BaseUSERCHAR(_PrismaModel):
         return actions.USERCHARActions[_PrismaModelT](client or get_client(), cls)
 
 
+class BaseUSERCHARCHANGE(_PrismaModel):
+    __prisma_model__: ClassVar[Literal['USERCHARCHANGE']] = 'USERCHARCHANGE'  # pyright: ignore[reportIncompatibleVariableOverride]
+
+    @classmethod
+    def prisma(cls: Type[_PrismaModelT], client: Optional['Prisma'] = None) -> 'actions.USERCHARCHANGEActions[_PrismaModelT]':
+        from .client import get_client
+
+        return actions.USERCHARCHANGEActions[_PrismaModelT](client or get_client(), cls)
+
+
+class BaseCampaignSession(_PrismaModel):
+    __prisma_model__: ClassVar[Literal['CampaignSession']] = 'CampaignSession'  # pyright: ignore[reportIncompatibleVariableOverride]
+
+    @classmethod
+    def prisma(cls: Type[_PrismaModelT], client: Optional['Prisma'] = None) -> 'actions.CampaignSessionActions[_PrismaModelT]':
+        from .client import get_client
+
+        return actions.CampaignSessionActions[_PrismaModelT](client or get_client(), cls)
+
+
+class BaseScene(_PrismaModel):
+    __prisma_model__: ClassVar[Literal['Scene']] = 'Scene'  # pyright: ignore[reportIncompatibleVariableOverride]
+
+    @classmethod
+    def prisma(cls: Type[_PrismaModelT], client: Optional['Prisma'] = None) -> 'actions.SceneActions[_PrismaModelT]':
+        from .client import get_client
+
+        return actions.SceneActions[_PrismaModelT](client or get_client(), cls)
+
+

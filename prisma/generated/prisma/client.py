@@ -108,6 +108,9 @@ class Prisma(AsyncBasePrisma):
     userdata: 'actions.USERDATAActions[models.USERDATA]'
     storyvector: 'actions.STORYVECTORActions[models.STORYVECTOR]'
     userchar: 'actions.USERCHARActions[models.USERCHAR]'
+    usercharchange: 'actions.USERCHARCHANGEActions[models.USERCHARCHANGE]'
+    campaignsession: 'actions.CampaignSessionActions[models.CampaignSession]'
+    scene: 'actions.SceneActions[models.Scene]'
 
     __slots__ = (
         'charactervector',
@@ -124,6 +127,9 @@ class Prisma(AsyncBasePrisma):
         'userdata',
         'storyvector',
         'userchar',
+        'usercharchange',
+        'campaignsession',
+        'scene',
     )
 
     def __init__(
@@ -168,6 +174,9 @@ class Prisma(AsyncBasePrisma):
         self.userdata = actions.USERDATAActions[models.USERDATA](self, models.USERDATA)
         self.storyvector = actions.STORYVECTORActions[models.STORYVECTOR](self, models.STORYVECTOR)
         self.userchar = actions.USERCHARActions[models.USERCHAR](self, models.USERCHAR)
+        self.usercharchange = actions.USERCHARCHANGEActions[models.USERCHARCHANGE](self, models.USERCHARCHANGE)
+        self.campaignsession = actions.CampaignSessionActions[models.CampaignSession](self, models.CampaignSession)
+        self.scene = actions.SceneActions[models.Scene](self, models.Scene)
 
         if auto_register:
             register(self)
@@ -332,6 +341,9 @@ class Batch:
     userdata: 'USERDATABatchActions'
     storyvector: 'STORYVECTORBatchActions'
     userchar: 'USERCHARBatchActions'
+    usercharchange: 'USERCHARCHANGEBatchActions'
+    campaignsession: 'CampaignSessionBatchActions'
+    scene: 'SceneBatchActions'
 
     def __init__(self, client: Prisma) -> None:
         self.__client = client
@@ -351,6 +363,9 @@ class Batch:
         self.userdata = USERDATABatchActions(self)
         self.storyvector = STORYVECTORBatchActions(self)
         self.userchar = USERCHARBatchActions(self)
+        self.usercharchange = USERCHARCHANGEBatchActions(self)
+        self.campaignsession = CampaignSessionBatchActions(self)
+        self.scene = SceneBatchActions(self)
 
     def _add(self, **kwargs: Any) -> None:
         builder = QueryBuilder(
@@ -1951,6 +1966,339 @@ class USERCHARBatchActions:
         self._batcher._add(
             method='delete_many',
             model=models.USERCHAR,
+            arguments={'where': where},
+            root_selection=['count'],
+        )
+
+
+
+# NOTE: some arguments are meaningless in this context but are included
+# for completeness sake
+class USERCHARCHANGEBatchActions:
+    def __init__(self, batcher: Batch) -> None:
+        self._batcher = batcher
+
+    def create(
+        self,
+        data: types.USERCHARCHANGECreateInput,
+        include: Optional[types.USERCHARCHANGEInclude] = None
+    ) -> None:
+        self._batcher._add(
+            method='create',
+            model=models.USERCHARCHANGE,
+            arguments={
+                'data': data,
+                'include': include,
+            },
+        )
+
+    def create_many(
+        self,
+        data: List[types.USERCHARCHANGECreateWithoutRelationsInput],
+        *,
+        skip_duplicates: Optional[bool] = None,
+    ) -> None:
+        if skip_duplicates and self._batcher._active_provider in CREATE_MANY_SKIP_DUPLICATES_UNSUPPORTED:
+            raise errors.UnsupportedDatabaseError(self._batcher._active_provider, 'create_many_skip_duplicates')
+
+        self._batcher._add(
+            method='create_many',
+            model=models.USERCHARCHANGE,
+            arguments={
+                'data': data,
+                'skipDuplicates': skip_duplicates,
+            },
+            root_selection=['count'],
+        )
+
+    def delete(
+        self,
+        where: types.USERCHARCHANGEWhereUniqueInput,
+        include: Optional[types.USERCHARCHANGEInclude] = None,
+    ) -> None:
+        self._batcher._add(
+            method='delete',
+            model=models.USERCHARCHANGE,
+            arguments={
+                'where': where,
+                'include': include,
+            },
+        )
+
+    def update(
+        self,
+        data: types.USERCHARCHANGEUpdateInput,
+        where: types.USERCHARCHANGEWhereUniqueInput,
+        include: Optional[types.USERCHARCHANGEInclude] = None
+    ) -> None:
+        self._batcher._add(
+            method='update',
+            model=models.USERCHARCHANGE,
+            arguments={
+                'data': data,
+                'where': where,
+                'include': include,
+            },
+        )
+
+    def upsert(
+        self,
+        where: types.USERCHARCHANGEWhereUniqueInput,
+        data: types.USERCHARCHANGEUpsertInput,
+        include: Optional[types.USERCHARCHANGEInclude] = None,
+    ) -> None:
+        self._batcher._add(
+            method='upsert',
+            model=models.USERCHARCHANGE,
+            arguments={
+                'where': where,
+                'include': include,
+                'create': data.get('create'),
+                'update': data.get('update'),
+            },
+        )
+
+    def update_many(
+        self,
+        data: types.USERCHARCHANGEUpdateManyMutationInput,
+        where: types.USERCHARCHANGEWhereInput,
+    ) -> None:
+        self._batcher._add(
+            method='update_many',
+            model=models.USERCHARCHANGE,
+            arguments={'data': data, 'where': where,},
+            root_selection=['count'],
+        )
+
+    def delete_many(
+        self,
+        where: Optional[types.USERCHARCHANGEWhereInput] = None,
+    ) -> None:
+        self._batcher._add(
+            method='delete_many',
+            model=models.USERCHARCHANGE,
+            arguments={'where': where},
+            root_selection=['count'],
+        )
+
+
+
+# NOTE: some arguments are meaningless in this context but are included
+# for completeness sake
+class CampaignSessionBatchActions:
+    def __init__(self, batcher: Batch) -> None:
+        self._batcher = batcher
+
+    def create(
+        self,
+        data: types.CampaignSessionCreateInput,
+        include: Optional[types.CampaignSessionInclude] = None
+    ) -> None:
+        self._batcher._add(
+            method='create',
+            model=models.CampaignSession,
+            arguments={
+                'data': data,
+                'include': include,
+            },
+        )
+
+    def create_many(
+        self,
+        data: List[types.CampaignSessionCreateWithoutRelationsInput],
+        *,
+        skip_duplicates: Optional[bool] = None,
+    ) -> None:
+        if skip_duplicates and self._batcher._active_provider in CREATE_MANY_SKIP_DUPLICATES_UNSUPPORTED:
+            raise errors.UnsupportedDatabaseError(self._batcher._active_provider, 'create_many_skip_duplicates')
+
+        self._batcher._add(
+            method='create_many',
+            model=models.CampaignSession,
+            arguments={
+                'data': data,
+                'skipDuplicates': skip_duplicates,
+            },
+            root_selection=['count'],
+        )
+
+    def delete(
+        self,
+        where: types.CampaignSessionWhereUniqueInput,
+        include: Optional[types.CampaignSessionInclude] = None,
+    ) -> None:
+        self._batcher._add(
+            method='delete',
+            model=models.CampaignSession,
+            arguments={
+                'where': where,
+                'include': include,
+            },
+        )
+
+    def update(
+        self,
+        data: types.CampaignSessionUpdateInput,
+        where: types.CampaignSessionWhereUniqueInput,
+        include: Optional[types.CampaignSessionInclude] = None
+    ) -> None:
+        self._batcher._add(
+            method='update',
+            model=models.CampaignSession,
+            arguments={
+                'data': data,
+                'where': where,
+                'include': include,
+            },
+        )
+
+    def upsert(
+        self,
+        where: types.CampaignSessionWhereUniqueInput,
+        data: types.CampaignSessionUpsertInput,
+        include: Optional[types.CampaignSessionInclude] = None,
+    ) -> None:
+        self._batcher._add(
+            method='upsert',
+            model=models.CampaignSession,
+            arguments={
+                'where': where,
+                'include': include,
+                'create': data.get('create'),
+                'update': data.get('update'),
+            },
+        )
+
+    def update_many(
+        self,
+        data: types.CampaignSessionUpdateManyMutationInput,
+        where: types.CampaignSessionWhereInput,
+    ) -> None:
+        self._batcher._add(
+            method='update_many',
+            model=models.CampaignSession,
+            arguments={'data': data, 'where': where,},
+            root_selection=['count'],
+        )
+
+    def delete_many(
+        self,
+        where: Optional[types.CampaignSessionWhereInput] = None,
+    ) -> None:
+        self._batcher._add(
+            method='delete_many',
+            model=models.CampaignSession,
+            arguments={'where': where},
+            root_selection=['count'],
+        )
+
+
+
+# NOTE: some arguments are meaningless in this context but are included
+# for completeness sake
+class SceneBatchActions:
+    def __init__(self, batcher: Batch) -> None:
+        self._batcher = batcher
+
+    def create(
+        self,
+        data: types.SceneCreateInput,
+        include: Optional[types.SceneInclude] = None
+    ) -> None:
+        self._batcher._add(
+            method='create',
+            model=models.Scene,
+            arguments={
+                'data': data,
+                'include': include,
+            },
+        )
+
+    def create_many(
+        self,
+        data: List[types.SceneCreateWithoutRelationsInput],
+        *,
+        skip_duplicates: Optional[bool] = None,
+    ) -> None:
+        if skip_duplicates and self._batcher._active_provider in CREATE_MANY_SKIP_DUPLICATES_UNSUPPORTED:
+            raise errors.UnsupportedDatabaseError(self._batcher._active_provider, 'create_many_skip_duplicates')
+
+        self._batcher._add(
+            method='create_many',
+            model=models.Scene,
+            arguments={
+                'data': data,
+                'skipDuplicates': skip_duplicates,
+            },
+            root_selection=['count'],
+        )
+
+    def delete(
+        self,
+        where: types.SceneWhereUniqueInput,
+        include: Optional[types.SceneInclude] = None,
+    ) -> None:
+        self._batcher._add(
+            method='delete',
+            model=models.Scene,
+            arguments={
+                'where': where,
+                'include': include,
+            },
+        )
+
+    def update(
+        self,
+        data: types.SceneUpdateInput,
+        where: types.SceneWhereUniqueInput,
+        include: Optional[types.SceneInclude] = None
+    ) -> None:
+        self._batcher._add(
+            method='update',
+            model=models.Scene,
+            arguments={
+                'data': data,
+                'where': where,
+                'include': include,
+            },
+        )
+
+    def upsert(
+        self,
+        where: types.SceneWhereUniqueInput,
+        data: types.SceneUpsertInput,
+        include: Optional[types.SceneInclude] = None,
+    ) -> None:
+        self._batcher._add(
+            method='upsert',
+            model=models.Scene,
+            arguments={
+                'where': where,
+                'include': include,
+                'create': data.get('create'),
+                'update': data.get('update'),
+            },
+        )
+
+    def update_many(
+        self,
+        data: types.SceneUpdateManyMutationInput,
+        where: types.SceneWhereInput,
+    ) -> None:
+        self._batcher._add(
+            method='update_many',
+            model=models.Scene,
+            arguments={'data': data, 'where': where,},
+            root_selection=['count'],
+        )
+
+    def delete_many(
+        self,
+        where: Optional[types.SceneWhereInput] = None,
+    ) -> None:
+        self._batcher._add(
+            method='delete_many',
+            model=models.Scene,
             arguments={'where': where},
             root_selection=['count'],
         )

@@ -7,27 +7,33 @@ export default function Home() {
   const router = useRouter();
 
   const handleJoinGame = async (campaignId: number) => {
+    const savedUsername = localStorage.getItem('username');
+    const savedCampaignId = localStorage.getItem('campaignId');
+    const isContinuing = savedCampaignId ? parseInt(savedCampaignId, 10) === campaignId : false;
+
     try {
       const response = await fetch('http://localhost:1068/seed', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ seed: campaignId }),
+        body: JSON.stringify({ 
+          seed: campaignId, 
+          username: savedUsername,
+          continue_campaign: isContinuing 
+        }),
       });
 
       if (!response.ok) {
         const errorText = await response.text();
         console.error("Error setting seed:", response.status, errorText);
-        // Optionally, display an error message to the user
         return;
       }
 
-      // If you expect a JSON response on success, you can process it here:
-      // const data = await response.json();
-      // console.log("Seed set successfully:", data);
-
+      const data = await response.json();
+      
       localStorage.setItem('campaignId', campaignId.toString());
+      localStorage.setItem('turn_num', data.turn_num.toString());
       router.push('./game');
     } catch (error) {
       console.error("Error setting seed:", error);

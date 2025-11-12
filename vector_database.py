@@ -159,6 +159,22 @@ class use_vector_db:
                 backstory or ""
             )
             
+            await self.db.execute_raw(
+                'INSERT INTO "USERCHARCHANGE" ("user", "name", "race", "cla", "subclass", "str", "dex", "con", "int", "wis", "cha", "backstory") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)',
+                username,
+                name,
+                race,
+                char_class,
+                subclass or "",
+                int(float(strength)),
+                int(float(dexterity)),
+                int(float(constitution)),
+                int(float(Intellect)),
+                int(float(wisdom)),
+                int(float(charisma)),
+                backstory or ""
+            )
+            
             print(f"Successfully created character {name} for user {username}")
             return True, "Character successfully created"
 
@@ -181,6 +197,148 @@ class use_vector_db:
             error_msg = str(e)
             print(f"An unexpected error occurred: {error_msg}")
             return False, f"An unexpected error occurred: {error_msg}"
+        
+    async def get_or_create_campaign_session(self, username: str, seed: int):
+        """
+        Gets or creates a campaign session for a user and seed.
+        """
+        try:
+            session = await self.db.campaignsession.find_unique(
+                where={'seed_user': {'seed': str(seed), 'user': username}}
+            )
+
+            if session:
+                # Find the latest scene to get the turn number
+                latest_scene = await self.db.scene.find_first(
+                    where={'campaignId': session.id},
+                    order={'turn_num': 'desc'}
+                )
+                turn_num = latest_scene.turn_num if latest_scene else 0
+                print(f"Found existing session for user {username} and seed {seed} with turn_num {turn_num}")
+                return turn_num
+            else:
+                # Create a new campaign session
+                new_session = await self.db.campaignsession.create(
+                    data={'user': username, 'seed': str(seed)}
+                )
+                # Create the initial scene
+                await self.db.scene.create(
+                    data={'campaignId': new_session.id, 'turn_num': 0}
+                )
+                print(f"Created new session for user {username} and seed {seed}")
+                return 0
+        except Exception as e:
+            print(f"Error in get_or_create_campaign_session: {e}")
+            # Fallback logic
+            try:
+                session = await self.db.campaignsession.find_first(where={'user': username, 'seed': str(seed)})
+                if session:
+                    latest_scene = await self.db.scene.find_first(
+                        where={'campaignId': session.id},
+                        order={'turn_num': 'desc'}
+                    )
+                    return latest_scene.turn_num if latest_scene else 0
+                
+                new_session = await self.db.campaignsession.create(
+                    data={'user': username, 'seed': str(seed)}
+                )
+                await self.db.scene.create(
+                    data={'campaignId': new_session.id, 'turn_num': 0}
+                )
+                return 0
+            except Exception as inner_e:
+                print(f"Fallback in get_or_create_campaign_session also failed: {inner_e}")
+
+            return 0
+
+    async def update_campaign_turn_num(self, username: str, seed: int, turn_num: int):
+        """
+        Updates the turn number for a campaign session by creating a new scene.
+        """
+        try:
+            session = await self.db.campaignsession.find_unique(
+                where={'seed_user': {'seed': str(seed), 'user': username}}
+            )
+            if session:
+                await self.db.scene.create(
+                    data={'campaignId': session.id, 'turn_num': int(turn_num)}
+                )
+                print(f"Updated turn_num to {turn_num} for user {username} and seed {seed}")
+                return True
+            else:
+                print(f"Could not find session to update for user {username} and seed {seed}")
+                return False
+        except Exception as e:
+            print(f"Error updating turn_num: {e}")
+            return False
+
+    async def reset_usercharchange_table(self, username: str, new_campaign: bool = True):
+        """
+        Resets the character data in USERCHARCHANGE with the original data from USERCHAR.
+        """
+        if not new_campaign:
+            print(f"Continuing campaign for {username}. Not resetting USERCHARCHANGE.")
+            return True, "Continuing campaign."
+        try:
+            # Get the original character data
+            original_character = await self.db.userchar.find_first(
+                where={'user': username},
+                order={'id': 'desc'}
+            )
+
+            if not original_character:
+                return False, f"No original character found for user {username}."
+
+            # Get the character to update in the change table
+            change_character = await self.db.usercharchange.find_first(
+                where={'user': username},
+                order={'id': 'desc'}
+            )
+
+            if not change_character:
+                # This case is unlikely if characters are always created in both tables
+                # but we can handle it by creating a new entry.
+                await self.db.usercharchange.create(data={
+                    "user": original_character.user,
+                    "name": original_character.name,
+                    "race": original_character.race,
+                    "cla": original_character.cla,
+                    "subclass": original_character.subclass,
+                    "str": original_character.str,
+                    "dex": original_character.dex,
+                    "con": original_character.con,
+                    "int": original_character.int,
+                    "wis": original_character.wis,
+                    "cha": original_character.cha,
+                    "backstory": original_character.backstory,
+                })
+                print(f"Created new entry in USERCHARCHANGE for {username} as it was missing.")
+                return True, "Character data reset successfully."
+
+            # Update the existing entry in USERCHARCHANGE
+            await self.db.usercharchange.update(
+                where={'id': change_character.id},
+                data={
+                    "race": original_character.race,
+                    "cla": original_character.cla,
+                    "subclass": original_character.subclass,
+                    "str": original_character.str,
+                    "dex": original_character.dex,
+                    "con": original_character.con,
+                    "int": original_character.int,
+                    "wis": original_character.wis,
+                    "cha": original_character.cha,
+                    "backstory": original_character.backstory,
+                }
+            )
+            
+            print(f"Successfully reset character data for user {username} in USERCHARCHANGE.")
+            return True, "Character data reset successfully."
+
+        except Exception as e:
+            error_msg = str(e)
+            print(f"Failed to reset character data for user {username}: {error_msg}")
+            return False, f"Database error: {error_msg}"
         
 class get_from_db:
 
@@ -342,7 +500,7 @@ class get_from_db:
             # Find the specific character to update.
             # This assumes a user might have multiple characters, but we'll update the first one found.
             # For a more robust system, a character ID would be better.
-            character_to_update = await self.db.userchar.find_first(
+            character_to_update = await self.db.usercharchange.find_first(
                 where={'user': username},
                 order={'id': 'desc'}
             )
@@ -362,7 +520,7 @@ class get_from_db:
                 'cha': stats_dict.get('Presence')
             }
 
-            await self.db.userchar.update(
+            await self.db.usercharchange.update(
                 where={'id': character_to_update.id},
                 data=update_data
             )
@@ -375,12 +533,13 @@ class get_from_db:
             print(f"Failed to update character stats for user {username}: {error_msg}")
             return False, f"Database error: {error_msg}"
 
-    async def get_character(self, username):
+    async def get_character(self, username, change : bool):
         try:
+            table_name = "USERCHARCHANGE" if change else "USERCHAR"
             character_data = await self.db.query_raw('' \
-            'SELECT T2.* FROM "USERDATA" AS T1 ' \
-            'INNER JOIN "USERCHAR" AS T2 ON T1."username" = T2."user"' \
-            'WHERE T1."username" = $1 ORDER BY T2."id" DESC LIMIT 1',
+            f'SELECT T2.* FROM "USERDATA" AS T1 ' \
+            f'INNER JOIN "{table_name}" AS T2 ON T1."username" = T2."user" ' \
+            f'WHERE T1."username" = $1 ORDER BY T2."id" DESC LIMIT 1',
             username)
 
             print("Character data from db: ", character_data[0])
@@ -390,40 +549,72 @@ class get_from_db:
             print(f"Error fetching character for user {username}: {e}")
             return None
     
-    async def get_character_attributes(self, username: str) -> dict | None:
+    async def get_character_attributes(self, username: str, change : bool) -> dict | None:
         """
         Retrieves attributes for a user's character and returns them as a dictionary.
         """
-        if not username:
-            return None
-
-        try:
-            character = await self.db.userchar.find_first(
-                where={'user': username},
-                order={'id': 'desc'} # Get the first character created if there are multiple
-            )
-
-            if character:
-                # Map database fields to the player class attribute names
-                attributes = {
-                    'Might': character.str,
-                    'Agility': character.dex,
-                    'Presence': character.cha,
-                    'Intellect': character.int,
-                    'Wisdom': character.wis,
-                    'Spirit': character.con,
-                    'hp': 20 # Default HP, can be loaded from db if added to schema
-                }
-                
-                for key, value in attributes.items():
-                    print(f"{key}: {value}")
-                
-                return attributes
-            else:
-                print(f"No character found for user {username}.")
+        if not change:
+            if not username:
                 return None
 
-        except Exception as e:
-            print(f"Error fetching character attributes for user {username}: {e}")
-            return None
+            try:
+                character = await self.db.userchar.find_first(
+                    where={'user': username},
+                    order={'id': 'desc'} # Get the first character created if there are multiple
+                )
+
+                if character:
+                    # Map database fields to the player class attribute names
+                    attributes = {
+                        'Might': character.str,
+                        'Agility': character.dex,
+                        'Presence': character.cha,
+                        'Intellect': character.int,
+                        'Wisdom': character.wis,
+                        'Spirit': character.con,
+                        'hp': 20 # Default HP, can be loaded from db if added to schema
+                    }
+                    
+                    for key, value in attributes.items():
+                        print(f"{key}: {value}")
+                    
+                    return attributes
+                else:
+                    print(f"No character found for user {username}.")
+                    return None
+
+            except Exception as e:
+                print(f"Error fetching character attributes for user {username}: {e}")
+                return None
+        
+        elif change:
+            try:
+                character = await self.db.usercharchange.find_first(
+                    where={'user': username},
+                    order={'id': 'desc'} # Get the first character created if there are multiple
+                )
+
+                if character:
+                    # Map database fields to the player class attribute names
+                    attributes = {
+                        'Might': character.str,
+                        'Agility': character.dex,
+                        'Presence': character.cha,
+                        'Intellect': character.int,
+                        'Wisdom': character.wis,
+                        'Spirit': character.con,
+                        'hp': 20 # Default HP, can be loaded from db if added to schema
+                    }
+                    
+                    for key, value in attributes.items():
+                        print(f"{key}: {value}")
+                    
+                    return attributes
+                else:
+                    print(f"No character found for user {username}.")
+                    return None
+
+            except Exception as e:
+                print(f"Error fetching character attributes for user {username}: {e}")
+                return None
 

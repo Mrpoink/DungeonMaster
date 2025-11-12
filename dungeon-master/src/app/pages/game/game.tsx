@@ -18,15 +18,37 @@ type ConversationItem = {
     text: string;
 };
 
+
+interface Option {
+    option: string;
+    ability: string;
+    dc: number;
+    dice: string;
+    success: {
+        next: string;
+        narration: string;
+        ability_change: { [key: string]: number };
+    };
+    failure: {
+        next: string;
+        narration: string;
+        ability_change: { [key: string]: number };
+    };
+}
+
 interface OptionsProps {
-    options: string[];
-    onOptionClick: (option: string) => void;
+    options: (Option | string)[];
+    onOptionClick: (option: Option | string) => void;
 }
 
 function Options({ options, onOptionClick }: OptionsProps) {
     if (!options || options.length === 0) {
         return null;
     }
+
+    const isComplexOption = (option: any): option is Option => {
+        return typeof option === 'object' && option !== null && 'success' in option && 'failure' in option;
+    };
 
     return (
         <div className="options-container" style={{
@@ -46,20 +68,162 @@ function Options({ options, onOptionClick }: OptionsProps) {
         }}>
             <h3 style={{ textAlign: 'center', marginBottom: '10px' }}>Choose your action:</h3>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                {options.map((option, index) => (
-                    <li key={index} className="option-item" onClick={() => onOptionClick(option)} style={{
-                        padding: '10px',
-                        borderBottom: '1px solid #6b4a2e',
-                        cursor: 'pointer',
-                        transition: 'background-color 0.3s'
-                    }}
-                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(107, 74, 46, 0.1)'}
-                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
-                    >
-                        {`${index + 1}. ${option}`}
-                    </li>
-                ))}
+                {options.map((option, index) => {
+                    if (isComplexOption(option)) {
+                        return (
+                            <li key={index} className="option-item" style={{
+                                padding: '10px',
+                                borderBottom: '1px solid #6b4a2e',
+                                cursor: 'pointer',
+                                transition: 'background-color 0.3s',
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                alignItems: 'center'
+                            }}
+                            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(107, 74, 46, 0.1)'}
+                            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                            >
+                                <span onClick={() => onOptionClick(option)} style={{ flexGrow: 1 }}>{`${index + 1}. ${option.option}`}</span>
+                                <div className="info-icon-container" style={{ position: 'relative', marginLeft: '10px' }}>
+                                    <span className="info-icon" style={{
+                                        cursor: 'pointer',
+                                        display: 'inline-block',
+                                        width: '20px',
+                                        height: '20px',
+                                        borderRadius: '50%',
+                                        backgroundColor: '#6b4a2e',
+                                        color: 'white',
+                                        textAlign: 'center',
+                                        lineHeight: '20px',
+                                        fontWeight: 'bold',
+                                    }}>i</span>
+                                    <div className="tooltip" style={{
+                                        visibility: 'hidden',
+                                        width: '250px',
+                                        backgroundColor: 'black',
+                                        color: '#fff',
+                                        textAlign: 'left',
+                                        borderRadius: '6px',
+                                        padding: '10px',
+                                        position: 'absolute',
+                                        zIndex: 1,
+                                        bottom: '125%',
+                                        left: '50%',
+                                        marginLeft: '-125px',
+                                        opacity: 0,
+                                        transition: 'opacity 0.3s',
+                                    }}>
+                                        <strong>Success:</strong> {option.success.narration}<br />
+                                        <strong>Failure:</strong> {option.failure.narration}<br />
+                                    </div>
+                                </div>
+                            </li>
+                        );
+                    }
+                    // Fallback for simple string options
+                    return (
+                        <li key={index} className="option-item" onClick={() => onOptionClick(option)} style={{
+                            padding: '10px',
+                            borderBottom: '1px solid #6b4a2e',
+                            cursor: 'pointer',
+                            transition: 'background-color 0.3s'
+                        }}
+                        onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(107, 74, 46, 0.1)'}
+                        onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                        >
+                            {`${index + 1}. ${option}`}
+                        </li>
+                    );
+                })}
             </ul>
+            <style jsx>{`
+                .info-icon-container:hover .tooltip {
+                    visibility: visible;
+                    opacity: 1;
+                }
+            `}</style>
+        </div>
+    );
+}
+
+interface RollInfoProps {
+    info: {
+        success: string;
+        failure: string;
+        dc: number;
+        ability: string;
+        dice: string;
+        rollResult?: number;
+        outcome?: 'success' | 'failure';
+        success_ability_change?: { [key: string]: number };
+        failure_ability_change?: { [key: string]: number };
+    };
+    onContinue: () => void;
+}
+
+function RollInfo({ info, onContinue }: RollInfoProps) {
+    console.log("RollInfo received:", info); // <-- ADDING LOG
+
+    const getChangeText = (change: { [key: string]: number } | undefined) => {
+        if (!change) return "";
+        return Object.entries(change)
+            .map(([key, amount]) => `${key} changes by ${amount}`)
+            .join(', ');
+    };
+
+    const outcomeText = info.outcome === 'success' 
+        ? info.success 
+        : info.failure;
+    
+    const abilityChangeText = info.outcome === 'success'
+        ? getChangeText(info.success_ability_change)
+        : getChangeText(info.failure_ability_change);
+
+    console.log("Ability change text:", abilityChangeText); // <-- ADDING LOG
+
+    return (
+        <div className="options-container" style={{
+            position: 'absolute',
+            bottom: '150px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: '80%',
+            maxWidth: '600px',
+            backgroundColor: 'rgba(246, 233, 201, 0.9)',
+            padding: '15px',
+            borderRadius: '8px',
+            border: '1px solid #6b4a2e',
+            color: '#6b4a2e',
+            boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+            zIndex: 10,
+            textAlign: 'center'
+        }}>
+            {!info.rollResult ? (
+                <>
+                    <h3 style={{ marginBottom: '15px' }}>Roll a {info.ability} check with {info.dice}. DC: {info.dc}</h3>
+                    <div style={{ textAlign: 'left', padding: '0 15px' }}>
+                        <p style={{ marginBottom: '10px' }}><strong>Success:</strong> {info.success} {info.success_ability_change && `(${getChangeText(info.success_ability_change)})`}</p>
+                        <p><strong>Failure:</strong> {info.failure} {info.failure_ability_change && `(${getChangeText(info.failure_ability_change)})`}</p>
+                    </div>
+                </>
+            ) : (
+                <>
+                    <h3 style={{ marginBottom: '10px' }}>
+                        Roll: {info.rollResult} vs DC: {info.dc} - <span style={{ color: info.outcome === 'success' ? 'green' : 'red' }}>{info.outcome?.toUpperCase()}</span>
+                    </h3>
+                    <p style={{ padding: '0 15px', textAlign: 'left' }}>{outcomeText}</p>
+                    <p style={{ padding: '0 15px', textAlign: 'left', fontWeight: 'bold' }}>{abilityChangeText}</p>
+                    <button onClick={onContinue} style={{
+                        marginTop: '15px',
+                        padding: '10px 20px',
+                        backgroundColor: '#6b4a2e',
+                        color: 'white',
+                        border: 'none',
+                        borderRadius: '5px',
+                        cursor: 'pointer'
+                    }}>Continue</button>
+                </>
+            )}
         </div>
     );
 }
@@ -77,16 +241,29 @@ export default function Game() {
   const [activeDice, setActiveDice] = useState("d20");
   const [DMmessage, setDMmessage] = useState("Connecting...");
   const [scene, setScene] = useState('');
-  const [options, setOptions] = useState<string[]>([]);
+  const [options, setOptions] = useState<(Option | string)[]>([]);
   const [username, setUsername] = useState('');
+  const [turn_num, setTurnNum] = useState('');
   const [characterData, setCharacterData] = useState<Character | null>(null);
   const [skills, setSkills] = useState<string[]>([]);
+  const [rollInfo, setRollInfo] = useState<{
+    success: string;
+    failure: string;
+    dc: number;
+    ability: string;
+    dice: string;
+    rollResult?: number;
+    outcome?: 'success' | 'failure';
+    success_ability_change?: { [key: string]: number };
+    failure_ability_change?: { [key: string]: number };
+  } | null>(null);
   const [pendingAction, setPendingAction] = useState<{
     description: string;
     action: string;
     ability: string;
     dc: number;
     dice: string;
+    options: string[];
   } | null>(null);
   const [background, setBackground] = useState(Background);
   const [userin, setUserin] = useState('');
@@ -103,13 +280,18 @@ export default function Game() {
     setActiveDice(dice);
   }
 
-  const handleOptionClick = async (option: string) => {
+  const handleOptionClick = async (option: Option | string) => {
     if (isLoading) return;
-    setIsLoading(true);
-    setConversation(prev => [...prev, { sender: characterData?.name || 'User', text: option }]);
 
+    console.log("Option clicked:", option); // <-- ADDING LOG
+
+    const optionText = typeof option === 'string' ? option : option.option;
+    setConversation(prev => [...prev, { sender: characterData?.name || 'User', text: optionText }]);
+
+    // Always send the option to the backend to handle.
+    setIsLoading(true);
     try {
-        const payload = { message: option, username: username, step: 'get_roll_info' };
+        const payload = { message: option, username: username, step: 'get_roll_info', turn_num: turn_num };
         const response = await fetch('http://localhost:1068/userin', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -118,20 +300,29 @@ export default function Game() {
         const result = await response.json();
 
         if (result.requires_roll) {
+            setRollInfo({
+                success: result.success_narration || "You succeed.", // Provide fallbacks
+                failure: result.failure_narration || "You fail.",   // Provide fallbacks
+                dc: result.dc,
+                ability: result.ability,
+                dice: result.dice,
+                success_ability_change: result.success_ability_change,
+                failure_ability_change: result.failure_ability_change
+            });
             setPendingAction({
                 description: result.description,
-                action: option,
+                action: optionText,
                 ability: result.ability,
                 dc: result.dc,
                 dice: result.dice,
+                options: result.options || []
             });
-            setConversation(prev => [...prev, { sender: 'DM', text: `You need to make a ${result.ability} check. Roll ${result.dice}` }]);
-            setOptions([]); // Hide options while waiting for a roll
+            setOptions([]);
         } else {
-            // Handle actions that don't require a roll (if any)
             setConversation(prev => [...prev, { sender: 'DM', text: result.message }]);
             setScene('Background: ' + (result.scene || ''));
             setOptions(result.options || []);
+            setTurnNum(result.turn_num || '0');
         }
     } catch (error) {
         console.error("Error during action selection:", error);
@@ -142,18 +333,35 @@ export default function Game() {
   };
 
   const handleRoll = async (rollResult: number) => {
-    if (!pendingAction || isLoading) return;
+    if (!pendingAction || !rollInfo || isLoading) return;
 
     setIsLoading(true);
-    setConversation(prev => [...prev, { sender: characterData?.name || 'User', text: `(Rolled a ${rollResult} for ${pendingAction.ability})` }]);
+    const outcome = rollResult >= pendingAction.dc ? 'success' : 'failure';
 
+    // Update the rollInfo state to show the result
+    setRollInfo(prev => prev ? { ...prev, rollResult, outcome } : null);
+    
+    // The conversation log can be updated here or in handleContinue
+    setConversation(prev => [...prev, { sender: characterData?.name || 'User', text: `(Rolled a ${rollResult} for ${pendingAction.ability} - ${outcome.toUpperCase()})` }]);
+
+    // No backend call here yet, just show the result. The user will click "Continue".
+    setIsLoading(false);
+  };
+
+  const handleContinue = async () => {
+    if (!pendingAction || !rollInfo || !rollInfo.rollResult) return;
+
+    setIsLoading(true);
+    
     try {
         const payload = {
             message: pendingAction.action,
             username: username,
-            roll: rollResult,
+            roll: rollInfo.rollResult,
             step: 'get_outcome',
-            description: pendingAction.description
+            description: pendingAction.description,
+            skills: skills,
+            turn_num: turn_num
         };
         const response = await fetch('http://localhost:1068/userin', {
             method: 'POST',
@@ -165,9 +373,9 @@ export default function Game() {
         setConversation(prev => [...prev, { sender: 'DM', text: result.message }]);
         setScene('Background: ' + (result.scene || ''));
         setOptions(result.options || []);
-        setPendingAction(null); // Reset pending action
+        setSkills(result.skills || skills);
+        setTurnNum(result.turn_num || turn_num);
 
-        // If the result contains updated character data, update the state
         if (result.characterData) {
             setCharacterData(result.characterData);
         }
@@ -176,6 +384,8 @@ export default function Game() {
         console.error("Error during roll submission:", error);
         setConversation(prev => [...prev, { sender: 'DM', text: "The DM seems confused by your roll. Try again." }]);
     } finally {
+        setRollInfo(null); // Clear the roll info/result box
+        setPendingAction(null); // Reset pending action
         setIsLoading(false);
     }
   };
@@ -193,7 +403,8 @@ export default function Game() {
             const payload = {
                 message: userMessage,
                 username: username,
-                characterData: characterData
+                characterData: characterData,
+                turn_num: turn_num
             };
 
             const response = await fetch('http://localhost:1068/userin', {
@@ -214,6 +425,7 @@ export default function Game() {
             setScene('Background: ' + (result.scene || ''));
             setOptions(result.options || []);
             setDMmessage(result.message);
+            setTurnNum(result.turn_num || '0');
     } catch (error) {
       console.error("Something went wrong with fetch dm message, line 81", error);
       setDMmessage("Error: could not fetch python response, something went wrong, line 82");
@@ -230,6 +442,7 @@ export default function Game() {
       setDMmessage(data.dm_text);
       setScene("Background: " + data.scene || '');
       setOptions(data.options || []);
+      setTurnNum(data.turn_num || '0');
       setConversation([{sender : 'DM', text : data.dm_text}]); // Start conversation with DM message
       
       // After getting the initial message, fetch the character data
@@ -266,6 +479,7 @@ export default function Game() {
   useEffect(() => {
     const savedUsername = localStorage.getItem('username');
     const campaignId = localStorage.getItem('campaignId');
+    const savedTurnNum = localStorage.getItem('turn_num');
 
     if (campaignId) {
       switch (campaignId) {
@@ -296,7 +510,20 @@ export default function Game() {
         // Handle case where there is no saved username, maybe redirect to login
         fetchDMmessage('');
     }
+    if (savedTurnNum) {
+        setTurnNum(savedTurnNum);
+    }
+    else {
+        setTurnNum('0');
+    }
   }, []);
+
+  useEffect(() => {
+
+    if (turn_num) {
+        localStorage.setItem('turn_num', turn_num);
+    }
+  }, [turn_num]);
 
   const latestMessage = conversation[conversation.length - 1];
 
@@ -371,7 +598,11 @@ export default function Game() {
               </p>
             )}
           </div>
-          <Options options={options} onOptionClick={handleOptionClick} />
+          {rollInfo ? (
+              <RollInfo info={rollInfo} onContinue={handleContinue} />
+          ) : (
+              <Options options={options} onOptionClick={handleOptionClick} />
+          )}
             <div className="party-box" style={{
               position: 'absolute',
               top: '20px',

@@ -260,11 +260,13 @@ model Spell {
 }
 
 model USERDATA {
-  id         Int        @id @default(autoincrement())
-  name       String
-  username   String     @unique
-  password   String
-  characters USERCHAR[]
+  id                Int               @id @default(autoincrement())
+  name              String
+  username          String            @unique
+  password          String
+  characters        USERCHAR[]
+  characters_change USERCHARCHANGE[]
+  campaign_sessions CampaignSession[]
 }
 
 model STORYVECTOR {
@@ -288,4 +290,46 @@ model USERCHAR {
   name      String
   user      String
   username  USERDATA @relation(fields: [user], references: [username])
+}
+
+model USERCHARCHANGE {
+  id             Int              @id @default(autoincrement())
+  race           String
+  subclass       String
+  str            Int
+  dex            Int
+  con            Int
+  int            Int
+  wis            Int
+  cha            Int
+  backstory      String
+  cla            String
+  name           String
+  user           String
+  username       USERDATA         @relation(fields: [user], references: [username])
+  campaignId     Int?
+  campaign       CampaignSession? @relation(fields: [campaignId], references: [id])
+  current_health Int?
+}
+
+model CampaignSession {
+  id                Int              @id @default(autoincrement())
+  seed              String
+  game_finished     Boolean          @default(false)
+  user              String
+  username          USERDATA         @relation(fields: [user], references: [username])
+  last_context      String?
+  user_char_changes USERCHARCHANGE[]
+  scenes            Scene[]
+  current_scene_id  Int?
+
+  @@unique([seed, user])
+}
+
+model Scene {
+  id            Int             @id @default(autoincrement())
+  campaignId    Int
+  campaign      CampaignSession @relation(fields: [campaignId], references: [id])
+  turn_num      Int
+  scene_context String?
 }

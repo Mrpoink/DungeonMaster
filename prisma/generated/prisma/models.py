@@ -1408,6 +1408,8 @@ class USERDATA(bases.BaseUSERDATA):
     username: _str
     password: _str
     characters: Optional[List['models.USERCHAR']] = None
+    characters_change: Optional[List['models.USERCHARCHANGE']] = None
+    campaign_sessions: Optional[List['models.CampaignSession']] = None
 
     # take *args and **kwargs so that other metaclasses can define arguments
     def __init_subclass__(
@@ -1773,6 +1775,418 @@ class USERCHAR(bases.BaseUSERCHAR):
                 'name': name,
                 'fields': cast(Mapping[str, PartialModelField], fields),
                 'from_model': 'USERCHAR',
+            }
+        )
+        _created_partial_types.add(name)
+
+
+class USERCHARCHANGE(bases.BaseUSERCHARCHANGE):
+    """Represents a USERCHARCHANGE record"""
+
+    id: _int
+    race: _str
+    subclass: _str
+    str: _int
+    dex: _int
+    con: _int
+    int: _int
+    wis: _int
+    cha: _int
+    backstory: _str
+    cla: _str
+    name: _str
+    user: _str
+    username: Optional['models.USERDATA'] = None
+    campaignId: Optional[_int] = None
+    campaign: Optional['models.CampaignSession'] = None
+    current_health: Optional[_int] = None
+
+    # take *args and **kwargs so that other metaclasses can define arguments
+    def __init_subclass__(
+        cls,
+        *args: Any,
+        warn_subclass: Optional[bool] = None,
+        **kwargs: Any,
+    ) -> None:
+        super().__init_subclass__()
+        if warn_subclass is not None:
+            warnings.warn(
+                'The `warn_subclass` argument is deprecated as it is no longer necessary and will be removed in the next release',
+                DeprecationWarning,
+                stacklevel=3,
+            )
+
+
+    @staticmethod
+    def create_partial(
+        name: str,
+        include: Optional[Iterable['types.USERCHARCHANGEKeys']] = None,
+        exclude: Optional[Iterable['types.USERCHARCHANGEKeys']] = None,
+        required: Optional[Iterable['types.USERCHARCHANGEKeys']] = None,
+        optional: Optional[Iterable['types.USERCHARCHANGEKeys']] = None,
+        relations: Optional[Mapping['types.USERCHARCHANGERelationalFieldKeys', str]] = None,
+        exclude_relational_fields: bool = False,
+    ) -> None:
+        if not os.environ.get('PRISMA_GENERATOR_INVOCATION'):
+            raise RuntimeError(
+                'Attempted to create a partial type outside of client generation.'
+            )
+
+        if name in _created_partial_types:
+            raise ValueError(f'Partial type "{name}" has already been created.')
+
+        if include is not None:
+            if exclude is not None:
+                raise TypeError('Exclude and include are mutually exclusive.')
+            if exclude_relational_fields is True:
+                raise TypeError('Include and exclude_relational_fields=True are mutually exclusive.')
+
+        if required and optional:
+            shared = set(required) & set(optional)
+            if shared:
+                raise ValueError(f'Cannot make the same field(s) required and optional {shared}')
+
+        if exclude_relational_fields and relations:
+            raise ValueError(
+                'exclude_relational_fields and relations are mutually exclusive'
+            )
+
+        fields: Dict['types.USERCHARCHANGEKeys', PartialModelField] = OrderedDict()
+
+        try:
+            if include:
+                for field in include:
+                    fields[field] = _USERCHARCHANGE_fields[field].copy()
+            elif exclude:
+                for field in exclude:
+                    if field not in _USERCHARCHANGE_fields:
+                        raise KeyError(field)
+
+                fields = {
+                    key: data.copy()
+                    for key, data in _USERCHARCHANGE_fields.items()
+                    if key not in exclude
+                }
+            else:
+                fields = {
+                    key: data.copy()
+                    for key, data in _USERCHARCHANGE_fields.items()
+                }
+
+            if required:
+                for field in required:
+                    fields[field]['optional'] = False
+
+            if optional:
+                for field in optional:
+                    fields[field]['optional'] = True
+
+            if exclude_relational_fields:
+                fields = {
+                    key: data
+                    for key, data in fields.items()
+                    if key not in _USERCHARCHANGE_relational_fields
+                }
+
+            if relations:
+                for field, type_ in relations.items():
+                    if field not in _USERCHARCHANGE_relational_fields:
+                        raise errors.UnknownRelationalFieldError('USERCHARCHANGE', field)
+
+                    # TODO: this method of validating types is not ideal
+                    # as it means we cannot two create partial types that
+                    # reference each other
+                    if type_ not in _created_partial_types:
+                        raise ValueError(
+                            f'Unknown partial type: "{type_}". '
+                            f'Did you remember to generate the {type_} type before this one?'
+                        )
+
+                    # TODO: support non prisma.partials models
+                    info = fields[field]
+                    if info['is_list']:
+                        info['type'] = f'List[\'partials.{type_}\']'
+                    else:
+                        info['type'] = f'\'partials.{type_}\''
+        except KeyError as exc:
+            raise ValueError(
+                f'{exc.args[0]} is not a valid USERCHARCHANGE / {name} field.'
+            ) from None
+
+        models = partial_models_ctx.get()
+        models.append(
+            {
+                'name': name,
+                'fields': cast(Mapping[str, PartialModelField], fields),
+                'from_model': 'USERCHARCHANGE',
+            }
+        )
+        _created_partial_types.add(name)
+
+
+class CampaignSession(bases.BaseCampaignSession):
+    """Represents a CampaignSession record"""
+
+    id: _int
+    seed: _str
+    game_finished: _bool
+    user: _str
+    username: Optional['models.USERDATA'] = None
+    last_context: Optional[_str] = None
+    user_char_changes: Optional[List['models.USERCHARCHANGE']] = None
+    scenes: Optional[List['models.Scene']] = None
+    current_scene_id: Optional[_int] = None
+
+    # take *args and **kwargs so that other metaclasses can define arguments
+    def __init_subclass__(
+        cls,
+        *args: Any,
+        warn_subclass: Optional[bool] = None,
+        **kwargs: Any,
+    ) -> None:
+        super().__init_subclass__()
+        if warn_subclass is not None:
+            warnings.warn(
+                'The `warn_subclass` argument is deprecated as it is no longer necessary and will be removed in the next release',
+                DeprecationWarning,
+                stacklevel=3,
+            )
+
+
+    @staticmethod
+    def create_partial(
+        name: str,
+        include: Optional[Iterable['types.CampaignSessionKeys']] = None,
+        exclude: Optional[Iterable['types.CampaignSessionKeys']] = None,
+        required: Optional[Iterable['types.CampaignSessionKeys']] = None,
+        optional: Optional[Iterable['types.CampaignSessionKeys']] = None,
+        relations: Optional[Mapping['types.CampaignSessionRelationalFieldKeys', str]] = None,
+        exclude_relational_fields: bool = False,
+    ) -> None:
+        if not os.environ.get('PRISMA_GENERATOR_INVOCATION'):
+            raise RuntimeError(
+                'Attempted to create a partial type outside of client generation.'
+            )
+
+        if name in _created_partial_types:
+            raise ValueError(f'Partial type "{name}" has already been created.')
+
+        if include is not None:
+            if exclude is not None:
+                raise TypeError('Exclude and include are mutually exclusive.')
+            if exclude_relational_fields is True:
+                raise TypeError('Include and exclude_relational_fields=True are mutually exclusive.')
+
+        if required and optional:
+            shared = set(required) & set(optional)
+            if shared:
+                raise ValueError(f'Cannot make the same field(s) required and optional {shared}')
+
+        if exclude_relational_fields and relations:
+            raise ValueError(
+                'exclude_relational_fields and relations are mutually exclusive'
+            )
+
+        fields: Dict['types.CampaignSessionKeys', PartialModelField] = OrderedDict()
+
+        try:
+            if include:
+                for field in include:
+                    fields[field] = _CampaignSession_fields[field].copy()
+            elif exclude:
+                for field in exclude:
+                    if field not in _CampaignSession_fields:
+                        raise KeyError(field)
+
+                fields = {
+                    key: data.copy()
+                    for key, data in _CampaignSession_fields.items()
+                    if key not in exclude
+                }
+            else:
+                fields = {
+                    key: data.copy()
+                    for key, data in _CampaignSession_fields.items()
+                }
+
+            if required:
+                for field in required:
+                    fields[field]['optional'] = False
+
+            if optional:
+                for field in optional:
+                    fields[field]['optional'] = True
+
+            if exclude_relational_fields:
+                fields = {
+                    key: data
+                    for key, data in fields.items()
+                    if key not in _CampaignSession_relational_fields
+                }
+
+            if relations:
+                for field, type_ in relations.items():
+                    if field not in _CampaignSession_relational_fields:
+                        raise errors.UnknownRelationalFieldError('CampaignSession', field)
+
+                    # TODO: this method of validating types is not ideal
+                    # as it means we cannot two create partial types that
+                    # reference each other
+                    if type_ not in _created_partial_types:
+                        raise ValueError(
+                            f'Unknown partial type: "{type_}". '
+                            f'Did you remember to generate the {type_} type before this one?'
+                        )
+
+                    # TODO: support non prisma.partials models
+                    info = fields[field]
+                    if info['is_list']:
+                        info['type'] = f'List[\'partials.{type_}\']'
+                    else:
+                        info['type'] = f'\'partials.{type_}\''
+        except KeyError as exc:
+            raise ValueError(
+                f'{exc.args[0]} is not a valid CampaignSession / {name} field.'
+            ) from None
+
+        models = partial_models_ctx.get()
+        models.append(
+            {
+                'name': name,
+                'fields': cast(Mapping[str, PartialModelField], fields),
+                'from_model': 'CampaignSession',
+            }
+        )
+        _created_partial_types.add(name)
+
+
+class Scene(bases.BaseScene):
+    """Represents a Scene record"""
+
+    id: _int
+    campaignId: _int
+    campaign: Optional['models.CampaignSession'] = None
+    turn_num: _int
+    scene_context: Optional[_str] = None
+
+    # take *args and **kwargs so that other metaclasses can define arguments
+    def __init_subclass__(
+        cls,
+        *args: Any,
+        warn_subclass: Optional[bool] = None,
+        **kwargs: Any,
+    ) -> None:
+        super().__init_subclass__()
+        if warn_subclass is not None:
+            warnings.warn(
+                'The `warn_subclass` argument is deprecated as it is no longer necessary and will be removed in the next release',
+                DeprecationWarning,
+                stacklevel=3,
+            )
+
+
+    @staticmethod
+    def create_partial(
+        name: str,
+        include: Optional[Iterable['types.SceneKeys']] = None,
+        exclude: Optional[Iterable['types.SceneKeys']] = None,
+        required: Optional[Iterable['types.SceneKeys']] = None,
+        optional: Optional[Iterable['types.SceneKeys']] = None,
+        relations: Optional[Mapping['types.SceneRelationalFieldKeys', str]] = None,
+        exclude_relational_fields: bool = False,
+    ) -> None:
+        if not os.environ.get('PRISMA_GENERATOR_INVOCATION'):
+            raise RuntimeError(
+                'Attempted to create a partial type outside of client generation.'
+            )
+
+        if name in _created_partial_types:
+            raise ValueError(f'Partial type "{name}" has already been created.')
+
+        if include is not None:
+            if exclude is not None:
+                raise TypeError('Exclude and include are mutually exclusive.')
+            if exclude_relational_fields is True:
+                raise TypeError('Include and exclude_relational_fields=True are mutually exclusive.')
+
+        if required and optional:
+            shared = set(required) & set(optional)
+            if shared:
+                raise ValueError(f'Cannot make the same field(s) required and optional {shared}')
+
+        if exclude_relational_fields and relations:
+            raise ValueError(
+                'exclude_relational_fields and relations are mutually exclusive'
+            )
+
+        fields: Dict['types.SceneKeys', PartialModelField] = OrderedDict()
+
+        try:
+            if include:
+                for field in include:
+                    fields[field] = _Scene_fields[field].copy()
+            elif exclude:
+                for field in exclude:
+                    if field not in _Scene_fields:
+                        raise KeyError(field)
+
+                fields = {
+                    key: data.copy()
+                    for key, data in _Scene_fields.items()
+                    if key not in exclude
+                }
+            else:
+                fields = {
+                    key: data.copy()
+                    for key, data in _Scene_fields.items()
+                }
+
+            if required:
+                for field in required:
+                    fields[field]['optional'] = False
+
+            if optional:
+                for field in optional:
+                    fields[field]['optional'] = True
+
+            if exclude_relational_fields:
+                fields = {
+                    key: data
+                    for key, data in fields.items()
+                    if key not in _Scene_relational_fields
+                }
+
+            if relations:
+                for field, type_ in relations.items():
+                    if field not in _Scene_relational_fields:
+                        raise errors.UnknownRelationalFieldError('Scene', field)
+
+                    # TODO: this method of validating types is not ideal
+                    # as it means we cannot two create partial types that
+                    # reference each other
+                    if type_ not in _created_partial_types:
+                        raise ValueError(
+                            f'Unknown partial type: "{type_}". '
+                            f'Did you remember to generate the {type_} type before this one?'
+                        )
+
+                    # TODO: support non prisma.partials models
+                    info = fields[field]
+                    if info['is_list']:
+                        info['type'] = f'List[\'partials.{type_}\']'
+                    else:
+                        info['type'] = f'\'partials.{type_}\''
+        except KeyError as exc:
+            raise ValueError(
+                f'{exc.args[0]} is not a valid Scene / {name} field.'
+            ) from None
+
+        models = partial_models_ctx.get()
+        models.append(
+            {
+                'name': name,
+                'fields': cast(Mapping[str, PartialModelField], fields),
+                'from_model': 'Scene',
             }
         )
         _created_partial_types.add(name)
@@ -3535,6 +3949,8 @@ _Spell_fields: Dict['types.SpellKeys', PartialModelField] = OrderedDict(
 
 _USERDATA_relational_fields: Set[str] = {
         'characters',
+        'characters_change',
+        'campaign_sessions',
     }
 _USERDATA_fields: Dict['types.USERDATAKeys', PartialModelField] = OrderedDict(
     [
@@ -3575,6 +3991,22 @@ _USERDATA_fields: Dict['types.USERDATAKeys', PartialModelField] = OrderedDict(
             'is_list': True,
             'optional': True,
             'type': 'List[\'models.USERCHAR\']',
+            'is_relational': True,
+            'documentation': None,
+        }),
+        ('characters_change', {
+            'name': 'characters_change',
+            'is_list': True,
+            'optional': True,
+            'type': 'List[\'models.USERCHARCHANGE\']',
+            'is_relational': True,
+            'documentation': None,
+        }),
+        ('campaign_sessions', {
+            'name': 'campaign_sessions',
+            'is_list': True,
+            'optional': True,
+            'type': 'List[\'models.CampaignSession\']',
             'is_relational': True,
             'documentation': None,
         }),
@@ -3723,6 +4155,281 @@ _USERCHAR_fields: Dict['types.USERCHARKeys', PartialModelField] = OrderedDict(
     ],
 )
 
+_USERCHARCHANGE_relational_fields: Set[str] = {
+        'username',
+        'campaign',
+    }
+_USERCHARCHANGE_fields: Dict['types.USERCHARCHANGEKeys', PartialModelField] = OrderedDict(
+    [
+        ('id', {
+            'name': 'id',
+            'is_list': False,
+            'optional': False,
+            'type': '_int',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('race', {
+            'name': 'race',
+            'is_list': False,
+            'optional': False,
+            'type': '_str',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('subclass', {
+            'name': 'subclass',
+            'is_list': False,
+            'optional': False,
+            'type': '_str',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('str', {
+            'name': 'str',
+            'is_list': False,
+            'optional': False,
+            'type': '_int',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('dex', {
+            'name': 'dex',
+            'is_list': False,
+            'optional': False,
+            'type': '_int',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('con', {
+            'name': 'con',
+            'is_list': False,
+            'optional': False,
+            'type': '_int',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('int', {
+            'name': 'int',
+            'is_list': False,
+            'optional': False,
+            'type': '_int',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('wis', {
+            'name': 'wis',
+            'is_list': False,
+            'optional': False,
+            'type': '_int',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('cha', {
+            'name': 'cha',
+            'is_list': False,
+            'optional': False,
+            'type': '_int',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('backstory', {
+            'name': 'backstory',
+            'is_list': False,
+            'optional': False,
+            'type': '_str',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('cla', {
+            'name': 'cla',
+            'is_list': False,
+            'optional': False,
+            'type': '_str',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('name', {
+            'name': 'name',
+            'is_list': False,
+            'optional': False,
+            'type': '_str',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('user', {
+            'name': 'user',
+            'is_list': False,
+            'optional': False,
+            'type': '_str',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('username', {
+            'name': 'username',
+            'is_list': False,
+            'optional': True,
+            'type': 'models.USERDATA',
+            'is_relational': True,
+            'documentation': None,
+        }),
+        ('campaignId', {
+            'name': 'campaignId',
+            'is_list': False,
+            'optional': True,
+            'type': '_int',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('campaign', {
+            'name': 'campaign',
+            'is_list': False,
+            'optional': True,
+            'type': 'models.CampaignSession',
+            'is_relational': True,
+            'documentation': None,
+        }),
+        ('current_health', {
+            'name': 'current_health',
+            'is_list': False,
+            'optional': True,
+            'type': '_int',
+            'is_relational': False,
+            'documentation': None,
+        }),
+    ],
+)
+
+_CampaignSession_relational_fields: Set[str] = {
+        'username',
+        'user_char_changes',
+        'scenes',
+    }
+_CampaignSession_fields: Dict['types.CampaignSessionKeys', PartialModelField] = OrderedDict(
+    [
+        ('id', {
+            'name': 'id',
+            'is_list': False,
+            'optional': False,
+            'type': '_int',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('seed', {
+            'name': 'seed',
+            'is_list': False,
+            'optional': False,
+            'type': '_str',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('game_finished', {
+            'name': 'game_finished',
+            'is_list': False,
+            'optional': False,
+            'type': '_bool',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('user', {
+            'name': 'user',
+            'is_list': False,
+            'optional': False,
+            'type': '_str',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('username', {
+            'name': 'username',
+            'is_list': False,
+            'optional': True,
+            'type': 'models.USERDATA',
+            'is_relational': True,
+            'documentation': None,
+        }),
+        ('last_context', {
+            'name': 'last_context',
+            'is_list': False,
+            'optional': True,
+            'type': '_str',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('user_char_changes', {
+            'name': 'user_char_changes',
+            'is_list': True,
+            'optional': True,
+            'type': 'List[\'models.USERCHARCHANGE\']',
+            'is_relational': True,
+            'documentation': None,
+        }),
+        ('scenes', {
+            'name': 'scenes',
+            'is_list': True,
+            'optional': True,
+            'type': 'List[\'models.Scene\']',
+            'is_relational': True,
+            'documentation': None,
+        }),
+        ('current_scene_id', {
+            'name': 'current_scene_id',
+            'is_list': False,
+            'optional': True,
+            'type': '_int',
+            'is_relational': False,
+            'documentation': None,
+        }),
+    ],
+)
+
+_Scene_relational_fields: Set[str] = {
+        'campaign',
+    }
+_Scene_fields: Dict['types.SceneKeys', PartialModelField] = OrderedDict(
+    [
+        ('id', {
+            'name': 'id',
+            'is_list': False,
+            'optional': False,
+            'type': '_int',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('campaignId', {
+            'name': 'campaignId',
+            'is_list': False,
+            'optional': False,
+            'type': '_int',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('campaign', {
+            'name': 'campaign',
+            'is_list': False,
+            'optional': True,
+            'type': 'models.CampaignSession',
+            'is_relational': True,
+            'documentation': None,
+        }),
+        ('turn_num', {
+            'name': 'turn_num',
+            'is_list': False,
+            'optional': False,
+            'type': '_int',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('scene_context', {
+            'name': 'scene_context',
+            'is_list': False,
+            'optional': True,
+            'type': '_str',
+            'is_relational': False,
+            'documentation': None,
+        }),
+    ],
+)
+
 
 
 # we have to import ourselves as relation types are namespaced to models
@@ -3744,3 +4451,6 @@ model_rebuild(Spell)
 model_rebuild(USERDATA)
 model_rebuild(STORYVECTOR)
 model_rebuild(USERCHAR)
+model_rebuild(USERCHARCHANGE)
+model_rebuild(CampaignSession)
+model_rebuild(Scene)

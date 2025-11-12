@@ -20,6 +20,9 @@ PRISMA_MODELS: set[str] = {
     'USERDATA',
     'STORYVECTOR',
     'USERCHAR',
+    'USERCHARCHANGE',
+    'CampaignSession',
+    'Scene',
 }
 
 RELATIONAL_FIELD_MAPPINGS: dict[str, dict[str, str]] = {
@@ -47,11 +50,25 @@ RELATIONAL_FIELD_MAPPINGS: dict[str, dict[str, str]] = {
     },
     'USERDATA': {
         'characters': 'USERCHAR',
+        'characters_change': 'USERCHARCHANGE',
+        'campaign_sessions': 'CampaignSession',
     },
     'STORYVECTOR': {
     },
     'USERCHAR': {
         'username': 'USERDATA',
+    },
+    'USERCHARCHANGE': {
+        'username': 'USERDATA',
+        'campaign': 'CampaignSession',
+    },
+    'CampaignSession': {
+        'username': 'USERDATA',
+        'user_char_changes': 'USERCHARCHANGE',
+        'scenes': 'Scene',
+    },
+    'Scene': {
+        'campaign': 'CampaignSession',
     },
 }
 
