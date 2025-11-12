@@ -399,7 +399,7 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
     
     return (
         <div className="root-container">
-            <div className="char-sheet-container">
+            <div className="char-sheet-container" style={{ transform: 'scale(0.88)', transformOrigin: 'top center' }}>
                 <header className="sheet-header">
                     {renderHeader()}
                 </header>

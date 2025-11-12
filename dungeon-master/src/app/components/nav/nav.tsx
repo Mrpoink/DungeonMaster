@@ -7,12 +7,14 @@ import { SiDungeonsanddragons } from "react-icons/si";
 interface NavProps {
     title?: string;
     showLeaveButton?: boolean;
+    onBookClick?: () => void; // optional: if provided, use this instead of navigating
+    noShadow?: boolean; // optional: allow pages to disable navbar shadow
 }
 
-export default function Nav({ title = "Welcome to QuestWeaver", showLeaveButton = false }: NavProps){
+export default function Nav({ title = "Welcome to QuestWeaver", showLeaveButton = false, onBookClick, noShadow = false }: NavProps){
     const router = useRouter()
     return(
-      <nav className="navbar">
+      <nav className="navbar" style={noShadow ? { boxShadow: 'none' } : undefined}>
         <div className="nav-left">
             {showLeaveButton ? (
                 <button className="leave-experience-button" onClick={() => router.back()}>Leave Experience</button>
@@ -27,7 +29,15 @@ export default function Nav({ title = "Welcome to QuestWeaver", showLeaveButton 
           <button onClick={()=>router.push('./characterInfo')}>
             <CgProfile title="Character Sheet" className="character-icon" />
           </button>
-          <button onClick={()=>router.push('./sessionHistory')}>
+          <button
+            onClick={() => {
+              if (onBookClick) {
+                onBookClick()
+              } else {
+                router.push('./sessionHistory')
+              }
+            }}
+          >
             <GrBook title="Session History" className="character-icon" />
           </button>
         </div>
