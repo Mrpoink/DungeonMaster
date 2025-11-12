@@ -37279,6 +37279,7 @@ class USERCHARCHANGEOptionalCreateInput(TypedDict, total=False):
     campaignId: Optional[_int]
     campaign: 'CampaignSessionCreateNestedWithoutRelationsInput'
     current_health: Optional[_int]
+    current_turn: Optional[_int]
 
 
 class USERCHARCHANGECreateInput(USERCHARCHANGEOptionalCreateInput):
@@ -37305,6 +37306,7 @@ class USERCHARCHANGEOptionalCreateWithoutRelationsInput(TypedDict, total=False):
     user: _str
     campaignId: Optional[_int]
     current_health: Optional[_int]
+    current_turn: Optional[_int]
 
 
 class USERCHARCHANGECreateWithoutRelationsInput(USERCHARCHANGEOptionalCreateWithoutRelationsInput):
@@ -37364,6 +37366,7 @@ class USERCHARCHANGEUpdateInput(TypedDict, total=False):
     username: 'USERDATAUpdateOneWithoutRelationsInput'
     campaign: 'CampaignSessionUpdateOneWithoutRelationsInput'
     current_health: Optional[Union[AtomicIntInput, _int]]
+    current_turn: Optional[Union[AtomicIntInput, _int]]
 
 
 class USERCHARCHANGEUpdateManyMutationInput(TypedDict, total=False):
@@ -37381,6 +37384,7 @@ class USERCHARCHANGEUpdateManyMutationInput(TypedDict, total=False):
     cla: _str
     name: _str
     current_health: Optional[Union[AtomicIntInput, _int]]
+    current_turn: Optional[Union[AtomicIntInput, _int]]
 
 
 class USERCHARCHANGEUpdateManyWithoutRelationsInput(TypedDict, total=False):
@@ -37535,6 +37539,14 @@ _USERCHARCHANGE_current_health_OrderByInput = TypedDict(
     total=True
 )
 
+_USERCHARCHANGE_current_turn_OrderByInput = TypedDict(
+    '_USERCHARCHANGE_current_turn_OrderByInput',
+    {
+        'current_turn': 'SortOrder',
+    },
+    total=True
+)
+
 _USERCHARCHANGE_RelevanceInner = TypedDict(
     '_USERCHARCHANGE_RelevanceInner',
     {
@@ -37569,6 +37581,7 @@ USERCHARCHANGEOrderByInput = Union[
     '_USERCHARCHANGE_user_OrderByInput',
     '_USERCHARCHANGE_campaignId_OrderByInput',
     '_USERCHARCHANGE_current_health_OrderByInput',
+    '_USERCHARCHANGE_current_turn_OrderByInput',
     '_USERCHARCHANGE_RelevanceOrderByInput',
 ]
 
@@ -39388,6 +39401,7 @@ class USERCHARCHANGEWhereInput(TypedDict, total=False):
     campaignId: Union[None, _int, 'types.IntFilter']
     campaign: 'CampaignSessionRelationFilter'
     current_health: Union[None, _int, 'types.IntFilter']
+    current_turn: Union[None, _int, 'types.IntFilter']
 
     # should be noted that AND and NOT should be Union['USERCHARCHANGEWhereInputRecursive1', List['USERCHARCHANGEWhereInputRecursive1']]
     # but this causes mypy to hang :/
@@ -39415,6 +39429,7 @@ class USERCHARCHANGEWhereInputRecursive1(TypedDict, total=False):
     campaignId: Union[None, _int, 'types.IntFilter']
     campaign: 'CampaignSessionRelationFilter'
     current_health: Union[None, _int, 'types.IntFilter']
+    current_turn: Union[None, _int, 'types.IntFilter']
 
     # should be noted that AND and NOT should be Union['USERCHARCHANGEWhereInputRecursive2', List['USERCHARCHANGEWhereInputRecursive2']]
     # but this causes mypy to hang :/
@@ -39442,6 +39457,7 @@ class USERCHARCHANGEWhereInputRecursive2(TypedDict, total=False):
     campaignId: Union[None, _int, 'types.IntFilter']
     campaign: 'CampaignSessionRelationFilter'
     current_health: Union[None, _int, 'types.IntFilter']
+    current_turn: Union[None, _int, 'types.IntFilter']
 
     # should be noted that AND and NOT should be Union['USERCHARCHANGEWhereInputRecursive3', List['USERCHARCHANGEWhereInputRecursive3']]
     # but this causes mypy to hang :/
@@ -39469,6 +39485,7 @@ class USERCHARCHANGEWhereInputRecursive3(TypedDict, total=False):
     campaignId: Union[None, _int, 'types.IntFilter']
     campaign: 'CampaignSessionRelationFilter'
     current_health: Union[None, _int, 'types.IntFilter']
+    current_turn: Union[None, _int, 'types.IntFilter']
 
     # should be noted that AND and NOT should be Union['USERCHARCHANGEWhereInputRecursive4', List['USERCHARCHANGEWhereInputRecursive4']]
     # but this causes mypy to hang :/
@@ -39496,6 +39513,7 @@ class USERCHARCHANGEWhereInputRecursive4(TypedDict, total=False):
     campaignId: Union[None, _int, 'types.IntFilter']
     campaign: 'CampaignSessionRelationFilter'
     current_health: Union[None, _int, 'types.IntFilter']
+    current_turn: Union[None, _int, 'types.IntFilter']
 
 
 
@@ -39521,6 +39539,7 @@ class USERCHARCHANGEScalarWhereWithAggregatesInput(TypedDict, total=False):
     user: Union[_str, 'types.StringWithAggregatesFilter']
     campaignId: Union[_int, 'types.IntWithAggregatesFilter']
     current_health: Union[_int, 'types.IntWithAggregatesFilter']
+    current_turn: Union[_int, 'types.IntWithAggregatesFilter']
 
     AND: List['USERCHARCHANGEScalarWhereWithAggregatesInputRecursive1']
     OR: List['USERCHARCHANGEScalarWhereWithAggregatesInputRecursive1']
@@ -39544,6 +39563,7 @@ class USERCHARCHANGEScalarWhereWithAggregatesInputRecursive1(TypedDict, total=Fa
     user: Union[_str, 'types.StringWithAggregatesFilter']
     campaignId: Union[_int, 'types.IntWithAggregatesFilter']
     current_health: Union[_int, 'types.IntWithAggregatesFilter']
+    current_turn: Union[_int, 'types.IntWithAggregatesFilter']
 
     AND: List['USERCHARCHANGEScalarWhereWithAggregatesInputRecursive2']
     OR: List['USERCHARCHANGEScalarWhereWithAggregatesInputRecursive2']
@@ -39567,6 +39587,7 @@ class USERCHARCHANGEScalarWhereWithAggregatesInputRecursive2(TypedDict, total=Fa
     user: Union[_str, 'types.StringWithAggregatesFilter']
     campaignId: Union[_int, 'types.IntWithAggregatesFilter']
     current_health: Union[_int, 'types.IntWithAggregatesFilter']
+    current_turn: Union[_int, 'types.IntWithAggregatesFilter']
 
     AND: List['USERCHARCHANGEScalarWhereWithAggregatesInputRecursive3']
     OR: List['USERCHARCHANGEScalarWhereWithAggregatesInputRecursive3']
@@ -39590,6 +39611,7 @@ class USERCHARCHANGEScalarWhereWithAggregatesInputRecursive3(TypedDict, total=Fa
     user: Union[_str, 'types.StringWithAggregatesFilter']
     campaignId: Union[_int, 'types.IntWithAggregatesFilter']
     current_health: Union[_int, 'types.IntWithAggregatesFilter']
+    current_turn: Union[_int, 'types.IntWithAggregatesFilter']
 
     AND: List['USERCHARCHANGEScalarWhereWithAggregatesInputRecursive4']
     OR: List['USERCHARCHANGEScalarWhereWithAggregatesInputRecursive4']
@@ -39613,6 +39635,7 @@ class USERCHARCHANGEScalarWhereWithAggregatesInputRecursive4(TypedDict, total=Fa
     user: Union[_str, 'types.StringWithAggregatesFilter']
     campaignId: Union[_int, 'types.IntWithAggregatesFilter']
     current_health: Union[_int, 'types.IntWithAggregatesFilter']
+    current_turn: Union[_int, 'types.IntWithAggregatesFilter']
 
 
 
@@ -39632,6 +39655,7 @@ class USERCHARCHANGEGroupByOutput(TypedDict, total=False):
     user: _str
     campaignId: _int
     current_health: _int
+    current_turn: _int
     _sum: 'USERCHARCHANGESumAggregateOutput'
     _avg: 'USERCHARCHANGEAvgAggregateOutput'
     _min: 'USERCHARCHANGEMinAggregateOutput'
@@ -39650,6 +39674,7 @@ class USERCHARCHANGEAvgAggregateOutput(TypedDict, total=False):
     cha: float
     campaignId: float
     current_health: float
+    current_turn: float
 
 
 class USERCHARCHANGESumAggregateOutput(TypedDict, total=False):
@@ -39663,6 +39688,7 @@ class USERCHARCHANGESumAggregateOutput(TypedDict, total=False):
     cha: _int
     campaignId: _int
     current_health: _int
+    current_turn: _int
 
 
 class USERCHARCHANGEScalarAggregateOutput(TypedDict, total=False):
@@ -39682,6 +39708,7 @@ class USERCHARCHANGEScalarAggregateOutput(TypedDict, total=False):
     user: _str
     campaignId: _int
     current_health: _int
+    current_turn: _int
 
 
 USERCHARCHANGEMinAggregateOutput = USERCHARCHANGEScalarAggregateOutput
@@ -39705,6 +39732,7 @@ class USERCHARCHANGEMaxAggregateInput(TypedDict, total=False):
     user: bool
     campaignId: bool
     current_health: bool
+    current_turn: bool
 
 
 class USERCHARCHANGEMinAggregateInput(TypedDict, total=False):
@@ -39724,6 +39752,7 @@ class USERCHARCHANGEMinAggregateInput(TypedDict, total=False):
     user: bool
     campaignId: bool
     current_health: bool
+    current_turn: bool
 
 
 class USERCHARCHANGENumberAggregateInput(TypedDict, total=False):
@@ -39737,6 +39766,7 @@ class USERCHARCHANGENumberAggregateInput(TypedDict, total=False):
     cha: bool
     campaignId: bool
     current_health: bool
+    current_turn: bool
 
 
 USERCHARCHANGEAvgAggregateInput = USERCHARCHANGENumberAggregateInput
@@ -39761,6 +39791,7 @@ USERCHARCHANGECountAggregateInput = TypedDict(
         'user': bool,
         'campaignId': bool,
         'current_health': bool,
+        'current_turn': bool,
         '_all': bool,
     },
     total=False,
@@ -39784,6 +39815,7 @@ USERCHARCHANGECountAggregateOutput = TypedDict(
         'user': int,
         'campaignId': int,
         'current_health': int,
+        'current_turn': int,
         '_all': int,
     },
     total=False,
@@ -39808,6 +39840,7 @@ USERCHARCHANGEKeys = Literal[
     'campaignId',
     'campaign',
     'current_health',
+    'current_turn',
 ]
 USERCHARCHANGEScalarFieldKeys = Literal[
     'id',
@@ -39825,6 +39858,7 @@ USERCHARCHANGEScalarFieldKeys = Literal[
     'user',
     'campaignId',
     'current_health',
+    'current_turn',
 ]
 USERCHARCHANGEScalarFieldKeysT = TypeVar('USERCHARCHANGEScalarFieldKeysT', bound=USERCHARCHANGEScalarFieldKeys)
 

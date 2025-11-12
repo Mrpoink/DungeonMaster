@@ -69,8 +69,6 @@ class player:
         
         instance.skills = instance.get_skills()
         
-        print(instance.attributes)
-        
 
     def get_skills(self, attribute_dict=None):
 
@@ -82,7 +80,6 @@ class player:
 
         for attr_name, attr_value in attributes_to_use.items():
             # Check if this attribute exists in the main abilities data
-            print(f"Checking attribute: {attr_name} with value: {attr_value}")
             if attr_name in self.data['abilities'].keys():
                 
                 # Get the list of skills for this attribute
@@ -92,7 +89,6 @@ class player:
                 for skill in skills_list:
                     # If the character's score meets or exceeds the threshold...
                     if attr_value is not None and attr_value >= skill["threshold"]:
-                        print(f"Adding skill: {skill['name']} for attribute: {attr_name}")
                         # ...add the skill name to the list.
                         self.skills.append(skill["name"])
                         
@@ -183,7 +179,7 @@ class campaign:
         self.turn_num = 0
 
     @classmethod
-    async def create_dm(cls, username=None):
+    async def create_dm(cls, username=None, char_name=None):
         r'''
         returns seed, \
         adds session \
@@ -192,6 +188,7 @@ class campaign:
         return instance with these items'''
     
         instance = cls(username)
+        instance.char_name = char_name
 
         instance.vb = vector_database.get_from_db()
         instance.bvb = vector_database.use_vector_db()
@@ -269,7 +266,6 @@ class campaign:
         self.options = []
         i = 0
         for item in self.campaign[self.turn_num][1]:
-            i += 1
             self.options.append(item['option'])
 
     def get_option_info(self, turn_num, choice_index):
@@ -345,65 +341,65 @@ class campaign:
 
 
 
-def mock_campaign():
-    r'''
-    used for mock campaign and debugging'''
+# def mock_campaign():
+#     r'''
+#     used for mock campaign and debugging'''
 
-    print("RUNNING MOCK CAMPAIGN")
+#     print("RUNNING MOCK CAMPAIGN")
 
-    mock_campaign = campaign()
+#     mock_campaign = campaign()
 
-    mock_campaign.create_campaign_from_file(23)
+#     mock_campaign.create_campaign_from_file(23)
 
 
-    mock_campaign.get_campaign()
+#     mock_campaign.get_campaign()
 
-    # for description, options in mock_campaign.scene_and_options:
-    #     print("DESCRIPTION: ", description)
-    #     for item in options:
-    #         print(f"Option: {item['option']}")
+#     # for description, options in mock_campaign.scene_and_options:
+#     #     print("DESCRIPTION: ", description)
+#     #     for item in options:
+#     #         print(f"Option: {item['option']}")
 
-    player1 = player(12, 12, 12, 12, 12, 12, mock_campaign.campaign)
+#     player1 = player(12, 12, 12, 12, 12, 12, mock_campaign.campaign)
 
-    turn_num = 0
+#     turn_num = 0
     
-    print(mock_campaign.get_background())
+#     print(mock_campaign.get_background())
 
-    for description, options in mock_campaign.scene_and_options:
+#     for description, options in mock_campaign.scene_and_options:
 
-        print(f"{description}")
+#         print(f"{description}")
 
-        for i in range(len(options)):
+#         for i in range(len(options)):
 
-            print(f"Option {i+1}. {options[i]['option']}")
+#             print(f"Option {i+1}. {options[i]['option']}")
         
-        print("\n---------\n")
+#         print("\n---------\n")
 
         
-        userin = input("What will you do?: ")
+#         userin = input("What will you do?: ")
 
-        if userin.lower() in ['exit', 'quit']:
-            break
+#         if userin.lower() in ['exit', 'quit']:
+#             break
 
-        option_info, choice_index = mock_campaign.user_choice(options, userin)
+#         option_info, choice_index = mock_campaign.user_choice(options, userin)
 
-        print("\n---------\n")
+#         print("\n---------\n")
 
-        roll_prompt = input(f'Roll for {option_info[1]} (d{option_info[3]}), would you like to roll (y/N): ')
+#         roll_prompt = input(f'Roll for {option_info[1]} (d{option_info[3]}), would you like to roll (y/N): ')
 
-        if roll_prompt.lower() == 'y':
-            user_roll = random.randint(1, int(option_info[3].replace('1d', '')))
-            print(f"you rolled: {user_roll}")
-        else:
-            break
+#         if roll_prompt.lower() == 'y':
+#             user_roll = random.randint(1, int(option_info[3].replace('1d', '')))
+#             print(f"you rolled: {user_roll}")
+#         else:
+#             break
 
-        print("\n---------\n")
+#         print("\n---------\n")
 
-        success, outcome_description, narration = mock_campaign.get_success_or_failure( turn_num, choice_index, user_roll)
+#         success, outcome_description, narration = mock_campaign.get_success_or_failure( turn_num, choice_index, user_roll)
 
-        print(f"\n{narration}\n\n")
+#         print(f"\n{narration}\n\n")
 
-        player1.change_ability(outcome_description['ability_change'], random.randint(1, 20))
+#         player1.change_ability(outcome_description['ability_change'], random.randint(1, 20))
 
 
 

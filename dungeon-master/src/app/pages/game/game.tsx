@@ -243,6 +243,7 @@ export default function Game() {
   const [scene, setScene] = useState('');
   const [options, setOptions] = useState<(Option | string)[]>([]);
   const [username, setUsername] = useState('');
+  const [seed, setSeed] = useState('');
   const [turn_num, setTurnNum] = useState('');
   const [characterData, setCharacterData] = useState<Character | null>(null);
   const [skills, setSkills] = useState<string[]>([]);
@@ -291,7 +292,7 @@ export default function Game() {
     // Always send the option to the backend to handle.
     setIsLoading(true);
     try {
-        const payload = { message: option, username: username, step: 'get_roll_info', turn_num: turn_num };
+        const payload = { message: option, username: username, seed: seed, step: 'get_roll_info', turn_num: turn_num };
         const response = await fetch('http://localhost:1068/userin', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -357,6 +358,7 @@ export default function Game() {
         const payload = {
             message: pendingAction.action,
             username: username,
+            seed: seed,
             roll: rollInfo.rollResult,
             step: 'get_outcome',
             description: pendingAction.description,
@@ -403,6 +405,7 @@ export default function Game() {
             const payload = {
                 message: userMessage,
                 username: username,
+                seed: seed,
                 characterData: characterData,
                 turn_num: turn_num
             };
@@ -434,7 +437,7 @@ export default function Game() {
     setIsHistoryOpen(false);
   };
 
-  const fetchDMmessage = async (username: string) => {
+  const fetchDMmessage = async (username: string, seed: string | null) => {
     try {
       const response = await fetch('http://localhost:1068/DMout');
       const data = await response.json();
@@ -447,7 +450,7 @@ export default function Game() {
       
       // After getting the initial message, fetch the character data
       if (username) {
-        fetchCharacterData(username);
+        fetchCharacterData(username, seed);
       }
     } catch (error) {
       console.error("Something went wrong with fetch dm message, line 81", error);
@@ -455,14 +458,18 @@ export default function Game() {
     }
   };
 
-  const fetchCharacterData = async (username: string) => {
+  const fetchCharacterData = async (username: string, seed: string | null) => {
+    if (!seed) {
+        console.error("No seed provided, cannot fetch character data.");
+        return;
+    }
     try {
       const response = await fetch('http://localhost:1068/character-data', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username }),
+        body: JSON.stringify({ username, seed }),
       });
       
       if (!response.ok) throw new Error('Failed to fetch character data');
@@ -482,6 +489,7 @@ export default function Game() {
     const savedTurnNum = localStorage.getItem('turn_num');
 
     if (campaignId) {
+      setSeed(campaignId);
       switch (campaignId) {
         case '1':
           setBackground(StarWars);
@@ -505,10 +513,10 @@ export default function Game() {
 
     if (savedUsername) {
       setUsername(savedUsername);
-      fetchDMmessage(savedUsername);
+      fetchDMmessage(savedUsername, campaignId);
     } else {
         // Handle case where there is no saved username, maybe redirect to login
-        fetchDMmessage('');
+        fetchDMmessage('', null);
     }
     if (savedTurnNum) {
         setTurnNum(savedTurnNum);

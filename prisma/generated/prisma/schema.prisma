@@ -310,6 +310,7 @@ model USERCHARCHANGE {
   campaignId     Int?
   campaign       CampaignSession? @relation(fields: [campaignId], references: [id])
   current_health Int?
+  current_turn   Int?             @default(0)
 }
 
 model CampaignSession {

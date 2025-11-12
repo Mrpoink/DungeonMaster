@@ -1800,6 +1800,7 @@ class USERCHARCHANGE(bases.BaseUSERCHARCHANGE):
     campaignId: Optional[_int] = None
     campaign: Optional['models.CampaignSession'] = None
     current_health: Optional[_int] = None
+    current_turn: Optional[_int] = None
 
     # take *args and **kwargs so that other metaclasses can define arguments
     def __init_subclass__(
@@ -4291,6 +4292,14 @@ _USERCHARCHANGE_fields: Dict['types.USERCHARCHANGEKeys', PartialModelField] = Or
         }),
         ('current_health', {
             'name': 'current_health',
+            'is_list': False,
+            'optional': True,
+            'type': '_int',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('current_turn', {
+            'name': 'current_turn',
             'is_list': False,
             'optional': True,
             'type': '_int',

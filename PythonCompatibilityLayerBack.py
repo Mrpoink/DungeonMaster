@@ -20,15 +20,14 @@ class GameState:
             cls._instance.game = None
             cls._instance.player_skills = None
             cls._instance.lock = asyncio.Lock()
+            cls._instance.turn_processed = False
         return cls._instance
 
-    async def initialize_game(self, username):
+    async def initialize_game(self, username, new_game=False):
         self.game_end = False
         async with self.lock:
-            if self.game is None:
-                print("Initializing game instance...")
+            if self.game is None or new_game:
                 self.game = await PythonBackEnd.campaign.create_dm(username)
-                print("Game instance initialized.")
     
     def get_game(self):
         return self.game
@@ -39,9 +38,8 @@ async def load_campaign(seed):
     if game:
         game.create_campaign_from_file(seed)
         game.get_campaign()
-        print(f"Campaign with seed {seed} loaded.")
 
-async def load_player_character(username, campaign_data=None, use_changed_character=False):
+async def load_player_character(username, seed, campaign_data=None, use_changed_character=False):
     game_state = GameState.get_instance()
     game = game_state.get_game()
     if not game:
@@ -49,25 +47,29 @@ async def load_player_character(username, campaign_data=None, use_changed_charac
         game = game_state.get_game()
     
     try:
-        char_attributes = await game.vb.get_character_attributes(username, change=use_changed_character)
-        if char_attributes:
-            # Use provided campaign_data or fall back to game.campaign
-            data_for_skills = campaign_data if campaign_data is not None else game.campaign
-            player_character = PythonBackEnd.player(campaign_dict=data_for_skills)
-            player_character.attributes = {
-                'Might': char_attributes.get('Might'),
-                'Agility': char_attributes.get('Agility'),
-                'Presence': char_attributes.get('Presence'),
-                'Wisdom': char_attributes.get('Wisdom'),
-                'Spirit': char_attributes.get('Spirit'),
-                'Intellect': char_attributes.get('Intellect')
-            }
-            game.player = player_character
-            game_state.player_skills = player_character.get_skills(player_character.attributes)
-            print(f"Loaded character for user: {username} with skills: {game_state.player_skills}")
-        else:
-            print(f"No character found for user: {username}")
-            game.player = None
+        # If continuing, use changed character. If new, use base character.
+        char_attributes = await game.vb.get_character_attributes(username, seed, change=use_changed_character)
+        
+        if not char_attributes:
+             # This can happen if a user has no base character created yet.
+             print(f"No character found for {username}. Cannot proceed.")
+             game.player = None
+             return False
+
+        # Use provided campaign_data or fall back to game.campaign
+        data_for_skills = campaign_data if campaign_data is not None else game.campaign
+        player_character = PythonBackEnd.player(campaign_dict=data_for_skills)
+        player_character.attributes = {
+            'Might': char_attributes.get('Might'),
+            'Agility': char_attributes.get('Agility'),
+            'Presence': char_attributes.get('Presence'),
+            'Wisdom': char_attributes.get('Wisdom'),
+            'Spirit': char_attributes.get('Spirit'),
+            'Intellect': char_attributes.get('Intellect')
+        }
+        game.player = player_character
+        game_state.player_skills = player_character.get_skills(player_character.attributes)
+        
         return True
     except Exception as e:
         print(f"Error loading player character: {e}")
@@ -100,16 +102,23 @@ async def process_message():
     game = game_state.get_game()
     data = await request.get_json()
     username = data.get('username')
-    # Rely on the turn number established by the /seed endpoint and managed internally.
-    # Do not trust the turn number from the client.
-    # game.turn_num = int(data.get('turn_num'))
+    seed = data.get('seed')  # Frontend now sends this
+    
+    # Ensure we have the seed from the request or fallback to game.seed
+    if not seed and hasattr(game, 'seed'):
+        seed = game.seed
     
     # The player character is already loaded with the correct state (new or continued)
     # by the /seed call. We just need to ensure it's still there.
     if not hasattr(game, 'player') or game.player is None:
-        await load_player_character(username, use_changed_character=True)
+        # If the player object is missing, reload it using the 'continue' logic.
+        if seed:
+            await load_player_character(username, int(seed), use_changed_character=True)
+        else:
+            # This case should ideally not be hit if the flow starts with /seed
+            return jsonify({'message': 'Game session not properly initialized. Please start a campaign.'}), 500
 
-    print(f"GAME TURN NUMBER: {game.turn_num}")
+    print(f"GAME TURN NUMBER: {game.turn_num}\n")
     
 
     if not game or not hasattr(game, 'player'):
@@ -126,14 +135,13 @@ async def process_message():
             message = message.get('option')
         step = data.get('step')
         
-        # This was overwriting the character's stats with the previous turn's data.
-        # By removing it, we allow the character's attributes to be modified by game events
-        # and persist across turns within the same session.
-        # char_attributes = await game.vb.get_character_attributes(username, True)
-        # if char_attributes:
-        #     player_character.attributes = char_attributes
-
+        # note: character attributes are loaded once at session start and maintained in memory
+        # we don't reload them here because that would overwrite any changes made during gameplay
+        # stats persist per-campaign through the usercharchange table, not across campaigns
+        
         description, options = game.scene_and_options[game.turn_num]
+        
+        print(f"Processing step: {step} for user: {username} at turn {game.turn_num} with narration: {description}\n")
 
         if step == 'get_roll_info':
             option_info, choice_index = game.user_choice(options, message)
@@ -141,56 +149,75 @@ async def process_message():
                 return jsonify({'message': "Good-bye", 'scene': 'You may try again'}), 400
             
             choice, ability_check, dc, dice = option_info
-            print(options)
+            # Enrich with success/failure narrations and ability change for UI preview
             return jsonify({
                 'description': description,
                 'requires_roll': True,
                 'ability': ability_check,
                 'dc': dc,
                 'dice': dice,
+                'success_narration': choice.get('success', {}).get('narration'),
+                'failure_narration': choice.get('failure', {}).get('narration'),
+                'success_ability_change': choice.get('success', {}).get('ability_change'),
+                'failure_ability_change': choice.get('failure', {}).get('ability_change'),
                 'options': options
             })
 
         elif step == 'get_outcome':
+
             roll = data.get('roll')
             option_info, choice_index = game.user_choice(options, message)
             
             success, outcome_description, narration = game.get_success_or_failure(game.turn_num, choice_index, roll)
 
-            # Check for game-ending conditions based on the current turn's outcome
+            # apply ability changes from this turn's outcome
             if 'ability_change' in outcome_description:
                 player_character.change_ability(outcome_description['ability_change'], roll)
-                await game.vb.update_character_stats(username, player_character.attributes)
                 
-                for ability, change in outcome_description['ability_change'].items():
-                    if player_character.attributes.get(ability, 0) < 1:
+                # save the modified stats to this campaign's usercharchange row
+                # important: stats are isolated per campaign - changes in campaign 3 don't affect campaign 4
+                campaign_seed = int(seed) if seed else game.seed
+                await game.vb.update_character_stats(username, player_character.attributes, campaign_seed)
+                
+                # check if any attribute dropped to 0 or below (game over condition)
+                for ability_name, change in outcome_description['ability_change'].items():
+                    if player_character.attributes.get(ability_name, 0) < 1:
                         game.game_end = True
+            
+            game_state.turn_processed = True
 
-            # Prepare the response for the current turn's outcome *before* incrementing the turn number
+            # prepare response with current turn's results
             response_data = {
                 'message': narration,
                 'scene': game.get_background(),
-                'characterData': await game.vb.get_character(username, False),
+                'characterData': await game.vb.get_character(username, int(seed) if seed else game.seed, True),
                 'skills': game_state.player_skills
             }
-
-            # Now, increment the turn number for the *next* action
+            
+            # increment turn counter for next action
+            # important: we increment BEFORE saving so the saved value is the next turn to play
             game.turn_num += 1
-            await game.bvb.update_campaign_turn_num(username, game.seed, game.turn_num)
+            
+            # persist the new turn number to the database
+            # this ensures when the user returns, they continue from where they left off
+            await game.bvb.update_campaign_turn_num(username, game.seed, game.turn_num, narration)
 
-            # Check if the campaign should end after this turn
+            # check if we've reached the end of the campaign
             if game.turn_num >= len(game.scene_and_options) or game.game_end:
-                final_message = f"{narration}\n\nEnd of campaign."
-                if game.game_end and player_character.attributes.get(ability, 0) < 1:
-                    final_message = f"{narration}\n\nYour {ability} has dropped to 0. You can no longer continue."
+                final_message = f"{narration}\n\nend of campaign."
+                if game.game_end:
+                    # find which attribute caused the game over
+                    zero_attrs = [k for k, v in player_character.attributes.items() if v is not None and v < 1]
+                    if zero_attrs:
+                        final_message = f"{narration}\n\nyour {zero_attrs[0]} has dropped to 0. you can no longer continue."
                 
                 return jsonify({
                     'message': final_message,
-                    'scene': "The campaign has ended.",
+                    'scene': "the campaign has ended.",
                     'options': []
                 })
 
-            # Get the next scene's data and add it to the response
+            # fetch the next scene and add it to the response
             next_description, next_options = game.scene_and_options[game.turn_num]
             response_data['message'] = f"{narration}\n\n{next_description}"
             response_data['options'] = next_options
@@ -210,38 +237,70 @@ async def use_campaign():
     continue_campaign = data.get('continue_campaign', False)
     
     game_state = GameState.get_instance()
+    await game_state.initialize_game(username, new_game=True)
     game = game_state.get_game()
-    if not game:
-        await game_state.initialize_game(username)
-        game = game_state.get_game()
 
-    # If it's a new campaign, reset the character change table
-    if not continue_campaign:
-        print(f"\nStarting new campaign for user: {username}\n")
-        success, message = await game.bvb.reset_usercharchange_table(username, new_campaign=True)
+    # check if this user has a campaign-specific character sheet (usercharchange) for this seed
+    # userchar = base character template (never changes)
+    # usercharchange = per-campaign instance with modified stats and turn progress
+    session = await game.bvb.db.campaignsession.find_unique(
+        where={'seed_user': {'seed': str(seed), 'user': username}}
+    )
+    
+    # get the user's most recently created character from userchar table
+    base_char = await game.bvb.db.userchar.find_first(
+        where={'user': username},
+        order={'id': 'desc'}  # latest character by id
+    )
+    
+    if not base_char:
+        return jsonify({"status": "error", "message": "no character found. please create a character first."}), 400
+    
+    # check if a campaign-specific character sheet already exists
+    userchar_exists = False
+    if session:
+        existing_userchar = await game.bvb.db.usercharchange.find_first(
+            where={'user': username, 'campaignId': session.id, 'name': base_char.name}
+        )
+        userchar_exists = existing_userchar is not None
+    
+    # if this is the first time playing this campaign, create a fresh usercharchange row
+    # this copies the base character's stats and links them to this specific campaign
+    if not userchar_exists:
+        print(f"first time playing campaign {seed} for user {username}. creating fresh usercharchange from base character.")
+        success, message = await game.bvb.reset_usercharchange_table(username, seed, new_campaign=True)
         if not success:
-            print(f"Warning: Failed to reset character change table for {username}: {message}")
-        else:
-            print(f"Character change table reset for {username}.")
+            print(f"error: failed to create character sheet for campaign {seed}: {message}")
+            return jsonify({"status": "error", "message": "failed to initialize character for the campaign."}), 500
     else:
-        print(f"\nContinuing campaign for user: {username}\n")
-
-    # Get or create campaign session and set turn number
-    if continue_campaign:
-        turn_num = await game.bvb.get_or_create_campaign_session(username, seed)
-        game.turn_num = turn_num
-        print(f"Loaded turn number {turn_num} for user {username} in campaign {seed}")
+        print(f"user {username} has played campaign {seed} before. loading existing usercharchange stats.")
+    
+    # load the saved turn number from the database
+    # completed_turn_num contains the NEXT turn to play (we incremented before saving)
+    completed_turn_num, last_context, error = await game.bvb.get_or_create_campaign_session(username, seed)
+    if error:
+        return jsonify({"status": "error", "message": error}), 500
+    
+    # determine starting turn based on saved progress
+    has_played_before = completed_turn_num > 0
+    
+    if continue_campaign or has_played_before:
+        # continue from saved position - completed_turn_num is already the next turn to play
+        # we don't add 1 here because we incremented before saving in /userin
+        game.turn_num = completed_turn_num
+        print(f"loading campaign {seed} at turn {game.turn_num} (continuing from turn {completed_turn_num - 1 if completed_turn_num > 0 else 0})")
     else:
-        # For new campaigns, the turn number is always 0.
-        turn_num = 0
-        game.turn_num = turn_num
-        await game.bvb.get_or_create_campaign_session(username, seed) # This will create or reset to 0
-        print(f"Starting new campaign at turn 0 for user {username} in campaign {seed}")
+        # brand new campaign, start at the beginning
+        game.turn_num = 0
+        print(f"starting fresh campaign {seed} at turn 0")
 
+    game.seed = seed
+    game_state.turn_processed = False
     await load_campaign(seed)
     
-    # Load the correct character data based on whether the campaign is new or continued
-    await load_player_character(username, use_changed_character=continue_campaign)
+    # Always load the per-campaign change sheet after ensuring it's reset/created
+    # (For a new campaign the USERCHARCHANGE row was just cloned from base stats.)
+    await load_player_character(username, seed, use_changed_character=True)
     
     return jsonify({"status": "ready", "message": f"Campaign with seed {seed} loaded.", "turn_num": game.turn_num})
 
@@ -259,8 +318,11 @@ async def output_message():
     if not hasattr(game, 'scene_and_options'):
         return jsonify({"error": "Campaign not loaded. Please select a campaign first."}), 400
     
+    game_state.turn_processed = False
+
     description, options = game.scene_and_options[game.turn_num]
-    await load_player_character(username) # Load character to get skills
+    # Character should already be loaded from the /seed call.
+    # await load_player_character(username) # Load character to get skills
 
     return jsonify({
         "dm_text": description, # Adding for frontend compatibility
@@ -274,8 +336,10 @@ async def output_message():
 async def process_userdata():
     data = await request.get_json()
     username = data.get('username')
+    # char_name is not needed for creating a user account
     game_state = GameState.get_instance()
     if not game_state.get_game():
+        # We can initialize with a dummy char_name, as it's not used for user creation
         await game_state.initialize_game(username)
     
     user = userData()
@@ -292,11 +356,16 @@ async def check_creds():
     username = data.get('username')
     game_state = GameState.get_instance()
     if not game_state.get_game():
+        # We can initialize with a dummy char_name, as it's not used for credential check
         await game_state.initialize_game(username)
         
     user_creds = await userData.check_credentials(username, data.get('password'))
+    
     if user_creds:
-        await load_player_character(username)
+        # If credentials are correct, get the list of characters for the user
+        game = game_state.get_game()
+        characters = await game.bvb.get_all_characters_for_user(username)
+        return jsonify({"status": "ready", "message": True, "characters": characters})
 
     return jsonify({"status": "ready", "message": user_creds})
 
@@ -304,20 +373,24 @@ async def check_creds():
 async def get_character_data():
     data = await request.get_json()
     username = data.get('username')
+    seed = data.get('seed') # Expect seed from frontend
     game_state = GameState.get_instance()
     game = game_state.get_game()
     if not game:
         await game_state.initialize_game(username)
         game = game_state.get_game()
     
-    await load_player_character(username)
-    character_data = await game.vb.get_character(username, False)
+    # Pass seed to load_player_character
+    await load_player_character(username, seed, use_changed_character=True)
+    # Pass seed to get_character
+    character_data = await game.vb.get_character(username, seed, True)
     return jsonify({"characterData": character_data, "skills": game_state.player_skills})
 
 @app.route("/characters", methods=['POST'])
 async def process_characters():
     data = await request.get_json()
     username = data.get('username')
+    char_name = data.get('name')
     game_state = GameState.get_instance()
     game = game_state.get_game()
     if not game:
@@ -326,7 +399,7 @@ async def process_characters():
     
     success, message = await game.bvb.add_user_character(
         username=username,
-        name=data.get('name'),
+        name=char_name,
         race=data.get('race'),
         char_class=data.get('class'),
         subclass=data.get('subclass'),
@@ -350,7 +423,7 @@ async def connection_message():
 
 async def main():
     config = Config()
-    config.bind = ["localhost:1068"]
+    config.bind = ["0.0.0.0:1068"]
     await serve(app, config)
 
 if __name__ == "__main__":
