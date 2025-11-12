@@ -19,6 +19,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: serif;
+  font-size: x-large;
 }
 html{
   max-width: 100vw;
@@ -94,7 +95,6 @@ button {
   top: 10px;
   button {
     padding: 1em;
-    font-size: small;
     margin-left: 2.5rem;
     background-color: #000;
     opacity: 0.9;
@@ -230,44 +230,6 @@ input::selection {
   flex-grow: 1;
   max-width: 200px;
 }
-
-/* .member {
-  float: right;
-  position: relative;
-  right: 10vw;
-  top: -10vh;
-  z-index: 1;
-  .member-icon {
-    font-size: 2.5em;
-    border: 2px solid #111827;
-    color: darkblue;
-    border-radius: 25%;
-    background: #111827;
-  }
-  .member-icon-div {
-    margin-bottom: 10px;
-    border-radius: 25%;
-    border: 2px solid #111827;
-  }
-  .member-icon-div:hover {
-    border: 2px solid blue;
-    transform: scale(1.15);
-    cursor: pointer;
-  }
-  .member-icon.active-member {
-    color: #FBBF24;
-    border: 2px solid #111827;
-  }
-  .member-icon-div.active-member {
-    border: 2px solid #111827;
-    background: transparent;
-  }
-  .member-icon-div.active-member:hover {
-    border: 2px solid #111827;
-    cursor: pointer;
-    transform: scale(1.15);
-  }
-} */
 .main-session-box {
   display: flex;
   position: relative;
@@ -311,7 +273,6 @@ input::selection {
 .root-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
   padding: 1rem;
   font-family: serif;
   overflow: hidden;

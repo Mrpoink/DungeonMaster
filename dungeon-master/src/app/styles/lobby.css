@@ -4,6 +4,7 @@
     background: url(../components/assets/Lobby_Page.png) no-repeat;
     background-position: center;
     background-size: cover;
+    flex-grow: 1;
     main{
       flex-grow: 1;
       display: flex;
@@ -12,22 +13,24 @@
       padding: 20px;
     }
     #game-sessions-div {
+      flex-grow: 1;
       position: relative;
       display: flex;
       justify-content: space-around;
       align-items: center;
       width: 100%;
-      max-width: 1000px; 
       height: 70vh;
       button{
-        width: 250px;
-        height: 200px;        
+        min-width: 250px;
+        width: 20vw;
+        min-height: 200px;
+        height: 15vw;        
         border: 5px solid var(--foreground);
         border-radius: 15%;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
         cursor: pointer;
         transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-        font-size: 1.5rem;
+        font-size: clamp(1rem, 2vw, 2.5rem);
         font-weight: bold;
         color: var(--background);
         text-shadow: 2px 2px 4px var(--foreground);
@@ -35,7 +38,7 @@
         background-repeat: no-repeat;
         background-position: center;            
         padding: 0;
-        margin: 1em;
+        margin: 2vw;
         &:hover {
           transform: scale(1.05);
           box-shadow: 0 15px 30px var(--background);
