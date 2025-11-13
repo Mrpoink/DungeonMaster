@@ -3,6 +3,7 @@
 @import url(./styles/dice.css);
 @import url(./styles/navigation.css);
 @import url(./styles/credentials.css);
+@import url(./styles/landingPage.css);
 @import "tailwindcss";
 
 :root {
@@ -30,19 +31,6 @@ body {
   text-align: center;
   justify-content: center;
   font-family: serif;
-}
-.start-buttons{
-  margin: 1em;
-  padding: 1em;
-  opacity: .8;
-  box-shadow: var(--foreground);
-}
-.start-buttons-container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 header {
   padding: 2em;
@@ -76,20 +64,6 @@ button {
   position: relative;
   top: 40vh;
 }
-.main {
-  background: url(./components/assets/Login_Page.png) no-repeat;
-  background-position: center;
-  background-size: cover;
-  width: auto;
-  height: 100vh;
-  #landing-text {
-    display: inline-block;
-    padding: 1em;
-    background-color: var(--background);
-    width: fit-content;
-    border-radius: 1.5rem;
-  }
-}
 .exit-game-button{
   position : absolute;
   top: 10px;
@@ -120,14 +94,17 @@ button {
   z-index: -11;
 }
 input {
-  background-color: black;
+  background-color: var(--foreground);
   color: white;
   border-radius: 1.5rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
   margin-right: 1rem;
   padding: 10px;
-  border: 0;
+  border: 1px solid var(--foreground);
+}
+input:focus {
+  outline-color: green;
 }
 input::selection {
   border: transparent;
