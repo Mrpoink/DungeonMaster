@@ -3,7 +3,7 @@
 import { BottomNav } from "@/app/components/nav/nav";
 import { API_BASE_URL } from "@/app/config/api";
 import { useState, useEffect, Dispatch, SetStateAction } from "react";
-import { DEFAULT_CHARACTER, raceOptions } from "@/app/components/character/defaultCharacter";
+import { DEFAULT_CHARACTER } from "@/app/components/character/defaultCharacter";
 import { BiPencil } from "react-icons/bi";
 import { FaCheck } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
@@ -15,7 +15,6 @@ import { AbilityScore } from "@/app/components/character/abilities/abilities";
 import { CharacterOptions } from "@/app/components/character/basicInfo/characterOptions";
 import { race_class_map, subclass_map, allClasses, allSubclasses } from "@/app/components/character/basicInfo/basicInfoMaps";
 import { raceDescriptions, classDescriptions, nestedSubclassDescriptions } from "@/app/components/character/basicInfo/descriptions";
-import type { characterOptionTypes } from "@/app/components/character/basicInfo/characterOptions";
     
 const all_skills = Object.values(skill_map).flat();
 const thresholds = { lvl1: 10, lvl2: 20, lvl3:25 }

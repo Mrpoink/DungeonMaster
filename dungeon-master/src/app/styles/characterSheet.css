@@ -321,7 +321,19 @@
   .basic-desc{
     margin: 0.75rem;
     padding: auto;
-    border-radius: 0.75rem; /* rounded-xl */
+    border-radius: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-top-width: 4px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    background-color: #c4a881b6;
+  }
+  .preselect-text{
+    margin: 0.75rem;
+    padding: 0 1rem;
+    border-radius: 0.75rem;
     display: flex;
     flex-direction: column;
     align-items: center;

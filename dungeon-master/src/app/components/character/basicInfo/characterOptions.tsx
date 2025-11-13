@@ -42,8 +42,8 @@ export const CharacterOptions: React.FC<characterOptionTypes> = ({
             </label>
             
             {!prerequisiteOption && type !== "Race" && (
-                <p className="">
-                    ← Select a {type === 'Class' ? 'race' : 'class'} first.
+                <p className="preselect-text">
+                    Select a {type === 'Class' ? 'race' : 'class'} first.
                 </p>
             )}
 
