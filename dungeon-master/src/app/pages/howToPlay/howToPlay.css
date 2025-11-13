@@ -1,9 +1,7 @@
 .how-to-play-container {
-    height: 100vh;
     background: url(../../components/assets/Login_Page.jpeg) no-repeat center center;
     background-size: cover;
-    padding: 20px;
-    padding-top: 100px;
+    padding: 70px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -11,7 +9,7 @@
 }
 
 .how-to-play-content {
-    max-width: 900px;
+    max-width: 80vw;
     max-height: 85vh;
     width: 100%;
     background: #F6E3B8;
