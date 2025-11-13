@@ -92,7 +92,7 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
     const [tempName, setTempName] = useState(characterData.name);
     const [tempRace, setTempRace] = useState(characterData.race);
     const [tempClass, setTempClass] = useState(characterData.class);
-    const [tempSubclass, setTempSubclass] = useState(characterData.subclass);
+    const [tempSubclass, setTempSubclass] = useState(characterData.subclass || '');
     const [tempStats, setTempStats] = useState(characterData.stats);
     const [tempBackstory, setTempBackstory] = useState(characterData.backstory);
     const [tempIcon, setTempIcon] = useState(characterData.iconId);
@@ -119,6 +119,8 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
 
     const handleSelectSubclass = (subclass:string) => {
         setTempSubclass(subclass);
+    };
+
     // Validation handlers for text inputs
     const handleNameChange = (value: string) => {
         if (validateTextInput(value) || value === '') {
@@ -339,40 +341,8 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
                         />
                     </div>
                     <DescriptionBox 
-                        description={tempClass && tempSubclass ? nestedSubclassDescriptions[tempClass as keyof typeof nestedSubclassDescriptions]?.[tempSubclass] : null} 
+                        description={tempClass && tempSubclass ? (nestedSubclassDescriptions[tempClass as keyof typeof nestedSubclassDescriptions] as any)?.[tempSubclass] : null} 
                     />
-
-                    {/* <div>
-                        <label className="text-sm block mb-1">Character Race</label>
-                        <div className="race-button-container">
-                            {raceOptions.map((race) => (
-                                <button
-                                    key={race}
-                                    onClick={() => setTempRace(race)}
-                                    className={`race-button ${tempRace === race ? 'race-selected' : ''}`}
-                                >
-                                    {race}
-                                </button>
-                            ))}
-                        </div>
-                    </div> */}
-                    </div>
-                    <div>
-                        <label className="text-sm block mb-1">Character Class</label>
-                        <EditInput 
-                            value={tempClass} 
-                            onChange={(e) => handleClassChange(e.target.value)}
-                            placeholder="Letters, numbers, and spaces only"
-                        />
-                    </div>
-                    <div>
-                        <label className="text-sm block mb-1">Character Subclass</label>
-                        <EditInput 
-                            value={tempSubclass} 
-                            onChange={(e) => handleSubclassChange(e.target.value)}
-                            placeholder="Letters, numbers, and spaces only"
-                        />
-                    </div>
                 </div>
             );
         }
@@ -386,7 +356,7 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
                             setIsEditingBasic(true);
                             setTempRace(characterData.race);
                             setTempClass(characterData.class);
-                            setTempSubclass(characterData.subclass);
+                            setTempSubclass(characterData.subclass || '');
                             setTempIcon(characterData.iconId);
                         }}
                         className="edit-button"
@@ -451,7 +421,7 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
                             backgroundColor: 'rgba(246, 233, 201, 0.95)', 
                             borderRadius: '8px'
                         }}>
-                            ⚠️ {validationMessage}
+                            {validationMessage}
                         </div>
                     )}
                     <div className="mb-4 p-3 rounded-lg flex justify-between items-center text-sm font-semibold">
@@ -602,7 +572,7 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
                             backgroundColor: 'rgba(246, 233, 201, 0.95)', 
                             borderRadius: '8px'
                         }}>
-                            ⚠️ {fieldValidationError}
+                            {fieldValidationError}
                         </div>
                     )}
                     <textarea
@@ -738,4 +708,4 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
             </div>
         </div>
     );
-};
+}

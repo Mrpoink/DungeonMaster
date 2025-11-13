@@ -4,15 +4,14 @@ import { useState } from "react";
 import { API_BASE_URL } from "@/app/config/api";
 import { useLoadingNavigation } from "@/app/hooks/useLoadingNavigation";
 
-export default function Register() {
-    const router = useRouter();
-    const { navigateWithLoading } = useLoadingNavigation();
-    const [formData, setFormData] = useState({
-    name: '',
-    username: '',
-    password: '',
-  });
+interface ValidationErrors {
+  name?: string;
+  username?: string;
+  password?: string;
+}
 
+export default function Register() {
+    const { navigateWithLoading } = useLoadingNavigation();
     const [formData, setFormData] = useState({
       name: '',
       username: '',
@@ -22,12 +21,6 @@ export default function Register() {
   const [validationErrors, setValidationErrors] = useState<ValidationErrors>({});
   const [serverError, setServerError] = useState('')
   const [isLoading, setIsLoading] = useState(false);
-
-  interface ValidationErrors {
-    name?: string;
-    username?: string;
-    password?: string;
-  }
 
   const VALID_CHARS_REGEX = /^[a-zA-Z0-9-._]+$/; 
   // Explanation:
@@ -179,7 +172,7 @@ export default function Register() {
         >
           {isLoading ? 'Registering...' : 'Register'}
         </button>
-        {error && <p style={{ color: '#f6e9c9', backgroundColor: 'rgba(220, 38, 38, 0.8)', padding: '10px', borderRadius: '8px', textAlign: 'center', fontWeight: '500' }}>{error}</p>}
+        {serverError && <p style={{ color: '#f6e9c9', backgroundColor: 'rgba(220, 38, 38, 0.8)', padding: '10px', borderRadius: '8px', textAlign: 'center', fontWeight: '500' }}>{serverError}</p>}
       </form>
     </div>
   );
