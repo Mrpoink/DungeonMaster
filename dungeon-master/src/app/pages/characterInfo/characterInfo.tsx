@@ -548,9 +548,7 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
                     >
                         Save Character
                     </button>
-                    <div>
-                        <BottomNav/>
-                    </div>
+                    <BottomNav/>
                 </div>
             </div>
         </div>

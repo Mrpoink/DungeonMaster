@@ -220,7 +220,7 @@
   .action-button-container {
     padding-top: 2rem;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
   }
   .action-button {
     display: flex;
@@ -230,10 +230,11 @@
     font-weight: 700;
     border-radius: 0.75rem;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    color: var(--background);
     transition: all 0.15s;
   }
   .action-button:hover {
-    background-color: goldenrod;
+    background-color: #059649;
     transform: scale(1.05);
   }
   
