@@ -1,7 +1,7 @@
 .lobby{
     width: 100vw;
     height: 100vh;
-    background: url(../components/assets/Lobby_Page.png) no-repeat;
+    background: url(../components/assets/Lobby_Page.jpeg) no-repeat;
     background-position: center;
     background-size: cover;
     flex-grow: 1;
@@ -25,8 +25,8 @@
         width: 20vw;
         min-height: 200px;
         height: 15vw;        
-        border: 5px solid var(--foreground);
-        border-radius: 15%;
+        border: none;
+        border-radius: 50px;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
         cursor: pointer;
         transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
@@ -57,19 +57,19 @@
       gap: 20px;
     }
     #session1{
-      background-image: url(../components/assets/Scenario_1.png);
+      background-image: url(../components/assets/Scenario_1.jpeg);
     }
     #session2{
-      background-image: url(../components/assets/star_wars.png);
+      background-image: url(../components/assets/star_wars.jpeg);
     }
     #session3{
-      background-image: url(../components/assets/avatar.png);
+      background-image: url(../components/assets/avatar.jpeg);
     }
     #session4{
-      background-image: url(../components/assets/harry_potter.png);
+      background-image: url(../components/assets/harry_potter.jpeg);
     }
     #session5{
-      background-image: url(../components/assets/lord_of_rings.png);
+      background-image: url(../components/assets/lord_of_rings.jpeg);
     }
     .game-session{
       display: flex;

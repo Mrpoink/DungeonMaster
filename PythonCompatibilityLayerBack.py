@@ -389,7 +389,7 @@ async def check_creds():
     if user_creds:
         # If credentials are correct, get the list of characters for the user
         game = game_state.get_game()
-        characters = await game.bvb.get_all_characters_for_user(username)
+        characters = await game.vb.get_all_characters_for_user(username)
         return jsonify({"status": "ready", "message": True, "characters": characters})
 
     return jsonify({"status": "ready", "message": user_creds})

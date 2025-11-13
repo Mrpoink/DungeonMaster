@@ -11,10 +11,12 @@ import Scenario1 from "@/app/components/assets/Scenario_1.png";
 import Dice from "@/app/components/dice/dice";
 import Roll from "@/app/components/dice/roll";
 import GameManager from "@/app/components/gameManager/gameManager";
-import { useRouter } from "next/navigation";
 import {AbilityBars} from "@/app/components/character/abilities/abilities";
 import { CharacterIcon } from "@/app/components/character/basicInfo/characterIcon";
 import { API_ENDPOINTS } from "@/config/api";
+import HelpIcon from "@/app/components/helpIcon/helpIcon";
+import { useLoadingNavigation } from "@/app/hooks/useLoadingNavigation";
+import { useLoading } from "@/app/components/LoadingContext";
 
 type ConversationItem = {
     sender: 'User' | 'DM' | string;
@@ -206,7 +208,8 @@ type Character = {
 };
 
 export default function Game() {
-  const router = useRouter()
+  const { navigateWithLoading } = useLoadingNavigation();
+  const { hideLoading } = useLoading();
   const [sides, setSides] = useState<number>(20);
   const [activeDice, setActiveDice] = useState("d20");
   const [DMmessage, setDMmessage] = useState("Connecting...");
@@ -244,6 +247,8 @@ export default function Game() {
   const [isLoading, setIsLoading] = useState(false);
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
   const [isInfoOpen, setIsInfoOpen] = useState(false);
+  const [rollResetTrigger, setRollResetTrigger] = useState(0);
+  const [pageDataLoaded, setPageDataLoaded] = useState({ dm: false, character: false });
 
   // campaign metadata mapping (seed -> campaign info)
   const campaignMeta: { [key: string]: { title: string; notes: string } } = {
@@ -333,6 +338,9 @@ export default function Game() {
 
   const handleRoll = async (rollResult: number) => {
     if (!pendingAction || !rollInfo || isLoading) return;
+    
+    // Prevent multiple rolls - if a roll result already exists, don't allow another roll
+    if (rollInfo.rollResult !== undefined) return;
 
     setIsLoading(true);
     const outcome = rollResult >= pendingAction.dc ? 'success' : 'failure';
@@ -386,6 +394,7 @@ export default function Game() {
     } finally {
         setRollInfo(null); // Clear the roll info/result box
         setPendingAction(null); // Reset pending action
+        setRollResetTrigger(prev => prev + 1); // Reset the roll display
         setIsLoading(false);
     }
   };
@@ -438,47 +447,78 @@ export default function Game() {
 
   const fetchDMmessage = async (username: string, seed: string | null) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/DMout`);
-      const data = await response.json();
+      // First, ensure the seed is properly set up on the backend
+      if (seed && username) {
+        const savedCampaignId = localStorage.getItem('campaignId');
+        const isContinuing = savedCampaignId ? parseInt(savedCampaignId, 10) === parseInt(seed, 10) : false;
+        
+        // Call /seed to ensure backend is initialized with the correct campaign
+        const seedResponse = await fetch(`${API_BASE_URL}/seed`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            seed: parseInt(seed, 10),
+            username: username,
+            continue_campaign: isContinuing
+          }),
+        });
+        
+        if (!seedResponse.ok) {
+          throw new Error('Failed to initialize campaign seed');
+        }
+        
+        // Fetch DM message and character data in parallel for speed
+        const [dmResponse, characterResponse] = await Promise.all([
+          fetch(`${API_BASE_URL}/DMout`),
+          fetch(`${API_BASE_URL}/character-data`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, seed }),
+          })
+        ]);
+        
+        if (!dmResponse.ok || !characterResponse.ok) {
+          throw new Error('Failed to fetch game data');
+        }
+        
+        const [dmData, characterData] = await Promise.all([
+          dmResponse.json(),
+          characterResponse.json()
+        ]);
+        
+        // Set DM data
+        setDMmessage(dmData.dm_text);
+        setScene("Background: " + dmData.scene || '');
+        setOptions(dmData.options || []);
+        setTurnNum(dmData.turn_num || '0');
+        setConversation([{sender : 'DM', text : dmData.dm_text}]);
+        
+        // Set character data
+        setCharacterData(characterData.characterData);
+        setSkills(characterData.skills || []);
+        
+        // Mark both as loaded
+        setPageDataLoaded({ dm: true, character: true });
+      } else {
+        // No seed/username - just fetch DM message
+        const response = await fetch(`${API_BASE_URL}/DMout`);
+        const data = await response.json();
 
-      setDMmessage(data.dm_text);
-      setScene("Background: " + data.scene || '');
-      setOptions(data.options || []);
-      setTurnNum(data.turn_num || '0');
-      setConversation([{sender : 'DM', text : data.dm_text}]); // Start conversation with DM message
-      
-      // After getting the initial message, fetch the character data
-      if (username) {
-        fetchCharacterData(username, seed);
+        setDMmessage(data.dm_text);
+        setScene("Background: " + data.scene || '');
+        setOptions(data.options || []);
+        setTurnNum(data.turn_num || '0');
+        setConversation([{sender : 'DM', text : data.dm_text}]);
+        
+        setPageDataLoaded({ dm: true, character: true });
       }
     } catch (error) {
-      console.error("Something went wrong with fetch dm message, line 81", error);
-      setDMmessage("Error: could not fetch python response, something went wrong, line 82");
-    }
-  };
-
-  const fetchCharacterData = async (username: string, seed: string | null) => {
-    if (!seed) {
-        console.error("No seed provided, cannot fetch character data.");
-        return;
-    }
-    try {
-      const response = await fetch(`${API_BASE_URL}/character-data`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, seed }),
-      });
-      
-      if (!response.ok) throw new Error('Failed to fetch character data');
-      
-      const data = await response.json();
-      // The backend sends an array with one character, so we take the first element
-      setCharacterData(data.characterData);
-      setSkills(data.skills || []);
-    } catch (error) {
-      console.error('Error fetching character data:', error);
+      console.error("Something went wrong with fetch dm message:", error);
+      setDMmessage("Error: could not fetch python response, something went wrong");
+      // Mark both as loaded even on error so loading screen doesn't hang
+      setPageDataLoaded({ dm: true, character: true });
     }
   };
 
@@ -532,11 +572,23 @@ export default function Game() {
     }
   }, [turn_num]);
 
+  // Hide loading only when both DM message and character data are loaded
+  useEffect(() => {
+    if (pageDataLoaded.dm && pageDataLoaded.character) {
+      // Wait for React to render the content before hiding loading
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          hideLoading();
+        }, 200); // Small delay to ensure content is painted
+      });
+    }
+  }, [pageDataLoaded, hideLoading]);
+
   const latestMessage = conversation[conversation.length - 1];
 
   return (
-    <div className="root-container" style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
-  <Nav title="QuestWeaver" showLeaveButton={true} onBookClick={() => setIsInfoOpen(v => !v)} noShadow={true} characterIconId={characterData?.iconId} />
+    <div className="root-container" style={{ height: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#F6E3B8' }}>
+  <Nav title="QuestWeaver" showLeaveButton={true} onBookClick={() => setIsInfoOpen(v => !v)} noShadow={true} characterIconId={characterData?.iconId} showDndIcon={true} />
         <div className="main-session-box" style={{ flex: 1, height: '100%', display: 'flex', alignItems: 'stretch', position: 'relative', minHeight: 0 }}>
             <div className="dice-box" style={{
               position: 'absolute',
@@ -554,6 +606,7 @@ export default function Game() {
               alignItems: 'center',
               gap: '10px'
             }}>
+                {/* HelpIcon above roll button removed as requested */}
               <div>
                 <Dice 
                   onDiceSelect={handleDiceSelect} 
@@ -565,7 +618,8 @@ export default function Game() {
                 <Roll 
                   sides={pendingAction ? parseInt(pendingAction.dice.replace('1d', '')) : sides} 
                   onRollClick={handleRoll}
-                  disabled={!pendingAction}
+                  disabled={!pendingAction || (rollInfo?.rollResult !== undefined)}
+                  resetTrigger={rollResetTrigger}
                 />
               </div>
             </div>
@@ -628,6 +682,19 @@ export default function Game() {
               display: 'flex',
               flexDirection: 'column'
             }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px', marginBottom: 'clamp(2px, 0.3vh, 4px)' }}>
+                <HelpIcon 
+                  content={
+                    <div>
+                      <strong>Your Character Stats</strong><br/>
+                      These are your current attributes and skills. They change based on your 
+                      actions and rolls. Keep them above 0 to survive!
+                    </div>
+                  }
+                  position="left"
+                  size={22}
+                />
+              </div>
               <div style={{ flex: '0 0 auto', minHeight: 0, overflow: 'visible', transform: 'scale(0.95)', transformOrigin: 'top right', marginBottom: 'clamp(3px, 0.4vh, 6px)' }}>
                 <AbilityBars characterData={characterData} compact={true} />
               </div>

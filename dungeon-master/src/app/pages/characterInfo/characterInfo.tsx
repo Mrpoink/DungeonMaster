@@ -15,11 +15,20 @@ import { AbilityScore } from "@/app/components/character/abilities/abilities";
 import { CharacterOptions } from "@/app/components/character/basicInfo/characterOptions";
 import { race_class_map, subclass_map, allClasses, allSubclasses } from "@/app/components/character/basicInfo/basicInfoMaps";
 import { raceDescriptions, classDescriptions, nestedSubclassDescriptions } from "@/app/components/character/basicInfo/descriptions";
+import HelpIcon from "@/app/components/helpIcon/helpIcon";
+import { useLoadingNavigation, usePageLoaded } from "@/app/hooks/useLoadingNavigation";
+import loginBg from "@/app/components/assets/Login_Page.jpeg";
+
     
 const all_skills = Object.values(skill_map).flat();
 const thresholds = { lvl1: 10, lvl2: 20, lvl3:25 }
 const maxScore = 120;
 const allRaces = Object.keys(raceDescriptions);
+
+// Validation function - only allow alphanumeric characters and spaces
+const validateTextInput = (value: string) => {
+    return /^[a-zA-Z0-9 ]*$/.test(value);
+};
 
 const updateProficiencies = (currentStats: { [x: string]: number; }, setCharacterData: Dispatch<SetStateAction<Character>>) =>{
     let skillsToGrant: { [key: string]: boolean } = {};
@@ -64,6 +73,8 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
 
  // --- MAIN COMPONENT ---
  export default function CharacterInfo() {
+    usePageLoaded(); // Hide loading when page is ready
+    const { navigateWithLoading } = useLoadingNavigation();
     const [characterData, setCharacterData] = useState(DEFAULT_CHARACTER);
 
     useEffect(() => {
@@ -87,6 +98,7 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
     const [tempIcon, setTempIcon] = useState(characterData.iconId);
 
     const [validationMessage, setValidationMessage] = useState('')
+    const [fieldValidationError, setFieldValidationError] = useState('')
     const totalScore = Object.values(tempStats).reduce((sum,score) => sum + (Number(score) || 0), 0)
     const pointsRemaining = maxScore-totalScore
 
@@ -107,12 +119,52 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
 
     const handleSelectSubclass = (subclass:string) => {
         setTempSubclass(subclass);
+    // Validation handlers for text inputs
+    const handleNameChange = (value: string) => {
+        if (validateTextInput(value) || value === '') {
+            setTempName(value);
+            setFieldValidationError('');
+        } else {
+            setFieldValidationError('Only letters, numbers, and spaces are allowed. No special characters.');
+        }
+    };
+
+    const handleClassChange = (value: string) => {
+        if (validateTextInput(value) || value === '') {
+            setTempClass(value);
+            setFieldValidationError('');
+        } else {
+            setFieldValidationError('Only letters, numbers, and spaces are allowed. No special characters.');
+        }
+    };
+
+    const handleSubclassChange = (value: string) => {
+        if (validateTextInput(value) || value === '') {
+            setTempSubclass(value);
+            setFieldValidationError('');
+        } else {
+            setFieldValidationError('Only letters, numbers, and spaces are allowed. No special characters.');
+        }
+    };
+
+    const handleBackstoryChange = (value: string) => {
+        if (validateTextInput(value) || value === '') {
+            setTempBackstory(value);
+            setFieldValidationError('');
+        } else {
+            setFieldValidationError('Only letters, numbers, and spaces are allowed. No special characters.');
+        }
     };
 
     // --- SAVE HANDLERS ---
     const handleSaveName = () => {
+        if (!validateTextInput(tempName)) {
+            setFieldValidationError('Only letters, numbers, and spaces are allowed. No special characters.');
+            return;
+        }
         setCharacterData(prev => ({ ...prev, name: tempName }));
         setIsEditingName(false);
+        setFieldValidationError('');
     };
 
     const handleSaveBasic = () => {
@@ -120,6 +172,10 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
         const className = race && race_class_map[race as keyof typeof race_class_map]?.includes(tempClass) ? tempClass : '';
         const subclass = className && subclass_map[className as keyof typeof subclass_map]?.includes(tempSubclass) ? tempSubclass : '';
 
+        if (!validateTextInput(tempClass || '') || !validateTextInput(tempSubclass || '')) {
+            setFieldValidationError('Only letters, numbers, and spaces are allowed. No special characters.');
+            return;
+        }
         setCharacterData(prev => ({ 
             ...prev, 
             iconId: tempIcon,
@@ -128,6 +184,7 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
             subclass: subclass
          }));
         setIsEditingBasic(false);
+        setFieldValidationError('');
     }
 
     const handleSaveStats = () => {
@@ -136,8 +193,8 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
             Object.entries(tempStats).map(([key, value]) => [key, Number(value) || 0])
         );
         const newTotalScore = Object.values(savedStats).reduce((sum,score) => sum + (Number(score) || 0), 0);
-         if (newTotalScore > maxScore){
-            setValidationMessage('Total ability score (${newTotalScore}) cannot exceed maxium limit of (${maxScore}).');
+         if (newTotalScore !== maxScore){
+            setValidationMessage(`Your total attributes must equal exactly ${maxScore} points. Currently ${newTotalScore > maxScore ? `${newTotalScore - maxScore} points over limit` : `${maxScore - newTotalScore} points remaining`}.`);
             return;
          }
 
@@ -147,8 +204,13 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
 
     
     const handleSaveBackstory = () => {
+        if (!validateTextInput(tempBackstory || '')) {
+            setFieldValidationError('Only letters, numbers, and spaces are allowed. No special characters.');
+            return;
+        }
         setCharacterData(prev => ({ ...prev, backstory: tempBackstory }));
         setIsEditingBackstory(false);
+        setFieldValidationError('');
     };
 
     const DescriptionBox: React.FC<{ description: string | null }> = ({ description }) => (
@@ -170,12 +232,25 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
                         <h2 className="text-2xl font-bold">Change Name</h2>
                         <div className="edit-controls">
                             <button onClick={handleSaveName} className="edit-save-btn"><FaCheck className="w-5 h-5" /></button>
-                            <button onClick={() => setIsEditingName(false)} className="edit-cancel-btn"><IoClose className="w-5 h-5" /></button>
+                            <button onClick={() => {setIsEditingName(false); setFieldValidationError('');}} className="edit-cancel-btn"><IoClose className="w-5 h-5" /></button>
                         </div>
                     </div>
+                    {fieldValidationError && (
+                        <div className="p-3 mb-2 text-sm font-medium" style={{ 
+                            color: '#6b4a2e', 
+                            backgroundColor: 'rgba(246, 233, 201, 0.95)', 
+                            borderRadius: '8px'
+                        }}>
+                            ⚠️ {fieldValidationError}
+                        </div>
+                    )}
                     <div>
                         <label className="text-sm block mb-1">Character Name</label>
-                        <EditInput value={tempName} onChange={(e) => setTempName(e.target.value)} />
+                        <EditInput 
+                            value={tempName} 
+                            onChange={(e) => handleNameChange(e.target.value)}
+                            placeholder="Letters, numbers, and spaces only"
+                        />
                     </div>
                 </div>
             );
@@ -205,9 +280,18 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
                         <h3 className="heading-text">Edit Basic Information</h3>
                         <div className="edit-controls">
                             <button onClick={handleSaveBasic} className="edit-save-btn"><FaCheck className="w-5 h-5" /></button>
-                            <button onClick={() => setIsEditingBasic(false)} className="edit-cancel-btn"><IoClose className="w-5 h-5" /></button>
+                            <button onClick={() => {setIsEditingBasic(false); setFieldValidationError('');}} className="edit-cancel-btn"><IoClose className="w-5 h-5" /></button>
                         </div>
                     </div>
+                    {fieldValidationError && (
+                        <div className="p-3 mb-2 text-sm font-medium" style={{ 
+                            color: '#6b4a2e', 
+                            backgroundColor: 'rgba(246, 233, 201, 0.95)', 
+                            borderRadius: '8px'
+                        }}>
+                            ⚠️ {fieldValidationError}
+                        </div>
+                    )}
                     <div>
                         <label className="text-sm block mb-2 font-semibold">Select your Icon</label>
                         <div>
@@ -272,6 +356,23 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
                             ))}
                         </div>
                     </div> */}
+                    </div>
+                    <div>
+                        <label className="text-sm block mb-1">Character Class</label>
+                        <EditInput 
+                            value={tempClass} 
+                            onChange={(e) => handleClassChange(e.target.value)}
+                            placeholder="Letters, numbers, and spaces only"
+                        />
+                    </div>
+                    <div>
+                        <label className="text-sm block mb-1">Character Subclass</label>
+                        <EditInput 
+                            value={tempSubclass} 
+                            onChange={(e) => handleSubclassChange(e.target.value)}
+                            placeholder="Letters, numbers, and spaces only"
+                        />
+                    </div>
                 </div>
             );
         }
@@ -293,6 +394,26 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
                     >
                         <BiPencil className="w-4 h-4" />
                     </button>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <HelpIcon 
+                            content={
+                                <div>
+                                    <strong>Step 2: Basic Info</strong><br/>
+                                    Click the edit button to customize your character's appearance (icon), 
+                                    race, class, and subclass. These define your character's identity!
+                                </div>
+                            }
+                            position="left"
+                            size={24}
+                        />
+                        <button 
+                            onClick={() => { setIsEditingBasic(true);}}
+                            className="edit-button"
+                            title="Edit Basic Information"
+                        >
+                            <BiPencil className="w-4 h-4" />
+                        </button>
+                    </div>
                 </div>
                 <div className="basic-info-grid">
                     <div className="basicInfo-icon-div">
@@ -325,14 +446,18 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
                         </div>
                     </div>
                     {validationMessage && (
-                        <div className="p-3 mb-4 text-sm font-medium text-red-100 bg-red-800/70 rounded-lg">
-                            {validationMessage}
+                        <div className="p-3 mb-4 text-sm font-medium" style={{ 
+                            color: '#6b4a2e', 
+                            backgroundColor: 'rgba(246, 233, 201, 0.95)', 
+                            borderRadius: '8px'
+                        }}>
+                            ⚠️ {validationMessage}
                         </div>
                     )}
                     <div className="mb-4 p-3 rounded-lg flex justify-between items-center text-sm font-semibold">
-                        <span>Total Score: <span className="text-green-400">{totalScore}</span> / {maxScore}</span>
-                        <span className={`font-bold ${pointsRemaining >= 0 ? 'text-green-400' : 'text-red-400'}`}>
-                            {pointsRemaining >= 0 ? `Remaining: ${pointsRemaining}` : `Over Limit: ${Math.abs(pointsRemaining)}`}
+                        <span>Total Score: <span className={totalScore === maxScore ? 'text-green-400' : 'text-yellow-400'}>{totalScore}</span> / {maxScore}</span>
+                        <span className={`font-bold ${pointsRemaining === 0 ? 'text-green-400' : 'text-red-400'}`}>
+                            {pointsRemaining === 0 ? '✓ Perfect!' : pointsRemaining > 0 ? `Remaining: ${pointsRemaining}` : `Over Limit: ${Math.abs(pointsRemaining)}`}
                         </span>
                     </div>
                     <div className="ability-scores-grid">
@@ -374,16 +499,30 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
             <div className="content-block relative">
                 <div className="heading-with-edit border-b pb-2">
                     <h3 className="heading-text">ABILITY SCORES</h3>
-                    <button 
-                        onClick={() => {
-                            setTempStats(characterData.stats); 
-                            setIsEditingStats(true);
-                        }}
-                        className="edit-button"
-                        title="Edit Stats"
-                    >
-                        <BiPencil className="w-4 h-4" />
-                    </button>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <HelpIcon 
+                            content={
+                                <div>
+                                    <strong>Ability Scores are KEY!</strong><br/>
+                                    Your 6 attributes (Might, Agility, Presence, Wisdom, Spirit, Intellect) 
+                                    determine your skills and success in challenges. You have <strong>120 points</strong> to 
+                                    distribute. Higher scores = better chances! Click edit to customize.
+                                </div>
+                            }
+                            position="left"
+                            size={24}
+                        />
+                        <button 
+                            onClick={() => {
+                                setTempStats(characterData.stats); 
+                                setIsEditingStats(true);
+                            }}
+                            className="edit-button"
+                            title="Edit Stats"
+                        >
+                            <BiPencil className="w-4 h-4" />
+                        </button>
+                    </div>
                 </div>
                 <div className="ability-scores-grid">
                     {Object.entries(characterData.stats).map(([name, score]) => (
@@ -404,9 +543,25 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
         return (
             <div className="content-block relative">
                 <div className="heading-with-edit border-b pb-2">
-                    <h3 className="heading-text">
-                        SKILLS
-                    </h3>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <h3 className="heading-text">
+                            SKILLS
+                        </h3>
+                        <HelpIcon 
+                            content={
+                                <div>
+                                    <strong>Skills Unlock Automatically!</strong><br/>
+                                    Your skills are determined by your ability scores:
+                                    <br/>• 10+ = 1 skill unlocked
+                                    <br/>• 20+ = 2 skills unlocked
+                                    <br/>• 25+ = 3 skills unlocked
+                                    <br/>Increase your attributes to unlock more skills!
+                                </div>
+                            }
+                            position="left"
+                            size={24}
+                        />
+                    </div>
                     
                 </div>
                 <div className="skills-grid">
@@ -438,13 +593,23 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
                         </h3>
                         <div className="edit-controls">
                             <button onClick={handleSaveBackstory} className="edit-save-btn"><FaCheck className="w-5 h-5" /></button>
-                            <button onClick={() => setIsEditingBackstory(false)} className="edit-cancel-btn"><IoClose className="w-5 h-5" /></button>
+                            <button onClick={() => {setIsEditingBackstory(false); setFieldValidationError('');}} className="edit-cancel-btn"><IoClose className="w-5 h-5" /></button>
                         </div>
                     </div>
+                    {fieldValidationError && (
+                        <div className="p-3 mb-2 text-sm font-medium" style={{ 
+                            color: '#6b4a2e', 
+                            backgroundColor: 'rgba(246, 233, 201, 0.95)', 
+                            borderRadius: '8px'
+                        }}>
+                            ⚠️ {fieldValidationError}
+                        </div>
+                    )}
                     <textarea
                         value={tempBackstory}
-                        onChange={(e) => setTempBackstory(e.target.value)}
+                        onChange={(e) => handleBackstoryChange(e.target.value)}
                         className="edit-input backstory-textarea"
+                        placeholder="Letters, numbers, and spaces only"
                     ></textarea>
                 </div>
             );
@@ -472,7 +637,16 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
     };
     
     return (
-        <div className="root-container">
+        <div 
+            className="root-container" 
+            style={{
+                backgroundImage: `url(${loginBg.src})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                minHeight: '100vh'
+            }}
+        >
             <div className="char-sheet-container" style={{ transform: 'scale(0.88)', transformOrigin: 'top center' }}>
                 <header className="sheet-header">
                     {renderHeader()}
@@ -492,9 +666,21 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
                     </div>
                 </div>
 
-                <div className="action-button-container">
+                <div className="action-button-container" style={{ display: 'flex', gap: '1rem', justifyContent: 'center', paddingTop: '2rem' }}>
                     <button 
                         className="action-button" 
+                        style={{
+                            backgroundColor: '#dc2626',
+                            color: '#ffffff',
+                            padding: '0.75rem 1.5rem',
+                            borderRadius: '50px',
+                            fontWeight: '700',
+                            fontSize: '1rem',
+                            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                            border: 'none',
+                            cursor: 'pointer',
+                            transition: 'all 0.2s'
+                        }}
                         onClick={async () => {
                             try {
                                 const username = localStorage.getItem('username');
@@ -535,7 +721,7 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
                                 if (result.status === 'success') {
                                     console.log(result.message); // Log success message
                                     // Redirect to lobby after successful character creation
-                                    window.location.href = '/pages/lobby';
+                                    navigateWithLoading('/pages/lobby', 'Loading your adventures...');
                                 } else {
                                     throw new Error(result.message || 'Failed to save character');
                                 }
@@ -545,7 +731,7 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
                             }
                         }}
                     >
-                        Save Character
+                        Create Character
                     </button>
                     <BottomNav/>
                 </div>

@@ -1,10 +1,11 @@
 'use client'
-import { useRouter } from "next/navigation";
 import Nav from "@/app/components/nav/nav";
 import { API_BASE_URL } from "@/app/config/api";
 import {BottomNav} from "@/app/components/nav/nav";
 import { useState, useEffect } from "react";
 import { API_ENDPOINTS } from "@/config/api";
+import HelpIcon from "@/app/components/helpIcon/helpIcon";
+import { useLoadingNavigation, usePageLoaded } from "@/app/hooks/useLoadingNavigation";
 
 type Character = {
   name: string;
@@ -22,16 +23,10 @@ type Character = {
 };
 
 export default function Home() {
-  const router = useRouter();
+  usePageLoaded(); // Hide loading when page is ready
+  const { navigateWithLoading } = useLoadingNavigation();
   const [isInfoOpen, setIsInfoOpen] = useState(false);
   const [characterData, setCharacterData] = useState<Character | null>(null);
-
-  useEffect(() => {
-    const savedUsername = localStorage.getItem('username');
-    if (savedUsername) {
-      fetchCharacterData(savedUsername);
-    }
-  }, []);
 
   const fetchCharacterData = async (username: string) => {
     try {
@@ -52,45 +47,45 @@ export default function Home() {
     }
   };
 
-  const handleJoinGame = async (campaignId: number) => {
-    const savedUsername = localStorage.getItem('username');
-    const savedCampaignId = localStorage.getItem('campaignId');
-    const isContinuing = savedCampaignId ? parseInt(savedCampaignId, 10) === campaignId : false;
-
-    try {
-      const response = await fetch(`${API_BASE_URL}/seed`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          seed: campaignId,
-          username: savedUsername,
-          continue_campaign: isContinuing
-        }),
-      });      if (!response.ok) {
-        const errorText = await response.text();
-        console.error("Error setting seed:", response.status, errorText);
-        return;
-      }
-
-      const data = await response.json();
-      
-      localStorage.setItem('campaignId', campaignId.toString());
-      localStorage.setItem('turn_num', data.turn_num.toString());
-      router.push('./game');
-    } catch (error) {
-      console.error("Error setting seed:", error);
+  // Fetch character data when component mounts
+  useEffect(() => {
+    const username = localStorage.getItem('username');
+    if (username) {
+      fetchCharacterData(username);
     }
+  }, []);
+
+  const handleJoinGame = async (campaignId: number) => {
+    // Store campaign selection immediately
+    localStorage.setItem('campaignId', campaignId.toString());
+    
+    // Navigate with loading screen - game page will handle seed setup
+    navigateWithLoading('./game', 'Entering the adventure...');
   };
 
   return (
-    <div className="lobby">
+  <div className="lobby">
       <header>
         <Nav title="QuestWeaver" onBookClick={() => setIsInfoOpen(v => !v)} />
       </header>
       <main style={{ position: 'relative' }}>
         <div>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', marginBottom: '20px' }}>
+            <h2 style={{ color: '#f6e9c9', fontSize: '1.5rem', textAlign: 'center' }}>Select a Campaign</h2>
+            <HelpIcon 
+              content={
+                <div>
+                  <strong>Step 3: Choose Your Adventure</strong><br/>
+                  Click any campaign card to begin your journey. Each campaign has unique stories, 
+                  challenges, and outcomes. Your character progress is saved separately for each campaign, 
+                  so feel free to try them all!
+                </div>
+              }
+              position="bottom"
+              size={24}
+              dark={true}
+            />
+          </div>
           <div className="start-buttons-container">
             <div id="game-sessions-div">
               <div className="game-session" id="game-sessions-left-div">
@@ -159,9 +154,9 @@ export default function Home() {
                   </div>
                 </div>
                 {characterData.backstory && (
-                  <div style={{ marginTop: 'clamp(4px, 0.8vh, 8px)', paddingTop: 'clamp(3px, 0.6vh, 6px)', borderTop: '1px solid #6b4a2e', flex: '1 1 auto', minHeight: 0, overflow: 'hidden' }}>
+                  <div style={{ marginTop: 'clamp(4px, 1vh, 8px)', paddingTop: 'clamp(3px, 0.6vh, 6px)', borderTop: '1px solid #6b4a2e', flex: '1 1 auto', minHeight: 0, overflow: 'hidden' }}>
                     <strong>Backstory:</strong>
-                    <p style={{ fontSize: 'clamp(8px, 1vh, 10px)', marginTop: 'clamp(2px, 0.4vh, 4px)', marginBottom: 0, overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', WebkitLineClamp: 4, WebkitBoxOrient: 'vertical' }}>
+                    <p style={{ fontSize: 'clamp(12px, 1.5vh, 16px)', marginTop: 'clamp(3px, 0.6vh, 5px)', marginBottom: 0, overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', WebkitLineClamp: 4, WebkitBoxOrient: 'vertical' }}>
                       {characterData.backstory}
                     </p>
                   </div>
@@ -176,7 +171,7 @@ export default function Home() {
             <div style={{ fontSize: 'clamp(8px, 1vh, 10px)', lineHeight: 1.2, marginTop: 'clamp(4px, 0.8vh, 8px)', paddingTop: 'clamp(3px, 0.6vh, 6px)', borderTop: '1px solid #6b4a2e', flexShrink: 0 }}>
               <strong style={{ fontSize: 'clamp(9px, 1.2vh, 11px)' }}>Created By:</strong>
               <p style={{ marginTop: 'clamp(2px, 0.4vh, 4px)', marginBottom: 0 }}>
-                Adithaya Kulkarni, Brandon Dean, Elijah Webb, Tierra Williams
+                Adithya Kulkarni, Brandon Dean, Elijah Webb, Tierra Williams
               </p>
             </div>
           </div>

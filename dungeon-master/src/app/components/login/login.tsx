@@ -1,13 +1,38 @@
 'use client'
 import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useLoadingNavigation } from '@/app/hooks/useLoadingNavigation';
 
 export default function Login() {
-  const router = useRouter()
+  const { navigateWithLoading } = useLoadingNavigation();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+
+  // Validation function - only allow alphanumeric characters
+  const validateInput = (value: string) => {
+    return /^[a-zA-Z0-9]*$/.test(value);
+  };
+
+  const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    if (validateInput(value) || value === '') {
+      setUsername(value);
+      setError('');
+    } else {
+      setError('Only letters and numbers are allowed. No special characters.');
+    }
+  };
+
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    if (validateInput(value) || value === '') {
+      setPassword(value);
+      setError('');
+    } else {
+      setError('Only letters and numbers are allowed. No special characters.');
+    }
+  };
 
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
@@ -17,6 +42,12 @@ export default function Login() {
     if (!username || !password) {
       setError('Please enter both username and password.');
       setIsLoading(false)
+      return;
+    }
+
+    if (!validateInput(username) || !validateInput(password)) {
+      setError('Only letters and numbers are allowed. No special characters.');
+      setIsLoading(false);
       return;
     }
 
@@ -60,7 +91,7 @@ export default function Login() {
       }
 
       if(response.ok){
-        router.push("./lobby")
+        navigateWithLoading("./lobby", "Loading your adventures...");
       }
     } catch (err) {
       const message = err instanceof Error ? err.message : String(err);
@@ -73,13 +104,24 @@ export default function Login() {
   return (
     <div className="credentials-container">
       <form onSubmit={handleSubmit} className='credentials-form'>
+        <h2 style={{ 
+          textAlign: 'center', 
+          color: '#6b4a2e', 
+          fontSize: '1.75rem', 
+          fontWeight: '700',
+          marginBottom: '0.5rem',
+          textShadow: '0 2px 4px rgba(0,0,0,0.1)'
+        }}>
+          Login
+        </h2>
         <div className="form-group">
           <label className='input-group' htmlFor="username">Username:</label>
           <input
-            type="username"
+            type="text"
             id="username"
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={handleUsernameChange}
+            placeholder="Letters and numbers only"
             required
           />
         </div>
@@ -89,14 +131,15 @@ export default function Login() {
             type="password"
             id="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handlePasswordChange}
+            placeholder="Letters and numbers only"
             required
           />
         </div>
         <button className="submit-button" type="submit" disabled={isLoading}>
             {isLoading ? 'Logging In...' : 'Login'}
         </button>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
+        {error && <p style={{ color: '#f6e9c9', backgroundColor: 'rgba(220, 38, 38, 0.8)', padding: '10px', borderRadius: '8px', textAlign: 'center', fontWeight: '500' }}>{error}</p>}
       </form>
     </div>
   );

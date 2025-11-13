@@ -1,0 +1,212 @@
+.how-to-play-container {
+    height: 100vh;
+    background: url(../../components/assets/Login_Page.jpeg) no-repeat center center;
+    background-size: cover;
+    padding: 20px;
+    padding-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
+}
+
+.how-to-play-content {
+    max-width: 900px;
+    max-height: 85vh;
+    width: 100%;
+    background: #F6E3B8;
+    border-radius: 50px;
+    padding: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    color: #6b4a2e;
+    border: none;
+    overflow-y: auto;
+    backdrop-filter: blur(10px);
+}
+
+/* Hide scrollbar for content */
+.how-to-play-content::-webkit-scrollbar {
+    width: 0px;
+    display: none;
+}
+
+.how-to-play-content::-webkit-scrollbar-track {
+    display: none;
+}
+
+.how-to-play-content::-webkit-scrollbar-thumb {
+    display: none;
+}
+
+.how-to-play-content::-webkit-scrollbar-thumb:hover {
+    display: none;
+}
+
+.how-to-play-content h1 {
+    text-align: center;
+    color: #6b4a2e;
+    font-size: 2rem;
+    margin-bottom: 8px;
+    font-family: 'Georgia', serif;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.intro-text {
+    text-align: center;
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+    color: #6b4a2e;
+    line-height: 1.4;
+}
+
+.steps-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.step {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    padding: 15px;
+    background: rgba(107, 74, 46, 0.1);
+    border-radius: 50px;
+    border: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.step:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    background: rgba(107, 74, 46, 0.15);
+}
+
+.step-number {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    background: #6b4a2e;
+    color: #F6E3B8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.step-content h2 {
+    color: #6b4a2e;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    font-family: 'Georgia', serif;
+}
+
+.step-content p {
+    line-height: 1.5;
+    color: #6b4a2e;
+    font-size: 0.9rem;
+}
+
+.step-content strong {
+    color: #6b4a2e;
+    font-weight: 600;
+}
+
+.tips-section {
+    background: rgba(107, 74, 46, 0.1);
+    padding: 20px;
+    border-radius: 50px;
+    border: none;
+    margin-bottom: 25px;
+}
+
+.tips-section h2 {
+    color: #6b4a2e;
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    font-family: 'Georgia', serif;
+}
+
+.tips-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tips-section li {
+    padding: 6px 0;
+    padding-left: 25px;
+    position: relative;
+    line-height: 1.5;
+    color: #6b4a2e;
+    font-size: 0.9rem;
+}
+
+.tips-section li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #6b4a2e;
+    font-weight: bold;
+}
+
+.back-home-button {
+    display: block;
+    margin: 0 auto;
+    padding: 12px 35px;
+    background: #F6E3B8;
+    color: #6b4a2e;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.back-home-button:hover {
+    background: #F6E3B8;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.back-home-button:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .how-to-play-content {
+        padding: 20px;
+        max-height: 90vh;
+    }
+
+    .how-to-play-content h1 {
+        font-size: 1.6rem;
+    }
+
+    .step {
+        flex-direction: column;
+        gap: 12px;
+        padding: 12px;
+    }
+
+    .step-number {
+        width: 35px;
+        height: 35px;
+        font-size: 1.1rem;
+    }
+
+    .step-content h2 {
+        font-size: 1.1rem;
+    }
+
+    .intro-text {
+        font-size: 0.9rem;
+    }
+}

@@ -2,10 +2,16 @@
 import React from "react";
 import { useState } from "react";
 import { API_BASE_URL } from "@/app/config/api";
-import { useRouter } from "next/navigation";
+import { useLoadingNavigation } from "@/app/hooks/useLoadingNavigation";
 
 export default function Register() {
     const router = useRouter();
+    const { navigateWithLoading } = useLoadingNavigation();
+    const [formData, setFormData] = useState({
+    name: '',
+    username: '',
+    password: '',
+  });
 
     const [formData, setFormData] = useState({
       name: '',
@@ -98,7 +104,7 @@ export default function Register() {
         // Store username in localStorage
         localStorage.setItem('username', formData.username);
         // Redirect to character creation
-        router.push("/pages/characterInfo");
+        navigateWithLoading("/pages/characterInfo", "Creating your hero...");
       }
       setFormData({
         name: '',
@@ -117,6 +123,16 @@ export default function Register() {
   return (
     <div className="credentials-container">
       <form onSubmit={handleSubmit} className="credentials-form">
+        <h2 style={{ 
+          textAlign: 'center', 
+          color: '#f6e9c9', 
+          fontSize: '1.75rem', 
+          fontWeight: '700',
+          marginBottom: '0.5rem',
+          textShadow: '0 2px 4px rgba(0,0,0,0.3)'
+        }}>
+          Create Account
+        </h2>
         <div>
           <label className="input-group" htmlFor="name">Name:</label>
           <input
@@ -125,6 +141,7 @@ export default function Register() {
             name="name"
             value={formData.name}
             onChange={handleChange}
+            placeholder="Letters and numbers only"
             required
           />
           {validationErrors.name && <p style={{color: 'red'}}>{validationErrors.name}</p>}
@@ -132,11 +149,12 @@ export default function Register() {
         <div>
           <label className="input-group" htmlFor="username">Username:</label>
           <input
-            type="username"
+            type="text"
             id="username"
             name="username"
             value={formData.username}
             onChange={handleChange}
+            placeholder="Letters and numbers only"
             required
           />
           {validationErrors.username && <p style={{ color: 'red'}}>{validationErrors.username}</p>}
@@ -149,6 +167,7 @@ export default function Register() {
             name="password"
             value={formData.password}
             onChange={handleChange}
+            placeholder="Letters and numbers only"
             required
           />
           {validationErrors.password && <p style={{ color: 'red' }}>{validationErrors.password}</p>}
@@ -160,6 +179,7 @@ export default function Register() {
         >
           {isLoading ? 'Registering...' : 'Register'}
         </button>
+        {error && <p style={{ color: '#f6e9c9', backgroundColor: 'rgba(220, 38, 38, 0.8)', padding: '10px', borderRadius: '8px', textAlign: 'center', fontWeight: '500' }}>{error}</p>}
       </form>
     </div>
   );
