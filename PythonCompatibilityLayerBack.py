@@ -57,7 +57,7 @@ async def load_player_character(username, seed, campaign_data=None, use_changed_
              return False
 
         # Use provided campaign_data or fall back to game.campaign
-        data_for_skills = campaign_data if campaign_data is not None else game.campaign
+        data_for_skills = campaign_data if campaign_data is not None else game.get_campaign()
         player_character = PythonBackEnd.player(campaign_dict=data_for_skills)
         player_character.attributes = {
             'Might': char_attributes.get('Might'),
@@ -75,6 +75,9 @@ async def load_player_character(username, seed, campaign_data=None, use_changed_
         print(f"Error loading player character: {e}")
         traceback.print_exc()
         return False
+
+def get_skills(player_character):
+    return player_character.get_skills(player_character.attributes)
 
 class userData:
     def set_info(self, name, username, password):
@@ -150,6 +153,7 @@ async def process_message():
             
             choice, ability_check, dc, dice = option_info
             # Enrich with success/failure narrations and ability change for UI preview
+            skills = get_skills(player_character)
             return jsonify({
                 'description': description,
                 'requires_roll': True,
@@ -160,7 +164,8 @@ async def process_message():
                 'failure_narration': choice.get('failure', {}).get('narration'),
                 'success_ability_change': choice.get('success', {}).get('ability_change'),
                 'failure_ability_change': choice.get('failure', {}).get('ability_change'),
-                'options': options
+                'options': options,
+                'skills': skills
             })
 
         elif step == 'get_outcome':
@@ -185,6 +190,8 @@ async def process_message():
                         game.game_end = True
             
             game_state.turn_processed = True
+            
+            skills = get_skills(player_character)
 
             # prepare response with current turn's results
             response_data = {

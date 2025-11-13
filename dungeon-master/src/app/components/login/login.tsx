@@ -21,7 +21,7 @@ export default function Login() {
     }
 
     const credentials= {username:username, password:password}
-    const loginEndpoint = "http://localhost:1068/credentials"
+    const loginEndpoint = "http://127.0.0.1:1068/credentials"
 
     try{
       const response = await fetch(loginEndpoint, {
@@ -46,7 +46,7 @@ export default function Login() {
       console.log('Login successful! Token stored.');
 
       // Fetch character data
-      const characterResponse = await fetch('http://localhost:1068/character-data', {
+      const characterResponse = await fetch('http://127.0.0.1:1068/character-data', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

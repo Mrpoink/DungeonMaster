@@ -314,6 +314,7 @@ export default function Game() {
             setScene('Background: ' + (result.scene || ''));
             setOptions(result.options || []);
             setTurnNum(result.turn_num || '0');
+            setSkills(result.skills || skills);
         }
     } catch (error) {
         console.error("Error during action selection:", error);
@@ -419,6 +420,7 @@ export default function Game() {
             setOptions(result.options || []);
             setDMmessage(result.message);
             setTurnNum(result.turn_num || '0');
+            setSkills(result.skills || skills);
     } catch (error) {
       console.error("Something went wrong with fetch dm message, line 81", error);
       setDMmessage("Error: could not fetch python response, something went wrong, line 82");
