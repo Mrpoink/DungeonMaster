@@ -1,6 +1,7 @@
 'use client'
 
 import { BottomNav } from "@/app/components/nav/nav";
+import { API_BASE_URL } from "@/app/config/api";
 import { useState, useEffect, Dispatch, SetStateAction } from "react";
 import { DEFAULT_CHARACTER, raceOptions } from "@/app/components/character/defaultCharacter";
 import { BiPencil } from "react-icons/bi";
@@ -443,7 +444,7 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
                                     backstory: characterData.backstory
                                 };
 
-                                const response = await fetch('http://localhost:1068/characters', {
+                                const response = await fetch(`${API_BASE_URL}/characters`, {
                                     method: 'POST',
                                     headers: {
                                         'Content-Type': 'application/json'

@@ -1,6 +1,7 @@
 'use client'
 import React from "react";
 import { useState } from "react";
+import { API_BASE_URL } from "@/app/config/api";
 import { useRouter } from "next/navigation";
 
 export default function Register() {
@@ -27,7 +28,7 @@ export default function Register() {
     setIsLoading(true)
     setError('')
     try{
-      const response = await fetch('http://localhost:1068/userData', {
+      const response = await fetch(`${API_BASE_URL}/userData`, {
         method : 'POST',
         headers: {
           'Content-Type' : 'application/json',
