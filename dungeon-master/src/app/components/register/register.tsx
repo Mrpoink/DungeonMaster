@@ -2,6 +2,7 @@
 import React from "react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { API_ENDPOINTS } from "@/config/api";
 
 export default function Register() {
     const router = useRouter()
@@ -27,7 +28,7 @@ export default function Register() {
     setIsLoading(true)
     setError('')
     try{
-      const response = await fetch('http://localhost:1068/userData', {
+      const response = await fetch(API_ENDPOINTS.userData, {
         method : 'POST',
         headers: {
           'Content-Type' : 'application/json',

@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import Nav from "@/app/components/nav/nav";
 import {BottomNav} from "@/app/components/nav/nav";
 import { useState, useEffect } from "react";
+import { API_ENDPOINTS } from "@/config/api";
 
 type Character = {
   name: string;
@@ -33,7 +34,7 @@ export default function Home() {
 
   const fetchCharacterData = async (username: string) => {
     try {
-      const response = await fetch('http://localhost:1068/character-data', {
+      const response = await fetch(API_ENDPOINTS.characterData, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -56,19 +57,17 @@ export default function Home() {
     const isContinuing = savedCampaignId ? parseInt(savedCampaignId, 10) === campaignId : false;
 
     try {
-      const response = await fetch('http://localhost:1068/seed', {
+      const response = await fetch(API_ENDPOINTS.seed, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ 
-          seed: campaignId, 
+        body: JSON.stringify({
+          seed: campaignId,
           username: savedUsername,
-          continue_campaign: isContinuing 
+          continue_campaign: isContinuing
         }),
-      });
-
-      if (!response.ok) {
+      });      if (!response.ok) {
         const errorText = await response.text();
         console.error("Error setting seed:", response.status, errorText);
         return;

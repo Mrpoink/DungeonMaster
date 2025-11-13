@@ -4,11 +4,22 @@ import PythonBackEnd
 import asyncio
 import traceback
 import random
+import os
+import logging
 from hypercorn.config import Config
 from hypercorn.asyncio import serve
 
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO if os.getenv('PRODUCTION') else logging.DEBUG,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
+
 app = Quart(__name__)
-app = cors(app, allow_origin="*")
+# In production, you should set CORS_ORIGIN environment variable to your frontend URL
+allowed_origins = os.getenv('CORS_ORIGIN', '*')
+app = cors(app, allow_origin=allowed_origins)
 
 class GameState:
     _instance = None
@@ -52,12 +63,12 @@ async def load_player_character(username, seed, campaign_data=None, use_changed_
         
         if not char_attributes:
              # This can happen if a user has no base character created yet.
-             print(f"No character found for {username}. Cannot proceed.")
+             logger.warning(f"No character found for {username}. Cannot proceed.")
              game.player = None
              return False
 
         # Use provided campaign_data or fall back to game.campaign
-        data_for_skills = campaign_data if campaign_data is not None else game.get_campaign()
+        data_for_skills = campaign_data if campaign_data is not None else game.campaign
         player_character = PythonBackEnd.player(campaign_dict=data_for_skills)
         player_character.attributes = {
             'Might': char_attributes.get('Might'),
@@ -72,8 +83,7 @@ async def load_player_character(username, seed, campaign_data=None, use_changed_
         
         return True
     except Exception as e:
-        print(f"Error loading player character: {e}")
-        traceback.print_exc()
+        logger.error(f"Error loading player character: {e}", exc_info=True)
         return False
 
 def get_skills(player_character):
@@ -100,40 +110,48 @@ class userData:
 
 @app.route("/userin", methods=['POST'])
 async def process_message():
-    
-    game_state = GameState.get_instance()
-    game = game_state.get_game()
-    data = await request.get_json()
-    username = data.get('username')
-    seed = data.get('seed')  # Frontend now sends this
-    
-    # Ensure we have the seed from the request or fallback to game.seed
-    if not seed and hasattr(game, 'seed'):
-        seed = game.seed
-    
-    # The player character is already loaded with the correct state (new or continued)
-    # by the /seed call. We just need to ensure it's still there.
-    if not hasattr(game, 'player') or game.player is None:
-        # If the player object is missing, reload it using the 'continue' logic.
-        if seed:
-            await load_player_character(username, int(seed), use_changed_character=True)
-        else:
-            # This case should ideally not be hit if the flow starts with /seed
-            return jsonify({'message': 'Game session not properly initialized. Please start a campaign.'}), 500
-
-    print(f"GAME TURN NUMBER: {game.turn_num}\n")
-    
-
-    if not game or not hasattr(game, 'player'):
-        
-        game = game_state.get_game() # Re-fetch after potential initialization
-
-    player_character = game.player
-    if player_character is None:
-        return jsonify({'message': 'Player character not initialized.'}), 500
-
     try:
+        data = await request.get_json()
         message = data.get('message')
+        username = data.get('username')
+        seed = data.get('seed')
+        step = data.get('step', 'get_roll_info')
+        turn_num = data.get('turn_num')
+
+        if not username:
+            return jsonify({'message': 'Username is required'}), 400
+        if not seed:
+            return jsonify({'message': 'Campaign seed is required'}), 400
+
+        logger.debug(f"Processing request for user: {username}, seed: {seed}, step: {step}")
+    
+        game_state = GameState.get_instance()
+        game = game_state.get_game()
+        
+        # Ensure we have the seed from the request or fallback to game.seed
+        if not seed and hasattr(game, 'seed'):
+            seed = game.seed
+        
+        # The player character is already loaded with the correct state (new or continued)
+        # by the /seed call. We just need to ensure it's still there.
+        if not hasattr(game, 'player') or game.player is None:
+            # If the player object is missing, reload it using the 'continue' logic.
+            if seed:
+                await load_player_character(username, int(seed), use_changed_character=True)
+            else:
+                # This case should ideally not be hit if the flow starts with /seed
+                return jsonify({'message': 'Game session not properly initialized. Please start a campaign.'}), 500
+
+        logger.debug(f"GAME TURN NUMBER: {game.turn_num}")
+        
+
+        if not game or not hasattr(game, 'player'):
+            
+            game = game_state.get_game() # Re-fetch after potential initialization
+
+        player_character = game.player
+        if player_character is None:
+            return jsonify({'message': 'Player character not initialized.'}), 500
         if isinstance(message, dict):
             message = message.get('option')
         step = data.get('step')
@@ -144,7 +162,7 @@ async def process_message():
         
         description, options = game.scene_and_options[game.turn_num]
         
-        print(f"Processing step: {step} for user: {username} at turn {game.turn_num} with narration: {description}\n")
+        logger.debug(f"Processing step: {step} for user: {username} at turn {game.turn_num} with narration: {description}")
 
         if step == 'get_roll_info':
             option_info, choice_index = game.user_choice(options, message)
@@ -177,7 +195,7 @@ async def process_message():
 
             # apply ability changes from this turn's outcome
             if 'ability_change' in outcome_description:
-                player_character.change_ability(outcome_description['ability_change'], roll)
+                player_character.change_ability(outcome_description['ability_change'], roll, success)
                 
                 # save the modified stats to this campaign's usercharchange row
                 # important: stats are isolated per campaign - changes in campaign 3 don't affect campaign 4
@@ -192,13 +210,14 @@ async def process_message():
             game_state.turn_processed = True
             
             skills = get_skills(player_character)
+            game_state.player_skills = skills  # Update the game state with new skills
 
             # prepare response with current turn's results
             response_data = {
                 'message': narration,
                 'scene': game.get_background(),
                 'characterData': await game.vb.get_character(username, int(seed) if seed else game.seed, True),
-                'skills': game_state.player_skills
+                'skills': skills  # Return the newly calculated skills
             }
             
             # increment turn counter for next action
@@ -232,9 +251,8 @@ async def process_message():
             return jsonify(response_data)
 
     except Exception as e:
-        print(f"Error processing message: {e}")
-        traceback.print_exc()
-        return jsonify({'message': f'Error: {e}'}), 500
+        logger.error(f"Error processing message: {e}", exc_info=True)
+        return jsonify({'message': f'Error: {str(e)}'}), 500
 
 @app.route("/seed", methods=['POST'])
 async def use_campaign():
@@ -274,13 +292,13 @@ async def use_campaign():
     # if this is the first time playing this campaign, create a fresh usercharchange row
     # this copies the base character's stats and links them to this specific campaign
     if not userchar_exists:
-        print(f"first time playing campaign {seed} for user {username}. creating fresh usercharchange from base character.")
+        logger.info(f"first time playing campaign {seed} for user {username}. creating fresh usercharchange from base character.")
         success, message = await game.bvb.reset_usercharchange_table(username, seed, new_campaign=True)
         if not success:
-            print(f"error: failed to create character sheet for campaign {seed}: {message}")
+            logger.error(f"error: failed to create character sheet for campaign {seed}: {message}")
             return jsonify({"status": "error", "message": "failed to initialize character for the campaign."}), 500
     else:
-        print(f"user {username} has played campaign {seed} before. loading existing usercharchange stats.")
+        logger.info(f"user {username} has played campaign {seed} before. loading existing usercharchange stats.")
     
     # load the saved turn number from the database
     # completed_turn_num contains the NEXT turn to play (we incremented before saving)
@@ -295,11 +313,11 @@ async def use_campaign():
         # continue from saved position - completed_turn_num is already the next turn to play
         # we don't add 1 here because we incremented before saving in /userin
         game.turn_num = completed_turn_num
-        print(f"loading campaign {seed} at turn {game.turn_num} (continuing from turn {completed_turn_num - 1 if completed_turn_num > 0 else 0})")
+        logger.info(f"loading campaign {seed} at turn {game.turn_num} (continuing from turn {completed_turn_num - 1 if completed_turn_num > 0 else 0})")
     else:
         # brand new campaign, start at the beginning
         game.turn_num = 0
-        print(f"starting fresh campaign {seed} at turn 0")
+        logger.info(f"starting fresh campaign {seed} at turn 0")
 
     game.seed = seed
     game_state.turn_processed = False
@@ -416,7 +434,8 @@ async def process_characters():
         Intellect=data.get('int'),
         wisdom=data.get('wis'),
         charisma=data.get('cha'),
-        backstory=data.get('backstory')
+        backstory=data.get('backstory'),
+        iconId=data.get('icon', 0)
     )
     
     if not success:
@@ -426,15 +445,18 @@ async def process_characters():
 
 @app.route("/")
 async def connection_message():
-    return jsonify({'message': 'Connection Successful!!'})
+    return jsonify({'message': 'Connection Successful!!', 'status': 'healthy'})
 
 async def main():
     config = Config()
-    config.bind = ["0.0.0.0:1068"]
+    host = os.getenv('HOST', '0.0.0.0')
+    port = int(os.getenv('PORT', 1068))
+    config.bind = [f"{host}:{port}"]
+    logger.info(f"Starting server on {host}:{port}")
     await serve(app, config)
 
 if __name__ == "__main__":
     try:
         asyncio.run(main())
     except KeyboardInterrupt:
-        print("Server shutting down.")
+        logger.info("Server shutting down gracefully.")

@@ -139,7 +139,7 @@ class use_vector_db:
         except RawQueryError:
             return False, "Name already exists"
         
-    async def add_user_character(self, username, name, race, char_class, subclass, strength, dexterity, constitution, Intellect, wisdom, charisma, backstory):
+    async def add_user_character(self, username, name, race, char_class, subclass, strength, dexterity, constitution, Intellect, wisdom, charisma, backstory, iconId):
         try:
             # The raw SQL query to insert a new character into the base table.
             await self.db.userchar.create(
@@ -155,7 +155,8 @@ class use_vector_db:
                     "int": int(float(Intellect)),
                     "wis": int(float(wisdom)),
                     "cha": int(float(charisma)),
-                    "backstory": backstory or ""
+                    "backstory": backstory or "",
+                    "iconId": int(iconId) if iconId is not None else 0
                 }
             )
             
@@ -325,8 +326,9 @@ class use_vector_db:
                 "wis": original_character.wis,
                 "cha": original_character.cha,
                 "backstory": original_character.backstory,
-                    "campaignId": session.id,  # link to this specific campaign session
-                    "current_turn": 0  # always start at turn 0
+                "campaignId": session.id,  # link to this specific campaign session
+                "current_turn": 0, # always start at turn 0
+                "iconId" : original_character.iconId if hasattr(original_character, 'iconId') else 0  
             }
 
             if change_character:

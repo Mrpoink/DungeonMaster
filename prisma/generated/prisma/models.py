@@ -1655,6 +1655,7 @@ class USERCHAR(bases.BaseUSERCHAR):
     cla: _str
     name: _str
     user: _str
+    iconId: _int
     username: Optional['models.USERDATA'] = None
 
     # take *args and **kwargs so that other metaclasses can define arguments
@@ -1800,6 +1801,7 @@ class USERCHARCHANGE(bases.BaseUSERCHARCHANGE):
     campaignId: Optional[_int] = None
     campaign: Optional['models.CampaignSession'] = None
     current_health: Optional[_int] = None
+    iconId: _int
     current_turn: Optional[_int] = None
 
     # take *args and **kwargs so that other metaclasses can define arguments
@@ -4145,6 +4147,14 @@ _USERCHAR_fields: Dict['types.USERCHARKeys', PartialModelField] = OrderedDict(
             'is_relational': False,
             'documentation': None,
         }),
+        ('iconId', {
+            'name': 'iconId',
+            'is_list': False,
+            'optional': False,
+            'type': '_int',
+            'is_relational': False,
+            'documentation': None,
+        }),
         ('username', {
             'name': 'username',
             'is_list': False,
@@ -4294,6 +4304,14 @@ _USERCHARCHANGE_fields: Dict['types.USERCHARCHANGEKeys', PartialModelField] = Or
             'name': 'current_health',
             'is_list': False,
             'optional': True,
+            'type': '_int',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('iconId', {
+            'name': 'iconId',
+            'is_list': False,
+            'optional': False,
             'type': '_int',
             'is_relational': False,
             'documentation': None,

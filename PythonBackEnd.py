@@ -94,11 +94,15 @@ class player:
                         
         return self.skills
 
-    def change_ability(self, ability_dict , amount):
+    def change_ability(self, ability_dict , amount, outcome_type):
         for ability, change in ability_dict.items():
             # Ensure the attribute exists before trying to modify it
             if self.attributes.get(ability) is None:
                 self.attributes[ability] = 0
+                
+            if outcome_type == 'success' and change < 0:
+                change = change // 2  # Halve the change on failure
+                
             
             if ability == 'Might':
                 self.attributes['Might'] += change

@@ -40,7 +40,8 @@ export const DEFAULT_CHARACTER: Character = {
         "Attunement": false, 
 
     },
-    backstory: "He was a super cool hero or something"
+    backstory: "He was a super cool hero or something",
+    iconId: 0
 };
 
 export const raceOptions = [

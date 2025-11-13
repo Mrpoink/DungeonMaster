@@ -289,6 +289,7 @@ model USERCHAR {
   cla       String
   name      String
   user      String
+  iconId    Int      @default(0)
   username  USERDATA @relation(fields: [user], references: [username])
 }
 
@@ -310,6 +311,7 @@ model USERCHARCHANGE {
   campaignId     Int?
   campaign       CampaignSession? @relation(fields: [campaignId], references: [id])
   current_health Int?
+  iconId         Int              @default(0)
   current_turn   Int?             @default(0)
 }
 

@@ -12,6 +12,8 @@ import Roll from "@/app/components/dice/roll";
 import GameManager from "@/app/components/gameManager/gameManager";
 import { useRouter } from "next/navigation";
 import {AbilityBars} from "@/app/components/character/abilities/abilities";
+import { CharacterIcon } from "@/app/components/character/characterIcon";
+import { API_ENDPOINTS } from "@/config/api";
 
 type ConversationItem = {
     sender: 'User' | 'DM' | string;
@@ -127,10 +129,14 @@ interface RollInfoProps {
 function RollInfo({ info, onContinue }: RollInfoProps) {
     console.log("RollInfo received:", info); // <-- ADDING LOG
 
-    const getChangeText = (change: { [key: string]: number } | undefined) => {
+    const getChangeText = (change: { [key: string]: number } | undefined, isSuccess: boolean) => {
         if (!change) return "";
         return Object.entries(change)
-            .map(([key, amount]) => `${key} changes by ${amount}`)
+            .map(([key, amount]) => {
+                // Apply halving logic: if success and negative change, halve it
+                const actualAmount = (isSuccess && amount < 0) ? Math.floor(amount / 2) : amount;
+                return `${key} changes by ${actualAmount}`;
+            })
             .join(', ');
     };
 
@@ -139,8 +145,8 @@ function RollInfo({ info, onContinue }: RollInfoProps) {
         : info.failure;
     
     const abilityChangeText = info.outcome === 'success'
-        ? getChangeText(info.success_ability_change)
-        : getChangeText(info.failure_ability_change);
+        ? getChangeText(info.success_ability_change, true)
+        : getChangeText(info.failure_ability_change, false);
 
     console.log("Ability change text:", abilityChangeText); // <-- ADDING LOG
 
@@ -165,8 +171,8 @@ function RollInfo({ info, onContinue }: RollInfoProps) {
                 <>
                     <h3 style={{ marginBottom: '15px' }}>Roll a {info.ability} check with {info.dice}.</h3>
                     <div style={{ textAlign: 'left', padding: '0 15px' }}>
-                        <p style={{ marginBottom: '10px' }}><strong>Success:</strong> {info.success} {info.success_ability_change && `(${getChangeText(info.success_ability_change)})`}</p>
-                        <p><strong>Failure:</strong> {info.failure} {info.failure_ability_change && `(${getChangeText(info.failure_ability_change)})`}</p>
+                        <p style={{ marginBottom: '10px' }}><strong>Success:</strong> {info.success} {info.success_ability_change && `(${getChangeText(info.success_ability_change, true)})`}</p>
+                        <p><strong>Failure:</strong> {info.failure} {info.failure_ability_change && `(${getChangeText(info.failure_ability_change, false)})`}</p>
                     </div>
                 </>
             ) : (
@@ -283,7 +289,7 @@ export default function Game() {
     setIsLoading(true);
     try {
         const payload = { message: option, username: username, seed: seed, step: 'get_roll_info', turn_num: turn_num };
-        const response = await fetch('http://localhost:1068/userin', {
+        const response = await fetch(API_ENDPOINTS.userin, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload),
@@ -356,7 +362,7 @@ export default function Game() {
             skills: skills,
             turn_num: turn_num
         };
-        const response = await fetch('http://localhost:1068/userin', {
+        const response = await fetch(API_ENDPOINTS.userin, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload),
@@ -401,7 +407,7 @@ export default function Game() {
                 turn_num: turn_num
             };
 
-            const response = await fetch('http://localhost:1068/userin', {
+            const response = await fetch(API_ENDPOINTS.userin, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -431,7 +437,7 @@ export default function Game() {
 
   const fetchDMmessage = async (username: string, seed: string | null) => {
     try {
-      const response = await fetch('http://localhost:1068/DMout');
+      const response = await fetch(API_ENDPOINTS.DMout);
       const data = await response.json();
 
       setDMmessage(data.dm_text);
@@ -456,7 +462,7 @@ export default function Game() {
         return;
     }
     try {
-      const response = await fetch('http://localhost:1068/character-data', {
+      const response = await fetch(API_ENDPOINTS.characterData, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -529,7 +535,7 @@ export default function Game() {
 
   return (
     <div className="root-container" style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
-  <Nav title="QuestWeaver" showLeaveButton={true} onBookClick={() => setIsInfoOpen(v => !v)} noShadow={true} />
+  <Nav title="QuestWeaver" showLeaveButton={true} onBookClick={() => setIsInfoOpen(v => !v)} noShadow={true} characterIconId={characterData?.iconId} />
         <div className="main-session-box" style={{ flex: 1, height: '100%', display: 'flex', alignItems: 'stretch', position: 'relative', minHeight: 0 }}>
             <div className="dice-box" style={{
               position: 'absolute',

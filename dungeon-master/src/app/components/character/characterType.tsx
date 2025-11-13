@@ -8,4 +8,5 @@ export default interface Character{
     stats: { [key: string]: number };
     skills: { [key: string]: boolean };
     backstory: string;
+    iconId: number;
 }

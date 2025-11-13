@@ -11,6 +11,7 @@ import SelectIcon from "@/app/components/character/characterIcon";
 import Character from "@/app/components/character/characterType";
 import { InformationIcon, skill_map } from "@/app/components/character/abilities/descriptions";
 import { AbilityScore } from "@/app/components/character/abilities/abilities";
+import { API_ENDPOINTS } from "@/config/api";
 
     
 const all_skills = Object.values(skill_map).flat();
@@ -80,7 +81,7 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
     const [tempSubclass, setTempSubclass] = useState(characterData.subclass);
     const [tempStats, setTempStats] = useState(characterData.stats);
     const [tempBackstory, setTempBackstory] = useState(characterData.backstory);
-    const [tempIcon, setTempIcon] = useState(0);
+    const [tempIcon, setTempIcon] = useState(characterData.iconId);
 
     const [validationMessage, setValidationMessage] = useState('')
     const totalScore = Object.values(tempStats).reduce((sum,score) => sum + (Number(score) || 0), 0)
@@ -95,7 +96,7 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
     const handleSaveBasic = () => {
         setCharacterData(prev => ({ 
             ...prev, 
-            icon: tempIcon,
+            iconId: tempIcon,
             race: tempRace,
             class: tempClass,
             subclass: tempSubclass
@@ -440,10 +441,11 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
                                     int: characterData.stats.INTELLECT,
                                     wis: characterData.stats.WISDOM,
                                     cha: characterData.stats.SPIRIT,
-                                    backstory: characterData.backstory
+                                    backstory: characterData.backstory,
+                                    icon: characterData.iconId
                                 };
 
-                                const response = await fetch('http://localhost:1068/characters', {
+                                const response = await fetch(API_ENDPOINTS.characters, {
                                     method: 'POST',
                                     headers: {
                                         'Content-Type': 'application/json'
