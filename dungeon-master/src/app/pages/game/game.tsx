@@ -13,7 +13,7 @@ import Roll from "@/app/components/dice/roll";
 import GameManager from "@/app/components/gameManager/gameManager";
 import { useRouter } from "next/navigation";
 import {AbilityBars} from "@/app/components/character/abilities/abilities";
-import { CharacterIcon } from "@/app/components/character/characterIcon";
+import { CharacterIcon } from "@/app/components/character/basicInfo/characterIcon";
 import { API_ENDPOINTS } from "@/config/api";
 
 type ConversationItem = {

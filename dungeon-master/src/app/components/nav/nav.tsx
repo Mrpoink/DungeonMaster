@@ -3,7 +3,7 @@ import { CgProfile } from "react-icons/cg"
 import { useRouter } from "next/navigation";
 import { GrBook } from "react-icons/gr";
 import { SiDungeonsanddragons } from "react-icons/si";
-import { CharacterIcon } from "@/app/components/character/characterIcon";
+import { CharacterIcon } from "@/app/components/character/basicInfo/characterIcon";
 
 interface NavProps {
     title?: string;

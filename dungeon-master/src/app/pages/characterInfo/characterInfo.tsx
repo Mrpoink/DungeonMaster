@@ -7,16 +7,20 @@ import { DEFAULT_CHARACTER, raceOptions } from "@/app/components/character/defau
 import { BiPencil } from "react-icons/bi";
 import { FaCheck } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
-import {CharacterIcon } from "@/app/components/character/characterIcon";
-import SelectIcon from "@/app/components/character/characterIcon";
+import {CharacterIcon } from "@/app/components/character/basicInfo/characterIcon";
+import SelectIcon from "@/app/components/character/basicInfo/characterIcon";
 import Character from "@/app/components/character/characterType";
 import { InformationIcon, skill_map } from "@/app/components/character/abilities/descriptions";
 import { AbilityScore } from "@/app/components/character/abilities/abilities";
-
+import { CharacterOptions } from "@/app/components/character/basicInfo/characterOptions";
+import { race_class_map, subclass_map, allClasses, allSubclasses } from "@/app/components/character/basicInfo/basicInfoMaps";
+import { raceDescriptions, classDescriptions, nestedSubclassDescriptions } from "@/app/components/character/basicInfo/descriptions";
+import type { characterOptionTypes } from "@/app/components/character/basicInfo/characterOptions";
     
 const all_skills = Object.values(skill_map).flat();
 const thresholds = { lvl1: 10, lvl2: 20, lvl3:25 }
 const maxScore = 120;
+const allRaces = Object.keys(raceDescriptions);
 
 const updateProficiencies = (currentStats: { [x: string]: number; }, setCharacterData: Dispatch<SetStateAction<Character>>) =>{
     let skillsToGrant: { [key: string]: boolean } = {};
@@ -87,6 +91,25 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
     const totalScore = Object.values(tempStats).reduce((sum,score) => sum + (Number(score) || 0), 0)
     const pointsRemaining = maxScore-totalScore
 
+    const handleSelectRace = (race: string) => {
+        if (race !== tempRace) {
+            setTempClass(''); 
+            setTempSubclass('');
+        }
+        setTempRace(race);
+    }
+
+    const handleSelectClass = (className: string) => {
+        if (className !== tempClass) {
+            setTempSubclass('');
+        }
+        setTempClass(className);
+    };
+
+    const handleSelectSubclass = (subclass:string) => {
+        setTempSubclass(subclass);
+    };
+
     // --- SAVE HANDLERS ---
     const handleSaveName = () => {
         setCharacterData(prev => ({ ...prev, name: tempName }));
@@ -94,12 +117,16 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
     };
 
     const handleSaveBasic = () => {
+        const race = tempRace;
+        const className = race && race_class_map[race as keyof typeof race_class_map]?.includes(tempClass) ? tempClass : '';
+        const subclass = className && subclass_map[className as keyof typeof subclass_map]?.includes(tempSubclass) ? tempSubclass : '';
+
         setCharacterData(prev => ({ 
             ...prev, 
             iconId: tempIcon,
-            race: tempRace,
-            class: tempClass,
-            subclass: tempSubclass
+            race: race,
+            class: className,
+            subclass: subclass
          }));
         setIsEditingBasic(false);
     }
@@ -124,6 +151,14 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
         setCharacterData(prev => ({ ...prev, backstory: tempBackstory }));
         setIsEditingBackstory(false);
     };
+
+    const DescriptionBox: React.FC<{ description: string | null }> = ({ description }) => (
+        description ? (
+            <div className="basic-desc">
+                {description}
+            </div>
+        ) : null
+    );
 
 
 
@@ -175,7 +210,7 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
                         </div>
                     </div>
                     <div>
-                        <label className="text-sm block mb-1">Select your Icon</label>
+                        <label className="text-sm block mb-2 font-semibold">Select your Icon</label>
                         <div>
                             <SelectIcon
                                 onIconSelect={setTempIcon} 
@@ -183,7 +218,48 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
                             />
                         </div>
                     </div>
-                    <div>
+                    <div className="race-button-container">
+                        <CharacterOptions
+                            title = "Select Race" 
+                            type="Race" 
+                            selectedOption={tempRace}
+                            allOptions={allRaces}
+                            prerequisiteOption={null}
+                            dependencyMap={{}}
+                            onSelect={handleSelectRace}
+                        />
+                    </div>
+                    <DescriptionBox description={tempRace ? raceDescriptions[tempRace as keyof typeof raceDescriptions] : null} />
+
+                    <div className="race-button-container">
+                        <CharacterOptions
+                            title="Select Class"
+                            type="Class"
+                            selectedOption={tempClass}
+                            allOptions={allClasses}
+                            prerequisiteOption={tempRace} // Race is the prerequisite
+                            dependencyMap={race_class_map} 
+                            onSelect={handleSelectClass}
+                        />
+                    </div>
+                    <DescriptionBox description={tempClass ? classDescriptions[tempClass as keyof typeof classDescriptions] : null} />
+
+                    <div className="race-button-container">
+                        <CharacterOptions
+                            title="Select Subclass"
+                            type="Subclass"
+                            selectedOption={tempSubclass}
+                            allOptions={allSubclasses}
+                            prerequisiteOption={tempClass} // Class is the prerequisite
+                            dependencyMap={subclass_map}
+                            onSelect={handleSelectSubclass}
+                        />
+                    </div>
+                    <DescriptionBox 
+                        description={tempClass && tempSubclass ? nestedSubclassDescriptions[tempClass as keyof typeof nestedSubclassDescriptions]?.[tempSubclass] : null} 
+                    />
+
+                    {/* <div>
                         <label className="text-sm block mb-1">Character Race</label>
                         <div className="race-button-container">
                             {raceOptions.map((race) => (
@@ -196,15 +272,7 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
                                 </button>
                             ))}
                         </div>
-                    </div>
-                    <div>
-                        <label className="text-sm block mb-1">Character Class</label>
-                        <EditInput value={tempClass} onChange={(e) => setTempClass(e.target.value)} />
-                    </div>
-                    <div>
-                        <label className="text-sm block mb-1">Character Subclass</label>
-                        <EditInput value={tempSubclass} onChange={(e) => setTempSubclass(e.target.value)} />
-                    </div>
+                    </div> */}
                 </div>
             );
         }
@@ -214,7 +282,13 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
                 <div className="heading-with-edit border-b pb-2">
                     <h3 className="heading-text">BASIC INFO</h3>
                     <button 
-                        onClick={() => { setIsEditingBasic(true);}}
+                        onClick={() => { 
+                            setIsEditingBasic(true);
+                            setTempRace(characterData.race);
+                            setTempClass(characterData.class);
+                            setTempSubclass(characterData.subclass);
+                            setTempIcon(characterData.iconId);
+                        }}
                         className="edit-button"
                         title="Edit Basic Information"
                     >
@@ -223,16 +297,16 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
                 </div>
                 <div className="basic-info-grid">
                     <div className="basicInfo-icon-div">
-                        <CharacterIcon id={tempIcon}/>
+                        <CharacterIcon id={characterData.iconId}/>
                     </div>
                     <p className="basicInfo-text">
-                        {characterData.race}
+                        {characterData.race || 'Unselected Race' }
                     </p>
                     <p className="basicInfo-text">
-                        {characterData.class}
+                        {characterData.class || 'Unselected Class' }
                     </p>
                     <p className="basicInfo-text">
-                        {characterData.subclass}
+                        {characterData.subclass || 'Unselected Subclass' }
                     </p>
                 </div>
             </div>
@@ -405,16 +479,16 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
                     {renderHeader()}
                 </header>
                 <div className="main-grid">
-                    <div className="space-y-8 lg:col-span-1 lg:order-1">
+                    <div className="space-y-8 lg:col-span-2 lg:order-1">
                         {renderBasic()}
                     </div>
-                    <div className="space-y-8 lg:col-span-2 lg:order-4">
+                    <div className="space-y-8 lg:col-span-3 lg:order-3">
                         {renderStats()}
                     </div>
-                    <div className="space-y-8 lg:col-span-2 lg:order-2">
+                    <div className="space-y-8 lg:col-span-3 lg:order-4">
                         {renderSkills()}
                     </div>
-                    <div className="space-y-8 lg:col-span-1 lg:order-3">
+                    <div className="space-y-8 lg:col-span-1 lg:order-2">
                         {renderBackstory()}
                     </div>
                 </div>

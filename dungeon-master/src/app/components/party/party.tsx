@@ -1,7 +1,7 @@
 'use client'
 import { CgProfile } from "react-icons/cg";
 import { useState } from "react";
-import { CharacterIcon } from "../character/characterIcon";
+import { CharacterIcon } from "../character/basicInfo/characterIcon";
 
 
 export default function Party() {

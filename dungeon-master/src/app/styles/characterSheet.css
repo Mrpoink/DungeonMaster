@@ -4,7 +4,7 @@
     margin-right: auto;
     border-radius: 1.5rem;
     padding: 1.5rem;
-    background-color: #cca95c;
+    background-color: #dcb460;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
     border: 1px solid var(--foreground);
     backdrop-filter: blur(12px);
@@ -174,12 +174,12 @@
   .edit-input {
     width: 100%;
     padding: 0.5rem;
-    background-color: #cca95c;
+    background-color: #c4a881b6;
     border: 1px solid #4B5563;
     border-radius: 0.5rem;
-    color: #FDE047;
     outline: none;
     transition: all 0.2s;
+    font-size: x-large;
   }
   .edit-controls {
     display: flex;
@@ -263,10 +263,6 @@
         color: goldenrod;
     }
   }
-  .file-upload-input {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-  }
 
   .information-box{
     position: fixed;
@@ -297,9 +293,10 @@
     background-color: var(--background);
     border: 1px solid var(--foreground);
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-
   }
-  
+  .race-button{
+    margin-top: 1rem;
+  }
   .race-button:not(.race-selected):hover, .icon-button:not(.icon-selected):hover {
     border-color: #f59e0b;
     color: goldenrod;
@@ -318,5 +315,17 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 8px;
-    margin: 0.5rem;
+    margin: 1rem;
+  }
+  .basic-desc{
+    margin: 0.75rem;
+    padding: auto;
+    border-radius: 0.75rem; /* rounded-xl */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-top-width: 4px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    background-color: #c4a881b6;
   }
