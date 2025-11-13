@@ -1,6 +1,7 @@
 'use client'
 
 import { BottomNav } from "@/app/components/nav/nav";
+import { API_BASE_URL } from "@/app/config/api";
 import { useState, useEffect, Dispatch, SetStateAction } from "react";
 import { DEFAULT_CHARACTER, raceOptions } from "@/app/components/character/defaultCharacter";
 import { BiPencil } from "react-icons/bi";
@@ -11,7 +12,6 @@ import SelectIcon from "@/app/components/character/characterIcon";
 import Character from "@/app/components/character/characterType";
 import { InformationIcon, skill_map } from "@/app/components/character/abilities/descriptions";
 import { AbilityScore } from "@/app/components/character/abilities/abilities";
-import { API_ENDPOINTS } from "@/config/api";
 
     
 const all_skills = Object.values(skill_map).flat();
@@ -445,7 +445,7 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
                                     icon: characterData.iconId
                                 };
 
-                                const response = await fetch(API_ENDPOINTS.characters, {
+                                const response = await fetch(`${API_BASE_URL}/characters`, {
                                     method: 'POST',
                                     headers: {
                                         'Content-Type': 'application/json'

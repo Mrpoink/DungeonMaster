@@ -2,6 +2,7 @@
 import Nav from "@/app/components/nav/nav";
 import { useState, useEffect } from "react";
 import Background from "@/app/components/assets/mainBackground.jpg";
+import { API_BASE_URL } from "@/app/config/api";
 import StarWars from "@/app/components/assets/star_wars.png";
 import Avatar from "@/app/components/assets/avatar.png";
 import LordOfRings from "@/app/components/assets/lord_of_rings.png";
@@ -289,7 +290,7 @@ export default function Game() {
     setIsLoading(true);
     try {
         const payload = { message: option, username: username, seed: seed, step: 'get_roll_info', turn_num: turn_num };
-        const response = await fetch(API_ENDPOINTS.userin, {
+        const response = await fetch(`${API_BASE_URL}/userin`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload),
@@ -362,7 +363,7 @@ export default function Game() {
             skills: skills,
             turn_num: turn_num
         };
-        const response = await fetch(API_ENDPOINTS.userin, {
+        const response = await fetch(`${API_BASE_URL}/userin`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload),
@@ -407,7 +408,7 @@ export default function Game() {
                 turn_num: turn_num
             };
 
-            const response = await fetch(API_ENDPOINTS.userin, {
+            const response = await fetch(`${API_BASE_URL}/userin`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -437,7 +438,7 @@ export default function Game() {
 
   const fetchDMmessage = async (username: string, seed: string | null) => {
     try {
-      const response = await fetch(API_ENDPOINTS.DMout);
+      const response = await fetch(`${API_BASE_URL}/DMout`);
       const data = await response.json();
 
       setDMmessage(data.dm_text);
@@ -462,7 +463,7 @@ export default function Game() {
         return;
     }
     try {
-      const response = await fetch(API_ENDPOINTS.characterData, {
+      const response = await fetch(`${API_BASE_URL}/character-data`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

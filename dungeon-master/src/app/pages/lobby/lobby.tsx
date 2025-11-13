@@ -1,6 +1,7 @@
 'use client'
 import { useRouter } from "next/navigation";
 import Nav from "@/app/components/nav/nav";
+import { API_BASE_URL } from "@/app/config/api";
 import {BottomNav} from "@/app/components/nav/nav";
 import { useState, useEffect } from "react";
 import { API_ENDPOINTS } from "@/config/api";
@@ -34,7 +35,7 @@ export default function Home() {
 
   const fetchCharacterData = async (username: string) => {
     try {
-      const response = await fetch(API_ENDPOINTS.characterData, {
+      const response = await fetch(`${API_BASE_URL}/character-data`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -57,7 +58,7 @@ export default function Home() {
     const isContinuing = savedCampaignId ? parseInt(savedCampaignId, 10) === campaignId : false;
 
     try {
-      const response = await fetch(API_ENDPOINTS.seed, {
+      const response = await fetch(`${API_BASE_URL}/seed`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
