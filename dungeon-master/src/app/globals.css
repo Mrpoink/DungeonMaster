@@ -4,6 +4,7 @@
 @import url(./styles/navigation.css);
 @import url(./styles/credentials.css);
 @import url(./styles/landingPage.css);
+@import url(./styles/gameOver.css);
 @import "tailwindcss";
 
 :root {
