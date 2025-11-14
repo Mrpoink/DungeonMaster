@@ -1,11 +1,12 @@
 .how-to-play-container {
     background: url(../../components/assets/Login_Page.jpeg) no-repeat center center;
     background-size: cover;
-    padding: 70px;
+    padding: clamp(20px, 5vw, 70px);
     display: flex;
     justify-content: center;
     align-items: flex-start;
     overflow: hidden;
+    min-height: 100vh;
 }
 
 .how-to-play-content {
@@ -13,8 +14,8 @@
     max-height: 85vh;
     width: 100%;
     background: #F6E3B8;
-    border-radius: 50px;
-    padding: 30px;
+    border-radius: clamp(20px, 5vw, 50px);
+    padding: clamp(20px, 4vw, 30px);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
     color: #6b4a2e;
     border: none;
@@ -43,7 +44,7 @@
 .how-to-play-content h1 {
     text-align: center;
     color: #6b4a2e;
-    font-size: 2rem;
+    font-size: clamp(1.4rem, 5vw, 2rem);
     margin-bottom: 8px;
     font-family: 'Georgia', serif;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -51,7 +52,7 @@
 
 .intro-text {
     text-align: center;
-    font-size: 0.95rem;
+    font-size: clamp(0.85rem, 2.5vw, 0.95rem);
     margin-bottom: 25px;
     color: #6b4a2e;
     line-height: 1.4;
@@ -60,17 +61,17 @@
 .steps-container {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: clamp(10px, 2vw, 15px);
     margin-bottom: 25px;
 }
 
 .step {
     display: flex;
-    gap: 15px;
+    gap: clamp(10px, 2vw, 15px);
     align-items: flex-start;
-    padding: 15px;
+    padding: clamp(12px, 2vw, 15px);
     background: rgba(107, 74, 46, 0.1);
-    border-radius: 50px;
+    border-radius: clamp(20px, 5vw, 50px);
     border: none;
     transition: transform 0.2s, box-shadow 0.2s;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
@@ -84,15 +85,15 @@
 
 .step-number {
     flex-shrink: 0;
-    width: 40px;
-    height: 40px;
+    width: clamp(35px, 8vw, 40px);
+    height: clamp(35px, 8vw, 40px);
     background: #6b4a2e;
     color: #F6E3B8;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.3rem;
+    font-size: clamp(1.1rem, 3vw, 1.3rem);
     font-weight: bold;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
@@ -103,7 +104,7 @@
 
 .step-content h2 {
     color: #6b4a2e;
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 3vw, 1.2rem);
     margin-bottom: 8px;
     font-family: 'Georgia', serif;
     text-align: center;
@@ -112,7 +113,7 @@
 .step-content p {
     line-height: 1.5;
     color: #6b4a2e;
-    font-size: 0.9rem;
+    font-size: clamp(0.85rem, 2.5vw, 0.9rem);
 }
 
 .step-content strong {
@@ -122,15 +123,15 @@
 
 .tips-section {
     background: rgba(107, 74, 46, 0.1);
-    padding: 20px;
-    border-radius: 50px;
+    padding: clamp(15px, 3vw, 20px);
+    border-radius: clamp(20px, 5vw, 50px);
     border: none;
     margin-bottom: 25px;
 }
 
 .tips-section h2 {
     color: #6b4a2e;
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 3vw, 1.2rem);
     margin-bottom: 12px;
     font-family: 'Georgia', serif;
     text-align: center;
@@ -148,7 +149,7 @@
     position: relative;
     line-height: 1.5;
     color: #6b4a2e;
-    font-size: 0.9rem;
+    font-size: clamp(0.85rem, 2.5vw, 0.9rem);
 }
 
 .tips-section li::before {
@@ -162,12 +163,12 @@
 .back-home-button {
     display: block;
     margin: 0 auto;
-    padding: 12px 35px;
+    padding: clamp(10px, 2vw, 12px) clamp(25px, 5vw, 35px);
     background: #F6E3B8;
     color: #6b4a2e;
     border: none;
     border-radius: 50px;
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s;
@@ -185,19 +186,25 @@
 }
 
 @media (max-width: 768px) {
+    .how-to-play-container {
+        padding: 15px;
+    }
     .how-to-play-content {
-        padding: 20px;
+        padding: 15px;
         max-height: 90vh;
+        max-width: 95vw;
+        border-radius: 20px;
     }
 
     .how-to-play-content h1 {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
     }
 
     .step {
         flex-direction: column;
-        gap: 12px;
+        gap: 10px;
         padding: 12px;
+        border-radius: 20px;
     }
 
     .step-number {
@@ -207,10 +214,15 @@
     }
 
     .step-content h2 {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
 
     .intro-text {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
+    }
+    
+    .tips-section {
+        border-radius: 20px;
     }
 }
+

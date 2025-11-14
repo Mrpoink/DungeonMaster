@@ -1,11 +1,19 @@
 .game-over{
     max-width: 1500px;
+    width: 95%;
     margin-left: auto;
     margin-right: auto;
     border-radius: 1.5rem;
-    padding: 1.5rem;
+    padding: clamp(1rem, 3vw, 1.5rem);
     background-color: #dcb460;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
     border: 1px solid var(--foreground);
     backdrop-filter: blur(12px);
+}
+
+@media (max-width: 768px) {
+  .game-over {
+    padding: 1rem;
+    border-radius: 1rem;
+  }
 }

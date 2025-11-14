@@ -21,10 +21,11 @@
   padding: 0;
   box-sizing: border-box;
   font-family: serif;
-  font-size: x-large;
+  font-size: clamp(1rem, 4vw, 1.5rem);
 }
 html{
   max-width: 100vw;
+  overflow-x: hidden;
 }
 body {
   background: var(--background);
@@ -32,6 +33,7 @@ body {
   text-align: center;
   justify-content: center;
   font-family: serif;
+  overflow-x: hidden;
 }
 header {
   padding: 0;
@@ -39,7 +41,7 @@ header {
 }
 h1 {
   font-family: serif;
-  font-size: xx-large;
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
   font-weight: bold;
   text-align: center;
   justify-content: center;
@@ -52,11 +54,12 @@ button {
   color: #6b4a2e;
   cursor: pointer;
   display: inline-block;
-  padding: 10px;
+  padding: clamp(8px, 2vw, 10px);
   text-align: center;
   transition: all 250ms;
   border: none;
   touch-action: manipulation;
+  font-size: clamp(0.9rem, 3vw, 1.5rem);
 }
 .footer {
   display: inline;
@@ -83,13 +86,26 @@ button {
 .exit-game-button{
   position : absolute;
   top: 10px;
+  left: 10px;
+  right: auto;
   button {
-    padding: 1em;
-    margin-left: 2.5rem;
+    padding: clamp(0.5em, 2vw, 1em);
+    margin-left: clamp(0.5rem, 3vw, 2.5rem);
     background-color: #000;
     opacity: 0.9;
     color: #fff;
     border: 1px solid #4a4a4a;
+    font-size: clamp(0.8rem, 2.5vw, 1.5rem);
+  }
+}
+@media (max-width: 768px) {
+  .exit-game-button {
+    top: 5px;
+    left: 5px;
+    button {
+      margin-left: 0;
+      padding: 0.4em 0.8em;
+    }
   }
 }
 .game-box {
@@ -116,8 +132,11 @@ input {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
   margin-right: 1rem;
-  padding: 10px;
+  padding: clamp(8px, 2vw, 10px);
   border: 1px solid var(--foreground);
+  font-size: clamp(0.9rem, 3vw, 1.5rem);
+  width: 100%;
+  max-width: 100%;
 }
 input:focus {
   outline-color: green;
@@ -156,6 +175,14 @@ input::selection {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+@media (max-width: 768px) {
+  .message-display-toggle {
+    top: 20%;
+    width: 95%;
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
 }
 .message-display-toggle.full-history {
   height: 200px;
@@ -223,6 +250,18 @@ input::selection {
   flex-grow: 1;
   max-width: 200px;
 }
+@media (max-width: 768px) {
+  .player-actions {
+    width: 95%;
+    gap: 0.5rem;
+    bottom: 0.5rem;
+  }
+  .player-actions button, .player-actions div {
+    max-width: 150px;
+    font-size: 0.85rem;
+    padding: 0.5rem;
+  }
+}
 .main-session-box {
   display: flex;
   position: relative;
@@ -238,20 +277,29 @@ input::selection {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  padding: 1rem;
   h1 {
-    font-size: xx-large;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
     font-weight: bold;
     margin-bottom: 2em;
   }
 }
 .message-log {
   border: 1px solid #ccc;
-  padding: 2em;
+  padding: clamp(1em, 3vw, 2em);
   background: black;
   color: #fff;
   margin-bottom: 20px;
-  width: 50vw;
+  width: 90%;
+  max-width: 50vw;
   overflow: auto;
+  font-size: clamp(0.8rem, 2.5vw, 1.5rem);
+}
+@media (max-width: 768px) {
+  .message-log {
+    max-width: 95%;
+    padding: 1em;
+  }
 }
 .submit-action {
   position: absolute;
@@ -266,7 +314,7 @@ input::selection {
 .root-container {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding: clamp(0.5rem, 2vw, 1rem);
   font-family: serif;
   overflow: hidden;
 }
@@ -286,6 +334,13 @@ input::selection {
   justify-content: space-between;
   align-items: stretch; /* Stretches children to fill height */
   overflow: hidden; /* Prevents internal scrolling if content is too large */
+}
+
+@media (max-width: 768px) {
+  .main-session-box {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 }
 
 .dice-box, .party-box {
@@ -311,6 +366,7 @@ input::selection {
   border-radius: 0.75rem;
   overflow: hidden;
   height: 100%; /* Ensure it takes full height of its parent */
+  min-height: 300px;
 }
 
 .game-box img {
@@ -328,12 +384,13 @@ input::selection {
 }
 .scene-box{
   background-color: rgba(246, 233, 201, 0.9);
-  padding: 15px;
+  padding: clamp(10px, 2vw, 15px);
   margin: 10px auto;
   border-radius: 8px;
   border: 1px solid #6b4a2e;
   color: #6b4a2e;
   max-width: 800px;
+  width: 95%;
   min-height: 50px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   text-align: center;
@@ -341,7 +398,7 @@ input::selection {
 }
 .scene-box-p{
   margin: 0;
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
   line-height: 1.5;
   font-family: serif;
   justify-content: center;
