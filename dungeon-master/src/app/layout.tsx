@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { LoadingProvider } from "@/app/components/LoadingContext";
+import { Suspense } from "react";
 import LoadingOverlayGlobal from "@/app/components/LoadingOverlayGlobal";
+import RouteLoadingWatcher from "@/app/components/RouteLoadingWatcher";
+import ReadyOnMount from "@/app/components/ReadyOnMount";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,7 +35,13 @@ export default function RootLayout({
       >
         <LoadingProvider>
           <LoadingOverlayGlobal />
+          {/* Watch for transitions and show overlay early */}
+          <Suspense fallback={null}>
+            <RouteLoadingWatcher />
+          </Suspense>
           {children}
+          {/* Hide overlay once the new page has mounted */}
+          <ReadyOnMount />
         </LoadingProvider>
       </body>
     </html>
