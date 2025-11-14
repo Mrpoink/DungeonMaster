@@ -7,12 +7,12 @@ export const DEFAULT_CHARACTER: Character = {
     class: "Rogue",
     subclass: "Thief",
     stats: {
-        MIGHT: 20,
-        AGILITY: 20,
-        SPIRIT: 20,
-        INTELLECT: 20,
-        WISDOM: 20,
-        PRESENCE: 20,
+        MIGHT: 14,
+        AGILITY: 12,
+        SPIRIT: 13,
+        INTELLECT: 10,
+        WISDOM: 11,
+        PRESENCE: 15,
     },
     skills: {
         "Arcana": true,
