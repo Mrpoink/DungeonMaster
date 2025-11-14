@@ -10,8 +10,22 @@ export default function GameOver({result}:{result: boolean}){
         ? 'Congratulations! You made it to the end. Thanks for playing!'
         : 'Sorry! Try again next time.';
     const endGif = result
-        ? (<Image src={happyDuck} alt="" />)
-        : (<Image src={sadDuck} alt="" />);
+        ? (<Image 
+            className="end-gif" 
+            id="happy-duck"
+            src={happyDuck} 
+            alt="" 
+            width={50}
+            height={50}
+            />)
+        : (<Image 
+            className="end-gif" 
+            src={sadDuck} 
+            alt=""
+            width={50}
+            height={50}
+            unoptimized={true}
+            />);
     return(
         <div className="game-over">
             <div className="game-over-text">

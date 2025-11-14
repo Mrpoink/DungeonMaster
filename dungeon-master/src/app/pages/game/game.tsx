@@ -15,7 +15,6 @@ import HelpIcon from "@/app/components/helpIcon/helpIcon";
 import { useLoadingNavigation } from "@/app/hooks/useLoadingNavigation";
 import { useLoading } from "@/app/components/LoadingContext";
 import GameOver from "@/app/components/gameOver/gameOver";
-import { DiVim } from "react-icons/di";
 
 type ConversationItem = {
     sender: 'User' | 'DM' | string;
@@ -648,11 +647,24 @@ export default function Game() {
                   width: '80%',
                   maxWidth: '800px',
                 }}>
-                  <p className="scene-box-p">
-                    {scene || 'The scene is about to unfold...'}
-                  </p>
-                </div>
-                <div className={`message-display-toggle ${isHistoryOpen ? 'full-history' : 'latest-message'}`} 
+              <p className="scene-box-p">
+                {scene || 'The scene is about to unfold...'}
+              </p>
+            </div>
+                {isGameOver
+                  ? (
+                      <div 
+                        className="game-over-wrapper" 
+                        style={{ 
+                          position: 'relative',
+                          maxHeight: '40vh',
+                          maxWidth: '40vw',
+                        }}>
+                          <GameOver result={true}/>
+                      </div>)
+                  : (
+                    <>
+                      <div className={`message-display-toggle ${isHistoryOpen ? 'full-history' : 'latest-message'}`} 
                      style={{
                         backgroundColor: 'rgba(246, 233, 201, 0.9)',
                         color: '#6b4a2e',
@@ -668,22 +680,16 @@ export default function Game() {
                       ))}
                     </div>
                   ) : (
-                    <>
-                      {isGameOver
-                        ? (<GameOver result={true} />)
-                        : (
-                          <div>
-                            <p className={latestMessage.sender === 'User' ? 'user-text' : 'dm-text'}>
-                              <strong>{latestMessage.sender}</strong> {latestMessage.text}
-                              <span className="click-prompt">(Click to see history)</span>
-                            </p>
-                          </div>
-                        )
-                      }
-                    </>
+                  <p className={latestMessage.sender === 'User' ? 'user-text' : 'dm-text'}>
+                    <strong>{latestMessage.sender}</strong> {latestMessage.text}
+                    <span className="click-prompt">(Click to see history)</span>
+                  </p>
                 )
               }
                 </div>
+                    </>
+                  )
+                }
               {rollInfo ? (
                   <RollInfo info={rollInfo} onContinue={handleContinue} />
               ) : (

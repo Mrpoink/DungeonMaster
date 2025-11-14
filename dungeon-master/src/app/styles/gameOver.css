@@ -1,30 +1,34 @@
-.game-over-container{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 50;
-}
 .game-over{
-    text-align: center;
-    max-width: 60vw;
-    width: 90%;
+    
+    max-height: 80vh;
     border-radius: 1.5rem;
     padding: 1.5rem;
-    background-color: transparent;
     animation: fade-in 0.5s ease-out;
     color: var(--background);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    overflow: visible;
 }
 .game-over-text{
-    margin: auto;
-    color: var(--foreground);
+    margin: 50px 0;
+    color: var(--background);
+    z-index: 10;
+
+}
+.game-over-button{
+    z-index: 10;
 }
 .game-over-gif{
-    Image{
-        width: 10px; 
-    }
+    width: 100%;
+}
+.end-gif{
+    margin: 10px 0;
+    display: block;
+    border-radius: 1.5rem;
+}
+#happy-duck{
+    transform: translate(-15%);
 }
