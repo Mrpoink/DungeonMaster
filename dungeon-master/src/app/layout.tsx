@@ -20,7 +20,6 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "QuestWeaver",
   description: "QuestWeaver - Your D&D Adventure Awaits!",
-  viewport: "width=device-width, initial-scale=1, maximum-scale=5",
 };
 
 

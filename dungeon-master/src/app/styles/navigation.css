@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    padding: 0.5em clamp(0.5em, 3vw, 2em);
+    padding: 0.5em 2em;
     background-color: #F6E3B8;
     opacity: 0.9;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -20,8 +20,8 @@
 }
 
 .leave-experience-button {
-    padding: clamp(0.5em, 2vw, 0.8em) clamp(0.8em, 2.5vw, 1.2em);
-    font-size: clamp(0.75rem, 2.5vw, 0.9rem);
+    padding: 0.8em 1.2em;
+    font-size: 0.9rem;
     font-weight: 600;
     background-color: #dc2626 !important;
     opacity: 0.95;
@@ -30,7 +30,6 @@
     border-radius: 50px;
     transition: all 0.3s ease;
     box-shadow: 0 2px 8px rgba(220, 38, 38, 0.4);
-    white-space: nowrap;
 }
 
 .leave-experience-button:hover {
@@ -42,12 +41,12 @@
 .nav-right {
     display: flex;
     justify-content: flex-end;
-    gap: clamp(0.3em, 2vw, 1em);
+    gap: 1em;
 }
 
 .nav-title {
   cursor: pointer;
-  font-size: clamp(1.2rem, 4vw, 2.5rem);
+  font-size: xx-large;
   font-weight: bold;
   display: inline-block;
 }
@@ -59,7 +58,7 @@
 }
 
 .dnd-icon, .character-icon {
-    font-size: clamp(1.5em, 5vw, 2em);
+    font-size: 2em;
     background: transparent;
     border: none;
     cursor: pointer;
@@ -73,20 +72,7 @@
     flex-direction: row;
     justify-content: center;
     margin-top: 1em;
-    padding: 0 1rem;
     button {
-      padding: clamp(0.5rem, 2vw, 0.75rem) clamp(1rem, 3vw, 1.5rem);
-      font-size: clamp(0.85rem, 2.5vw, 1.5rem);
+      padding: 0.75rem 1.5rem;
     }
-}
-@media (max-width: 768px) {
-  .navbar {
-    padding: 0.4em 0.5em;
-    border-radius: 30px;
-  }
-  .bottom-nav-buttons {
-    bottom: 1em;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
 }

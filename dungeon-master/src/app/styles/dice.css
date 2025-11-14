@@ -3,26 +3,26 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: clamp(3px, 1vw, 5px);
-    padding: clamp(3px, 1vw, 5px);
+    gap: 5px;
+    padding: 5px;
     
     img {
-      width: clamp(35px, 8vw, 45px);
-      height: clamp(35px, 8vw, 45px);
-      margin-bottom: clamp(3px, 1vw, 5px);
+      width: 45px;
+      height: 45px;
+      margin-bottom: 5px;
       border: 2px solid #111827;
       border-radius: 25%;
       object-fit: contain;
     }
     .active-dice {
-      margin-bottom: clamp(5px, 2vw, 10px);
+      margin-bottom: 10px;
       border: 2px solid #FBBF24;
-      width: clamp(40px, 9vw, 50px);
-      height: clamp(40px, 9vw, 50px);
+      width: 50px;
+      height: 50px;
     }
   }
   .roll-container{
-    margin-top: clamp(10px, 2vw, 15px);
+    margin-top: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,16 +35,16 @@
     color: #ffffff;
     cursor: pointer;
     display: block;
-    padding: clamp(8px, 2vw, 10px) clamp(15px, 3vw, 20px);
+    padding: 10px 20px;
     transition: all 0.3s ease;
     border: none;
     touch-action: manipulation;
     font-weight: 600;
-    font-size: clamp(0.75rem, 2vw, 0.85rem);
+    font-size: 0.85rem;
     background-color: #dc2626;
     box-shadow: 0 2px 8px rgba(220, 38, 38, 0.4);
     width: 100%;
-    max-width: clamp(80px, 20vw, 90px);
+    max-width: 90px;
     white-space: nowrap;
   }
   #roll-dice-button:hover:not(:disabled), #enter-button:hover:not(:disabled) {
@@ -65,24 +65,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: clamp(5px, 2vw, 10px);
-  width: clamp(90px, 20vw, 110px);
-  max-width: clamp(90px, 20vw, 110px);
+  padding: 10px;
+  width: 110px;
+  max-width: 110px;
   z-index: 10;
-}
-
-@media (max-width: 768px) {
-  .dice-box {
-    width: 80px;
-    max-width: 80px;
-    padding: 5px;
-  }
-  .dice img {
-    width: 30px;
-    height: 30px;
-  }
-  .dice .active-dice {
-    width: 35px;
-    height: 35px;
-  }
 }

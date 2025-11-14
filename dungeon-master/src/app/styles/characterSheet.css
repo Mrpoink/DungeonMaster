@@ -3,47 +3,45 @@
     margin-left: auto;
     margin-right: auto;
     border-radius: 1.5rem;
-    padding: clamp(1rem, 3vw, 1.5rem);
+    padding: 1.5rem;
     background-color: #dcb460;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
     border: 1px solid var(--foreground);
     backdrop-filter: blur(12px);
-    width: 95%;
   }
   @media (min-width: 640px) {
-    .char-sheet-container { padding: 2.5rem; width: auto; }
+    .char-sheet-container { padding: 2.5rem; }
     .content-block {flex-grow: 1;}
   }
   
   .sheet-header {
-    margin-bottom: clamp(1rem, 3vw, 2rem);
-    padding-bottom: clamp(0.5rem, 2vw, 1rem);
+    margin-bottom: 2rem; /* mb-8 */
+    padding-bottom: 1rem; /* pb-4 */
     border-bottom: 1px solid var(--foreground);
   }
   .char-name {
-    font-size: clamp(2rem, 6vw, 3rem);
-    font-weight: 800;
+    font-size: 3rem; /* text-5xl */
+    font-weight: 800; /* font-extrabold */
     color: var(--foreground);
-    letter-spacing: 0.05em;
-    word-break: break-word;
+    letter-spacing: 0.05em; /* tracking-wider */
   }
   .char-title {
-    font-size: clamp(1rem, 3vw, 1.125rem);
-    margin-top: 0.25rem;
-    margin-bottom: 1rem;
+    font-size: 1.125rem; /* text-lg */
+    margin-top: 0.25rem; /* mt-1 */
+    margin-bottom: 1rem; /* mb-4 */
   }
   .main-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: clamp(1rem, 3vw, 2rem);
+    gap: 2rem; /* gap-8 */
   }
   @media (min-width: 1024px) {
-    .main-grid { grid-template-columns: repeat(3, 1fr); }
+    .main-grid { grid-template-columns: repeat(3, 1fr); } /* lg:grid-cols-3 */
   }        
   
   .content-block {
     background-color: var(--background);
-    padding: clamp(0.75rem, 2vw, 1rem);
+    padding: 1rem;
     border-radius: 0.75rem;
     border: 1px solid var(--foreground);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
@@ -53,120 +51,103 @@
   
   .stat-card-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: clamp(0.5rem, 2vw, 1rem);
+    grid-template-columns: repeat(2, 1fr); /* grid-cols-2 */
+    gap: 1rem; /* gap-4 */
   }
   
   .stat-card {
-    padding: clamp(0.75rem, 2vw, 1rem);
-    border-radius: 0.75rem;
+    padding: 1rem; /* p-4 */
+    border-radius: 0.75rem; /* rounded-xl */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     border-top-width: 4px;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1); /* shadow-lg */
     background-color: #a99881;
   }
   .stat-card-icon {
-    width: clamp(1.5rem, 4vw, 2rem);
-    height: clamp(1.5rem, 4vw, 2rem);
-    margin-bottom: 0.5rem;
+    width: 2rem; height: 2rem; /* w-8 h-8 */
+    margin-bottom: 0.5rem; /* mb-2 */
   }
   .stat-card-name {
-    font-size: clamp(0.75rem, 2vw, 0.875rem);
+    font-size: 0.875rem; /* text-sm */
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 600; /* font-semibold */
   }
   .stat-card-value {
-    font-size: clamp(1.5rem, 4vw, 1.875rem);
-    font-weight: 800;
+    font-size: 1.875rem; /* text-3xl */
+    font-weight: 800; /* font-extrabold */
   }
   .basic-info-grid{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-around;
-    gap: 0.5rem;
-  }
-  @media (min-width: 640px) {
-    .basic-info-grid {
-      flex-direction: row;
-      gap: 1rem;
-    }
   }
   .ability-scores-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: clamp(0.5rem, 2vw, 0.75rem);
-  }
-  @media (min-width: 640px) {
-    .ability-scores-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
+    grid-template-columns: repeat(3, 1fr); /* grid-cols-3 */
+    gap: 0.75rem; /* gap-3 */
   }
   .ability-score-display {
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: #a99881;
-    padding: clamp(0.5rem, 2vw, 0.75rem);
-    border-radius: 0.5rem;
+    padding: 0.75rem; /* p-3 */
+    border-radius: 0.5rem; /* rounded-lg */
     border: 1px solid var(--foreground);
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px); /* backdrop-blur-sm */
     transition: transform 0.2s;
-    min-width: clamp(60px, 15vw, 70px);
+    min-width: 70px;
     :hover {
       transform: scale(1.02);
     }
   }
   .ability-label {
-    font-size: clamp(0.65rem, 2vw, 0.75rem);
+    font-size: 0.75rem; /* text-xs */
     text-transform: uppercase;
-    font-weight: 500;
+    font-weight: 500; /* font-medium */
   }
   .ability-score {
-    font-size: clamp(1.75rem, 5vw, 2.25rem);
-    font-weight: 800;
+    font-size: 2.25rem; /* text-4xl */
+    font-weight: 800; /* font-extrabold */
     color: var(--background);
   }
   .ability-mod {
     position: absolute;
-    top: -0.25rem;
-    right: clamp(-0.75rem, -2vw, -1rem);
-    font-size: clamp(0.75rem, 2vw, 0.875rem);
-    font-weight: 700;
-    color: #4ADE80;
+    top: -0.25rem; /* -top-1 */
+    right: -1rem; /* -right-4 */
+    font-size: 0.875rem; /* text-sm */
+    font-weight: 700; /* font-bold */
+    color: #4ADE80; /* text-green-400 */
     background-color: var(--foreground);
-    border-radius: 9999px;
-    padding-left: 0.25rem;
-    padding-right: 0.25rem;
+    border-radius: 9999px; /* rounded-full */
+    padding-left: 0.25rem; /* px-1 */
+    padding-right: 0.25rem; /* px-1 */
   }
   
   .skills-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    row-gap: 0.75rem;
-    column-gap: 1.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 0.75rem; /* gap-y-3 */
+    column-gap: 1.5rem; /* gap-x-6 */
   }
   @media (min-width: 640px) {
-    .skills-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (min-width: 768px) {
-    .skills-grid { grid-template-columns: repeat(3, 1fr); }
+    .skills-grid { grid-template-columns: repeat(3, 1fr); } /* sm:grid-cols-3 */
   }
   
   .skill-item {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: clamp(0.75rem, 2vw, 0.875rem);
+    gap: 0.5rem; /* space-x-2 */
+    font-size: 0.875rem; /* text-sm */
   }
   .skill-indicator {
-    width: 0.75rem;
-    height: 0.75rem;
-    border-radius: 9999px;
-    border-width: 2px;
-    flex-shrink: 0;
+    width: 0.75rem; /* w-3 */
+    height: 0.75rem; /* h-3 */
+    border-radius: 9999px; /* rounded-full */
+    border-width: 2px; /* border-2 */
   }
   .skill-proficient {
     color: #059649;
@@ -181,13 +162,13 @@
   }
   
   .abilities-list {
-    margin-top: 0.75rem;
+    margin-top: 0.75rem; /* space-y-3 */
     list-style: disc;
-    padding-left: 1.25rem;
+    padding-left: 1.25rem; /* pl-5 */
   }
   .abilities-list li {
-    font-size: clamp(1.2rem, 3vw, 2rem);
-    line-height: 1.5;
+    font-size: 2rem;
+    line-height: 1.5; /* leading-relaxed */
   }
   
   .edit-input {
@@ -198,7 +179,7 @@
     border-radius: 0.5rem;
     outline: none;
     transition: all 0.2s;
-    font-size: clamp(1rem, 3vw, 1.5rem);
+    font-size: x-large;
   }
   .edit-controls {
     display: flex;
@@ -206,7 +187,7 @@
   }
   
   .edit-save-btn {
-    padding: clamp(0.2rem, 1vw, 0.25rem);
+    padding: 0.25rem;
     background-color: #059669;
     border-radius: 9999px;
     transition: background-color 0.2s;
@@ -215,7 +196,7 @@
     background-color: #10B981;
   }
   .edit-cancel-btn {
-    padding: clamp(0.2rem, 1vw, 0.25rem);
+    padding: 0.25rem;
     background-color: #DC2626;
     border-radius: 9999px;
     transition: background-color 0.2s;
@@ -225,7 +206,7 @@
   }
   
   .backstory-text {
-    font-size: clamp(0.8rem, 2vw, 0.875rem);
+    font-size: 0.875rem;
     line-height: 1.5;
     white-space: pre-wrap;
   }
@@ -234,27 +215,23 @@
     height: 10rem;
     padding: 0.75rem;
     resize: vertical;
-    font-size: clamp(0.85rem, 2vw, 1rem);
   }
   
   .action-button-container {
-    padding-top: clamp(1rem, 3vw, 2rem);
+    padding-top: 2rem;
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 0.5rem;
   }
   .action-button {
     display: flex;
     align-items: center;
-    padding: clamp(0.6rem, 2vw, 0.75rem) clamp(1rem, 3vw, 1.5rem);
+    padding: 0.75rem 1.5rem;
     background-color: #D97706;
     font-weight: 700;
     border-radius: 0.75rem;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
     color: var(--background);
     transition: all 0.15s;
-    font-size: clamp(0.85rem, 2.5vw, 1rem);
   }
   .action-button:hover {
     background-color: #059649;
@@ -294,28 +271,21 @@
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 1rem;
     .information-content{
       position: relative;
-      padding: clamp(0.75rem, 3vw, 1rem);
+      padding: 1rem;
       background-color: var(--background);
       border-radius: 8px;
       max-width: 300px;
       width: 90%;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
       color: var(--foreground);
-      font-size: clamp(0.85rem, 2.5vw, 1rem);
       .information-close{
         position: absolute;
         top: 10px;
         right: 10px;
         cursor: pointer;
-        font-size: clamp(20px, 5vw, 24px);
+        font-size: 24px;
       }
     }
   }
@@ -324,8 +294,6 @@
     background-color: var(--background);
     border: 1px solid var(--foreground);
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-    font-size: clamp(0.85rem, 2.5vw, 1rem);
-    padding: clamp(0.5rem, 2vw, 0.75rem);
   }
   .race-button{
     margin-top: 1rem;
@@ -347,11 +315,11 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    gap: clamp(6px, 2vw, 8px);
-    margin: clamp(0.5rem, 2vw, 1rem);
+    gap: 8px;
+    margin: 1rem;
   }
   .basic-desc{
-    margin: clamp(0.5rem, 2vw, 0.75rem);
+    margin: 0.75rem;
     padding: auto;
     border-radius: 0.75rem;
     display: flex;
@@ -363,8 +331,8 @@
     background-color: #c4a881b6;
   }
   .preselect-text{
-    margin: clamp(0.5rem, 2vw, 0.75rem);
-    padding: 0 clamp(0.5rem, 2vw, 1rem);
+    margin: 0.75rem;
+    padding: 0 1rem;
     border-radius: 0.75rem;
     display: flex;
     flex-direction: column;
