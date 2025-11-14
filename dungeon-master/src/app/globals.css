@@ -178,6 +178,8 @@ input::selection {
   padding-right: 5px;
   width: 100%;
   text-align: left;
+  display: flex;
+  flex-direction: column-reverse;
 }
 .full-conversation-log p {
   margin-bottom: 0.5rem;

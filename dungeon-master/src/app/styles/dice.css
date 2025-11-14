@@ -7,18 +7,16 @@
     padding: 5px;
     
     img {
-      width: 45px;
-      height: 45px;
+      width: 4vw;
+      height: 4vh;
       margin-bottom: 5px;
-      border: 2px solid #111827;
       border-radius: 25%;
       object-fit: contain;
     }
     .active-dice {
       margin-bottom: 10px;
-      border: 2px solid #FBBF24;
-      width: 50px;
-      height: 50px;
+      width: 8vw;
+      height: 11vh;
     }
   }
   .roll-container{

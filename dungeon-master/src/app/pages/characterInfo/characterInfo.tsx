@@ -442,7 +442,13 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
                                         value={score}
                                         onChange={(e) => {
                                           const { name, value } = e.target;
-                                          const newValue = Number(value); 
+                                          let newValue = Number(value); 
+
+                                          if (newValue > 30) {
+                                              newValue = 30;
+                                          } else if (newValue < 1) {
+                                              newValue = 1; 
+                                          }
   
                                           setTempStats(prev => ({ 
                                           ...prev, 
