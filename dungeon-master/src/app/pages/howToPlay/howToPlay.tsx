@@ -126,7 +126,7 @@ export default function HowToPlay() {
                     </div>
 
                     <div className="tips-section">
-                        <h2>💡 Pro Tips</h2>
+                        <h2>Pro Tips</h2>
                         <ul>
                             <li>Look for <strong>?</strong> icons throughout the game for context-specific help</li>
                             <li>Higher attribute scores improve your chances of success on related checks</li>

@@ -1,13 +1,12 @@
 'use client'
 import Nav from "@/app/components/nav/nav";
 import { useState, useEffect } from "react";
-import Background from "@/app/components/assets/mainBackground.jpg";
 import { API_BASE_URL } from "@/app/config/api";
-import StarWars from "@/app/components/assets/star_wars.png";
-import Avatar from "@/app/components/assets/avatar.png";
-import LordOfRings from "@/app/components/assets/lord_of_rings.png";
-import HarryPotter from "@/app/components/assets/harry_potter.png";
-import Scenario1 from "@/app/components/assets/Scenario_1.png";
+import StarWars from "@/app/components/assets/star_wars_game.jpeg";
+import Avatar from "@/app/components/assets/avatar_game.jpeg";
+import LordOfRings from "@/app/components/assets/lord_of_rings_game.jpeg";
+import HarryPotter from "@/app/components/assets/harry_potter_game.jpeg";
+import Scenario1 from "@/app/components/assets/Scenario_1_game.jpeg";
 import Dice from "@/app/components/dice/dice";
 import Roll from "@/app/components/dice/roll";
 import {AbilityBars} from "@/app/components/character/abilities/abilities";
@@ -238,7 +237,7 @@ export default function Game() {
     dice: string;
     options: string[];
   } | null>(null);
-  const [background, setBackground] = useState(Background);
+  const [background, setBackground] = useState(StarWars);
   const [userin, setUserin] = useState('');
   const [conversation, setConversation] = useState<ConversationItem[]>([
       { sender: 'DM', text: DMmessage }
@@ -288,7 +287,7 @@ export default function Game() {
     console.log("Option clicked:", option); // <-- ADDING LOG
 
     const optionText = typeof option === 'string' ? option : option.option;
-    setConversation(prev => [...prev, { sender: characterData?.name || 'User', text: optionText }]);
+    setConversation(prev => [...prev, { sender: (characterData?.name+ ':' || 'User') , text: optionText }]);
 
     // Always send the option to the backend to handle.
     setIsLoading(true);
@@ -564,7 +563,7 @@ export default function Game() {
           setBackground(Scenario1);
           break;
         default:
-          setBackground(Background);
+          setBackground(StarWars);
       }
     }
 
@@ -590,17 +589,32 @@ export default function Game() {
     }
   }, [turn_num]);
 
-  // Hide loading only when both DM message and character data are loaded
+  // Hide loading only when both DM message and character data are loaded AND images are loaded
   useEffect(() => {
     if (pageDataLoaded.dm && pageDataLoaded.character) {
-      // Wait for React to render the content before hiding loading
-      requestAnimationFrame(() => {
-        setTimeout(() => {
-          hideLoading();
-        }, 200); // Small delay to ensure content is painted
-      });
+      // Also wait for the background image to load
+      const img = new Image();
+      img.src = background.src;
+      
+      const hideLoadingWhenReady = () => {
+        // Wait for React to render the content and images before hiding loading
+        requestAnimationFrame(() => {
+          setTimeout(() => {
+            hideLoading();
+          }, 150);
+        });
+      };
+
+      if (img.complete) {
+        // Image already loaded (cached)
+        hideLoadingWhenReady();
+      } else {
+        // Wait for image to load
+        img.onload = hideLoadingWhenReady;
+        img.onerror = hideLoadingWhenReady; // Hide even on error to avoid stuck loading screen
+      }
     }
-  }, [pageDataLoaded, hideLoading]);
+  }, [pageDataLoaded, hideLoading, background]);
 
   const latestMessage = conversation[conversation.length - 1];
 
@@ -655,7 +669,18 @@ export default function Game() {
                   maxWidth: '800px',
                 }}>
                   <p className="scene-box-p">
-                    {scene || 'The scene is about to unfold...'}
+                    {scene ? (
+                      scene.startsWith('Background: ') ? (
+                        <>
+                          <span style={{ fontWeight: 'bold', color: '#4a3321' }}>Background:</span>
+                          {scene.substring(12)}
+                        </>
+                      ) : (
+                        scene
+                      )
+                    ) : (
+                      'The scene is about to unfold...'
+                    )}
                   </p>
                 </div>
                 <div className={`message-display-toggle ${isHistoryOpen ? 'full-history' : 'latest-message'}`} 
@@ -669,13 +694,13 @@ export default function Game() {
                     <div className="full-conversation-log">
                       {conversation.map((item, index) => (
                         <p key={index} className={item.sender === 'User' ? 'user-text' : 'dm-text'}>
-                          <strong>{item.sender}</strong> {item.text}
+                          <strong style={{ fontWeight: 'bold', color: '#4a3321' }}>{item.sender}:</strong> {item.text}
                         </p>
                       ))}
                     </div>
                   ) : (
                   <p className={latestMessage.sender === 'User' ? 'user-text' : 'dm-text'}>
-                    <strong>{latestMessage.sender}</strong> {latestMessage.text}
+                    <strong style={{ fontWeight: 'bold', color: '#4a3321' }}>{latestMessage.sender}:</strong> {latestMessage.text}
                     <span className="click-prompt">(Click to see history)</span>
                   </p>
                 )}

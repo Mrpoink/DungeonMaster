@@ -1,5 +1,6 @@
 "use client";
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, { createContext, useContext, useState, ReactNode, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 interface LoadingState {
   isLoading: boolean;
@@ -17,9 +18,16 @@ export const useLoading = () => {
 };
 
 export const LoadingProvider = ({ children }: { children: ReactNode }) => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true); // Start with loading true
   const [text, setText] = useState("Traveling to adventure...");
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
+  const pathname = usePathname();
+
+  // Show loading screen whenever route changes (including browser back/forward)
+  useEffect(() => {
+    setText("Traveling to adventure...");
+    setIsLoading(true);
+  }, [pathname]);
 
   const showLoading = (newText: string, duration?: number) => {
     // Clear any existing timeout

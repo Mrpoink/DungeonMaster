@@ -66,7 +66,11 @@ export default function Home() {
   return (
   <div className="lobby">
       <header>
-        <Nav title="QuestWeaver" onBookClick={() => setIsInfoOpen(v => !v)} />
+        <Nav 
+          title="QuestWeaver" 
+          onBookClick={() => setIsInfoOpen(v => !v)} 
+          characterIconId={characterData?.iconId}
+        />
       </header>
       <main style={{ position: 'relative' }}>
         <div>

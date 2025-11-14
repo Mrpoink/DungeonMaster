@@ -23,21 +23,37 @@ export const usePageLoaded = () => {
   const { hideLoading } = useLoading();
 
   useEffect(() => {
-    // Check if document is already fully loaded (for cached/instant navigation)
-    if (document.readyState === 'complete') {
-      // Page is already loaded, hide immediately after next paint
-      requestAnimationFrame(() => {
-        hideLoading();
-      });
-    } else {
-      // Wait for page to be fully rendered
-      const timer = setTimeout(() => {
+    const handlePageFullyLoaded = () => {
+      // Wait for everything including images to load
+      if (document.readyState === 'complete') {
+        // Add a small delay to ensure all content is painted
         requestAnimationFrame(() => {
-          hideLoading();
+          setTimeout(() => {
+            hideLoading();
+          }, 100);
         });
-      }, 200); // Balanced timing for slower loads
+      }
+    };
 
-      return () => clearTimeout(timer);
+    // Check if already loaded
+    if (document.readyState === 'complete') {
+      handlePageFullyLoaded();
+    } else {
+      // Wait for the load event which fires after all resources are loaded
+      window.addEventListener('load', handlePageFullyLoaded);
+      
+      // Fallback: also listen to readystatechange
+      const handleReadyStateChange = () => {
+        if (document.readyState === 'complete') {
+          handlePageFullyLoaded();
+        }
+      };
+      document.addEventListener('readystatechange', handleReadyStateChange);
+
+      return () => {
+        window.removeEventListener('load', handlePageFullyLoaded);
+        document.removeEventListener('readystatechange', handleReadyStateChange);
+      };
     }
   }, [hideLoading]);
 };

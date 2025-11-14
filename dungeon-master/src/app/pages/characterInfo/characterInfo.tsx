@@ -361,6 +361,7 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
                         }}
                         className="edit-button"
                         title="Edit Basic Information"
+                        style={{ position: 'absolute', top: 12, right: 18 }}
                     >
                         <BiPencil className="w-4 h-4" />
                     </button>
@@ -376,13 +377,6 @@ const EditInput = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
                             position="left"
                             size={24}
                         />
-                        <button 
-                            onClick={() => { setIsEditingBasic(true);}}
-                            className="edit-button"
-                            title="Edit Basic Information"
-                        >
-                            <BiPencil className="w-4 h-4" />
-                        </button>
                     </div>
                 </div>
                 <div className="basic-info-grid">
