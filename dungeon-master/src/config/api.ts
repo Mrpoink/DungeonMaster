@@ -1,6 +1,6 @@
 // API Configuration
-// Prefer same-origin via Next.js proxy: default '/api'
-export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || '/api';
+// In production, set NEXT_PUBLIC_API_URL environment variable to your backend URL
+export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:1068';
 
 export const API_ENDPOINTS = {
   DMout: `${API_BASE_URL}/DMout`,
