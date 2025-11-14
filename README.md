@@ -38,3 +38,30 @@ Dr. Adithya Kulkarni, Brandon Dean, Elijah Webb, Tierra Williams
 * Run the CompatibilityLayer file
 * Sip a drink, and take a break because you're probably going to have to do a lot of debugging and configurations with your enviornments
 
+## Session Isolation (Multi-user / Multi-campaign)
+
+This backend now isolates game state per user and per campaign seed to prevent crossover where two people would share scenes, characters, or turns.
+
+- Key: each session is keyed by `(username, seed)`.
+- Each session has its own `game`, `player_skills`, and `turn_num`.
+- Campaign-specific character stats are stored in `USERCHARCHANGE` and are updated per campaign independently.
+
+### API usage notes
+
+- `POST /seed { username, seed, continue_campaign }` initializes the session, loads the campaign data, and sets the correct turn for the given `(username, seed)`.
+- `POST /userin { username, seed, ... }` processes a choice and updates progress for that session only.
+- `GET /DMout?username=<user>&seed=<seed>` returns the current scene/options for that exact session.
+- `POST /character-data { username, seed }` returns campaign-specific character stats and derived skills.
+
+If you do not supply `username` and `seed` to `/DMout`, the request will use a generic session and is suitable only for non-campaign views.
+
+### Quick verification
+
+You can run a small script to simulate two users to verify isolation (see `test_multi_session.py`).
+
+```
+python .\test_multi_session.py
+```
+
+Ensure the backend is running and the database is populated (users and characters exist) before running the script.
+

@@ -2,6 +2,29 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+### Run Dev Server Externally (questweave.servequake.com)
+
+- The dev server is configured to bind on `0.0.0.0:3000`.
+- Requests to `http://<host>:3000/api/*` are proxied to the Python backend (default `http://127.0.0.1:1068`).
+
+Steps:
+
+1. Ensure the Python backend is running and reachable at `http://127.0.0.1:1068` (or set `BACKEND_TARGET` in `.env.local`).
+2. Start the Next.js dev server:
+
+```bash
+npm run dev
+```
+
+3. With port forwarding and DNS set, open `http://questweave.servequake.com:3000` from any device.
+
+Optional env file:
+
+```bash
+cp .env.local.example .env.local
+# Edit BACKEND_TARGET if your backend is on another host/port
+```
+
 First, run the development server:
 
 ```bash
@@ -14,7 +37,7 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) locally, or your public domain if configured.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 

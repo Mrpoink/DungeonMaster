@@ -13,6 +13,24 @@ from prisma.errors import RawQueryError
 import asyncio
 from sentence_transformers import SentenceTransformer as st
 
+# Cache for SentenceTransformer models to avoid repeated heavy loads
+_MODEL_CACHE: dict[str, st] = {}
+
+def _get_device() -> str:
+    try:
+        return "cuda" if torch.cuda.is_available() else "cpu"
+    except Exception:
+        return "cpu"
+
+def get_sentence_model(model_name: str) -> st:
+    global _MODEL_CACHE
+    if model_name in _MODEL_CACHE:
+        return _MODEL_CACHE[model_name]
+    device = _get_device()
+    model = st(model_name, device=device)
+    _MODEL_CACHE[model_name] = model
+    return model
+
 
 
 class use_vector_db:
@@ -55,11 +73,10 @@ class use_vector_db:
 
 
     def make_embedding(self, model : str):
-        model = st(model, device="cuda")
-        #Turns model into sentence piece transformer
-
+        model_inst = get_sentence_model(model)
+        # Turns model into sentence piece transformer
         data = self.data_list
-        self.embeddings = model.encode(data)
+        self.embeddings = model_inst.encode(data)
         #returns embeddings
 
 
@@ -362,7 +379,7 @@ class get_from_db:
 
 
     def create_embedding(self, model : str, input):
-        self.model = st(model, device="cuda")
+        self.model = get_sentence_model(model)
         self.embeddings = self.model.encode(input)
 
         return self.embeddings

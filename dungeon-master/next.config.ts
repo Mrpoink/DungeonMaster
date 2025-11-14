@@ -1,7 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  async rewrites() {
+    const target = process.env.BACKEND_TARGET || "http://127.0.0.1:1068";
+    return [
+      {
+        source: "/api/:path*",
+        destination: `${target}/:path*`,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

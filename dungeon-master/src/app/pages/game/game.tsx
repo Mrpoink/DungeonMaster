@@ -481,7 +481,7 @@ export default function Game() {
         
         // Fetch DM message and character data in parallel for speed
         const [dmResponse, characterResponse] = await Promise.all([
-          fetch(`${API_BASE_URL}/DMout`),
+          fetch(`${API_BASE_URL}/DMout?username=${encodeURIComponent(username)}&seed=${encodeURIComponent(seed)}`),
           fetch(`${API_BASE_URL}/character-data`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },

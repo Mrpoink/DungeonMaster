@@ -8,6 +8,7 @@ import os
 import logging
 from hypercorn.config import Config
 from hypercorn.asyncio import serve
+from typing import Optional, Tuple
 
 # Configure logging
 logging.basicConfig(
@@ -21,41 +22,70 @@ app = Quart(__name__)
 allowed_origins = os.getenv('CORS_ORIGIN', '*')
 app = cors(app, allow_origin=allowed_origins)
 
-class GameState:
+class Session:
+    def __init__(self):
+        self.game = None
+        self.player_skills = None
+        self.turn_processed = False
+        self.lock = asyncio.Lock()
+        self.last_access = asyncio.get_event_loop().time()
+
+
+class SessionManager:
     _instance = None
 
     @classmethod
     def get_instance(cls):
         if cls._instance is None:
             cls._instance = cls()
-            cls._instance.game = None
-            cls._instance.player_skills = None
-            cls._instance.lock = asyncio.Lock()
-            cls._instance.turn_processed = False
+            # key is tuple: (username, seed_or_None)
+            cls._instance.sessions = {}
         return cls._instance
 
-    async def initialize_game(self, username, new_game=False):
-        self.game_end = False
-        async with self.lock:
-            if self.game is None or new_game:
-                self.game = await PythonBackEnd.campaign.create_dm(username)
-    
-    def get_game(self):
-        return self.game
+    def _key(self, username: Optional[str], seed: Optional[int]):
+        return (username or "__anon__", int(seed) if seed is not None else None)
 
-async def load_campaign(seed):
-    game_state = GameState.get_instance()
-    game = game_state.get_game()
+    def get_session(self, username: Optional[str], seed: Optional[int]):
+        key = self._key(username, seed)
+        if key not in self.sessions:
+            self.sessions[key] = Session()
+        sess = self.sessions[key]
+        sess.last_access = asyncio.get_event_loop().time()
+        return sess
+
+    async def ensure_game(self, username: Optional[str], seed: Optional[int], new_game: bool = False):
+        # Opportunistic cleanup of stale sessions (30 min TTL)
+        try:
+            now = asyncio.get_event_loop().time()
+            ttl = int(os.getenv('SESSION_TTL_SECONDS', '1800'))
+            stale = [k for k, s in self.sessions.items() if (now - getattr(s, 'last_access', now)) > ttl]
+            for k in stale:
+                # Note: we skip explicit DB disconnects to avoid interfering with active Prisma clients
+                del self.sessions[k]
+        except Exception:
+            pass
+
+        session = self.get_session(username, seed)
+        async with session.lock:
+            if session.game is None or new_game:
+                session.game = await PythonBackEnd.campaign.create_dm(username)
+            session.last_access = asyncio.get_event_loop().time()
+        return session
+
+async def load_campaign(seed, session: Session):
+    game = session.game
     if game:
         game.create_campaign_from_file(seed)
         game.get_campaign()
 
-async def load_player_character(username, seed, campaign_data=None, use_changed_character=False):
-    game_state = GameState.get_instance()
-    game = game_state.get_game()
+async def load_player_character(username, seed, campaign_data=None, use_changed_character=False, session: Optional[Session] = None):
+    sm = SessionManager.get_instance()
+    if session is None:
+        session = sm.get_session(username, seed)
+    game = session.game
     if not game:
-        await game_state.initialize_game(username)
-        game = game_state.get_game()
+        session = await sm.ensure_game(username, seed)
+        game = session.game
     
     try:
         # If continuing, use changed character. If new, use base character.
@@ -79,7 +109,7 @@ async def load_player_character(username, seed, campaign_data=None, use_changed_
             'Intellect': char_attributes.get('Intellect')
         }
         game.player = player_character
-        game_state.player_skills = player_character.get_skills(player_character.attributes)
+        session.player_skills = player_character.get_skills(player_character.attributes)
         
         return True
     except Exception as e:
@@ -96,16 +126,19 @@ class userData:
         self.password = password
 
     async def add_user_data_to_db(self):
-        game = GameState.get_instance().get_game()
-        if game:
-            return await game.add_user_data(self.name, self.username, self.password)
+        # For auth operations, use a generic session keyed by username with seed=None
+        sm = SessionManager.get_instance()
+        session = await sm.ensure_game(self.username, None)
+        if session and session.game:
+            return await session.game.add_user_data(self.name, self.username, self.password)
         return "Game instance not initialized."
 
     @staticmethod
     async def check_credentials(username, password):
-        game = GameState.get_instance().get_game()
-        if game:
-            return await game.check_creds(username, password)
+        sm = SessionManager.get_instance()
+        session = await sm.ensure_game(username, None)
+        if session and session.game:
+            return await session.game.check_creds(username, password)
         return False
 
 @app.route("/userin", methods=['POST'])
@@ -124,9 +157,10 @@ async def process_message():
             return jsonify({'message': 'Campaign seed is required'}), 400
 
         logger.debug(f"Processing request for user: {username}, seed: {seed}, step: {step}")
-    
-        game_state = GameState.get_instance()
-        game = game_state.get_game()
+        # Per-user/per-seed session
+        sm = SessionManager.get_instance()
+        session = await sm.ensure_game(username, int(seed) if seed is not None else None)
+        game = session.game
         
         # Ensure we have the seed from the request or fallback to game.seed
         if not seed and hasattr(game, 'seed'):
@@ -137,17 +171,12 @@ async def process_message():
         if not hasattr(game, 'player') or game.player is None:
             # If the player object is missing, reload it using the 'continue' logic.
             if seed:
-                await load_player_character(username, int(seed), use_changed_character=True)
+                await load_player_character(username, int(seed), use_changed_character=True, session=session)
             else:
                 # This case should ideally not be hit if the flow starts with /seed
                 return jsonify({'message': 'Game session not properly initialized. Please start a campaign.'}), 500
 
         logger.debug(f"GAME TURN NUMBER: {game.turn_num}")
-        
-
-        if not game or not hasattr(game, 'player'):
-            
-            game = game_state.get_game() # Re-fetch after potential initialization
 
         player_character = game.player
         if player_character is None:
@@ -207,10 +236,10 @@ async def process_message():
                     if player_character.attributes.get(ability_name, 0) < 1:
                         game.game_end = True
             
-            game_state.turn_processed = True
+            session.turn_processed = True
             
             skills = get_skills(player_character)
-            game_state.player_skills = skills  # Update the game state with new skills
+            session.player_skills = skills  # Update the game state with new skills
 
             # prepare response with current turn's results
             response_data = {
@@ -256,105 +285,108 @@ async def process_message():
 
 @app.route("/seed", methods=['POST'])
 async def use_campaign():
-    data = await request.get_json()
-    seed = data.get('seed')
-    username = data.get('username')
-    continue_campaign = data.get('continue_campaign', False)
-    
-    game_state = GameState.get_instance()
-    await game_state.initialize_game(username, new_game=True)
-    game = game_state.get_game()
+    try:
+        data = await request.get_json()
+        seed = data.get('seed')
+        username = data.get('username')
+        continue_campaign = data.get('continue_campaign', False)
 
-    # check if this user has a campaign-specific character sheet (usercharchange) for this seed
-    # userchar = base character template (never changes)
-    # usercharchange = per-campaign instance with modified stats and turn progress
-    session = await game.bvb.db.campaignsession.find_unique(
-        where={'seed_user': {'seed': str(seed), 'user': username}}
-    )
-    
-    # get the user's most recently created character from userchar table
-    base_char = await game.bvb.db.userchar.find_first(
-        where={'user': username},
-        order={'id': 'desc'}  # latest character by id
-    )
-    
-    if not base_char:
-        return jsonify({"status": "error", "message": "no character found. please create a character first."}), 400
-    
-    # check if a campaign-specific character sheet already exists
-    userchar_exists = False
-    if session:
-        existing_userchar = await game.bvb.db.usercharchange.find_first(
-            where={'user': username, 'campaignId': session.id, 'name': base_char.name}
+        if seed is None or username is None:
+            return jsonify({"status": "error", "message": "username and seed are required"}), 400
+
+        try:
+            seed_int = int(seed)
+        except Exception:
+            return jsonify({"status": "error", "message": "seed must be an integer"}), 400
+
+        sm = SessionManager.get_instance()
+        session = await sm.ensure_game(username, seed_int, new_game=True)
+        game = session.game
+
+        # check for existing session for (username, seed)
+        db_session = await game.bvb.db.campaignsession.find_unique(
+            where={'seed_user': {'seed': str(seed_int), 'user': username}}
         )
-        userchar_exists = existing_userchar is not None
-    
-    # if this is the first time playing this campaign, create a fresh usercharchange row
-    # this copies the base character's stats and links them to this specific campaign
-    if not userchar_exists:
-        logger.info(f"first time playing campaign {seed} for user {username}. creating fresh usercharchange from base character.")
-        success, message = await game.bvb.reset_usercharchange_table(username, seed, new_campaign=True)
-        if not success:
-            logger.error(f"error: failed to create character sheet for campaign {seed}: {message}")
-            return jsonify({"status": "error", "message": "failed to initialize character for the campaign."}), 500
-    else:
-        logger.info(f"user {username} has played campaign {seed} before. loading existing usercharchange stats.")
-    
-    # load the saved turn number from the database
-    # completed_turn_num contains the NEXT turn to play (we incremented before saving)
-    completed_turn_num, last_context, error = await game.bvb.get_or_create_campaign_session(username, seed)
-    if error:
-        return jsonify({"status": "error", "message": error}), 500
-    
-    # determine starting turn based on saved progress
-    has_played_before = completed_turn_num > 0
-    
-    if continue_campaign or has_played_before:
-        # continue from saved position - completed_turn_num is already the next turn to play
-        # we don't add 1 here because we incremented before saving in /userin
-        game.turn_num = completed_turn_num
-        logger.info(f"loading campaign {seed} at turn {game.turn_num} (continuing from turn {completed_turn_num - 1 if completed_turn_num > 0 else 0})")
-    else:
-        # brand new campaign, start at the beginning
-        game.turn_num = 0
-        logger.info(f"starting fresh campaign {seed} at turn 0")
+        
+        # get the user's most recently created character from userchar table
+        base_char = await game.bvb.db.userchar.find_first(
+            where={'user': username},
+            order={'id': 'desc'}  # latest character by id
+        )
+        
+        if not base_char:
+            return jsonify({"status": "error", "message": "no character found. please create a character first."}), 400
+        
+        # check if a campaign-specific character sheet already exists
+        userchar_exists = False
+        if db_session:
+            existing_userchar = await game.bvb.db.usercharchange.find_first(
+                where={'user': username, 'campaignId': db_session.id, 'name': base_char.name}
+            )
+            userchar_exists = existing_userchar is not None
+        
+        # first time playing this campaign -> clone base stats into USERCHARCHANGE
+        if not userchar_exists:
+            logger.info(f"first time playing campaign {seed_int} for user {username}. creating fresh usercharchange from base character.")
+            success, message = await game.bvb.reset_usercharchange_table(username, seed_int, new_campaign=True)
+            if not success:
+                logger.error(f"error: failed to create character sheet for campaign {seed_int}: {message}")
+                return jsonify({"status": "error", "message": "failed to initialize character for the campaign."}), 500
+        else:
+            logger.info(f"user {username} has played campaign {seed_int} before. loading existing usercharchange stats.")
+        
+        # load the saved turn number from the database for this (user, seed)
+        completed_turn_num, last_context, error = await game.bvb.get_or_create_campaign_session(username, seed_int)
+        if error:
+            return jsonify({"status": "error", "message": error}), 500
+        
+        # determine starting turn based on saved progress
+        has_played_before = completed_turn_num > 0
+        
+        if continue_campaign or has_played_before:
+            game.turn_num = completed_turn_num
+            logger.info(
+                f"loading campaign {seed_int} at turn {game.turn_num} (continuing from turn {completed_turn_num - 1 if completed_turn_num > 0 else 0})"
+            )
+        else:
+            game.turn_num = 0
+            logger.info(f"starting fresh campaign {seed_int} at turn 0")
 
-    game.seed = seed
-    game_state.turn_processed = False
-    await load_campaign(seed)
-    
-    # Always load the per-campaign change sheet after ensuring it's reset/created
-    # (For a new campaign the USERCHARCHANGE row was just cloned from base stats.)
-    await load_player_character(username, seed, use_changed_character=True)
-    
-    return jsonify({"status": "ready", "message": f"Campaign with seed {seed} loaded.", "turn_num": game.turn_num})
+        game.seed = seed_int
+        session.turn_processed = False
+        await load_campaign(seed_int, session)
+        
+        # Always load the per-campaign change sheet after ensuring it's reset/created
+        await load_player_character(username, seed_int, use_changed_character=True, session=session)
+        
+        return jsonify({"status": "ready", "message": f"Campaign with seed {seed_int} loaded.", "turn_num": game.turn_num})
+    except Exception as e:
+        logger.error(f"Error in /seed: {e}", exc_info=True)
+        return jsonify({"status": "error", "message": str(e)}), 500
 
 @app.route("/DMout", methods=['GET'])
 async def output_message():
     username = request.args.get('username')
-    game_state = GameState.get_instance()
-    game = game_state.get_game()
+    seed = request.args.get('seed', type=int)
+    sm = SessionManager.get_instance()
+    session = await sm.ensure_game(username, seed)
+    game = session.game
     game.game_end = False
 
-    if not game:
-        await game_state.initialize_game(username)
-        game = game_state.get_game()
-    
     if not hasattr(game, 'scene_and_options'):
         return jsonify({"error": "Campaign not loaded. Please select a campaign first."}), 400
     
-    game_state.turn_processed = False
+    session.turn_processed = False
 
     description, options = game.scene_and_options[game.turn_num]
-    # Character should already be loaded from the /seed call.
-    # await load_player_character(username) # Load character to get skills
 
     return jsonify({
         "dm_text": description, # Adding for frontend compatibility
         "message": description,
         "scene": game.get_background(),
         "options": options,
-        "skills": game_state.player_skills
+        "skills": session.player_skills,
+        "turn_num": getattr(game, 'turn_num', 0)
     })
 
 @app.route("/userData", methods=['POST'])
@@ -362,10 +394,8 @@ async def process_userdata():
     data = await request.get_json()
     username = data.get('username')
     # char_name is not needed for creating a user account
-    game_state = GameState.get_instance()
-    if not game_state.get_game():
-        # We can initialize with a dummy char_name, as it's not used for user creation
-        await game_state.initialize_game(username)
+    sm = SessionManager.get_instance()
+    await sm.ensure_game(username, None)
     
     user = userData()
     user.set_info(data.get('name'), username, data.get('password'))
@@ -379,16 +409,14 @@ async def check_creds():
     
     data = await request.get_json()
     username = data.get('username')
-    game_state = GameState.get_instance()
-    if not game_state.get_game():
-        # We can initialize with a dummy char_name, as it's not used for credential check
-        await game_state.initialize_game(username)
+    sm = SessionManager.get_instance()
+    await sm.ensure_game(username, None)
         
     user_creds = await userData.check_credentials(username, data.get('password'))
     
     if user_creds:
         # If credentials are correct, get the list of characters for the user
-        game = game_state.get_game()
+        game = sm.get_session(username, None).game
         characters = await game.vb.get_all_characters_for_user(username)
         return jsonify({"status": "ready", "message": True, "characters": characters})
 
@@ -399,28 +427,24 @@ async def get_character_data():
     data = await request.get_json()
     username = data.get('username')
     seed = data.get('seed') # Expect seed from frontend
-    game_state = GameState.get_instance()
-    game = game_state.get_game()
-    if not game:
-        await game_state.initialize_game(username)
-        game = game_state.get_game()
+    sm = SessionManager.get_instance()
+    session = await sm.ensure_game(username, int(seed) if seed is not None else None)
+    game = session.game
     
     # Pass seed to load_player_character
-    await load_player_character(username, seed, use_changed_character=True)
+    await load_player_character(username, seed, use_changed_character=True, session=session)
     # Pass seed to get_character
     character_data = await game.vb.get_character(username, seed, True)
-    return jsonify({"characterData": character_data, "skills": game_state.player_skills})
+    return jsonify({"characterData": character_data, "skills": session.player_skills})
 
 @app.route("/characters", methods=['POST'])
 async def process_characters():
     data = await request.get_json()
     username = data.get('username')
     char_name = data.get('name')
-    game_state = GameState.get_instance()
-    game = game_state.get_game()
-    if not game:
-        await game_state.initialize_game(username)
-        game = game_state.get_game()
+    sm = SessionManager.get_instance()
+    session = await sm.ensure_game(username, None)
+    game = session.game
     
     success, message = await game.bvb.add_user_character(
         username=username,
