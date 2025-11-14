@@ -10,13 +10,11 @@ import HarryPotter from "@/app/components/assets/harry_potter.png";
 import Scenario1 from "@/app/components/assets/Scenario_1.png";
 import Dice from "@/app/components/dice/dice";
 import Roll from "@/app/components/dice/roll";
-import GameManager from "@/app/components/gameManager/gameManager";
 import {AbilityBars} from "@/app/components/character/abilities/abilities";
-import { CharacterIcon } from "@/app/components/character/basicInfo/characterIcon";
-import { API_ENDPOINTS } from "@/config/api";
 import HelpIcon from "@/app/components/helpIcon/helpIcon";
 import { useLoadingNavigation } from "@/app/hooks/useLoadingNavigation";
 import { useLoading } from "@/app/components/LoadingContext";
+import GameOver from "@/app/components/gameOver/gameOver";
 
 type ConversationItem = {
     sender: 'User' | 'DM' | string;
@@ -210,6 +208,7 @@ type Character = {
 export default function Game() {
   const { navigateWithLoading } = useLoadingNavigation();
   const { hideLoading } = useLoading();
+  const [isGameOver, setIsGameOver] = useState(false);
   const [sides, setSides] = useState<number>(20);
   const [activeDice, setActiveDice] = useState("d20");
   const [DMmessage, setDMmessage] = useState("Connecting...");
@@ -388,6 +387,10 @@ export default function Game() {
             setCharacterData(result.characterData);
         }
 
+        if (result.options && result.options.length===0){
+          setIsGameOver(true);
+        }
+
     } catch (error) {
         console.error("Error during roll submission:", error);
         setConversation(prev => [...prev, { sender: 'DM', text: "The DM seems confused by your roll. Try again." }]);
@@ -398,6 +401,10 @@ export default function Game() {
         setIsLoading(false);
     }
   };
+
+  const handleGameOver = async () =>{
+
+  }
 
   const handleSend = async (message?: string) => {
         const userMessage = message || userin.trim();
@@ -437,6 +444,10 @@ export default function Game() {
             setDMmessage(result.message);
             setTurnNum(result.turn_num || '0');
             setSkills(result.skills || skills);
+            
+            if (result.options && result.options.length ===0){
+              setIsGameOver(true);
+            }
     } catch (error) {
       console.error("Something went wrong with fetch dm message, line 81", error);
       setDMmessage("Error: could not fetch python response, something went wrong, line 82");
@@ -495,6 +506,10 @@ export default function Game() {
         setTurnNum(dmData.turn_num || '0');
         setConversation([{sender : 'DM', text : dmData.dm_text}]);
         
+        if (dmData.options && dmData.options.length===0){
+          setIsGameOver(true);
+        }
+
         // Set character data
         setCharacterData(characterData.characterData);
         setSkills(characterData.skills || []);
@@ -513,6 +528,9 @@ export default function Game() {
         setConversation([{sender : 'DM', text : data.dm_text}]);
         
         setPageDataLoaded({ dm: true, character: true });
+        if (data.options && data.options.length === 0) {
+          setIsGameOver(true);
+        }
       }
     } catch (error) {
       console.error("Something went wrong with fetch dm message:", error);
@@ -625,45 +643,51 @@ export default function Game() {
             </div>
           <main className="game-box" style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden' }}>
             <img src={background.src} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.7)' }} />
-            <div className="scene-box" style={{
-              position: 'absolute',
-              top: '20px',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              width: '80%',
-              maxWidth: '800px',
-            }}>
-              <p className="scene-box-p">
-                {scene || 'The scene is about to unfold...'}
-              </p>
-            </div>
-            <div className={`message-display-toggle ${isHistoryOpen ? 'full-history' : 'latest-message'}`} 
-                 style={{
-                    backgroundColor: 'rgba(246, 233, 201, 0.9)',
-                    color: '#6b4a2e',
-                    border: '1px solid #6b4a2e'
-                 }}
-                 onClick={() => setIsHistoryOpen(!isHistoryOpen)}>
-            {isHistoryOpen ? (
-              <div className="full-conversation-log">
-                {conversation.map((item, index) => (
-                  <p key={index} className={item.sender === 'User' ? 'user-text' : 'dm-text'}>
-                    <strong>{item.sender}</strong> {item.text}
+            {isGameOver && <GameOver/>}
+            {!isGameOver &&(
+              <>
+                <div className="scene-box" style={{
+                  position: 'absolute',
+                  top: '20px',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  width: '80%',
+                  maxWidth: '800px',
+                }}>
+                  <p className="scene-box-p">
+                    {scene || 'The scene is about to unfold...'}
                   </p>
-                ))}
-              </div>
-            ) : (
-              <p className={latestMessage.sender === 'User' ? 'user-text' : 'dm-text'}>
-                <strong>{latestMessage.sender}</strong> {latestMessage.text}
-                <span className="click-prompt">(Click to see history)</span>
-              </p>
+                </div>
+                <div className={`message-display-toggle ${isHistoryOpen ? 'full-history' : 'latest-message'}`} 
+                     style={{
+                        backgroundColor: 'rgba(246, 233, 201, 0.9)',
+                        color: '#6b4a2e',
+                        border: '1px solid #6b4a2e'
+                     }}
+                     onClick={() => setIsHistoryOpen(!isHistoryOpen)}>
+                  {isHistoryOpen ? (
+                    <div className="full-conversation-log">
+                      {conversation.map((item, index) => (
+                        <p key={index} className={item.sender === 'User' ? 'user-text' : 'dm-text'}>
+                          <strong>{item.sender}</strong> {item.text}
+                        </p>
+                      ))}
+                    </div>
+                  ) : (
+                  <p className={latestMessage.sender === 'User' ? 'user-text' : 'dm-text'}>
+                    <strong>{latestMessage.sender}</strong> {latestMessage.text}
+                    <span className="click-prompt">(Click to see history)</span>
+                  </p>
+                )}
+                </div>
+              {rollInfo ? (
+                  <RollInfo info={rollInfo} onContinue={handleContinue} />
+              ) : (
+                  <Options options={options} onOptionClick={handleOptionClick} />
+              )}
+              </>
             )}
-          </div>
-          {rollInfo ? (
-              <RollInfo info={rollInfo} onContinue={handleContinue} />
-          ) : (
-              <Options options={options} onOptionClick={handleOptionClick} />
-          )}
+            
             {/* persistent character attributes on game page */}
             <div className="party-box" style={{
               position: 'absolute',
@@ -773,15 +797,6 @@ export default function Game() {
                 </div>
               </div>
             )}
-            <div className="game">
-              {/* <GameManager 
-              userin={userin}
-              setUserin={setUserin}
-              handleSend={() => handleSend()}
-              isLoading={isLoading}          /> */}
-              <div className="player-actions">
-              </div>
-            </div>
           </main>
         </div>
     </div>
