@@ -1,12 +1,13 @@
 'use client'
 import Nav from "@/app/components/nav/nav";
 import { useState, useEffect } from "react";
+import Background from "@/app/components/assets/mainBackground.jpg";
 import { API_BASE_URL } from "@/app/config/api";
-import StarWars from "@/app/components/assets/star_wars_game.jpeg";
-import Avatar from "@/app/components/assets/avatar_game.jpeg";
-import LordOfRings from "@/app/components/assets/lord_of_rings_game.jpeg";
-import HarryPotter from "@/app/components/assets/harry_potter_game.jpeg";
-import Scenario1 from "@/app/components/assets/Scenario_1_game.jpeg";
+import StarWars from "@/app/components/assets/star_wars.png";
+import Avatar from "@/app/components/assets/avatar.png";
+import LordOfRings from "@/app/components/assets/lord_of_rings.png";
+import HarryPotter from "@/app/components/assets/harry_potter.png";
+import Scenario1 from "@/app/components/assets/Scenario_1.png";
 import Dice from "@/app/components/dice/dice";
 import Roll from "@/app/components/dice/roll";
 import {AbilityBars} from "@/app/components/character/abilities/abilities";
@@ -14,6 +15,7 @@ import HelpIcon from "@/app/components/helpIcon/helpIcon";
 import { useLoadingNavigation } from "@/app/hooks/useLoadingNavigation";
 import { useLoading } from "@/app/components/LoadingContext";
 import GameOver from "@/app/components/gameOver/gameOver";
+import { DiVim } from "react-icons/di";
 
 type ConversationItem = {
     sender: 'User' | 'DM' | string;
@@ -134,7 +136,7 @@ function RollInfo({ info, onContinue }: RollInfoProps) {
         return Object.entries(change)
             .map(([key, amount]) => {
                 // Apply halving logic: if success and negative change, halve it
-                const actualAmount = (isSuccess && amount < 0) ? (Math.floor(amount / 2) * -1) : amount;
+                const actualAmount = (isSuccess && amount < 0) ? Math.floor(amount / 2) : amount;
                 return `${key} changes by ${actualAmount}`;
             })
             .join(', ');
@@ -207,7 +209,7 @@ type Character = {
 export default function Game() {
   const { navigateWithLoading } = useLoadingNavigation();
   const { hideLoading } = useLoading();
-  const [isGameOver, setIsGameOver] = useState(false);
+  const [isGameOver, setIsGameOver] = useState(true)
   const [sides, setSides] = useState<number>(20);
   const [activeDice, setActiveDice] = useState("d20");
   const [DMmessage, setDMmessage] = useState("Connecting...");
@@ -237,7 +239,7 @@ export default function Game() {
     dice: string;
     options: string[];
   } | null>(null);
-  const [background, setBackground] = useState(StarWars);
+  const [background, setBackground] = useState(Background);
   const [userin, setUserin] = useState('');
   const [conversation, setConversation] = useState<ConversationItem[]>([
       { sender: 'DM', text: DMmessage }
@@ -287,7 +289,7 @@ export default function Game() {
     console.log("Option clicked:", option); // <-- ADDING LOG
 
     const optionText = typeof option === 'string' ? option : option.option;
-    setConversation(prev => [...prev, { sender: (characterData?.name+ ':' || 'User') , text: optionText }]);
+    setConversation(prev => [...prev, { sender: characterData?.name || 'User', text: optionText }]);
 
     // Always send the option to the backend to handle.
     setIsLoading(true);
@@ -400,10 +402,6 @@ export default function Game() {
         setIsLoading(false);
     }
   };
-
-  const handleGameOver = async () =>{
-
-  }
 
   const handleSend = async (message?: string) => {
         const userMessage = message || userin.trim();
@@ -563,7 +561,7 @@ export default function Game() {
           setBackground(Scenario1);
           break;
         default:
-          setBackground(StarWars);
+          setBackground(Background);
       }
     }
 
@@ -589,38 +587,23 @@ export default function Game() {
     }
   }, [turn_num]);
 
-  // Hide loading only when both DM message and character data are loaded AND images are loaded
+  // Hide loading only when both DM message and character data are loaded
   useEffect(() => {
     if (pageDataLoaded.dm && pageDataLoaded.character) {
-      // Also wait for the background image to load
-      const img = new Image();
-      img.src = background.src;
-      
-      const hideLoadingWhenReady = () => {
-        // Wait for React to render the content and images before hiding loading
-        requestAnimationFrame(() => {
-          setTimeout(() => {
-            hideLoading();
-          }, 150);
-        });
-      };
-
-      if (img.complete) {
-        // Image already loaded (cached)
-        hideLoadingWhenReady();
-      } else {
-        // Wait for image to load
-        img.onload = hideLoadingWhenReady;
-        img.onerror = hideLoadingWhenReady; // Hide even on error to avoid stuck loading screen
-      }
+      // Wait for React to render the content before hiding loading
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          hideLoading();
+        }, 200); // Small delay to ensure content is painted
+      });
     }
-  }, [pageDataLoaded, hideLoading, background]);
+  }, [pageDataLoaded, hideLoading]);
 
   const latestMessage = conversation[conversation.length - 1];
 
   return (
     <div className="root-container" style={{ height: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#F6E3B8' }}>
-  <Nav title="QuestWeaver" showLeaveButton={true} onBookClick={() => setIsInfoOpen(v => !v)} noShadow={true} characterIconId={characterData?.iconId} showDndIcon={true} />
+      <Nav title="QuestWeaver" showLeaveButton={true} onBookClick={() => setIsInfoOpen(v => !v)} noShadow={true} characterIconId={characterData?.iconId} showDndIcon={true} />
         <div className="main-session-box" style={{ flex: 1, height: '100%', display: 'flex', alignItems: 'stretch', position: 'relative', minHeight: 0 }}>
             <div className="dice-box" style={{
               position: 'absolute',
@@ -657,10 +640,7 @@ export default function Game() {
             </div>
           <main className="game-box" style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden' }}>
             <img src={background.src} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.7)' }} />
-            {isGameOver && <GameOver/>}
-            {!isGameOver &&(
-              <>
-                <div className="scene-box" style={{
+            <div className="scene-box" style={{
                   position: 'absolute',
                   top: '20px',
                   left: '50%',
@@ -669,18 +649,7 @@ export default function Game() {
                   maxWidth: '800px',
                 }}>
                   <p className="scene-box-p">
-                    {scene ? (
-                      scene.startsWith('Background: ') ? (
-                        <>
-                          <span style={{ fontWeight: 'bold', color: '#4a3321' }}>Background:</span>
-                          {scene.substring(12)}
-                        </>
-                      ) : (
-                        scene
-                      )
-                    ) : (
-                      'The scene is about to unfold...'
-                    )}
+                    {scene || 'The scene is about to unfold...'}
                   </p>
                 </div>
                 <div className={`message-display-toggle ${isHistoryOpen ? 'full-history' : 'latest-message'}`} 
@@ -694,24 +663,32 @@ export default function Game() {
                     <div className="full-conversation-log">
                       {conversation.map((item, index) => (
                         <p key={index} className={item.sender === 'User' ? 'user-text' : 'dm-text'}>
-                          <strong style={{ fontWeight: 'bold', color: '#4a3321' }}>{item.sender}:</strong> {item.text}
+                          <strong>{item.sender}</strong> {item.text}
                         </p>
                       ))}
                     </div>
                   ) : (
-                  <p className={latestMessage.sender === 'User' ? 'user-text' : 'dm-text'}>
-                    <strong style={{ fontWeight: 'bold', color: '#4a3321' }}>{latestMessage.sender}:</strong> {latestMessage.text}
-                    <span className="click-prompt">(Click to see history)</span>
-                  </p>
-                )}
+                    <>
+                      {isGameOver
+                        ? (<GameOver result={true} />)
+                        : (
+                          <div>
+                            <p className={latestMessage.sender === 'User' ? 'user-text' : 'dm-text'}>
+                              <strong>{latestMessage.sender}</strong> {latestMessage.text}
+                              <span className="click-prompt">(Click to see history)</span>
+                            </p>
+                          </div>
+                        )
+                      }
+                    </>
+                )
+              }
                 </div>
               {rollInfo ? (
                   <RollInfo info={rollInfo} onContinue={handleContinue} />
               ) : (
                   <Options options={options} onOptionClick={handleOptionClick} />
               )}
-              </>
-            )}
             
             {/* persistent character attributes on game page */}
             <div className="party-box" style={{

@@ -1,12 +1,25 @@
 'use client'
 
 import { useRouter } from "next/navigation"
+import Image from "next/image"
+import happyDuck from '../assets/yellowduckling.gif'
+import sadDuck from '../assets/cryingduck.gif'
 
-export default function GameOver(){
+export default function GameOver({result}:{result: boolean}){
+    const endText = result 
+        ? 'Congratulations! You made it to the end. Thanks for playing!'
+        : 'Sorry! Try again next time.';
+    const endGif = result
+        ? (<Image src={happyDuck} alt="" />)
+        : (<Image src={sadDuck} alt="" />);
     return(
         <div className="game-over">
-            You made it to the end.
-            Thanks for playing!
+            <div className="game-over-text">
+                {endText}
+            </div>
+            <div className="game-over-gif">
+                {endGif}
+            </div>
             <div className="game-over-button">
                 <LeaveExperience/>
             </div>
