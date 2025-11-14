@@ -101,7 +101,7 @@ class player:
                 self.attributes[ability] = 0
                 
             if outcome_type == 'success' and change < 0:
-                change = change // 2  # Halve the change on failure
+                change = -(change // 2)  # Halve the change on failure
                 
             
             if ability == 'Might':

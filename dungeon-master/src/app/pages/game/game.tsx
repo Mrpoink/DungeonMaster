@@ -137,7 +137,7 @@ function RollInfo({ info, onContinue }: RollInfoProps) {
         return Object.entries(change)
             .map(([key, amount]) => {
                 // Apply halving logic: if success and negative change, halve it
-                const actualAmount = (isSuccess && amount < 0) ? Math.floor(amount / 2) : amount;
+                const actualAmount = (isSuccess && amount < 0) ? (Math.floor(amount / 2) * -1) : amount;
                 return `${key} changes by ${actualAmount}`;
             })
             .join(', ');
